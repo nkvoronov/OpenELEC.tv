@@ -1,0 +1,36 @@
+diff -Naur a/control.c b/control.c
+--- a/control.c	2004-07-02 22:24:22.000000000 +0300
++++ b/control.c	2014-10-22 04:38:42.596000256 +0300
+@@ -22,7 +22,7 @@
+ 
+ 
+ static const char *VERSION        = "0.0.2a";
+-static const char *DESCRIPTION    = "Control VDR over terminal or telnet";
++static const char *DESCRIPTION    = tr("Control VDR over terminal or telnet");
+ static const char *MAINMENUENTRY  = NULL; //"Control";
+ 
+ 
+diff -Naur a/po/ru_RU.po b/po/ru_RU.po
+--- a/po/ru_RU.po	1970-01-01 03:00:00.000000000 +0300
++++ b/po/ru_RU.po	2014-10-22 04:39:32.583998099 +0300
+@@ -0,0 +1,20 @@
++# VDR plugin language source file.
++# Copyright (C) 2014 Mariusz Bialonczyk <manio@skyboo.net>
++# This file is distributed under the same license as the DVBAPI package.
++# Mariusz Bialonczyk <manio@skyboo.net>, 2014
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: vdr-control 0.0.2a\n"
++"Report-Msgid-Bugs-To: <see README>\n"
++"POT-Creation-Date: 2014-03-29 12:27+0100\n"
++"PO-Revision-Date: 2014-04-04 14:48+0100\n"
++"Last-Translator: unf\n"
++"Language-Team: Russian <vdr@linuxtv.org>\n"
++"Language: ru\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "Control VDR over terminal or telnet"
++msgstr ""Контроль за VDR из terminal или telnet"

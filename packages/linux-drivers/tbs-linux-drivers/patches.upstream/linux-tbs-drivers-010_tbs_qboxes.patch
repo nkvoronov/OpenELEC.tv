@@ -1,0 +1,51 @@
+diff -ru a/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox2.c b/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox2.c
+--- a/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox2.c	2013-01-27 23:07:08.000000000 +0200
++++ b/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox2.c	2013-03-25 22:08:21.356787012 +0200
+@@ -187,8 +187,11 @@
+ 
+ static int tbsqbox2_earda_tuner_attach(struct dvb_usb_adapter *adap)
+ {
+-	dvb_attach(stb6100_attach, adap->fe[0], &qbox2_stb6100_config,
+-		&adap->dev->i2c_adap);
++	if (!dvb_attach(stb6100_attach, adap->fe[0], &qbox2_stb6100_config,
++		&adap->dev->i2c_adap))
++		return -EIO;
++
++	info("Attached stb6100!\n");
+ 
+ 	return 0;
+ }
+diff -ru a/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox2ci.c b/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox2ci.c
+--- a/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox2ci.c	2012-06-02 20:24:16.000000000 +0300
++++ b/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox2ci.c	2013-03-25 22:06:41.944788150 +0200
+@@ -493,8 +493,11 @@
+ 
+ static int tbsqbox2ci_earda_tuner_attach(struct dvb_usb_adapter *adap)
+ {
+-	dvb_attach(stb6100_attach, adap->fe[0], &qbox2_stb6100_config,
+-		&adap->dev->i2c_adap);
++	if (!dvb_attach(stb6100_attach, adap->fe[0], &qbox2_stb6100_config,
++		&adap->dev->i2c_adap))
++		return -EIO;
++
++	info("Attached stb6100!\n");
+ 
+ 	return 0;
+ }
+diff -ru a/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox.c b/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox.c
+--- a/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox.c	2012-06-02 20:24:16.000000000 +0300
++++ b/linux-tbs-drivers/linux/drivers/media/dvb/dvb-usb/tbs-qbox.c	2013-03-25 22:09:00.512786557 +0200
+@@ -168,8 +168,11 @@
+ 
+ static int tbsqboxs1_earda_tuner_attach(struct dvb_usb_adapter *adap)
+ {
+-	dvb_attach(stb6000_attach, adap->fe[0], 0x61,
+-		&adap->dev->i2c_adap);
++	if (!dvb_attach(stb6000_attach, adap->fe[0], 0x61,
++		&adap->dev->i2c_adap))
++		return -EIO;
++
++	info("Attached stb6100!\n");
+ 
+ 	return 0;
+ }

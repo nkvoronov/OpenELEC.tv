@@ -1,0 +1,140 @@
+diff -Naur a/po/ru_RU.po b/po/ru_RU.po
+--- a/po/ru_RU.po	1970-01-01 03:00:00.000000000 +0300
++++ b/po/ru_RU.po	2014-07-27 14:54:40.478934887 +0300
+@@ -0,0 +1,136 @@
++# VDR plugin language source file.
++# Copyright (C) 2007-2014 Rolf Ahrenberg
++# This file is distributed under the same license as the satip package.
++# Rolf Ahrenberg, 2014
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: vdr-satip 0.3.3\n"
++"Report-Msgid-Bugs-To: <see README>\n"
++"POT-Creation-Date: 2014-05-18 05:18+0200\n"
++"PO-Revision-Date: 2014-05-18 05:18+0200\n"
++"Last-Translator: Rolf Ahrenberg\n"
++"Language-Team: Russian <vdr@linuxtv.org>\n"
++"Language: ru\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "PAT (0x00)"
++msgstr "PAT (0x00)"
++
++msgid "NIT (0x40)"
++msgstr "NIT (0x40)"
++
++msgid "SDT (0x42)"
++msgstr "SDT (0x42)"
++
++msgid "EIT (0x4E/0x4F/0x5X/0x6X)"
++msgstr "EIT (0x4E/0x4F/0x5X/0x6X)"
++
++msgid "TDT (0x70)"
++msgstr "TDT (0x70)"
++
++msgid "SAT>IP Devices"
++msgstr "SAT>IP Устройства"
++
++msgid "SAT>IP Device"
++msgstr "SAT>IP Устройство"
++
++msgid "Address"
++msgstr "Адресс"
++
++msgid "Model"
++msgstr "Модель"
++
++msgid "Description"
++msgstr "Описание"
++
++msgid "Creation date"
++msgstr "Дата создания"
++
++msgid "SAT>IP Information"
++msgstr "SAT>IP информация"
++
++msgid "General"
++msgstr "Общие"
++
++msgid "Pids"
++msgstr "Pids"
++
++msgid "Filters"
++msgstr "Фильтры"
++
++msgid "Bits/bytes"
++msgstr "Биты/байты"
++
++msgid "SAT>IP information not available!"
++msgstr "SAT>IP информация не доступна!"
++
++msgid "off"
++msgstr "Выкл."
++
++msgid "low"
++msgstr "Низкий"
++
++msgid "normal"
++msgstr "Нормальный"
++
++msgid "high"
++msgstr "Высокий"
++
++msgid "Operating mode"
++msgstr "Режим операций"
++
++msgid ""
++"Define the used operating mode for all SAT>IP devices:\n"
++"\n"
++"off - devices are disabled\n"
++"low - devices are working at the lowest priority\n"
++"normal - devices are working within normal parameters\n"
++"high - devices are working at the highest priority"
++msgstr ""
++"Определите используемый режим работы для всех SAT>IP устройств:\n"
++"Выкл. - устройства отключены\n"
++"Низкий - устройства работают на самом низком приоритете\n"
++"Нормальный - устройства работают в пределах нормальных параметров\n"
++"Высокий - устройства работают с самым высоким приоритетом"
++
++msgid "Enable EPG scanning"
++msgstr "Разрешить EPG сканирование"
++
++msgid ""
++"Define whether the EPG background scanning shall be used.\n"
++"\n"
++"This setting disables the automatic EIT scanning functionality for all SAT>IP devices."
++msgstr ""
++"Определите, будет ли использоваться фоновое сканирование EPG.\n"
++"\n"
++"Этот параметр отключает автоматическую функциональность EIT сканирования для всех SAT>IP устройств."
++
++msgid "Disabled filters"
++msgstr "Запрещенные фильтры"
++
++msgid "none"
++msgstr "нет"
++
++msgid ""
++"Define number of section filters to be disabled.\n"
++"\n"
++"Certain section filters might cause some unwanted behaviour to VDR such as time being falsely synchronized. By black-listing the filters here useful section data can be left intact for VDR to process."
++msgstr ""
++"Определить количество секций фильтров которые должены быть отключены.\n"
++"\n"
++"Некоторые секции фильтров могут вызвать некоторые нежелательные поведение VDR, таких как время ложной синхронизации. По черному списоку фильтров полезные данные секций можно оставить нетронутыми для обработки VDR."
++
++msgid "Filter"
++msgstr "Фильтр"
++
++msgid "Define an ill-behaving filter to be blacklisted."
++msgstr "Определите плохой фильтр в черный список."
++
++msgid "Active SAT>IP devices:"
++msgstr "Активные SAT>IP устройства:"
++
++msgid "Help"
++msgstr "Помощь"

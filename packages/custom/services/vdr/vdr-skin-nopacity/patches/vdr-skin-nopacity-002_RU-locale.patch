@@ -1,0 +1,718 @@
+diff -Naur a/po/ru_RU.po b/po/ru_RU.po
+--- a/po/ru_RU.po	1970-01-01 03:00:00.000000000 +0300
++++ b/po/ru_RU.po	2014-10-21 18:14:32.000000000 +0300
+@@ -0,0 +1,702 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++#
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: vdr-skinnopacity 1.1.3\n"
++"Report-Msgid-Bugs-To: <see README>\n"
++"POT-Creation-Date: 2014-10-21 18:14+0300\n"
++"PO-Revision-Date: 2013-03-10 17:13+0100\n"
++"Last-Translator: Oleg Roitburd <oroitburd@gmail.com>\n"
++"Language-Team: Russian <vdr@linuxtv.org>\n"
++"Language: ru\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "No Cast available"
++msgstr "Роли не доступны"
++
++msgid "Cast"
++msgstr "Роли"
++
++msgid "EPG Info"
++msgstr "EPG инфо"
++
++msgid "Reruns"
++msgstr "Повторы"
++
++msgid "Recording Information"
++msgstr "Информация о записи"
++
++msgid "Image Galery"
++msgstr "Галерея изображений"
++
++msgid "TheTVDB Info"
++msgstr "TheTVDB инфо"
++
++msgid "TheTVDB Information"
++msgstr "TheTVDB информация"
++
++msgid "Episode"
++msgstr "Эпизод"
++
++msgid "Season"
++msgstr "Сезон"
++
++msgid "Episode Overview"
++msgstr "Обзор эпизода"
++
++msgid "First aired"
++msgstr "Первый эфир"
++
++msgid "Guest Stars"
++msgstr "Приглашенные звезды"
++
++msgid "TheMovieDB Rating"
++msgstr "Рейтинг TheMovieDB"
++
++msgid "Series Overview"
++msgstr "Обзор серии"
++
++msgid "Genre"
++msgstr "Жанр"
++
++msgid "Network"
++msgstr "Сеть"
++
++msgid "Status"
++msgstr "Статус"
++
++msgid "TheMovieDB Information"
++msgstr "TheMovieDB иформация"
++
++msgid "Original Title"
++msgstr "Оригинальное название"
++
++msgid "Tagline"
++msgstr "Подзаголовок"
++
++msgid "Overview"
++msgstr "Обзор"
++
++msgid "yes"
++msgstr "да"
++
++msgid "no"
++msgstr "нет"
++
++msgid "Adult"
++msgstr "Взрослый"
++
++msgid "Collection"
++msgstr "Коллекция"
++
++msgid "Budget"
++msgstr "Бюджет"
++
++msgid "Revenue"
++msgstr "Прибыль"
++
++msgid "Homepage"
++msgstr "Домашняя страница"
++
++msgid "Release Date"
++msgstr "Дата выпуска"
++
++msgid "Runtime"
++msgstr "Выполняется"
++
++msgid "minutes"
++msgstr "минут"
++
++msgid "TheMovieDB Popularity"
++msgstr "TheMovieDB популярность"
++
++msgid "TheMovieDB Vote Average"
++msgstr "TheMovieDB Голосов"
++
++msgid "free"
++msgstr "свободно"
++
++msgid "Volume"
++msgstr "Громкость"
++
++msgid "images"
++msgstr "изображения"
++
++msgid "min"
++msgstr "мин"
++
++msgid "Reruns of "
++msgstr "Повторный показ"
++
++msgid "No reruns found"
++msgstr "Повторы не найдены"
++
++msgid "Size"
++msgstr "Размер"
++
++msgid "cut"
++msgstr "вырезать"
++
++msgid "Length"
++msgstr "Длина"
++
++msgid "Format"
++msgstr "Формат"
++
++msgid "Est. bitrate"
++msgstr "Est. битрейт"
++
++msgid "Search timer"
++msgstr "Поиск таймера"
++
++msgid "Transp."
++msgstr "Трансп."
++
++msgid "No EPG Information found"
++msgstr "Нет доступной EPG информации"
++
++msgid "Duration"
++msgstr "Продолжительность"
++
++msgid "recording"
++msgstr "запись"
++
++msgid "recordings"
++msgstr "записи"
++
++msgid "new"
++msgstr "новый"
++
++msgid "Font"
++msgstr "Шрифт"
++
++msgid "VDR Menu: Common Settings"
++msgstr "VDR меню: Общие настройки"
++
++msgid "VDR Menu: Main and Setup Menu"
++msgstr "VDR меню: Главное меню и Меню настройки"
++
++msgid "VDR Menu: Schedules Menu"
++msgstr "VDR меню: Программа ТВ"
++
++msgid "VDR Menu: Channels Menu"
++msgstr "VDR меню: Меню каналов"
++
++msgid "VDR Menu: Timers Menu"
++msgstr "VDR меню: Меню таймеров"
++
++msgid "VDR Menu: Recordings Menu"
++msgstr "VDR меню: Меню записей"
++
++msgid "VDR Menu: Detailed EPG & Recordings View"
++msgstr "VDR меню: Детальное EPG и Вид записей"
++
++msgid "Channel Switching"
++msgstr "Переключение каналов"
++
++msgid "Replay"
++msgstr "Повтор"
++
++msgid "Audio Tracks"
++msgstr "Аудио треки"
++
++msgid "Messages"
++msgstr "Сообщения"
++
++msgid "Image Caching"
++msgstr "Кэширование изображения"
++
++msgid "right"
++msgstr "справа"
++
++msgid "left"
++msgstr "слева"
++
++msgid "Carriage Return"
++msgstr "Возврат каретки"
++
++msgid "Forward and Back again"
++msgstr "Вперед и Назад снова"
++
++msgid "off"
++msgstr "выключено"
++
++msgid "slow"
++msgstr "медленно"
++
++msgid "medium"
++msgstr "умеренно"
++
++msgid "fast"
++msgstr "быстро"
++
++msgid "auto"
++msgstr "авто"
++
++msgid "Create Log Messages for image loading"
++msgstr "Создать Log сообщений для загрузки изображений"
++
++msgid "Number of Default Menu Entries per Page"
++msgstr "Количество пунктов меню на одну страницу"
++
++msgid "Adjust Font Size - Default Menu Item"
++msgstr "Настройте размер шрифта - по умолчанию для пункта меню"
++
++msgid "Adjustment of narrow menus"
++msgstr "Регулировка узких меню"
++
++msgid "Scale Video size to fit into menu window"
++msgstr "Масштабировать видео, чтобы вписаться в окне меню"
++
++msgid "Header Height (Percent of OSD Height)"
++msgstr "Высота заголовка  (% от высота OSD)"
++
++msgid "Footer Height (Percent of OSD Height)"
++msgstr "Высота Footer (% от высоты OSD)"
++
++msgid "Rounded Corners for menu items and buttons"
++msgstr "Закругленные углы для пунктов меню и кнопок"
++
++msgid "Radius of rounded corners"
++msgstr "Радиус закругленных углов"
++
++msgid "Use Channel Logo background"
++msgstr "Использовать фон для логотипа канала"
++
++msgid "Fade-In Time in ms (Zero for switching off fading)"
++msgstr "Время изчезновения в мс (0 для выключения)"
++
++msgid "Menu Items Scroll Style"
++msgstr "Стиль прокрутки для пунктов меню"
++
++msgid "Menu Items Scrolling Speed"
++msgstr "Скорость прокрутки пунктов меню"
++
++msgid "Menu Items Scrolling Delay in s"
++msgstr "Задержка прокрутки пунктов меню в сек"
++
++msgid "Adjust Font Size - Header"
++msgstr "Настройте размер шрифта - заголовок"
++
++msgid "Adjust Font Size - Date"
++msgstr "Настройте размер шрифта - дата"
++
++msgid "Adjust Font Size - Color Buttons"
++msgstr "Настройте размер шрифта - цветные кнопки"
++
++msgid "Adjust Font Size - Messages"
++msgstr "Настройте размер шрифта - сообщения"
++
++msgid "Adjust Font Size - Detail View Text"
++msgstr "Настройте размер шрифта - Детальный просмотр текст"
++
++msgid "Adjust Font Size - Detail View Text Small"
++msgstr "Настройте размер шрифта - Детальный просмотр маленький текст"
++
++msgid "Adjust Font Size - Detail View Header"
++msgstr "Настройте размер шрифта - Детальный просмотр заголовок"
++
++msgid "Adjust Font Size - Detail View Header Large"
++msgstr "Настройте размер шрифта - Детальный просмотр большой заголовок"
++
++msgid "\"VDR\" plus VDR version"
++msgstr "\"VDR\" плюс VDR версия"
++
++msgid "only VDR version"
++msgstr "только VDR версия"
++
++msgid "no title"
++msgstr "нет заголовка"
++
++msgid "free time in hours"
++msgstr "свободное время в часах"
++
++msgid "free space in GB"
++msgstr "свободное пространство в Гб"
++
++msgid "small without logo"
++msgstr "небольшой без логотипа"
++
++msgid "Use narrow main menu"
++msgstr "Использовать узкое главное меню"
++
++msgid "Width (Percent of OSD Width)"
++msgstr "Ширина (% от ширины OSD)"
++
++msgid "Use narrow setup menu"
++msgstr "Использовать узкое меню настройки"
++
++msgid "Number of entires per page"
++msgstr "Количество елементов на страницу"
++
++msgid "Use menu icons"
++msgstr "Использовать иконки меню"
++
++msgid "Main menu title style"
++msgstr "Главное меню стиль заголовка"
++
++msgid "Display Disk Usage"
++msgstr "Показывать использование диска"
++
++msgid "Size (square, Percent of OSD Width)"
++msgstr "Размер (квадратные, % от ширины OSD)"
++
++msgid "Free Disc Display"
++msgstr "Показывать свободное пространчтво на диске"
++
++msgid "Adjust Font Size - free"
++msgstr "Настройте размер шрифта - свободно"
++
++msgid "Adjust Font Size - percent"
++msgstr "Настройте размер шрифта - процент"
++
++msgid "Display Timers"
++msgstr "Показывать таймеры"
++
++msgid "Maximum number of Timers"
++msgstr "Максимальное количество таймеров"
++
++msgid "Width of Timers (Percent of OSD Width)"
++msgstr "Ширина таймера (% о ширины OSD)"
++
++msgid "Width of Channel Logos (Percent of Timer Width)"
++msgstr "Ширина логотипа канала (% от ширины таймера)"
++
++msgid "Adjust Font Size - Title"
++msgstr "Настройте размер шрифта - Заголовок"
++
++msgid "Show Timer Conflicts"
++msgstr "Показывать конфликт таймеров"
++
++msgid "Header Logo Width"
++msgstr "Ширина логотипа заголовка"
++
++msgid "Header Logo Height"
++msgstr "Высота логотипа заголовка"
++
++msgid "Adjust Font Size - Menu Items"
++msgstr "Настройте размер шрифта - елемент меню"
++
++msgid "window"
++msgstr "окно"
++
++msgid "full screen"
++msgstr "полный экран"
++
++msgid "Use narrow menu"
++msgstr "Использовать узкое меню"
++
++msgid "Mode of EPG Window"
++msgstr "Режим EPG окна"
++
++msgid "EPG Window Fade-In Time in ms (Zero for switching off fading)"
++msgstr "EPG окно время изчезновения в мс (0 для выключения)"
++
++msgid "EPG Window Display Delay in s"
++msgstr "EPG окно задержка отображения в сек"
++
++msgid "EPG Window Scroll Delay in s"
++msgstr "EPG окно задержка прокрутки в сек"
++
++msgid "EPG Window Text Scrolling Speed"
++msgstr "EPG окно скорость прокрутки текста"
++
++msgid "Height of EPG Info Window (Percent of OSD Height)"
++msgstr "Высота EPG Info окна (% от высоты OSD)"
++
++msgid "Adjust Font Size - Menu Item"
++msgstr "Настройте размер шрифта - елемент меню"
++
++msgid "Adjust Font Size - Menu Item Small"
++msgstr "Настройте размер шрифта - маленкий елемент меню"
++
++msgid "Adjust Font Size - EPG Info Window"
++msgstr "Настройте размер шрифта - EPG Info окно"
++
++msgid "Adjust Font Size - EPG Info Window Header"
++msgstr "Настройте размер шрифта - EPG Info заголовок окна"
++
++msgid "Transponder Information"
++msgstr "Информация о транспондере"
++
++msgid "Current Schedule"
++msgstr "Текущее расписание"
++
++msgid "Plain Channels"
++msgstr "Plain каналы"
++
++msgid "Menu Items display mode"
++msgstr "Режим отображения пунктов меню"
++
++msgid "Display schedules with time info"
++msgstr "Показать расписание с временной информации"
++
++msgid "Number of EPG Entries in Schedules Info Window"
++msgstr "Количество EPG записей в иформационном окне"
++
++msgid "never"
++msgstr "никогда"
++
++msgid "always"
++msgstr "всегда"
++
++msgid "only if no tvscraper media available"
++msgstr "только если tvscraper доступен"
++
++msgid "Mode of recording Window"
++msgstr "Режим окна записи"
++
++msgid "Border around detailed recording view"
++msgstr "Граница вокруг детального просмотра записи"
++
++msgid "Use folder poster if available"
++msgstr "Использовать папки для poster при наличии"
++
++msgid "Width of manually set recording poster"
++msgstr "Ширина установленного вручную записи poster"
++
++msgid "Height of manually set recording poster"
++msgstr "Высота установленного вручную записи poster"
++
++msgid "if exists"
++msgstr "если существует"
++
++msgid "Border around view"
++msgstr "Граница вокруг вида"
++
++msgid "Scroll Speed with up / down (number of lines)"
++msgstr "Скорость прокрутки с вверх / вниз (количество строк)"
++
++msgid "Header Height detailed EPG view (Perc. of OSD Height)"
++msgstr "Высота заголовока подробного вида EPG (% от высоты OSD)"
++
++msgid "Header Height detailed recording view (Perc. of OSD Height)"
++msgstr "Высота заголовока детального вида записи (% от высоты OSD)"
++
++msgid "Number of reruns to display"
++msgstr "Количество повторов для отображения"
++
++msgid "Use Subtitle for reruns"
++msgstr "Использовать субтитры для повторов"
++
++msgid "EPG Image Width"
++msgstr "Ширина EPG изображения"
++
++msgid "EPG Image Height"
++msgstr "Высота EPG изображения"
++
++msgid "Large EPG Image Width"
++msgstr "Ширина большого EPG изображения"
++
++msgid "Large EPG Image Height"
++msgstr "Высота большого EPG изображения"
++
++msgid "transparent channel logo"
++msgstr "прозрачный логотип канала"
++
++msgid "full osd width"
++msgstr "полная ширина OSD"
++
++msgid "do not display"
++msgstr "не отображать"
++
++msgid "top"
++msgstr "верх"
++
++msgid "middle"
++msgstr "середина"
++
++msgid "bottom"
++msgstr "низ"
++
++msgid "show elapsed time"
++msgstr "показывать истекшее время"
++
++msgid "show remaining time"
++msgstr "показывать оставшееся время"
++
++msgid "Height of Channel Display (Percent of OSD Height)"
++msgstr "Высота отображения канала (% от высоты OSD)"
++
++msgid "Left & Right Border Width"
++msgstr "Ширина границы слева и справа"
++
++msgid "Bottom Border Height"
++msgstr "Высота нижней границы"
++
++msgid "Background Transparency in Percent"
++msgstr "Прозрачность фона в поцентах"
++
++msgid "Background Style"
++msgstr "Стиль фона"
++
++msgid "Rounded Corners"
++msgstr "Закругленные углы"
++
++msgid "Vertical Channel Logo Alignment"
++msgstr "Вертикальное выравнивание логотипа канала"
++
++msgid "Channel Logo Position"
++msgstr "Пизиция логотипа канала"
++
++msgid "Channel Logo original Width"
++msgstr "Ширина оригинального логотипа канала"
++
++msgid "Channel Logo original Height"
++msgstr "Высота оригинального логотипа канала"
++
++msgid "Kind of time display for current schedule"
++msgstr "Вид отображения времени для текущей программы"
++
++msgid "Display Signal Strength & Quality"
++msgstr "Показывать Мощность сигнала и Качество"
++
++msgid "Display Channel Source & Rec. Info"
++msgstr "Показывать Источник и Информация о записи"
++
++msgid "Display Poster or Fanart from TVScraper"
++msgstr "Показывать Poster или Fanart из TVScraper"
++
++msgid "Border in Pixel"
++msgstr "Граница в пикселях"
++
++msgid "Display previous and next Channel Group"
++msgstr "Отображение предыдущей и следующей группы каналов"
++
++msgid "Adjust Font Size - EPG Text"
++msgstr "Настройте размер шрифта - EPG текст"
++
++msgid "Adjust Font Size - EPG Infotext"
++msgstr "Настройте размер шрифта - EPG info текст"
++
++msgid "Adjust Font Size - Channel Source Info"
++msgstr "Настройте размер шрифта - Источник канала"
++
++msgid "Adjust Font Size - Channel Group"
++msgstr "Настройте размер шрифта - Группа каналов"
++
++msgid "Adjust Font Size - Next/Prev Channel Group"
++msgstr "Настройте размер шрифта - След./Пред. группа каналов"
++
++msgid "Height of Replay Display (Percent of OSD Height)"
++msgstr "Высота replay дисплея (% от высоты OSD)"
++
++msgid "Adjust Font Size - Text"
++msgstr "Настройте размер шрифта - Текст"
++
++msgid "Width of Tracks Display (Percent of OSD Width)"
++msgstr "Ширина дисплея трека (% от ширины OSD)"
++
++msgid "Height of Track Items (in pixels)"
++msgstr "Высота элемента трека (в пикселях)"
++
++msgid "Position (0: bot. center, 1: bot. left, ... , 7: bot. right)"
++msgstr "Позиция (0: bot. center, 1: bot. left, ... , 7: bot. right)"
++
++msgid "Border Left / Right"
++msgstr "Граница слева / справа"
++
++msgid "Border Top / Bottom"
++msgstr "Граница сверху / снизу"
++
++msgid "Adjust Font Size - Buttons"
++msgstr "Настройте размер шрифта - Кнопки"
++
++msgid "Width of Message Display (Percent of OSD Height)"
++msgstr "Ширина сообщения (% от ширины OSD)"
++
++msgid "Height of Message Display (Percent of OSD Height)"
++msgstr "Высота сообщения (% от высоты OSD)"
++
++msgid "Adjust Font Size"
++msgstr "Настройка размера шрифта"
++
++msgid "Volume Display"
++msgstr "Дисплей громкости"
++
++msgid "Width of Volume Display (Percent of OSD Height)"
++msgstr "Ширина дисплея громкости (% от ширины OSD)"
++
++msgid "Height of Volume Display (Percent of OSD Height)"
++msgstr "Высота дисплея громкости (% от высоты OSD)"
++
++msgid "Limit Logo Cache"
++msgstr "Лимит кеша логотипов"
++
++msgid "Maximal number of logos to cache"
++msgstr "Максимальное количество логотипов в кэше"
++
++msgid "Number of  logos to cache at start"
++msgstr "Количество логотипов для кэширования при запуске"
++
++msgid "Cache Sizes"
++msgstr "Размер кеша"
++
++msgid "Menu Icon cache"
++msgstr "Кеш иконок меню"
++
++msgid "Skin Icon image cache"
++msgstr "Кеш изображений скина"
++
++msgid "Logo cache"
++msgstr "Кеш логотипов"
++
++msgid "Menu Item Logo cache"
++msgstr "Кеш логотипа пункта меню"
++
++msgid "Timer Logo cache"
++msgstr "Кеш логотипа таймера"
++
++msgid "Background Images cache"
++msgstr "Кеш фоновых изображений"
++
++msgid "'nOpacity' Skin"
++msgstr "скин nOpacity"
++
++msgid "conflict"
++msgstr "конфликт"
++
++msgid "conflicts"
++msgstr "кнфликты"
++
++#~ msgid "Actors"
++#~ msgstr "Актеры"
++
++#~ msgid "RERUNS OF THIS SHOW"
++#~ msgstr "ПОВТОРЫ ЭТОЙ ПЕРЕДАЧИ"
++
++#~ msgid "Border around detailed EPG view"
++#~ msgstr "Граница вокруг детального просмотра EPG"
++
++#~ msgid "Display Reruns in detailed EPG View"
++#~ msgstr "Показывать повторы в детальном просмотре EPG"
++
++#~ msgid "Display additional EPG Pictures in detailed EPG View"
++#~ msgstr "Показывать дополнительные EPG изображения в детальном просмотре EPG"
++
++#~ msgid "Number of EPG pictures to display"
++#~ msgstr "Количество EPG изображений для отображения"
++
++#~ msgid "Detail EPG View EPG Image Width"
++#~ msgstr "Детальный просмотр EPG ширина изображения"
++
++#~ msgid "Detail EPG View EPG Image Height"
++#~ msgstr "Детальный просмотр EPG высота изображения"
++
++#~ msgid "Detail EPG View additional EPG Image Width"
++#~ msgstr "Детальный просмотр EPG ширина дополнительного изображения"
++
++#~ msgid "Detail EPG View additional EPG Image Height"
++#~ msgstr "Детальный просмотр EPG высота дополнительного изображения"
++
++#~ msgid "Display additional EPG Pictures in detailed recording View"
++#~ msgstr "Показывать дополнительное EPG изображение в детельном виде записи"
++
++#~ msgid "Display Channel Source information"
++#~ msgstr "ZobraziЛ zdroj kanсlu"
+diff -Naur a/skinnopacity.c b/skinnopacity.c
+--- a/skinnopacity.c	2014-07-24 21:02:19.000000000 +0300
++++ b/skinnopacity.c	2014-10-21 23:07:54.363935307 +0300
+@@ -20,7 +20,7 @@
+ 
+ 
+ static const char *VERSION        = "1.1.3";
+-static const char *DESCRIPTION    = "'nOpacity' Skin";
++static const char *DESCRIPTION    = tr("'nOpacity' Skin");
+ static const char *MAINMENUENTRY  = "nOpacity";
+ 
+ class cPluginNopacity : public cPlugin {

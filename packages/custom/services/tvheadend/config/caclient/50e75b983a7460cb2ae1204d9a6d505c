@@ -1,0 +1,14 @@
+{
+	"username": "xtra",
+	"password": "xtra",
+	"hostname": "127.0.0.1",
+	"port": 681,
+	"deskey": "01:02:03:04:05:06:07:08:09:10:11:12:13:14",
+	"emm": false,
+	"emmex": false,
+	"class": "caclient_cwc",
+	"index": 5,
+	"enabled": false,
+	"name": "Conax-card (Xtra TV)",
+	"comment": "Conax-card (Xtra TV)"
+}

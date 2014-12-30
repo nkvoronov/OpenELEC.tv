@@ -1,0 +1,23 @@
+{
+	"channel_rename": 0,
+	"channel_renumber": 0,
+	"channel_reicon": 0,
+	"epgdb_periodicsave": 0,
+	"cron": "4 0 * * *",
+	"ota_cron": "# Default config (02:04 and 14:04 everyday)\n4 2 * * *\n4 14 * * *",
+	"ota_timeout": 600,
+	"ota_initial": 1,
+	"module": "/usr/bin/tv_grab_file",
+	"mod_enabled": {
+		"/usr/bin/tv_grab_file": 1,
+		"xmltv": 1,
+		"pyepg": 1,
+		"opentv-skyit": 1,
+		"opentv-ausat": 1,
+		"opentv-skyuk": 1,
+		"viasat_baltic": 1,
+		"uk_freeview": 1,
+		"uk_freesat": 1,
+		"eit": 1
+	}
+}

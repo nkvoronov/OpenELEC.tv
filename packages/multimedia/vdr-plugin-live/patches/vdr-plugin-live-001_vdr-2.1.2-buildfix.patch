@@ -1,0 +1,66 @@
+diff -Naur a/pages/recordings.ecpp b/pages/recordings.ecpp
+--- a/pages/recordings.ecpp	2014-07-24 18:19:27.000000000 +0300
++++ b/pages/recordings.ecpp	2014-07-25 18:49:11.658120114 +0300
+@@ -79,7 +79,7 @@
+ deletions.clear();
+ 
+ int FreeMB, UsedMB;
+-int Percent = VideoDiskSpace(&FreeMB, &UsedMB);
++int Percent = cVideoDirectory::VideoDiskSpace(&FreeMB, &UsedMB);
+ int Minutes = int(double(FreeMB) / MB_PER_MINUTE);
+ int Hours = Minutes / 60;
+ Minutes %= 60;
+diff -Naur a/recman.cpp b/recman.cpp
+--- a/recman.cpp	2014-07-24 18:19:27.000000000 +0300
++++ b/recman.cpp	2014-07-25 18:50:31.794118282 +0300
+@@ -112,7 +112,7 @@
+ 		if (found == string::npos)
+ 			return false;
+ 
+-		string newname = string(VideoDirectory) + "/" + name + oldname.substr(found);
++               string newname = string(cVideoDirectory::Name()) + "/" + name + oldname.substr(found);
+ 
+ 		if (!MoveDirectory(oldname.c_str(), newname.c_str(), copy)) {
+ 			esyslog("[LIVE]: renaming failed from '%s' to '%s'", oldname.c_str(), newname.c_str());
+diff -Naur a/tntconfig.cpp b/tntconfig.cpp
+--- a/tntconfig.cpp	2014-07-24 18:19:27.000000000 +0300
++++ b/tntconfig.cpp	2014-07-25 18:52:46.378115205 +0300
+@@ -279,7 +279,7 @@
+ 		// inserted by 'tadi' -- not verified, not counterchecked yet!
+ 		//app.mapUrl("^/vlc/(.+)", "static@tntnet")
+ 		//	.setPathInfo("/$1")
+-		//	.pushArg(string("DocumentRoot=") + VideoDirectory);
++		//	.pushArg(string("DocumentRoot=") + cVideoDirectory::Name());
+ 
+ 		// the following selects the theme specific 'theme.css' file
+ 		// inserted by 'tadi' -- verified with above, but not counterchecked yet!
+diff -Naur a/tools.cpp b/tools.cpp
+--- a/tools.cpp	2014-07-24 18:19:27.000000000 +0300
++++ b/tools.cpp	2014-07-25 18:55:44.626111129 +0300
+@@ -365,7 +365,7 @@
+ 			stat(source.c_str(), &st1);
+ 			stat(target.c_str(),&st2);
+ 			if (!copy && (st1.st_dev == st2.st_dev)) {
+-				if (!RenameVideoFile(source.c_str(), target.c_str())) {
++				if (!cVideoDirectory::RenameVideoFile(source.c_str(), target.c_str())) {
+ 					esyslog("[LIVE]: rename failed from %s to %s", source.c_str(), target.c_str());
+ 					return false;
+ 				}
+@@ -461,7 +461,7 @@
+ 						size_t found = source.find_last_of(delim);
+ 						if (found != std::string::npos) {
+ 							source = source.substr(0, found);
+-							while (source != VideoDirectory) {
++							while (source != cVideoDirectory::Name()) {
+ 								found = source.find_last_of(delim);
+ 								if (found == std::string::npos)
+ 									break;
+@@ -478,7 +478,7 @@
+ 					size_t found = target.find_last_of(delim);
+ 					if (found != std::string::npos) {
+ 						target = target.substr(0, found);
+-						while (target != VideoDirectory) {
++                                                while (target != cVideoDirectory::Name()) {
+ 							found = target.find_last_of(delim);
+ 							if (found == std::string::npos)
+ 								break;

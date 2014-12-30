@@ -1,0 +1,10 @@
+{
+	"mode": 4,
+	"camdfilename": "/tmp/camd.socket",
+	"port": 0,
+	"class": "caclient_capmt",
+	"index": 1,
+	"enabled": false,
+	"name": "Oscam >=9756",
+	"comment": "Oscam >=9756"
+}

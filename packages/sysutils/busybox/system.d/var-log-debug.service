@@ -1,0 +1,19 @@
+[Unit]
+Description=Debug /var/log relink
+DefaultDependencies=false
+After=systemd-tmpfiles-setup.service var.mount
+Before=systemd-journal-flush.service
+
+ConditionKernelCommandLine=!installer
+ConditionKernelCommandLine=|debugging
+ConditionPathExists=|/storage/.cache/debug.openelec
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/rm -rf /var/log
+ExecStartPre=-/bin/mkdir -p /storage/log/journal
+ExecStart=-/bin/ln -sf /storage/log /var/log
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target

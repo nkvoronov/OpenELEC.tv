@@ -1,0 +1,10 @@
+{
+	"mode": 3,
+	"camdfilename": "127.0.0.1",
+	"port": 9000,
+	"class": "caclient_capmt",
+	"index": 2,
+	"enabled": true,
+	"name": "Oscam >=9574",
+	"comment": "Oscam >=9574"
+}
