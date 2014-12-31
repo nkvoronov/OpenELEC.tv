@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="cde79eb"
+PKG_VERSION="c1ed929"
 PKG_VERSIONA="3.9.2304"
 PKG_REV="10"
 PKG_ARCH="any"

@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="xine-lib"
-PKG_VERSION="db5b495"
+PKG_VERSION="4602e39"
 #PKG_VERSION="1.2.4"
 PKG_REV="1"
 PKG_ARCH="any"
