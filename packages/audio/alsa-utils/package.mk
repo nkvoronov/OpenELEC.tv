@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.alsa-project.org/"
 PKG_URL="ftp://ftp.alsa-project.org/pub/utils/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain alsa-lib"
+PKG_DEPENDS_TARGET="toolchain alsa-lib ncurses"
 PKG_PRIORITY="optional"
 PKG_SECTION="audio"
 PKG_SHORTDESC="alsa-utils: Advanced Linux Sound Architecture utilities"
@@ -35,12 +35,15 @@ PKG_AUTORECONF="yes"
 # package specific configure options
 PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
                            --disable-xmlto \
-                           --disable-alsamixer \
-                           --disable-alsaconf \
+                           --enable-alsamixer \
+                           --enable-alsaconf \
                            --disable-alsaloop \
                            --enable-alsatest \
                            --disable-nls"
 
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+}
 
 post_makeinstall_target() {
   rm -rf $INSTALL/lib $INSTALL/var

@@ -40,7 +40,7 @@ PKG_CONFIGURE_OPTS_TARGET="--without-ada \
                            --without-progs \
                            --without-tests \
                            --with-curses-h \
-                           --without-shared \
+                           --with-shared \
                            --with-normal \
                            --without-debug \
                            --without-profile \
