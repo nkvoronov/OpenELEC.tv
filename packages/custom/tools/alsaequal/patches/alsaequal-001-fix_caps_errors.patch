@@ -1,0 +1,129 @@
+diff -Naur a/ctl_equal.c b/ctl_equal.c
+--- a/ctl_equal.c	2009-02-01 00:06:47.000000000 +0200
++++ b/ctl_equal.c	2015-01-04 03:22:47.272787892 +0200
+@@ -167,7 +167,7 @@
+ 	snd_ctl_equal_t *equal;
+ 	const char *controls = ".alsaequal.bin";
+ 	const char *library = "/usr/lib/ladspa/caps.so";
+-	const char *module = "Eq";
++	const char *module = "Eq10";
+ 	long channels = 2;
+ 	const char *sufix = " Playback Volume";
+ 	int err, i, index;
+@@ -263,8 +263,8 @@
+ 	for(i = 0; i < equal->num_input_controls; i++) {
+ 		if(equal->control_data->control[i].type == LADSPA_CNTRL_INPUT) {
+ 			index = equal->control_data->control[i].index;
+-			if(equal->klass->PortDescriptors[index] !=
+-					(LADSPA_PORT_INPUT | LADSPA_PORT_CONTROL)) {
++			if((equal->klass->PortDescriptors[index] &
++					(LADSPA_PORT_INPUT | LADSPA_PORT_CONTROL)) == 0) {
+ 				SNDERR("Problem with control file %s, %d.", controls, index);
+ 				return -1;
+ 			}
+diff -Naur a/Makefile~ b/Makefile~
+--- a/Makefile~	2009-08-11 02:59:27.000000000 +0300
++++ b/Makefile~	1970-01-01 03:00:00.000000000 +0300
+@@ -1,55 +0,0 @@
+-
+-# Quiet (set to @ for a quite compile)
+-Q	?= @
+-#Q	?=
+-
+-# Build Tools
+-CC 	:= gcc
+-CFLAGS := -I. -O2 -Wall -funroll-loops -ffast-math -fPIC -DPIC
+-LD := gcc
+-LDFLAGS := -O2 -Wall -shared
+-
+-SND_PCM_OBJECTS = pcm_equal.o ladspa_utils.o
+-SND_PCM_LIBS =
+-SND_PCM_BIN = libasound_module_pcm_equal.so
+-
+-SND_CTL_OBJECTS = ctl_equal.o ladspa_utils.o
+-SND_CTL_LIBS =
+-SND_CTL_BIN = libasound_module_ctl_equal.so
+-
+-.PHONY: all clean dep load_default
+-
+-all: Makefile $(SND_PCM_BIN) $(SND_CTL_BIN)
+-
+-dep:
+-	@echo DEP $@
+-	$(Q)for i in *.c; do $(CC) -MM $(CFLAGS) "$${i}" ; done > makefile.dep
+-
+--include makefile.dep
+-
+-$(SND_PCM_BIN): $(SND_PCM_OBJECTS)
+-	@echo LD $@
+-	$(Q)$(LD) $(LDFLAGS) $(SND_PCM_LIBS) $(SND_PCM_OBJECTS) -o $(SND_PCM_BIN)
+-
+-$(SND_CTL_BIN): $(SND_CTL_OBJECTS)
+-	@echo LD $@
+-	$(Q)$(LD) $(LDFLAGS) $(SND_CTL_LIBS) $(SND_CTL_OBJECTS) -o $(SND_CTL_BIN)
+-
+-%.o: %.c
+-	@echo GCC $<
+-	$(Q)$(CC) -c $(CFLAGS) $<
+-
+-clean:
+-	@echo Cleaning...
+-	$(Q)rm -vf *.o *.so
+-
+-install: all
+-	@echo Installing...
+-	$(Q)install -m 644 $(SND_PCM_BIN) ${DESTDIR}/usr/lib/alsa-lib/
+-	$(Q)install -m 644 $(SND_CTL_BIN) ${DESTDIR}/usr/lib/alsa-lib/
+-
+-uninstall:
+-	@echo Un-installing...
+-	$(Q)rm ${DESTDIR}/usr/lib/alsa-lib/$(SND_PCM_BIN)
+-	$(Q)rm ${DESTDIR}/usr/lib/alsa-lib/$(SND_CTL_BIN)
+-	
+diff -Naur a/pcm_equal.c b/pcm_equal.c
+--- a/pcm_equal.c	2010-02-02 00:55:00.000000000 +0200
++++ b/pcm_equal.c	2015-01-04 02:37:51.088849541 +0200
+@@ -151,7 +151,7 @@
+ 	snd_config_t *sconf = NULL;
+ 	const char *controls = ".alsaequal.bin";
+ 	const char *library = "/usr/lib/ladspa/caps.so";
+-	const char *module = "Eq";
++	const char *module = "Eq10";
+ 	long channels = 2;
+ 	int err;
+ 	
+diff -Naur a/README b/README
+--- a/README	2008-05-19 21:26:49.000000000 +0300
++++ b/README	2015-01-04 02:39:00.072847963 +0200
+@@ -1,11 +1,11 @@
+ Alsaequal is a real-time adjustable equalizer plugin for ALSA. It can
+ be adjusted using any ALSA compatible mixer, e.g. alsamixergui.
+ 
+-Alsaequal uses the Eq CAPS LADSPA Plugin for audio processing, actually
++Alsaequal uses the Eq10 CAPS LADSPA Plugin for audio processing, actually
+ alsaequal is a generic LADSPA plugin interface with real-time access to
+ the LADSPA controls (the LADSPA plugin included with alsa doesn't allow
+ for real-time controls) but it was developed for and only tested with
+-Eq CAPS LADSPA plugin. You are welcome to try it with other plugins, it
++Eq10 CAPS LADSPA plugin. You are welcome to try it with other plugins, it
+ may work. Let me know how it goes, you can reach me at
+ <charles@thedigitalmachine.net>.
+ 
+@@ -66,7 +66,7 @@
+ 	library -- location of the LADSPA library, the default is
+ 					"/usr/lib/ladspa/caps.so"
+ 	module -- module name within the LADSPA library, the deafault
+-					is "Eq"
++					is "Eq10"
+ 	channels -- number of channels, the default is 2
+ }
+ 
+@@ -81,7 +81,7 @@
+ 	library -- location of the LADSPA library, the default is
+ 					"/usr/lib/ladspa/caps.so"
+ 	module -- module name within the LADSPA library, the deafault
+-					is "Eq"
++					is "Eq10"
+ 	channels -- number of channels, the default is 2
+ }
+ 

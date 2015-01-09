@@ -1,0 +1,647 @@
+diff -Naur a/addon.xml b/addon.xml
+--- a/addon.xml	2014-11-12 19:57:33.000000000 +0200
++++ b/addon.xml	2015-01-07 19:51:51.212857602 +0200
+@@ -1,8 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <addon id="script.transmission"
+        name="Transmission"
+-       version="0.7.6"
+-       provider-name="Correl Roush">
++       version="0.7.61"
++       provider-name="Correl Roush, YLLOW_DRAGON">
+   <requires>
+     <import addon="xbmc.python" version="2.14.0"/>
+     <import addon="script.module.simplejson" version="3.3.0"/>
+diff -Naur a/resources/skins/Default/720p/script-Transmission-details.xml b/resources/skins/Default/720p/script-Transmission-details.xml
+--- a/resources/skins/Default/720p/script-Transmission-details.xml	2014-11-12 19:57:33.000000000 +0200
++++ b/resources/skins/Default/720p/script-Transmission-details.xml	2015-01-07 04:09:59.000000000 +0200
+@@ -2,75 +2,99 @@
+ <window>
+ 	<defaultcontrol>111</defaultcontrol>
+ 	<allowoverlay>yes</allowoverlay>
++	<animation effect="fade" time="250">WindowOpen</animation>
++	<animation effect="fade" time="250">WindowClose</animation>
+ 	<coordinates>
+ 		<system>1</system>
+-		<posx>120</posx>
+-		<posy>70</posy>
++		<left>160</left>
++		<top>45</top>
+ 	</coordinates>
+ 	<controls>
+ 		<control type="image">
+-			<posx>0</posx>
+-			<posy>0</posy>
++			<left>0</left>
++			<top>0</top>
+ 			<width>960</width>
+-			<height>540</height>
+-			<texture>transmission-dialog.png</texture>
+-            <animation effect="fade" time="200">WindowOpen</animation>
+-            <animation effect="fade" time="200">WindowClose</animation>
++			<height>610</height>
++			<texture border="40">DialogBack.png</texture>
++		</control>
++		<control type="button" id="111">
++			<description>Close Window button</description>
++			<left>860</left>
++			<top>15</top>
++			<width>64</width>
++			<height>32</height>
++                        <ondown>220</ondown>
++			<label>-</label>
++			<font>-</font>
++			<onclick>PreviousMenu</onclick>
++			<texturefocus>DialogCloseButton-focus.png</texturefocus>
++			<texturenofocus>DialogCloseButton.png</texturenofocus>
++			<visible>system.getbool(input.enablemouse)</visible>
++		</control>
++		<control type="image">
++			<description>Dialog Header image</description>
++			<left>80</left>
++			<top>15</top>
++			<width>800</width>
++			<height>50</height>
++			<texture>dialogheader.png</texture>
+ 		</control>
+ 		<control type="label">
+ 			<description>textarea</description>
+-			<posx>0</posx>
+-			<posy>0</posy>
+-			<width>960</width>
++			<left>80</left>
++			<top>22</top>
++			<width>800</width>
+ 			<height>30</height>
+ 			<visible>true</visible>
+ 			<label>$ADDON[script.transmission 32112]</label>
+-			<font>font11</font>
+-			<textcolor>white</textcolor>
++			<font>font13_title</font>
+ 			<align>center</align>
++			<aligny>center</aligny>
++			<textcolor>selected</textcolor>
++			<shadowcolor>black</shadowcolor>
+ 		</control>
+ 		<control type="group">
+-			<posx>20</posx>
+-			<posy>40</posy>
++			<left>20</left>
++			<top>70</top>
+ 			<control type="label">
+-				<posx>0</posx>
+-				<posy>0</posy>
++				<left>0</left>
++				<top>0</top>
+ 				<width>140</width>
+ 				<height>20</height>
+ 				<label>$ADDON[script.transmission 32110]:</label>
+ 			</control>
+ 			<control type="label" id="1">
+-				<posx>140</posx>
+-				<posy>0</posy>
++				<left>140</left>
++				<top>0</top>
+ 				<width>800</width>
+ 				<height>20</height>
+ 				<label></label>
+ 			</control>
+ 			<control type="label">
+-				<posx>0</posx>
+-				<posy>20</posy>
++				<left>0</left>
++				<top>20</top>
+ 				<width>140</width>
+ 				<height>30</height>
+ 				<label>$ADDON[script.transmission 32111]:</label>
+ 			</control>
+ 			<control type="label" id="2">
+-				<posx>140</posx>
+-				<posy>20</posy>
++				<left>140</left>
++				<top>20</top>
+ 				<width>800</width>
+ 				<height>30</height>
+ 				<label></label>
+ 			</control>
+ 			<control type="progress" id="219">
+ 				<description>Torrent progress</description>
+-				<posx>20</posx>
+-				<posy>70</posy>
++				<left>20</left>
++				<top>70</top>
+ 				<width>830</width>
+ 				<height>30</height>
+ 				<visible>true</visible>
+ 			</control>
+ 			<control type="label" id="11">
+-				<posx>855</posx>
+-				<posy>69</posy>
++				<left>855</left>
++				<top>69</top>
+ 				<width>70</width>
+ 				<height>30</height>
+ 				<label></label>
+@@ -78,32 +102,32 @@
+ 		</control>
+ 		<control type="list" id="220">
+ 			<description>File list</description>
+-			<posx>5</posx>
+-			<posy>185</posy>
+-			<width>950</width>
+-			<height>330</height>
++			<left>20</left>
++			<top>185</top>
++			<width>920</width>
++			<height>395</height>
+                         <onup>111</onup>
+ 			<viewtype label="File List">list</viewtype>
+ 			<orientation>vertical</orientation>
+ 			<visible>true</visible>
+ 			<itemlayout width="560" height="30">
+ 				<control type="image">
+-					<posx>0</posx>
+-					<posy>0</posy>
+-					<width>950</width>
++					<left>0</left>
++					<top>0</top>
++					<width>920</width>
+ 					<height>30</height>
+-					<texture>list-bg.png</texture>
++					<texture border="5">button-nofocus.png</texture>
+ 				</control>
+ 				<control type="label">
+-					<posx>10</posx>
+-					<posy>0</posy>
++					<left>10</left>
++					<top>0</top>
+ 					<width>800</width>
+ 					<height>30</height>
+ 					<info>ListItem.label</info>
+ 				</control>
+ 				<control type="label">
+-					<posx>830</posx>
+-					<posy>0</posy>
++					<left>830</left>
++					<top>0</top>
+ 					<width>100</width>
+ 					<height>30</height>
+ 					<info>ListItem.Property(Progress)</info>
+@@ -111,50 +135,36 @@
+ 			</itemlayout>
+ 			<focusedlayout width="560" height="30">
+ 				<control type="image">
+-					<posx>0</posx>
+-					<posy>0</posy>
+-					<width>950</width>
++					<left>0</left>
++					<top>0</top>
++					<width>920</width>
+ 					<height>30</height>
+-					<visible>Control.HasFocus(20)</visible>
+-					<texture border="5">list-bg-selected.png</texture>
++					<visible>Control.HasFocus(220)</visible>
++					<texture border="5">button-focus2.png</texture>
+ 				</control>
+ 				<control type="image">
+-					<posx>0</posx>
+-					<posy>0</posy>
+-					<width>950</width>
++					<left>0</left>
++					<top>0</top>
++					<width>920</width>
+ 					<height>30</height>
+-					<visible>!Control.HasFocus(20)</visible>
+-					<texture border="5">list-bg-selected-nofocus.png</texture>
++					<visible>!Control.HasFocus(220)</visible>
++					<texture border="5">button-nofocus.png</texture>
+ 				</control>
+ 				<control type="label">
+-					<posx>10</posx>
+-					<posy>0</posy>
++					<left>10</left>
++					<top>0</top>
+ 					<width>800</width>
+ 					<height>30</height>
+ 					<info>ListItem.label</info>
+ 				</control>
+ 				<control type="label">
+-					<posx>830</posx>
+-					<posy>0</posy>
++					<left>830</left>
++					<top>0</top>
+ 					<width>100</width>
+ 					<height>30</height>
+ 					<info>ListItem.Property(Progress)</info>
+ 				</control>
+ 			</focusedlayout>
+ 		</control>
+-		<control type="button" id="111">
+-			<description>Close Window button</description>
+-			<posx>850</posx>
+-			<posy>0</posy>
+-			<width>64</width>
+-			<height>32</height>
+-                        <ondown>220</ondown>
+-			<label>-</label>
+-			<font>-</font>
+-			<onclick>PreviousMenu</onclick>
+-			<texturefocus>DialogCloseButton-focus.png</texturefocus>
+-			<texturenofocus>DialogCloseButton.png</texturenofocus>
+-			<visible>system.getbool(input.enablemouse)</visible>
+-		</control>
+ 	</controls>
+ </window>
+diff -Naur a/resources/skins/Default/720p/script-Transmission-main.xml b/resources/skins/Default/720p/script-Transmission-main.xml
+--- a/resources/skins/Default/720p/script-Transmission-main.xml	2014-11-12 19:57:33.000000000 +0200
++++ b/resources/skins/Default/720p/script-Transmission-main.xml	2015-01-07 03:56:54.000000000 +0200
+@@ -2,173 +2,174 @@
+ <window>
+ 	<defaultcontrol always="true">111</defaultcontrol>
+ 	<allowoverlays>false</allowoverlays>
++	<animation effect="fade" time="250">WindowOpen</animation>
++	<animation effect="fade" time="250">WindowClose</animation>	
+ 	<coordinates>
+ 		<system>1</system>
+-		<posx>120</posx>
+-		<posy>70</posy>
++		<left>160</left>
++		<top>45</top>
+ 	</coordinates>
+ 	<controls>
+-
+ 		<control type="image">
+-			<posx>-10</posx>
+-			<posy>-8</posy>
+-			<width>980</width>
+-			<height>560</height>
+-			<texture>transmission-main.png</texture>
+-			<animation effect="fade" time="200">WindowOpen</animation>
+-			<animation effect="fade" time="200">WindowClose</animation>
++			<left>0</left>
++			<top>0</top>
++			<width>960</width>
++			<height>610</height>
++			<texture border="40">DialogBack.png</texture>
++		</control>
++		<control type="button" id="117">
++			<description>Exit</description>
++			<left>860</left>
++			<top>15</top>
++			<height>32</height>
++			<width>64</width>
++			<textoffsety>45</textoffsety>
++			<label>-</label>
++			<font>-</font>
++			<texturefocus>DialogCloseButton-focus.png</texturefocus>
++			<texturenofocus>DialogCloseButton.png</texturenofocus>
++			<visible>system.getbool(input.enablemouse)</visible>
++                        <onleft>111</onleft>
++                        <ondown>120</ondown>
++		</control>
++		<control type="image">
++			<description>Dialog Header image</description>
++			<left>80</left>
++			<top>15</top>
++			<width>800</width>
++			<height>50</height>
++			<texture>dialogheader.png</texture>
+ 		</control>
+-
+ 		<control type="label">
+ 			<description>textarea</description>
+-			<posx>0</posx>
+-			<posy>0</posy>
+-			<width>980</width>
++			<left>80</left>
++			<top>22</top>
++			<width>800</width>
++			<height>30</height>
+ 			<visible>true</visible>
+ 			<label>Transmission</label>
+-			<font>font11</font>
+-			<textcolor>white</textcolor>
++			<font>font13_title</font>
+ 			<align>center</align>
++			<aligny>center</aligny>
++			<textcolor>selected</textcolor>
++			<shadowcolor>black</shadowcolor>
+ 		</control>
+ 		<control type="group">
+-			<posx>0</posx>
+-			<posy>10</posy>
++			<left>20</left>
++			<top>70</top>
+ 			<!-- Button Group -->
+ 			<control type="button" id="111">
+ 				<description>Add torrent</description>
+-				<posx>0</posx>
+-				<posy>0</posy>
++				<left>0</left>
++				<top>0</top>
+ 				<height>70</height>
+ 				<width>120</width>
+ 				<align>center</align>
+-				<aligny>top</aligny>
++				<aligny>center</aligny>
+ 				<textoffsety>45</textoffsety>
+ 				<label>$ADDON[script.transmission 32101]</label>
+ 				<font>font12_title</font>
+ 				<onright>120</onright>
+ 				<ondown>112</ondown>
+ 				<onup>117</onup>
+-				<texturefocus>add-focus.png</texturefocus>
+-				<texturenofocus>add-nofocus.png</texturenofocus>
+ 			</control>
+ 			<control type="button" id="112">
+ 				<description>Remove torrent</description>
+-				<posx>0</posx>
+-				<posy>75</posy>
++				<left>0</left>
++				<top>75</top>
+ 				<height>70</height>
+ 				<width>120</width>
+ 				<align>center</align>
+-				<aligny>top</aligny>
++				<aligny>center</aligny>
+ 				<textoffsety>45</textoffsety>
+ 				<label>$ADDON[script.transmission 32102]</label>
+ 				<font>font12_title</font>
+ 				<onright>120</onright>
+ 				<onup>111</onup>
+ 				<ondown>113</ondown>
+-				<texturefocus>remove-focus.png</texturefocus>
+-				<texturenofocus>remove-nofocus.png</texturenofocus>
+ 			</control>
+ 			<control type="button" id="113">
+ 				<description>Stop torrent</description>
+-				<posx>0</posx>
+-				<posy>150</posy>
++				<left>0</left>
++				<top>150</top>
+ 				<height>70</height>
+-				<width>122</width>
++				<width>120</width>
+ 				<align>center</align>
+-				<aligny>top</aligny>
++				<aligny>center</aligny>
+ 				<textoffsety>45</textoffsety>
+ 				<label>$ADDON[script.transmission 32103]</label>
+ 				<font>font12_title</font>
+ 				<onright>120</onright>
+ 				<onup>112</onup>
+ 				<ondown>114</ondown>
+-				<texturefocus>stop-focus.png</texturefocus>
+-				<texturenofocus>stop-nofocus.png</texturenofocus>
+ 			</control>
+ 			<control type="button" id="114">
+ 				<description>Start torrent</description>
+-				<posx>0</posx>
+-				<posy>225</posy>
++				<left>0</left>
++				<top>225</top>
+ 				<height>70</height>
+ 				<width>120</width>
+ 				<align>center</align>
+-				<aligny>top</aligny>
++				<aligny>center</aligny>
+ 				<textoffsety>45</textoffsety>
+ 				<label>$ADDON[script.transmission 32104]</label>
+ 				<font>font12_title</font>
+ 				<onright>120</onright>
+ 				<onup>113</onup>
+ 				<ondown>115</ondown>
+-				<texturefocus>start-focus.png</texturefocus>
+-				<texturenofocus>start-nofocus.png</texturenofocus>
+ 			</control>
+ 			<control type="button" id="115">
+ 				<description>Stop all torrents</description>
+-				<posx>0</posx>
+-				<posy>300</posy>
++				<left>0</left>
++				<top>300</top>
+ 				<height>70</height>
+ 				<width>120</width>
+ 				<align>center</align>
+-				<aligny>top</aligny>
++				<aligny>center</aligny>
+ 				<textoffsety>45</textoffsety>
+ 				<label>$ADDON[script.transmission 32105]</label>
+ 				<font>font12_title</font>
+ 				<onright>120</onright>
+ 				<onup>114</onup>
+ 				<ondown>116</ondown>
+-				<texturefocus>stopall-focus.png</texturefocus>
+-				<texturenofocus>stopall-nofocus.png</texturenofocus>
+ 			</control>
+ 			<control type="button" id="116">
+ 				<description>Start all torrents</description>
+-				<posx>0</posx>
+-				<posy>375 </posy>
++				<left>0</left>
++				<top>375 </top>
+ 				<height>70</height>
+ 				<width>120</width>
+ 				<align>center</align>
+-				<aligny>top</aligny>
++				<aligny>center</aligny>
+ 				<textoffsety>45</textoffsety>
+ 				<label>$ADDON[script.transmission 32106]</label>
+ 				<font>font12_title</font>
+ 				<onright>120</onright>
+ 				<onup>115</onup>
+ 				<ondown>118</ondown>
+-				<texturefocus>startall-focus.png</texturefocus>
+-				<texturenofocus>startall-nofocus.png</texturenofocus>
+ 			</control>
+ 			<control type="button" id="118">
+ 				<description>Settings</description>
+-				<posx>0</posx>
+-				<posy>450</posy>
++				<left>0</left>
++				<top>450</top>
+ 				<height>70</height>
+ 				<width>120</width>
+ 				<align>center</align>
+-				<aligny>top</aligny>
++				<aligny>center</aligny>
+ 				<textoffsety>45</textoffsety>
+ 				<label>$ADDON[script.transmission 32108]</label>
+ 				<font>font12_title</font>
+ 				<onright>120</onright>
+ 				<onup>116</onup>
+-				<texturefocus>settings-focus.png</texturefocus>
+-				<texturenofocus>settings-nofocus.png</texturenofocus>
+ 				<ondown>111</ondown>
+ 			</control>
+ 		</control>
+-		<!--
+-		<control type="image">
+-			<posx>90</posx>
+-			<posy>35</posy>
+-			<width>560</width>
+-			<height>500</height>
+-			<texture>blue.png</texture>
+-		</control>
+-		-->
+ 		<control type="scrollbar" id="121">
+ 			<description>Scroll bar for the torrent list</description>
+-			<posx>935</posx>
+-			<posy>35</posy>
++			<left>915</left>
++			<top>70</top>
+ 			<width>30</width>
+-			<height>500</height>
++			<height>520</height>
+ 			<visible>true</visible>
+ 			<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
+ 			<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
+@@ -181,10 +182,10 @@
+ 		</control>
+ 		<control type="list" id="120">
+ 			<description>Torrent list</description>
+-			<posx>135</posx>
+-			<posy>35</posy>
+-			<width>800</width>
+-			<height>500</height>
++			<left>145</left>
++			<top>70</top>
++			<width>795</width>
++			<height>520</height>
+ 			<viewtype label="Torrent List">list</viewtype>
+ 			<orientation>vertical</orientation>
+ 			<visible>true</visible>
+@@ -194,36 +195,36 @@
+ 			<pagecontrol>121</pagecontrol>
+ 			<itemlayout width="560" height="70">
+ 				<control type="image">
+-					<posx>0</posx>
+-					<posy>0</posy>
+-					<width>800</width>
++					<left>0</left>
++					<top>0</top>
++					<width>775</width>
+ 					<height>70</height>
+-					<texture>list-bg.png</texture>
++					<texture>button-nofocus.png</texture>
+ 				</control>
+ 				<control type="image">
+-					<posx>10</posx>
+-					<posy>0</posy>
++					<left>5</left>
++					<top>0</top>
+ 					<width>64</width>
+ 					<height>64</height>
+ 					<texture>icons/$INFO[ListItem.Property(TorrentStatusIcon)]</texture>
+ 				</control>
+ 				<control type="label">
+-					<posx>90</posx>
+-					<posy>0</posy>
++					<left>75</left>
++					<top>0</top>
+ 					<width>700</width>
+ 					<height>20</height>
+ 					<label>$INFO[ListItem.label]</label>
+ 				</control>
+ 				<control type="progress">
+-					<posx>90</posx>
+-					<posy>40</posy>
+-					<width>640</width>
++					<left>75</left>
++					<top>40</top>
++					<width>635</width>
+ 					<height>20</height>
+ 					<info>ListItem.Property(TorrentProgress)</info>
+ 				</control>
+ 				<control type="label">
+-					<posx>735</posx>
+-					<posy>33</posy>
++					<left>720</left>
++					<top>33</top>
+ 					<width>60</width>
+ 					<height>20</height>
+ 					<label>$INFO[ListItem.Property(TorrentProgress)]</label>
+@@ -231,66 +232,51 @@
+ 			</itemlayout>
+ 			<focusedlayout width="560" height="70">
+ 				<control type="image">
+-					<posx>0</posx>
+-					<posy>0</posy>
+-					<width>800</width>
++					<left>0</left>
++					<top>0</top>
++					<width>775</width>
+ 					<height>70</height>
+ 					<visible>Control.HasFocus(120)</visible>
+-					<texture border="5">list-bg-selected.png</texture>
++					<texture border="5">button-focus2.png</texture>
+ 				</control>
+ 				<control type="image">
+-					<posx>0</posx>
+-					<posy>0</posy>
+-					<width>800</width>
++					<left>0</left>
++					<top>0</top>
++					<width>775</width>
+ 					<height>70</height>
+ 					<visible>!Control.HasFocus(120)</visible>
+-					<texture border="5">list-bg-selected-nofocus.png</texture>
++					<texture border="5">button-nofocus.png</texture>
+ 				</control>
+ 				<control type="image">
+-					<posx>10</posx>
+-					<posy>0</posy>
++					<left>5</left>
++					<top>0</top>
+ 					<width>64</width>
+ 					<height>64</height>
+ 					<texture>icons/$INFO[ListItem.Property(TorrentStatusIcon)]</texture>
+ 				</control>
+ 				<control type="label">
+-					<posx>90</posx>
+-					<posy>0</posy>
++					<left>75</left>
++					<top>0</top>
+ 					<width>700</width>
+ 					<height>20</height>
+ 					<label>$INFO[ListItem.label]</label>
+ 					<scroll>true</scroll>
+ 				</control>
+ 				<control type="progress">
+-					<posx>90</posx>
+-					<posy>40</posy>
+-					<width>640</width>
++					<left>75</left>
++					<top>40</top>
++					<width>635</width>
+ 					<height>20</height>
+ 					<info>ListItem.Property(TorrentProgress)</info>
+ 				</control>
+ 				<control type="label">
+-					<posx>735</posx>
+-					<posy>33</posy>
++					<left>720</left>
++					<top>33</top>
+ 					<width>60</width>
+ 					<height>20</height>
+ 					<label>$INFO[ListItem.Property(TorrentProgress)]</label>
+ 				</control>
+ 			</focusedlayout>
+ 		</control>
+-		<control type="button" id="117">
+-			<description>Exit</description>
+-			<posx>850</posx>
+-			<posy>-5</posy>
+-			<height>32</height>
+-			<width>64</width>
+-			<textoffsety>45</textoffsety>
+-			<label>-</label>
+-			<font>-</font>
+-			<texturefocus>DialogCloseButton-focus.png</texturefocus>
+-			<texturenofocus>DialogCloseButton.png</texturenofocus>
+-			<visible>system.getbool(input.enablemouse)</visible>
+-                        <onleft>111</onleft>
+-                        <ondown>120</ondown>
+-		</control>
+ 	</controls>
+ </window>
