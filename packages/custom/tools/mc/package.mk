@@ -28,6 +28,7 @@ PKG_PRIORITY="optional"
 PKG_SECTION="shell/filemanager"
 PKG_SHORTDESC="mc: free cross-platform filemanager #fu_cv_sys_stat_statfs2_bsize=yes"
 PKG_LONGDESC="Midnight Commander - free cross-platform filemanager and clone of Norton Commander"
+
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
@@ -36,28 +37,29 @@ pre_build_target() {
   cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
 }
 
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/slang"
+  export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
+}
+
 configure_target() {
-export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/slang"
-export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
-
-./configure --host=$TARGET_NAME \
- --build=$HOST_NAME \
- --prefix=/usr \
- --exec-prefix=/usr \
- --without-gpm-mouse \
- --disable-vfs-cpio \
- --disable-vfs-fish \
- --disable-vfs-sfs \
- --enable-vfs-extfs \
- --without-mmap \
- --with-subshell \
- --with-internal-edit \
- --without-x \
- --enable-charset \
- --enable-background \
- --with-screen=slang \
- fu_cv_sys_stat_statfs2_bsize=yes
-
+  ./configure --host=$TARGET_NAME \
+  --build=$HOST_NAME \
+  --prefix=/usr \
+  --exec-prefix=/usr \
+  --without-gpm-mouse \
+  --disable-vfs-cpio \
+  --disable-vfs-fish \
+  --disable-vfs-sfs \
+  --enable-vfs-extfs \
+  --without-mmap \
+  --with-subshell \
+  --with-internal-edit \
+  --without-x \
+  --enable-charset \
+  --enable-background \
+  --with-screen=slang \
+  fu_cv_sys_stat_statfs2_bsize=yes
 }
 
 post_install() {

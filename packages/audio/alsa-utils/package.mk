@@ -33,16 +33,38 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
 # package specific configure options
-PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
+case "$TARGET_ARCH" in
+i?86)
+  PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
+                           --disable-xmlto \
+                           --disable-alsamixer \
+                           --disable-alsaconf \
+                           --disable-alsaloop \
+                           --enable-alsatest \
+                           --disable-nls"
+;;
+x86_64)
+  PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
                            --disable-xmlto \
                            --enable-alsamixer \
                            --enable-alsaconf \
                            --disable-alsaloop \
                            --enable-alsatest \
                            --disable-nls"
+;;
+esac  
 
-pre_configure_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+pre_configure_target() { 
+  case "$TARGET_ARCH" in
+  i?86) 
+    #export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+    #export CPPFLAGS="$CPPFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+  ;;
+  x86_64)
+    export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+    export CPPFLAGS="$CPPFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+  ;;
+  esac
 }
 
 post_makeinstall_target() {

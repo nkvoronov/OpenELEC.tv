@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
 PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain mc kbd unrar scan-s2 szap-s2 kodi-addon-lcd kodi-addon-vdrfront kodi-addon-transmission kodi-theme-Confluence-plood htop transmission evtest grab tvheadend tvvdr ccid oscam p7zip hddtemp lm_sensors php alsaequal"
+PKG_DEPENDS_TARGET="toolchain mc kbd unrar scan-s2 szap-s2 kodi-addon-lcd kodi-addon-vdrfront kodi-addon-audio-mixer kodi-addon-transmission kodi-theme-Confluence-plood htop transmission evtest grab tvheadend tvvdr ccid oscam p7zip hddtemp lm_sensors php"
 PKG_PRIORITY="optional"
 PKG_SECTION="virtual"
 PKG_SHORTDESC="custom: Metapackage for installing custom package"
@@ -35,6 +35,7 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PERL="yes"
+ALSAEQUAL="yes"
 OTHER="no"
 
 if [ "$PERL" = "yes" ]; then
@@ -44,6 +45,17 @@ if [ "$PERL" = "yes" ]; then
     ;;
     x86_64)
       PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET perl Date-Manip"
+    ;;
+    esac  
+fi
+
+if [ "$ALSAEQUAL" = "yes" ]; then
+    case "$TARGET_ARCH" in
+    i?86)
+      #PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET alsaequal"
+    ;;
+    x86_64)
+      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET alsaequal"
     ;;
     esac  
 fi
