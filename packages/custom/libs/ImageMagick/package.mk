@@ -19,19 +19,18 @@
 ################################################################################
 
 PKG_NAME="ImageMagick"
-#PKG_VERSION="6.7.7-10"
 PKG_VERSION="6.9.0-0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.imagemagick.org"
-#PKG_URL="http://www.imagemagick.org/download/legacy/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_URL="http://www.imagemagick.org/download/releases/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
 PKG_SHORTDESC="ImageMagick is a graphics library."
 PKG_LONGDESC="ImageMagick is a graphics library for file loading, saving, rendering, manipulation."
+
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 

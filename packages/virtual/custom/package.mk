@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
 PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain mc kbd unrar scan-s2 szap-s2 kodi-addon-lcd kodi-addon-vdrfront kodi-addon-audio-mixer kodi-addon-transmission kodi-theme-Confluence-plood htop transmission evtest grab tvheadend tvvdr ccid oscam p7zip hddtemp lm_sensors php"
+PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="virtual"
 PKG_SHORTDESC="custom: Metapackage for installing custom package"
@@ -34,32 +34,74 @@ PKG_LONGDESC="custom is a Metapackage for installing custom package"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PERL="yes"
-ALSAEQUAL="yes"
-OTHER="no"
-
-if [ "$PERL" = "yes" ]; then
-    case "$TARGET_ARCH" in
-    i?86)
-      #PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET perl Date-Manip"
-    ;;
-    x86_64)
-      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET perl Date-Manip"
-    ;;
-    esac  
+if [ "$KODI_ADDON_LCD" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-lcd"  
 fi
 
-if [ "$ALSAEQUAL" = "yes" ]; then
-    case "$TARGET_ARCH" in
-    i?86)
-      #PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET alsaequal"
-    ;;
-    x86_64)
-      PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET alsaequal"
-    ;;
-    esac  
+if [ "$KODI_ADDON_TRANSMISSION" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-transmission"  
 fi
 
-if [ "$OTHER" = "yes" ]; then
+if [ "$KODI_ADDON_AUDIO_MIXER" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-audio-mixer"  
+fi
+
+if [ "$KODI_ADDON_VDRFRONT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-vdrfront"  
+fi
+
+if [ "$KODI_SKIN_CONFLUENCE_PLOOD" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-skin-Confluence-plood"  
+fi
+
+if [ "$LOCALES_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kbd"  
+fi
+
+if [ "$TRANSMISSION_SERVICE" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET transmission"  
+fi
+
+if [ "$OSCAM_SERVICE" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET ccid oscam"  
+fi
+
+if [ "$TVHEADEND_SERVICE" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET tvheadend"  
+fi
+
+if [ "$VDR_SERVICE" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET tvvdr"  
+fi
+
+if [ "$ADD_ARCHIVERS_ENABLED" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET unrar p7zip"
+fi
+
+if [ "$DEV_TOOLS_ENABLED" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mc htop evtest hddtemp lm_sensors"
+fi
+
+if [ "$DVB_TOOLS_ENABLED" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET scan-s2 szap-s2"
+fi
+
+if [ "$PYTHON_ADD_LIB_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET grab"
+fi
+
+if [ "$PHP_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET php"
+fi
+
+if [ "$PERL_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET perl Date-Manip"
+fi
+
+if [ "$ALSAEQUAL_ENABLED" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET alsaequal"
+fi
+
+if [ "$GAME_EMULATOR" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mupen64plus"
 fi

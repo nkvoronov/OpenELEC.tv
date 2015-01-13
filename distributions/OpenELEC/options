@@ -237,3 +237,46 @@
 # set the addon dirs
   ADDON_PATH="$ADDON_VERSION/$PROJECT/$TARGET_ARCH"
   ADDON_URL="$ADDON_SERVER_URL/$ADDON_PATH"
+
+### CUSTOM OPTIONS ###
+
+# Alsa mixer enabled
+  if [ "$TARGET_ARCH" = "i386" ]; then
+    ALSAMIXER_ENABLED="no"
+  elif [ "$TARGET_ARCH" = "x86_64" ]; then
+    ALSAMIXER_ENABLED="yes"
+  fi
+
+# Locales
+  LOCALES_SUPPORT="yes"
+
+# Libxcb extention
+  LIBXCB_EXT="yes"
+
+# KODI addons
+  KODI_ADDON_LCD="yes"
+  KODI_ADDON_TRANSMISSION="yes"
+  KODI_ADDON_AUDIO_MIXER="yes"
+  KODI_ADDON_VDRFRONT="yes"
+  KODI_THEME_CONFLUENCE_PLOOD="yes"
+
+# Services
+  TRANSMISSION_SERVICE="yes"
+  OSCAM_SERVICE="yes"
+  TVHEADEND_SERVICE="yes"
+  VDR_SERVICE="yes"
+
+# Tools
+  ADD_ARCHIVERS_ENABLED="yes"
+  DEV_TOOLS_ENABLED="yes"
+  DVB_TOOLS_ENABLED="yes"
+  PYTHON_ADD_LIB_SUPPORT="yes"
+  PHP_SUPPORT="yes"
+  if [ "$TARGET_ARCH" = "i386" ]; then
+    ALSAEQUAL_ENABLED="no"
+    PERL_SUPPORT="no"
+  elif [ "$TARGET_ARCH" = "x86_64" ]; then
+    ALSAEQUAL_ENABLED="yes"
+    PERL_SUPPORT="yes"
+  fi
+  GAME_EMULATOR="no"

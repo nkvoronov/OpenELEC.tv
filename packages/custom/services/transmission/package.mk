@@ -34,32 +34,16 @@ PKG_LONGDESC="transmission is a fast, easy and free BitTorrent client"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-pre_build_target() {
-  mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
-}
-
-configure_target() {
-  ./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --sysconfdir=/etc \
-            --localstatedir=/var \
+PKG_CONFIGURE_OPTS_TARGET="--enable-utp \
             --disable-static \
             --enable-shared \
-            --enable-utp \
             --enable-largefile \
             --disable-nls \
             --disable-cli \
             --disable-mac \
             --enable-lightweight \
             --enable-daemon \
-            --with-gnu-ld
-}
-
-make_target() {
-  make V=1
-}
+            --with-gnu-ld"
 
 makeinstall_target() {
   : # nothing

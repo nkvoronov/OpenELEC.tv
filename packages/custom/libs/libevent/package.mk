@@ -34,22 +34,7 @@ PKG_LONGDESC="The libevent API provides a mechanism to execute a callback functi
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-pre_build_target() {
-  mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
-}
-
-configure_target() {
-  ./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --exec-prefix=/usr \
-            --sysconfdir=/etc \
-            --datadir=/usr/share \
-            --enable-shared \
-            --disable-static \
-            --enable-openssl
-}
+PKG_CONFIGURE_OPTS_TARGET="--enable-shared --disable-static --enable-openssl"
 
 makeinstall_target() {
   $MAKEINSTALL

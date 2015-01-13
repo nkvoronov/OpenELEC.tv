@@ -133,27 +133,29 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/lib/*.map
   rm -rf $INSTALL/var
 
+# create locale
+  if [ "$LOCALES_SUPPORT" = yes ]; then
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/locale/localedef $INSTALL/usr/bin
+    mkdir -p $INSTALL/usr/share/i18n/locales/
+      cp $ROOT/$PKG_BUILD/localedata/locales/* $INSTALL/usr/share/i18n/locales/
+    mkdir -p $INSTALL/usr/share/i18n/charmaps
+      cp $ROOT/$PKG_BUILD/localedata/charmaps/* $INSTALL/usr/share/i18n/charmaps/
+      cp $ROOT/$PKG_BUILD/localedata/SUPPORTED $INSTALL/usr/share/i18n/
+    ln -s /storage/locale $INSTALL/usr/lib/locale
+  else
 # remove locales and charmaps
-  rm -rf $INSTALL/usr/share/i18n/charmaps
-  rm -rf $INSTALL/usr/share/i18n/locales
+    rm -rf $INSTALL/usr/share/i18n/charmaps
+    rm -rf $INSTALL/usr/share/i18n/locales
 
-  mkdir -p $INSTALL/usr/share/i18n/locales
-    cp -PR $ROOT/$PKG_BUILD/localedata/locales/POSIX $INSTALL/usr/share/i18n/locales
+    mkdir -p $INSTALL/usr/share/i18n/locales
+      cp -PR $ROOT/$PKG_BUILD/localedata/locales/POSIX $INSTALL/usr/share/i18n/locales
+  fi
 
 # create default configs
   mkdir -p $INSTALL/etc
     cp $PKG_DIR/config/nsswitch.conf $INSTALL/etc
     cp $PKG_DIR/config/host.conf $INSTALL/etc
     cp $PKG_DIR/config/gai.conf $INSTALL/etc
-
-# create locale
-  cp $ROOT/$PKG_BUILD/.$TARGET_NAME/locale/localedef $INSTALL/usr/bin
-  mkdir -p $INSTALL/usr/share/i18n/locales/
-     cp $ROOT/$PKG_BUILD/localedata/locales/* $INSTALL/usr/share/i18n/locales/
-  mkdir -p $INSTALL/usr/share/i18n/charmaps
-     cp $ROOT/$PKG_BUILD/localedata/charmaps/* $INSTALL/usr/share/i18n/charmaps/
-     cp $ROOT/$PKG_BUILD/localedata/SUPPORTED $INSTALL/usr/share/i18n/
-  ln -s /storage/locale $INSTALL/usr/lib/locale
 
   if [ "$TARGET_ARCH" = "arm" -a "$TARGET_FLOAT" = "hard" ]; then
     ln -sf ld.so $INSTALL/lib/ld-linux.so.3

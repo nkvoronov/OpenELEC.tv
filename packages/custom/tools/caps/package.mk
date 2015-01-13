@@ -17,13 +17,11 @@
 ################################################################################
 
 PKG_NAME="caps"
-#PKG_VERSION="0.9.18"
 PKG_VERSION="0.9.24"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://quitte.de/dsp/caps.html"
-#PKG_URL="https://dl.dropboxusercontent.com/u/6711518/source/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_URL="http://quitte.de/dsp/caps_$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain alsa-lib alsa-utils"
 PKG_PRIORITY="optional"

@@ -17,13 +17,11 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-Confluence"
-#PKG_VERSION="14-8fb5660"
-PKG_VERSION="14-7422b18"
+PKG_VERSION="14-90a75f0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-#PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_URL="https://dl.dropboxusercontent.com/u/6711518/source/kodi/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain kodi"
 PKG_PRIORITY="optional"

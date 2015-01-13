@@ -36,8 +36,6 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
-
 make_target() {
   make TARGET_CXX=$TARGET_CXX TARGET_CC=$TARGET_CC 7z 7za
 }

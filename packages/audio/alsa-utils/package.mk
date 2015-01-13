@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.alsa-project.org/"
 PKG_URL="ftp://ftp.alsa-project.org/pub/utils/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain alsa-lib ncurses"
+PKG_DEPENDS_TARGET="toolchain alsa-lib"
 PKG_PRIORITY="optional"
 PKG_SECTION="audio"
 PKG_SHORTDESC="alsa-utils: Advanced Linux Sound Architecture utilities"
@@ -32,39 +32,28 @@ PKG_LONGDESC="This package includes the utilities for ALSA, like alsamixer, apla
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-# package specific configure options
-case "$TARGET_ARCH" in
-i?86)
-  PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
-                           --disable-xmlto \
-                           --disable-alsamixer \
-                           --disable-alsaconf \
-                           --disable-alsaloop \
-                           --enable-alsatest \
-                           --disable-nls"
-;;
-x86_64)
-  PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
-                           --disable-xmlto \
-                           --enable-alsamixer \
-                           --enable-alsaconf \
-                           --disable-alsaloop \
-                           --enable-alsatest \
-                           --disable-nls"
-;;
-esac  
+if [ "$ALSAMIXER_ENABLED" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET ncurses"
+  ALSAMIXER="--enable-alsamixer"
+  ALSACONF="--enable-alsaconf"
+else
+  ALSAMIXER="--disable-alsamixer"
+  ALSACONF="--disable-alsaconf"
+fi
 
-pre_configure_target() { 
-  case "$TARGET_ARCH" in
-  i?86) 
-    #export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-    #export CPPFLAGS="$CPPFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-  ;;
-  x86_64)
+PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
+                           --disable-xmlto \
+                           $ALSAMIXER \
+                           $ALSACONF \
+                           --disable-alsaloop \
+                           --enable-alsatest \
+                           --disable-nls"
+
+pre_configure_target() {
+  if [ "$ALSAMIXER_ENABLED" = yes ]; then
     export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
     export CPPFLAGS="$CPPFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-  ;;
-  esac
+  fi
 }
 
 post_makeinstall_target() {

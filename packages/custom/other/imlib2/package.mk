@@ -30,10 +30,9 @@ PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
 PKG_SHORTDESC="Imlib2 is a graphics library."
 PKG_LONGDESC="Imlib2 is a graphics library for file loading, saving, rendering, manipulation."
+
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 
 case "$TARGET_ARCH" in
   i386)

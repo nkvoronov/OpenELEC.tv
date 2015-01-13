@@ -31,6 +31,7 @@ PKG_PRIORITY="optional"
 PKG_SECTION="custom"
 PKG_SHORTDESC="libiconv: Library converting between character encodings"
 PKG_LONGDESC="This library provides an iconv() implementation, for use on systems which don't have one, or whose implementation cannot convert from/to Unicode. This library is a drop-in soution for systems lacking a iconv() implementation in the C library."
+
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 

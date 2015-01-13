@@ -34,9 +34,7 @@ PKG_LONGDESC="CCID free software driver"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
-
-PKG_CONFIGURE_OPTS_TARGET=" --enable-twinserial"
+PKG_CONFIGURE_OPTS_TARGET="--enable-static --enable-twinserial"
 
 make_target() {
   make
