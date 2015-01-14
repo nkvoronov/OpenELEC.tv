@@ -36,6 +36,12 @@ post_unpack() {
     mv $BUILD/alsaequal $BUILD/$PKG_NAME-$PKG_VERSION
 }
 
+make_target() {
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include"
+  export LDFLAGS="-O2 -shared -lasound -L$SYSROOT_PREFIX/usr/lib"
+  make
+}
+
 makeinstall_target() {
   : # nop
 }

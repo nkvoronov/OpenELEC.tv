@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="Date-Manip"
-PKG_VERSION="6.47"
+PKG_VERSION="6.48"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -32,16 +32,17 @@ PKG_LONGDESC="Perl Date manipulation routines"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PERL_VERSION="5.18.2"
-
 make_target() {
-    perl Makefile.PL PREFIX=/usr \
+  #USRPERLDIR="$SYSROOT_PREFIX/usr/lib/perl5/$PERL_VERSION:$SYSROOT_PREFIX/usr/lib/perl5/$PERL_VERSION/$TARGET_ARCH-linux:$SYSROOT_PREFIX/usr/lib/perl5/site_perl/$PERL_VERSION:$SYSROOT_PREFIX/usr/lib/perl5/site_perl/$PERL_VERSION/$TARGET_ARCH-linux"
+  #export PERL5LIB=$USRPERLDIR
+
+  perl Makefile.PL PREFIX=/usr \
     INSTALLPRIVLIB=/usr/lib/perl5 \
     INSTALLSCRIPT=/usr/bin \
     INSTALLSITELIB=/usr/lib/perl5/site_perl/$PERL_VERSION \
     INSTALLBIN=/usr/bin
-    make
-    make test
+  make
+  make test
 }
 
 post_makeinstall_target() {

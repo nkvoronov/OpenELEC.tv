@@ -32,10 +32,6 @@ PKG_LONGDESC="Perl is a high-level programming language"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PERL_VERSION=$PKG_VERSION
-USRPERLDIR="$SYSROOT_PREFIX/usr/lib/perl5/$PERL_VERSION:$SYSROOT_PREFIX/usr/lib/perl5/$PERL_VERSION/$TARGET_ARCH-linux:$SYSROOT_PREFIX/usr/lib/perl5/site_perl/$PERL_VERSION:$SYSROOT_PREFIX/usr/lib/perl5/site_perl/$PERL_VERSION/$TARGET_ARCH-linux"
-export PERL5LIB=$USRPERLDIR
-
 pre_build_target() {
   rm -rf $PKG_BUILD/.$TARGET_NAME
   mkdir -p $PKG_BUILD/.$TARGET_NAME

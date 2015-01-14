@@ -242,9 +242,11 @@
 
 # Alsa mixer enabled
   if [ "$TARGET_ARCH" = "i386" ]; then
-    ALSAMIXER_ENABLED="no"
+    ALSAMIXER_ENABLED="yes"
+    ALSAEQUAL_ENABLED="yes"
   elif [ "$TARGET_ARCH" = "x86_64" ]; then
     ALSAMIXER_ENABLED="yes"
+    ALSAEQUAL_ENABLED="yes"
   fi
 
 # Locales
@@ -272,11 +274,10 @@
   DVB_TOOLS_ENABLED="yes"
   PYTHON_ADD_LIB_SUPPORT="yes"
   PHP_SUPPORT="yes"
+  PERL_VERSION="5.18.2"
   if [ "$TARGET_ARCH" = "i386" ]; then
-    ALSAEQUAL_ENABLED="no"
-    PERL_SUPPORT="no"
+    PERL_SUPPORT="yes"
   elif [ "$TARGET_ARCH" = "x86_64" ]; then
-    ALSAEQUAL_ENABLED="yes"
     PERL_SUPPORT="yes"
   fi
   GAME_EMULATOR="no"
