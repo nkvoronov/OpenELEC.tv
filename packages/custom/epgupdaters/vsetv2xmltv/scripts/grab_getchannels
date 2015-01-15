@@ -1,0 +1,9 @@
+#!/bin/sh
+
+getchannels=/var/lib/epgsources/vsetv/getchannels.py
+
+rm -rf /tmp/vsetv
+mkdir -p /tmp/vsetv
+echo "Running"
+python $getchannels
+

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/storage/epgsources/xmltv2vdr.pl -l 0 -x /storage/epgsources/vsetv/xmltv.xml -c /storage/epgsources/channels.conf.epg

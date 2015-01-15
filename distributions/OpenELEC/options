@@ -239,6 +239,7 @@
   ADDON_URL="$ADDON_SERVER_URL/$ADDON_PATH"
 
 ### CUSTOM OPTIONS ###
+  DISTRO_CUSTOM_SRC="https://dl.dropboxusercontent.com/u/6711518/packages"
 
 # Alsa mixer enabled
   if [ "$TARGET_ARCH" = "i386" ]; then
@@ -274,10 +275,14 @@
   DVB_TOOLS_ENABLED="yes"
   PYTHON_ADD_LIB_SUPPORT="yes"
   PHP_SUPPORT="yes"
+
+# Perl
   PERL_VERSION="5.18.2"
   if [ "$TARGET_ARCH" = "i386" ]; then
     PERL_SUPPORT="yes"
   elif [ "$TARGET_ARCH" = "x86_64" ]; then
     PERL_SUPPORT="yes"
   fi
+
+# Other
   GAME_EMULATOR="no"

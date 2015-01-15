@@ -96,7 +96,6 @@ fi
 
 if [ "$PERL_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET perl Date-Manip"
-  #PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET perl"
 fi
 
 if [ "$ALSAEQUAL_ENABLED" = yes ]; then
