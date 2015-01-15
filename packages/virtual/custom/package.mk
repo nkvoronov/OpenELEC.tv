@@ -50,8 +50,8 @@ if [ "$KODI_ADDON_VDRFRONT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-vdrfront"  
 fi
 
-if [ "$KODI_SKIN_CONFLUENCE_PLOOD" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-skin-Confluence-plood"  
+if [ "$KODI_THEME_CONFLUENCE_PLOOD" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-theme-Confluence-plood"  
 fi
 
 if [ "$LOCALES_SUPPORT" = yes ]; then
