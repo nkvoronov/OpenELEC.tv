@@ -37,8 +37,8 @@ post_unpack() {
 }
 
 make_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include"
-  export LDFLAGS="-O2 -shared -lasound -L$SYSROOT_PREFIX/usr/lib"
+  export CFLAGS="-I. -O2 -Wall -funroll-loops -ffast-math -fPIC -DPIC"
+  export LDFLAGS="-O2 -shared -lasound"
   make
 }
 
