@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="scan-s2"
-PKG_VERSION="5acf1715107b"
+PKG_VERSION="05b33bab69a1"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

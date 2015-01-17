@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://wiki.acestream.org/wiki/index.php/AceStream_3.0"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain M2Crypto"
-# apsw PyAMF"
+PKG_DEPENDS_TARGET="toolchain" 
+#M2Crypto apsw PyAMF"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
 PKG_SHORTDESC="This is an innovative media platform of a new generation, which will take you to a new high-quality level of multimedia space on the Internet."
@@ -44,12 +44,9 @@ makeinstall_target() {
 }
 
 post_install() {
+  mkdir -p $INSTALL/usr/share/acestream
+    cp -PR $PKG_BUILD/$TARGET_ARCH/acestream/* $INSTALL/usr/share/acestream
+
   mkdir -p $INSTALL/usr/bin
-    cp -PR $PKG_BUILD/$TARGET_ARCH/usr/bin/* $INSTALL/usr/bin
-
-  mkdir -p $INSTALL/usr/lib
-    cp -PR $PKG_BUILD/$TARGET_ARCH/usr/lib/* $INSTALL/usr/lib
-
-  mkdir -p $INSTALL/usr/share
-    cp -PR $PKG_BUILD/$TARGET_ARCH/usr/share/* $INSTALL/usr/share
+    cp -P $PKG_BUILD/acestream-engine $INSTALL/usr/bin
 }
