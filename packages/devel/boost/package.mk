@@ -64,6 +64,12 @@ make_target() {
 }
 
 makeinstall_target() {
+  if [ "$LIBTORRENTS_SUPPORT" = yes ]; then
+    WPYTON="--with-python"
+  else
+    WPYTON="--without-python"   
+  fi
+
   $ROOT/$TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
                                 --prefix=$SYSROOT_PREFIX/usr \
                                 --ignore-site-config \
@@ -73,6 +79,7 @@ makeinstall_target() {
                                 --with-system \
                                 --with-serialization \
                                 --with-filesystem \
+                                $WPYTON \
                                 --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
                                 install
 }

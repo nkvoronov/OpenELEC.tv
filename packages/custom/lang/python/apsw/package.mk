@@ -18,18 +18,18 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="pycurl"
-PKG_VERSION="7.19.5"
+PKG_NAME="apsw"
+PKG_VERSION="3.8.5-r1"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL-2"
-PKG_SITE="http://pycurl.sourceforge.net/"
-PKG_URL="http://pycurl.sourceforge.net/download/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host curl libgcrypt"
+PKG_LICENSE=""
+PKG_SITE="https://github.com/rogerbinns/apsw/"
+PKG_URL="https://pypi.python.org/packages/source/a/apsw/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET="toolchain Python distutilscross:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="pycurl: a Python interface to libcurl"
-PKG_LONGDESC="PycURL is a Python interface to libcurl. PycURL can be used to fetch objects identified by a URL from a Python program, similar to the urllib Python module. PycURL is mature, very fast, and supports a lot of features."
+PKG_SHORTDESC="A Python wrapper for the SQLite embedded relational database engine."
+PKG_LONGDESC="A Python wrapper for the SQLite embedded relational database engine."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
@@ -40,15 +40,15 @@ pre_make_target() {
 }
 
 make_target() {
-  python setup.py build --cross-compile --with-ssl
+  #python setup.py build --enable-all-extensions
+  python setup.py build -g --enable=load_extension
 }
 
 makeinstall_target() {
-  python setup.py install -O0 --no-compile --root=./.install --prefix=/usr
+  python setup.py install --root=./.install --prefix=/usr
 }
 
 post_install() {
-  rm -rf .install/usr/bin
+  rm -rf .install/usr/lib/python*/site-packages/*.py
   cp -PR $ROOT/$PKG_BUILD/.install/* $INSTALL
 }
-

@@ -102,6 +102,18 @@ if [ "$ALSAEQUAL_ENABLED" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET alsaequal"
 fi
 
+if [ "$EPGUpdaters_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET "
+fi
+
+if [ "$LIBTORRENTS_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libtorrent-rasterbar"
+fi
+
+if [ "$ACESTREAM_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET acestream-engine"
+fi
+
 if [ "$GAME_EMULATOR" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mupen64plus"
 fi

@@ -18,18 +18,17 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="pycurl"
-PKG_VERSION="7.19.5"
+PKG_NAME="PyAMF"
+PKG_VERSION="0.6.1.1"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL-2"
-PKG_SITE="http://pycurl.sourceforge.net/"
-PKG_URL="http://pycurl.sourceforge.net/download/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host curl libgcrypt"
+PKG_LICENSE="OSS"
+PKG_SITE="http://pypi.python.org/packages/source/P/PyAMF/"
+PKG_URL="http://pypi.python.org/packages/source/P/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS="Python"
+PKG_BUILD_DEPENDS="toolchain Python distutilscross:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="pycurl: a Python interface to libcurl"
-PKG_LONGDESC="PycURL is a Python interface to libcurl. PycURL can be used to fetch objects identified by a URL from a Python program, similar to the urllib Python module. PycURL is mature, very fast, and supports a lot of features."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
@@ -40,15 +39,15 @@ pre_make_target() {
 }
 
 make_target() {
-  python setup.py build --cross-compile --with-ssl
+  python setup.py build --cross-compile
 }
 
 makeinstall_target() {
-  python setup.py install -O0 --no-compile --root=./.install --prefix=/usr
+  python setup.py install --root=./.install --prefix=/usr
 }
 
 post_install() {
-  rm -rf .install/usr/bin
+  rm -rf .install/usr/lib/python*/site-packages/*.py
   cp -PR $ROOT/$PKG_BUILD/.install/* $INSTALL
 }
 

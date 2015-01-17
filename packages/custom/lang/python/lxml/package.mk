@@ -48,7 +48,7 @@ makeinstall_target() {
   python setup.py install --root=./.install --prefix=/usr
 }
 
-post_makeinstall_target() {
+post_install() {
   rm -rf .install/usr/lib/python*/site-packages/*.py
   cp -PR $ROOT/$PKG_BUILD/.install/* $INSTALL
 }

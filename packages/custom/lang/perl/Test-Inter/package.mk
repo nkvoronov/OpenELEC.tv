@@ -33,9 +33,6 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {
-  USRPERLDIR="$SYSROOT_PREFIX/usr/lib/perl5/$PERL_VERSION:$SYSROOT_PREFIX/usr/lib/perl5/$PERL_VERSION/$TARGET_ARCH-linux:$SYSROOT_PREFIX/usr/lib/perl5/site_perl/$PERL_VERSION:$SYSROOT_PREFIX/usr/lib/perl5/site_perl/$PERL_VERSION/$TARGET_ARCH-linux"
-  export PERL5LIB=$USRPERLDIR
-
   perl Makefile.PL PREFIX=/usr \
     INSTALLPRIVLIB=/usr/lib/perl5 \
     INSTALLSCRIPT=/usr/bin \

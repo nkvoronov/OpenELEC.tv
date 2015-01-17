@@ -18,37 +18,40 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="pycurl"
-PKG_VERSION="7.19.5"
+PKG_NAME="acestream-engine"
+PKG_VERSION="3.0.3"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL-2"
-PKG_SITE="http://pycurl.sourceforge.net/"
-PKG_URL="http://pycurl.sourceforge.net/download/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host curl libgcrypt"
+PKG_LICENSE="GPL"
+PKG_SITE="http://wiki.acestream.org/wiki/index.php/AceStream_3.0"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain M2Crypto"
+# apsw PyAMF"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="pycurl: a Python interface to libcurl"
-PKG_LONGDESC="PycURL is a Python interface to libcurl. PycURL can be used to fetch objects identified by a URL from a Python program, similar to the urllib Python module. PycURL is mature, very fast, and supports a lot of features."
+PKG_SHORTDESC="This is an innovative media platform of a new generation, which will take you to a new high-quality level of multimedia space on the Internet."
+PKG_LONGDESC="This is an innovative media platform of a new generation, which will take you to a new high-quality level of multimedia space on the Internet."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-pre_make_target() {
-  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
-  export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
-}
-
 make_target() {
-  python setup.py build --cross-compile --with-ssl
+  : # nothing to make here
 }
 
 makeinstall_target() {
-  python setup.py install -O0 --no-compile --root=./.install --prefix=/usr
+  : # nothing to install here
 }
 
 post_install() {
-  rm -rf .install/usr/bin
-  cp -PR $ROOT/$PKG_BUILD/.install/* $INSTALL
-}
+  mkdir -p $INSTALL/usr/bin
+    cp -PR $PKG_BUILD/$TARGET_ARCH/usr/bin/* $INSTALL/usr/bin
 
+  mkdir -p $INSTALL/usr/lib
+    cp -PR $PKG_BUILD/$TARGET_ARCH/usr/lib/* $INSTALL/usr/lib
+
+  mkdir -p $INSTALL/usr/share
+    cp -PR $PKG_BUILD/$TARGET_ARCH/usr/share/* $INSTALL/usr/share
+ 
+  ln -sf /usr/lib/libcrypto.so.30.0.1 $INSTALL/usr/lib/libcrypto.so.1.0.0
+}

@@ -284,5 +284,14 @@
     PERL_SUPPORT="yes"
   fi
 
+# EPG Updaters
+  EPGUpdaters_SUPPORT="no"
+
+# Lib Torrents
+  LIBTORRENTS_SUPPORT="yes"
+
+# Acestream Engine
+  ACESTREAM_SUPPORT="yes"
+
 # Other
   GAME_EMULATOR="no"
