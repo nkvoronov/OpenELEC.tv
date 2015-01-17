@@ -52,6 +52,4 @@ post_install() {
 
   mkdir -p $INSTALL/usr/share
     cp -PR $PKG_BUILD/$TARGET_ARCH/usr/share/* $INSTALL/usr/share
- 
-  ln -sf /usr/lib/libcrypto.so.30.0.1 $INSTALL/usr/lib/libcrypto.so.1.0.0
 }
