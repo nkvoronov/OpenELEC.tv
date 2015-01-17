@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import os, sys
-sys.path.append('/lib/python2.7/site-packages/')
 import vsetv_parser
 
 count_day = 3

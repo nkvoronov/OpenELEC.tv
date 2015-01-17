@@ -266,6 +266,8 @@
 # Services
   TRANSMISSION_SERVICE="yes"
   OSCAM_SERVICE="yes"
+
+# TV Services
   TVHEADEND_SERVICE="yes"
   VDR_SERVICE="yes"
 
