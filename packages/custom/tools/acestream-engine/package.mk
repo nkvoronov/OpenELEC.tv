@@ -45,8 +45,16 @@ makeinstall_target() {
 
 post_install() {
   mkdir -p $INSTALL/usr/share/acestream
-    cp -PR $PKG_BUILD/$TARGET_ARCH/acestream/* $INSTALL/usr/share/acestream
+  if [ "$PROJECT" = "Generic" ]; then
+    cp -PR $PKG_BUILD/$TARGET_ARCH/acestream/* $INSTALL/usr/share/acestream    
+  elif [ "$PROJECT" = "RPi" ]; then
+    cp -PR $PKG_BUILD/arm/RPi/acestream/* $INSTALL/usr/share/acestream 
+  elif [ "$PROJECT" = "imx6" ]; then
+    cp -PR $PKG_BUILD/arm/v7/acestream/* $INSTALL/usr/share/acestream 
+  fi
 
-  mkdir -p $INSTALL/usr/bin
-    cp -P $PKG_BUILD/acestream-engine $INSTALL/usr/bin
+  if [ "$PROJECT" = "Generic" ]; then
+    mkdir -p $INSTALL/usr/bin
+      cp -P $PKG_BUILD/acestream-engine $INSTALL/usr/bin
+  fi
 }
