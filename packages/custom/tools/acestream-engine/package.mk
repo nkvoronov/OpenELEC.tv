@@ -55,6 +55,6 @@ post_install() {
 
   if [ "$PROJECT" = "Generic" ]; then
     mkdir -p $INSTALL/usr/bin
-      cp -P $PKG_BUILD/acestream-engine $INSTALL/usr/bin
+      cp -P $PKG_BUILD/acestreamengine-client-console $INSTALL/usr/bin
   fi
 }
