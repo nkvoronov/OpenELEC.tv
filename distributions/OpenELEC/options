@@ -287,7 +287,7 @@
   fi
 
 # EPG Updaters
-  EPGUpdaters_SUPPORT="no"
+  EPGUpdaters_SUPPORT="yes"
 
 # Lib Torrents
   LIBTORRENTS_SUPPORT="yes"

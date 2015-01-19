@@ -28,18 +28,11 @@ PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain Python grab"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="vsetv2vdr"
-PKG_LONGDESC="vsetv2vdr"
+PKG_SHORTDESC="vsetv2xmltv"
+PKG_LONGDESC="vsetv2xmltv"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-post_unpack() {
-  for patch in `ls $PKG_DIR/patches.upstream/*.patch`; do
-    cat $patch | patch -d \
-    `echo $BUILD/$PKG_NAME-$PKG_VERSION | cut -f1 -d\ ` -p1
-  done
-}
 
 make_target() {
   : # nothing to make here
@@ -50,6 +43,13 @@ makeinstall_target() {
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer
-    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer
+  mkdir -p $INSTALL/usr/config/epgs/bin
+    cp -P $PKG_BUILD/vsetv2channels $INSTALL/usr/config/epgs/bin
+    cp -P $PKG_BUILD/vsetv2xmltv $INSTALL/usr/config/epgs/bin
+
+  mkdir -p $INSTALL/usr/config/epgs/resources/$PKG_NAME
+    cp -P $PKG_BUILD/*.py $INSTALL/usr/config/epgs/resources/$PKG_NAME
+
+  mkdir -p $INSTALL/usr/config/epgs/config/$PKG_NAME
+    cp -P $PKG_DIR/config/*.cfg $INSTALL/usr/config/epgs/config/$PKG_NAME
 }

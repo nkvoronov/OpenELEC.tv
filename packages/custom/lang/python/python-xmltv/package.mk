@@ -18,37 +18,36 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="zvdrtools"
-PKG_VERSION="d06044e"
+PKG_NAME="python-xmltv"
+PKG_VERSION="1.4.3"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/SlavikZ/zvdrtools.git"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain Python python-xmltv"
+PKG_LICENSE=""
+PKG_SITE="https://bitbucket.org/jfunk/python-xmltv"
+PKG_URL="https://pypi.python.org/packages/source/p/python-xmltv/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET="toolchain Python distutilscross:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="zvdrtools: python VDR tools"
-PKG_LONGDESC="zvdrtools: python VDR tools"
+PKG_SHORTDESC="A Python Module for Reading and Writing XMLTV Files"
+PKG_LONGDESC="A Python Module for Reading and Writing XMLTV Files"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
+pre_make_target() {
+  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
+  export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
+}
+
 make_target() {
-  : # nothing to make here
+  python setup.py build
 }
 
 makeinstall_target() {
-  : # nothing to install here
+  python setup.py install --root=./.install --prefix=/usr
 }
 
 post_install() {
-  #mkdir -p $INSTALL/usr/config/epgs/bin
-    #cp -P $PKG_DIR/scripts/* $INSTALL/usr/config/epgs/bin
-
-  mkdir -p $INSTALL/usr/config/epgs/resources/$PKG_NAME
-    cp -PR $PKG_BUILD/* $INSTALL/usr/config/epgs/resources/$PKG_NAME
-
-  #mkdir -p $INSTALL/usr/config/epgs/config/$PKG_NAME
-    #cp -P $PKG_DIR/config/*.conf $INSTALL/usr/config/epgs/config/$PKG_NAME
+  rm -rf .install/usr/lib/python*/site-packages/*.py
+  cp -PR $ROOT/$PKG_BUILD/.install/* $INSTALL
 }

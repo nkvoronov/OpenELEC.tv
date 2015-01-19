@@ -103,7 +103,7 @@ if [ "$ALSAEQUAL_ENABLED" = yes ]; then
 fi
 
 if [ "$EPGUpdaters_SUPPORT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET "
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vsetv2xmltv xmltv2vdr zvdrtools"
 fi
 
 if [ "$LIBTORRENTS_SUPPORT" = yes ]; then

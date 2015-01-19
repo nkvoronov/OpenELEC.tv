@@ -1,9 +1,0 @@
-#!/bin/sh
-
-parser=/storage/epgsources/vsetv/vsetv.py
-
-rm -rf /tmp/vsetv
-mkdir -p /tmp/vsetv
-echo "Running"
-python $parser
-
