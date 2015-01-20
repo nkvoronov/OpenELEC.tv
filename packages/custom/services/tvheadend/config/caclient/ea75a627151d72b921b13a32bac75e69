@@ -1,10 +1,10 @@
 {
-	"mode": 4,
-	"camdfilename": "/tmp/camd.socket",
+	"mode": 3,
+	"camdfilename": "127.0.0.1",
 	"port": 9000,
 	"class": "caclient_capmt",
 	"index": 1,
 	"enabled": true,
-	"name": "OSCam pc-nodmx",
-	"comment": "OSCam pc-nodmx"
+	"name": "OSCam TCP",
+	"comment": "OSCam TCP"
 }

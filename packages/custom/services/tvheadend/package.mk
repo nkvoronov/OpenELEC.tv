@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="ed513c0"
-PKG_VERSIONA="3.9.2380"
+PKG_VERSION="aca5c6b"
+PKG_VERSIONA="3.9.2400"
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

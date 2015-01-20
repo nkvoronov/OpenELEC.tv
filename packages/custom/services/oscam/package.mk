@@ -20,7 +20,7 @@
 ################################################################################
 
 PKG_NAME="oscam"
-PKG_VERSION="10220"
+PKG_VERSION="10236"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
