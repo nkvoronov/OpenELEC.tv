@@ -44,7 +44,7 @@ pre_configure_target() {
 
 make_target() {
   #VDR_DIR=$(get_build_dir vdr)
-  VDR_DIR=$ROOT/$BUILD/vdr-2.1.6
+  VDR_DIR=$ROOT/$BUILD/vdr-2db7397
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \
     LOCALEDIR="./locale"

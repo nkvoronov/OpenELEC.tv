@@ -48,7 +48,7 @@ post_install() {
 
   XINE_VERSION="2.5"
 
-  VDR_DIR=$ROOT/$BUILD/vdr-2.1.6
+  VDR_DIR=$ROOT/$BUILD/vdr-2db7397
   VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-plugin-live-69f84f9
   VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-b300fc3
   VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-a48edf1
@@ -121,7 +121,7 @@ post_install() {
     cp -PR $VDR_PLUGIN_TVGUIDE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/libvdr*.so.2.1.6 $INSTALL/usr/lib/vdr
+    cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/libvdr*.so.2.1.7 $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/libxineliboutput*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_MENUORG_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_SKINFLAT_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
