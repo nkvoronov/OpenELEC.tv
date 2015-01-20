@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-xvdr"
-PKG_VERSION="2bf2563"
+PKG_VERSION="6ba1725"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/pipelka/xbmc-addon-xvdr"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain zlib kodi"
 PKG_PRIORITY="optional"
 PKG_SECTION="mediacenter"
