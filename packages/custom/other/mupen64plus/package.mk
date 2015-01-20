@@ -27,7 +27,7 @@ PKG_SITE="http://mupen64plus.googlecode.com"
 PKG_URL="http://mupen64plus.googlecode.com/files/$PKG_NAME-bundle-src-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain glib freetype"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom"
+PKG_SECTION="noused"
 PKG_SHORTDESC="Nintendo 64 emulator"
 PKG_LONGDESC="N64"
 

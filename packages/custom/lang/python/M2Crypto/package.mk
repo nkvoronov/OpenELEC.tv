@@ -28,7 +28,7 @@ PKG_URL="http://pypi.python.org/packages/source/M/$PKG_NAME/$PKG_NAME-$PKG_VERSI
 PKG_DEPENDS="Python openssl"
 PKG_BUILD_DEPENDS="toolchain Python distutilscross:host"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom"
+PKG_SECTION="noused"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"

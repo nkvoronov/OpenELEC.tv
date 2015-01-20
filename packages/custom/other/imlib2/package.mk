@@ -27,7 +27,7 @@ PKG_SITE="http://web.enlightenment.org/"
 PKG_URL="$SOURCEFORGE_SRC/enlightenment/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain libjpeg-turbo libpng tiff zlib bzip2 libX11 libXext"
 PKG_PRIORITY="optional"
-PKG_SECTION="multimedia"
+PKG_SECTION="noused"
 PKG_SHORTDESC="Imlib2 is a graphics library."
 PKG_LONGDESC="Imlib2 is a graphics library for file loading, saving, rendering, manipulation."
 

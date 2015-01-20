@@ -27,7 +27,7 @@ PKG_SITE="https://github.com/rogerbinns/apsw/"
 PKG_URL="https://pypi.python.org/packages/source/a/apsw/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain Python distutilscross:host"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom"
+PKG_SECTION="noused"
 PKG_SHORTDESC="A Python wrapper for the SQLite embedded relational database engine."
 PKG_LONGDESC="A Python wrapper for the SQLite embedded relational database engine."
 
