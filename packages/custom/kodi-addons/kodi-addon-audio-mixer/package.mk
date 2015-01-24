@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-audio-mixer"
-PKG_VERSION="6b8ae90"
+PKG_VERSION="6bccbc8"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
