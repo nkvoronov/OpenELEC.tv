@@ -296,4 +296,4 @@
   ACESTREAM_SUPPORT="yes"
 
 # Other
-  GAME_EMULATOR="no"
+  GAME_EMULATORS="yes"

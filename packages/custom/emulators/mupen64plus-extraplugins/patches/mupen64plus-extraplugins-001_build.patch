@@ -1,0 +1,164 @@
+diff -Naur a/src/source/mupen64plus-rsp-z64/projects/unix/Makefile b/src/source/mupen64plus-rsp-z64/projects/unix/Makefile
+--- a/src/source/mupen64plus-rsp-z64/projects/unix/Makefile	2013-07-05 05:20:40.000000000 +0300
++++ b/src/source/mupen64plus-rsp-z64/projects/unix/Makefile	2015-01-24 16:34:36.422133254 +0200
+@@ -214,8 +214,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile b/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile
+--- a/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile	2013-07-05 05:03:20.000000000 +0300
++++ b/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile	2015-01-24 16:35:07.850132536 +0200
+@@ -239,8 +239,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-video-glide64/projects/unix/Makefile b/src/source/mupen64plus-video-glide64/projects/unix/Makefile
+--- a/src/source/mupen64plus-video-glide64/projects/unix/Makefile	2013-07-05 05:18:45.000000000 +0300
++++ b/src/source/mupen64plus-video-glide64/projects/unix/Makefile	2015-01-24 16:35:36.554131879 +0200
+@@ -260,8 +260,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-video-z64/projects/unix/Makefile b/src/source/mupen64plus-video-z64/projects/unix/Makefile
+--- a/src/source/mupen64plus-video-z64/projects/unix/Makefile	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/projects/unix/Makefile	2015-01-24 16:36:02.386131289 +0200
+@@ -269,8 +269,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-video-z64/src/glshader.cpp b/src/source/mupen64plus-video-z64/src/glshader.cpp
+--- a/src/source/mupen64plus-video-z64/src/glshader.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/glshader.cpp	2015-01-24 16:43:42.950120758 +0200
+@@ -23,7 +23,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include "rgl_assert.h"
+-#include <glew.h>
++#include <GL/glew.h>
+ #if defined(__MACOSX__)
+ #include <OpenGL/gl.h>
+ #include <OpenGL/glext.h>
+diff -Naur a/src/source/mupen64plus-video-z64/src/maingl.cpp b/src/source/mupen64plus-video-z64/src/maingl.cpp
+--- a/src/source/mupen64plus-video-z64/src/maingl.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/maingl.cpp	2015-01-24 16:44:04.326120269 +0200
+@@ -22,7 +22,7 @@
+ #include "rdp.h"
+ #include "rgl.h"
+ #include "osal_dynamiclib.h"
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ #define THREADED
+ 
+diff -Naur a/src/source/mupen64plus-video-z64/src/rgl.cpp b/src/source/mupen64plus-video-z64/src/rgl.cpp
+--- a/src/source/mupen64plus-video-z64/src/rgl.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/rgl.cpp	2015-01-24 16:45:19.162118558 +0200
+@@ -79,7 +79,7 @@
+ #include "rdp.h"
+ #include "rgl.h"
+ 
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ //#define NOFBO
+ #define ZTEX
+diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp b/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp
+--- a/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp	2015-01-24 16:41:13.882124166 +0200
+@@ -22,7 +22,7 @@
+ #include "rdp.h"
+ #include "rgl.h"
+ 
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ inline float _zscale(uint16_t z)
+ {
+diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_glut.cpp b/src/source/mupen64plus-video-z64/src/rgl_glut.cpp
+--- a/src/source/mupen64plus-video-z64/src/rgl_glut.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/rgl_glut.cpp	2015-01-24 16:41:34.426123697 +0200
+@@ -21,7 +21,7 @@
+ 
+ #include <string.h>
+ 
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ #include "rgl_glut.h"
+ 
+diff -Naur a/src/source/mupen64plus-video-z64/src/rgl.h b/src/source/mupen64plus-video-z64/src/rgl.h
+--- a/src/source/mupen64plus-video-z64/src/rgl.h	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/rgl.h	2015-01-24 16:40:30.802125151 +0200
+@@ -26,7 +26,7 @@
+ #include "rgl_assert.h"
+ #include "rdp.h"
+ 
+-#include <glew.h>
++#include <GL/glew.h>
+ #if defined(__MACOSX__)
+ #include <OpenGL/gl.h>
+ #elif defined(__MACOS__)
+diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp b/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp
+--- a/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp	2015-01-24 16:41:52.882123275 +0200
+@@ -22,7 +22,7 @@
+ #include "rdp.h"
+ #include "rgl.h"
+ 
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ SDL_Surface *sdl_Screen;
+ int viewportOffset;
+diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp b/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp
+--- a/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp	2015-01-24 16:42:04.922122999 +0200
+@@ -22,7 +22,7 @@
+ #include "rdp.h"
+ #include "rgl.h"
+ 
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ void rglRenderMode(rglRenderChunk_t & chunk)
+ {
+diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp b/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp
+--- a/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp	2015-01-24 16:42:22.658122594 +0200
+@@ -22,7 +22,7 @@
+ #include "rdp.h"
+ #include "rgl.h"
+ 
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ rglTextureHead_t freeTextures;
+ rglTextureHead_t texturesByCrc[256];

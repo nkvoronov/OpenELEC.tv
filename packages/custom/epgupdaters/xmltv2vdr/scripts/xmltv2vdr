@@ -9,5 +9,9 @@ XMLTV_FILE="/storage/epgsources/xmltv.xml"
 CHANNELS_FILE="$EPGSOURCES_CONF/channels.conf.epg"
 
 #check run vdr
-echo "Running xmltv2vdr"
-$PERL_FILE -l 0 -x $XMLTV_FILE -c $CHANNELS_FILE
+if [ "$(pidof vdr.bin)" ]; then
+    echo "Running xmltv2vdr"
+    $PERL_FILE -l 0 -x $XMLTV_FILE -c $CHANNELS_FILE
+else
+    echo "Run VDR"
+fi

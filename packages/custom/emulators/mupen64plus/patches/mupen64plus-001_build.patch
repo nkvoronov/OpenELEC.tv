@@ -1,0 +1,217 @@
+diff -Naur a/src/source/mupen64plus-audio-sdl/projects/unix/Makefile b/src/source/mupen64plus-audio-sdl/projects/unix/Makefile
+--- a/src/source/mupen64plus-audio-sdl/projects/unix/Makefile	2013-07-04 03:28:02.000000000 +0300
++++ b/src/source/mupen64plus-audio-sdl/projects/unix/Makefile	2015-01-24 06:52:30.526931843 +0200
+@@ -264,7 +264,7 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
++#CC        = $(CROSS_COMPILE)gcc
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-core/projects/unix/Makefile b/src/source/mupen64plus-core/projects/unix/Makefile
+--- a/src/source/mupen64plus-core/projects/unix/Makefile	2013-07-04 03:27:56.000000000 +0300
++++ b/src/source/mupen64plus-core/projects/unix/Makefile	2015-01-24 06:45:33.338941382 +0200
+@@ -284,8 +284,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-input-sdl/projects/unix/Makefile b/src/source/mupen64plus-input-sdl/projects/unix/Makefile
+--- a/src/source/mupen64plus-input-sdl/projects/unix/Makefile	2013-07-04 03:28:05.000000000 +0300
++++ b/src/source/mupen64plus-input-sdl/projects/unix/Makefile	2015-01-24 06:53:01.230931141 +0200
+@@ -214,8 +214,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-rsp-hle/projects/unix/Makefile b/src/source/mupen64plus-rsp-hle/projects/unix/Makefile
+--- a/src/source/mupen64plus-rsp-hle/projects/unix/Makefile	2013-07-04 03:28:07.000000000 +0300
++++ b/src/source/mupen64plus-rsp-hle/projects/unix/Makefile	2015-01-24 06:53:32.734930420 +0200
+@@ -203,8 +203,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-ui-console/projects/unix/Makefile b/src/source/mupen64plus-ui-console/projects/unix/Makefile
+--- a/src/source/mupen64plus-ui-console/projects/unix/Makefile	2013-07-04 03:28:00.000000000 +0300
++++ b/src/source/mupen64plus-ui-console/projects/unix/Makefile	2015-01-24 06:53:55.190929907 +0200
+@@ -197,8 +197,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile b/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile
+--- a/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2013-07-04 03:28:17.000000000 +0300
++++ b/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2015-01-24 06:54:27.710929163 +0200
+@@ -292,8 +292,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-video-rice/projects/unix/Makefile b/src/source/mupen64plus-video-rice/projects/unix/Makefile
+--- a/src/source/mupen64plus-video-rice/projects/unix/Makefile	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/projects/unix/Makefile	2015-01-24 06:54:57.446928483 +0200
+@@ -261,8 +261,8 @@
+ endif
+ 
+ # set base program pointers and flags
+-CC        = $(CROSS_COMPILE)gcc
+-CXX       = $(CROSS_COMPILE)g++
++#CC        = $(CROSS_COMPILE)gcc
++#CXX       = $(CROSS_COMPILE)g++
+ RM       ?= rm -f
+ INSTALL  ?= install
+ MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp b/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp
+--- a/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp	2015-01-24 10:09:48.682661161 +0200
+@@ -16,7 +16,7 @@
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+ 
+-#include <SDL_opengl.h>
++#include <SDL2/SDL_opengl.h>
+ 
+ #include "CNvTNTCombiner.h"
+ 
+diff -Naur a/src/source/mupen64plus-video-rice/src/CritSect.h b/src/source/mupen64plus-video-rice/src/CritSect.h
+--- a/src/source/mupen64plus-video-rice/src/CritSect.h	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/CritSect.h	2015-01-24 10:10:27.810660266 +0200
+@@ -20,7 +20,7 @@
+ #if !defined(CRITSECT_H)
+ #define CRITSECT_H
+ 
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ class CCritSect
+ {
+diff -Naur a/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h b/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h
+--- a/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h	2015-01-24 10:11:24.322658974 +0200
+@@ -21,7 +21,7 @@
+ 
+ #include <vector>
+ 
+-#include <SDL_opengl.h>
++#include <SDL2/SDL_opengl.h>
+ 
+ #include "OGLExtCombiner.h"
+ #include "OGLDecodedMux.h"
+diff -Naur a/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h b/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h
+--- a/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h	2015-01-24 10:11:49.234658404 +0200
+@@ -19,7 +19,7 @@
+ #ifndef _OGL_COMBINER_TNT2_H_
+ #define _OGL_COMBINER_TNT2_H_
+ 
+-#include <SDL_opengl.h>
++#include <SDL2/SDL_opengl.h>
+ 
+ #define GL_SOURCE3_RGB_EXT                0x8583
+ #define GL_SOURCE3_ALPHA_EXT              0x858B
+diff -Naur a/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp b/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp
+--- a/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp	2015-01-24 10:12:37.266657306 +0200
+@@ -19,7 +19,7 @@
+ /* This source file contains code for assigning function pointers to some OpenGL functions */
+ /* This is only necessary because Windows does not contain development support for OpenGL versions beyond 1.1 */
+ 
+-#include <SDL_opengl.h>
++#include <SDL2/SDL_opengl.h>
+ #include "OGLExtensions.h"
+ #include "Video.h"
+ 
+diff -Naur a/src/source/mupen64plus-video-rice/src/OGLExtensions.h b/src/source/mupen64plus-video-rice/src/OGLExtensions.h
+--- a/src/source/mupen64plus-video-rice/src/OGLExtensions.h	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/OGLExtensions.h	2015-01-24 10:12:57.678656839 +0200
+@@ -22,7 +22,7 @@
+ #if !defined(OGL_EXTENSIONS_H)
+ #define OGL_EXTENSIONS_H
+ 
+-#include <SDL_opengl.h>
++#include <SDL2/SDL_opengl.h>
+ 
+ /* Just call this one function to load up the function pointers. */
+ void OGLExtensions_Init(void);
+diff -Naur a/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h b/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h
+--- a/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h	2015-01-24 10:13:34.918655988 +0200
+@@ -21,7 +21,7 @@
+ 
+ #include <vector>
+ 
+-#include <SDL_opengl.h>
++#include <SDL2/SDL_opengl.h>
+ 
+ #include "OGLCombiner.h"
+ #include "OGLExtCombiner.h"
+diff -Naur a/src/source/mupen64plus-video-rice/src/osal_opengl.h b/src/source/mupen64plus-video-rice/src/osal_opengl.h
+--- a/src/source/mupen64plus-video-rice/src/osal_opengl.h	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/osal_opengl.h	2015-01-24 10:08:13.774663331 +0200
+@@ -22,10 +22,10 @@
+ #if !defined(OSAL_OPENGL_H)
+ #define OSAL_OPENGL_H
+ 
+-#include <SDL_config.h>
++#include <SDL2/SDL_config.h>
+ 
+ #if SDL_VIDEO_OPENGL
+-#include <SDL_opengl.h>
++#include <SDL2/SDL_opengl.h>
+ #define GLSL_VERSION "120"
+ 
+ // Extension names
+@@ -35,7 +35,7 @@
+ 
+ 
+ #elif SDL_VIDEO_OPENGL_ES2
+-#include <SDL_opengles2.h>
++#include <SDL2/SDL_opengles2.h>
+ #define GLSL_VERSION "100"
+ 
+ // Extension names
+diff -Naur a/src/source/mupen64plus-video-rice/src/RSP_Parser.cpp b/src/source/mupen64plus-video-rice/src/RSP_Parser.cpp
+--- a/src/source/mupen64plus-video-rice/src/RSP_Parser.cpp	2013-07-04 03:28:10.000000000 +0300
++++ b/src/source/mupen64plus-video-rice/src/RSP_Parser.cpp	2015-01-24 10:15:39.802653132 +0200
+@@ -18,7 +18,7 @@
+ */
+ 
+ #include <algorithm>
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ 
+ #include "ConvertImage.h"
+ #include "GraphicsContext.h"

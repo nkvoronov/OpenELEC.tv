@@ -114,6 +114,6 @@ if [ "$ACESTREAM_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET acestream-engine"
 fi
 
-if [ "$GAME_EMULATOR" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mupen64plus"
+if [ "$GAME_EMULATORS" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET  mupen64plus mupen64plus-extraplugins"
 fi
