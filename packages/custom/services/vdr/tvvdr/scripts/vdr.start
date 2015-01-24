@@ -97,7 +97,6 @@ init_vdr_plugins() {
         fi
     fi
 
-    DVBAPI_OPT="-d -o2"
     # keep softcam first
     if [ "$VDR_ENABLE_SOFTCAM" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P 'dvbapi $DVBAPI_OPT'"
@@ -110,6 +109,10 @@ init_vdr_plugins() {
     if [ "$VDR_ENABLE_IPTV" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P 'iptv -d $VDR_IPTV_NUM_DEVICES'"
     fi
+
+    #if [ "$VDR_ENABLE_UPNP" == "true" ] ; then
+        #VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_CACHE_DIR/upnp'"
+    #fi
 	
     if [ "$VDR_ENABLE_STREAMDEV_SERVER" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P streamdev-server"

@@ -27,9 +27,14 @@
 if [ -f /storage/.cache/services/vdr-front.run ]; then
     mv /storage/.cache/services/vdr-front.run /storage/.cache/services/vdr-front.conf    
 
-    killall -q vdr.bin
+    if [ "$(pidof vdr.bin)" ]; then
+      killall -q vdr.bin
+      while [ $(pidof vdr.bin) ]; do        
+        sleep 1
+      do
+    fi
 
-    sleep 4
+    sleep 10
     
     #systemctl stop vdr-front.service
     
@@ -52,6 +57,8 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
             if [ -f /storage/.cache/services/tvheadend.conf ]; then
                 systemctl start tvheadend.service;
             fi
+
+            sleep 2
 
             systemctl restart lcdd.service;
     
