@@ -64,7 +64,7 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +msgstr "Аудио Микшер"
 diff -Naur a/resources/lib/gui.py b/resources/lib/gui.py
 --- a/resources/lib/gui.py	2015-01-23 02:25:58.000000000 +0200
-+++ b/resources/lib/gui.py	2015-01-26 06:52:18.000000000 +0200
++++ b/resources/lib/gui.py	2015-01-26 08:59:35.080143605 +0200
 @@ -131,6 +131,8 @@
        self.close()
  
@@ -74,6 +74,19 @@ diff -Naur a/resources/lib/gui.py b/resources/lib/gui.py
       if ( controlId >= 1000 ):
          self.getControl( controlId + 1 ).setLabel("%.2d %s" % (int(self.getControl( controlId ).getPercent()), "%",))
          if self.getControl( controlId ).getPercent() == 0:
+@@ -172,9 +174,9 @@
+           
+         if ( action.getButtonCode() in CANCEL_DIALOG ):
+           self.log("Exit")
+-          if ( self.controlId >= 1000 ) or (action.getId() == 92):
+-              self.slider_onfocus(0)
+-              self.controlId = 0
++          #if ( self.controlId >= 1000 ) or (action.getId() == 92):
++              #self.slider_onfocus(0)
++              #self.controlId = 0
+           self.exit_script()
+ 
+ 
 diff -Naur a/resources/skins/Default/720p/script-xbmc-audio-mixer.xml b/resources/skins/Default/720p/script-xbmc-audio-mixer.xml
 --- a/resources/skins/Default/720p/script-xbmc-audio-mixer.xml	2015-01-23 02:25:58.000000000 +0200
 +++ b/resources/skins/Default/720p/script-xbmc-audio-mixer.xml	2015-01-26 07:46:16.000000000 +0200

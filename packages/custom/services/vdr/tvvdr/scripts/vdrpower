@@ -28,18 +28,15 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
     mv /storage/.cache/services/vdr-front.run /storage/.cache/services/vdr-front.conf    
 
     killall -q -TERM vdr.bin
-    while [ $(pidof vdr.bin) ]; do        
-        sleep 1
-    done
 
-    sleep 4
-    
+    sleep 2
+
     case "$1" in
         -p) # poweroff
-	    poweroff -f
+            poweroff -f
         ;;
         -r) # reboot
-	    reboot
+            reboot
         ;;
         -s) # sleep
             pm-suspend suspend
@@ -54,11 +51,11 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
                 systemctl start tvheadend.service;
             fi
 
-            sleep 4
+            sleep 2
 
             systemctl restart lcdd.service;
-    
-	    systemctl start kodi.service;
+
+            systemctl start kodi.service;
         ;;
     esac
 fi
