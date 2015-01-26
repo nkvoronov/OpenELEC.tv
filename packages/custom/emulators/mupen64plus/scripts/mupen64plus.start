@@ -1,6 +1,7 @@
 #!/bin/sh
 
 CFG_DIR="$HOME/.config/mupen64plus"
+CORE_LIB="/usr/lib/libmupen64plus.so.2"
 
 mkdir -p $CFG_DIR
 mkdir -p $CFG_DIR/screenshots
@@ -12,18 +13,6 @@ then
   cp -P /usr/config/mupen64plus/* $CFG_DIR/ -r
 fi
 
-export LD_LIBRARY_PATH=/usr/lib
-cd /usr/bin
-./mupen64plus --configdir "$CFG_DIR" --resolution `xrandr | grep '^ .*\*'|awk '{print $1}'` --fullscreen "$@" >>/var/log/mupen64plus.log 2>&1 &
-
-sleep 7
-
-systemctl stop kodi.service
-
-while [ $(pidof mupen64plus) ];do
-    usleep 200000
-done;
-
-systemctl start kodi.service
+mupen64plus --configdir $CFG_DIR --corelib $CORE_LIB $@
 
 

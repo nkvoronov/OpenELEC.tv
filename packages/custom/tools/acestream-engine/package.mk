@@ -25,8 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://wiki.acestream.org/wiki/index.php/AceStream_3.0"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain" 
-#M2Crypto apsw PyAMF"
+PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
 PKG_SHORTDESC="This is an innovative media platform of a new generation, which will take you to a new high-quality level of multimedia space on the Internet."
@@ -34,6 +33,12 @@ PKG_LONGDESC="This is an innovative media platform of a new generation, which wi
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
+
+PYTHON_MODULES="no"
+
+if [ "$PYTHON_MODULES" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET M2Crypto apsw PyAMF"
+fi
 
 make_target() {
   : # nothing to make here

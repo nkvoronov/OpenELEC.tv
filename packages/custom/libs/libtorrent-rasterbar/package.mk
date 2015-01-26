@@ -20,7 +20,6 @@
 
 PKG_NAME="libtorrent-rasterbar"
 PKG_VERSION="1.0.3"
-#PKG_VERSION="10749"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="LGPL"

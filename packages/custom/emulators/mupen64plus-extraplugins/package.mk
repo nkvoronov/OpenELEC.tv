@@ -34,7 +34,7 @@ PKG_LONGDESC="Nintendo 64 emulator plugins"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-BUILD_SRC="yes"
+BUILD_SRC="no"
 
 make_target() {
   if [ "$BUILD_SRC" = yes ]; then

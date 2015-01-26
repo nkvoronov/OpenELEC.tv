@@ -1,7 +1,7 @@
 diff -Naur a/language/English/strings.po b/language/English/strings.po
---- a/language/English/strings.po	2014-11-21 20:02:42.000000000 +0200
-+++ b/language/English/strings.po	2014-11-25 01:22:25.970096968 +0200
-@@ -1141,3 +1141,597 @@
+--- a/language/English/strings.po	2014-12-21 22:31:28.000000000 +0200
++++ b/language/English/strings.po	2015-01-26 03:25:59.741007011 +0200
+@@ -1141,3 +1141,613 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr ""
@@ -356,19 +356,35 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgstr ""
 +
 +msgctxt "#37021"
-+msgid "Enable plugin: dummydevice"
++msgid "softcam: options"
 +msgstr ""
 +
 +msgctxt "#1221"
-+msgid "Enabled dummydevice plugin"
++msgid "softcam plugin options"
 +msgstr ""
 +
 +msgctxt "#37022"
-+msgid "Enable plugin: satip"
++msgid "Enable plugin: dummydevice"
 +msgstr ""
 +
 +msgctxt "#1222"
++msgid "Enabled dummydevice plugin"
++msgstr ""
++
++msgctxt "#37023"
++msgid "Enable plugin: satip"
++msgstr ""
++
++msgctxt "#1223"
 +msgid "Enabled satip plugin"
++msgstr ""
++
++msgctxt "#37024"
++msgid "Enable plugin: upnp"
++msgstr ""
++
++msgctxt "#1224"
++msgid "Enabled upnp plugin"
 +msgstr ""
 +
 +##########################################################
@@ -600,9 +616,9 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgid "VDR (The Video Disk Recorder) is an open source application for Linux designed to allow any computer to function as a digital video recorder, in order to record and replay TV programming using the computer's hard drive."
 +msgstr ""
 diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
---- a/language/Russian/strings.po	2014-11-21 20:02:42.000000000 +0200
-+++ b/language/Russian/strings.po	2014-11-25 01:22:25.974097045 +0200
-@@ -1039,3 +1039,597 @@
+--- a/language/Russian/strings.po	2014-12-21 22:31:28.000000000 +0200
++++ b/language/Russian/strings.po	2015-01-26 03:27:21.493003484 +0200
+@@ -1039,3 +1039,613 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr "Включить поддержку драйвера ЖК-экрана"
@@ -957,20 +973,36 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgstr "Разрешить softcam плагин"
 +
 +msgctxt "#37021"
++msgid "softcam: options"
++msgstr "softcam: опции"
++
++msgctxt "#1221"
++msgid "softcam plugin options"
++msgstr "Опции для softcam плагина"
++
++msgctxt "#37022"
 +msgid "Enable plugin: dummydevice"
 +msgstr "Плагин: dummydevice"
 +
-+msgctxt "#1221"
++msgctxt "#1222"
 +msgid "Enabled dummydevice plugin"
 +msgstr "Разрешить dummydevice плагин"
 +
-+msgctxt "#37022"
++msgctxt "#37023"
 +msgid "Enable plugin: satip"
 +msgstr "Плагин: satip"
 +
-+msgctxt "#1222"
++msgctxt "#1223"
 +msgid "Enabled satip plugin"
 +msgstr "Разрешить satip плагин"
++
++msgctxt "#37024"
++msgid "Enable plugin: upnp"
++msgstr "Плагин: upnp"
++
++msgctxt "#1224"
++msgid "Enabled upnp plugin"
++msgstr "Разрешить upnp плагин"
 +
 +##########################################################
 +

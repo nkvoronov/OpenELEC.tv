@@ -31,12 +31,10 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
       killall -q vdr.bin
       while [ $(pidof vdr.bin) ]; do        
         sleep 1
-      do
+      done
     fi
 
-    sleep 10
-    
-    #systemctl stop vdr-front.service
+    sleep 8
     
     case "$1" in
         -p) # poweroff

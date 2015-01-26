@@ -99,7 +99,7 @@ init_vdr_plugins() {
 
     # keep softcam first
     if [ "$VDR_ENABLE_SOFTCAM" == "true" ] ; then
-        VDR_ARG="$VDR_ARG -P 'dvbapi $DVBAPI_OPT'"
+        VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPT'"
     fi
 	
     if [ "$VDR_ENABLE_WIRBELSCAN" == "true" ] ; then
