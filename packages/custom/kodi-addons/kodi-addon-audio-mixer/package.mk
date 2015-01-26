@@ -34,12 +34,12 @@ PKG_LONGDESC="XBMC Audio Mixer"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-#post_unpack() {
-  #for patch in `ls $PKG_DIR/patches.upstream/*.patch`; do
-    #cat $patch | patch -d \
-    #`echo $BUILD/$PKG_NAME-$PKG_VERSION | cut -f1 -d\ ` -p1
-  #done
-#}
+post_unpack() {
+  for patch in `ls $PKG_DIR/patches.upstream/*.patch`; do
+    cat $patch | patch -d \
+    `echo $BUILD/$PKG_NAME-$PKG_VERSION | cut -f1 -d\ ` -p1
+  done
+}
 
 make_target() {
   : # nothing to make here
