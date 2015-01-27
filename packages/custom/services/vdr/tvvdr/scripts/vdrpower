@@ -29,7 +29,7 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
 
     killall -q -TERM vdr.bin
 
-    sleep 2
+    sleep 4
 
     case "$1" in
         -p) # poweroff

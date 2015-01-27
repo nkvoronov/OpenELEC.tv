@@ -51,7 +51,7 @@ post_install() {
   VDR_DIR=$ROOT/$BUILD/vdr-2db7397
   VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-plugin-live-69f84f9
   VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-b300fc3
-  VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-a48edf1
+  VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-b887bc8
   VDR_PLUGIN_STREAMDEV_DIR=$ROOT/$BUILD/vdr-plugin-streamdev-657c8bc
   VDR_PLUGIN_XMLTV2VDR_DIR=$ROOT/$BUILD/vdr-plugin-xmltv2vdr-b48e0be
   VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.1.1
