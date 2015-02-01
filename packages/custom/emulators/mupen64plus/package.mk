@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="LGPL"
 PKG_SITE="http://mupen64plus.googlecode.com"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain glib SDL2 glu libpng freetype"
+PKG_DEPENDS_TARGET="toolchain SDL libpng glib freetype"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
 PKG_SHORTDESC="Nintendo 64 emulator"
@@ -34,7 +34,7 @@ PKG_LONGDESC="Nintendo 64 emulator"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-BUILD_SRC="no"
+BUILD_SRC="yes"
 
 make_target() {
   if [ "$BUILD_SRC" = yes ]; then
@@ -65,6 +65,8 @@ post_install() {
       cp -P $PKG_BUILD/bin/$TARGET_ARCH/libmupen64plus.so.* $INSTALL/usr/lib
       cp -P $PKG_BUILD/bin/$TARGET_ARCH/mupen64plus-*.so $INSTALL/usr/lib
     fi
+
+    cp -P $ROOT/$BUILD/SDL-1.2.15/.$TARGET_ARCH-openelec-linux-gnu/build/.libs/libSDL-1.2.so.* $INSTALL/usr/lib
 
   mkdir -p $INSTALL/usr/config/mupen64plus
     cp -P $PKG_DIR/config/* $INSTALL/usr/config/mupen64plus

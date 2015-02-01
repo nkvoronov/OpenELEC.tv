@@ -54,3 +54,8 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/bin
   rm -rf $INSTALL/usr/share
 }
+
+post_install() {
+  mkdir -p $INSTALL/usr/lib
+    cp -PL $ROOT/$PKG_BUILD/.install_pkg/usr/lib/libtntnet.* $INSTALL/usr/lib
+}

@@ -16,38 +16,41 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="cxxtools"
-PKG_VERSION="2.2.1"
+PKG_NAME="vdr-plugin-restfulapi"
+PKG_VERSION="2f1cbbc"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL-2"
-PKG_SITE="http://www.tntnet.org/cxxtools.html"
-PKG_URL="http://www.tntnet.org/download/${PKG_NAME}-${PKG_VERSION}.tar.gz"
-PKG_DEPENDS_HOST=""
-PKG_DEPENDS_TARGET="toolchain"
+PKG_LICENSE="GPL"
+PKG_SITE="https://github.com/yavdr/vdr-plugin-restfulapi.git"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain vdr cxxtools vdr-wirbelscan"
 PKG_PRIORITY="optional"
-PKG_SECTION="python/web"
-PKG_SHORTDESC="cxxtools: a collection of general-purpose C++ classes"
-PKG_LONGDESC="Cxxtools is a collection of general-purpose C++ classes"
+PKG_SECTION="multimedia"
+PKG_SHORTDESC="vdr-plugin-restfulapi: the restful API for the VDR/"
+PKG_LONGDESC="vdr-plugin-restfulapi allows to access many internals of the VDR via a restful API"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_CONFIGURE_OPTS_HOST="--disable-demos --with-atomictype=pthread --disable-unittest"
-PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared --disable-demos --with-atomictype=pthread --disable-unittest"
-
 pre_configure_target() {
-  CFLAGS="$CFLAGS -fPIC"
-  CXXFLAGS="$CXXFLAGS -fPIC"
-  LDFLAGS="$LDFLAGS -fPIC"
+  export CFLAGS="$CFLAGS -fPIC -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
+  export CXXFLAGS="$CXXFLAGS -fPIC -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
+  export LDFLAGS="$LDFLAGS -fPIC -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
 }
 
-
-post_makeinstall_host() {
-  rm -rf $TOOLCHAIN/bin/cxxtools-config
+pre_make_target() {
+  # dont build parallel
+  MAKEFLAGS=-j1
 }
 
-post_makeinstall_target() {
-  rm -rf $SYSROOT_PREFIX/usr/bin/cxxtools-config
-  rm -rf $INSTALL/usr/bin
+make_target() {
+  #VDR_DIR=$(get_build_dir vdr)
+  VDR_DIR=$ROOT/$BUILD/vdr-2db7397
+  make VDRDIR=$VDR_DIR \
+    LIBDIR="." \
+    LOCALEDIR="./locale"
+}
+
+makeinstall_target() {
+  : # installation not needed, done by create-addon script
 }

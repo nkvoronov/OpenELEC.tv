@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="tvheadend-addon"
-PKG_VERSION="3.9.2182"
-PKG_REV="6"
+PKG_VERSION="3.9.2427"
+PKG_REV="8"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
-PKG_URL="$DISTRO_SRC/${PKG_NAME}-${PKG_VERSION}.tar.gz"
+PKG_URL="$DISTRO_SRC/tvheadend-${PKG_VERSION}.tar.gz"
+PKG_SOURCE_DIR="${PKG_NAME}_${PKG_VERSION}"
 PKG_DEPENDS_TARGET="toolchain libressl curl"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/multimedia"

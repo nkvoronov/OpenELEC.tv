@@ -16,38 +16,37 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="cxxtools"
-PKG_VERSION="2.2.1"
+PKG_NAME="vdr-plugin-epgfixer"
+PKG_VERSION="1ad4aaf"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL-2"
-PKG_SITE="http://www.tntnet.org/cxxtools.html"
-PKG_URL="http://www.tntnet.org/download/${PKG_NAME}-${PKG_VERSION}.tar.gz"
-PKG_DEPENDS_HOST=""
-PKG_DEPENDS_TARGET="toolchain"
+PKG_LICENSE="GPL"
+PKG_SITE="http://projects.vdr-developer.org/projects/plg-epgfixer"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain vdr pcre"
 PKG_PRIORITY="optional"
-PKG_SECTION="python/web"
-PKG_SHORTDESC="cxxtools: a collection of general-purpose C++ classes"
-PKG_LONGDESC="Cxxtools is a collection of general-purpose C++ classes"
+PKG_SECTION="multimedia"
+PKG_SHORTDESC="vdr-plugin-epgfixer"
+PKG_LONGDESC="Plugin for modifying EPG data using regular expressions."
 
 PKG_IS_ADDON="no"
+
 PKG_AUTORECONF="no"
 
-PKG_CONFIGURE_OPTS_HOST="--disable-demos --with-atomictype=pthread --disable-unittest"
-PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared --disable-demos --with-atomictype=pthread --disable-unittest"
-
 pre_configure_target() {
-  CFLAGS="$CFLAGS -fPIC"
-  CXXFLAGS="$CXXFLAGS -fPIC"
-  LDFLAGS="$LDFLAGS -fPIC"
+  export CFLAGS="$CFLAGS -fPIC"
+  export CXXFLAGS="$CXXFLAGS -fPIC"
+  export LDFLAGS="$LDFLAGS -fPIC"
 }
 
-
-post_makeinstall_host() {
-  rm -rf $TOOLCHAIN/bin/cxxtools-config
+make_target() {
+  #VDR_DIR=$(get_build_dir vdr)
+  VDR_DIR=$ROOT/$BUILD/vdr-2db7397
+  make VDRDIR=$VDR_DIR \
+    LIBDIR="." \
+    LOCALEDIR="./locale"
 }
 
-post_makeinstall_target() {
-  rm -rf $SYSROOT_PREFIX/usr/bin/cxxtools-config
-  rm -rf $INSTALL/usr/bin
+makeinstall_target() {
+  : # installation not needed, done by create-addon script
 }

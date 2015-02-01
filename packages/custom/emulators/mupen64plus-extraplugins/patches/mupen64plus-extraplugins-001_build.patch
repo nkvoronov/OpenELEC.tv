@@ -1,6 +1,6 @@
 diff -Naur a/src/source/mupen64plus-rsp-z64/projects/unix/Makefile b/src/source/mupen64plus-rsp-z64/projects/unix/Makefile
 --- a/src/source/mupen64plus-rsp-z64/projects/unix/Makefile	2013-07-05 05:20:40.000000000 +0300
-+++ b/src/source/mupen64plus-rsp-z64/projects/unix/Makefile	2015-01-24 16:34:36.422133254 +0200
++++ b/src/source/mupen64plus-rsp-z64/projects/unix/Makefile	2015-02-01 20:41:15.259558680 +0200
 @@ -214,8 +214,8 @@
  endif
  
@@ -14,7 +14,7 @@ diff -Naur a/src/source/mupen64plus-rsp-z64/projects/unix/Makefile b/src/source/
  MKDIR ?= mkdir -p
 diff -Naur a/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile b/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile
 --- a/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile	2013-07-05 05:03:20.000000000 +0300
-+++ b/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile	2015-01-24 16:35:07.850132536 +0200
++++ b/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile	2015-02-01 20:41:33.479558264 +0200
 @@ -239,8 +239,8 @@
  endif
  
@@ -28,7 +28,7 @@ diff -Naur a/src/source/mupen64plus-video-arachnoid/projects/unix/Makefile b/src
  MKDIR ?= mkdir -p
 diff -Naur a/src/source/mupen64plus-video-glide64/projects/unix/Makefile b/src/source/mupen64plus-video-glide64/projects/unix/Makefile
 --- a/src/source/mupen64plus-video-glide64/projects/unix/Makefile	2013-07-05 05:18:45.000000000 +0300
-+++ b/src/source/mupen64plus-video-glide64/projects/unix/Makefile	2015-01-24 16:35:36.554131879 +0200
++++ b/src/source/mupen64plus-video-glide64/projects/unix/Makefile	2015-02-01 20:41:50.503557875 +0200
 @@ -260,8 +260,8 @@
  endif
  
@@ -40,9 +40,78 @@ diff -Naur a/src/source/mupen64plus-video-glide64/projects/unix/Makefile b/src/s
  RM       ?= rm -f
  INSTALL  ?= install
  MKDIR ?= mkdir -p
+diff -Naur a/src/source/mupen64plus-video-glide64/src/Gfx1.3.h b/src/source/mupen64plus-video-glide64/src/Gfx1.3.h
+--- a/src/source/mupen64plus-video-glide64/src/Gfx1.3.h	2013-07-05 05:18:45.000000000 +0300
++++ b/src/source/mupen64plus-video-glide64/src/Gfx1.3.h	2015-02-01 21:03:37.491527990 +0200
+@@ -146,7 +146,7 @@
+ #ifdef WIN32
+ #define LOGKEY      VK_LCONTROL     // this key
+ #else
+-#include <SDL.h>
++#include <SDL/SDL.h>
+ #define LOGKEY KMOD_LCTRL
+ inline int GetAsyncKeyState(int key) {
+   return (SDL_GetModState() & key) != 0;
+diff -Naur a/src/source/mupen64plus-video-glide64/src/wrapper/config.cpp b/src/source/mupen64plus-video-glide64/src/wrapper/config.cpp
+--- a/src/source/mupen64plus-video-glide64/src/wrapper/config.cpp	2013-07-05 05:18:45.000000000 +0300
++++ b/src/source/mupen64plus-video-glide64/src/wrapper/config.cpp	2015-02-01 21:04:17.543527074 +0200
+@@ -20,7 +20,7 @@
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ 
+ 
+-#include <SDL_opengl.h>
++#include <SDL/SDL_opengl.h>
+ 
+ #include "glide.h"
+ #include "main.h"
+diff -Naur a/src/source/mupen64plus-video-glide64/src/wrapper/geometry.cpp b/src/source/mupen64plus-video-glide64/src/wrapper/geometry.cpp
+--- a/src/source/mupen64plus-video-glide64/src/wrapper/geometry.cpp	2013-07-05 05:18:45.000000000 +0300
++++ b/src/source/mupen64plus-video-glide64/src/wrapper/geometry.cpp	2015-02-01 21:04:46.879526403 +0200
+@@ -254,7 +254,7 @@
+     glDepthMask(mask);
+ }
+ 
+-#include <SDL.h>
++#include <SDL/SDL.h>
+ float biasFactor = 0;
+ void FindBestDepthBias()
+ {
+diff -Naur a/src/source/mupen64plus-video-glide64/src/wrapper/main.cpp b/src/source/mupen64plus-video-glide64/src/wrapper/main.cpp
+--- a/src/source/mupen64plus-video-glide64/src/wrapper/main.cpp	2013-07-05 05:18:45.000000000 +0300
++++ b/src/source/mupen64plus-video-glide64/src/wrapper/main.cpp	2015-02-01 21:05:20.991525623 +0200
+@@ -27,7 +27,7 @@
+ #include <stdarg.h>
+ #include <string.h>
+ 
+-#include <SDL.h>
++#include <SDL/SDL.h>
+ 
+ #include "glide.h"
+ #include "main.h"
+diff -Naur a/src/source/mupen64plus-video-glide64/src/wrapper/main.h b/src/source/mupen64plus-video-glide64/src/wrapper/main.h
+--- a/src/source/mupen64plus-video-glide64/src/wrapper/main.h	2013-07-05 05:18:45.000000000 +0300
++++ b/src/source/mupen64plus-video-glide64/src/wrapper/main.h	2015-02-01 21:05:57.195524796 +0200
+@@ -25,7 +25,7 @@
+ #include "../m64p.h"
+ 
+ #ifdef WIN32
+-    #include <SDL_opengl.h>
++    #include <SDL/SDL_opengl.h>
+     extern PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
+     extern PFNGLATTACHOBJECTARBPROC glAttachObjectARB;
+     extern PFNGLBINDFRAMEBUFFEREXTPROC glBindFramebufferEXT;
+@@ -56,7 +56,7 @@
+     extern PFNGLUSEPROGRAMOBJECTARBPROC glUseProgramObjectARB;
+ #else
+     #define GL_GLEXT_PROTOTYPES
+-    #include <SDL_opengl.h>
++    #include <SDL/SDL_opengl.h>
+ #endif
+ 
+ 
 diff -Naur a/src/source/mupen64plus-video-z64/projects/unix/Makefile b/src/source/mupen64plus-video-z64/projects/unix/Makefile
 --- a/src/source/mupen64plus-video-z64/projects/unix/Makefile	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/projects/unix/Makefile	2015-01-24 16:36:02.386131289 +0200
++++ b/src/source/mupen64plus-video-z64/projects/unix/Makefile	2015-02-01 20:42:14.083557335 +0200
 @@ -269,8 +269,8 @@
  endif
  
@@ -56,7 +125,7 @@ diff -Naur a/src/source/mupen64plus-video-z64/projects/unix/Makefile b/src/sourc
  MKDIR ?= mkdir -p
 diff -Naur a/src/source/mupen64plus-video-z64/src/glshader.cpp b/src/source/mupen64plus-video-z64/src/glshader.cpp
 --- a/src/source/mupen64plus-video-z64/src/glshader.cpp	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/glshader.cpp	2015-01-24 16:43:42.950120758 +0200
++++ b/src/source/mupen64plus-video-z64/src/glshader.cpp	2015-02-01 20:59:14.607534001 +0200
 @@ -23,7 +23,7 @@
  #include <stdio.h>
  #include <string.h>
@@ -68,55 +137,67 @@ diff -Naur a/src/source/mupen64plus-video-z64/src/glshader.cpp b/src/source/mupe
  #include <OpenGL/glext.h>
 diff -Naur a/src/source/mupen64plus-video-z64/src/maingl.cpp b/src/source/mupen64plus-video-z64/src/maingl.cpp
 --- a/src/source/mupen64plus-video-z64/src/maingl.cpp	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/maingl.cpp	2015-01-24 16:44:04.326120269 +0200
++++ b/src/source/mupen64plus-video-z64/src/maingl.cpp	2015-02-01 20:49:28.003547414 +0200
 @@ -22,7 +22,7 @@
  #include "rdp.h"
  #include "rgl.h"
  #include "osal_dynamiclib.h"
 -#include <SDL.h>
-+#include <SDL2/SDL.h>
++#include <SDL/SDL.h>
  
  #define THREADED
  
 diff -Naur a/src/source/mupen64plus-video-z64/src/rgl.cpp b/src/source/mupen64plus-video-z64/src/rgl.cpp
 --- a/src/source/mupen64plus-video-z64/src/rgl.cpp	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/rgl.cpp	2015-01-24 16:45:19.162118558 +0200
++++ b/src/source/mupen64plus-video-z64/src/rgl.cpp	2015-02-01 20:50:49.547545549 +0200
 @@ -79,7 +79,7 @@
  #include "rdp.h"
  #include "rgl.h"
  
 -#include <SDL.h>
-+#include <SDL2/SDL.h>
++#include <SDL/SDL.h>
  
  //#define NOFBO
  #define ZTEX
+diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_debugger.cpp b/src/source/mupen64plus-video-z64/src/rgl_debugger.cpp
+--- a/src/source/mupen64plus-video-z64/src/rgl_debugger.cpp	2013-07-05 05:23:14.000000000 +0300
++++ b/src/source/mupen64plus-video-z64/src/rgl_debugger.cpp	2015-02-01 20:54:32.875540443 +0200
+@@ -133,7 +133,7 @@
+ 
+ #ifdef RDP_DEBUG
+ 
+-#include <SDL.h>
++#include <SDL/SDL.h>
+ //#include <IL/il.h>
+ #include <assert.h>
+ 
 diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp b/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp
 --- a/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp	2015-01-24 16:41:13.882124166 +0200
++++ b/src/source/mupen64plus-video-z64/src/rgl_geometry.cpp	2015-02-01 20:54:50.395540042 +0200
 @@ -22,7 +22,7 @@
  #include "rdp.h"
  #include "rgl.h"
  
 -#include <SDL.h>
-+#include <SDL2/SDL.h>
++#include <SDL/SDL.h>
  
  inline float _zscale(uint16_t z)
  {
 diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_glut.cpp b/src/source/mupen64plus-video-z64/src/rgl_glut.cpp
 --- a/src/source/mupen64plus-video-z64/src/rgl_glut.cpp	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/rgl_glut.cpp	2015-01-24 16:41:34.426123697 +0200
++++ b/src/source/mupen64plus-video-z64/src/rgl_glut.cpp	2015-02-01 20:55:12.031539547 +0200
 @@ -21,7 +21,7 @@
  
  #include <string.h>
  
 -#include <SDL.h>
-+#include <SDL2/SDL.h>
++#include <SDL/SDL.h>
  
  #include "rgl_glut.h"
  
 diff -Naur a/src/source/mupen64plus-video-z64/src/rgl.h b/src/source/mupen64plus-video-z64/src/rgl.h
 --- a/src/source/mupen64plus-video-z64/src/rgl.h	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/rgl.h	2015-01-24 16:40:30.802125151 +0200
++++ b/src/source/mupen64plus-video-z64/src/rgl.h	2015-02-01 20:58:19.415535263 +0200
 @@ -26,7 +26,7 @@
  #include "rgl_assert.h"
  #include "rdp.h"
@@ -128,37 +209,37 @@ diff -Naur a/src/source/mupen64plus-video-z64/src/rgl.h b/src/source/mupen64plus
  #elif defined(__MACOS__)
 diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp b/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp
 --- a/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp	2015-01-24 16:41:52.882123275 +0200
++++ b/src/source/mupen64plus-video-z64/src/rgl_osdep.cpp	2015-02-01 20:55:33.363539060 +0200
 @@ -22,7 +22,7 @@
  #include "rdp.h"
  #include "rgl.h"
  
 -#include <SDL.h>
-+#include <SDL2/SDL.h>
++#include <SDL/SDL.h>
  
  SDL_Surface *sdl_Screen;
  int viewportOffset;
 diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp b/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp
 --- a/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp	2015-01-24 16:42:04.922122999 +0200
++++ b/src/source/mupen64plus-video-z64/src/rgl_rendermode.cpp	2015-02-01 20:55:52.095538631 +0200
 @@ -22,7 +22,7 @@
  #include "rdp.h"
  #include "rgl.h"
  
 -#include <SDL.h>
-+#include <SDL2/SDL.h>
++#include <SDL/SDL.h>
  
  void rglRenderMode(rglRenderChunk_t & chunk)
  {
 diff -Naur a/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp b/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp
 --- a/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp	2013-07-05 05:23:14.000000000 +0300
-+++ b/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp	2015-01-24 16:42:22.658122594 +0200
++++ b/src/source/mupen64plus-video-z64/src/rgl_tiles.cpp	2015-02-01 20:56:06.675538298 +0200
 @@ -22,7 +22,7 @@
  #include "rdp.h"
  #include "rgl.h"
  
 -#include <SDL.h>
-+#include <SDL2/SDL.h>
++#include <SDL/SDL.h>
  
  rglTextureHead_t freeTextures;
  rglTextureHead_t texturesByCrc[256];
