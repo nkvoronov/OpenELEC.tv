@@ -66,7 +66,11 @@ post_install() {
       cp -P $PKG_BUILD/bin/$TARGET_ARCH/mupen64plus-*.so $INSTALL/usr/lib
     fi
 
-    cp -P $ROOT/$BUILD/SDL-1.2.15/.$TARGET_CPU-openelec-linux-gnu/build/.libs/libSDL-1.2.so.* $INSTALL/usr/lib
+  if [ "$TARGET_ARCH" = "i386" ]; then
+    cp -P $ROOT/$BUILD/SDL-1.2.15/.i686-openelec-linux-gnu/build/.libs/libSDL-1.2.so.* $INSTALL/usr/lib
+  elif [ "$TARGET_ARCH" = "x86_64" ]; then
+    cp -P $ROOT/$BUILD/SDL-1.2.15/.x86_64-openelec-linux-gnu/build/.libs/libSDL-1.2.so.* $INSTALL/usr/lib
+  fi
 
   mkdir -p $INSTALL/usr/config/mupen64plus
     cp -P $PKG_DIR/config/* $INSTALL/usr/config/mupen64plus
