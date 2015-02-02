@@ -34,13 +34,9 @@ PKG_LONGDESC="Nintendo 64 emulator"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-BUILD_SRC="yes"
-
 make_target() {
-  if [ "$BUILD_SRC" = yes ]; then
-    cd $ROOT/$PKG_BUILD/src
-    ./m64p_build.sh V=1 LIRC=1
-  fi
+  cd $ROOT/$PKG_BUILD
+  ./m64p_build.sh V=1 LIRC=1
 }
 
 makeinstall_target() {
@@ -51,20 +47,11 @@ post_install() {
 
   mkdir -p $INSTALL/usr/bin
     cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
-    if [ "$BUILD_SRC" = yes ]; then
-      cp -P $PKG_BUILD/src/test/mupen64plus $INSTALL/usr/bin
-    else
-      cp -P $PKG_BUILD/bin/$TARGET_ARCH/mupen64plus $INSTALL/usr/bin
-    fi
+    cp -P $PKG_BUILD/test/mupen64plus $INSTALL/usr/bin
 
   mkdir -p $INSTALL/usr/lib
-    if [ "$BUILD_SRC" = yes ]; then
-      cp -P $PKG_BUILD/src/test/libmupen64plus.so.* $INSTALL/usr/lib
-      cp -P $PKG_BUILD/src/test/mupen64plus-*.so $INSTALL/usr/lib
-    else
-      cp -P $PKG_BUILD/bin/$TARGET_ARCH/libmupen64plus.so.* $INSTALL/usr/lib
-      cp -P $PKG_BUILD/bin/$TARGET_ARCH/mupen64plus-*.so $INSTALL/usr/lib
-    fi
+    cp -P $PKG_BUILD/test/libmupen64plus.so.* $INSTALL/usr/lib
+    cp -P $PKG_BUILD/test/mupen64plus-*.so $INSTALL/usr/lib
 
   if [ "$TARGET_ARCH" = "i386" ]; then
     cp -P $ROOT/$BUILD/SDL-1.2.15/.i686-openelec-linux-gnu/build/.libs/libSDL-1.2.so.* $INSTALL/usr/lib
@@ -74,16 +61,10 @@ post_install() {
 
   mkdir -p $INSTALL/usr/config/mupen64plus
     cp -P $PKG_DIR/config/* $INSTALL/usr/config/mupen64plus
-    if [ "$BUILD_SRC" = yes ]; then
-      cp -PR $PKG_BUILD/src/test/*.ini $INSTALL/usr/config/mupen64plus
-      cp -P $PKG_BUILD/src/test/mupen64plus.cht $INSTALL/usr/config/mupen64plus
-      cp -P $PKG_BUILD/src/test/font.ttf $INSTALL/usr/config/mupen64plus
-      cp -P $PKG_BUILD/src/test/m64p_test_rom.v64 $INSTALL/usr/config/mupen64plus
-    else
-      cp -PR $PKG_BUILD/bin/$TARGET_ARCH/*.ini $INSTALL/usr/config/mupen64plus
-      cp -P $PKG_BUILD/bin/$TARGET_ARCH/mupen64plus.cht $INSTALL/usr/config/mupen64plus
-      cp -P $PKG_BUILD/bin/$TARGET_ARCH/font.ttf $INSTALL/usr/config/mupen64plus
-      cp -P $PKG_BUILD/bin/$TARGET_ARCH/m64p_test_rom.v64 $INSTALL/usr/config/mupen64plus
-    fi
+    cp -PR $PKG_BUILD/test/*.ini $INSTALL/usr/config/mupen64plus
+    cp -P $PKG_BUILD/test/mupen64plus.cht $INSTALL/usr/config/mupen64plus
+    cp -P $PKG_BUILD/test/mupencheat.txt $INSTALL/usr/config/mupen64plus
+    cp -P $PKG_BUILD/test/font.ttf $INSTALL/usr/config/mupen64plus
+    cp -P $PKG_BUILD/test/m64p_test_rom.v64 $INSTALL/usr/config/mupen64plus
 
 }

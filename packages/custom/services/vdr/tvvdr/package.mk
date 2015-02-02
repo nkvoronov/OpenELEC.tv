@@ -18,8 +18,8 @@
 ################################################################################
 
 PKG_NAME="tvvdr"
-PKG_VERSION="4.0"
-PKG_REV="6"
+PKG_VERSION="5.0"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -194,7 +194,7 @@ makeinstall_target() {
 
 post_install() {
 
-  VDR_DIR=$ROOT/$BUILD/vdr-2db7397
+  VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
 
   mkdir -p $INSTALL/usr/bin
     cp -P $VDR_DIR/vdr $INSTALL/usr/bin/vdr.bin

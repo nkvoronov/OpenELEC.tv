@@ -1,6 +1,6 @@
-diff -Naur a/src/source/mupen64plus-audio-sdl/projects/unix/Makefile b/src/source/mupen64plus-audio-sdl/projects/unix/Makefile
---- a/src/source/mupen64plus-audio-sdl/projects/unix/Makefile	2013-07-04 03:28:02.000000000 +0300
-+++ b/src/source/mupen64plus-audio-sdl/projects/unix/Makefile	2015-02-01 14:19:43.192082113 +0200
+diff -Naur a/source/mupen64plus-audio-sdl/projects/unix/Makefile b/source/mupen64plus-audio-sdl/projects/unix/Makefile
+--- a/source/mupen64plus-audio-sdl/projects/unix/Makefile	2013-07-04 03:28:02.000000000 +0300
++++ b/source/mupen64plus-audio-sdl/projects/unix/Makefile	2015-02-01 14:19:43.192082113 +0200
 @@ -264,8 +264,8 @@
  endif
  
@@ -12,9 +12,9 @@ diff -Naur a/src/source/mupen64plus-audio-sdl/projects/unix/Makefile b/src/sourc
  INSTALL  ?= install
  MKDIR ?= mkdir -p
  COMPILE.c = $(Q_CC)$(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
-diff -Naur a/src/source/mupen64plus-audio-sdl/src/main.c b/src/source/mupen64plus-audio-sdl/src/main.c
---- a/src/source/mupen64plus-audio-sdl/src/main.c	2013-07-04 03:28:02.000000000 +0300
-+++ b/src/source/mupen64plus-audio-sdl/src/main.c	2015-02-01 17:51:28.339791607 +0200
+diff -Naur a/source/mupen64plus-audio-sdl/src/main.c b/source/mupen64plus-audio-sdl/src/main.c
+--- a/source/mupen64plus-audio-sdl/src/main.c	2013-07-04 03:28:02.000000000 +0300
++++ b/source/mupen64plus-audio-sdl/src/main.c	2015-02-01 17:51:28.339791607 +0200
 @@ -26,8 +26,8 @@
  #include <stdlib.h>
  #include <string.h>
@@ -26,9 +26,9 @@ diff -Naur a/src/source/mupen64plus-audio-sdl/src/main.c b/src/source/mupen64plu
  
  #ifdef USE_SRC
  #include <samplerate.h>
-diff -Naur a/src/source/mupen64plus-core/projects/unix/Makefile b/src/source/mupen64plus-core/projects/unix/Makefile
---- a/src/source/mupen64plus-core/projects/unix/Makefile	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/projects/unix/Makefile	2015-02-01 14:19:23.632082560 +0200
+diff -Naur a/source/mupen64plus-core/projects/unix/Makefile b/source/mupen64plus-core/projects/unix/Makefile
+--- a/source/mupen64plus-core/projects/unix/Makefile	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/projects/unix/Makefile	2015-02-01 14:19:23.632082560 +0200
 @@ -284,8 +284,8 @@
  endif
  
@@ -40,9 +40,9 @@ diff -Naur a/src/source/mupen64plus-core/projects/unix/Makefile b/src/source/mup
  RM       ?= rm -f
  INSTALL  ?= install
  MKDIR ?= mkdir -p
-diff -Naur a/src/source/mupen64plus-core/src/api/frontend.c b/src/source/mupen64plus-core/src/api/frontend.c
---- a/src/source/mupen64plus-core/src/api/frontend.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/api/frontend.c	2015-02-01 17:54:08.051787955 +0200
+diff -Naur a/source/mupen64plus-core/src/api/frontend.c b/source/mupen64plus-core/src/api/frontend.c
+--- a/source/mupen64plus-core/src/api/frontend.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/api/frontend.c	2015-02-01 17:54:08.051787955 +0200
 @@ -27,7 +27,7 @@
  #include <stdlib.h>
  #include <string.h>
@@ -52,9 +52,9 @@ diff -Naur a/src/source/mupen64plus-core/src/api/frontend.c b/src/source/mupen64
  
  #define M64P_CORE_PROTOTYPES 1
  #include "m64p_types.h"
-diff -Naur a/src/source/mupen64plus-core/src/api/vidext.c b/src/source/mupen64plus-core/src/api/vidext.c
---- a/src/source/mupen64plus-core/src/api/vidext.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/api/vidext.c	2015-02-01 17:55:38.523785886 +0200
+diff -Naur a/source/mupen64plus-core/src/api/vidext.c b/source/mupen64plus-core/src/api/vidext.c
+--- a/source/mupen64plus-core/src/api/vidext.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/api/vidext.c	2015-02-01 17:55:38.523785886 +0200
 @@ -25,7 +25,7 @@
  
  #include <stdlib.h>
@@ -64,9 +64,9 @@ diff -Naur a/src/source/mupen64plus-core/src/api/vidext.c b/src/source/mupen64pl
  
  #define M64P_CORE_PROTOTYPES 1
  #include "m64p_types.h"
-diff -Naur a/src/source/mupen64plus-core/src/api/vidext_sdl2_compat.h b/src/source/mupen64plus-core/src/api/vidext_sdl2_compat.h
---- a/src/source/mupen64plus-core/src/api/vidext_sdl2_compat.h	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/api/vidext_sdl2_compat.h	2015-02-01 18:02:06.207777022 +0200
+diff -Naur a/source/mupen64plus-core/src/api/vidext_sdl2_compat.h b/source/mupen64plus-core/src/api/vidext_sdl2_compat.h
+--- a/source/mupen64plus-core/src/api/vidext_sdl2_compat.h	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/api/vidext_sdl2_compat.h	2015-02-01 18:02:06.207777022 +0200
 @@ -19,7 +19,7 @@
    3. This notice may not be removed or altered from any source distribution.
  */
@@ -76,9 +76,9 @@ diff -Naur a/src/source/mupen64plus-core/src/api/vidext_sdl2_compat.h b/src/sour
  
  typedef struct
  {
-diff -Naur a/src/source/mupen64plus-core/src/debugger/dbg_breakpoints.c b/src/source/mupen64plus-core/src/debugger/dbg_breakpoints.c
---- a/src/source/mupen64plus-core/src/debugger/dbg_breakpoints.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/debugger/dbg_breakpoints.c	2015-02-01 17:56:22.531784880 +0200
+diff -Naur a/source/mupen64plus-core/src/debugger/dbg_breakpoints.c b/source/mupen64plus-core/src/debugger/dbg_breakpoints.c
+--- a/source/mupen64plus-core/src/debugger/dbg_breakpoints.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/debugger/dbg_breakpoints.c	2015-02-01 17:56:22.531784880 +0200
 @@ -19,8 +19,8 @@
   *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.          *
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -90,9 +90,9 @@ diff -Naur a/src/source/mupen64plus-core/src/debugger/dbg_breakpoints.c b/src/so
  
  #include "dbg_types.h"
  #include "debugger.h"
-diff -Naur a/src/source/mupen64plus-core/src/debugger/debugger.c b/src/source/mupen64plus-core/src/debugger/debugger.c
---- a/src/source/mupen64plus-core/src/debugger/debugger.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/debugger/debugger.c	2015-02-01 17:57:47.607782935 +0200
+diff -Naur a/source/mupen64plus-core/src/debugger/debugger.c b/source/mupen64plus-core/src/debugger/debugger.c
+--- a/source/mupen64plus-core/src/debugger/debugger.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/debugger/debugger.c	2015-02-01 17:57:47.607782935 +0200
 @@ -20,7 +20,7 @@
   *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.          *
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -102,9 +102,9 @@ diff -Naur a/src/source/mupen64plus-core/src/debugger/debugger.c b/src/source/mu
  
  #include "api/debugger.h"
  
-diff -Naur a/src/source/mupen64plus-core/src/main/cheat.c b/src/source/mupen64plus-core/src/main/cheat.c
---- a/src/source/mupen64plus-core/src/main/cheat.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/cheat.c	2015-02-01 18:04:18.435773998 +0200
+diff -Naur a/source/mupen64plus-core/src/main/cheat.c b/source/mupen64plus-core/src/main/cheat.c
+--- a/source/mupen64plus-core/src/main/cheat.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/cheat.c	2015-02-01 18:04:18.435773998 +0200
 @@ -22,8 +22,8 @@
  
  // gameshark and xploder64 reference: http://doc.kodewerx.net/hacking_n64.html 
@@ -116,9 +116,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/cheat.c b/src/source/mupen64pl
  
  #include "api/m64p_types.h"
  #include "api/callbacks.h"
-diff -Naur a/src/source/mupen64plus-core/src/main/eventloop.c b/src/source/mupen64plus-core/src/main/eventloop.c
---- a/src/source/mupen64plus-core/src/main/eventloop.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/eventloop.c	2015-02-01 18:04:54.139773182 +0200
+diff -Naur a/source/mupen64plus-core/src/main/eventloop.c b/source/mupen64plus-core/src/main/eventloop.c
+--- a/source/mupen64plus-core/src/main/eventloop.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/eventloop.c	2015-02-01 18:04:54.139773182 +0200
 @@ -21,7 +21,7 @@
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
  
@@ -128,9 +128,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/eventloop.c b/src/source/mupen
  #if ! SDL_VERSION_ATLEAST(1,3,0)
  
  #define SDL_SCANCODE_ESCAPE SDLK_ESCAPE
-diff -Naur a/src/source/mupen64plus-core/src/main/main.c b/src/source/mupen64plus-core/src/main/main.c
---- a/src/source/mupen64plus-core/src/main/main.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/main.c	2015-02-01 18:05:30.827772343 +0200
+diff -Naur a/source/mupen64plus-core/src/main/main.c b/source/mupen64plus-core/src/main/main.c
+--- a/source/mupen64plus-core/src/main/main.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/main.c	2015-02-01 18:05:30.827772343 +0200
 @@ -31,7 +31,7 @@
  #include <string.h>
  #include <stdlib.h>
@@ -140,9 +140,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/main.c b/src/source/mupen64plu
  
  #define M64P_CORE_PROTOTYPES 1
  #include "api/m64p_types.h"
-diff -Naur a/src/source/mupen64plus-core/src/main/savestates.c b/src/source/mupen64plus-core/src/main/savestates.c
---- a/src/source/mupen64plus-core/src/main/savestates.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/savestates.c	2015-02-01 18:06:11.187771420 +0200
+diff -Naur a/source/mupen64plus-core/src/main/savestates.c b/source/mupen64plus-core/src/main/savestates.c
+--- a/source/mupen64plus-core/src/main/savestates.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/savestates.c	2015-02-01 18:06:11.187771420 +0200
 @@ -24,7 +24,7 @@
  
  #include <stdlib.h>
@@ -152,9 +152,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/savestates.c b/src/source/mupe
  
  #define M64P_CORE_PROTOTYPES 1
  #include "api/m64p_types.h"
-diff -Naur a/src/source/mupen64plus-core/src/main/workqueue.c b/src/source/mupen64plus-core/src/main/workqueue.c
---- a/src/source/mupen64plus-core/src/main/workqueue.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/workqueue.c	2015-02-01 18:06:40.019770761 +0200
+diff -Naur a/source/mupen64plus-core/src/main/workqueue.c b/source/mupen64plus-core/src/main/workqueue.c
+--- a/source/mupen64plus-core/src/main/workqueue.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/workqueue.c	2015-02-01 18:06:40.019770761 +0200
 @@ -22,8 +22,8 @@
  #include "workqueue.h"
  #include "api/callbacks.h"
@@ -166,9 +166,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/workqueue.c b/src/source/mupen
  
  #define WORKQUEUE_THREADS 1
  
-diff -Naur a/src/source/mupen64plus-core/src/main/zip/ioapi.h b/src/source/mupen64plus-core/src/main/zip/ioapi.h
---- a/src/source/mupen64plus-core/src/main/zip/ioapi.h	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/zip/ioapi.h	2015-02-01 19:41:16.383640969 +0200
+diff -Naur a/source/mupen64plus-core/src/main/zip/ioapi.h b/source/mupen64plus-core/src/main/zip/ioapi.h
+--- a/source/mupen64plus-core/src/main/zip/ioapi.h	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/zip/ioapi.h	2015-02-01 19:41:16.383640969 +0200
 @@ -43,7 +43,7 @@
  
  #include <stdio.h>
@@ -178,9 +178,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/zip/ioapi.h b/src/source/mupen
  
  #ifndef OF
  #define OF _Z_OF
-diff -Naur a/src/source/mupen64plus-core/src/main/zip/unzip.c b/src/source/mupen64plus-core/src/main/zip/unzip.c
---- a/src/source/mupen64plus-core/src/main/zip/unzip.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/zip/unzip.c	2015-02-01 19:41:39.463640442 +0200
+diff -Naur a/source/mupen64plus-core/src/main/zip/unzip.c b/source/mupen64plus-core/src/main/zip/unzip.c
+--- a/source/mupen64plus-core/src/main/zip/unzip.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/zip/unzip.c	2015-02-01 19:41:39.463640442 +0200
 @@ -72,7 +72,7 @@
          #define NOUNCRYPT
  #endif
@@ -190,9 +190,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/zip/unzip.c b/src/source/mupen
  #include "unzip.h"
  
  #ifdef STDC
-diff -Naur a/src/source/mupen64plus-core/src/main/zip/unzip.h b/src/source/mupen64plus-core/src/main/zip/unzip.h
---- a/src/source/mupen64plus-core/src/main/zip/unzip.h	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/zip/unzip.h	2015-02-01 19:37:50.107645686 +0200
+diff -Naur a/source/mupen64plus-core/src/main/zip/unzip.h b/source/mupen64plus-core/src/main/zip/unzip.h
+--- a/source/mupen64plus-core/src/main/zip/unzip.h	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/zip/unzip.h	2015-02-01 19:37:50.107645686 +0200
 @@ -48,7 +48,7 @@
  #endif
  
@@ -202,9 +202,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/zip/unzip.h b/src/source/mupen
  #endif
  
  #ifndef  _ZLIBIOAPI_H
-diff -Naur a/src/source/mupen64plus-core/src/main/zip/zip.c b/src/source/mupen64plus-core/src/main/zip/zip.c
---- a/src/source/mupen64plus-core/src/main/zip/zip.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/zip/zip.c	2015-02-01 19:42:15.243639624 +0200
+diff -Naur a/source/mupen64plus-core/src/main/zip/zip.c b/source/mupen64plus-core/src/main/zip/zip.c
+--- a/source/mupen64plus-core/src/main/zip/zip.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/zip/zip.c	2015-02-01 19:42:15.243639624 +0200
 @@ -26,7 +26,7 @@
  #include <stdlib.h>
  #include <string.h>
@@ -214,9 +214,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/zip/zip.c b/src/source/mupen64
  #include "zip.h"
  
  #ifdef STDC
-diff -Naur a/src/source/mupen64plus-core/src/main/zip/zip.h b/src/source/mupen64plus-core/src/main/zip/zip.h
---- a/src/source/mupen64plus-core/src/main/zip/zip.h	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/main/zip/zip.h	2015-02-01 19:42:33.135639215 +0200
+diff -Naur a/source/mupen64plus-core/src/main/zip/zip.h b/source/mupen64plus-core/src/main/zip/zip.h
+--- a/source/mupen64plus-core/src/main/zip/zip.h	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/main/zip/zip.h	2015-02-01 19:42:33.135639215 +0200
 @@ -47,7 +47,7 @@
  //#define HAVE_BZIP2
  
@@ -226,9 +226,9 @@ diff -Naur a/src/source/mupen64plus-core/src/main/zip/zip.h b/src/source/mupen64
  #endif
  
  #ifndef _ZLIBIOAPI_H
-diff -Naur a/src/source/mupen64plus-core/src/osd/OGLFT.h b/src/source/mupen64plus-core/src/osd/OGLFT.h
---- a/src/source/mupen64plus-core/src/osd/OGLFT.h	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/osd/OGLFT.h	2015-02-01 18:08:47.627767843 +0200
+diff -Naur a/source/mupen64plus-core/src/osd/OGLFT.h b/source/mupen64plus-core/src/osd/OGLFT.h
+--- a/source/mupen64plus-core/src/osd/OGLFT.h	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/osd/OGLFT.h	2015-02-01 18:08:47.627767843 +0200
 @@ -30,7 +30,7 @@
  #include <wchar.h>
  
@@ -238,9 +238,9 @@ diff -Naur a/src/source/mupen64plus-core/src/osd/OGLFT.h b/src/source/mupen64plu
  #if defined(__MACOSX__)
  #include <OpenGL/glu.h>
  #elif defined(__MACOS__)
-diff -Naur a/src/source/mupen64plus-core/src/osd/osd.cpp b/src/source/mupen64plus-core/src/osd/osd.cpp
---- a/src/source/mupen64plus-core/src/osd/osd.cpp	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/osd/osd.cpp	2015-02-01 18:09:21.859767060 +0200
+diff -Naur a/source/mupen64plus-core/src/osd/osd.cpp b/source/mupen64plus-core/src/osd/osd.cpp
+--- a/source/mupen64plus-core/src/osd/osd.cpp	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/osd/osd.cpp	2015-02-01 18:09:21.859767060 +0200
 @@ -20,8 +20,8 @@
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
  
@@ -252,9 +252,9 @@ diff -Naur a/src/source/mupen64plus-core/src/osd/osd.cpp b/src/source/mupen64plu
  
  #include "OGLFT.h"
  #include "osd.h"
-diff -Naur a/src/source/mupen64plus-core/src/osd/screenshot.cpp b/src/source/mupen64plus-core/src/osd/screenshot.cpp
---- a/src/source/mupen64plus-core/src/osd/screenshot.cpp	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/osd/screenshot.cpp	2015-02-01 18:09:56.419766270 +0200
+diff -Naur a/source/mupen64plus-core/src/osd/screenshot.cpp b/source/mupen64plus-core/src/osd/screenshot.cpp
+--- a/source/mupen64plus-core/src/osd/screenshot.cpp	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/osd/screenshot.cpp	2015-02-01 18:09:56.419766270 +0200
 @@ -24,8 +24,8 @@
  #include <stdio.h>
  #include <ctype.h>
@@ -266,9 +266,9 @@ diff -Naur a/src/source/mupen64plus-core/src/osd/screenshot.cpp b/src/source/mup
  #include <png.h>
  
  #include "osd.h"
-diff -Naur a/src/source/mupen64plus-core/src/r4300/interupt.c b/src/source/mupen64plus-core/src/r4300/interupt.c
---- a/src/source/mupen64plus-core/src/r4300/interupt.c	2013-07-04 03:27:56.000000000 +0300
-+++ b/src/source/mupen64plus-core/src/r4300/interupt.c	2015-02-01 18:11:04.363764717 +0200
+diff -Naur a/source/mupen64plus-core/src/r4300/interupt.c b/source/mupen64plus-core/src/r4300/interupt.c
+--- a/source/mupen64plus-core/src/r4300/interupt.c	2013-07-04 03:27:56.000000000 +0300
++++ b/source/mupen64plus-core/src/r4300/interupt.c	2015-02-01 18:11:04.363764717 +0200
 @@ -21,7 +21,7 @@
  
  #include <stdlib.h>
@@ -278,9 +278,9 @@ diff -Naur a/src/source/mupen64plus-core/src/r4300/interupt.c b/src/source/mupen
  
  #define M64P_CORE_PROTOTYPES 1
  #include "api/m64p_types.h"
-diff -Naur a/src/source/mupen64plus-input-sdl/projects/unix/Makefile b/src/source/mupen64plus-input-sdl/projects/unix/Makefile
---- a/src/source/mupen64plus-input-sdl/projects/unix/Makefile	2013-07-04 03:28:05.000000000 +0300
-+++ b/src/source/mupen64plus-input-sdl/projects/unix/Makefile	2015-02-01 14:20:02.712081666 +0200
+diff -Naur a/source/mupen64plus-input-sdl/projects/unix/Makefile b/source/mupen64plus-input-sdl/projects/unix/Makefile
+--- a/source/mupen64plus-input-sdl/projects/unix/Makefile	2013-07-04 03:28:05.000000000 +0300
++++ b/source/mupen64plus-input-sdl/projects/unix/Makefile	2015-02-01 14:20:02.712081666 +0200
 @@ -214,8 +214,8 @@
  endif
  
@@ -292,9 +292,9 @@ diff -Naur a/src/source/mupen64plus-input-sdl/projects/unix/Makefile b/src/sourc
  RM       ?= rm -f
  INSTALL  ?= install
  MKDIR ?= mkdir -p
-diff -Naur a/src/source/mupen64plus-input-sdl/src/config.c b/src/source/mupen64plus-input-sdl/src/config.c
---- a/src/source/mupen64plus-input-sdl/src/config.c	2013-07-04 03:28:05.000000000 +0300
-+++ b/src/source/mupen64plus-input-sdl/src/config.c	2015-02-01 18:18:44.683754191 +0200
+diff -Naur a/source/mupen64plus-input-sdl/src/config.c b/source/mupen64plus-input-sdl/src/config.c
+--- a/source/mupen64plus-input-sdl/src/config.c	2013-07-04 03:28:05.000000000 +0300
++++ b/source/mupen64plus-input-sdl/src/config.c	2015-02-01 18:18:44.683754191 +0200
 @@ -19,7 +19,7 @@
   *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.          *
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -304,9 +304,9 @@ diff -Naur a/src/source/mupen64plus-input-sdl/src/config.c b/src/source/mupen64p
  
  #define M64P_PLUGIN_PROTOTYPES 1
  #include "m64p_types.h"
-diff -Naur a/src/source/mupen64plus-input-sdl/src/plugin.c b/src/source/mupen64plus-input-sdl/src/plugin.c
---- a/src/source/mupen64plus-input-sdl/src/plugin.c	2013-07-04 03:28:05.000000000 +0300
-+++ b/src/source/mupen64plus-input-sdl/src/plugin.c	2015-02-01 18:19:03.691753757 +0200
+diff -Naur a/source/mupen64plus-input-sdl/src/plugin.c b/source/mupen64plus-input-sdl/src/plugin.c
+--- a/source/mupen64plus-input-sdl/src/plugin.c	2013-07-04 03:28:05.000000000 +0300
++++ b/source/mupen64plus-input-sdl/src/plugin.c	2015-02-01 18:19:03.691753757 +0200
 @@ -25,7 +25,7 @@
  #include <stdlib.h>
  #include <string.h>
@@ -316,9 +316,9 @@ diff -Naur a/src/source/mupen64plus-input-sdl/src/plugin.c b/src/source/mupen64p
  
  #define M64P_PLUGIN_PROTOTYPES 1
  #include "m64p_types.h"
-diff -Naur a/src/source/mupen64plus-input-sdl/src/plugin.h b/src/source/mupen64plus-input-sdl/src/plugin.h
---- a/src/source/mupen64plus-input-sdl/src/plugin.h	2013-07-04 03:28:05.000000000 +0300
-+++ b/src/source/mupen64plus-input-sdl/src/plugin.h	2015-02-01 18:19:17.315753445 +0200
+diff -Naur a/source/mupen64plus-input-sdl/src/plugin.h b/source/mupen64plus-input-sdl/src/plugin.h
+--- a/source/mupen64plus-input-sdl/src/plugin.h	2013-07-04 03:28:05.000000000 +0300
++++ b/source/mupen64plus-input-sdl/src/plugin.h	2015-02-01 18:19:17.315753445 +0200
 @@ -24,7 +24,7 @@
  #ifndef __PLUGIN_H__
  #define __PLUGIN_H__
@@ -328,9 +328,9 @@ diff -Naur a/src/source/mupen64plus-input-sdl/src/plugin.h b/src/source/mupen64p
  #if ! SDL_VERSION_ATLEAST(1,3,0)
  
  #define SDL_GetKeyboardState SDL_GetKeyState
-diff -Naur a/src/source/mupen64plus-rsp-hle/projects/unix/Makefile b/src/source/mupen64plus-rsp-hle/projects/unix/Makefile
---- a/src/source/mupen64plus-rsp-hle/projects/unix/Makefile	2013-07-04 03:28:07.000000000 +0300
-+++ b/src/source/mupen64plus-rsp-hle/projects/unix/Makefile	2015-02-01 14:20:23.344081195 +0200
+diff -Naur a/source/mupen64plus-rsp-hle/projects/unix/Makefile b/source/mupen64plus-rsp-hle/projects/unix/Makefile
+--- a/source/mupen64plus-rsp-hle/projects/unix/Makefile	2013-07-04 03:28:07.000000000 +0300
++++ b/source/mupen64plus-rsp-hle/projects/unix/Makefile	2015-02-01 14:20:23.344081195 +0200
 @@ -203,8 +203,8 @@
  endif
  
@@ -342,9 +342,9 @@ diff -Naur a/src/source/mupen64plus-rsp-hle/projects/unix/Makefile b/src/source/
  RM       ?= rm -f
  INSTALL  ?= install
  MKDIR ?= mkdir -p
-diff -Naur a/src/source/mupen64plus-ui-console/projects/unix/Makefile b/src/source/mupen64plus-ui-console/projects/unix/Makefile
---- a/src/source/mupen64plus-ui-console/projects/unix/Makefile	2013-07-04 03:28:00.000000000 +0300
-+++ b/src/source/mupen64plus-ui-console/projects/unix/Makefile	2015-02-01 14:20:40.900080793 +0200
+diff -Naur a/source/mupen64plus-ui-console/projects/unix/Makefile b/source/mupen64plus-ui-console/projects/unix/Makefile
+--- a/source/mupen64plus-ui-console/projects/unix/Makefile	2013-07-04 03:28:00.000000000 +0300
++++ b/source/mupen64plus-ui-console/projects/unix/Makefile	2015-02-01 14:20:40.900080793 +0200
 @@ -197,8 +197,8 @@
  endif
  
@@ -356,9 +356,9 @@ diff -Naur a/src/source/mupen64plus-ui-console/projects/unix/Makefile b/src/sour
  RM       ?= rm -f
  INSTALL  ?= install
  MKDIR ?= mkdir -p
-diff -Naur a/src/source/mupen64plus-ui-console/src/main.c b/src/source/mupen64plus-ui-console/src/main.c
---- a/src/source/mupen64plus-ui-console/src/main.c	2013-07-04 03:28:00.000000000 +0300
-+++ b/src/source/mupen64plus-ui-console/src/main.c	2015-02-01 18:20:57.487751155 +0200
+diff -Naur a/source/mupen64plus-ui-console/src/main.c b/source/mupen64plus-ui-console/src/main.c
+--- a/source/mupen64plus-ui-console/src/main.c	2013-07-04 03:28:00.000000000 +0300
++++ b/source/mupen64plus-ui-console/src/main.c	2015-02-01 18:20:57.487751155 +0200
 @@ -30,7 +30,7 @@
  #include <stdlib.h>
  #include <stdarg.h>
@@ -368,9 +368,9 @@ diff -Naur a/src/source/mupen64plus-ui-console/src/main.c b/src/source/mupen64pl
  
  #include "cheat.h"
  #include "main.h"
-diff -Naur a/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile b/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile
---- a/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2013-07-04 03:28:17.000000000 +0300
-+++ b/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2015-02-01 14:20:56.156080444 +0200
+diff -Naur a/source/mupen64plus-video-glide64mk2/projects/unix/Makefile b/source/mupen64plus-video-glide64mk2/projects/unix/Makefile
+--- a/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2013-07-04 03:28:17.000000000 +0300
++++ b/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2015-02-01 14:20:56.156080444 +0200
 @@ -292,8 +292,8 @@
  endif
  
@@ -382,9 +382,9 @@ diff -Naur a/src/source/mupen64plus-video-glide64mk2/projects/unix/Makefile b/sr
  RM       ?= rm -f
  INSTALL  ?= install
  MKDIR ?= mkdir -p
-diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h b/src/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h
---- a/src/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h	2013-07-04 03:28:17.000000000 +0300
-+++ b/src/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h	2015-02-01 18:22:40.563748798 +0200
+diff -Naur a/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h b/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h
+--- a/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h	2013-07-04 03:28:17.000000000 +0300
++++ b/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h	2015-02-01 18:22:40.563748798 +0200
 @@ -66,7 +66,7 @@
  #include "m64p.h"
  
@@ -394,9 +394,9 @@ diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/Glide64/Gfx_1.3.h b/src
  #include <fstream>
  #include <stdlib.h>
  #include <stddef.h>		// offsetof
-diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp b/src/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp
---- a/src/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp	2013-07-04 03:28:17.000000000 +0300
-+++ b/src/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp	2015-02-01 18:24:01.395746950 +0200
+diff -Naur a/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp b/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp
+--- a/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp	2013-07-04 03:28:17.000000000 +0300
++++ b/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp	2015-02-01 18:24:01.395746950 +0200
 @@ -37,7 +37,7 @@
  //
  //****************************************************************
@@ -406,9 +406,9 @@ diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/Glide64/TexCache.cpp b/
  #include "Gfx_1.3.h"
  #include "TexCache.h"
  #include "Combine.h"
-diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp b/src/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp
---- a/src/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp	2013-07-04 03:28:17.000000000 +0300
-+++ b/src/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp	2015-02-01 18:24:45.503745941 +0200
+diff -Naur a/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp b/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp
+--- a/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp	2013-07-04 03:28:17.000000000 +0300
++++ b/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp	2015-02-01 18:24:45.503745941 +0200
 @@ -54,7 +54,7 @@
  
  #include <zlib.h>
@@ -418,9 +418,9 @@ diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cp
  #include "TxHiResCache.h"
  #include "TxDbg.h"
  #include "../Glide64/Gfx_1.3.h"
-diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp b/src/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp
---- a/src/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp	2013-07-04 03:28:17.000000000 +0300
-+++ b/src/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp	2015-02-01 18:25:30.079744922 +0200
+diff -Naur a/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp b/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp
+--- a/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp	2013-07-04 03:28:17.000000000 +0300
++++ b/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp	2015-02-01 18:25:30.079744922 +0200
 @@ -27,7 +27,7 @@
  #include <stdint.h>
  #include <stdarg.h>
@@ -430,9 +430,9 @@ diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/Glitch64/glitchmain.cpp
  #endif // _WIN32
  #include <stdlib.h>
  #include <stdio.h>
-diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h b/src/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h
---- a/src/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h	2013-07-04 03:28:17.000000000 +0300
-+++ b/src/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h	2015-02-01 18:26:22.415743725 +0200
+diff -Naur a/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h b/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h
+--- a/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h	2013-07-04 03:28:17.000000000 +0300
++++ b/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h	2015-02-01 18:26:22.415743725 +0200
 @@ -67,7 +67,7 @@
  #ifdef _WIN32
  #include <windows.h>
@@ -451,9 +451,9 @@ diff -Naur a/src/source/mupen64plus-video-glide64mk2/src/Glitch64/main.h b/src/s
  #endif // _WIN32
  #include "glide.h"
  
-diff -Naur a/src/source/mupen64plus-video-rice/projects/unix/Makefile b/src/source/mupen64plus-video-rice/projects/unix/Makefile
---- a/src/source/mupen64plus-video-rice/projects/unix/Makefile	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/projects/unix/Makefile	2015-02-01 14:21:16.180079986 +0200
+diff -Naur a/source/mupen64plus-video-rice/projects/unix/Makefile b/source/mupen64plus-video-rice/projects/unix/Makefile
+--- a/source/mupen64plus-video-rice/projects/unix/Makefile	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/projects/unix/Makefile	2015-02-01 14:21:16.180079986 +0200
 @@ -261,8 +261,8 @@
  endif
  
@@ -465,9 +465,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/projects/unix/Makefile b/src/sour
  RM       ?= rm -f
  INSTALL  ?= install
  MKDIR ?= mkdir -p
-diff -Naur a/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp b/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp
---- a/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp	2015-02-01 18:28:01.715741455 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp b/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp
+--- a/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp	2015-02-01 18:28:01.715741455 +0200
 @@ -16,7 +16,7 @@
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
@@ -477,9 +477,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/src/CNvTNTCombiner.cpp b/src/sour
  
  #include "CNvTNTCombiner.h"
  
-diff -Naur a/src/source/mupen64plus-video-rice/src/CritSect.h b/src/source/mupen64plus-video-rice/src/CritSect.h
---- a/src/source/mupen64plus-video-rice/src/CritSect.h	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/CritSect.h	2015-02-01 18:28:24.723740928 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/CritSect.h b/source/mupen64plus-video-rice/src/CritSect.h
+--- a/source/mupen64plus-video-rice/src/CritSect.h	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/CritSect.h	2015-02-01 18:28:24.723740928 +0200
 @@ -20,7 +20,7 @@
  #if !defined(CRITSECT_H)
  #define CRITSECT_H
@@ -489,9 +489,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/src/CritSect.h b/src/source/mupen
  
  class CCritSect
  {
-diff -Naur a/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h b/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h
---- a/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h	2015-02-01 18:28:52.875740285 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/OGLCombinerNV.h b/source/mupen64plus-video-rice/src/OGLCombinerNV.h
+--- a/source/mupen64plus-video-rice/src/OGLCombinerNV.h	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/OGLCombinerNV.h	2015-02-01 18:28:52.875740285 +0200
 @@ -21,7 +21,7 @@
  
  #include <vector>
@@ -501,9 +501,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/src/OGLCombinerNV.h b/src/source/
  
  #include "OGLExtCombiner.h"
  #include "OGLDecodedMux.h"
-diff -Naur a/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h b/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h
---- a/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h	2015-02-01 18:29:21.279739635 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h b/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h
+--- a/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h	2015-02-01 18:29:21.279739635 +0200
 @@ -19,7 +19,7 @@
  #ifndef _OGL_COMBINER_TNT2_H_
  #define _OGL_COMBINER_TNT2_H_
@@ -513,9 +513,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/src/OGLCombinerTNT2.h b/src/sourc
  
  #define GL_SOURCE3_RGB_EXT                0x8583
  #define GL_SOURCE3_ALPHA_EXT              0x858B
-diff -Naur a/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp b/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp
---- a/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp	2015-02-01 18:30:38.295737874 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/OGLExtensions.cpp b/source/mupen64plus-video-rice/src/OGLExtensions.cpp
+--- a/source/mupen64plus-video-rice/src/OGLExtensions.cpp	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/OGLExtensions.cpp	2015-02-01 18:30:38.295737874 +0200
 @@ -19,7 +19,7 @@
  /* This source file contains code for assigning function pointers to some OpenGL functions */
  /* This is only necessary because Windows does not contain development support for OpenGL versions beyond 1.1 */
@@ -525,9 +525,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/src/OGLExtensions.cpp b/src/sourc
  #include "OGLExtensions.h"
  #include "Video.h"
  
-diff -Naur a/src/source/mupen64plus-video-rice/src/OGLExtensions.h b/src/source/mupen64plus-video-rice/src/OGLExtensions.h
---- a/src/source/mupen64plus-video-rice/src/OGLExtensions.h	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/OGLExtensions.h	2015-02-01 18:30:02.187738700 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/OGLExtensions.h b/source/mupen64plus-video-rice/src/OGLExtensions.h
+--- a/source/mupen64plus-video-rice/src/OGLExtensions.h	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/OGLExtensions.h	2015-02-01 18:30:02.187738700 +0200
 @@ -22,7 +22,7 @@
  #if !defined(OGL_EXTENSIONS_H)
  #define OGL_EXTENSIONS_H
@@ -537,9 +537,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/src/OGLExtensions.h b/src/source/
  
  /* Just call this one function to load up the function pointers. */
  void OGLExtensions_Init(void);
-diff -Naur a/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h b/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h
---- a/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h	2015-02-01 18:31:03.263737303 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/OGLFragmentShaders.h b/source/mupen64plus-video-rice/src/OGLFragmentShaders.h
+--- a/source/mupen64plus-video-rice/src/OGLFragmentShaders.h	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/OGLFragmentShaders.h	2015-02-01 18:31:03.263737303 +0200
 @@ -21,7 +21,7 @@
  
  #include <vector>
@@ -549,9 +549,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/src/OGLFragmentShaders.h b/src/so
  
  #include "OGLCombiner.h"
  #include "OGLExtCombiner.h"
-diff -Naur a/src/source/mupen64plus-video-rice/src/osal_opengl.h b/src/source/mupen64plus-video-rice/src/osal_opengl.h
---- a/src/source/mupen64plus-video-rice/src/osal_opengl.h	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/osal_opengl.h	2015-02-01 18:32:21.119735523 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/osal_opengl.h b/source/mupen64plus-video-rice/src/osal_opengl.h
+--- a/source/mupen64plus-video-rice/src/osal_opengl.h	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/osal_opengl.h	2015-02-01 18:32:21.119735523 +0200
 @@ -22,10 +22,10 @@
  #if !defined(OSAL_OPENGL_H)
  #define OSAL_OPENGL_H
@@ -574,9 +574,9 @@ diff -Naur a/src/source/mupen64plus-video-rice/src/osal_opengl.h b/src/source/mu
  #define GLSL_VERSION "100"
  
  // Extension names
-diff -Naur a/src/source/mupen64plus-video-rice/src/RSP_Parser.cpp b/src/source/mupen64plus-video-rice/src/RSP_Parser.cpp
---- a/src/source/mupen64plus-video-rice/src/RSP_Parser.cpp	2013-07-04 03:28:10.000000000 +0300
-+++ b/src/source/mupen64plus-video-rice/src/RSP_Parser.cpp	2015-02-01 18:33:32.971733880 +0200
+diff -Naur a/source/mupen64plus-video-rice/src/RSP_Parser.cpp b/source/mupen64plus-video-rice/src/RSP_Parser.cpp
+--- a/source/mupen64plus-video-rice/src/RSP_Parser.cpp	2013-07-04 03:28:10.000000000 +0300
++++ b/source/mupen64plus-video-rice/src/RSP_Parser.cpp	2015-02-01 18:33:32.971733880 +0200
 @@ -18,7 +18,7 @@
  */
  

@@ -34,14 +34,10 @@ PKG_LONGDESC="Nintendo 64 emulator plugins"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-BUILD_SRC="yes"
-
 make_target() {
-  if [ "$BUILD_SRC" = yes ]; then
-    API_DIR=$ROOT/$BUILD/mupen64plus-2.0.0/src/source/mupen64plus-core/src/api
-    cd $ROOT/$PKG_BUILD/src
-    ./m64p_build.sh V=1 APIDIR=$API_DIR
-  fi
+  API_DIR=$ROOT/$BUILD/mupen64plus-2.0.0/source/mupen64plus-core/src/api
+  cd $ROOT/$PKG_BUILD
+  ./m64p_build.sh V=1 APIDIR=$API_DIR
 }
 
 makeinstall_target() {
@@ -51,17 +47,9 @@ makeinstall_target() {
 post_install() {
 
   mkdir -p $INSTALL/usr/lib
-    if [ "$BUILD_SRC" = yes ]; then
-      cp -P $PKG_BUILD/src/test/mupen64plus-*.so $INSTALL/usr/lib
-    else
-      cp -P $PKG_BUILD/bin/$TARGET_ARCH/mupen64plus-*.so $INSTALL/usr/lib
-    fi
+    cp -P $PKG_BUILD/test/mupen64plus-*.so $INSTALL/usr/lib
 
   mkdir -p $INSTALL/usr/config/mupen64plus
-    if [ "$BUILD_SRC" = yes ]; then
-      cp -P $PKG_BUILD/src/source/mupen64plus-video-glide64/data/*.ini $INSTALL/usr/config/mupen64plus
-    else
-      cp -PR $PKG_BUILD/bin/$TARGET_ARCH/*.ini $INSTALL/usr/config/mupen64plus
-    fi
+    cp -P $PKG_BUILD/source/mupen64plus-video-glide64/data/*.ini $INSTALL/usr/config/mupen64plus
 
 }
