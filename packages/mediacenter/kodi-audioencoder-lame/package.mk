@@ -17,13 +17,11 @@
 ################################################################################
 
 PKG_NAME="kodi-audioencoder-lame"
-#PKG_VERSION="6f8384f"
 PKG_VERSION="3eb59de"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-#PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain lame kodi"
 PKG_PRIORITY="optional"

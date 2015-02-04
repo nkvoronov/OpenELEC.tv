@@ -17,13 +17,11 @@
 ################################################################################
 
 PKG_NAME="kodi-audioencoder-vorbis"
-#PKG_VERSION="fa0de15"
 PKG_VERSION="dbf5c62"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-#PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain libogg libvorbis kodi"
 PKG_PRIORITY="optional"

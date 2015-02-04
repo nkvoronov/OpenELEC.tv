@@ -18,13 +18,11 @@
 ################################################################################
 
 PKG_NAME="vdr"
-#PKG_VERSION="2.1.6"
 PKG_VERSION="4ee983a"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvdr.de"
-#PKG_URL="ftp://ftp.tvdr.de/vdr/Developer/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain fontconfig freetype libcap libjpeg-turbo bzip2"
 PKG_PRIORITY="optional"

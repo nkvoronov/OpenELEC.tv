@@ -195,6 +195,7 @@ makeinstall_target() {
 post_install() {
 
   VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
+  TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2
 
   mkdir -p $INSTALL/usr/bin
     cp -P $VDR_DIR/vdr $INSTALL/usr/bin/vdr.bin
@@ -210,6 +211,7 @@ post_install() {
 
   mkdir -p $INSTALL/usr/config/vdr/plugins
   mkdir -p $INSTALL/usr/share/locale
+  mkdir -p $INSTALL/usr/lib
   mkdir -p $INSTALL/usr/lib/vdr
 
   for fmo in `ls $VDR_DIR/po/*.mo`;do
@@ -299,7 +301,8 @@ post_install() {
 
   if [ "$ENABLE_VDR_LIVE" = yes ]; then
     VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-69f84f9
-    cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr 
+    cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
+    cp -PL $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.11 $INSTALL/usr/lib
     mkdir -p $INSTALL/usr/config/vdr/plugins/live
       cp -PR $VDR_PLUGIN_LIVE_DIR/live/* $INSTALL/usr/config/vdr/plugins/live
     cp -PR $VDR_PLUGIN_LIVE_DIR/locale/* $INSTALL/usr/share/locale   

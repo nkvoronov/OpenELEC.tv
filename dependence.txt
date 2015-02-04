@@ -49,4 +49,3 @@ texinfo
 tzdata-java
 xsltproc
 libproc-processtable-perl
-libtest-inter-perl

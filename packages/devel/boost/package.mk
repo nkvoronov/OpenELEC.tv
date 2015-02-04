@@ -79,7 +79,7 @@ makeinstall_target() {
                                 --with-system \
                                 --with-serialization \
                                 --with-filesystem \
-                                $WPYTON \
+				$WPYTON \
                                 --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
                                 install
 }

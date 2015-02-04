@@ -17,13 +17,11 @@
 ################################################################################
 
 PKG_NAME="kodi-audioencoder-flac"
-#PKG_VERSION="a960eba"
 PKG_VERSION="62c2cc8"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-#PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain flac kodi"
 PKG_PRIORITY="optional"

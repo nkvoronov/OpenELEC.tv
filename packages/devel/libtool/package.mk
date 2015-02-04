@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="libtool"
-PKG_VERSION="2.4.4"
+PKG_VERSION="2.4.5"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -34,5 +34,4 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_HOST="--enable-static --disable-shared HELP2MAN=/bin/true"
-
 
