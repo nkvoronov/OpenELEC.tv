@@ -19,7 +19,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-live"
+PKG_NAME="vdr-live"
 PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-live.git"
 
 echo "getting sources..."

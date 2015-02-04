@@ -16,7 +16,7 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="vdr-plugin-live"
+PKG_NAME="vdr-live"
 PKG_VERSION="69f84f9"
 PKG_REV="1"
 PKG_ARCH="any"

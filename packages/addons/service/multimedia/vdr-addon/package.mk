@@ -42,14 +42,33 @@ makeinstall_target() {
 }
 
 addon() {
-  VDR_DIR="$(get_build_dir vdr)"
-  VDR_LIVE_DIR="$(get_build_dir vdr-live)"
-  VDR_PLUGIN_XVDR_DIR="$(get_build_dir vdr-plugin-xvdr)"
-  VDR_PLUGIN_VNSISERVER_DIR="$(get_build_dir vdr-plugin-vnsiserver)"
-  VDR_PLUGIN_STREAMVEV_DIR="$(get_build_dir vdr-plugin-streamdev)"
-  VDR_PLUGIN_XMLTV2VDR="$(get_build_dir vdr-plugin-xmltv2vdr)"
-  VDR_PLUGIN_EPGFIXER_DIR="$(get_build_dir vdr-plugin-epgfixer)"
-  VDR_PLUGIN_RESTFULAPI_DIR="$(get_build_dir vdr-plugin-restfulapi)"
+  #VDR_DIR="$(get_build_dir vdr)"
+  #VDR_LIVE_DIR="$(get_build_dir vdr-live)"
+  #VDR_PLUGIN_XVDR_DIR="$(get_build_dir vdr-plugin-xvdr)"
+  #VDR_PLUGIN_VNSISERVER_DIR="$(get_build_dir vdr-plugin-vnsiserver)"
+  #VDR_PLUGIN_STREAMVEV_DIR="$(get_build_dir vdr-plugin-streamdev)"
+  #VDR_PLUGIN_XMLTV2VDR="$(get_build_dir vdr-plugin-xmltv2vdr)"
+  #VDR_PLUGIN_EPGFIXER_DIR="$(get_build_dir vdr-plugin-epgfixer)"
+  #VDR_PLUGIN_RESTFULAPI_DIR="$(get_build_dir vdr-plugin-restfulapi)"
+
+  VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
+  VDR_LIVE_DIR=$ROOT/$BUILD/vdr-live-69f84f9
+  VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-b300fc3
+  VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-b887bc8
+  VDR_PLUGIN_STREAMDEV_DIR=$ROOT/$BUILD/vdr-plugin-streamdev-84c6f6b
+  VDR_PLUGIN_XMLTV2VDR_DIR=$ROOT/$BUILD/vdr-plugin-xmltv2vdr-b48e0be
+  VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.1.3
+  VDR_PLUGIN_WIRBELSCAN_DIR=$ROOT/$BUILD/vdr-wirbelscan-0.0.7
+  VDR_PLUGIN_WIRBELSCANCONTROL_DIR=$ROOT/$BUILD/vdr-wirbelscancontrol-0.0.2
+  VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-1b9df50
+  VDR_PLUGIN_EEPG_DIR=$ROOT/$BUILD/vdr-plugin-eepg-d7dc614
+  VDR_PLUGIN_CONTROL_DIR=$ROOT/$BUILD/vdr-control-0.0.2a
+  VDR_PLUGIN_EPGSEARCH_DIR=$ROOT/$BUILD/vdr-epgsearch-a908daa
+  VDR_PLUGIN_DUMMYDEVICE_DIR=$ROOT/$BUILD/vdr-dummydevice-2.0.0
+  VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-1.0.2
+  VDR_PLUGIN_EPGFIXER_DIR=$ROOT/$BUILD/vdr-plugin-epgfixer-1ad4aaf
+  VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-2f1cbbc
+  TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
   touch $ADDON_BUILD/$PKG_ADDON_ID/config/channels.conf
@@ -68,24 +87,24 @@ addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/epgsources/
-  cp $VDR_PLUGIN_XMLTV2VDR/dist/epgdata2xmltv/epgdata2xmltv.dist $ADDON_BUILD/$PKG_ADDON_ID/config/epgsources/epgdata2xmltv
+  cp $VDR_PLUGIN_XMLTV2VDR_DIR/dist/epgdata2xmltv/epgdata2xmltv.dist $ADDON_BUILD/$PKG_ADDON_ID/config/epgsources/epgdata2xmltv
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/plugin
   cp -PR $VDR_PLUGIN_XVDR_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
   cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-iptv)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-wirbelscan)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-wirbelscancontrol)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-plugin-dvbapi)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-plugin-eepg)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $VDR_PLUGIN_STREAMVEV_DIR/server/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $VDR_PLUGIN_STREAMVEV_DIR/client/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_IPTV_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_EEPG_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_STREAMDEV_DIR/server/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_STREAMDEV_DIR/client/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
   cp -PR $VDR_LIVE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-control)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-epgsearch)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $VDR_PLUGIN_XMLTV2VDR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-dummydevice)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-  cp -PR $(get_build_dir vdr-satip)/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_CONTROL_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_EPGSEARCH_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_XMLTV2VDR_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_DUMMYDEVICE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+  cp -PR $VDR_PLUGIN_SATIP_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
   cp -PR $VDR_PLUGIN_EPGFIXER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
   cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
 
@@ -100,13 +119,13 @@ addon() {
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin/vdr.bin
-  cp -P $VDR_PLUGIN_XMLTV2VDR/dist/epgdata2xmltv/epgdata2xmltv $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $VDR_PLUGIN_XMLTV2VDR_DIR/dist/epgdata2xmltv/epgdata2xmltv $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-  cp -PL $(get_build_dir tntnet)/.install_pkg/usr/lib/libtntnet.so.11 $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp -PL $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.11 $ADDON_BUILD/$PKG_ADDON_ID/lib
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/streamdev-server
-  cp -PR $VDR_PLUGIN_STREAMVEV_DIR/streamdev-server/streamdevhosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/streamdev-server
+  cp -PR $VDR_PLUGIN_STREAMDEV_DIR/streamdev-server/streamdevhosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/streamdev-server
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/epgfixer
   cp -PR $VDR_PLUGIN_EPGFIXER_DIR/epgfixer/*.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/epgfixer

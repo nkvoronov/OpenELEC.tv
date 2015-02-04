@@ -40,7 +40,7 @@ ENABLE_VDR_IPTV="yes"
 ENABLE_VDR_PLUGIN_DVBAPI="yes"
 ENABLE_VDR_PLUGIN_EEPG="yes"
 ENABLE_VDR_PLUGIN_EPGFIXER="yes"
-ENABLE_VDR_PLUGIN_LIVE="yes"
+ENABLE_VDR_LIVE="yes"
 ENABLE_VDR_PLUGIN_RESTFULAPI="yes" 
 ENABLE_VDR_PLUGIN_STREAMDEV="yes"
 ENABLE_VDR_PLUGIN_VNSISERVER="yes"
@@ -92,8 +92,8 @@ if [ "$ENABLE_VDR_PLUGIN_EPGFIXER" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-epgfixer"  
 fi
 
-if [ "$ENABLE_VDR_PLUGIN_LIVE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-live"  
+if [ "$ENABLE_VDR_LIVE" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-live"  
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
@@ -297,8 +297,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_PLUGIN_LIVE" = yes ]; then
-    VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-plugin-live-69f84f9
+  if [ "$ENABLE_VDR_LIVE" = yes ]; then
+    VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-69f84f9
     cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr 
     mkdir -p $INSTALL/usr/config/vdr/plugins/live
       cp -PR $VDR_PLUGIN_LIVE_DIR/live/* $INSTALL/usr/config/vdr/plugins/live

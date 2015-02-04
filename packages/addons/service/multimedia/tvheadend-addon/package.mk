@@ -23,7 +23,6 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
 PKG_URL="$DISTRO_SRC/tvheadend-${PKG_VERSION}.tar.gz"
-PKG_SOURCE_DIR="${PKG_NAME}_${PKG_VERSION}"
 PKG_DEPENDS_TARGET="toolchain libressl curl"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/multimedia"
@@ -32,6 +31,10 @@ PKG_LONGDESC="Tvheadend (Version: $PKG_VERSION) is a TV streaming server for Lin
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
+
+post_unpack() {
+  mv $BUILD/tvheadend-$PKG_VERSION $BUILD/$PKG_NAME-$PKG_VERSION
+}
 
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
