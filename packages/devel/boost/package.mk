@@ -65,21 +65,29 @@ make_target() {
 
 makeinstall_target() {
   if [ "$LIBTORRENTS_SUPPORT" = yes ]; then
-    WPYTON="--with-python"
+    $ROOT/$TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
+                                  --prefix=$SYSROOT_PREFIX/usr \
+                                  --ignore-site-config \
+                                  --layout=system \
+                                  --with-thread \
+                                  --with-iostreams \
+                                  --with-system \
+                                  --with-serialization \
+                                  --with-filesystem \
+				  --with-python \
+                                  --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
+                                  install
   else
-    WPYTON="--without-python"   
+    $ROOT/$TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
+                                  --prefix=$SYSROOT_PREFIX/usr \
+                                  --ignore-site-config \
+                                  --layout=system \
+                                  --with-thread \
+                                  --with-iostreams \
+                                  --with-system \
+                                  --with-serialization \
+                                  --with-filesystem \
+                                  --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
+                                  install
   fi
-
-  $ROOT/$TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
-                                --prefix=$SYSROOT_PREFIX/usr \
-                                --ignore-site-config \
-                                --layout=system \
-                                --with-thread \
-                                --with-iostreams \
-                                --with-system \
-                                --with-serialization \
-                                --with-filesystem \
-				$WPYTON \
-                                --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
-                                install
 }

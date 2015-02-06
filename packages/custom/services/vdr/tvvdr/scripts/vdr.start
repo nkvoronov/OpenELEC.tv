@@ -111,6 +111,8 @@ init_vdr_plugins() {
     fi
 
     #if [ "$VDR_ENABLE_UPNP" == "true" ] ; then
+        #VDR_UPNP_DB_DIR="$VDR_HOME/plugins/upnp"
+        #mkdir -p $VDR_UPNP_DB_DIR
         #VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_UPNP_DB_DIR'"
     #fi
 	
@@ -169,14 +171,12 @@ init_vdr_plugins() {
 
     if [ "$VDR_ENABLE_RESTFULAPI" == "true" ] ; then
 	VDR_RESTFULAPI_ARGS="--ip $VDR_RESTFULAPI_IP --port $VDR_RESTFULAPI_PORT"
-	if [ ! -z "$VDR_RESTFULAPI_EPGIMAGES" ]; then
-	    mkdir -p "$VDR_RESTFULAPI_EPGIMAGES"
-	    VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --epgimages=\"$VDR_RESTFULAPI_EPGIMAGES\""
-	fi
-	if [ ! -z "$VDR_RESTFULAPI_CHANNELLOGOS" ]; then
-	    mkdir -p "$VDR_RESTFULAPI_CHANNELLOGOS"
-	    VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --channellogos=\"$VDR_RESTFULAPI_CHANNELLOGOS\""
-	fi
+        VDR_RESTFULAPI_EPGIMAGES="$VDR_HOME/plugins/restfulapi/epgimages"
+	mkdir -p $VDR_RESTFULAPI_EPGIMAGES
+	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --epgimages=\"$VDR_RESTFULAPI_EPGIMAGES\""
+        VDR_RESTFULAPI_CHANNELLOGOS="$VDR_HOME/plugins/restfulapi/channellogos"
+	mkdir -p $VDR_RESTFULAPI_CHANNELLOGOS
+	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --channellogos=\"$VDR_RESTFULAPI_CHANNELLOGOS\""
 	VDR_ARG="$VDR_ARG -P 'restfulapi $VDR_RESTFULAPI_ARGS'"
     fi
 

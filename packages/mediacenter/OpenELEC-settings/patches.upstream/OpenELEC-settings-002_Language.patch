@@ -1,7 +1,7 @@
 diff -Naur a/language/English/strings.po b/language/English/strings.po
---- a/language/English/strings.po	2014-12-21 22:31:28.000000000 +0200
-+++ b/language/English/strings.po	2015-01-26 03:25:59.741007011 +0200
-@@ -1141,3 +1141,613 @@
+--- a/language/English/strings.po	2015-01-23 00:05:40.000000000 +0200
++++ b/language/English/strings.po	2015-02-05 18:57:36.814487434 +0200
+@@ -1141,3 +1141,645 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr ""
@@ -387,6 +387,38 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgid "Enabled upnp plugin"
 +msgstr ""
 +
++msgctxt "#37025"
++msgid "Enable plugin: epgfixer"
++msgstr ""
++
++msgctxt "#1225"
++msgid "Enabled epgfixer plugin"
++msgstr ""
++
++msgctxt "#37026"
++msgid "Enable plugin: restfulapi"
++msgstr ""
++
++msgctxt "#1226"
++msgid "Enabled restfulapi plugin"
++msgstr ""
++
++msgctxt "#37027"
++msgid "restfulapi: listen on ip"
++msgstr ""
++
++msgctxt "#1227"
++msgid "Listen ip address for restfulapi plugin"
++msgstr ""
++
++msgctxt "#37028"
++msgid "restfulapi: listen on port"
++msgstr ""
++
++msgctxt "#1228"
++msgid "Listen port for restfulapi plugin"
++msgstr ""
++
 +##########################################################
 +
 +msgctxt "#38000"
@@ -616,9 +648,9 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgid "VDR (The Video Disk Recorder) is an open source application for Linux designed to allow any computer to function as a digital video recorder, in order to record and replay TV programming using the computer's hard drive."
 +msgstr ""
 diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
---- a/language/Russian/strings.po	2014-12-21 22:31:28.000000000 +0200
-+++ b/language/Russian/strings.po	2015-01-26 03:27:21.493003484 +0200
-@@ -1039,3 +1039,613 @@
+--- a/language/Russian/strings.po	2015-01-23 00:05:40.000000000 +0200
++++ b/language/Russian/strings.po	2015-02-05 19:05:31.598477080 +0200
+@@ -1039,3 +1039,645 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr "Включить поддержку драйвера ЖК-экрана"
@@ -1003,6 +1035,38 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgctxt "#1224"
 +msgid "Enabled upnp plugin"
 +msgstr "Разрешить upnp плагин"
++
++msgctxt "#37025"
++msgid "Enable plugin: epgfixer"
++msgstr "Плагин: epgfixer"
++
++msgctxt "#1225"
++msgid "Enabled epgfixer plugin"
++msgstr "Разрешить epgfixer плагин"
++
++msgctxt "#37026"
++msgid "Enable plugin: restfulapi"
++msgstr "Плагин: restfulapi"
++
++msgctxt "#1226"
++msgid "Enabled restfulapi plugin"
++msgstr "Разрешить restfulapi плагин"
++
++msgctxt "#37027"
++msgid "restfulapi: listen on ip"
++msgstr "restfulapi: IP"
++
++msgctxt "#1227"
++msgid "Listen ip address for restfulapi plugin"
++msgstr "IP-адрес для restfulapi плагина"
++
++msgctxt "#37028"
++msgid "restfulapi: listen on port"
++msgstr "restfulapi: Порт"
++
++msgctxt "#1228"
++msgid "Listen port for restfulapi plugin"
++msgstr "Порт для restfulapi плагина"
 +
 +##########################################################
 +

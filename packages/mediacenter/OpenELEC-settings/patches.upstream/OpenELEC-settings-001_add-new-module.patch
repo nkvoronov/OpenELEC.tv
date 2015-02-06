@@ -1,7 +1,7 @@
 diff -Naur a/src/defaults.py b/src/defaults.py
---- a/src/defaults.py	2014-12-21 22:31:28.000000000 +0200
-+++ b/src/defaults.py	2015-01-26 02:58:53.449077164 +0200
-@@ -91,7 +91,139 @@
+--- a/src/defaults.py	2015-01-23 00:05:40.000000000 +0200
++++ b/src/defaults.py	2015-02-05 17:16:27.726619794 +0200
+@@ -91,7 +91,147 @@
          "D_LCD_DRIVER"          : "none",
          
      }
@@ -82,6 +82,10 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_ENABLE_DUMMYDEVICE"       : "0",
 +        "D_ENABLE_SATIP"             : "0",
 +#       "D_ENABLE_UPNP"              : "0",
++        "D_ENABLE_EPGFIXER"          : "0",
++        "D_ENABLE_RESTFULAPI"        : "0",
++        "D_RESTFULAPI_IP"            : "0.0.0.0",
++        "D_RESTFULAPI_PORT"          : "8002",
 +
 +    #TV FRONT
 +        "D_TV_FRONT"                 : "none",
@@ -110,6 +114,10 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_F_ENABLE_DUMMYDEVICE"     : "0",
 +        "D_F_ENABLE_SATIP"           : "1",
 +#       "D_F_ENABLE_UPNP"            : "0",
++        "D_F_ENABLE_EPGFIXER"        : "0",
++        "D_F_ENABLE_RESTFULAPI"      : "0",
++        "D_F_RESTFULAPI_IP"          : "0.0.0.0",
++        "D_F_RESTFULAPI_PORT"        : "8002",
 +        "D_F_ENABLE_FEMON"           : "1",
 +        "D_F_ENABLE_SYSTEMINFO"      : "1",
 +        "D_F_ENABLE_SLEEPTIMER"      : "1",
@@ -142,7 +150,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
  system = \
      {
          "ENABLED"             : True,
-@@ -133,11 +265,15 @@
+@@ -133,11 +273,15 @@
  
  _services = \
      {
@@ -166,8 +174,8 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "oscam"         : ["oscam.service"],
      }
 diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/system.py
---- a/src/resources/lib/modules/system.py	2014-12-21 22:31:28.000000000 +0200
-+++ b/src/resources/lib/modules/system.py	2015-01-26 01:46:50.789263632 +0200
+--- a/src/resources/lib/modules/system.py	2015-01-23 00:05:40.000000000 +0200
++++ b/src/resources/lib/modules/system.py	2015-02-05 17:04:33.854635363 +0200
 @@ -127,7 +127,15 @@
                          'action': 'set_keyboard_layout',
                          'type': 'multivalue',
@@ -286,7 +294,7 @@ diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/sys
              self.oe.dbg_log('system::get_keyboard_layouts', 'ERROR: ('
 diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modules/transmission.py
 --- a/src/resources/lib/modules/transmission.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/transmission.py	2015-01-26 01:46:50.789263632 +0200
++++ b/src/resources/lib/modules/transmission.py	2015-02-05 17:04:33.858635363 +0200
 @@ -0,0 +1,331 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -621,8 +629,8 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-01-26 03:24:40.837010414 +0200
-@@ -0,0 +1,1907 @@
++++ b/src/resources/lib/modules/tvservers.py	2015-02-05 18:28:06.818526036 +0200
+@@ -0,0 +1,2039 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
 +#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
@@ -699,6 +707,10 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_ENABLE_DUMMYDEVICE = None
 +    D_ENABLE_SATIP = None
 +#   D_ENABLE_UPNP = None
++    D_ENABLE_EPGFIXER = None
++    D_ENABLE_RESTFULAPI = None
++    D_RESTFULAPI_IP = None
++    D_RESTFULAPI_PORT = None
 +
 +    D_TV_FRONT = None
 +
@@ -725,6 +737,10 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_F_ENABLE_DUMMYDEVICE = None
 +    D_F_ENABLE_SATIP = None
 +#   D_F_ENABLE_UPNP = None
++    D_F_ENABLE_EPGFIXER = None
++    D_F_ENABLE_RESTFULAPI = None
++    D_F_RESTFULAPI_IP = None
++    D_F_RESTFULAPI_PORT = None
 +    D_F_ENABLE_FEMON = None
 +    D_F_ENABLE_SYSTEMINFO = None
 +    D_F_ENABLE_SLEEPTIMER = None
@@ -1057,6 +1073,40 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +#                           'type': 'bool',
 +#                           'InfoText': 1224,
 +#                       },
++                        'enable_epgfixer': {
++                            'order': 25,
++                            'name': 37025,
++                            'value': '0',
++                            'action': 'initialize_vdr',
++                            'type': 'bool',
++                            'InfoText': 1225,
++                        },
++                        'enable_restfulapi': {
++                            'order': 26,
++                            'name': 37026,
++                            'value': '0',
++                            'action': 'initialize_vdr',
++                            'type': 'bool',
++                            'InfoText': 1226,
++                        },
++                        'restfulapi_ip': {
++                            'order': 27,
++                            'name': 37027,
++                            'value': '0.0.0.0',
++                            'action': 'initialize_vdr',
++                            'type': 'text',
++                            'parent': {'entry': 'enable_restfulapi','value': ['1']},
++                            'InfoText': 1227,
++                        },
++                        'restfulapi_port': {
++                            'order': 28,
++                            'name': 37028,
++                            'value': '8002',
++                            'action': 'initialize_vdr',
++                            'type': 'num',
++                            'parent': {'entry': 'enable_restfulapi','value': ['1']},
++                            'InfoText': 1228,
++                        },
 +                    },
 +                },
 +                'tvfrontends': {
@@ -1271,8 +1321,42 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +#                           'type': 'bool',
 +#                           'InfoText': 1224,
 +#                       },
-+                        'enable_femon': {
++                        'enable_epgfixer': {
 +                            'order': 24,
++                            'name': 37025,
++                            'value': '0',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1225,
++                        },
++                        'enable_restfulapi': {
++                            'order': 25,
++                            'name': 37026,
++                            'value': '0',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1226,
++                        },
++                        'restfulapi_ip': {
++                            'order': 26,
++                            'name': 37027,
++                            'value': '0.0.0.0',
++                            'action': 'initialize_vdr_front',
++                            'type': 'text',
++                            'parent': {'entry': 'enable_restfulapi','value': ['1']},
++                            'InfoText': 1227,
++                        },
++                        'restfulapi_port': {
++                            'order': 27,
++                            'name': 37028,
++                            'value': '8002',
++                            'action': 'initialize_vdr_front',
++                            'type': 'num',
++                            'parent': {'entry': 'enable_restfulapi','value': ['1']},
++                            'InfoText': 1228,
++                        },
++                        'enable_femon': {
++                            'order': 28,
 +                            'name': 39022,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1280,7 +1364,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1422,
 +                        },
 +                        'enable_systeminfo': {
-+                            'order': 25,
++                            'order': 29,
 +                            'name': 39023,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1288,7 +1372,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1423,
 +                        }, 
 +                        'enable_sleeptimer': {
-+                            'order': 26,
++                            'order': 30,
 +                            'name': 39024,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1296,7 +1380,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1424,
 +                        },
 +                        'enable_filebrowser': {
-+                            'order': 27,
++                            'order': 31,
 +                            'name': 39025,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1304,7 +1388,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1425,
 +                        }, 
 +                        'enable_lcdproc': {
-+                            'order': 28,
++                            'order': 32,
 +                            'name': 39026,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1312,7 +1396,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1426,
 +                        },
 +                        'enable_text2skin': {
-+                            'order': 29,
++                            'order': 33,
 +                            'name': 39027,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1320,7 +1404,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1427,
 +                        },  
 +                        'enable_skinnopacity': {
-+                            'order': 30,
++                            'order': 34,
 +                            'name': 39028,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1328,7 +1412,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1428,
 +                        },  
 +                        'enable_skinflat': {
-+                            'order': 31,
++                            'order': 35,
 +                            'name': 39029,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1336,7 +1420,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1429,
 +                        },
 +                        'enable_skinflat_plus': {
-+                            'order': 32,
++                            'order': 36,
 +                            'name': 39030,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1344,7 +1428,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1430,
 +                        }, 
 +                        'enable_menuorg': {
-+                            'order': 33,
++                            'order': 37,
 +                            'name': 39031,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -1352,7 +1436,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1431,
 +                        },                         
 +                        'enable_tvguide': {
-+                            'order': 34,
++                            'order': 38,
 +                            'name': 39032,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1360,7 +1444,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1432,
 +                        },  
 +                        'enable_tvscraper': {
-+                            'order': 35,
++                            'order': 39,
 +                            'name': 39033,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1368,7 +1452,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1433,
 +                        },
 +                        'vdr_output': {
-+                            'order': 36,
++                            'order': 40,
 +                            'name': 39034,
 +                            'value': 'soft',
 +                            'values': ['soft','xine'],
@@ -1377,7 +1461,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1434,
 +                        },
 +                        'vdr_video': {
-+                            'order': 37,
++                            'order': 41,
 +                            'name': 39035,
 +                            'value': 'auto',
 +                            'values': ['auto','vdpau','vaapi'],
@@ -1386,7 +1470,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1435,
 +                        },                        
 +                        'vdr_sound_card': {
-+                            'order': 38,
++                            'order': 42,
 +                            'name': 39036,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -1395,7 +1479,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1436,
 +                        },                        
 +                        'vdr_sound_dev': {
-+                            'order': 39,
++                            'order': 43,
 +                            'name': 39037,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -1404,7 +1488,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1437,
 +                        },
 +                        'vdr_soft_param': {
-+                            'order': 40,
++                            'order': 44,
 +                            'name': 39038,
 +                            'value': '',
 +                            'action': 'initialize_vdr_front',
@@ -1682,6 +1766,18 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +#               self.struct['vdr']['settings']['enable_upnp']['value'] = \
 +#               self.oe.get_service_option('vdr', 'VDR_ENABLE_UPNP', self.D_ENABLE_UPNP).replace('true','1').replace('false','0').replace('"', '')
 +
++                self.struct['vdr']['settings']['enable_epgfixer']['value'] = \
++                self.oe.get_service_option('vdr', 'VDR_ENABLE_EPGFIXER', self.D_ENABLE_EPGFIXER).replace('true','1').replace('false','0').replace('"', '')
++
++                self.struct['vdr']['settings']['enable_restfulapi']['value'] = \
++                self.oe.get_service_option('vdr', 'VDR_ENABLE_RESTFULAPI', self.D_ENABLE_RESTFULAPI).replace('true','1').replace('false','0').replace('"', '')
++
++                self.struct['vdr']['settings']['restfulapi_ip']['value'] = \
++                self.oe.get_service_option('vdr', 'VDR_RESTFULAPI_IP', self.D_RESTFULAPI_IP).replace('"', '')
++
++                self.struct['vdr']['settings']['restfulapi_port']['value'] = \
++                self.oe.get_service_option('vdr', 'VDR_RESTFULAPI_PORT', self.D_RESTFULAPI_PORT).replace('"', '')
++
 +            else:
 +                self.struct['vdr']['hidden'] = 'true'
 +
@@ -1769,7 +1865,19 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_SATIP', self.D_F_ENABLE_SATIP).replace('true','1').replace('false','0').replace('"', '')
 +
 +#               self.struct['vdr-front']['settings']['enable_upnp']['value'] = \
-+#               self.oe.get_service_option('vdr', 'VDR_ENABLE_UPNP', self.D_F_ENABLE_UPNP).replace('true','1').replace('false','0').replace('"', '')
++#               self.oe.get_service_option('vdr-front', 'VDR_ENABLE_UPNP', self.D_F_ENABLE_UPNP).replace('true','1').replace('false','0').replace('"', '')
++
++                self.struct['vdr-front']['settings']['enable_epgfixer']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_EPGFIXER', self.D_F_ENABLE_EPGFIXER).replace('true','1').replace('false','0').replace('"', '')
++
++                self.struct['vdr-front']['settings']['enable_restfulapi']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_RESTFULAPI', self.D_F_ENABLE_RESTFULAPI).replace('true','1').replace('false','0').replace('"', '')
++
++                self.struct['vdr-front']['settings']['restfulapi_ip']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_RESTFULAPI_IP', self.D_F_RESTFULAPI_IP).replace('"', '')
++
++                self.struct['vdr-front']['settings']['restfulapi_port']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_RESTFULAPI_PORT', self.D_F_RESTFULAPI_PORT).replace('"', '')
 +
 +                self.struct['vdr-front']['settings']['enable_femon']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_FEMON', self.D_F_ENABLE_FEMON).replace('true','1').replace('false','0').replace('"', '')
@@ -2081,6 +2189,18 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +#               else:
 +#                   val15 = 'false'
 +
++                if self.struct['vdr']['settings']['enable_epgfixer']['value'] == '1':
++                    val16 = 'true'
++
++                else:
++                    val16 = 'false'
++
++                if self.struct['vdr']['settings']['enable_restfulapi']['value'] == '1':
++                    val17 = 'true'
++
++                else:
++                    val17 = 'false'
++
 +                options['VDR_ENABLE_EXTERNAL_RECCMD'] = '"%s"' % val1
 +                options['VDR_EXTERNAL_RECCMD_PATH'] = '"%s"' % self.struct['vdr']['settings']['ext_reccmd_path']['value']
 +                options['VDR_ENABLE_CHARSET_OVERRIDE'] = '"%s"' % val2
@@ -2105,6 +2225,10 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_ENABLE_DUMMYDEVICE'] = '"%s"' % val13
 +                options['VDR_ENABLE_SATIP'] = '"%s"' % val14
 +#               options['VDR_ENABLE_UPNP'] = '"%s"' % val15
++                options['VDR_ENABLE_EPGFIXER'] = '"%s"' % val16
++                options['VDR_ENABLE_RESTFULAPI'] = '"%s"' % val17
++                options['VDR_RESTFULAPI_IP'] = '"%s"' % self.struct['vdr']['settings']['restfulapi_ip']['value']
++                options['VDR_RESTFULAPI_PORT'] = '"%s"' % self.struct['vdr']['settings']['restfulapi_port']['value']
 +
 +            else:
 +
@@ -2301,77 +2425,89 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +#               else:
 +#                   val15 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_femon']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_epgfixer']['value'] == '1':
 +                    val16 = 'true'
 +
 +                else:
 +                    val16 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_systeminfo']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_restfulapi']['value'] == '1':
 +                    val17 = 'true'
 +
 +                else:
 +                    val17 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_sleeptimer']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_femon']['value'] == '1':
 +                    val18 = 'true'
 +
 +                else:
 +                    val18 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_filebrowser']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_systeminfo']['value'] == '1':
 +                    val19 = 'true'
 +
 +                else:
 +                    val19 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_lcdproc']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_sleeptimer']['value'] == '1':
 +                    val20 = 'true'
 +
 +                else:
 +                    val20 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_text2skin']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_filebrowser']['value'] == '1':
 +                    val21 = 'true'
 +
 +                else:
 +                    val21 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_skinnopacity']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_lcdproc']['value'] == '1':
 +                    val22 = 'true'
 +
 +                else:
 +                    val22 = 'false'
-+                    
-+                if self.struct['vdr-front']['settings']['enable_skinflat']['value'] == '1':
++
++                if self.struct['vdr-front']['settings']['enable_text2skin']['value'] == '1':
 +                    val23 = 'true'
 +
 +                else:
 +                    val23 = 'false'
-+                    
-+                if self.struct['vdr-front']['settings']['enable_skinflat_plus']['value'] == '1':
++
++                if self.struct['vdr-front']['settings']['enable_skinnopacity']['value'] == '1':
 +                    val24 = 'true'
 +
 +                else:
 +                    val24 = 'false'
 +                    
-+                if self.struct['vdr-front']['settings']['enable_menuorg']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_skinflat']['value'] == '1':
 +                    val25 = 'true'
 +
 +                else:
 +                    val25 = 'false'
-+
-+                if self.struct['vdr-front']['settings']['enable_tvguide']['value'] == '1':
++                    
++                if self.struct['vdr-front']['settings']['enable_skinflat_plus']['value'] == '1':
 +                    val26 = 'true'
 +
 +                else:
 +                    val26 = 'false'
-+
-+                if self.struct['vdr-front']['settings']['enable_tvscraper']['value'] == '1':
++                    
++                if self.struct['vdr-front']['settings']['enable_menuorg']['value'] == '1':
 +                    val27 = 'true'
 +
 +                else:
 +                    val27 = 'false'
++
++                if self.struct['vdr-front']['settings']['enable_tvguide']['value'] == '1':
++                    val28 = 'true'
++
++                else:
++                    val28 = 'false'
++
++                if self.struct['vdr-front']['settings']['enable_tvscraper']['value'] == '1':
++                    val29 = 'true'
++
++                else:
++                    val29 = 'false'
 +
 +                self.oe.dbg_log('tvservers::initialize_vdr_front', '"%s"' % val1, 0)
 +
@@ -2398,18 +2534,22 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_ENABLE_DUMMYDEVICE'] = '"%s"' % val13
 +                options['VDR_ENABLE_SATIP'] = '"%s"' % val14
 +#               options['VDR_ENABLE_UPNP'] = '"%s"' % val15
-+                options['VDR_ENABLE_FEMON'] = '"%s"' % val16
-+                options['VDR_ENABLE_SYSTEMINFO'] = '"%s"' % val17
-+                options['VDR_ENABLE_SLEEPTIMER'] = '"%s"' % val18
-+                options['VDR_ENABLE_FILEBROWSER'] = '"%s"' % val19
-+                options['VDR_ENABLE_LCDPROC'] = '"%s"' % val20
-+                options['VDR_ENABLE_TEXT2SKIN'] = '"%s"' % val21
-+                options['VDR_ENABLE_SKINNOPACITY'] = '"%s"' % val22
-+                options['VDR_ENABLE_SKINFLAT'] = '"%s"' % val23
-+                options['VDR_ENABLE_SKINFLAT_PLUS'] = '"%s"' % val24
-+                options['VDR_ENABLE_MENUORG'] = '"%s"' % val25
-+                options['VDR_ENABLE_TVGUIDE'] = '"%s"' % val26
-+                options['VDR_ENABLE_TVSCRAPER'] = '"%s"' % val27
++                options['VDR_ENABLE_EPGFIXER'] = '"%s"' % val16
++                options['VDR_ENABLE_RESTFULAPI'] = '"%s"' % val17
++                options['VDR_RESTFULAPI_IP'] = '"%s"' % self.struct['vdr-front']['settings']['restfulapi_ip']['value']
++                options['VDR_RESTFULAPI_PORT'] = '"%s"' % self.struct['vdr-front']['settings']['restfulapi_port']['value']
++                options['VDR_ENABLE_FEMON'] = '"%s"' % val18
++                options['VDR_ENABLE_SYSTEMINFO'] = '"%s"' % val19
++                options['VDR_ENABLE_SLEEPTIMER'] = '"%s"' % val20
++                options['VDR_ENABLE_FILEBROWSER'] = '"%s"' % val21
++                options['VDR_ENABLE_LCDPROC'] = '"%s"' % val22
++                options['VDR_ENABLE_TEXT2SKIN'] = '"%s"' % val23
++                options['VDR_ENABLE_SKINNOPACITY'] = '"%s"' % val24
++                options['VDR_ENABLE_SKINFLAT'] = '"%s"' % val25
++                options['VDR_ENABLE_SKINFLAT_PLUS'] = '"%s"' % val26
++                options['VDR_ENABLE_MENUORG'] = '"%s"' % val27
++                options['VDR_ENABLE_TVGUIDE'] = '"%s"' % val28
++                options['VDR_ENABLE_TVSCRAPER'] = '"%s"' % val29
 +                options['VDR_FRONT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_output']['value']
 +                options['VDR_OUTPUT_VIDEO'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_video']['value']
 +                options['VDR_SOUND_CARD'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_sound_card']['value']
