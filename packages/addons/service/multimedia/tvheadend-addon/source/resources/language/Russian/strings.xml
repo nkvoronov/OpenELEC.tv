@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+
+	<!-- HTS TVHEADEND -->
+	<string id="1000">XMLTV</string>
+	<string id="1001">DVB</string>
+	<string id="1002">Общие</string>
+	<string id="1003">Tvheadend</string>
+	<string id="1011">XMLTV конфигурация</string>
+	<string id="1011">Тип источника</string>
+	<string id="1012">Путь к файлу</string>
+	<string id="1013">Web ссылка</string>
+	<string id="1014">Путь к скрипту</string>
+	<string id="1020">DVB конфигурация</string>
+	<string id="1021">Unload DVB mudules before suspend</string>
+	<string id="1022">Wait for frontend initialization</string>
+	<string id="1023">Number of adapters to wait for</string>
+	<string id="1024">Предзагрузка библиотеки capmt_ca.so</string>
+	<string id="1025">Разрешить сохранение старых кофигурационных файлов</string>
+	<string id="1026">Номера используемых адаптеров</string>
+
+</strings>

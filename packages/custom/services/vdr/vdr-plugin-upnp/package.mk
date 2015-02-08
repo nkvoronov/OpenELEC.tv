@@ -23,8 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="git://projects.vdr-developer.org/vdr-plugin-upnp.git"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain vdr tntnet"
-# tntdb libupnp libsqlite
+PKG_DEPENDS_TARGET="toolchain vdr tntnet libupnp tntdb"
 PKG_PRIORITY="optional"
 PKG_SECTION="noused"
 PKG_SHORTDESC="vdr upnp"
@@ -40,7 +39,6 @@ pre_configure_target() {
 }
 
 make_target() {
-  #VDR_DIR=$(get_build_dir vdr)
   VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \

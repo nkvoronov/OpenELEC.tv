@@ -46,7 +46,6 @@ pre_make_target() {
 }
 
 make_target() {
-  #VDR_DIR=$(get_build_dir vdr)
   VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
   make VDRDIR=$VDR_DIR \
     VDRSRC=$VDR_DIR \

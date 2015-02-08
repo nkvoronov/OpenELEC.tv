@@ -63,15 +63,15 @@ if [ "$TRANSMISSION_SERVICE" = yes ]; then
 fi
 
 if [ "$OSCAM_SERVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET ccid oscam"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET ccid oscam-service"  
 fi
 
 if [ "$TVHEADEND_SERVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET tvheadend"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET tvheadend-service"  
 fi
 
 if [ "$VDR_SERVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET tvvdr"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-service"  
 fi
 
 if [ "$ADD_ARCHIVERS_ENABLED" = yes ]; then

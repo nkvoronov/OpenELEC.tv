@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="31cd397"
-PKG_VERSIONA="3.9.2475"
+PKG_VERSION="6bb5e0f"
+PKG_VERSIONA="3.9.2479"
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -75,22 +75,4 @@ post_make_target() {
 
 makeinstall_target() {
   : # nothing to do here
-}
-
-post_install() {
-  mkdir -p $INSTALL/usr/bin
-    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/build.linux/tvheadend $INSTALL/usr/bin
-    cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
-    cp -P $PKG_DIR/tv_grabs/* $INSTALL/usr/bin
-
-  mkdir -p $INSTALL/usr/lib
-    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/capmt_ca.so $INSTALL/usr/lib
-
-  mkdir -p $INSTALL/usr/share/tvheadend
-    cp -pR $ROOT/$PKG_BUILD/.$TARGET_NAME/data $INSTALL/usr/share/tvheadend
-
-  mkdir -p $INSTALL/usr/config/tvheadend
-    cp -pR $PKG_DIR/config/* $INSTALL/usr/config/tvheadend
-
-  enable_service tvheadend.service
 }

@@ -18,6 +18,7 @@
 
 PKG_NAME="vdr-plugin-softhddevice"
 PKG_VERSION="9f134c1"
+#PKG_VERSION="4f4d304" #new version build error
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -39,7 +40,6 @@ pre_configure_target() {
 }
 
 make_target() {
-  #VDR_DIR=$(get_build_dir vdr)
   VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \

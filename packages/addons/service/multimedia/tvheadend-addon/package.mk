@@ -17,13 +17,13 @@
 ################################################################################
 
 PKG_NAME="tvheadend-addon"
-PKG_VERSION="3.9.2427"
-PKG_REV="8"
+PKG_VERSION="3.9.2479"
+PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
-PKG_URL="$DISTRO_SRC/tvheadend-${PKG_VERSION}.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libressl curl"
+PKG_URL=""
+PKG_DEPENDS_TARGET="toolchain tvheadend"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/multimedia"
 PKG_SHORTDESC="tvheadend (Version: $PKG_VERSION): a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources."
@@ -32,40 +32,8 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
 
-post_unpack() {
-  mv $BUILD/tvheadend-$PKG_VERSION $BUILD/$PKG_NAME-$PKG_VERSION
-}
-
-pre_build_target() {
-  mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
-  export CROSS_COMPILE=$TARGET_PREFIX
-  # meh imx6..
-  if [ "$TARGET_ARCH" == "arm" ] ; then
-    export CFLAGS="$CFLAGS -mno-unaligned-access"
-  fi
-}
-
-configure_target() {
-  ./configure --prefix=/usr \
-            --arch=$TARGET_ARCH \
-            --cpu=$TARGET_CPU \
-            --cc=$TARGET_CC \
-            --enable-hdhomerun_client \
-            --enable-hdhomerun_static \
-            --disable-avahi \
-            --disable-libav \
-            --enable-inotify \
-            --enable-epoll \
-            --disable-uriparser \
-            --enable-tvhcsa \
-            --enable-bundle \
-            --disable-dbus_1 \
-            --python=$ROOT/$TOOLCHAIN/bin/python
-}
-
-post_make_target() {
-  $CC -O -fbuiltin -fomit-frame-pointer -fPIC -shared -o capmt_ca.so src/extra/capmt_ca.c -ldl
+make_target() {
+  : # nothing to do here
 }
 
 makeinstall_target() {
@@ -73,7 +41,9 @@ makeinstall_target() {
 }
 
 addon() {
+  TVHEADEND_DIR=$ROOT/$BUILD/tvheadend-6bb5e0f
+  
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $PKG_BUILD/.$TARGET_NAME/build.linux/tvheadend $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $PKG_BUILD/.$TARGET_NAME/capmt_ca.so $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $TVHEADEND_DIR/.$TARGET_NAME/build.linux/tvheadend $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $TVHEADEND_DIR/.$TARGET_NAME/capmt_ca.so $ADDON_BUILD/$PKG_ADDON_ID/bin
 }

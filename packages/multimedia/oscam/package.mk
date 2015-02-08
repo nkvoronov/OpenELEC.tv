@@ -20,7 +20,7 @@
 ################################################################################
 
 PKG_NAME="oscam"
-PKG_VERSION="10418"
+PKG_VERSION="10444"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -35,8 +35,6 @@ PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not 
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
 configure_target() {
   cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
@@ -57,16 +55,4 @@ make_target() {
 
 makeinstall_target() {
   : # nop
-}
-
-post_install() {
-  mkdir -p $INSTALL/usr/bin
-    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/oscam $INSTALL/usr/bin
-    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/utils/list_smargo $INSTALL/usr/bin
-    cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
-
-  mkdir -p $INSTALL/usr/config/oscam/default
-    cp -p $PKG_DIR/config/* $INSTALL/usr/config/oscam/default
-
-  enable_service oscam.service
 }

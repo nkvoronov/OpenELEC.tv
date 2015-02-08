@@ -17,9 +17,9 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="tvvdr"
-PKG_VERSION="5.0"
-PKG_REV="7"
+PKG_NAME="vdr-service"
+PKG_VERSION="5.0.1"
+PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -57,7 +57,7 @@ ENABLE_VDR_PLUGIN_SOFTHDDEVICE="yes"
 ENABLE_VDR_PLUGIN_TEXT2SKIN="yes"
 ENABLE_VDR_PLUGIN_TVGUIDE="yes"
 ENABLE_VDR_PLUGIN_TVSCRAPER="yes"
-ENABLE_VDR_PLUGIN_UPNP="no"
+ENABLE_VDR_PLUGIN_UPNP="yes"
 ENABLE_VDR_PLUGIN_XINELIBOUTPUT="yes"  
 ENABLE_VDR_SKIN_FLAT="yes"
 ENABLE_VDR_SKIN_FLATPLUS="yes"
@@ -196,6 +196,7 @@ post_install() {
 
   VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
   TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2
+  API_VERSION="2.1.8"
 
   mkdir -p $INSTALL/usr/bin
     cp -P $VDR_DIR/vdr $INSTALL/usr/bin/vdr.bin
@@ -493,7 +494,7 @@ post_install() {
 
   if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
     VDR_PLUGIN_UPNP_DIR=$ROOT/$BUILD/vdr-plugin-upnp-11a035a
-    cp -PR $VDR_PLUGIN_UPNP_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
+    cp -P $VDR_PLUGIN_UPNP_DIR/libvdr-upnp.so $INSTALL/usr/lib/vdr/libvdr-upnp.so.$API_VERSION
     cp -PR $VDR_PLUGIN_UPNP_DIR/libupnp*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/upnp
       cp -PR $VDR_PLUGIN_UPNP_DIR/httpdocs $INSTALL/usr/config/vdr/plugins/upnp
@@ -544,7 +545,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-ec04db6 
+    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-ce51da5
     cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/themes/* $INSTALL/usr/config/vdr/themes

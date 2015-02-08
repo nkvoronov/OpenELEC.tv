@@ -2,6 +2,11 @@
 <settings>
 
    <!-- HTS TVHEADEND -->
+    <category label="1002">
+		<setting label="1003" type="lsep"/>
+		<setting type="sep" />
+                <setting id="TVHEADEND_BACKUP" type="bool" label="1025" default="false" />
+                <setting id="TVHEADEND_ADAPTERS" type="text" label="1026" default="" />
     <category label="1000">
 		<setting label="1010" type="lsep"/>
 		<setting type="sep" />

@@ -4,6 +4,8 @@
 	<!-- HTS TVHEADEND -->
 	<string id="1000">XMLTV</string>
 	<string id="1001">DVB</string>
+	<string id="1002">General</string>
+	<string id="1003">Tvheadend</string>
 	<string id="1011">XMLTV configuration</string>
 	<string id="1011">XMLTV source type</string>
 	<string id="1012">XMLTV File location</string>
@@ -14,5 +16,7 @@
 	<string id="1022">Wait for frontend initialization</string>
 	<string id="1023">Number of adapters to wait for</string>
 	<string id="1024">Preload capmt_ca.so library</string>
+	<string id="1025">Enable backup configuration</string>
+	<string id="1026">Used adapters nums</string>
 
 </strings>

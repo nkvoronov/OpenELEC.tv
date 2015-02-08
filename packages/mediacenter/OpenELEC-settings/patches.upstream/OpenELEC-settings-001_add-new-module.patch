@@ -81,7 +81,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_SOFTCAM_OPT"              : "",
 +        "D_ENABLE_DUMMYDEVICE"       : "0",
 +        "D_ENABLE_SATIP"             : "0",
-+#       "D_ENABLE_UPNP"              : "0",
++        "D_ENABLE_UPNP"              : "0",
 +        "D_ENABLE_EPGFIXER"          : "0",
 +        "D_ENABLE_RESTFULAPI"        : "0",
 +        "D_RESTFULAPI_IP"            : "0.0.0.0",
@@ -113,7 +113,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_F_SOFTCAM_OPT"            : "",
 +        "D_F_ENABLE_DUMMYDEVICE"     : "0",
 +        "D_F_ENABLE_SATIP"           : "1",
-+#       "D_F_ENABLE_UPNP"            : "0",
++        "D_F_ENABLE_UPNP"            : "0",
 +        "D_F_ENABLE_EPGFIXER"        : "0",
 +        "D_F_ENABLE_RESTFULAPI"      : "0",
 +        "D_F_RESTFULAPI_IP"          : "0.0.0.0",
@@ -706,7 +706,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_SOFTCAM_OPT = None
 +    D_ENABLE_DUMMYDEVICE = None
 +    D_ENABLE_SATIP = None
-+#   D_ENABLE_UPNP = None
++    D_ENABLE_UPNP = None
 +    D_ENABLE_EPGFIXER = None
 +    D_ENABLE_RESTFULAPI = None
 +    D_RESTFULAPI_IP = None
@@ -736,7 +736,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_F_SOFTCAM_OPT = None
 +    D_F_ENABLE_DUMMYDEVICE = None
 +    D_F_ENABLE_SATIP = None
-+#   D_F_ENABLE_UPNP = None
++    D_F_ENABLE_UPNP = None
 +    D_F_ENABLE_EPGFIXER = None
 +    D_F_ENABLE_RESTFULAPI = None
 +    D_F_RESTFULAPI_IP = None
@@ -1065,14 +1065,14 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1223,
 +                        },
-+#                       'enable_upnp': {
-+#                           'order': 24,
-+#                           'name': 37024,
-+#                           'value': '0',
-+#                           'action': 'initialize_vdr',
-+#                           'type': 'bool',
-+#                           'InfoText': 1224,
-+#                       },
++                        'enable_upnp': {
++                            'order': 24,
++                            'name': 37024,
++                            'value': '0',
++                            'action': 'initialize_vdr',
++                            'type': 'bool',
++                            'InfoText': 1224,
++                        },
 +                        'enable_epgfixer': {
 +                            'order': 25,
 +                            'name': 37025,
@@ -1313,14 +1313,14 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1223,
 +                        },
-+#                       'enable_upnp': {
-+#                           'order': 23,
-+#                           'name': 37024,
-+#                           'value': '0',
-+#                           'action': 'initialize_vdr_front',
-+#                           'type': 'bool',
-+#                           'InfoText': 1224,
-+#                       },
++                        'enable_upnp': {
++                            'order': 23,
++                            'name': 37024,
++                            'value': '0',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1224,
++                        },
 +                        'enable_epgfixer': {
 +                            'order': 24,
 +                            'name': 37025,
@@ -1763,8 +1763,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['vdr']['settings']['enable_satip']['value'] = \
 +                self.oe.get_service_option('vdr', 'VDR_ENABLE_SATIP', self.D_ENABLE_SATIP).replace('true','1').replace('false','0').replace('"', '')
 +
-+#               self.struct['vdr']['settings']['enable_upnp']['value'] = \
-+#               self.oe.get_service_option('vdr', 'VDR_ENABLE_UPNP', self.D_ENABLE_UPNP).replace('true','1').replace('false','0').replace('"', '')
++                self.struct['vdr']['settings']['enable_upnp']['value'] = \
++                self.oe.get_service_option('vdr', 'VDR_ENABLE_UPNP', self.D_ENABLE_UPNP).replace('true','1').replace('false','0').replace('"', '')
 +
 +                self.struct['vdr']['settings']['enable_epgfixer']['value'] = \
 +                self.oe.get_service_option('vdr', 'VDR_ENABLE_EPGFIXER', self.D_ENABLE_EPGFIXER).replace('true','1').replace('false','0').replace('"', '')
@@ -1864,8 +1864,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['vdr-front']['settings']['enable_satip']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_SATIP', self.D_F_ENABLE_SATIP).replace('true','1').replace('false','0').replace('"', '')
 +
-+#               self.struct['vdr-front']['settings']['enable_upnp']['value'] = \
-+#               self.oe.get_service_option('vdr-front', 'VDR_ENABLE_UPNP', self.D_F_ENABLE_UPNP).replace('true','1').replace('false','0').replace('"', '')
++                self.struct['vdr-front']['settings']['enable_upnp']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_UPNP', self.D_F_ENABLE_UPNP).replace('true','1').replace('false','0').replace('"', '')
 +
 +                self.struct['vdr-front']['settings']['enable_epgfixer']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_EPGFIXER', self.D_F_ENABLE_EPGFIXER).replace('true','1').replace('false','0').replace('"', '')
@@ -2183,11 +2183,11 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                else:
 +                    val14 = 'false'
 +
-+#               if self.struct['vdr']['settings']['enable_upnp']['value'] == '1':
-+#                   val15 = 'true'
-+#
-+#               else:
-+#                   val15 = 'false'
++                if self.struct['vdr']['settings']['enable_upnp']['value'] == '1':
++                    val15 = 'true'
++ 
++                else:
++                    val15 = 'false'
 +
 +                if self.struct['vdr']['settings']['enable_epgfixer']['value'] == '1':
 +                    val16 = 'true'
@@ -2224,7 +2224,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_DVBAPI_OPT'] = '"%s"' % self.struct['vdr']['settings']['softcam_opt']['value']
 +                options['VDR_ENABLE_DUMMYDEVICE'] = '"%s"' % val13
 +                options['VDR_ENABLE_SATIP'] = '"%s"' % val14
-+#               options['VDR_ENABLE_UPNP'] = '"%s"' % val15
++                options['VDR_ENABLE_UPNP'] = '"%s"' % val15
 +                options['VDR_ENABLE_EPGFIXER'] = '"%s"' % val16
 +                options['VDR_ENABLE_RESTFULAPI'] = '"%s"' % val17
 +                options['VDR_RESTFULAPI_IP'] = '"%s"' % self.struct['vdr']['settings']['restfulapi_ip']['value']
@@ -2419,11 +2419,11 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                else:
 +                    val14 = 'false'
 +
-+#               if self.struct['vdr-front']['settings']['enable_upnp']['value'] == '1':
-+#                   val15 = 'true'
-+#
-+#               else:
-+#                   val15 = 'false'
++                if self.struct['vdr-front']['settings']['enable_upnp']['value'] == '1':
++                    val15 = 'true'
++ 
++                else:
++                    val15 = 'false'
 +
 +                if self.struct['vdr-front']['settings']['enable_epgfixer']['value'] == '1':
 +                    val16 = 'true'
@@ -2533,7 +2533,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_DVBAPI_OPT'] = '"%s"' % self.struct['vdr-front']['settings']['softcam_opt']['value']
 +                options['VDR_ENABLE_DUMMYDEVICE'] = '"%s"' % val13
 +                options['VDR_ENABLE_SATIP'] = '"%s"' % val14
-+#               options['VDR_ENABLE_UPNP'] = '"%s"' % val15
++                options['VDR_ENABLE_UPNP'] = '"%s"' % val15
 +                options['VDR_ENABLE_EPGFIXER'] = '"%s"' % val16
 +                options['VDR_ENABLE_RESTFULAPI'] = '"%s"' % val17
 +                options['VDR_RESTFULAPI_IP'] = '"%s"' % self.struct['vdr-front']['settings']['restfulapi_ip']['value']

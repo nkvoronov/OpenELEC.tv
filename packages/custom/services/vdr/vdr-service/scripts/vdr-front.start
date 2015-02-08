@@ -44,6 +44,16 @@ epgsearch.SVDRPPort = 6419
 MYDATA
 }
 
+stop_tv_backend() {
+    if systemctl is-active vdr.service &>/dev/null ; then
+        systemctl stop vdr.service
+    fi
+
+    if systemctl is-active tvheadend.service &>/dev/null ; then
+        systemctl stop tvheadend.service
+    fi
+}
+
 init_vdr_plugins() {
 
     if [ ! -f "VDR_CACHE_DIR" ]; then
@@ -53,14 +63,12 @@ init_vdr_plugins() {
     mkdir -p $VDR_HOME
     mkdir -p "$VDR_VIDEO_DIR"
 
-    VDR_FRONT="none"
-
     VDR_ARG="-g /tmp"
 
     if [ "$DEBUG" = "yes" ]; then
         VDR_ARG="$VDR_ARG --log=3"
     else
-	VDR_ARG="$VDR_ARG --log=1"
+        VDR_ARG="$VDR_ARG --log=1"
     fi
 
     LIRC_PATH="/run/lirc/lircd"
@@ -101,21 +109,21 @@ init_vdr_plugins() {
     if [ "$VDR_ENABLE_SOFTCAM" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPT'"
     fi
-	
+
     if [ "$VDR_ENABLE_WIRBELSCAN" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P wirbelscan -P wirbelscancontrol"
     fi
-	
+
     if [ "$VDR_ENABLE_IPTV" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P 'iptv -d $VDR_IPTV_NUM_DEVICES'"
     fi
 
-    #if [ "$VDR_ENABLE_UPNP" == "true" ] ; then
-        #VDR_UPNP_DB_DIR="$VDR_HOME/plugins/upnp"
-        #mkdir -p $VDR_UPNP_DB_DIR
-        #VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_UPNP_DB_DIR'"
-    #fi
-	
+    if [ "$VDR_ENABLE_UPNP" == "true" ] ; then
+        VDR_UPNP_DB_DIR="$VDR_HOME/plugins/upnp"
+        mkdir -p $VDR_UPNP_DB_DIR
+        VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_UPNP_DB_DIR'"
+    fi
+
     if [ "$VDR_ENABLE_STREAMDEV_SERVER" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P streamdev-server"
     fi
@@ -123,7 +131,7 @@ init_vdr_plugins() {
     if [ "$VDR_ENABLE_STREAMDEV_CLIENT" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P streamdev-client"
     fi
-	
+
     if [ "$VDR_ENABLE_LIVE" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P 'live -i $VDR_LIVE_IP -p $VDR_LIVE_PORT'"
     fi
@@ -139,15 +147,15 @@ init_vdr_plugins() {
     if [ "$VDR_ENABLE_EPGFIXER" == "true" ] ; then
        VDR_ARG="$VDR_ARG -P epgfixer"
     fi
-	
+
     if [ "$VDR_ENABLE_EPGSEARCH" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P epgsearch"
     fi
-	
+
     if [ "$VDR_ENABLE_DUMMYDEVICE" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P dummydevice"
     fi
-	
+
     if [ "$VDR_ENABLE_SATIP" == "true" ] ; then
         VDR_ARG="$VDR_ARG -P satip"
     fi
@@ -179,23 +187,116 @@ init_vdr_plugins() {
 	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --channellogos=\"$VDR_RESTFULAPI_CHANNELLOGOS\""
 	VDR_ARG="$VDR_ARG -P 'restfulapi $VDR_RESTFULAPI_ARGS'"
     fi
-
-    # vnsi/xvdr last
-    VDR_ARG="$VDR_ARG -P $PVR_PLUGIN"
 }
 
-if [ -f /storage/.cache/services/vdr.conf ]; then
+init_vdr_front_plugins() {
 
-    . /storage/.cache/services/vdr.conf
+    if [ "$VDR_ENABLE_FEMON" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P femon"
+    fi
+
+    if [ "$VDR_ENABLE_SYSTEMINFO" == "true" ]; then
+       VDR_SYSTEMINFO_SCRIPT="$VDR_HOME/plugins/systeminfo/systeminfo.sh"
+       VDR_ARG="$VDR_ARG -P 'systeminfo -s $VDR_SYSTEMINFO_SCRIPT'"
+    fi
+
+    if [ "$VDR_ENABLE_SLEEPTIMER" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P sleeptimer"
+    fi
+
+    if [ "$VDR_ENABLE_FILEBROWSER" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P filebrowser"
+    fi
+
+    if [ "$VDR_ENABLE_LCDPROC" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P lcdproc"
+    fi
+
+    if [ "$VDR_ENABLE_TEXT2SKIN" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P text2skin"
+    fi
+
+    if [ "$VDR_ENABLE_SKINNOPACITY" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P skinnopacity"
+    fi
+
+    if [ "$VDR_ENABLE_SKINFLAT" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P skinflat"
+    fi    
+
+    if [ "$VDR_ENABLE_SKINFLAT_PLUS" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P skinflatplus"
+    fi
+
+    if [ "$VDR_ENABLE_MENUORG" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P menuorg"
+    fi
+
+    if [ "$VDR_ENABLE_TVGUIDE" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P tvguide"
+    fi
+
+    if [ "$VDR_ENABLE_TVSCRAPER" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P tvscraper"
+    fi
+}
+
+init_vdr_soft() {
+    init_vdr_plugins
+    init_vdr_front_plugins
+    
+    if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
+        VDR_ARG="$VDR_ARG -P 'softhddevice -a hw:$VDR_SOUND_CARD,$VDR_SOUND_DEV $VDR_SOFT_PARAM'"    
+    elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
+        VDR_ARG="$VDR_ARG -P 'softhddevice -v vdpau -a hw:$VDR_SOUND_CARD,$VDR_SOUND_DEV $VDR_SOFT_PARAM'"
+    else
+        VDR_ARG="$VDR_ARG -P 'softhddevice -v va-api -a hw:$VDR_SOUND_CARD,$VDR_SOUND_DEV $VDR_SOFT_PARAM'"
+    fi
+}
+
+init_vdr_xine() {
+
+    if [ $(pidof vdr-sxfe) ]; then        
+        killall -9 vdr-sxfe  > /dev/null 2>&1
+        while [ $(pidof vdr-sxfe) ]; do
+            sleep 1
+        done
+    fi
+
+    init_vdr_plugins
+    init_vdr_front_plugins
+
+    VDR_XINE_CONFIG="$HOME/.config/xine/config_xineliboutput"
+    
+    if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=alsa'" 
+    elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vdpau --config=$VDR_XINE_CONFIG --audio=alsa'"
+    else
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vaapi --config=$VDR_XINE_CONFIG --audio=alsa'"
+    fi
+}
+
+if [ -f /storage/.cache/services/vdr-front.run ]; then
+
+    . /storage/.cache/services/vdr-front.run
 
     if [ -f /storage/.cache/services/dvb.conf ]; then
        . /storage/.cache/services/dvb.conf
     fi
+    
+    echo  "Starting vdr frontend ..."
+    
+    stop_tv_backend
 
-    echo  "Starting vdr server ..."
-	
-    init_vdr_plugins
-
+    if [ "$VDR_FRONT" == "soft" ]; then
+        init_vdr_soft
+    elif [ "$VDR_FRONT" == "xine" ]; then 
+        init_vdr_xine
+    else
+        exit
+    fi
+    
     # start userspace DVB driver/addon
     for driver_dvb in $(find /storage/.xbmc/addons/driver.dvb.*/bin/userspace-driver.sh -type f 2>/dev/null); do
         driver_dvb_name=$(echo $driver_dvb | awk 'BEGIN {FS="/"} {printf("%s", $5)}')
@@ -218,6 +319,6 @@ if [ -f /storage/.cache/services/vdr.conf ]; then
     fi
 
     fix_config
-    
-    eval LANG=en_US.UTF-8 VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE" exec vdr.bin $VDR_ARG &>$LOG_VDR
+
+    eval DISPLAY=:0.0 LANG=en_US.UTF-8 VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE" exec vdr.bin $VDR_ARG &>$LOG_VDR
 fi
