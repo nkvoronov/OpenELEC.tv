@@ -40,12 +40,7 @@ pre_build_target() {
 configure_target() {
   ./configure --host=$TARGET_NAME \
               --build=$HOST_NAME \
-              --disable-shared \
               --prefix=/usr \
-              --enable-client \
-              --disable-device \
-              --disable-webserver \
               --disable-samples \
-              --without-documentation\
-              --enable-tools
+              --without-documentation
 }
