@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="vdr-addon"
-PKG_VERSION="4.3"
+PKG_VERSION="2.1.9"
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -51,10 +51,10 @@ addon() {
   #VDR_PLUGIN_EPGFIXER_DIR="$(get_build_dir vdr-plugin-epgfixer)"
   #VDR_PLUGIN_RESTFULAPI_DIR="$(get_build_dir vdr-plugin-restfulapi)"
 
-  VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
+  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
   VDR_LIVE_DIR=$ROOT/$BUILD/vdr-live-69f84f9
   VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-b300fc3
-  VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-b887bc8
+  VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-f2175ba
   VDR_PLUGIN_STREAMDEV_DIR=$ROOT/$BUILD/vdr-plugin-streamdev-84c6f6b
   VDR_PLUGIN_XMLTV2VDR_DIR=$ROOT/$BUILD/vdr-plugin-xmltv2vdr-b48e0be
   VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.1.3
@@ -67,8 +67,8 @@ addon() {
   VDR_PLUGIN_DUMMYDEVICE_DIR=$ROOT/$BUILD/vdr-dummydevice-2.0.0
   VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-1.0.2
   VDR_PLUGIN_EPGFIXER_DIR=$ROOT/$BUILD/vdr-plugin-epgfixer-1ad4aaf
-  VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-2f1cbbc
-  TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2
+  VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-09a4afe
+  TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2.1
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
   touch $ADDON_BUILD/$PKG_ADDON_ID/config/channels.conf
@@ -122,7 +122,7 @@ addon() {
   cp -P $VDR_PLUGIN_XMLTV2VDR_DIR/dist/epgdata2xmltv/epgdata2xmltv $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-  cp -PL $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.11 $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp -PL $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12 $ADDON_BUILD/$PKG_ADDON_ID/lib
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/streamdev-server
   cp -PR $VDR_PLUGIN_STREAMDEV_DIR/streamdev-server/streamdevhosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/streamdev-server

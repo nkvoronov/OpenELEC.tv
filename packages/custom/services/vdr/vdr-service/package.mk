@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="vdr-service"
-PKG_VERSION="5.0.1"
+PKG_VERSION="2.1.9"
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -194,9 +194,8 @@ makeinstall_target() {
 
 post_install() {
 
-  VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
-  TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2
-  API_VERSION="2.1.8"
+  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
+  API_VERSION="2.1.9"
 
   mkdir -p $INSTALL/usr/bin
     cp -P $VDR_DIR/vdr $INSTALL/usr/bin/vdr.bin
@@ -303,14 +302,13 @@ post_install() {
   if [ "$ENABLE_VDR_LIVE" = yes ]; then
     VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-69f84f9
     cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    cp -PL $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.11 $INSTALL/usr/lib
     mkdir -p $INSTALL/usr/config/vdr/plugins/live
       cp -PR $VDR_PLUGIN_LIVE_DIR/live/* $INSTALL/usr/config/vdr/plugins/live
     cp -PR $VDR_PLUGIN_LIVE_DIR/locale/* $INSTALL/usr/share/locale   
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-2f1cbbc 
+    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-09a4afe
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi/webapp
@@ -345,7 +343,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-b887bc8
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-f2175ba
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $INSTALL/usr/config/vdr/plugins/vnsiserver
@@ -448,7 +446,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-9f134c1 
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-2ceeb6d
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`

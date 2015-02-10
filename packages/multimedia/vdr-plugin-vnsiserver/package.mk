@@ -17,8 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-vnsiserver"
-PKG_VERSION="b887bc8"
-#PKG_VERSION="dc98718"
+PKG_VERSION="f2175ba"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -41,7 +40,7 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
+  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \
     LOCALEDIR="./locale"

@@ -41,14 +41,12 @@ pre_configure_target() {
 }
 
 pre_build_target() {
-  #WIRBELSCAN_DIR=$(get_build_dir vdr-wirbelscan)
   WIRBELSCAN_DIR=$ROOT/$BUILD/vdr-wirbelscan-0.0.7
   ln -sf $WIRBELSCAN_DIR/wirbelscan_services.h $PKG_BUILD
 }
 
 make_target() {
-  #VDR_DIR=$(get_build_dir vdr)
-  VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
+  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \
     LOCALEDIR="./locale"

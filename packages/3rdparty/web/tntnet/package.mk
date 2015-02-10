@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="tntnet"
-PKG_VERSION="2.2"
+PKG_VERSION="2.2.1"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL-2"
 PKG_SITE="http://www.tntnet.org/"
-PKG_URL="http://www.tntnet.org/download/${PKG_NAME}-${PKG_VERSION}.tar.gz"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_HOST="cxxtools:host zlib:host"
 PKG_DEPENDS_TARGET="toolchain tntnet:host cxxtools"
 PKG_PRIORITY="optional"
@@ -43,14 +43,21 @@ PKG_CONFIGURE_OPTS_HOST="--disable-unittest \
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-unittest \
                            --with-sysroot=$SYSROOT_PREFIX \
-                           --with-server=no \
-                           --with-sdk=no \
+                           --with-server=yes \
+                           --with-sdk=yes \
                            --with-demos=no \
                            --with-epoll=yes \
                            --with-ssl=no \
                            --with-stressjob=no"
 
+pre_make_target() {
+  mkdir -p etc/init.d
+    cp -P ../etc/init.d/tntnet.in etc/init.d
+  mkdir -p etc/tntnet
+    cp -P ../etc/tntnet/tntnet.xml.in etc/tntnet
+}
+
 post_makeinstall_target() {
-  rm -rf $INSTALL/usr/bin
+  rm -rf $INSTALL/etc
   rm -rf $INSTALL/usr/share
 }

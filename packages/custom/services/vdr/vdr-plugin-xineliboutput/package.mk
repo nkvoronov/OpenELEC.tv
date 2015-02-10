@@ -33,7 +33,7 @@ PKG_LONGDESC="xine-lib based software output device for VDR."
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-VDR_DIR=$ROOT/$BUILD/vdr-4ee983a
+VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
 
 export PKG_CONFIG_PATH="${PKG_CONFIG_SYSROOT_DIR}/usr/lib/pkgconfig:${PKG_CONFIG_SYSROOT_DIR}buildd/lib/pkgconfig"
 
