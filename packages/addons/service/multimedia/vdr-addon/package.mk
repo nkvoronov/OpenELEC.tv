@@ -42,15 +42,6 @@ makeinstall_target() {
 }
 
 addon() {
-  #VDR_DIR="$(get_build_dir vdr)"
-  #VDR_LIVE_DIR="$(get_build_dir vdr-live)"
-  #VDR_PLUGIN_XVDR_DIR="$(get_build_dir vdr-plugin-xvdr)"
-  #VDR_PLUGIN_VNSISERVER_DIR="$(get_build_dir vdr-plugin-vnsiserver)"
-  #VDR_PLUGIN_STREAMVEV_DIR="$(get_build_dir vdr-plugin-streamdev)"
-  #VDR_PLUGIN_XMLTV2VDR="$(get_build_dir vdr-plugin-xmltv2vdr)"
-  #VDR_PLUGIN_EPGFIXER_DIR="$(get_build_dir vdr-plugin-epgfixer)"
-  #VDR_PLUGIN_RESTFULAPI_DIR="$(get_build_dir vdr-plugin-restfulapi)"
-
   VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
   VDR_LIVE_DIR=$ROOT/$BUILD/vdr-live-69f84f9
   VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-b300fc3
