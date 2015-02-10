@@ -17,6 +17,6 @@
 	<string id="1023">Number of adapters to wait for</string>
 	<string id="1024">Preload capmt_ca.so library</string>
 	<string id="1025">Enable backup configuration</string>
-	<string id="1026">Used adapters nums</string>
+	<string id="1026">Used adapters</string>
 
 </strings>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	<string id="1000">DVB</string>
+	<string id="1001">Плагины</string>
+	<string id="1002">VDR</string>
+	<string id="1020">DVB конфигурация</string>
+	<string id="1021">Выгружать DVB модули перед засыпанием</string>
+	<string id="1022">Ожидать инициализацию адаптера</string>
+	<string id="1023">Номера адаптеров</string>
+	<string id="1024">Разрешить замещение кодировки</string>
+	<string id="1025">- кодировка</string>
+	<string id="1030">Конфигурация плагинов</string>
+	<string id="1031">Разрешить плагин: iptv</string>
+	<string id="1032">Разрешить плагин: streamdev-client</string>
+	<string id="1033">Разрешить плагин: streamdev-server</string>
+	<string id="1036">Разрешить softcam (dvbapi)</string>
+	<string id="1038">Разрешить плагин: live</string>
+	<string id="1039">- ip</string>
+	<string id="1040">- порт</string>
+	<string id="1042">Разрешить плагин: control</string>
+	<string id="1043">- порт</string>
+	<string id="1044">Разрешить плагин: epgsearch</string>
+	<string id="1045">Разрешить плагин: xmltv2vdr</string>
+	<string id="1046">Разрешить плагин: extended EPG</string>
+	<string id="1047">Разрешить плагин: dummydevice</string>
+	<string id="1048">Разрешить плагин: satip</string>
+	<string id="1049">Разрешить плагин: epgfixer</string>
+	<string id="1051">VDR Конфигурация</string>
+	<string id="1052">VDR видео папка</string>
+	<string id="1053">PVR плагин</string>
+        <string id="1056">Разрешить внешнюю команду записи</string>
+        <string id="1057">Путь к внешней команде записи</string>
+        <string id="1058">- номер устройств</string>
+	<string id="1070">Разрешить плагин: restfulapi</string>
+	<string id="1071">- ip</string>
+	<string id="1072">- порт</string>
+	<string id="1073">- папка epgimages</string>
+	<string id="1074">- папка channellogos</string>
+</strings>

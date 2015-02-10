@@ -22,41 +22,22 @@
 
 oe_setup_addon service.multimedia.tvheadend
 
+
+TVHEADEND_CONF="$ADDON_HOME/config"
+DVR_DIR="$HOME/recordings"
+TIMESHIFT_DIR="$ADDON_HOME/cache/timeshift"
 ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 XMLTV_FILE="$ADDON_DIR/bin/tv_grab_file"
-XMLTV_SETTINGS_DIR="$ADDON_HOME/xmltv"
-XMLTV_SETTINGS_FILE="$XMLTV_SETTINGS_DIR/config"
-DVR_SETTINGS_DIR="$ADDON_HOME/dvr"
-DVR_SETTINGS_FILE="$DVR_SETTINGS_DIR/config"
-DVR_DIR="$HOME/recordings"
-TIMESHIFT_SETTINGS_DIR="$ADDON_HOME/timeshift"
-TIMESHIFT_SETTINGS_FILE="$TIMESHIFT_SETTINGS_DIR/config"
-TIMESHIFT_DIR="$ADDON_HOME/cache/timeshift"
+
+if [ ! -f "$TVHEADEND_CONF" ]; then
+  mkdir -p $TVHEADEND_CONF
+    cp -PR $ADDON_DIR/config/* $TVHEADEND_CONF
+fi
+
+mkdir -p $DVR_DIR
+mkdir -p $TIMESHIFT_DIR
 
 chmod a+x $ADDON_DIR/bin/*
-
-if [ ! -f "$XMLTV_SETTINGS_FILE" ]; then
-  mkdir -p $XMLTV_SETTINGS_DIR
-  if [ -f $ADDON_DIR/xmltv-config ]; then
-    cp $ADDON_DIR/xmltv-config $XMLTV_SETTINGS_FILE
-  fi
-fi
-
-if [ ! -f "$DVR_SETTINGS_FILE" ]; then
-  mkdir -p $DVR_DIR
-  mkdir -p $DVR_SETTINGS_DIR
-  if [ -f $ADDON_DIR/dvr-config ]; then
-    cp $ADDON_DIR/dvr-config $DVR_SETTINGS_FILE
-  fi
-fi
-
-if [ ! -f "$TIMESHIFT_SETTINGS_FILE" ]; then
-  mkdir -p $TIMESHIFT_DIR
-  mkdir -p $TIMESHIFT_SETTINGS_DIR
-  if [ -f $ADDON_DIR/timeshift-config ]; then
-    cp $ADDON_DIR/timeshift-config $TIMESHIFT_SETTINGS_FILE
-  fi
-fi
 
 if [ "$TVHEADEND_ADAPTERS" != "" ]; then
   TVHEADEND_ARG="-a $TVHEADEND_ADAPTERS"
@@ -69,9 +50,9 @@ if [ "$TVHEADEND_BACKUP" != "true" ] ; then
 fi
 
 if [ "$DEBUG" = "yes" ]; then
-  TVHEADEND_ARG="$TVHEADEND_ARG -C -s -u root -g video -c $ADDON_HOME"
+  TVHEADEND_ARG="$TVHEADEND_ARG -C -s -u root -g video -c $TVHEADEND_CONF"
 else
-  TVHEADEND_ARG="$TVHEADEND_ARG -C -u root -g video -c $ADDON_HOME"
+  TVHEADEND_ARG="$TVHEADEND_ARG -C -u root -g video -c $TVHEADEND_CONF"
 fi
 
 # start userspace DVB driver/addon
