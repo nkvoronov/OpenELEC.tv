@@ -41,7 +41,7 @@ pre_configure_target() {
 }
 
 pre_build_target() {
-  WIRBELSCAN_DIR=$ROOT/$BUILD/vdr-wirbelscan-0.0.7
+  WIRBELSCAN_DIR=$ROOT/$BUILD/vdr-wirbelscan-0.0.9
   ln -sf $WIRBELSCAN_DIR/wirbelscan_services.h $PKG_BUILD
 }
 

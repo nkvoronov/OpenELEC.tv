@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="tvheadend-service"
-PKG_VERSION="3.9.2486"
+PKG_VERSION="3.9.2492"
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -43,7 +43,7 @@ makeinstall_target() {
 }
 
 post_install() {
-  TVHEADEND_DIR=$ROOT/$BUILD/tvheadend-4a9dfec
+  TVHEADEND_DIR=$ROOT/$BUILD/tvheadend-89a5ca4
 
   mkdir -p $INSTALL/usr/bin
     cp -P $TVHEADEND_DIR/.$TARGET_NAME/build.linux/tvheadend $INSTALL/usr/bin
