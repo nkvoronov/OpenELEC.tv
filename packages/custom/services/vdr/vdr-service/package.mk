@@ -422,7 +422,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_MENUORG" = yes ]; then
-    VDR_PLUGIN_MENUORG_DIR=$ROOT/$BUILD/vdr-plugin-menuorg-e56415d 
+    VDR_PLUGIN_MENUORG_DIR=$ROOT/$BUILD/vdr-plugin-menuorg-cec1981
     cp -PR $VDR_PLUGIN_MENUORG_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/menuorg
       cp -PR $VDR_PLUGIN_MENUORG_DIR/menuorg.*  $INSTALL/usr/config/vdr/plugins/menuorg
