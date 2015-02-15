@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-skin-flatplus"
-PKG_VERSION="ac367da"
+PKG_VERSION="e03133d"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -39,7 +39,7 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
+  VDR_DIR=$ROOT/$BUILD/vdr-f82cdfe
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \
     LOCALEDIR="./locale"

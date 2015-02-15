@@ -44,7 +44,7 @@ pre_make_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
+  VDR_DIR=$ROOT/$BUILD/vdr-f82cdfe
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \
     LOCALEDIR="./locale"

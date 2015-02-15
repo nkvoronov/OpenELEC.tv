@@ -193,8 +193,8 @@ makeinstall_target() {
 }
 
 addon() {
-  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
-  API_VERSION="2.1.9"
+  VDR_DIR=$ROOT/$BUILD/vdr-f82cdfe
+  API_VERSION="2.1.10"
   TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2.1
   XINELIB_DIR=$ROOT/$BUILD/xine-lib-4602e39
   IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-0
@@ -267,7 +267,7 @@ addon() {
   fi 
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-7898582
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-7e1de39
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -303,11 +303,16 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_LIVE" = yes ]; then
-    VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-69f84f9
+    VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-6ea279a
     cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/live
       cp -PR $VDR_PLUGIN_LIVE_DIR/live/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/live
-    cp -PR $VDR_PLUGIN_LIVE_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale 
+    for fmo in `ls $VDR_PLUGIN_LIVE_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-live.mo    
+    done
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PL $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12 $ADDON_BUILD/$PKG_ADDON_ID/lib 
   fi
@@ -348,7 +353,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-f2175ba
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-9529e6d
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
@@ -451,7 +456,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-2ceeb6d
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-1d06c5b
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -549,7 +554,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-ac367da
+    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-e03133d
     cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes

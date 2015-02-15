@@ -194,8 +194,8 @@ makeinstall_target() {
 
 post_install() {
 
-  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
-  API_VERSION="2.1.9"
+  VDR_DIR=$ROOT/$BUILD/vdr-f82cdfe
+  API_VERSION="2.1.10"
 
   mkdir -p $INSTALL/usr/bin
     cp -P $VDR_DIR/vdr $INSTALL/usr/bin/vdr.bin
@@ -264,7 +264,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-7898582
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-7e1de39
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -300,11 +300,16 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_LIVE" = yes ]; then
-    VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-69f84f9
+    VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-6ea279a
     cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/live
       cp -PR $VDR_PLUGIN_LIVE_DIR/live/* $INSTALL/usr/config/vdr/plugins/live
-    cp -PR $VDR_PLUGIN_LIVE_DIR/locale/* $INSTALL/usr/share/locale   
+    for fmo in `ls $VDR_PLUGIN_LIVE_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $INSTALL/usr/share/locale/$fname
+      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-live.mo    
+    done   
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
@@ -343,7 +348,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-f2175ba
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-9529e6d
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $INSTALL/usr/config/vdr/plugins/vnsiserver
@@ -446,7 +451,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-2ceeb6d
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-1d06c5b
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -543,7 +548,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-ac367da
+    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-e03133d
     cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/themes/* $INSTALL/usr/config/vdr/themes

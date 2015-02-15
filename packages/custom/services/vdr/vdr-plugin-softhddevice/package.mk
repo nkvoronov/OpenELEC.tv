@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-softhddevice"
-PKG_VERSION="2ceeb6d"
+PKG_VERSION="1d06c5b"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -39,7 +39,7 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-bb4ef3b
+  VDR_DIR=$ROOT/$BUILD/vdr-f82cdfe
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \
     LOCALEDIR="./locale"
