@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="vdr-service"
-PKG_VERSION="2.1.9"
+PKG_VERSION="2.1.10"
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -275,7 +275,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_EEPG" = yes ]; then
-    VDR_PLUGIN_EEPG_DIR=$ROOT/$BUILD/vdr-plugin-eepg-d7dc614
+    VDR_PLUGIN_EEPG_DIR=$ROOT/$BUILD/vdr-plugin-eepg-9cd9a75
     cp -PR $VDR_PLUGIN_EEPG_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     #mkdir -p $INSTALL/usr/config/vdr/plugins/eepg
     #for fmo in `ls $VDR_PLUGIN_EEPG_DIR/po/*.mo`;do
@@ -451,7 +451,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-1d06c5b
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-93ea660
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`

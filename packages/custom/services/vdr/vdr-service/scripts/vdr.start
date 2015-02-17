@@ -177,6 +177,9 @@ init_vdr_plugins() {
         VDR_RESTFULAPI_CHANNELLOGOS="$VDR_HOME/plugins/restfulapi/channellogos"
 	mkdir -p $VDR_RESTFULAPI_CHANNELLOGOS
 	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --channellogos=\"$VDR_RESTFULAPI_CHANNELLOGOS\""
+        VDR_RESTFULAPI_WEBAPP="$VDR_HOME/plugins/restfulapi/webapp"
+        mkdir -p $VDR_RESTFULAPI_WEBAPP
+        VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --webapp=\"$VDR_RESTFULAPI_WEBAPP\""
 	VDR_ARG="$VDR_ARG -P 'restfulapi $VDR_RESTFULAPI_ARGS'"
     fi
 
