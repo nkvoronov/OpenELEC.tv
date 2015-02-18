@@ -20,7 +20,7 @@
 ################################################################################
 
 PKG_NAME="oscam-addon"
-PKG_VERSION="10551"
+PKG_VERSION="10565"
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -46,7 +46,7 @@ makeinstall_target() {
 }
 
 addon() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10551
+  OSCAM_DIR=$ROOT/$BUILD/oscam-10565
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $ADDON_BUILD/$PKG_ADDON_ID/bin
