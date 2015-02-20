@@ -40,7 +40,7 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-f82cdfe
+  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   make VDRDIR=$VDR_DIR \
     SATIP_USE_TINYXML=1 \
     LIBDIR="." \

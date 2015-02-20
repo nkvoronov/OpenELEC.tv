@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-dvbapi"
-PKG_VERSION="99852d0"
+PKG_VERSION="490d5a2"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -46,7 +46,7 @@ pre_make_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-f82cdfe
+  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   make VDRDIR=$VDR_DIR \
     VDRSRC=$VDR_DIR \
     LIBDIR="." \

@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="vdr-addon"
-PKG_VERSION="2.1.10"
+PKG_VERSION="2.2.0"
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -193,8 +193,8 @@ makeinstall_target() {
 }
 
 addon() {
-  VDR_DIR=$ROOT/$BUILD/vdr-f82cdfe
-  API_VERSION="2.1.10"
+  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+  API_VERSION="2.2.0"
   TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2.1
   XINELIB_DIR=$ROOT/$BUILD/xine-lib-4602e39
   IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-0
@@ -267,7 +267,7 @@ addon() {
   fi 
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-99852d0
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-490d5a2
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -515,7 +515,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
-    VDR_PLUGIN_XINEOUTPUT_DIR=$ROOT/$BUILD/vdr-plugin-xineliboutput-40dcf2f
+    VDR_PLUGIN_XINEOUTPUT_DIR=$ROOT/$BUILD/vdr-plugin-xineliboutput-fd21e7a
     XINE_VERSION="2.5"
     cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-fbfe $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-sxfe $ADDON_BUILD/$PKG_ADDON_ID/bin
@@ -554,7 +554,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-e03133d
+    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-5d1bcf0
     cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
