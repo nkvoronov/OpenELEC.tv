@@ -9,7 +9,7 @@ XMLTV_FILE="/storage/epgsources/xmltv.xml"
 CHANNELS_FILE="$EPGSOURCES_CONF/channels.ini.new"
 
 #check run vdr
-if [ "$(pidof vdr)" ]; then
+if [ "$(pidof vdr.bin)" ]; then
     echo "Running make_channel_mapping"
     $PYTHON_FILE -x $XMLTV_FILE -o $CHANNELS_FILE
 else

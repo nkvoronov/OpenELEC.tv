@@ -8,7 +8,7 @@
 	"post-extra-time": 3,
 	"episode-duplicate-detection": true,
 	"epg-update-window": 86400,
-	"storage": "/storage/recordings",
+	"storage": "/media/Video/records/tvheadend",
 	"file-permissions": "0755",
 	"charset": "UTF-8",
 	"tag-files": true,

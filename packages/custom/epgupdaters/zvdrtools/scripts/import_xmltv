@@ -9,7 +9,7 @@ XMLTV_FILE="/storage/epgsources/xmltv.xml"
 CHANNELS_FILE="$EPGSOURCES_CONF/channels_map.ini"
 
 #check run vdr
-if [ "$(pidof vdr)" ]; then
+if [ "$(pidof vdr.bin)" ]; then
     echo "Running import_xmltv"
     $PYTHON_FILE -x $XMLTV_FILE -o $CHANNELS_FILE
 else
