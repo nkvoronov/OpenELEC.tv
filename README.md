@@ -44,7 +44,7 @@ providing cutting edge hardware support to deliver a set-top box experience.
 
 **Features**
 
-* System size ~ 90 - 130MB
+* System size ~ 300MB
 * Minimal hardware requirements
 * Ultra fast boot
 * Optimized builds for platforms such as ION, Intel, Fusion
@@ -57,6 +57,17 @@ providing cutting edge hardware support to deliver a set-top box experience.
 * Samba server – File transfer from any PC client
 * SSH server – Remote console access for debugging
 * IR/Bluetooth Remote Control
+
+**Software++**
+
+* tvheadend (service)
+* vdr (service)
+* transmission (service)
+* libtorenter
+* acestream
+* perl
+* tbs drivers
+* mc, htop and other
 
 **Notes**
 
