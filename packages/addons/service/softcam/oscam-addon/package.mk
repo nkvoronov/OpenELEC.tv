@@ -20,11 +20,7 @@
 ################################################################################
 
 PKG_NAME="oscam-addon"
-<<<<<<< HEAD
 PKG_VERSION="10615"
-=======
-PKG_VERSION="10611"
->>>>>>> 34aadf96a6dd66a9a01ce8f22e0e34786626f1a0
 PKG_REV="10"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -50,12 +46,7 @@ makeinstall_target() {
 }
 
 addon() {
-<<<<<<< HEAD
   OSCAM_DIR=$ROOT/$BUILD/oscam-10615
-=======
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10611
->>>>>>> 34aadf96a6dd66a9a01ce8f22e0e34786626f1a0
-
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $OSCAM_DIR/.$TARGET_NAME/utils/list_smargo $ADDON_BUILD/$PKG_ADDON_ID/bin
