@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="xine-lib"
-PKG_VERSION="4602e39"
+PKG_VERSION="965c0ed"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

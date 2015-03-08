@@ -196,8 +196,8 @@ addon() {
   VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   API_VERSION="2.2.0"
   TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2.1
-  XINELIB_DIR=$ROOT/$BUILD/xine-lib-4602e39
-  IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-0
+  XINELIB_DIR=$ROOT/$BUILD/xine-lib-965c0ed
+  IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
 
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
