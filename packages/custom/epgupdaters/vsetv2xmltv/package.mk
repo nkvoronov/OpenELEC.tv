@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="vsetv2xmltv"
-PKG_VERSION="2.2"
+PKG_VERSION="cf494bb"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

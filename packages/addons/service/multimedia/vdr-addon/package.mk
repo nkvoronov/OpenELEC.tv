@@ -196,10 +196,22 @@ addon() {
   VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   API_VERSION="2.2.0"
   TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2.1
-  XINELIB_DIR=$ROOT/$BUILD/xine-lib-965c0ed
+  TNTDB_DIR=$ROOT/$BUILD/tntdb-1.3
+  LIBUPNP_DIR=$ROOT/$BUILD/libupnp-1.6.19
+  GLIBMM_DIR=$ROOT/$BUILD/glibmm-2.39.93
+  LIBXMLPP_DIR=$ROOT/$BUILD/libxml++-2.36.0
+  LIBSIGPP_DIR=$ROOT/$BUILD/libsigc++-2.2.10
+  LIBXCB_DIR=$ROOT/$BUILD/libxcb-1.11
+  LIBXCBPROTO_DIR=$ROOT/$BUILD/xcb-proto-1.11
+  LIBXCBUTIL_DIR=$ROOT/$BUILD/xcb-util-0.3.9
+  LIBXCBUTILIMAGE_DIR=$ROOT/$BUILD/xcb-util-image-0.3.9
+  LIBXCBUTILKEYSYMS_DIR=$ROOT/$BUILD/xcb-util-keysyms-0.3.9
+  LIBXCBUTILRENDERUTIL_DIR=$ROOT/$BUILD/xcb-util-renderutil-0.3.9
+  LIBXCBUTILWM_DIR=$ROOT/$BUILD/xcb-util-wm-0.4.1
+  JANSSON_DIR=$ROOT/$BUILD/jansson-2.6
   IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
-
-
+  XINELIB_DIR=$ROOT/$BUILD/xine-lib-965c0ed
+  
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin
@@ -267,7 +279,7 @@ addon() {
   fi 
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-c0c7fa2
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-fd4fcd6
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -314,7 +326,7 @@ addon() {
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-live.mo    
     done
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PL $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12 $ADDON_BUILD/$PKG_ADDON_ID/lib 
+      cp -PR $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.* $ADDON_BUILD/$PKG_ADDON_ID/lib 
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
@@ -442,6 +454,13 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-menuorg.mo    
     done
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $GLIBMM_DIR/.install_pkg/usr/lib/libgiomm-2.4.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $GLIBMM_DIR/.install_pkg/usr/lib/libglibmm-2.4.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $GLIBMM_DIR/.install_pkg/usr/lib/libglibmm_generate_extra_defs-2.4.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBSIGPP_DIR/.install_pkg/usr/lib/libsigc-2.0.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXMLPP_DIR/.install_pkg/usr/lib/libxml++-2.6.* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SLEEPTIMER" = yes ]; then
@@ -464,12 +483,28 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-softhddevice.mo    
     done
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
+      cp -PR $LIBXCBPROTO_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXCBPROTO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXCBUTIL_DIR/.install_pkg/usr/lib/libxcb-util.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXCBUTILIMAGE_DIR/.install_pkg/usr/lib/libxcb-image.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXCBUTILKEYSYMS_DIR/.install_pkg/usr/lib/libxcb-keysyms.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXCBUTILRENDERUTIL_DIR/.install_pkg/usr/lib/libxcb-render-util.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXCBUTILWM_DIR/.install_pkg/usr/lib/libxcb-ewmh.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXCBUTILWM_DIR/.install_pkg/usr/lib/libxcb-icccm.* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TEXT2SKIN" = yes ]; then
     VDR_PLUGIN_TEXT2SKIN_DIR=$ROOT/$BUILD/vdr-plugin-text2skin-7bd88a0 
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
+      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVGUIDE" = yes ]; then
@@ -485,6 +520,11 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-tvguide.mo    
     done
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
+      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
@@ -498,6 +538,9 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-tvscraper.mo    
     done
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $JANSSON_DIR/.install_pkg/usr/lib/libjansson.* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
@@ -512,6 +555,11 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-upnp.mo    
     done
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $TNTNET_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $TNTDB_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBUPNP_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
@@ -551,6 +599,11 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinflat.mo    
     done
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
+      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
@@ -569,6 +622,11 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinflatplus.mo    
     done
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
+      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_SKIN_NOPACITY" = yes ]; then
@@ -586,6 +644,11 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinnopacity.mo    
     done
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
+      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
 
   if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
