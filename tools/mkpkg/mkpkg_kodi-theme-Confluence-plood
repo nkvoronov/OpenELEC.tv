@@ -24,7 +24,7 @@ PKG_REPO="https://github.com/nkvoronov/skin.confluence-plood.git"
 
 echo "getting sources..."
   if [ ! -d $PKG_NAME.git ]; then
-    git clone  -b helix $PKG_REPO $PKG_NAME.git
+    git clone $PKG_REPO $PKG_NAME.git
   fi
 
   cd $PKG_NAME.git
