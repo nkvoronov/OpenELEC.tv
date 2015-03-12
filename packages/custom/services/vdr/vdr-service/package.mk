@@ -451,7 +451,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-93ea660
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-a1939eb
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
