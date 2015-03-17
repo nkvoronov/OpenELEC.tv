@@ -18,21 +18,28 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-theme-Confluence-plood"
-PKG_VERSION="a43d914"
+PKG_NAME="openelec-dev-update"
+PKG_VERSION="0401db6"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain Python kodi-addon-favourites"
+PKG_DEPENDS_TARGET="toolchain Python"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="kodi-theme-Confluence-plood: KODI Mediacenter additional theme"
-PKG_LONGDESC="KODI Media Center (which was formerly named Xbox Media Center) is a free and open source cross-platform media player and home entertainment system software with a 10-foot user interface designed for the living-room TV. Its graphical user interface allows the user to easily manage video, photos, podcasts, and music from a computer, optical disk, local network, and the internet using a remote control."
+PKG_SHORTDESC="This KODI  addon downloads and extracts OpenELEC development (nightly) builds and official releases, ready to be installed on the next reboot."
+PKG_LONGDESC="This KODI  addon downloads and extracts OpenELEC development (nightly) builds and official releases, ready to be installed on the next reboot."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
+
+post_unpack() {
+  for patch in `ls $PKG_DIR/patches.upstream/*.patch`; do
+    cat $patch | patch -d \
+    `echo $BUILD/$PKG_NAME-$PKG_VERSION | cut -f1 -d\ ` -p1
+  done
+}
 
 make_target() {
   : # nothing
@@ -43,6 +50,6 @@ makeinstall_target() {
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-plood
-    cp -PR $PKG_BUILD/skin.confluence-plood-helix/* $INSTALL/usr/share/kodi/addons/skin.confluence-plood
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.openelec.devupdate
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.openelec.devupdate
 }

@@ -30,7 +30,7 @@ $SCRIPTS/build kmod:host
 
 BUILD_DATE=`date +%Y%m%d%H%M%S`
 
-if [ "$OPENELEC_VERSION" = devel ]; then
+#if [ "$OPENELEC_VERSION" = devel ]; then
   if ! GIT_BUILD=$(git rev-list --count HEAD 2>/dev/null)
   then
     GIT_BUILD=$(git rev-list HEAD | wc -l)
@@ -38,7 +38,7 @@ if [ "$OPENELEC_VERSION" = devel ]; then
   GIT_HASH=$(git rev-parse HEAD)
   GIT_ABBREV=$(git log -1 --pretty=format:%h)
   OPENELEC_VERSION=$OPENELEC_VERSION-$BUILD_DATE-r$GIT_BUILD-g$GIT_ABBREV
-fi
+#fi
 
 TARGET_VERSION="$PROJECT.$TARGET_ARCH-$OPENELEC_VERSION"
 IMAGE_NAME="$DISTRONAME-$TARGET_VERSION"

@@ -54,6 +54,10 @@ if [ "$KODI_THEME_CONFLUENCE_PLOOD" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-theme-Confluence-plood"  
 fi
 
+if [ "$OPENELEC_DEV_UPDATE" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET openelec-dev-update"  
+fi
+
 if [ "$LOCALES_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kbd"  
 fi

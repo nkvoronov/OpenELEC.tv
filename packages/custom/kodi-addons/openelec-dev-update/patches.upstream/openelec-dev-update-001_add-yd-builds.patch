@@ -1,0 +1,60 @@
+diff -Naur a/resources/lib/builds.py b/resources/lib/builds.py
+--- a/resources/lib/builds.py	2015-03-17 14:21:26.000000000 +0200
++++ b/resources/lib/builds.py	2015-03-17 19:43:50.725784261 +0200
+@@ -3,6 +3,7 @@
+ import time
+ import re
+ import os
++import utils
+ import urlparse
+ from datetime import datetime
+ from collections import OrderedDict
+@@ -193,8 +194,13 @@
+ class DropboxBuildLinkExtractor(BuildLinkExtractor):
+ 
+     CSS_CLASS = 'filename-link'
+-        
+-        
++
++
++class YDBuildLinkExtractor(BuildLinkExtractor):
++
++    BUILD_RE = ".*OpenELEC.*-{0}-[\d\.]+-(\d+)-(?:r|%23)(\d+[a-z]*)(|-g[0-9a-z]+)\.tar(|\.bz2)"
++
++
+ class ReleaseLinkExtractor(BuildLinkExtractor):
+ 
+     BUILD_RE = ".*OpenELEC.*-{0}-([\d\.]+)\.tar(|\.bz2)"
+@@ -237,7 +243,7 @@
+     except IOError:
+         version = 'devel-20141031232437-r19505-g98f5c23'
+     
+-    m = re.search("devel-(\d+)-[r#](\d+)", version)
++    m = re.search(".*-(\d+)-[r#](\d+)", version)
+     if m:
+         return Build(*m.groups())
+     else:
+@@ -266,7 +272,10 @@
+                         BuildsURL("http://milhouse.openelec.tv/builds/master", subdir=arch.split('.')[0])),
+                        ("DarkAngel2401 Dual Audio Builds",
+                         BuildsURL("http://openelec-dualaudio.subcarrier.de/OpenELEC-DualAudio/", subdir=arch,
+-                                  extractor=DualAudioReleaseLinkExtractor))
++                                  extractor=DualAudioReleaseLinkExtractor)),
++                       ("YLLOW_DRAGON Builds",
++                        BuildsURL("https://www.dropbox.com/sh/rb8zwx8dog9u593/AADsKisWoX15tfzd0_B22gfUa?dl=0",
++                                  extractor=YDBuildLinkExtractor))
+                       ))
+ 
+ 
+diff -Naur a/resources/settings.xml b/resources/settings.xml
+--- a/resources/settings.xml	2015-03-17 14:21:26.000000000 +0200
++++ b/resources/settings.xml	2015-03-17 10:47:15.000000000 +0200
+@@ -2,7 +2,7 @@
+ <settings>
+     <category label="General">
+         <setting type="lsep" label="Source"/>
+-        <setting label="Source URL" type="select" id="source" values="Official Snapshot Builds|Official Releases|Official Archive|Chris Swan (RPi)|MilhouseVH Builds (RPi)|DarkAngel2401 Dual Audio Builds|Other" default="Official Snapshot Builds"/>
++        <setting label="Source URL" type="select" id="source" values="Official Snapshot Builds|Official Releases|Official Archive|Chris Swan (RPi)|MilhouseVH Builds (RPi)|DarkAngel2401 Dual Audio Builds|YLLOW_DRAGON Builds|Other" default="Official Snapshot Builds"/>
+         <setting label="Custom URL" type="text" id="custom_url" enable="eq(-1,Other)" visible="eq(-1,Other)" subsetting="true"/>
+         <setting label="URL subdirectory" type="text" id="subdir" enable="!eq(-2,Official Releases)+!eq(-2,Other)" visible="!eq(-2,Official Releases)+!eq(-2,Other)"/>
+         <setting type="lsep" label="Archive"/>
