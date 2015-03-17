@@ -266,7 +266,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_IPTV" = yes ]; then
-    VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.1.3
+    VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.2.0
     cp -PR $VDR_PLUGIN_IPTV_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/iptv
       cp -PR $VDR_PLUGIN_IPTV_DIR/iptv/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/iptv
@@ -394,7 +394,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SATIP" = yes ]; then
-    VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-1.0.2 
+    VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-2.2.0
     cp -PR $VDR_PLUGIN_SATIP_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     for fmo in `ls $VDR_PLUGIN_SATIP_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -414,7 +414,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_FEMON" = yes ]; then
-    VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.1.1 
+    VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.2.0
     cp -PR $VDR_PLUGIN_FEMON_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     for fmo in `ls $VDR_PLUGIN_FEMON_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
