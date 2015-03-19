@@ -1,3 +1,953 @@
+diff -Naur a/addon.xml b/addon.xml
+--- a/addon.xml	2015-03-17 14:21:26.000000000 +0200
++++ b/addon.xml	2015-03-19 19:48:52.492591246 +0200
+@@ -14,8 +14,10 @@
+   <extension point="xbmc.service" library="service.py" start="startup"/>
+   <extension point="xbmc.addon.metadata">
+     <platform>all</platform>
+-    <summary>Unofficial OpenELEC updater</summary>
+-    <description>This add-on downloads OpenELEC update files ready to be installed on the next reboot. Use the add-on settings to choose the source URL or provide your own. Run the add-on to select from a list of builds available at the URL.</description>
++    <summary lang="en">Unofficial OpenELEC updater</summary>
++    <summary lang="ru">Неоффициальная программа обновления OpenELEC </summary>
++    <description lang="en">This add-on downloads OpenELEC update files ready to be installed on the next reboot. Use the add-on settings to choose the source URL or provide your own. Run the add-on to select from a list of builds available at the URL.</description>
++    <description lang="ru">Этот адон скачивает файлы обновлений OpenELEC, которые будут готовы к установке при следующей перезагрузке. Используйте адон, в настройках выбрать ресурс или установить свой собственный. Запустите адон, чтобы выбрать нужную сборку из списка сборок доступных в данном ресурсе.</description>
+     <disclaimer>Development builds often have major bugs and crashes can happen quite often. Always backup your userdata folder when installing development builds.</disclaimer>
+     <forum>http://openelec.tv/forum/128-addons/49855</forum>
+     <website>http://ls80.github.io/script.openelec.devupdate</website>
+diff -Naur a/default.py b/default.py
+--- a/default.py	2015-03-17 14:21:26.000000000 +0200
++++ b/default.py	2015-03-19 16:31:26.000000000 +0200
+@@ -37,18 +37,19 @@
+ __addon__ = xbmcaddon.Addon()
+ __icon__ = __addon__.getAddonInfo('icon')
+ __dir__ = xbmc.translatePath(__addon__.getAddonInfo('profile'))
++__lang__ = __addon__.getLocalizedString
+ 
+ 
+ def check_update_files():
+     # Check if the update files are already in place.
+     if (all(os.path.isfile(f) for f in constants.UPDATE_PATHS) or
+         glob.glob(os.path.join(constants.UPDATE_DIR, '*tar'))):
+-        if xbmcgui.Dialog().yesno("Confirm reboot",
+-                                  "The update files are already in place.",
+-                                  "Reboot now to install the update",
+-                                  "or continue to select another build.",
+-                                  "Continue",
+-                                  "Reboot"):
++        if xbmcgui.Dialog().yesno(__lang__(32500),
++                                  __lang__(32501),
++                                  __lang__(32502),
++                                  __lang__(32503),
++                                  __lang__(32504),
++                                  __lang__(32505)):
+             xbmc.restart()
+         else:
+             utils.remove_update_files()
+@@ -97,9 +98,9 @@
+     if backup == 0:
+         do_backup = False
+     elif backup == 1:
+-        do_backup = xbmcgui.Dialog().yesno("Backup",
+-                                           "Run XBMC Backup now?",
+-                                           "This is recommended")
++        do_backup = xbmcgui.Dialog().yesno(__lang__(32351),
++                                           __lang__(32506),
++                                           __lang__(32507))
+         utils.log("Backup requested")
+     elif backup == 2:
+         do_backup = True
+@@ -134,7 +135,7 @@
+             url = __addon__.getSetting('custom_url')
+             scheme, netloc = urlparse.urlparse(url)[:2]
+             if not (scheme and netloc):
+-                utils.bad_url(url, "Invalid URL")
++                utils.bad_url(url, __lang__(32508))
+                 sys.exit(1)
+             
+             build_url = builds.BuildsURL(url, subdir)
+@@ -173,7 +174,7 @@
+             sys.exit(1)
+ 
+         if not links:
+-            utils.bad_url(url, "No builds were found for {}.".format(self._arch))
++            utils.bad_url(url, __lang__(32509).format(self._arch))
+             sys.exit(1)
+             
+         return links
+@@ -211,14 +212,16 @@
+                 utils.log("Archive builds to " + self.archive_dir)
+                 if not xbmcvfs.exists(self.archive_root):
+                     utils.log("Unable to access archive")
+-                    xbmcgui.Dialog().ok("Directory Error", "{} is not accessible.".format(self.archive_root),
+-                                        "Check the archive directory in the addon settings.")
++                    xbmcgui.Dialog().ok(__lang__(32510), 
++                                        __lang__(32511).format(self.archive_root),
++                                        __lang__(32512))
+                     __addon__.openSettings()
+                     sys.exit(1)
+                 elif not xbmcvfs.mkdir(self.archive_dir):
+                     utils.log("Unable to create directory in archive")
+-                    xbmcgui.Dialog().ok("Directory Error", "Unable to create {}.".format(self.archive_dir),
+-                                        "Check the archive directory permissions.")
++                    xbmcgui.Dialog().ok(__lang__(32510),
++                			__lang__(32513).format(self.archive_dir),
++                                        __lang__(32514))
+                     sys.exit(1)
+ 
+             cd_tmp_dir()
+@@ -280,13 +283,13 @@
+         # Confirm the update.
+         msg = "{} -> {}?".format(self.installed_build, selected_build)
+         if selected_build < self.installed_build:
+-            args = ("Confirm downgrade", "Downgrade", msg)
++            args = (__lang__(32515), __lang__(32536), msg)
+         elif selected_build > self.installed_build:
+-            args = ("Confirm upgrade", "Upgrade", msg)
++            args = (__lang__(32516), __lang__(32517), msg)
+         else:
+-            args = ("Confirm install",
+-                    "Build {} is already installed.".format(selected_build),
+-                    "Continue?")
++            args = (__lang__(32518),
++                    __lang__(32519).format(selected_build),
++                    __lang__(32504)+"?")
+         if not xbmcgui.Dialog().yesno(*args):
+             sys.exit(0)
+             
+@@ -322,7 +325,7 @@
+                 else:
+                     # Do the download
+                     utils.log("Starting download of " + self.selected_build.url)
+-                    with progress.FileProgress("Downloading",
++                    with progress.FileProgress(__lang__(32520),
+                                                remote_file, filename, size,
+                                                self.background) as downloader:
+                         downloader.start()
+@@ -341,7 +344,7 @@
+             try:
+                 bf = open(filename, 'rb')
+                 utils.log("Starting decompression of " + filename)
+-                with progress.DecompressProgress("Decompressing",
++                with progress.DecompressProgress(__lang__(32521),
+                                                  bf, tar_name, size,
+                                                  self.background) as decompressor:
+                     decompressor.start()
+@@ -374,7 +377,7 @@
+                 ti = tf.extractfile(member)
+                 outfile = os.path.join(constants.UPDATE_DIR, os.path.basename(member.name))
+                 try:
+-                    with progress.FileProgress("Extracting", ti, outfile, ti.size,
++                    with progress.FileProgress(__lang__(32522), ti, outfile, ti.size,
+                                                self.background) as extractor:
+                         extractor.start()
+                     utils.log("Extracted " + outfile)
+@@ -400,7 +403,7 @@
+                 tarfile = os.path.join(__dir__, self.selected_build.tar_name)
+         
+                 try:
+-                    with progress.FileProgress("Retrieving tar file from archive",
++                    with progress.FileProgress(__lang__(32523),
+                                                archive, tarfile, archive.size(),
+                                                self.background) as extractor:
+                         extractor.start()
+@@ -423,7 +426,7 @@
+             size = os.path.getsize(tarpath)
+ 
+             try:
+-                with progress.FileProgress("Copying to archive",
++                with progress.FileProgress(__lang__(32524),
+                                            tar, self.archive_tar_path, size,
+                                            self.background) as extractor:
+                     extractor.start()
+@@ -452,7 +455,7 @@
+         else:
+             verify_progress = progress.Progress()
+             
+-        verify_progress.create("Verifying", line2=path)
++        verify_progress.create(__lang__(32525), line2=path)
+     
+         BLOCK_SIZE = 8192
+         
+@@ -486,10 +489,10 @@
+         
+                 if not self.md5sum_verified(md5sum, f):
+                     utils.log("{} md5 mismatch!".format(f))
+-                    xbmcgui.Dialog().ok("{} md5 mismatch".format(f),
+-                                        "The {} image from".format(f),
++                    xbmcgui.Dialog().ok(__lang__(32526).format(f),
++                                        __lang__(32527).format(f),
+                                         self.selected_build.filename,
+-                                        "is corrupt. The update files will be removed.")
++                                        __lang__(32528))
+                     utils.remove_update_files()
+                     sys.exit(1)
+                 else:
+@@ -500,18 +503,17 @@
+             f.write(self.selected_build.version)
+ 
+         if __addon__.getSetting('confirm_reboot') == 'true':
+-            if xbmcgui.Dialog().yesno("Confirm reboot",
++            if xbmcgui.Dialog().yesno(__lang__(32500),
+                                       " ",
+-                                      "Reboot now to install build {}?"
+-                                      .format(self.selected_build)):
++                                      __lang__(32529).format(self.selected_build)):
+                 xbmc.restart() 
+             else:
+-                utils.notify("Build {} will install on the next reboot".format(self.selected_build))
++                utils.notify(__lang__(32530).format(self.selected_build))
+         else:
+-            if progress.restart_countdown("Build {} is ready to install.".format(self.selected_build)):
++            if progress.restart_countdown(__lang__(32531).format(self.selected_build)):
+                 xbmc.restart()
+             else:
+-                utils.notify("Build {} will install on the next reboot".format(self.selected_build))
++                utils.notify(__lang__(32530).format(self.selected_build))
+ 
+ 
+ if len(sys.argv) > 1 and sys.argv[1] == "check":
+@@ -557,13 +559,13 @@
+                 if latest > installed_build:
+                     if (check_prompt == 1 and xbmc.Player().isPlayingVideo()) or check_prompt == 0:
+                         utils.log("Notifying that new build {} is available".format(latest))
+-                        utils.notify("Build {} is available".format(latest), 7500)
++                        utils.notify(__lang__(32532).format(latest), 7500)
+                     else:
+                         utils.log("New build {} is available, prompting to show build list".format(latest))
+                         if xbmcgui.Dialog().yesno("OpenELEC Dev Update",
+-                                                  "A more recent build is available:   {}".format(latest),
+-                                                  "Current build:   {}".format(installed_build),
+-                                                  "Show builds available to install?"):
++                                                  __lang__(32533).format(latest),
++                                                  __lang__(32534).format(installed_build),
++                                                  __lang__(32535)):
+                             Main()
+         except:
+             pass
+diff -Naur a/resources/language/English/strings.po b/resources/language/English/strings.po
+--- a/resources/language/English/strings.po	1970-01-01 03:00:00.000000000 +0300
++++ b/resources/language/English/strings.po	2015-03-19 19:50:52.000000000 +0200
+@@ -0,0 +1,358 @@
++# XBMC Media Center language file
++# Addon Name: OpenELEC Dev Update
++# Addon id: script.openelec.devupdate
++# Addon version: 3.14.0
++# Addon Provider: Leopold
++msgid ""
++msgstr ""
++"Project-Id-Version: XBMC-Addons\n"
++"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
++"POT-Creation-Date: 2014-06-04 04:09+0000\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++"Language-Team: LANGUAGE\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: en\n"
++"Plural-Forms: nplurals=2; plural=(n != 1)\n"
++
++msgctxt "#32000"
++msgid "General"
++msgstr ""
++
++msgctxt "#32010"
++msgid "Source"
++msgstr ""
++
++msgctxt "#32011"
++msgid "Source URL"
++msgstr ""
++
++msgctxt "#32012"
++msgid "Custom URL"
++msgstr ""
++
++msgctxt "#32013"
++msgid "Other"
++msgstr ""
++
++msgctxt "#32014"
++msgid "URL subdirectory"
++msgstr ""
++
++msgctxt "#32020"
++msgid "Archive"
++msgstr ""
++
++msgctxt "#32021"
++msgid "Archive tar files (for quicker re-installs)"
++msgstr ""
++
++msgctxt "#32022"
++msgid "Archive directory"
++msgstr ""
++
++msgctxt "#32030"
++msgid "Misc"
++msgstr ""
++
++msgctxt "#32031"
++msgid "Run in background"
++msgstr ""
++
++msgctxt "#32032"
++msgid "Verify files"
++msgstr ""
++
++msgctxt "#32100"
++msgid "Notifications"
++msgstr ""
++
++msgctxt "#32111"
++msgid "Enable reboot confirmation"
++msgstr ""
++
++msgctxt "#32121"
++msgid "Enable new build notifications"
++msgstr ""
++
++msgctxt "#32122"
++msgid "Check only on boot"
++msgstr ""
++
++msgctxt "#32123"
++msgid "Prompt to show build list"
++msgstr ""
++
++msgctxt "#32124"
++msgid "Enable for official releases"
++msgstr ""
++
++msgctxt "#32125"
++msgid "Never"
++msgstr ""
++
++msgctxt "#32126"
++msgid "When not playing video"
++msgstr ""
++
++msgctxt "#32127"
++msgid "Always"
++msgstr ""
++
++msgctxt "#32200"
++msgid "Actions"
++msgstr ""
++
++msgctxt "#32211"
++msgid "Cancel pending update"
++msgstr ""
++
++msgctxt "#32300"
++msgid "Advanced"
++msgstr ""
++
++msgctxt "#32311"
++msgid "Override installed build type"
++msgstr ""
++
++msgctxt "#32312"
++msgid "Build type to install"
++msgstr ""
++
++msgctxt "#32321"
++msgid "Disable overclocking during update"
++msgstr ""
++
++msgctxt "#32331"
++msgid "Also update extlinux"
++msgstr ""
++
++msgctxt "#32341"
++msgid "Set timeout"
++msgstr ""
++
++msgctxt "#32342"
++msgid "Timeout (seconds)"
++msgstr ""
++
++msgctxt "#32351"
++msgid "Backup"
++msgstr ""
++
++msgctxt "#32352"
++msgid "Prompt every time"
++msgstr ""
++
++msgctxt "#32361"
++msgid "Debug"
++msgstr ""
++
++msgctxt "#32001"
++msgid "currently installed build"
++msgstr ""
++
++#################################################
++
++msgctxt "#32500"
++msgid "Confirm reboot"
++msgstr ""
++
++msgctxt "#32501"
++msgid "The update files are already in place."
++msgstr ""
++
++msgctxt "#32502"
++msgid "Reboot now to install the update"
++msgstr ""
++
++msgctxt "#32503"
++msgid "or continue to select another build."
++msgstr ""
++
++msgctxt "#32504"
++msgid "Continue"
++msgstr ""
++
++msgctxt "#32505"
++msgid "Reboot"
++msgstr ""
++
++msgctxt "#32506"
++msgid "Run XBMC Backup now?"
++msgstr ""
++
++msgctxt "#32507"
++msgid "This is recommended"
++msgstr ""
++
++msgctxt "#32508"
++msgid "Invalid URL"
++msgstr ""
++
++msgctxt "#32509"
++msgid "No builds were found for {}."
++msgstr ""
++
++msgctxt "#32510"
++msgid "Directory Error"
++msgstr ""
++
++msgctxt "#32511"
++msgid "{} is not accessible."
++msgstr ""
++
++msgctxt "#32512"
++msgid "Check the archive directory in the addon settings."
++msgstr ""
++
++msgctxt "#32513"
++msgid "Unable to create {}."
++msgstr ""
++
++msgctxt "#32514"
++msgid "Check the archive directory permissions."
++msgstr ""
++
++msgctxt "#32515"
++msgid "Confirm downgrade"
++msgstr ""
++
++msgctxt "#32536"
++msgid "Downgrade"
++msgstr ""
++
++msgctxt "#32516"
++msgid "Confirm upgrade"
++msgstr ""
++
++msgctxt "#32517"
++msgid "Upgrade"
++msgstr ""
++
++msgctxt "#32518"
++msgid "Confirm install"
++msgstr ""
++
++msgctxt "#32519"
++msgid "Build {} is already installed."
++msgstr ""
++
++msgctxt "#32520"
++msgid "Downloading"
++msgstr ""
++
++msgctxt "#32521"
++msgid "Decompressing"
++msgstr ""
++
++msgctxt "#32522"
++msgid "Extracting"
++msgstr ""
++
++msgctxt "#32523"
++msgid "Retrieving tar file from archive"
++msgstr ""
++
++msgctxt "#32524"
++msgid "Copying to archive"
++msgstr ""
++
++msgctxt "#32525"
++msgid "Verifying"
++msgstr ""
++
++msgctxt "#32526"
++msgid "{} md5 mismatch"
++msgstr ""
++
++msgctxt "#32527"
++msgid "The {} image from"
++msgstr ""
++
++msgctxt "#32528"
++msgid "is corrupt. The update files will be removed."
++msgstr ""
++
++msgctxt "#32529"
++msgid "Reboot now to install build {}?"
++msgstr ""
++
++msgctxt "#32530"
++msgid "Build {} will install on the next reboot"
++msgstr ""
++
++msgctxt "#32531"
++msgid "Build {} is ready to install."
++msgstr ""
++
++msgctxt "#32532"
++msgid "Build {} is available"
++msgstr ""
++
++msgctxt "#32533"
++msgid "A more recent build is available:   {}"
++msgstr ""
++
++msgctxt "#32534"
++msgid "Current build:   {}"
++msgstr ""
++
++msgctxt "#32535"
++msgid "Show builds available to install?"
++msgstr ""
++
++###############################################
++
++msgctxt "#32540"
++msgid "Connection Error"
++msgstr ""
++
++msgctxt "#32541"
++msgid "Please check you have a connection to the internet."
++msgstr ""
++
++msgctxt "#32542"
++msgid "URL Error"
++msgstr ""
++
++msgctxt "#32543"
++msgid "Please check the URL in the addon settings."
++msgstr ""
++
++msgctxt "#32544"
++msgid "Please set the source."
++msgstr ""
++
++msgctxt "#32545"
++msgid "Please check the XBMC log file."
++msgstr ""
++
++msgctxt "#32546"
++msgid "Write Error"
++msgstr ""
++
++msgctxt "#32547"
++msgid "Check the download directory in the addon settings."
++msgstr ""
++
++msgctxt "#32548"
++msgid "Decompression Error"
++msgstr ""
++
++msgctxt "#32549"
++msgid "An error occurred during decompression:"
++msgstr ""
++
++msgctxt "#32550"
++msgid "Deleted update files(s)"
++msgstr ""
++
++msgctxt "#32551"
++msgid "Update file(s) not deleted"
++msgstr ""
++
++msgctxt "#32552"
++msgid "Build {} was installed successfully"
++msgstr ""
+diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/strings.po
+--- a/resources/language/Russian/strings.po	1970-01-01 03:00:00.000000000 +0300
++++ b/resources/language/Russian/strings.po	2015-03-19 19:51:52.000000000 +0200
+@@ -0,0 +1,358 @@
++# XBMC Media Center language file
++# Addon Name: OpenELEC Dev Update
++# Addon id: script.openelec.devupdate
++# Addon version: 3.14.0
++# Addon Provider: Leopold
++msgid ""
++msgstr ""
++"Project-Id-Version: XBMC-Addons\n"
++"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
++"POT-Creation-Date: 2014-06-04 04:09+0000\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++"Language-Team: LANGUAGE\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: ru\n"
++"Plural-Forms: nplurals=2; plural=(n != 1)\n"
++
++msgctxt "#32000"
++msgid "General"
++msgstr "Общие"
++
++msgctxt "#32010"
++msgid "Source"
++msgstr "Источник"
++
++msgctxt "#32011"
++msgid "Source URL"
++msgstr "Ресурс"
++
++msgctxt "#32012"
++msgid "Custom URL"
++msgstr "Пользовательский ресурс"
++
++msgctxt "#32013"
++msgid "Other"
++msgstr "Другой"
++
++msgctxt "#32014"
++msgid "URL subdirectory"
++msgstr "Подпапка"
++
++msgctxt "#32020"
++msgid "Archive"
++msgstr "Архив"
++
++msgctxt "#32021"
++msgid "Archive tar files (for quicker re-installs)"
++msgstr "tar архив файлов (для более быстрой переустановки)"
++
++msgctxt "#32022"
++msgid "Archive directory"
++msgstr "Архивировать папку"
++
++msgctxt "#32030"
++msgid "Misc"
++msgstr "Разное"
++
++msgctxt "#32031"
++msgid "Run in background"
++msgstr "Запуск в фоне"
++
++msgctxt "#32032"
++msgid "Verify files"
++msgstr "Проверка файлов"
++
++msgctxt "#32100"
++msgid "Notifications"
++msgstr "Уведомления"
++
++msgctxt "#32111"
++msgid "Enable reboot confirmation"
++msgstr "Включить подтверждение перезагрузки"
++
++msgctxt "#32121"
++msgid "Enable new build notifications"
++msgstr "Включить уведомления о новых сборки"
++
++msgctxt "#32122"
++msgid "Check only on boot"
++msgstr "Проверять только при загрузке"
++
++msgctxt "#32123"
++msgid "Prompt to show build list"
++msgstr "Предлагать показывать список сборки"
++
++msgctxt "#32124"
++msgid "Enable for official releases"
++msgstr "Включить для официальных релизов"
++
++msgctxt "#32125"
++msgid "Never"
++msgstr "Никогда"
++
++msgctxt "#32126"
++msgid "When not playing video"
++msgstr "Когда не воспроизводится видео"
++
++msgctxt "#32127"
++msgid "Always"
++msgstr "Всегда"
++
++msgctxt "#32200"
++msgid "Actions"
++msgstr "Действия"
++
++msgctxt "#32211"
++msgid "Cancel pending update"
++msgstr "Отменить отложенные обновления"
++
++msgctxt "#32300"
++msgid "Advanced"
++msgstr "Расширенные"
++
++msgctxt "#32311"
++msgid "Override installed build type"
++msgstr "Переопределить тип установливаемой сборки"
++
++msgctxt "#32312"
++msgid "Build type to install"
++msgstr "Тип сборки для установки"
++
++msgctxt "#32321"
++msgid "Disable overclocking during update"
++msgstr "Отключить разгон во время обновления"
++
++msgctxt "#32331"
++msgid "Also update extlinux"
++msgstr "Также обновлять extlinux"
++
++msgctxt "#32341"
++msgid "Set timeout"
++msgstr "Установить время ожидания"
++
++msgctxt "#32342"
++msgid "Timeout (seconds)"
++msgstr "Время ожидания(в секундах)"
++
++msgctxt "#32351"
++msgid "Backup"
++msgstr "Резервная копия"
++
++msgctxt "#32352"
++msgid "Prompt every time"
++msgstr "Запрашивать каждый раз"
++
++msgctxt "#32361"
++msgid "Debug"
++msgstr "Отладка"
++
++msgctxt "#32001"
++msgid "currently installed build"
++msgstr "текущая установленная сборка"
++
++#################################################
++
++msgctxt "#32500"
++msgid "Confirm reboot"
++msgstr "Подтверждение перегрузки"
++
++msgctxt "#32501"
++msgid "The update files are already in place."
++msgstr "Файлы обновления уже устновлены."
++
++msgctxt "#32502"
++msgid "Reboot now to install the update"
++msgstr "Перегрузить сейчас и установить обновление"
++
++msgctxt "#32503"
++msgid "or continue to select another build."
++msgstr "или продолжить и выберать другую сборку."
++
++msgctxt "#32504"
++msgid "Continue"
++msgstr "Продолжить"
++
++msgctxt "#32505"
++msgid "Reboot"
++msgstr "Перегрузить"
++
++msgctxt "#32506"
++msgid "Run XBMC Backup now?"
++msgstr "Запустить XBMC Backup сейчас?"
++
++msgctxt "#32507"
++msgid "This is recommended"
++msgstr "Это рекомендуется"
++
++msgctxt "#32508"
++msgid "Invalid URL"
++msgstr "Неверный URL"
++
++msgctxt "#32509"
++msgid "No builds were found for {}."
++msgstr "Нет сборок для {}."
++
++msgctxt "#32510"
++msgid "Directory Error"
++msgstr "Ошибки папки"
++
++msgctxt "#32511"
++msgid "{} is not accessible."
++msgstr "{} не доступна."
++
++msgctxt "#32512"
++msgid "Check the archive directory in the addon settings."
++msgstr "Проверьте каталог архива в настройках аддона."
++
++msgctxt "#32513"
++msgid "Unable to create {}."
++msgstr "Невозможно создать {}."
++
++msgctxt "#32514"
++msgid "Check the archive directory permissions."
++msgstr "Проверьте права на каталог архива."
++
++msgctxt "#32515"
++msgid "Confirm downgrade"
++msgstr "Подтвердите понижение"
++
++msgctxt "#32536"
++msgid "Downgrade"
++msgstr "Понижение"
++
++msgctxt "#32516"
++msgid "Confirm upgrade"
++msgstr "Подтвердите обновление"
++
++msgctxt "#32517"
++msgid "Upgrade"
++msgstr "Обновление"
++
++msgctxt "#32518"
++msgid "Confirm install"
++msgstr "Подтверждение установки"
++
++msgctxt "#32519"
++msgid "Build {} is already installed."
++msgstr "Сборка {} уже установлена."
++
++msgctxt "#32520"
++msgid "Downloading"
++msgstr "Загрузка"
++
++msgctxt "#32521"
++msgid "Decompressing"
++msgstr "Распаковка"
++
++msgctxt "#32522"
++msgid "Extracting"
++msgstr "Извлечение"
++
++msgctxt "#32523"
++msgid "Retrieving tar file from archive"
++msgstr "Получение tar файла из архива"
++
++msgctxt "#32524"
++msgid "Copying to archive"
++msgstr "Копирование в архив"
++
++msgctxt "#32525"
++msgid "Verifying"
++msgstr "Проверка"
++
++msgctxt "#32526"
++msgid "{} md5 mismatch"
++msgstr "{} md5 несовпадает"
++
++msgctxt "#32527"
++msgid "The {} image from"
++msgstr "{} образ с"
++
++msgctxt "#32528"
++msgid "is corrupt. The update files will be removed."
++msgstr "поврежден. Файлы обновления будут удалены."
++
++msgctxt "#32529"
++msgid "Reboot now to install build {}?"
++msgstr "Перезагрузить сейчас и установить сборку {}?"
++
++msgctxt "#32530"
++msgid "Build {} will install on the next reboot"
++msgstr "Сборка {} установится при следующей перезагрузке"
++
++msgctxt "#32531"
++msgid "Build {} is ready to install."
++msgstr "Сборка {} готова к установке."
++
++msgctxt "#32532"
++msgid "Build {} is available"
++msgstr "Сборка {} доступна"
++
++msgctxt "#32533"
++msgid "A more recent build is available:   {}"
++msgstr "Более поздние сборки доступны: {}"
++
++msgctxt "#32534"
++msgid "Current build:   {}"
++msgstr "Текущая сборка:   {}"
++
++msgctxt "#32535"
++msgid "Show builds available to install?"
++msgstr "Показать сборки доступные для установки?"
++
++###############################################
++
++msgctxt "#32540"
++msgid "Connection Error"
++msgstr "Ошибка подключения"
++
++msgctxt "#32541"
++msgid "Please check you have a connection to the internet."
++msgstr "Пожалуйста, проверьте, есть подключение к интернету."
++
++msgctxt "#32542"
++msgid "URL Error"
++msgstr "Ошибка URL"
++
++msgctxt "#32543"
++msgid "Please check the URL in the addon settings."
++msgstr "Пожалуйста, проверьте URL в настройках аддона."
++
++msgctxt "#32544"
++msgid "Please set the source."
++msgstr "Пожалуйста, установите источник."
++
++msgctxt "#32545"
++msgid "Please check the XBMC log file."
++msgstr "Пожалуйста, проверьте лог XBMC."
++
++msgctxt "#32546"
++msgid "Write Error"
++msgstr "Ошибка записи"
++
++msgctxt "#32547"
++msgid "Check the download directory in the addon settings."
++msgstr "Проверьте каталог для загрузки в настройках аддона."
++
++msgctxt "#32548"
++msgid "Decompression Error"
++msgstr "Ошибка распаковки"
++
++msgctxt "#32549"
++msgid "An error occurred during decompression:"
++msgstr "Произошла ошибка во время распаковки:"
++
++msgctxt "#32550"
++msgid "Deleted update files(s)"
++msgstr "Файл(ы) обновлений удалены"
++
++msgctxt "#32551"
++msgid "Update file(s) not deleted"
++msgstr "Файл(ы) обновлений не удалены"
++
++msgctxt "#32552"
++msgid "Build {} was installed successfully"
++msgstr "Сборка {} успешно установлена"
 diff -Naur a/resources/lib/builds.py b/resources/lib/builds.py
 --- a/resources/lib/builds.py	2015-03-17 14:21:26.000000000 +0200
 +++ b/resources/lib/builds.py	2015-03-17 19:43:50.725784261 +0200
@@ -46,15 +996,177 @@ diff -Naur a/resources/lib/builds.py b/resources/lib/builds.py
                        ))
  
  
+diff -Naur a/resources/lib/utils.py b/resources/lib/utils.py
+--- a/resources/lib/utils.py	2015-03-17 14:21:26.000000000 +0200
++++ b/resources/lib/utils.py	2015-03-19 17:33:02.000000000 +0200
+@@ -10,6 +10,7 @@
+ 
+ __addon__ = xbmcaddon.Addon(constants.__scriptid__)
+ __icon__ = __addon__.getAddonInfo('icon')
++__lang__ = __addon__.getLocalizedString
+ 
+ def log(txt, level=xbmc.LOGNOTICE):
+     if __addon__.getSetting('debug') == 'true':
+@@ -22,34 +23,34 @@
+     log("".join(traceback.format_exception(*sys.exc_info())), xbmc.LOGERROR)
+     
+ def connection_error(msg):
+-    xbmcgui.Dialog().ok("Connection Error", msg,
+-                        "Please check you have a connection to the internet.")  
++    xbmcgui.Dialog().ok(__lang__(32540), msg,
++                        __lang__(32541))  
+     
+ def bad_url(url, msg="URL not found."):
+-    xbmcgui.Dialog().ok("URL Error", msg, url,
+-                        "Please check the URL in the addon settings.")
++    xbmcgui.Dialog().ok(__lang__(32542), msg, url,
++                        __lang__(32543))
+     __addon__.openSettings()
+ 
+ def bad_source(source, msg="Source not found."):
+-    xbmcgui.Dialog().ok("URL Error", msg, source,
+-                        "Please set the source.")
++    xbmcgui.Dialog().ok(__lang__(32542), msg, source,
++                        __lang__(32544))
+     __addon__.openSettings()
+     
+ def url_error(url, msg):
+     log_exception()
+-    xbmcgui.Dialog().ok("URL Error", msg, url,
+-                        "Please check the XBMC log file.")
++    xbmcgui.Dialog().ok(__lang__(32542), msg, url,
++                        __lang__(32545))
+     
+ def write_error(path, msg):
+     log_exception()
+-    xbmcgui.Dialog().ok("Write Error", msg, path,
+-                        "Check the download directory in the addon settings.")
++    xbmcgui.Dialog().ok(__lang__(32546), msg, path,
++                        __lang__(32547))
+     __addon__.openSettings()
+     
+ def decompress_error(path, msg):
+     log_exception()
+-    xbmcgui.Dialog().ok("Decompression Error",
+-                        "An error occurred during decompression:",
++    xbmcgui.Dialog().ok(__lang__(32548),
++                        __lang__(32549),
+                         " ", msg)
+         
+ def mount_readwrite():    
+@@ -88,6 +89,6 @@
+         if sys.argv[1] == 'cancel':
+             success = remove_update_files()
+             if success:
+-                notify("Deleted update files(s)")
++                notify(__lang__(32550))
+             elif success is not None:
+-                notify("Update file(s) not deleted")
++                notify(__lang__(32551))
 diff -Naur a/resources/settings.xml b/resources/settings.xml
 --- a/resources/settings.xml	2015-03-17 14:21:26.000000000 +0200
-+++ b/resources/settings.xml	2015-03-17 10:47:15.000000000 +0200
-@@ -2,7 +2,7 @@
++++ b/resources/settings.xml	2015-03-18 22:12:18.000000000 +0200
+@@ -1,42 +1,42 @@
+ ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
  <settings>
-     <category label="General">
-         <setting type="lsep" label="Source"/>
+-    <category label="General">
+-        <setting type="lsep" label="Source"/>
 -        <setting label="Source URL" type="select" id="source" values="Official Snapshot Builds|Official Releases|Official Archive|Chris Swan (RPi)|MilhouseVH Builds (RPi)|DarkAngel2401 Dual Audio Builds|Other" default="Official Snapshot Builds"/>
-+        <setting label="Source URL" type="select" id="source" values="Official Snapshot Builds|Official Releases|Official Archive|Chris Swan (RPi)|MilhouseVH Builds (RPi)|DarkAngel2401 Dual Audio Builds|YLLOW_DRAGON Builds|Other" default="YLLOW_DRAGON Builds"/>
-         <setting label="Custom URL" type="text" id="custom_url" enable="eq(-1,Other)" visible="eq(-1,Other)" subsetting="true"/>
-         <setting label="URL subdirectory" type="text" id="subdir" enable="!eq(-2,Official Releases)+!eq(-2,Other)" visible="!eq(-2,Official Releases)+!eq(-2,Other)"/>
-         <setting type="lsep" label="Archive"/>
+-        <setting label="Custom URL" type="text" id="custom_url" enable="eq(-1,Other)" visible="eq(-1,Other)" subsetting="true"/>
+-        <setting label="URL subdirectory" type="text" id="subdir" enable="!eq(-2,Official Releases)+!eq(-2,Other)" visible="!eq(-2,Official Releases)+!eq(-2,Other)"/>
+-        <setting type="lsep" label="Archive"/>
+-        <setting label="Archive tar files (for quicker re-installs)" type="bool" id="archive" default="false"/>
+-        <setting label="Archive directory" type="folder" id="archive_root" default="/storage" enable="eq(-1,true)"/>
+-        <setting type="lsep" label="Misc"/>
+-        <setting label="Run in background" type="bool" id="background" default="false"/>
+-        <setting label="Verify files" type="bool" id="verify_files" default="true"/>
++    <category label="32000">
++        <setting type="lsep" label="32010"/>
++        <setting label="32011" type="select" id="source" values="Official Snapshot Builds|Official Releases|Official Archive|Chris Swan (RPi)|MilhouseVH Builds (RPi)|DarkAngel2401 Dual Audio Builds|YLLOW_DRAGON Builds|Other" default="YLLOW_DRAGON Builds"/>
++        <setting label="32012" type="text" id="custom_url" enable="eq(-1,Other)" visible="eq(-1,Other)" subsetting="true"/>
++        <setting label="32014" type="text" id="subdir" enable="!eq(-2,Official Releases)+!eq(-2,Other)" visible="!eq(-2,Official Releases)+!eq(-2,Other)"/>
++        <setting type="lsep" label="32020"/>
++        <setting label="32021" type="bool" id="archive" default="false"/>
++        <setting label="32022" type="folder" id="archive_root" default="/storage" enable="eq(-1,true)"/>
++        <setting type="lsep" label="32030"/>
++        <setting label="32031" type="bool" id="background" default="false"/>
++        <setting label="32032" type="bool" id="verify_files" default="true"/>
+     </category>
+-    <category label="Notifications">
+-        <setting label="Enable reboot confirmation" type="bool" id="confirm_reboot" default="true"/>
++    <category label="32100">
++        <setting label="32111" type="bool" id="confirm_reboot" default="true"/>
+         <setting type="sep"/>
+-        <setting label="Enable new build notifications" type="bool" id="check" default="true"/>
+-        <setting label="Check only on boot" type="bool" id="check_onbootonly" enable="eq(-1,true)" subsetting="true" default="false"/>
+-        <setting label="Prompt to show build list" type="enum" id="check_prompt" values="Never|When not playing video|Always" enable="eq(-2,true)" subsetting="true" default="1"/>
+-        <setting label="Enable for official releases" type="bool" id="check_official" enable="eq(-3,true)" subsetting="true" default="false"/>
++        <setting label="32121" type="bool" id="check" default="true"/>
++        <setting label="32122" type="bool" id="check_onbootonly" enable="eq(-1,true)" subsetting="true" default="false"/>
++        <setting label="32123" type="enum" id="check_prompt" lvalues="32125|32126|32127" enable="eq(-2,true)" subsetting="true" default="1"/>
++        <setting label="32124" type="bool" id="check_official" enable="eq(-3,true)" subsetting="true" default="false"/>
+     </category>
+-    <category label="Actions">
++    <category label="32200">
+         <setting type="bool" id="update_pending" visible="false"/>
+-        <setting label="Cancel pending update" type="action" action="RunScript($CWD/resources/lib/utils.py, cancel)" enable="eq(-1,true)"/>
++        <setting label="32211" type="action" action="RunScript($CWD/resources/lib/utils.py, cancel)" enable="eq(-1,true)"/>
+     </category>
+-    <category label="Advanced">
+-        <setting label="Override installed build type" type="bool" id="set_arch" default="false"/>
+-        <setting label="Build type to install" type="select" id="arch" values="Generic.i386|Generic.x86_64|ION.x86_64|Intel.x86_64|Fusion.x86_64|Cuboxi.arm|imx6.arm|RPi.arm|RPi2.arm" enable="eq(-1,true)" subsetting="true"/>
++    <category label="32300">
++        <setting label="32311" type="bool" id="set_arch" default="false"/>
++        <setting label="32312" type="select" id="arch" values="Generic.i386|Generic.x86_64|ION.x86_64|Intel.x86_64|Fusion.x86_64|Cuboxi.arm|imx6.arm|RPi.arm|RPi2.arm" enable="eq(-1,true)" subsetting="true"/>
+         <setting type="sep"/>
+-        <setting label="Disable overclocking during update" type="bool" id="disable_overclock" default="false" visible="System.Platform.Linux.RaspberryPi"/>
++        <setting label="32321" type="bool" id="disable_overclock" default="false" visible="System.Platform.Linux.RaspberryPi"/>
+         <setting type="sep"/>
+-        <setting label="Also update extlinux" type="bool" id="update_extlinux" default="false" visible="!System.Platform.Linux.RaspberryPi"/>
++        <setting label="32331" type="bool" id="update_extlinux" default="false" visible="!System.Platform.Linux.RaspberryPi"/>
+         <setting type="sep"/>
+-        <setting label="Set timeout" type="bool" id="set_timeout" default="false"/>
+-        <setting label="Timeout (seconds)" type="number" id="timeout" enable="eq(-1,true)" subsetting="true" default="10"/>
++        <setting label="32341" type="bool" id="set_timeout" default="false"/>
++        <setting label="32342" type="number" id="timeout" enable="eq(-1,true)" subsetting="true" default="10"/>
+         <setting type="sep"/>
+-        <setting label="Backup" type="enum" id="backup" values="Never|Prompt every time|Always" default="1"/>       
++        <setting label="32351" type="enum" id="backup" lvalues="32125|32352|32127" default="1"/>       
+         <setting type="sep"/>
+-        <setting label="Debug" type="bool" id="debug" default="false"/>
++        <setting label="32361" type="bool" id="debug" default="false"/>
+     </category>
+ </settings>
+diff -Naur a/resources/skins/Default/1080i/Dialog.xml b/resources/skins/Default/1080i/Dialog.xml
+--- a/resources/skins/Default/1080i/Dialog.xml	2015-03-17 14:21:26.000000000 +0200
++++ b/resources/skins/Default/1080i/Dialog.xml	2015-03-19 15:15:19.000000000 +0200
+@@ -54,7 +54,7 @@
+                         <top>0</top>
+                         <left>60</left>
+                         <textcolor>ffb2afa8</textcolor>
+-                        <label>= currently installed build</label>
++                        <label>= $ADDON[script.openelec.devupdate 32001]</label>
+                     </control>
+                 </control>
+             </control>
+diff -Naur a/service.py b/service.py
+--- a/service.py	2015-03-17 14:21:26.000000000 +0200
++++ b/service.py	2015-03-19 19:55:21.000000000 +0200
+@@ -14,7 +14,7 @@
+ __addon__ = xbmcaddon.Addon(constants.__scriptid__)
+ __icon__ = __addon__.getAddonInfo('icon')
+ __dir__ = xbmc.translatePath(__addon__.getAddonInfo('profile'))
+-
++__lang__ = __addon__.getLocalizedString
+ 
+ rpi_config_backup_file = os.path.join(__dir__, constants.RPI_CONFIG_FILE)
+ if os.path.exists(rpi_config_backup_file):
+@@ -50,7 +50,7 @@
+     installed = open('/etc/version').read().rstrip()
+     if build == installed:
+         utils.log("Notifying that build {} was installed".format(build))
+-        utils.notify("Build {} was installed successfully".format(build))
++        utils.notify(__lang__(32552).format(build))
+     try:
+         os.remove(notify_file)
+     except OSError:
