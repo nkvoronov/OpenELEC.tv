@@ -45,4 +45,7 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/script.module.simplejson
     cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.simplejson
+
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.simplejson/lib/simplejson/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.simplejson/lib/simplejson/ -name "*.py"`
 }

@@ -52,4 +52,7 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer
     cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer
+
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer/resources/lib/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer/resources/lib/ -name "*.py"`
 }

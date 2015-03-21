@@ -45,4 +45,7 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/script.module.beautifulsoup
     cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.beautifulsoup
+
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.beautifulsoup/lib/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.beautifulsoup/lib/ -name "*.py"`
 }
