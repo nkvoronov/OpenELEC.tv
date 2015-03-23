@@ -1,6 +1,6 @@
 diff -Naur a/addon.xml b/addon.xml
 --- a/addon.xml	2015-03-23 06:43:09.000000000 +0200
-+++ b/addon.xml	2015-03-23 08:05:56.000000000 +0200
++++ b/addon.xml	2015-03-23 12:30:39.707726800 +0200
 @@ -2,7 +2,7 @@
  <addon id="script.openelec.devupdate"
         name="OpenELEC Dev Update"
@@ -20,9 +20,9 @@ diff -Naur a/addon.xml b/addon.xml
 +    <summary lang="en">Unofficial OpenELEC updater</summary>
 +    <summary lang="ru">Неоффициальная программа обновления OpenELEC </summary>
 +    <description lang="en">This add-on downloads OpenELEC update files ready to be installed on the next reboot. Use the add-on settings to choose the source URL or provide your own. Run the add-on to select from a list of builds available at the URL.</description>
-+    <description lang="ru">Этот адон скачивает файлы обновлений OpenELEC, которые будут готовы к установке при следующей перезагрузке. Используйте адон, в настройках выбрать ресурс или установить свой собственный. Запустите адон, чтобы выбрать нужную сборку из списка сборок доступных в данном ресурсе.</description>
++    <description lang="ru">Этот адон скачивает файлы обновлений OpenELEC, которые будут установлены при следующей перезагрузке. Используя адон, выбирете ресурс или установить свой собственный. Запустите адон, чтобы выбрать нужную сборку из списка сборок доступных в данном ресурсе.</description>
 +    <disclaimer lang="en">Development builds often have major bugs and crashes can happen quite often. Always backup your userdata folder when installing development builds.</disclaimer>
-+    <disclaimer lang="ru">Сборки в разработке часто имеют некоторые ошибки и сбои могут происходить довольно часто. Всегда делайте резервную копию ваших пользовательских данных при установке сборок в разработке.</disclaimer>
++    <disclaimer lang="ru">Сборки в разработке часто имеют некоторые ошибки и сбои могут происходить довольно часто. Всегда делайте резервную копию ваших данных при установке сборок в разработке.</disclaimer>
      <forum>http://openelec.tv/forum/128-addons/49855</forum>
      <website>http://ls80.github.io/script.openelec.devupdate</website>
      <source>http://github.com/LS80/script.openelec.devupdate.git</source>
@@ -608,7 +608,7 @@ diff -Naur a/resources/language/English/strings.po b/resources/language/English/
 +msgstr ""
 diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/strings.po
 --- a/resources/language/Russian/strings.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/resources/language/Russian/strings.po	2015-03-23 09:23:25.000000000 +0200
++++ b/resources/language/Russian/strings.po	2015-03-23 12:28:40.135729534 +0200
 @@ -0,0 +1,366 @@
 +# XBMC Media Center language file
 +# Addon Name: OpenELEC Dev Update
@@ -909,7 +909,7 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +
 +msgctxt "#32533"
 +msgid "A more recent build is available"
-+msgstr "Более новые сборки доступны"
++msgstr "Доступна более новая сборка"
 +
 +msgctxt "#32534"
 +msgid "Current build"
