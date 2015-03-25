@@ -264,7 +264,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-0b2199c
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-da49502
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -348,7 +348,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-9529e6d
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-c3f2b4e
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $INSTALL/usr/config/vdr/plugins/vnsiserver
