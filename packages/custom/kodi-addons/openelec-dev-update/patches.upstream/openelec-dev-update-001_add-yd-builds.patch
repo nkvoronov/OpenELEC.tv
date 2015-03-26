@@ -1,34 +1,36 @@
 diff -Naur a/addon.xml b/addon.xml
---- a/addon.xml	2015-03-23 06:43:09.000000000 +0200
-+++ b/addon.xml	2015-03-23 12:30:39.707726800 +0200
+--- a/addon.xml	2015-03-25 13:14:48.000000000 +0200
++++ b/addon.xml	2015-03-25 21:45:36.000000000 +0200
 @@ -2,7 +2,7 @@
  <addon id="script.openelec.devupdate"
         name="OpenELEC Dev Update"
-        version="4.3.0"
+        version="4.4.0"
 -       provider-name="Leopold">
 +       provider-name="Leopold, YLLOW_DRAGON">
    <requires>
      <import addon="xbmc.python" version="2.13.0"/>
      <import addon="os.openelec.tv" version="4.0" optional="false"/>
-@@ -14,9 +14,12 @@
+@@ -13,10 +13,13 @@
+   <extension point="xbmc.python.script" library="default.py"/>
    <extension point="xbmc.service" library="service.py" start="startup"/>
    <extension point="xbmc.addon.metadata">
-     <platform>all</platform>
+-    <platform>all</platform>
 -    <summary>Unofficial OpenELEC updater</summary>
 -    <description>This add-on downloads OpenELEC update files ready to be installed on the next reboot. Use the add-on settings to choose the source URL or provide your own. Run the add-on to select from a list of builds available at the URL.</description>
 -    <disclaimer>Development builds often have major bugs and crashes can happen quite often. Always backup your userdata folder when installing development builds.</disclaimer>
++    <platform>all</platform>    
 +    <summary lang="en">Unofficial OpenELEC updater</summary>
 +    <summary lang="ru">Неоффициальная программа обновления OpenELEC </summary>
 +    <description lang="en">This add-on downloads OpenELEC update files ready to be installed on the next reboot. Use the add-on settings to choose the source URL or provide your own. Run the add-on to select from a list of builds available at the URL.</description>
-+    <description lang="ru">Этот адон скачивает файлы обновлений OpenELEC, которые будут установлены при следующей перезагрузке. Используя адон, выбирете ресурс или установить свой собственный. Запустите адон, чтобы выбрать нужную сборку из списка сборок доступных в данном ресурсе.</description>
++    <description lang="ru">Этот адон скачивает файлы обновлений OpenELEC, которые будут готовы к установке при следующей перезагрузке. Используйте адон, в настройках выбрать ресурс или установить свой собственный. Запустите адон, чтобы выбрать нужную сборку из списка сборок доступных в данном ресурсе.</description>
 +    <disclaimer lang="en">Development builds often have major bugs and crashes can happen quite often. Always backup your userdata folder when installing development builds.</disclaimer>
-+    <disclaimer lang="ru">Сборки в разработке часто имеют некоторые ошибки и сбои могут происходить довольно часто. Всегда делайте резервную копию ваших данных при установке сборок в разработке.</disclaimer>
++    <disclaimer lang="ru">Сборки в разработке часто имеют некоторые ошибки и сбои могут происходить довольно часто. Всегда делайте резервную копию ваших пользовательских данных при установке сборок в разработке.</disclaimer>
      <forum>http://openelec.tv/forum/128-addons/49855</forum>
      <website>http://ls80.github.io/script.openelec.devupdate</website>
      <source>http://github.com/LS80/script.openelec.devupdate.git</source>
 diff -Naur a/default.py b/default.py
---- a/default.py	2015-03-23 06:43:09.000000000 +0200
-+++ b/default.py	2015-03-23 09:20:31.000000000 +0200
+--- a/default.py	2015-03-25 13:14:49.000000000 +0200
++++ b/default.py	2015-03-25 23:11:27.000000000 +0200
 @@ -41,18 +41,18 @@
  __icon__ = __addon__.getAddonInfo('icon')
  __dir__ = xbmc.translatePath(__addon__.getAddonInfo('profile'))
@@ -68,16 +70,7 @@ diff -Naur a/default.py b/default.py
          utils.log("Backup requested")
      elif backup == 2:
          do_backup = True
-@@ -128,7 +128,7 @@
-         utils.url_error(build_url.url, str(e))
-     else:
-         if not links:
--            utils.bad_url(build_url.url, "No builds were found for {}.".format(arch))
-+            utils.bad_url(build_url.url, __lang__(32509).format(arch))
- 
-     return links
-         
-@@ -160,7 +160,7 @@
+@@ -144,7 +144,7 @@
              custom_url = __addon__.getSetting('custom_url')
              scheme, netloc = urlparse(custom_url)[:2]
              if not scheme in ('http', 'https') or not netloc:
@@ -85,8 +78,17 @@ diff -Naur a/default.py b/default.py
 +                utils.bad_url(custom_url, __lang__(32553))
              else:
                  custom_extractor = (builds.BuildLinkExtractor, builds.ReleaseLinkExtractor)[int(__addon__.getSetting('build_type'))]
-                 self._sources[custom_name] = builds.BuildsURL(custom_url, extractor=custom_extractor)   
-@@ -310,14 +310,16 @@
+                 self._sources[custom_name] = builds.BuildsURL(custom_url, extractor=custom_extractor)
+@@ -252,7 +252,7 @@
+             utils.url_error(build_url.url, str(e))
+         else:
+             if not links:
+-                utils.bad_url(build_url.url, "No builds were found for {}.".format(self._arch))
++                utils.bad_url(build_url.url, __lang__(32509).format(self._arch))
+         return links
+ 
+     def _get_build_infos(self, build_url):
+@@ -356,14 +356,16 @@
              utils.log("Archive builds to " + self.archive_dir)
              if not xbmcvfs.exists(self.archive_root):
                  utils.log("Unable to access archive")
@@ -102,23 +104,23 @@ diff -Naur a/default.py b/default.py
 -                xbmcgui.Dialog().ok("Directory Error", "Unable to create {}.".format(self.archive_dir),
 -                                    "Check the archive directory permissions.")
 +                xbmcgui.Dialog().ok(__lang__(32510),
-+        			    __lang__(32513).format(self.archive_dir),
-+                	    	    __lang__(32514))
++				    __lang__(32513).format(self.archive_dir),
++            			    __lang__(32514))
                  sys.exit(1)
  
      def select_build(self):
-@@ -337,13 +339,13 @@
-         # Confirm the update.
-         msg = "{} -> {}?".format(self.installed_build, selected_build)
+@@ -385,13 +387,13 @@
+          "  to  [COLOR=lightskyblue][B]{}[/B][/COLOR] ?").format(self.installed_build,
+                                                                  selected_build)
          if selected_build < self.installed_build:
 -            args = ("Confirm downgrade", "Downgrade", msg)
-+	    args = (__lang__(32515), __lang__(32536), msg)
++    	    args = (__lang__(32515), __lang__(32536), msg)
          elif selected_build > self.installed_build:
 -            args = ("Confirm upgrade", "Upgrade", msg)
 +            args = (__lang__(32516), __lang__(32517), msg)
          else:
 -            args = ("Confirm install",
--                    "Build {} is already installed.".format(selected_build),
+-                    "Build  [COLOR=lightskyblue][B]{}[/B][/COLOR]  is already installed.".format(selected_build),
 -                    "Continue?")
 +            args = (__lang__(32518),
 +                    __lang__(32519).format(selected_build),
@@ -126,7 +128,7 @@ diff -Naur a/default.py b/default.py
          if not xbmcgui.Dialog().yesno(*args):
              sys.exit(0)
              
-@@ -377,7 +379,7 @@
+@@ -425,7 +427,7 @@
                  else:
                      # Do the download
                      utils.log("Starting download of " + self.selected_build.url)
@@ -135,7 +137,7 @@ diff -Naur a/default.py b/default.py
                                                 remote_file, filename, size,
                                                 self.background) as downloader:
                          downloader.start()
-@@ -396,7 +398,7 @@
+@@ -444,7 +446,7 @@
              try:
                  bf = open(filename, 'rb')
                  utils.log("Starting decompression of " + filename)
@@ -144,7 +146,7 @@ diff -Naur a/default.py b/default.py
                                                   bf, tar_name, size,
                                                   self.background) as decompressor:
                      decompressor.start()
-@@ -429,7 +431,7 @@
+@@ -477,7 +479,7 @@
                  ti = tf.extractfile(member)
                  outfile = os.path.join(constants.UPDATE_DIR, os.path.basename(member.name))
                  try:
@@ -153,7 +155,7 @@ diff -Naur a/default.py b/default.py
                                                 self.background) as extractor:
                          extractor.start()
                      utils.log("Extracted " + outfile)
-@@ -456,7 +458,7 @@
+@@ -504,7 +506,7 @@
                  tarfile = os.path.join(__dir__, self.selected_build.tar_name)
          
                  try:
@@ -162,7 +164,7 @@ diff -Naur a/default.py b/default.py
                                                 archive, tarfile, archive.size(),
                                                 self.background) as extractor:
                          extractor.start()
-@@ -479,7 +481,7 @@
+@@ -527,7 +529,7 @@
              size = os.path.getsize(tarpath)
  
              try:
@@ -171,7 +173,7 @@ diff -Naur a/default.py b/default.py
                                             tar, self.archive_tar_path, size,
                                             self.background) as extractor:
                      extractor.start()
-@@ -508,7 +510,7 @@
+@@ -556,7 +558,7 @@
          else:
              verify_progress = progress.Progress()
              
@@ -180,7 +182,7 @@ diff -Naur a/default.py b/default.py
      
          BLOCK_SIZE = 8192
          
-@@ -542,10 +544,10 @@
+@@ -590,10 +592,10 @@
          
                  if not self.md5sum_verified(md5sum, f):
                      utils.log("{} md5 mismatch!".format(f))
@@ -194,14 +196,14 @@ diff -Naur a/default.py b/default.py
                      utils.remove_update_files()
                      sys.exit(1)
                  else:
-@@ -556,18 +558,17 @@
+@@ -604,18 +606,17 @@
              f.write(self.selected_build.version)
  
          if __addon__.getSetting('confirm_reboot') == 'true':
 -            if xbmcgui.Dialog().yesno("Confirm reboot",
 +            if xbmcgui.Dialog().yesno(__lang__(32500),
                                        " ",
--                                      "Reboot now to install build {}?"
+-                                      "Reboot now to install build  [COLOR=lightskyblue][B]{}[/COLOR][/B] ?"
 -                                      .format(self.selected_build)):
 +                                      __lang__(32529).format(self.selected_build)):
                  xbmc.restart() 
@@ -209,7 +211,7 @@ diff -Naur a/default.py b/default.py
 -                utils.notify("Build {} will install on the next reboot".format(self.selected_build))
 +                utils.notify(__lang__(32530).format(self.selected_build))
          else:
--            if progress.restart_countdown("Build {} is ready to install.".format(self.selected_build)):
+-            if progress.restart_countdown("Build  [COLOR=lightskyblue][B]{}[/COLOR][/B]  is ready to install.".format(self.selected_build)):
 +            if progress.restart_countdown(__lang__(32531).format(self.selected_build)):
                  xbmc.restart()
              else:
@@ -218,7 +220,7 @@ diff -Naur a/default.py b/default.py
  
  
  def check_for_new_build():
-@@ -617,13 +618,13 @@
+@@ -665,13 +666,13 @@
                  if latest > installed_build:
                      if (check_prompt == 1 and xbmc.Player().isPlayingVideo()) or check_prompt == 0:
                          utils.log("Notifying that new build {} is available".format(latest))
@@ -238,12 +240,12 @@ diff -Naur a/default.py b/default.py
          except:
 diff -Naur a/resources/language/English/strings.po b/resources/language/English/strings.po
 --- a/resources/language/English/strings.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/resources/language/English/strings.po	2015-03-23 09:18:33.000000000 +0200
++++ b/resources/language/English/strings.po	2015-03-25 23:06:15.000000000 +0200
 @@ -0,0 +1,366 @@
 +# XBMC Media Center language file
 +# Addon Name: OpenELEC Dev Update
 +# Addon id: script.openelec.devupdate
-+# Addon version: 4.3.0
++# Addon version: 4.4.0
 +# Addon Provider: Leopold, YLLOW_DRAGON
 +msgid ""
 +msgstr ""
@@ -482,7 +484,7 @@ diff -Naur a/resources/language/English/strings.po b/resources/language/English/
 +msgstr ""
 +
 +msgctxt "#32519"
-+msgid "Build {} is already installed."
++msgid "Build  [COLOR=lightskyblue][B]{}[/B][/COLOR]  is already installed."
 +msgstr ""
 +
 +msgctxt "#32520"
@@ -522,7 +524,7 @@ diff -Naur a/resources/language/English/strings.po b/resources/language/English/
 +msgstr ""
 +
 +msgctxt "#32529"
-+msgid "Reboot now to install build {}?"
++msgid "Reboot now to install build [COLOR=lightskyblue][B]{}[/COLOR][/B] ?"
 +msgstr ""
 +
 +msgctxt "#32530"
@@ -530,7 +532,7 @@ diff -Naur a/resources/language/English/strings.po b/resources/language/English/
 +msgstr ""
 +
 +msgctxt "#32531"
-+msgid "Build {} is ready to install."
++msgid "Build [COLOR=lightskyblue][B]{}[/COLOR][/B] is ready to install."
 +msgstr ""
 +
 +msgctxt "#32532"
@@ -608,12 +610,12 @@ diff -Naur a/resources/language/English/strings.po b/resources/language/English/
 +msgstr ""
 diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/strings.po
 --- a/resources/language/Russian/strings.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/resources/language/Russian/strings.po	2015-03-23 12:28:40.135729534 +0200
++++ b/resources/language/Russian/strings.po	2015-03-25 23:07:11.000000000 +0200
 @@ -0,0 +1,366 @@
 +# XBMC Media Center language file
 +# Addon Name: OpenELEC Dev Update
 +# Addon id: script.openelec.devupdate
-+# Addon version: 4.3.0
++# Addon version: 4.4.0
 +# Addon Provider: Leopold, YLLOW_DRAGON
 +msgid ""
 +msgstr ""
@@ -852,8 +854,8 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +msgstr "Подтверждение установки"
 +
 +msgctxt "#32519"
-+msgid "Build {} is already installed."
-+msgstr "Сборка {} уже установлена."
++msgid "Build  [COLOR=lightskyblue][B]{}[/B][/COLOR]  is already installed."
++msgstr "Сборка [COLOR=lightskyblue][B]{}[/B][/COLOR] уже установлена."
 +
 +msgctxt "#32520"
 +msgid "Downloading"
@@ -892,16 +894,16 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +msgstr "поврежден. Файлы обновления будут удалены."
 +
 +msgctxt "#32529"
-+msgid "Reboot now to install build {}?"
-+msgstr "Перезагрузить сейчас и установить сборку {}?"
++msgid "Reboot now to install build [COLOR=lightskyblue][B]{}[/COLOR][/B] ?"
++msgstr "Перезагрузить сейчас и установить сборку [COLOR=lightskyblue][B]{}[/COLOR][/B] ?"
 +
 +msgctxt "#32530"
 +msgid "Build {} will install on the next reboot"
 +msgstr "Сборка {} будет установлена при следующей перезагрузке"
 +
 +msgctxt "#32531"
-+msgid "Build {} is ready to install."
-+msgstr "Сборка {} готова к установке."
++msgid "Build [COLOR=lightskyblue][B]{}[/COLOR][/B] is ready to install."
++msgstr "Сборка [COLOR=lightskyblue][B]{}[/COLOR][/B] готова к установке."
 +
 +msgctxt "#32532"
 +msgid "Build {} is available"
@@ -909,7 +911,7 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +
 +msgctxt "#32533"
 +msgid "A more recent build is available"
-+msgstr "Доступна более новая сборка"
++msgstr "Более новые сборки доступны"
 +
 +msgctxt "#32534"
 +msgid "Current build"
@@ -977,22 +979,21 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +msgid "Invalid URL"
 +msgstr "Неправильный URL"
 diff -Naur a/resources/lib/builds.py b/resources/lib/builds.py
---- a/resources/lib/builds.py	2015-03-23 06:43:09.000000000 +0200
-+++ b/resources/lib/builds.py	2015-03-23 08:12:28.000000000 +0200
-@@ -192,8 +192,10 @@
+--- a/resources/lib/builds.py	2015-03-25 13:14:48.000000000 +0200
++++ b/resources/lib/builds.py	2015-03-25 21:48:14.000000000 +0200
+@@ -198,8 +198,10 @@
  
  class DropboxBuildLinkExtractor(BuildLinkExtractor):
      CSS_CLASS = 'filename-link'
--        
--        
 +    
 +class YDBuildLinkExtractor(BuildLinkExtractor):
 +    BUILD_RE = ".*OpenELEC.*-{0}-[\d\.]+-(\d+)-(?:r|%23)(\d+[a-z]*)(|-g[0-9a-z]+)\.tar(|\.bz2)"
-+
+ 
+-        
  class ReleaseLinkExtractor(BuildLinkExtractor):
      BUILD_RE = ".*OpenELEC.*-{0}-([\d\.]+)\.tar(|\.bz2)"
      BASE_URL = None
-@@ -243,7 +245,7 @@
+@@ -264,7 +266,7 @@
      except IOError:
          version = 'devel-20141031232437-r19505-g98f5c23'
      
@@ -1001,19 +1002,20 @@ diff -Naur a/resources/lib/builds.py b/resources/lib/builds.py
      if m:
          return Build(*m.groups())
      else:
-@@ -267,6 +269,9 @@
+@@ -289,6 +291,10 @@
      sources_dict["DarkAngel2401 Dual Audio Builds"] = BuildsURL("http://openelec-dualaudio.subcarrier.de/OpenELEC-DualAudio/",
                                                                  subdir=arch,
                                                                  extractor=DualAudioReleaseLinkExtractor)
 +                                                                
 +    sources_dict["YLLOW_DRAGON Builds"] = BuildsURL("https://www.dropbox.com/sh/rb8zwx8dog9u593/AADsKisWoX15tfzd0_B22gfUa?dl=0",
 +                                                                extractor=YDBuildLinkExtractor)
++                                                                
      return sources_dict
  
- if __name__ == "__main__":
+ 
 diff -Naur a/resources/lib/utils.py b/resources/lib/utils.py
---- a/resources/lib/utils.py	2015-03-23 06:43:09.000000000 +0200
-+++ b/resources/lib/utils.py	2015-03-23 08:18:20.000000000 +0200
+--- a/resources/lib/utils.py	2015-03-25 13:14:48.000000000 +0200
++++ b/resources/lib/utils.py	2015-03-25 22:03:16.000000000 +0200
 @@ -11,6 +11,7 @@
  
  __addon__ = xbmcaddon.Addon(constants.__scriptid__)
@@ -1072,8 +1074,8 @@ diff -Naur a/resources/lib/utils.py b/resources/lib/utils.py
 -                notify("Update file(s) not deleted")
 +                notify(__lang__(32551))
 diff -Naur a/resources/settings.xml b/resources/settings.xml
---- a/resources/settings.xml	2015-03-23 06:43:09.000000000 +0200
-+++ b/resources/settings.xml	2015-03-23 08:38:04.000000000 +0200
+--- a/resources/settings.xml	2015-03-25 13:14:48.000000000 +0200
++++ b/resources/settings.xml	2015-03-25 21:55:34.000000000 +0200
 @@ -1,44 +1,44 @@
 -﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 +<?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -1136,7 +1138,7 @@ diff -Naur a/resources/settings.xml b/resources/settings.xml
 +        <setting label="32321" type="bool" id="disable_overclock" default="false" visible="System.Platform.Linux.RaspberryPi"/>
          <setting type="sep"/>
 -        <setting label="Also update extlinux" type="bool" id="update_extlinux" default="false" visible="!System.Platform.Linux.RaspberryPi"/>
-+        <setting label="32321" type="bool" id="update_extlinux" default="false" visible="!System.Platform.Linux.RaspberryPi"/>
++        <setting label="32331" type="bool" id="update_extlinux" default="false" visible="!System.Platform.Linux.RaspberryPi"/>
          <setting type="sep"/>
 -        <setting label="Set timeout" type="bool" id="set_timeout" default="false"/>
 -        <setting label="Timeout (seconds)" type="number" id="timeout" enable="eq(-1,true)" subsetting="true" default="10"/>
@@ -1144,15 +1146,15 @@ diff -Naur a/resources/settings.xml b/resources/settings.xml
 +        <setting label="32342" type="number" id="timeout" enable="eq(-1,true)" subsetting="true" default="10"/>
          <setting type="sep"/>
 -        <setting label="Backup" type="enum" id="backup" values="Never|Prompt every time|Always" default="1"/>       
-+        <setting label="32351" type="enum" id="backup" lvalues="32125|32352|32127" default="1"/>       
++        <setting label="32351" type="enum" id="backup" values="Never|Prompt every time|Always" default="1"/>       
          <setting type="sep"/>
 -        <setting label="Debug" type="bool" id="debug" default="false"/>
 +        <setting label="32361" type="bool" id="debug" default="false"/>
      </category>
  </settings>
 diff -Naur a/service.py b/service.py
---- a/service.py	2015-03-23 06:43:09.000000000 +0200
-+++ b/service.py	2015-03-23 08:46:50.000000000 +0200
+--- a/service.py	2015-03-25 13:14:49.000000000 +0200
++++ b/service.py	2015-03-25 22:02:32.000000000 +0200
 @@ -14,7 +14,7 @@
  __addon__ = xbmcaddon.Addon(constants.__scriptid__)
  __icon__ = __addon__.getAddonInfo('icon')
