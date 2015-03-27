@@ -364,7 +364,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XVDR" = yes ]; then 
-    VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-b300fc3
+    VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-bf7f671
     cp -PR $VDR_PLUGIN_XVDR_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/xvdr
       cp -PR $VDR_PLUGIN_XVDR_DIR/xvdr/*.conf $INSTALL/usr/config/vdr/plugins/xvdr

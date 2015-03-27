@@ -386,7 +386,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XVDR" = yes ]; then 
-    VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-b300fc3
+    VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-bf7f671
     cp -PR $VDR_PLUGIN_XVDR_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/xvdr
       cp -PR $VDR_PLUGIN_XVDR_DIR/xvdr/*.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/xvdr
