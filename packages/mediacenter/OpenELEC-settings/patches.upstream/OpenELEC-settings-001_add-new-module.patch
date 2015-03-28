@@ -1,6 +1,6 @@
 diff -Naur a/src/defaults.py b/src/defaults.py
 --- a/src/defaults.py	2015-01-23 00:05:40.000000000 +0200
-+++ b/src/defaults.py	2015-02-05 17:16:27.726619794 +0200
++++ b/src/defaults.py	2015-03-28 21:45:50.411260587 +0200
 @@ -91,7 +91,147 @@
          "D_LCD_DRIVER"          : "none",
          
@@ -175,7 +175,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
      }
 diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/system.py
 --- a/src/resources/lib/modules/system.py	2015-01-23 00:05:40.000000000 +0200
-+++ b/src/resources/lib/modules/system.py	2015-02-05 17:04:33.854635363 +0200
++++ b/src/resources/lib/modules/system.py	2015-03-28 21:45:50.411260587 +0200
 @@ -127,7 +127,15 @@
                          'action': 'set_keyboard_layout',
                          'type': 'multivalue',
@@ -294,7 +294,7 @@ diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/sys
              self.oe.dbg_log('system::get_keyboard_layouts', 'ERROR: ('
 diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modules/transmission.py
 --- a/src/resources/lib/modules/transmission.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/transmission.py	2015-02-05 17:04:33.858635363 +0200
++++ b/src/resources/lib/modules/transmission.py	2015-03-28 21:45:50.411260587 +0200
 @@ -0,0 +1,331 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -629,7 +629,7 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-02-05 18:28:06.818526036 +0200
++++ b/src/resources/lib/modules/tvservers.py	2015-03-28 22:55:01.199315186 +0200
 @@ -0,0 +1,2039 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -1187,7 +1187,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_iptv','value': ['1']},
-+                            'InfoText': 1408,
++                            'InfoText': 1208,
 +                        },
 +                        'enable_streamdev_client': {
 +                            'order': 8,
@@ -1211,7 +1211,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
-+                            'InfoText': 1411,
++                            'InfoText': 1211,
 +                        },
 +                        'enable_live': {
 +                            'order': 11,
@@ -1219,7 +1219,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
-+                            'InfoText': 1411,
++                            'InfoText': 1212,
 +                        },
 +                        'live_ip': {
 +                            'order': 12,

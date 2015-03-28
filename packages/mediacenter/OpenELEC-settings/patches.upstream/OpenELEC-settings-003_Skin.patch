@@ -1,6 +1,6 @@
 diff -Naur a/skins/Default/720p/contexMenu.xml b/skins/Default/720p/contexMenu.xml
---- a/skins/Default/720p/contexMenu.xml	2014-11-21 20:02:42.000000000 +0200
-+++ b/skins/Default/720p/contexMenu.xml	2014-11-25 01:28:55.295518133 +0200
+--- a/skins/Default/720p/contexMenu.xml	2015-01-23 00:05:40.000000000 +0200
++++ b/skins/Default/720p/contexMenu.xml	2015-03-28 21:47:17.735261735 +0200
 @@ -40,7 +40,7 @@
                          <top>0</top>
                          <width>304</width>
@@ -28,8 +28,8 @@ diff -Naur a/skins/Default/720p/contexMenu.xml b/skins/Default/720p/contexMenu.x
                      <control type="label">
                          <left>0</left>
 diff -Naur a/skins/Default/720p/getPasskey.xml b/skins/Default/720p/getPasskey.xml
---- a/skins/Default/720p/getPasskey.xml	2014-11-21 20:02:42.000000000 +0200
-+++ b/skins/Default/720p/getPasskey.xml	2014-11-25 01:29:27.983917575 +0200
+--- a/skins/Default/720p/getPasskey.xml	2015-01-23 00:05:40.000000000 +0200
++++ b/skins/Default/720p/getPasskey.xml	2015-03-28 21:47:17.735261735 +0200
 @@ -18,14 +18,14 @@
                  <top>5</top>
                  <width>600</width>
@@ -48,8 +48,8 @@ diff -Naur a/skins/Default/720p/getPasskey.xml b/skins/Default/720p/getPasskey.x
              <control type="group">
                  <left>17</left>
 diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.xml
---- a/skins/Default/720p/mainWindow.xml	2014-11-21 20:02:42.000000000 +0200
-+++ b/skins/Default/720p/mainWindow.xml	2014-11-25 04:01:36.728683356 +0200
+--- a/skins/Default/720p/mainWindow.xml	2015-01-23 00:05:40.000000000 +0200
++++ b/skins/Default/720p/mainWindow.xml	2015-03-28 21:47:17.739261735 +0200
 @@ -8,7 +8,8 @@
              <top>100r</top>
              <width>1280</width>
@@ -326,8 +326,8 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  </label>
                  <font>font12</font>
 diff -Naur a/skins/Default/720p/selectWindow.xml b/skins/Default/720p/selectWindow.xml
---- a/skins/Default/720p/selectWindow.xml	2014-11-21 20:02:42.000000000 +0200
-+++ b/skins/Default/720p/selectWindow.xml	2014-11-25 01:30:22.144578247 +0200
+--- a/skins/Default/720p/selectWindow.xml	2015-01-23 00:05:40.000000000 +0200
++++ b/skins/Default/720p/selectWindow.xml	2015-03-28 21:47:17.739261735 +0200
 @@ -18,14 +18,14 @@
                  <top>5</top>
                  <width>600</width>
@@ -364,8 +364,8 @@ diff -Naur a/skins/Default/720p/selectWindow.xml b/skins/Default/720p/selectWind
                          <control type="label">
                              <left>20</left>
 diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
---- a/skins/Default/720p/wizard.xml	2014-11-21 20:02:42.000000000 +0200
-+++ b/skins/Default/720p/wizard.xml	2014-11-25 01:45:16.707957709 +0200
+--- a/skins/Default/720p/wizard.xml	2015-01-23 00:05:40.000000000 +0200
++++ b/skins/Default/720p/wizard.xml	2015-03-28 21:47:17.739261735 +0200
 @@ -7,9 +7,10 @@
              <top>100r</top>
              <width>1280</width>
