@@ -1,5 +1,6 @@
---- vdr-plugin-eepg-master/Makefile	2014-03-11 15:44:36.675368020 +0000
-+++ vdr-plugin-eepg-master/Makefile	2014-03-11 15:51:02.065495474 +0000
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2015-02-17 02:56:28.000000000 +0200
++++ b/Makefile	2015-03-31 03:12:35.611129488 +0300
 @@ -31,21 +31,16 @@
  ### The directory environment:
  
@@ -23,6 +24,15 @@
 +APIVERSION = $(shell sed -ne '/define APIVERSION/s/^.*"\(.*\)".*$$/\1/p' $(VDRDIR)/config.h)
  
  ### Allow user defined options to overwrite defaults:
+ 
+@@ -73,7 +68,7 @@
+ 
+ ### The main target:
+ 
+-all: $(SOFILE)
++all: $(SOFILE) i18n
+ 
+ ### Implicit rules:
  
 @@ -119,6 +114,7 @@
  

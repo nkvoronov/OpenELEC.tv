@@ -56,7 +56,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "   Извлечение известных тегов"
 +
 +msgid "Use 'epgsearch' to check timer-conflicts"
-+msgstr "Используйте 'epgsearch', чтобы проверить конфликты таймеров"
++msgstr "Исп. 'epgsearch', чтобы пров. конф. таймеров"
 +
 +msgid "Flush image cache"
 +msgstr "Очистить кэш изображений"

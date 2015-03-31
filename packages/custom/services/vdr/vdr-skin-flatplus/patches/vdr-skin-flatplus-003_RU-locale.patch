@@ -446,7 +446,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "конфигурационный файл не найдены, проверте установку"
 +
 +msgid "Press ok to load config file"
-+msgstr "Нажмите ОК, чтобы загрузить конфигурационный файл"
++msgstr "Нажмите ОК, чтобы загрузить конф. файл"
 +
 +msgid "Save current settings"
 +msgstr "Сохранить текущие настройки"
@@ -569,7 +569,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Простой аспект и формат"
 +
 +msgid "program past/remaining time format"
-+msgstr "Программа просмотренно/осталось формат времени"
++msgstr "Программа просм./ост. формат времени"
 +
 +msgid "Channelinfo border by decor-file?"
 +msgstr "Инфо канала из декор файла"
@@ -599,7 +599,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Прогресс инфо канала размер"
 +
 +msgid "Signalquality progress by decor-file?"
-+msgstr "Прогресс качество сигнала из декор файла"
++msgstr "Прогресс качество сигн. из декор файла"
 +
 +msgid "Signalquality progress type"
 +msgstr "Прогресс качество сигнала тип"
@@ -617,7 +617,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Контент меню полный размер фона"
 +
 +msgid "Show additional recording info"
-+msgstr "Показывать дополнительную информацию о записи"
++msgstr "Показывать доп. инфо. о записи"
 +
 +msgid "Show additional EPG info"
 +msgstr "Показывать дополнительную EPG инфо"
@@ -629,16 +629,16 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Масштаб элемента меню"
 +
 +msgid "Menu draw background over the entire height"
-+msgstr "Фон меню отрисовывается по всей высоте"
++msgstr "Фон меню отрисов. по всей высоте"
 +
 +msgid "Recording menu show recording count in title"
-+msgstr "Меню записи показывает количество записей в заголовке"
++msgstr "Меню записи показыв. к-во записей в заголовке"
 +
 +msgid "Timer menu show timer count in title"
-+msgstr "Меню таймера показывает количество таймеров в заголовке"
++msgstr "Меню таймера показыв. к-во таймеров в заголовке"
 +
 +msgid "Channel menu show channel count in title"
-+msgstr "Меню каналов показывает количество каналов в заголовке"
++msgstr "Меню каналов показыв. к-во каналов в заголовке"
 +
 +msgid "Menu channel view"
 +msgstr "Вид меню каналов"
@@ -680,13 +680,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Меню контент размер бордера"
 +
 +msgid "Menucont. head border by decor-file?"
-+msgstr "Заголовок меню контента бордер из декор файла"
++msgstr "Заголовок меню конт. бордер из декор файла"
 +
 +msgid "Menucont. head border type"
 +msgstr "Заголовок меню контента тип бордера"
 +
 +msgid "Menucont. head border size"
-+msgstr "Заголовок меню контента размер бордера"
++msgstr "Заголовок меню конт. размер бордера"
 +
 +msgid "Menuitem progress by decor-file?"
 +msgstr "Прогресс элемента меню из декор файла"
@@ -698,13 +698,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Прогресс элемента меню размер"
 +
 +msgid "Dimm on pause?"
-+msgstr ""
++msgstr "Dimm на паузу?"
 +
 +msgid "Dimm on pause delay"
-+msgstr ""
++msgstr "Dimm задержка паузы"
 +
 +msgid "Dimm on pause opaque"
-+msgstr ""
++msgstr "Dimm на паузу прозрачность"
 +
 +msgid "Replay border by decor-file?"
 +msgstr "Повтор бордер из декор файла"
@@ -767,13 +767,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "EPG инфо показывать постер"
 +
 +msgid "recording info show poster?"
-+msgstr "Информации о записи показывать постер"
++msgstr "Информации о записи показыв. постер"
 +
 +msgid "EPG info show actors?"
 +msgstr "EPG инфо показывать актеров"
 +
 +msgid "recording info show actors?"
-+msgstr "Информации о записи показывать актеров"
++msgstr "Информация о записи показыв. актеров"
 +
 +msgid "Enable main menu widgets"
 +msgstr "Включить виджеты в главном меню"
@@ -800,16 +800,16 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Виджет DVB устройства"
 +
 +msgid "Widget DVB devices: enable"
-+msgstr "Виджет DVB устройства: включить"
++msgstr "Виджет DVB устр.: включить"
 +
 +msgid "Widget DVB devices: position"
-+msgstr "Виджет DVB устройства: позиция"
++msgstr "Виджет DVB устр.: позиция"
 +
 +msgid "Widget DVB devices: don't show unknown"
-+msgstr "Виджет DVB устройства: не показывать неизвестно"
++msgstr "Виджет DVB устр.: не показыв. неизвестно"
 +
 +msgid "Widget DVB devices: don't show not used"
-+msgstr "Виджет DVB устройства: не показывать не используется"
++msgstr "Виджет DVB устр.: не показыв. не используется"
 +
 +msgid "Widget active timer"
 +msgstr "Виджет активный таймер"
@@ -842,13 +842,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Виджет конфликты таймера"
 +
 +msgid "Widget timer conflicts: enable"
-+msgstr "Виджет конфликты таймера: включить"
++msgstr "Виджет конф. таймера: включить"
 +
 +msgid "Widget timer conflicts: position"
-+msgstr "Виджет конфликты таймера: позиция"
++msgstr "Виджет конф. таймера: позиция"
 +
 +msgid "Widget timer conflicts: hide if empty"
-+msgstr "Виджет конфликты таймера: скрыть, если пусто"
++msgstr "Виджет конф. таймера: скрыть, если пусто"
 +
 +msgid "Widget system information"
 +msgstr "Виджет информация о системе"
@@ -884,10 +884,10 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Виджет пользовательских команд"
 +
 +msgid "Widget custom commands: enable"
-+msgstr "Виджет пользовательских команд: включить"
++msgstr "Виджет пользов. команд: включить"
 +
 +msgid "Widget custom commands: position"
-+msgstr "Виджет пользовательских команд: позиция"
++msgstr "Виджет пользов. команд: позиция"
 +
 +msgid "'flatPlus' Skin"
 +msgstr "скин flatPlus"

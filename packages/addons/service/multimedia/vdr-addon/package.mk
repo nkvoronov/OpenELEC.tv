@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-addon"
 PKG_VERSION="2.2.0"
-PKG_REV="12"
+PKG_REV="13"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -239,12 +239,12 @@ addon() {
   if [ "$ENABLE_VDR_CONTROL" = yes ]; then
     VDR_PLUGIN_CONTROL_DIR=$ROOT/$BUILD/vdr-control-0.0.2a
     cp -PR $VDR_PLUGIN_CONTROL_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-    #for fmo in `ls $VDR_PLUGIN_CONTRIL_DIR/po/*.mo`;do
-      #fname=`basename $fmo .mo`
-      #mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
-      #mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        #cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-control.mo    
-    #done
+    for fmo in `ls $VDR_PLUGIN_CONTROL_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-control.mo    
+    done
   fi
 
   if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
@@ -293,12 +293,12 @@ addon() {
     VDR_PLUGIN_EEPG_DIR=$ROOT/$BUILD/vdr-plugin-eepg-9cd9a75
     cp -PR $VDR_PLUGIN_EEPG_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     #mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/eepg
-    #for fmo in `ls $VDR_PLUGIN_EEPG_DIR/po/*.mo`;do
-      #fname=`basename $fmo .mo`
-      #mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
-      #mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        #cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-eepg.mo    
-    #done
+    for fmo in `ls $VDR_PLUGIN_EEPG_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-eepg.mo    
+    done
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_EPGFIXER" = yes ]; then
@@ -370,7 +370,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-c3f2b4e
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-36e2b61
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver

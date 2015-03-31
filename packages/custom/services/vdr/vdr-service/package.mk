@@ -224,12 +224,12 @@ post_install() {
   if [ "$ENABLE_VDR_CONTROL" = yes ]; then
     VDR_PLUGIN_CONTROL_DIR=$ROOT/$BUILD/vdr-control-0.0.2a
     cp -PR $VDR_PLUGIN_CONTROL_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    #for fmo in `ls $VDR_PLUGIN_CONTRIL_DIR/po/*.mo`;do
-      #fname=`basename $fmo .mo`
-      #mkdir -p $INSTALL/usr/share/locale/$fname
-      #mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        #cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-control.mo    
-    #done
+    for fmo in `ls $VDR_PLUGIN_CONTROL_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $INSTALL/usr/share/locale/$fname
+      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-control.mo    
+    done
   fi
 
   if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
@@ -278,12 +278,12 @@ post_install() {
     VDR_PLUGIN_EEPG_DIR=$ROOT/$BUILD/vdr-plugin-eepg-9cd9a75
     cp -PR $VDR_PLUGIN_EEPG_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     #mkdir -p $INSTALL/usr/config/vdr/plugins/eepg
-    #for fmo in `ls $VDR_PLUGIN_EEPG_DIR/po/*.mo`;do
-      #fname=`basename $fmo .mo`
-      #mkdir -p $INSTALL/usr/share/locale/$fname
-      #mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        #cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-eepg.mo    
-    #done
+    for fmo in `ls $VDR_PLUGIN_EEPG_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $INSTALL/usr/share/locale/$fname
+      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-eepg.mo    
+    done
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_EPGFIXER" = yes ]; then
@@ -348,7 +348,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-c3f2b4e
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-36e2b61
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $INSTALL/usr/config/vdr/plugins/vnsiserver

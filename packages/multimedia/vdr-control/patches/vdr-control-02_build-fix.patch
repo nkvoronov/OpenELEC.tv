@@ -1,0 +1,156 @@
+diff -Naur a/control.c b/control.c
+--- a/control.c	2004-07-02 22:24:22.000000000 +0300
++++ b/control.c	2015-03-31 02:37:37.515036832 +0300
+@@ -32,6 +32,7 @@
+ class cPluginControl : public cPlugin {
+ private:
+   // Add any member variables or functions you may need here.
++  cCtrlState* _pState;
+   cCtrlGateways* _pReceivers;
+   cCtrlGateway*  _pTerminal;
+ 
+@@ -67,6 +68,7 @@
+ cPluginControl::~cPluginControl()
+ {
+   // Clean up after yourself!
++  delete(_pState);
+   delete(_pReceivers);
+   delete(_pTerminal);
+ }
+@@ -120,7 +122,7 @@
+   // Start any background activities the plugin shall perform.
+ 
+   if (glParPort || glParTerminal && *glParTerminal)
+-    new cCtrlState();
++    _pState = new cCtrlState();
+ 
+   if (glParPort) {
+     _pReceivers = new cCtrlGateways();
+diff -Naur a/formatter.c b/formatter.c
+--- a/formatter.c	2004-07-02 22:24:22.000000000 +0300
++++ b/formatter.c	2015-03-31 02:37:37.515036832 +0300
+@@ -165,7 +165,7 @@
+ 
+   if (Title) {
+ 
+-    char* t = strchr(Title, '\t');
++    const char* t = strchr(Title, '\t');
+     if (t) {
+ 
+       int size = t - Title;
+@@ -300,7 +300,7 @@
+ 
+   for (;;) {
+ 
+-    char* t = strchr(text, '\t');
++    const char* t = strchr(text, '\t');
+     if (t) {
+       // Tab found - check if the tab can be used
+ 
+diff -Naur a/gateway.c b/gateway.c
+--- a/gateway.c	2004-07-02 22:24:22.000000000 +0300
++++ b/gateway.c	2015-03-31 02:37:37.519036832 +0300
+@@ -36,7 +36,7 @@
+   _pTelnet	(0),
+   _pFormatter   (0)
+ {
+-  gl_CtrlGatewayCol.Add(this);
++//  gl_CtrlGatewayCol.Add(this);
+ 
+ //  if (! cKbdRemoteForControl::_pRemote)
+ //    cKbdRemoteForControl::_pRemote = new cKbdRemoteForControl();
+@@ -100,9 +100,14 @@
+ 
+     if (_stack.poll(100)) {
+ 
+-      uint64 Command = 0;
++      uint64_t Command = 0;
+       uint i = 0;
++#if VDRVERSNUM >= 10318
++      cTimeMs timeout;
++      timeout.Set(100);
++#else
+       int t0 = time_ms();
++#endif
+       while (_active && i < sizeof(Command)) {
+ 
+         uchar ch;
+@@ -131,7 +136,11 @@
+           // of their codes, so we'll need to wait some 100ms to see if
+           // there is more coming up - or whether this really is the 'ESC'
+           // key (if somebody knows how to clean this up, please let me know):
++#if VDRVERSNUM >= 10318
++          if (Command == 0x1B && !timeout.TimedOut())
++#else
+           if (Command == 0x1B && time_ms() - t0 < 100)
++#endif
+             continue;
+ 
+           if (Command) {
+@@ -163,8 +172,8 @@
+ 
+ //  UnprepareSocket();
+ 
+-  if (! _terminating)
+-    gl_CtrlGatewayCol.Del(this);
++//  if (! _terminating)
++//    gl_CtrlGatewayCol.Del(this);
+ 
+   conDSYSLOG("gateway thread ended (pid=%d)", getpid());
+ conLOG_GATEW("gateway thread ended (pid=%d)", getpid());
+diff -Naur a/keyboard.c b/keyboard.c
+--- a/keyboard.c	2004-07-02 22:24:22.000000000 +0300
++++ b/keyboard.c	2015-03-31 02:37:37.519036832 +0300
+@@ -18,7 +18,7 @@
+ 
+ struct tKbdMap {
+   eKbdFunc func;
+-  uint64 code;
++  uint64_t code;
+ };
+ 
+ 
+@@ -117,7 +117,7 @@
+ 
+ 
+ 
+-bool cCtrlKeyboard::intPut(uint64 Command, bool Repeat, bool Release) {
++bool cCtrlKeyboard::intPut(uint64_t Command, bool Repeat, bool Release) {
+ 
+   bool ret = cRemote::Put(Command, Repeat, Release);
+ conLOG_KEYB("%s cKbdRemoteForControl::intPut(0x%016LX)", ret ? "true" : "false", Command);
+@@ -126,7 +126,7 @@
+ 
+ 
+ 
+-bool cCtrlKeyboard::Put(uint64 Command, bool Repeat, bool Release) {
++bool cCtrlKeyboard::Put(uint64_t Command, bool Repeat, bool Release) {
+ 
+   if (! _pRemote)
+     _pRemote = new cCtrlKeyboard();
+@@ -136,7 +136,7 @@
+ 
+ 
+ 
+-int cCtrlKeyboard::MapCodeToFunc(uint64 Code) {
++int cCtrlKeyboard::MapCodeToFunc(uint64_t Code) {
+ 
+   for (const tKbdMap *p = keyboardKbdMap; p->func != kfNone; p++) {
+     if (p->code == Code)
+diff -Naur a/keyboard.h b/keyboard.h
+--- a/keyboard.h	2004-07-02 22:24:22.000000000 +0300
++++ b/keyboard.h	2015-03-31 02:37:37.519036832 +0300
+@@ -30,11 +30,11 @@
+   cCtrlKeyboard();
+   virtual ~cCtrlKeyboard();
+ 
+-  bool intPut(uint64 Command, bool Repeat, bool Release);
++  bool intPut(uint64_t Command, bool Repeat, bool Release);
+ 
+ public:
+-  static bool Put(uint64 Command, bool Repeat = false, bool Release = false);
+-  static int MapCodeToFunc(uint64 Code);
++  static bool Put(uint64_t Command, bool Repeat = false, bool Release = false);
++  static int MapCodeToFunc(uint64_t Code);
+ };
+ 

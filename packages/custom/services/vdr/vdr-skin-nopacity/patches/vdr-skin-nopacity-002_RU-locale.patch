@@ -244,37 +244,37 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "авто"
 +
 +msgid "Create Log Messages for image loading"
-+msgstr "Создать Log сообщений для загрузки изображений"
++msgstr "Создать лог для загрузки изображений"
 +
 +msgid "Number of Default Menu Entries per Page"
-+msgstr "Количество пунктов меню на одну страницу"
++msgstr "К-во пунктов меню на одну страницу"
 +
 +msgid "Adjust Font Size - Default Menu Item"
-+msgstr "Настройте размер шрифта - по умолчанию для пункта меню"
++msgstr "Настр. размер шрифта - по умол. для п. меню"
 +
 +msgid "Adjustment of narrow menus"
 +msgstr "Регулировка узких меню"
 +
 +msgid "Scale Video size to fit into menu window"
-+msgstr "Масштабировать видео, чтобы вписаться в окне меню"
++msgstr "Масштаб. видео, чтобы впис. в окне меню"
 +
 +msgid "Header Height (Percent of OSD Height)"
-+msgstr "Высота заголовка  (% от высота OSD)"
++msgstr "Высота заголовка (% от высота OSD)"
 +
 +msgid "Footer Height (Percent of OSD Height)"
 +msgstr "Высота Footer (% от высоты OSD)"
 +
 +msgid "Rounded Corners for menu items and buttons"
-+msgstr "Закругленные углы для пунктов меню и кнопок"
++msgstr "Закруг. углы для п. меню и кнопок"
 +
 +msgid "Radius of rounded corners"
 +msgstr "Радиус закругленных углов"
 +
 +msgid "Use Channel Logo background"
-+msgstr "Использовать фон для логотипа канала"
++msgstr "Использовать фон для лого. канала"
 +
 +msgid "Fade-In Time in ms (Zero for switching off fading)"
-+msgstr "Время изчезновения в мс (0 для выключения)"
++msgstr "Время изчезн. в мс (0 для выкл.)"
 +
 +msgid "Menu Items Scroll Style"
 +msgstr "Стиль прокрутки для пунктов меню"
@@ -283,31 +283,31 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Скорость прокрутки пунктов меню"
 +
 +msgid "Menu Items Scrolling Delay in s"
-+msgstr "Задержка прокрутки пунктов меню в сек"
++msgstr "Задержка прокрутки п. меню в сек."
 +
 +msgid "Adjust Font Size - Header"
-+msgstr "Настройте размер шрифта - заголовок"
++msgstr "Настр. раз. шрифта - заголовок"
 +
 +msgid "Adjust Font Size - Date"
-+msgstr "Настройте размер шрифта - дата"
++msgstr "Настр. раз. шрифта - дата"
 +
 +msgid "Adjust Font Size - Color Buttons"
-+msgstr "Настройте размер шрифта - цветные кнопки"
++msgstr "Настр. раз. шрифта - цветные кнопки"
 +
 +msgid "Adjust Font Size - Messages"
-+msgstr "Настройте размер шрифта - сообщения"
++msgstr "Настр. раз. шрифта - сообщения"
 +
 +msgid "Adjust Font Size - Detail View Text"
-+msgstr "Настройте размер шрифта - Детальный просмотр текст"
++msgstr "Настр. раз. шрифта - Дет. просм. текст"
 +
 +msgid "Adjust Font Size - Detail View Text Small"
-+msgstr "Настройте размер шрифта - Детальный просмотр маленький текст"
++msgstr "Настр. раз. шрифта - Дет. просм. маленький текст"
 +
 +msgid "Adjust Font Size - Detail View Header"
-+msgstr "Настройте размер шрифта - Детальный просмотр заголовок"
++msgstr "Настр. раз. шрифта - Дет. просм. заголовок"
 +
 +msgid "Adjust Font Size - Detail View Header Large"
-+msgstr "Настройте размер шрифта - Детальный просмотр большой заголовок"
++msgstr "Настр. раз. шрифта - Дет. просм. большой заголовок"
 +
 +msgid "\"VDR\" plus VDR version"
 +msgstr "\"VDR\" плюс VDR версия"
@@ -328,16 +328,16 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "небольшой без логотипа"
 +
 +msgid "Use narrow main menu"
-+msgstr "Использовать узкое главное меню"
++msgstr "Исп. узкое главное меню"
 +
 +msgid "Width (Percent of OSD Width)"
 +msgstr "Ширина (% от ширины OSD)"
 +
 +msgid "Use narrow setup menu"
-+msgstr "Использовать узкое меню настройки"
++msgstr "Исп. узкое меню настройки"
 +
 +msgid "Number of entires per page"
-+msgstr "Количество елементов на страницу"
++msgstr "К-во елементов на страницу"
 +
 +msgid "Use menu icons"
 +msgstr "Использовать иконки меню"
@@ -349,34 +349,34 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Показывать использование диска"
 +
 +msgid "Size (square, Percent of OSD Width)"
-+msgstr "Размер (квадратные, % от ширины OSD)"
++msgstr "Раз. (квадратные, % от ширины OSD)"
 +
 +msgid "Free Disc Display"
-+msgstr "Показывать свободное пространчтво на диске"
++msgstr "Пок. свободное п-во на диске"
 +
 +msgid "Adjust Font Size - free"
-+msgstr "Настройте размер шрифта - свободно"
++msgstr "Настр. раз. шрифта - свободно"
 +
 +msgid "Adjust Font Size - percent"
-+msgstr "Настройте размер шрифта - процент"
++msgstr "Настр. раз. шрифта - процент"
 +
 +msgid "Display Timers"
 +msgstr "Показывать таймеры"
 +
 +msgid "Maximum number of Timers"
-+msgstr "Максимальное количество таймеров"
++msgstr "Максимальное к-во таймеров"
 +
 +msgid "Width of Timers (Percent of OSD Width)"
 +msgstr "Ширина таймера (% о ширины OSD)"
 +
 +msgid "Width of Channel Logos (Percent of Timer Width)"
-+msgstr "Ширина логотипа канала (% от ширины таймера)"
++msgstr "Ширина лого канала (% от ширины таймера)"
 +
 +msgid "Adjust Font Size - Title"
-+msgstr "Настройте размер шрифта - Заголовок"
++msgstr "Настр. раз. шрифта - Заголовок"
 +
 +msgid "Show Timer Conflicts"
-+msgstr "Показывать конфликт таймеров"
++msgstr "Показывать конф. таймеров"
 +
 +msgid "Header Logo Width"
 +msgstr "Ширина логотипа заголовка"
@@ -385,7 +385,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Высота логотипа заголовка"
 +
 +msgid "Adjust Font Size - Menu Items"
-+msgstr "Настройте размер шрифта - елемент меню"
++msgstr "Настр. раз. шрифта - елемент меню"
 +
 +msgid "window"
 +msgstr "окно"
@@ -400,31 +400,31 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Режим EPG окна"
 +
 +msgid "EPG Window Fade-In Time in ms (Zero for switching off fading)"
-+msgstr "EPG окно время изчезновения в мс (0 для выключения)"
++msgstr "EPG окно время изчезн. в мс (0 для выкл.)"
 +
 +msgid "EPG Window Display Delay in s"
-+msgstr "EPG окно задержка отображения в сек"
++msgstr "EPG окно зад. отображения в сек"
 +
 +msgid "EPG Window Scroll Delay in s"
-+msgstr "EPG окно задержка прокрутки в сек"
++msgstr "EPG окно зад. прокрутки в сек"
 +
 +msgid "EPG Window Text Scrolling Speed"
-+msgstr "EPG окно скорость прокрутки текста"
++msgstr "EPG окно скор. прокрутки текста"
 +
 +msgid "Height of EPG Info Window (Percent of OSD Height)"
 +msgstr "Высота EPG Info окна (% от высоты OSD)"
 +
 +msgid "Adjust Font Size - Menu Item"
-+msgstr "Настройте размер шрифта - елемент меню"
++msgstr "Настр. раз. шрифта - елемент меню"
 +
 +msgid "Adjust Font Size - Menu Item Small"
-+msgstr "Настройте размер шрифта - маленкий елемент меню"
++msgstr "Настр. раз. шрифта - маленкий елемент меню"
 +
 +msgid "Adjust Font Size - EPG Info Window"
-+msgstr "Настройте размер шрифта - EPG Info окно"
++msgstr "Настр. раз. шрифта - EPG Info окно"
 +
 +msgid "Adjust Font Size - EPG Info Window Header"
-+msgstr "Настройте размер шрифта - EPG Info заголовок окна"
++msgstr "Настр. раз. шрифта - EPG Info заголовок окна"
 +
 +msgid "Transponder Information"
 +msgstr "Информация о транспондере"
@@ -442,7 +442,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Показать расписание с временной информации"
 +
 +msgid "Number of EPG Entries in Schedules Info Window"
-+msgstr "Количество EPG записей в иформационном окне"
++msgstr "К-во EPG записей в иформационном окне"
 +
 +msgid "never"
 +msgstr "никогда"
@@ -475,7 +475,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Граница вокруг вида"
 +
 +msgid "Scroll Speed with up / down (number of lines)"
-+msgstr "Скорость прокрутки с вверх / вниз (количество строк)"
++msgstr "Скорость прокрутки с вверх / вниз (к-во строк)"
 +
 +msgid "Header Height detailed EPG view (Perc. of OSD Height)"
 +msgstr "Высота заголовока подробного вида EPG (% от высоты OSD)"
@@ -484,7 +484,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Высота заголовока детального вида записи (% от высоты OSD)"
 +
 +msgid "Number of reruns to display"
-+msgstr "Количество повторов для отображения"
++msgstr "К-во повторов для отображения"
 +
 +msgid "Use Subtitle for reruns"
 +msgstr "Использовать субтитры для повторов"
@@ -634,10 +634,10 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Лимит кеша логотипов"
 +
 +msgid "Maximal number of logos to cache"
-+msgstr "Максимальное количество логотипов в кэше"
++msgstr "Максимальное кол-во лого в кэше"
 +
 +msgid "Number of  logos to cache at start"
-+msgstr "Количество логотипов для кэширования при запуске"
++msgstr "К-во лого для кэш. при запуске"
 +
 +msgid "Cache Sizes"
 +msgstr "Размер кеша"

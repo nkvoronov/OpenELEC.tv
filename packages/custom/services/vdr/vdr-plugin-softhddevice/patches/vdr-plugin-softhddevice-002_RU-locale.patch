@@ -512,7 +512,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Цвет фона видео (Alpha)"
 +
 +msgid "Use studio levels (vdpau only)"
-+msgstr "Использовать студийные уровни (только vdpau)"
++msgstr "Исп. студийные уровни (только vdpau)"
 +
 +msgid "60hz display mode"
 +msgstr "60Гц режим монитора"
@@ -521,10 +521,10 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Програмный старт  A/V Sync"
 +
 +msgid "Black during channel switch"
-+msgstr "Черный фон во время переключения канала"
++msgstr "Черный фон во время перекл. канала"
 +
 +msgid "Clear decoder on channel switch"
-+msgstr "Очищать декодер во время переключатель канала"
++msgstr "Очищать декодер во время перекл. канала"
 +
 +msgid "Brightness (-1000..1000) (vdpau)"
 +msgstr "Яркость (-1000..1000) (vdpau)"
@@ -551,7 +551,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Деинтерлейсинг"
 +
 +msgid "SkipChromaDeinterlace (vdpau)"
-+msgstr ""
++msgstr "SkipChromaDeinterlace (vdpau)"
 +
 +msgid "Inverse Telecine (vdpau)"
 +msgstr "Обратный пересчет кадров (vdpau)"
@@ -599,16 +599,16 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Аудио коррекция дрейфа"
 +
 +msgid "Pass-through default"
-+msgstr "Pass-Through по умолчанию"
++msgstr "Сквозной по умолчанию"
 +
 +msgid "  PCM pass-through"
-+msgstr ""
++msgstr "  PCM сквозной"
 +
 +msgid "  AC-3 pass-through"
-+msgstr ""
++msgstr "  AC-3 сквозной"
 +
 +msgid "  E-AC-3 pass-through"
-+msgstr ""
++msgstr "  E-AC-3 сквозной"
 +
 +msgid "Enable (E-)AC-3 (decoder) downmix"
 +msgstr "Включить (E-) AC-3 (декодер) понижающего микширования"

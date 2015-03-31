@@ -295,7 +295,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use appropriate nOpacity Theme"
 -msgstr ""
-+msgstr "Использовать соответствующий nOpacity Стиль"
++msgstr "Исп. соотв. nOpacity стиль"
  
  msgid "Theme"
  msgstr "Тема"
