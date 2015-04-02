@@ -49,14 +49,14 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Сброс Marquee для нового элемента"
 +
 +msgid "Show auxiliary infos of recordings"
-+msgstr "Показать вспомогательные инфо записей"
++msgstr "Показать вспомог. инфо записей"
 +
 +#. TRANSLATORS: note the leading blanks!
 +msgid "   Extract known tags"
-+msgstr "   Извлечение известных тегов"
++msgstr "Извлечение известных тегов"
 +
 +msgid "Use 'epgsearch' to check timer-conflicts"
-+msgstr "Исп. 'epgsearch', чтобы пров. конф. таймеров"
++msgstr "'epgsearch', для пров. конф. таймеров"
 +
 +msgid "Flush image cache"
 +msgstr "Очистить кэш изображений"

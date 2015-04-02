@@ -1,0 +1,12 @@
+[Unit]
+Description=tbs-linux-cc driver service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=-/bin/sh -c "exec sh /storage/.kodi/addons/driver.dvb.tbs-linux-cc/bin/tbs-linux-cc.start"
+ExecStop=-/bin/sh -c "exec sh /storage/.kodi/addons/driver.dvb.tbs-linux-cc/bin/tbs-linux-cc.stop"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=kodi.target

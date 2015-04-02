@@ -66,7 +66,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Default Timespan [min]"
 -msgstr ""
-+msgstr "По умолчанию промежуток времени (мин.)"
++msgstr "По умол. промежуток времени (мин.)"
  
  msgid "Action"
 -msgstr ""
@@ -78,7 +78,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use default for autoswitch"
 -msgstr ""
-+msgstr "Исп. знач. по умолчанию для авт. переключения"
++msgstr "Знач. по умол. для авт. переключения"
  
  msgid "No"
 -msgstr ""

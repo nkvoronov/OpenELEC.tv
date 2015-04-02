@@ -1,0 +1,1545 @@
+diff -Naur a/po/ru_RU.po b/po/ru_RU.po
+--- a/po/ru_RU.po	2014-12-28 08:52:05.000000000 +0200
++++ b/po/ru_RU.po	2015-04-02 22:31:47.000000000 +0300
+@@ -17,49 +17,49 @@
+ "Content-Transfer-Encoding: 8bit\n"
+ 
+ msgid "Channel groups"
+-msgstr ""
++msgstr "Группы каналов"
+ 
+ msgid "Button$Select"
+-msgstr ""
++msgstr "Выбрать"
+ 
+ msgid "Channel group used by:"
+-msgstr ""
++msgstr "Группа каналов используется:"
+ 
+ msgid "Edit$Delete group?"
+-msgstr ""
++msgstr "Удалить группу?"
+ 
+ msgid "Edit channel group"
+-msgstr ""
++msgstr "Редактировать группу канала"
+ 
+ msgid "Group name"
+-msgstr ""
++msgstr "Название группы"
+ 
+ msgid "Button$Invert selection"
+-msgstr ""
++msgstr "Инв. выделение"
+ 
+ msgid "Button$All yes"
+-msgstr ""
++msgstr "Все да"
+ 
+ msgid "Button$All no"
+-msgstr ""
++msgstr "Все нет"
+ 
+ msgid "Group name is empty!"
+-msgstr ""
++msgstr "Название группы пустое!"
+ 
+ msgid "Group name already exists!"
+-msgstr ""
++msgstr "Назание группы существует!"
+ 
+ msgid "Direct access to epgsearch's conflict check menu"
+-msgstr ""
++msgstr "Прямой доступ к меню - Проверка конфликтов"
+ 
+ msgid "Timer conflicts"
+-msgstr ""
++msgstr "Конфликты таймера"
+ 
+ msgid "Conflict info in main menu"
+-msgstr ""
++msgstr "Конфликт информации в главном меню"
+ 
+ msgid "next"
+-msgstr ""
++msgstr "далее"
+ 
+ #, c-format
+ msgid "timer conflict at %s! Show it?"
+@@ -70,222 +70,236 @@
+ msgstr ""
+ 
+ msgid "search the EPG for repeats and more"
+-msgstr ""
++msgstr "поиск EPG для повторов и остального"
+ 
+ msgid "Program guide"
+-msgstr ""
++msgstr "Программа"
+ 
+ msgid "search timer update running"
+-msgstr ""
++msgstr "Поиск таймера, работающего обновление"
+ 
+ msgid "Direct access to epgsearch's search menu"
+-msgstr ""
++msgstr "Прямой доступ к меню - Поиск"
+ 
+ msgid "Search"
+-msgstr ""
++msgstr "Поиск"
+ 
+ msgid "EpgSearch-Search in main menu"
+-msgstr ""
++msgstr "EpgSearch-поиск в главном меню"
+ 
+ msgid "Button$Help"
+-msgstr ""
++msgstr "Помощь"
+ 
+ msgid "Standard"
+-msgstr ""
++msgstr "Стандарт"
+ 
+ msgid "Button$Commands"
+-msgstr ""
++msgstr "Команды"
+ 
+ msgid "Button$Search"
+-msgstr ""
++msgstr "Поиск"
+ 
+ msgid "never"
+-msgstr ""
++msgstr "никогда"
+ 
+ msgid "always"
+-msgstr ""
++msgstr "всегда"
+ 
+ msgid "smart"
+-msgstr ""
++msgstr "умный"
+ 
+ msgid "before user-def. times"
+-msgstr ""
++msgstr "до пользов. таймеров"
+ 
+ msgid "after user-def. times"
+-msgstr ""
++msgstr "после пользов. таймеров"
+ 
+ msgid "before 'next'"
+-msgstr ""
++msgstr "до 'далее'"
+ 
+ msgid "General"
+-msgstr ""
++msgstr "Общее"
+ 
+ msgid "EPG menus"
+-msgstr ""
++msgstr "EPG меню"
+ 
+ msgid "User-defined EPG times"
+-msgstr ""
++msgstr "Пользов. EPG таймера"
+ 
+ msgid "Timer programming"
+-msgstr ""
++msgstr "Программирование таймера"
+ 
+ msgid "Search and search timers"
+-msgstr ""
++msgstr "Поиск и поиск таймеров"
+ 
+ msgid "Timer conflict checking"
+-msgstr ""
++msgstr "Проверка конфликта таймера"
+ 
+ msgid "Email notification"
+-msgstr ""
++msgstr "уведомление по Email"
+ 
+ msgid "Hide main menu entry"
+-msgstr ""
++msgstr "Скрыть в главном меню"
+ 
+ msgid "Help$Hides the main menu entry and may be useful if this plugin is used to replace the original 'Schedule' entry."
+-msgstr ""
++msgstr "Скрыть в главном меню, это может быть полезно, если этот плагин используется, чтобы заменить исходное 'Расписание'."
+ 
+ msgid "Main menu entry"
+-msgstr ""
++msgstr "Пункт главного меню"
+ 
+ msgid "Help$The name of the main menu entry which defaults to 'Programm guide'."
+-msgstr ""
++msgstr "Пункт главного меню, по умолчанию меню 'Программа'."
+ 
+ msgid "Replace original schedule"
+-msgstr ""
++msgstr "Заменить оригинальное расписание"
+ 
+ msgid "Help$When VDR is patched to allow this plugin to replace the original 'Schedule' entry, you can de/activate this replacement here."
+-msgstr ""
++msgstr "Для замены оригинального 'Расписание', вы можете отключить / включить эту замену здесь."
+ 
+ msgid "Start menu"
+-msgstr ""
++msgstr "Стартовое меню"
+ 
+ msgid "Help$Choose between 'Overview - Now' and 'Schedule' as start menu when this plugin is called."
+-msgstr ""
++msgstr "Выбор между 'Обзор - Сейчас' и 'Расписание' в качестве стартового меню."
+ 
+ msgid "Ok key"
+-msgstr ""
++msgstr "Ok кнопка"
+ 
+ msgid ""
+ "Help$Choose here the behaviour of key 'Ok'. You can use it to display the summary or to switch to the corresponding channel.\n"
+ "Note: the functionality of key 'blue' (Switch/Info/Search) depends on this setting."
+ msgstr ""
++"Выберите здесь поведение кнопки 'Ok'. Вы можете использовать его для отображения резюме или для переключения на соответствующий канал.\n"
++"Примечание: функциональность кнопки 'Blue' (Переключение/Информация/Поиск) зависит от значения этого параметра."
+ 
+ msgid "Red key"
+-msgstr ""
++msgstr "Red кнопка"
+ 
+ msgid ""
+ "Help$Choose which standard function ('Record' or 'Commands') you like to have on the red key.\n"
+ "(Can be toggled with key '0')"
+ msgstr ""
++"Выберите, какую стандартную функцию('Запись' или 'Команды') вы хотели бы иметь на Red кнопку.\n"
++"(Можно переключать с помощью клавиши '0')"
+ 
+ msgid "Blue key"
+-msgstr ""
++msgstr "Blue кнопка"
+ 
+ msgid ""
+ "Help$Choose which standard function ('Switch'/'Info' or 'Search') you like to have on the blue key.\n"
+ "(Can be toggled with key '0')"
+ msgstr ""
++"Выберите, какую стандартную функцию (Переключение/Информация или Поиск), вы хотели бы иметь на Blue кнопку.\n"
++"(Можно переключать с помощью клавиши '0')"
+ 
+ msgid "Show progress in 'Now'"
+-msgstr ""
++msgstr "Показывать прогресс в 'Сейчас'"
+ 
+ msgid "Help$Shows a progressbar in 'Overview - Now' that informs about the remaining time of the current event."
+-msgstr ""
++msgstr "Показывает ProgressBar в 'Обзор - Сейчас', которая информирует об оставшемся времени текущего события."
+ 
+ msgid "Show channel numbers"
+-msgstr ""
++msgstr "Показывать номера каналов"
+ 
+ msgid ""
+ "Help$Display channel numbers in 'Overview - Now'.\n"
+ "\n"
+ "(To completely define your own menu look please inspect the MANUAL)"
+ msgstr ""
++"Показывать номера каналов в 'Обзор - Сейчас'.\n"
++"\n"
++"(Чтобы полностью определить свой собственный вид меню, пожалуйста, проверьте руководство)"
+ 
+ msgid "Show channel separators"
+-msgstr ""
++msgstr "Показывать раздел. каналов"
+ 
+ msgid "Help$Display VDR channel groups as separators between your channels in 'Overview - Now'."
+-msgstr ""
++msgstr "Показывать группы каналов в качестве разделителей ваших каналов в 'Обзор - Сейчас'."
+ 
+ msgid "Show day separators"
+-msgstr ""
++msgstr "Показывать раздел. дней"
+ 
+ msgid "Help$Display a separator line at day break in 'Schedule'."
+-msgstr ""
++msgstr "Показывать разделительную линию для дней в 'Расписании'."
+ 
+ msgid "Show radio channels"
+-msgstr ""
++msgstr "Показывать радио каналы"
+ 
+ msgid "Help$Show also radio channels."
+-msgstr ""
++msgstr "Показывать также радио каналы"
+ 
+ msgid "Limit channels from 1 to"
+-msgstr ""
++msgstr "Лимит каналов от 1 до"
+ 
+ msgid "Help$If you have a large channel set you can speed up things when you limit the displayed channels with this setting. Use '0' to disable the limit."
+-msgstr ""
++msgstr "Если вы имеете много каналов вы можете ускорить процесс, если ограничить количество отображаемых каналов с помощью этой установки. Используйте '0', чтобы отключить лимит."
+ 
+ msgid "'One press' timer creation"
+-msgstr ""
++msgstr "Cоздание таймера в одно нажатие"
+ 
+ msgid "Help$When a timer is created with 'Record' you can choose between an immediate creation of the timer or the display of the timer edit menu."
+-msgstr ""
++msgstr "Когда таймер создается с «записи», вы можете выбрать между непосредственной создания таймера или отображение меню таймера редактирования."
+ 
+ msgid "Show channels without EPG"
+-msgstr ""
++msgstr "Показывать каналы без EPG"
+ 
+ msgid "Help$Choose 'yes' here if you want to display channels without EPG in 'Overview - Now'. 'Ok' on these entries switches the channel."
+-msgstr ""
++msgstr "Выберите 'да', если вы хотите отобразить каналы без EPG в 'Обзор - Cейчас'. 'Ok' переключает канал."
+ 
+ msgid "Time interval for FRew/FFwd [min]"
+-msgstr ""
++msgstr "Временной интервал для  FRew/FFwd (мин.)"
+ 
+ msgid ""
+ "Help$Choose here the time interval which should be used for jumping through the EPG by pressing FRew/FFwd.\n"
+ "\n"
+ "(If you don't have those keys, you can toggle to this functionality pressing '0' and get '<<' and '>>' on the keys green and yellow)"
+ msgstr ""
++"Выберите интервал времени, который должен быть использован для перемотки EPG, нажав FRew/FFwd.\n"
++"\n"
++"(Если у вас нет этих кнопок, вы можете включить эту функцию, нажав '0' и получить '<<' и '>>' на клавишах зеленый и желтый)"
+ 
+ msgid "Toggle Green/Yellow"
+-msgstr ""
++msgstr "Переключить Green/Yellow"
+ 
+ msgid "Help$Specify if green and yellow shall also be switched when pressing '0'."
+-msgstr ""
++msgstr "Укажите, зеленый и желтый должны быть переключены при нажатии '0'."
+ 
+ msgid "Show favorites menu"
+-msgstr ""
++msgstr "Показать избранное"
+ 
+ msgid ""
+ "Help$A favorites menu can display a list of your favorite broadcasts. Enable this if you want an additional menu besides 'Now' and 'Next'\n"
+ "Any search can be used as a favorite. You only have to set the option 'Use in favorites menu' when editing a search."
+ msgstr ""
++"Избранное может отобразить список любимых передач. Включить, если вы хотите дополнительное меню, кроме 'Now' и 'Next'\n"
++"Любой поиск может быть использован в избранного. Вы только должны установить опцию 'Использовать в меню избранного' при редактировании поиска.."
+ 
+ msgid "for the next ... hours"
+-msgstr ""
++msgstr "в течение следующих ... часов"
+ 
+ msgid "Help$This value controls the timespan used to display your favorites."
+-msgstr ""
++msgstr "Это значение определяет отрезок времени, используемый для отображения избранного."
+ 
+ msgid "Use user-defined time"
+-msgstr ""
++msgstr "Используйте в указанное время"
+ 
+ msgid "Help$Besides 'Now' and 'Next' you can specify up to 4 other times in the EPG which can be used by repeatedly pressing the green key, e.g. 'prime time', 'late night',..."
+-msgstr ""
++msgstr "Кроме того, 'Now' и 'Next' вы можете указать до 4 установки в EPG, которые могут быть использованы несколько раз нажав на зеленую кнопку, например, 'прайм-тайм', 'поздно ночью', ..."
+ 
+ msgid "Description"
+-msgstr ""
++msgstr "Описание"
+ 
+ msgid "Help$This is the description for your user-defined time as it will appear as label on the green button."
+-msgstr ""
++msgstr "Это описание для указанного пользователем время и оно будет выглядеть, как метка на зеленой кнопке."
+ 
+ msgid "Time"
+-msgstr ""
++msgstr "Время"
+ 
+ msgid "Help$Specify the user-defined time here in 'HH:MM'."
+-msgstr ""
++msgstr "Укажите ваше время, в 'HH:MM'."
+ 
+ msgid "Use VDR's timer edit menu"
+-msgstr ""
++msgstr "Использовать меню редактирования таймера"
+ 
+ msgid ""
+ "Help$This plugin has its own timer edit menu extending the original one with some extra functionality like\n"
+@@ -296,13 +310,13 @@
+ msgstr ""
+ 
+ msgid "Default recording dir"
+-msgstr ""
++msgstr "Папка записи по умол."
+ 
+ msgid "Help$When creating a timer you can specify here a default recording directory."
+ msgstr ""
+ 
+ msgid "Add episode to manual timers"
+-msgstr ""
++msgstr "Добавить эпизод к таймерам"
+ 
+ msgid ""
+ "Help$If you create a timer for a series, you can automatically add the episode name.\n"
+@@ -313,7 +327,7 @@
+ msgstr ""
+ 
+ msgid "Default timer check method"
+-msgstr ""
++msgstr "Метод проверки таймера по умолчанию"
+ 
+ msgid ""
+ "Help$Manual timers can be checked for EPG changes. Here you can setup the default check method for each channel. Choose between\n"
+@@ -327,19 +341,19 @@
+ msgstr "Настройка"
+ 
+ msgid "Use search timers"
+-msgstr ""
++msgstr "Использовать поиск таймеров"
+ 
+ msgid "Help$'Search timers' can be used to automatically create timers for events that match your search criterions."
+ msgstr ""
+ 
+ msgid "  Update interval [min]"
+-msgstr ""
++msgstr "  Интервал обновления (мин.)"
+ 
+ msgid "Help$Specify here the time intervall to be used when searching for events in the background."
+ msgstr ""
+ 
+ msgid "  SVDRP port"
+-msgstr ""
++msgstr "  SVDRP порт"
+ 
+ msgid "Help$Programming of new timers or timer changes is done with SVDRP. The default value should be correct, so change it only if you know what you are doing."
+ msgstr ""
+@@ -357,55 +371,55 @@
+ msgstr ""
+ 
+ msgid "No announcements when replaying"
+-msgstr ""
++msgstr "Нет объявлений при воспроизведении"
+ 
+ msgid "Help$Set this to 'yes' if you don't like to get any announcements of broadcasts if you currently replay anything."
+ msgstr ""
+ 
+ msgid "Recreate timers after deletion"
+-msgstr ""
++msgstr "Повторное таймеры после удаления"
+ 
+ msgid "Help$Set this to 'yes' if you want timers to be recreated with the next search timer update after deleting them."
+ msgstr ""
+ 
+ msgid "Check if EPG exists for ... [h]"
+-msgstr ""
++msgstr "Проверить если EPG существует ... (ч.)"
+ 
+ msgid "Help$Specify how many hours of future EPG there should be and get warned else after a search timer update."
+ msgstr ""
+ 
+ msgid "Warn by OSD"
+-msgstr ""
++msgstr "Предупреждать по OSD"
+ 
+ msgid "Help$Set this to 'yes' if you want get warnings from the EPG check via OSD."
+ msgstr ""
+ 
+ msgid "Warn by mail"
+-msgstr ""
++msgstr "Предупреждать по почте"
+ 
+ msgid "Help$Set this to 'yes' if you want get warnings from the EPG check by mail."
+ msgstr ""
+ 
+ msgid "Channel group to check"
+-msgstr ""
++msgstr "Группа каналов для проверки"
+ 
+ msgid "Help$Specify the channel group to check."
+ msgstr ""
+ 
+ msgid "Ignore PayTV channels"
+-msgstr ""
++msgstr "Игнорировать PayTV каналы"
+ 
+ msgid "Help$Set this to 'yes' if don't want to see events on PayTV channels when searching for repeats."
+ msgstr ""
+ 
+ msgid "Search templates"
+-msgstr ""
++msgstr "Поисковые шаблоны"
+ 
+ msgid "Help$Here you can setup templates for your searches."
+ msgstr ""
+ 
+ msgid "Blacklists"
+-msgstr ""
++msgstr "Черный список"
+ 
+ msgid "Help$Here you can setup blacklists which can be used within a search to exclude events you don't like."
+ msgstr ""
+@@ -414,46 +428,46 @@
+ msgstr ""
+ 
+ msgid "Ignore below priority"
+-msgstr ""
++msgstr "Игнорировать ниже приоритета"
+ 
+ msgid "Help$If a timer with priority below the given value will fail it will not be classified as important. Only important conflicts will produce an OSD message about the conflict after an automatic conflict check."
+ msgstr ""
+ 
+ msgid "Ignore conflict duration less ... min."
+-msgstr ""
++msgstr "Игнорировать продолжительность конфликта менее ... мин."
+ 
+ msgid "Help$If a conflicts duration is less then the given number of minutes it will not be classified as important. Only important conflicts will produce an OSD message about the conflict after an automatic conflict check."
+ msgstr ""
+ 
+ msgid "Only check within next ... days"
+-msgstr ""
++msgstr "Проверять только в следующие ... дней"
+ 
+ msgid "Help$This value reduces the conflict check to the given range of days. All other conflicts are classified as 'not yet important'."
+ msgstr ""
+ 
+ msgid "--- Automatic checking ---"
+-msgstr ""
++msgstr "--- Автоматическая проверка ---"
+ 
+ msgid "After each timer programming"
+-msgstr ""
++msgstr "После каждого таймера программирования"
+ 
+ msgid "Help$Set this to 'yes' if the conflict check should be performed after each manual timer programming. In the case of a conflict you get immediately a message that informs you about it. The message is only displayed if this timer is involved in any conflict."
+ msgstr ""
+ 
+ msgid "When a recording starts"
+-msgstr ""
++msgstr "Когда начинается запись"
+ 
+ msgid "Help$Set this to 'yes' if the conflict check should be performed when a recording starts. In the case of a conflict you get immediately a message that informs you about it. The message is only displayed if the conflict is within the next 2 hours."
+ msgstr ""
+ 
+ msgid "After each search timer update"
+-msgstr ""
++msgstr "После каждого поиска таймер обновлять"
+ 
+ msgid "Help$Set this to 'yes' if the conflict check should be performed after each search timer update."
+ msgstr ""
+ 
+ msgid "every ... minutes"
+-msgstr ""
++msgstr "каждые ... минут"
+ 
+ msgid ""
+ "Help$Specify here the time intervall to be used for an automatic conflict check in the background.\n"
+@@ -461,25 +475,25 @@
+ msgstr ""
+ 
+ msgid "if conflicts within next ... minutes"
+-msgstr ""
++msgstr "Если конфликты в пределах ... минут"
+ 
+ msgid "Help$If the next conflict will appear in the given number of minutes you can specify here a shorter check intervall to get more OSD notifications about it."
+ msgstr ""
+ 
+ msgid "Avoid notification when replaying"
+-msgstr ""
++msgstr "Избегать уведомлений при воспроизведении"
+ 
+ msgid "Help$Set this to 'yes' if the don't want to get OSD messages about conflicts if you currently replay something. Nevertheless messages will be displayed if the first upcoming conflict is within the next 2 hours."
+ msgstr ""
+ 
+ msgid "Search timer notification"
+-msgstr ""
++msgstr "Поиск таймера уведомления "
+ 
+ msgid "Help$Set this to 'yes' if you want to get an email notification about the search timers that where programmed automatically in the background."
+ msgstr ""
+ 
+ msgid "Time between mails [h]"
+-msgstr ""
++msgstr "Время отправки почты (ч.)"
+ 
+ msgid ""
+ "Help$Specifiy how much time in [h] you would\n"
+@@ -489,19 +503,19 @@
+ msgstr ""
+ 
+ msgid "Timer conflict notification"
+-msgstr ""
++msgstr "Конфликт таймера уведомления"
+ 
+ msgid "Help$Set this to 'yes' if you want to get an email notification about the timer conflicts."
+ msgstr ""
+ 
+ msgid "Send to"
+-msgstr ""
++msgstr "Отправить"
+ 
+ msgid "Help$Specify the email address where notifications should be sent to."
+-msgstr ""
++msgstr "Укажите адрес электронной почты, куда будут отправлятся сообщения."
+ 
+ msgid "Mail method"
+-msgstr ""
++msgstr "Метод отправки почты"
+ 
+ msgid ""
+ "Help$Specify here the method to use when sending mails.\n"
+@@ -509,484 +523,488 @@
+ " - 'sendmail': requires a properly configured email system\n"
+ " - 'SendEmail.pl': simple script for mail delivery"
+ msgstr ""
++"Help$Specify here the method to use when sending mails.\n"
++"You can choose between\n"
++" - 'sendmail': requires a properly configured email system\n"
++" - 'SendEmail.pl': simple script for mail delivery"
+ 
+ msgid "--- Email account ---"
+-msgstr ""
++msgstr "--- Email данные ---"
+ 
+ msgid "Email address"
+-msgstr ""
++msgstr "Email адрес"
+ 
+ msgid "Help$Specify the email address where notifications should be sent from."
+-msgstr ""
++msgstr "Укажите адрес электронной почты, куда будут отправляются сообщения."
+ 
+ msgid "SMTP server"
+-msgstr ""
++msgstr "SMTP сервер"
+ 
+ msgid "Help$Specify the SMTP server that should deliver the notifications. If it's using a port different from the default(25) append the port with \":port\"."
+-msgstr ""
++msgstr "Укажите SMTP-сервер, для доставки почты. Если он использует порт, отличный от установленного по умолчанию (25) добавить порт с \":port\"."
+ 
+ msgid "Use SMTP authentication"
+-msgstr ""
++msgstr "Исп. SMTP аутентификацию"
+ 
+ msgid "Help$Set this to 'yes' if your account needs authentication to send mails."
+-msgstr ""
++msgstr "Установите в 'да', если необходима авторизация SMTP для этой учетной записи."
+ 
+ msgid "Auth user"
+-msgstr ""
++msgstr "Авт. пользователь"
+ 
+ msgid "Help$Specify the auth user, if this account needs authentication for SMTP."
+-msgstr ""
++msgstr "Укажите пользователя для аутентификации, если необходима авторизация SMTP для этой учетной записи."
+ 
+ msgid "Auth password"
+-msgstr ""
++msgstr "Авт. пароль"
+ 
+ msgid "Help$Specify the auth password, if this account needs authentication for SMTP."
+-msgstr ""
++msgstr "Укажите пароль для аутентификации, если необходима авторизация SMTP для этой учетной записи."
+ 
+ msgid "Mail account check failed!"
+-msgstr ""
++msgstr "Проверка почты не удалось!"
+ 
+ msgid "Button$Test"
+-msgstr ""
++msgstr "Проверка"
+ 
+ msgid "$ abcdefghijklmnopqrstuvwxyz0123456789-.,#~\\^$[]|()*+?{}/:%@&_"
+ msgstr ""
+ 
+ msgid "Start/Stop time has changed"
+-msgstr ""
++msgstr "Нач./Кон. время изменено"
+ 
+ msgid "Title/episode has changed"
+-msgstr ""
++msgstr "Заголовок/Эпизод изменен"
+ 
+ msgid "No new timers were added."
+-msgstr ""
++msgstr "Нет новых добавленных таймеров"
+ 
+ msgid "No timers were modified."
+-msgstr ""
++msgstr "Нет измененых таймеров."
+ 
+ msgid "No timers were deleted."
+-msgstr ""
++msgstr "Нет таймеров для удаления."
+ 
+ msgid "No new events to announce."
+-msgstr ""
++msgstr "Нет новых событий для сообщения"
+ 
+ msgid "This version of EPGSearch does not support this service!"
+-msgstr ""
++msgstr "Эта версия EPGSearch не поддерживает эту услугу!"
+ 
+ msgid "EPGSearch does not exist!"
+-msgstr ""
++msgstr "EPGSearch не существует!"
+ 
+ #, c-format
+ msgid "%d new broadcast"
+ msgstr ""
+ 
+ msgid "Button$by channel"
+-msgstr ""
++msgstr "по каналу"
+ 
+ msgid "Button$by time"
+-msgstr ""
++msgstr "по времени"
+ 
+ msgid "Button$Episode"
+-msgstr ""
++msgstr "Эпизод"
+ 
+ msgid "Button$Title"
+-msgstr ""
++msgstr "Заголовок"
+ 
+ msgid "announce details"
+-msgstr ""
++msgstr "сообщить детально"
+ 
+ msgid "announce again"
+-msgstr ""
++msgstr "сообщить снова"
+ 
+ msgid "with next update"
+-msgstr ""
++msgstr "со следующего обновления"
+ 
+ msgid "again from"
+-msgstr ""
++msgstr "снова с"
+ 
+ msgid "Search timer"
+-msgstr ""
++msgstr "Поиск таймера"
+ 
+ msgid "Edit blacklist"
+-msgstr ""
++msgstr "Редактировать черный список"
+ 
+ msgid "phrase"
+-msgstr ""
++msgstr "фраза"
+ 
+ msgid "all words"
+-msgstr ""
++msgstr "все слова"
+ 
+ msgid "at least one word"
+-msgstr ""
++msgstr "хотя бы одно слово"
+ 
+ msgid "match exactly"
+-msgstr ""
++msgstr "точно соответствовать"
+ 
+ msgid "regular expression"
+-msgstr ""
++msgstr "регулярное выражение"
+ 
+ msgid "fuzzy"
+-msgstr ""
++msgstr "нечеткий"
+ 
+ msgid "user-defined"
+-msgstr ""
++msgstr "опред. пользователем"
+ 
+ msgid "interval"
+-msgstr ""
++msgstr "интервал"
+ 
+ msgid "channel group"
+-msgstr ""
++msgstr "группа канала"
+ 
+ msgid "only FTA"
+-msgstr ""
++msgstr "только FTA"
+ 
+ msgid "Search term"
+-msgstr ""
++msgstr "Термин поиска"
+ 
+ msgid "Search mode"
+-msgstr ""
++msgstr "Режим поиска"
+ 
+ msgid "Tolerance"
+-msgstr ""
++msgstr "Допуск"
+ 
+ msgid "Match case"
+-msgstr ""
++msgstr "Учитывать"
+ 
+ msgid "Use title"
+-msgstr ""
++msgstr "Исп. заголовок"
+ 
+ msgid "Use subtitle"
+-msgstr ""
++msgstr "Исп. суб заголовок"
+ 
+ msgid "Use description"
+-msgstr ""
++msgstr "Исп. описание"
+ 
+ msgid "Use extended EPG info"
+-msgstr ""
++msgstr "Исп. расширенное EPG инфо"
+ 
+ msgid "Ignore missing categories"
+-msgstr ""
++msgstr "Игнорировать отсутствующие категории"
+ 
+ msgid "Use channel"
+-msgstr ""
++msgstr "Исп. канал"
+ 
+ msgid "  from channel"
+-msgstr ""
++msgstr "  с канала"
+ 
+ msgid "  to channel"
+-msgstr ""
++msgstr "  на канал"
+ 
+ msgid "Channel group"
+-msgstr ""
++msgstr "Группа канала"
+ 
+ msgid "Use time"
+-msgstr ""
++msgstr "Исп. время"
+ 
+ msgid "  Start after"
+-msgstr ""
++msgstr "  Начать после"
+ 
+ msgid "  Start before"
+-msgstr ""
++msgstr " Начать перед"
+ 
+ msgid "Use duration"
+-msgstr ""
++msgstr "Исп. продолжительность"
+ 
+ msgid "  Min. duration"
+-msgstr ""
++msgstr "  Мин. продолжительность"
+ 
+ msgid "  Max. duration"
+-msgstr ""
++msgstr "  Макс. продолжительность"
+ 
+ msgid "Use day of week"
+-msgstr ""
++msgstr "Исп. день недели"
+ 
+ msgid "Day of week"
+-msgstr ""
++msgstr "День недели"
+ 
+ msgid "Use global"
+-msgstr ""
++msgstr "Исп. глобально"
+ 
+ msgid "Button$Templates"
+-msgstr ""
++msgstr "Шаблоны"
+ 
+ msgid "*** Invalid Channel ***"
+-msgstr ""
++msgstr "*** Неверный канал ***"
+ 
+ msgid "Please check channel criteria!"
+-msgstr ""
++msgstr "Пожалуйста, проверьте критерии канала!"
+ 
+ msgid "Edit$Delete blacklist?"
+-msgstr ""
++msgstr "Удалить черный список"
+ 
+ msgid "Repeats"
+-msgstr ""
++msgstr "Повторы"
+ 
+ msgid "Create search"
+-msgstr ""
++msgstr "Создать поиск"
+ 
+ msgid "Search in recordings"
+-msgstr ""
++msgstr "Поиск в записях"
+ 
+ msgid "Mark as 'already recorded'?"
+-msgstr ""
++msgstr "Отметить как 'уже записано'?"
+ 
+ msgid "Add/Remove to/from switch list?"
+-msgstr ""
++msgstr "Добавить/Удалить в/из переключения список?"
+ 
+ msgid "Create blacklist"
+-msgstr ""
++msgstr "Создать черный список"
+ 
+ msgid "EPG Commands"
+-msgstr ""
++msgstr "EPG команды"
+ 
+ msgid "Already running!"
+-msgstr ""
++msgstr "Уже запущен!"
+ 
+ msgid "Add to switch list?"
+-msgstr ""
++msgstr "Добавить для переключения список?"
+ 
+ msgid "Delete from switch list?"
+-msgstr ""
++msgstr "Удалить из переключения список?"
+ 
+ msgid "Button$Details"
+-msgstr ""
++msgstr "Детально"
+ 
+ msgid "Button$Filter"
+-msgstr ""
++msgstr "Фильтр"
+ 
+ msgid "Button$Show all"
+-msgstr ""
++msgstr "Паказать все"
+ 
+ msgid "conflicts"
+-msgstr ""
++msgstr "конфликты"
+ 
+ msgid "no conflicts!"
+-msgstr ""
++msgstr "нет конфликтов!"
+ 
+ msgid "no important conflicts!"
+-msgstr ""
++msgstr "нет важных конфликтов!"
+ 
+ msgid "C"
+ msgstr "C"
+ 
+ msgid "Button$Repeats"
+-msgstr ""
++msgstr "Повторы"
+ 
+ msgid "no check"
+-msgstr ""
++msgstr "не проверять"
+ 
+ msgid "by channel and time"
+-msgstr ""
++msgstr "по каналу и времени"
+ 
+ msgid "by event ID"
+-msgstr ""
++msgstr "по ID события"
+ 
+ msgid "Select directory"
+-msgstr ""
++msgstr "Выбрать папку"
+ 
+ msgid "Button$Level"
+-msgstr ""
++msgstr "Уровень"
+ 
+ msgid "Event"
+-msgstr ""
++msgstr "Событие"
+ 
+ msgid "Favorites"
+-msgstr ""
++msgstr "Избранное"
+ 
+ msgid "Search results"
+-msgstr ""
++msgstr "Результат поиска"
+ 
+ msgid "Timer conflict! Show?"
+-msgstr ""
++msgstr "Конфликт таймера! Показать!"
+ 
+ msgid "Directory"
+-msgstr ""
++msgstr "Папка"
+ 
+ msgid "Channel"
+-msgstr ""
++msgstr "Канал"
+ 
+ msgid "Childlock"
+-msgstr ""
++msgstr "Запрет просмотра"
+ 
+ msgid "Timer check"
+-msgstr ""
++msgstr "Проверка таймер"
+ 
+ msgid "recording with device"
+-msgstr ""
++msgstr "запись с устройства"
+ 
+ msgid "Button$With subtitle"
+-msgstr ""
++msgstr "С суб заголовком"
+ 
+ msgid "Button$Without subtitle"
+-msgstr ""
++msgstr "Без суб заголовка"
+ 
+ msgid "Button$Extended"
+-msgstr ""
++msgstr "Расширенный"
+ 
+ msgid "Button$Simple"
+-msgstr ""
++msgstr "Простой"
+ 
+ msgid "Use blacklists"
+-msgstr ""
++msgstr "Исп. черные списки"
+ 
+ msgid "Edit$Search text too short - use anyway?"
+-msgstr ""
++msgstr "Текст для поиска слишком короткий - использовать в любом случае?"
+ 
+ msgid "Button$Orphaned"
+-msgstr ""
++msgstr "Зависшие"
+ 
+ msgid "Button$by name"
+-msgstr ""
++msgstr "по названию"
+ 
+ msgid "Button$by date"
+-msgstr ""
++msgstr "по дате"
+ 
+ msgid "Button$Delete all"
+-msgstr ""
++msgstr "Удалить все"
+ 
+ msgid "Recordings"
+-msgstr ""
++msgstr "Записи"
+ 
+ msgid "Edit$Delete entry?"
+-msgstr ""
++msgstr "Удалить элемент?"
+ 
+ msgid "Edit$Delete all entries?"
+-msgstr ""
++msgstr "Удалить все элементы?"
+ 
+ msgid "Summary"
+-msgstr ""
++msgstr "Резюме"
+ 
+ msgid "Auxiliary info"
+-msgstr ""
++msgstr "Доп. информация"
+ 
+ msgid "Button$Aux info"
+-msgstr ""
++msgstr "Доп. инфо"
+ 
+ msgid "Search actions"
+-msgstr ""
++msgstr "Поиск действий"
+ 
+ msgid "Execute search"
+-msgstr ""
++msgstr "Выполнить поиск"
+ 
+ msgid "Use as search timer on/off"
+-msgstr ""
++msgstr "Исп. как поиск таймера вкл./выкл."
+ 
+ msgid "Trigger search timer update"
+-msgstr ""
++msgstr "Триггер обновления поиск таймер"
+ 
+ msgid "Show recordings done"
+-msgstr ""
++msgstr "Показывать законченные записи"
+ 
+ msgid "Show timers created"
+-msgstr ""
++msgstr "Показать созданные таймеры"
+ 
+ msgid "Create a copy"
+-msgstr ""
++msgstr "Создать копию"
+ 
+ msgid "Use as template"
+-msgstr ""
++msgstr "Исп. как шаблон"
+ 
+ msgid "Show switch list"
+-msgstr ""
++msgstr "Показать переключатель списка"
+ 
+ msgid "Show blacklists"
+-msgstr ""
++msgstr "Показать черные списки"
+ 
+ msgid "Delete created timers?"
+-msgstr ""
++msgstr "Удалить созданные таймеры?"
+ 
+ msgid "Timer conflict check"
+-msgstr ""
++msgstr "Проверка конфликтов таймера"
+ 
+ msgid "Disable associated timers too?"
+-msgstr ""
++msgstr "Отключить связанные таймеры также"
+ 
+ msgid "Activate associated timers too?"
+-msgstr ""
++msgstr "Активировать связанные таймеры также"
+ 
+ msgid "Search timers activated in setup."
+-msgstr ""
++msgstr "Поиск таймеров активных в настройках."
+ 
+ msgid "Run search timer update?"
+-msgstr ""
++msgstr "Запустить обновление поиска таймера"
+ 
+ msgid "Copy this entry?"
+-msgstr ""
++msgstr "Копировать этот элемент?"
+ 
+ msgid "Copy"
+-msgstr ""
++msgstr "Копировать"
+ 
+ msgid "Copy this entry to templates?"
+-msgstr ""
++msgstr "Скопировать этот элемент в шаблоны"
+ 
+ msgid "Delete all timers created from this search?"
+-msgstr ""
++msgstr "Удалить все таймеры, созданные из этого поиска?"
+ 
+ msgid "Button$Actions"
+-msgstr ""
++msgstr "Действия"
+ 
+ msgid "Search entries"
+-msgstr ""
++msgstr "Поиск элементов"
+ 
+ msgid "active"
+-msgstr ""
++msgstr "активно"
+ 
+ msgid "Edit$Delete search?"
+-msgstr ""
++msgstr "Удалить поиск?"
+ 
+ msgid "Edit search"
+-msgstr ""
++msgstr "Редактировать поиск"
+ 
+ msgid "Record"
+ msgstr "Запись"
+ 
+ msgid "Announce by OSD"
+-msgstr ""
++msgstr "Сообщение OSD"
+ 
+ msgid "Switch only"
+-msgstr ""
++msgstr "Только переключить"
+ 
+ msgid "Announce and switch"
+-msgstr ""
++msgstr "Сообщить и переключить"
+ 
+ msgid "Announce by mail"
+-msgstr ""
++msgstr "Сообщение по почте"
+ 
+ msgid "only globals"
+-msgstr ""
++msgstr "только глобальные"
+ 
+ msgid "Selection"
+-msgstr ""
++msgstr "Выбор"
+ 
+ msgid "all"
+-msgstr ""
++msgstr "все"
+ 
+ msgid "count recordings"
+-msgstr ""
++msgstr "к-во записей"
+ 
+ msgid "count days"
+-msgstr ""
++msgstr "к-во дней"
+ 
+ msgid "if present"
+-msgstr ""
++msgstr "если пресутствует"
+ 
+ msgid "same day"
+-msgstr ""
++msgstr "в этот день"
+ 
+ msgid "same week"
+-msgstr ""
++msgstr "на этой же неделе"
+ 
+ msgid "same month"
+-msgstr ""
++msgstr "в том же месяце"
+ 
+ msgid "Template name"
+-msgstr ""
++msgstr "Название шаблона"
+ 
+ msgid "Help$Specify the name of the template."
+-msgstr ""
++msgstr "Укажите имя шаблона."
+ 
+ msgid "Help$Specify here the term to search for."
+-msgstr ""
++msgstr "Укажите термин для поиска"
+ 
+ msgid ""
+ "Help$The following search modes exist:\n"
+@@ -998,27 +1016,35 @@
+ "- regular expression: match a regular expression\n"
+ "- fuzzy searching: searches approximately"
+ msgstr ""
++"Доступны следующие режимы поиска:\n"
++"\n"
++"- фраза: поиск суб термов\n"
++"- все слова: должны соответствовать все отдельные слова\n"
++"- по меньшей мере, одно слово: по меньшей мере, одного слова должно соответствовать\n"
++"- в точности совпадать: должны точно соответствовать\n"
++"- регулярное выражение: соответствовать регулярному выражению\n"
++"- неточный поиск: поиск примерно"
+ 
+ msgid "Help$This sets the tolerance of fuzzy searching. The value represents the allowed errors."
+-msgstr ""
++msgstr "Это устанавливает допуск неточного поиска.Значение представляет допустимые ошибки."
+ 
+ msgid "Help$Set this to 'Yes' if your search should match the case."
+-msgstr ""
++msgstr "Установите 'да' если ваш поиск должен соответствовать выбору."
+ 
+ msgid "Help$Set this to 'Yes' if you like to search in the title of an event."
+-msgstr ""
++msgstr "Установите 'да', если вы хотите найти в названии события."
+ 
+ msgid "Help$Set this to 'Yes' if you like to search in the episode of an event."
+-msgstr ""
++msgstr "Установите 'да', если вы хотите найти в эпизод в событии."
+ 
+ msgid "Help$Set this to 'Yes' if you like to search in the summary of an event."
+-msgstr ""
++msgstr "Установите 'да', если вы хотите найти в резюме события."
+ 
+ msgid "Use content descriptor"
+-msgstr ""
++msgstr "Использовать содержимое описания"
+ 
+ msgid "Help$Set this to 'Yes' if you want to search the contents by a descriptor."
+-msgstr ""
++msgstr "Установите 'да', если вы хотите, чтобы был поиск по содержимому описания."
+ 
+ msgid "Help$The summary of an event, can contain additional information like 'Genre', 'Category', 'Year',... called 'EPG categories' within EPGSearch. External EPG providers often deliver this information. This allows refining a search and other nice things, like searching for the 'tip of the day'. To use it set this to 'Yes'."
+ msgstr ""
+@@ -1030,205 +1056,205 @@
+ msgstr ""
+ 
+ msgid "Use in favorites menu"
+-msgstr ""
++msgstr "Исп. в меню избранное"
+ 
+ msgid "Result menu layout"
+-msgstr ""
++msgstr "Расположение меню результат"
+ 
+ msgid "Use as search timer"
+-msgstr ""
++msgstr "Исп. как поиск таймера"
+ 
+ msgid "Action"
+-msgstr ""
++msgstr "Действие"
+ 
+ msgid "Switch ... minutes before start"
+-msgstr ""
++msgstr "Переключить ... минут до начала"
+ 
+ msgid "Unmute sound"
+-msgstr ""
++msgstr "Включить звук"
+ 
+ msgid "Ask ... minutes before start"
+-msgstr ""
++msgstr "Спросить ... минут до начала"
+ 
+ msgid "  Series recording"
+-msgstr ""
++msgstr "  запись серий"
+ 
+ msgid "Delete recordings after ... days"
+-msgstr ""
++msgstr "Удалить записи после ... дней"
+ 
+ msgid "Keep ... recordings"
+-msgstr ""
++msgstr "Хранить ... записи"
+ 
+ msgid "Pause when ... recordings exist"
+-msgstr ""
++msgstr "Пауза когда ... записи существуют"
+ 
+ msgid "Avoid repeats"
+-msgstr ""
++msgstr "Избегать повторов"
+ 
+ msgid "Allowed repeats"
+-msgstr ""
++msgstr "Разрешенные повторы"
+ 
+ msgid "Only repeats within ... days"
+-msgstr ""
++msgstr "Только повторы в ... дней"
+ 
+ msgid "Compare title"
+-msgstr ""
++msgstr "Сравнить заголовок"
+ 
+ msgid "Compare subtitle"
+-msgstr ""
++msgstr "Сравнить суб заголовок"
+ 
+ msgid "Compare summary"
+-msgstr ""
++msgstr "Сравнить резюме"
+ 
+ msgid "Min. match in %"
+-msgstr ""
++msgstr "Мин. совпадений в %"
+ 
+ msgid "Compare date"
+-msgstr ""
++msgstr "Сравнить дату"
+ 
+ msgid "Compare categories"
+-msgstr ""
++msgstr "Сравнить категории"
+ 
+ msgid "VPS"
+ msgstr ""
+ 
+ msgid "Auto delete"
+-msgstr ""
++msgstr "Авто удаления"
+ 
+ msgid "after ... recordings"
+-msgstr ""
++msgstr "после ... записей"
+ 
+ msgid "after ... days after first rec."
+-msgstr ""
++msgstr "после ... дней после первой записи"
+ 
+ msgid "Edit user-defined days of week"
+-msgstr ""
++msgstr "Редактирование опред. пользователя дней недели"
+ 
+ msgid "Compare"
+-msgstr ""
++msgstr "Сравнить"
+ 
+ msgid "Select blacklists"
+-msgstr ""
++msgstr "Выбрать черные списоки"
+ 
+ msgid "Values for EPG category"
+-msgstr ""
++msgstr "Значения для категории EPG"
+ 
+ msgid "Button$Apply"
+-msgstr ""
++msgstr "Применить"
+ 
+ msgid "less"
+-msgstr ""
++msgstr "меньше"
+ 
+ msgid "less or equal"
+-msgstr ""
++msgstr "меньше или равно"
+ 
+ msgid "greater"
+-msgstr ""
++msgstr "больше"
+ 
+ msgid "greater or equal"
+-msgstr ""
++msgstr "больше или равно"
+ 
+ msgid "equal"
+-msgstr ""
++msgstr "равно"
+ 
+ msgid "not equal"
+-msgstr ""
++msgstr "не равно"
+ 
+ msgid "Activation of search timer"
+-msgstr ""
++msgstr "Активация поиска таймера"
+ 
+ msgid "First day"
+-msgstr ""
++msgstr "Первый день"
+ 
+ msgid "Last day"
+-msgstr ""
++msgstr "Последний день"
+ 
+ msgid "Button$all channels"
+-msgstr ""
++msgstr "все каналы"
+ 
+ msgid "Button$only FTA"
+-msgstr ""
++msgstr "только FTA"
+ 
+ msgid "Button$Timer preview"
+-msgstr ""
++msgstr "Таймер предпросмотр"
+ 
+ msgid "Blacklist results"
+-msgstr ""
++msgstr "Чёрный список результатов"
+ 
+ msgid "found recordings"
+-msgstr ""
++msgstr "найдены записи"
+ 
+ msgid "Error while accessing recording!"
+-msgstr ""
++msgstr "Ошибка при доступе к записи!"
+ 
+ msgid "Button$Default"
+-msgstr ""
++msgstr "Умолчание"
+ 
+ msgid "Edit$Delete template?"
+-msgstr ""
++msgstr "Удалить шаблон?"
+ 
+ msgid "Overwrite existing entries?"
+-msgstr ""
++msgstr "Заменить существующие элементы?"
+ 
+ msgid "Edit entry"
+-msgstr ""
++msgstr "Редактировать элемент"
+ 
+ msgid "Switch"
+-msgstr ""
++msgstr "Переключить"
+ 
+ msgid "Announce only"
+-msgstr ""
++msgstr "Сообщение только"
+ 
+ msgid "Announce ... minutes before start"
+-msgstr ""
++msgstr "Сообщение ... минут до начала"
+ 
+ msgid "action at"
+-msgstr ""
++msgstr "действия на"
+ 
+ msgid "Switch list"
+-msgstr ""
++msgstr "Переключить список"
+ 
+ msgid "Edit template"
+-msgstr ""
++msgstr "Редактировать шаблон"
+ 
+ msgid "Timers"
+-msgstr ""
++msgstr "Таймеры"
+ 
+ msgid ">>> no info! <<<"
+-msgstr ""
++msgstr ">>> нет информации! <<<"
+ 
+ msgid "Overview"
+-msgstr ""
++msgstr "Обзор"
+ 
+ msgid "Button$Favorites"
+-msgstr ""
++msgstr "Избранное"
+ 
+ msgid "Quick search for broadcasts"
+-msgstr ""
++msgstr "Быстрый поиск передач"
+ 
+ msgid "Quick search"
+-msgstr ""
++msgstr "Быстрый поиск"
+ 
+ msgid "Show in main menu"
+-msgstr ""
++msgstr "Показывать в главном меню"
+ 
+ #, c-format
+ msgid "%d new broadcast(s) found! Show them?"
+ msgstr ""
+ 
+ msgid "Search timer update done!"
+-msgstr ""
++msgstr "Поиск обновлений таймер закончен!"
+ 
+ #, c-format
+ msgid "small EPG content on:%s"
+ msgstr ""
+ 
+ msgid "VDR EPG check warning"
+-msgstr ""
++msgstr "VDR EPG предупреждение проверки"
+ 
+ #, c-format
+ msgid "Switch to (%d) '%s'?"
+ msgstr ""
+ 
+ msgid "Programming timer failed!"
+-msgstr ""
++msgstr "Программирование таймера не удалось!"
