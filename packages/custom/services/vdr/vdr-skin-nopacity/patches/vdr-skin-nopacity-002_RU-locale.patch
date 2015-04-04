@@ -181,25 +181,25 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Шрифт"
 +
 +msgid "VDR Menu: Common Settings"
-+msgstr "VDR меню: Общие настройки"
++msgstr "Общие настройки"
 +
 +msgid "VDR Menu: Main and Setup Menu"
-+msgstr "VDR меню: Главное меню и Меню настройки"
++msgstr "Главное меню и Меню настройки"
 +
 +msgid "VDR Menu: Schedules Menu"
-+msgstr "VDR меню: Программа ТВ"
++msgstr "Программа ТВ"
 +
 +msgid "VDR Menu: Channels Menu"
-+msgstr "VDR меню: Меню каналов"
++msgstr "Меню каналов"
 +
 +msgid "VDR Menu: Timers Menu"
-+msgstr "VDR меню: Меню таймеров"
++msgstr "Меню таймеров"
 +
 +msgid "VDR Menu: Recordings Menu"
-+msgstr "VDR меню: Меню записей"
++msgstr "Меню записей"
 +
 +msgid "VDR Menu: Detailed EPG & Recordings View"
-+msgstr "VDR меню: Детальное EPG и Вид записей"
++msgstr "Детальное EPG и Вид записей"
 +
 +msgid "Channel Switching"
 +msgstr "Переключение каналов"
@@ -214,7 +214,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Сообщения"
 +
 +msgid "Image Caching"
-+msgstr "Кэширование изображения"
++msgstr "Кэширование изображений"
 +
 +msgid "right"
 +msgstr "справа"
@@ -244,70 +244,70 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "авто"
 +
 +msgid "Create Log Messages for image loading"
-+msgstr "Создать лог для загрузки изображений"
++msgstr "Создать лог заг. изображений"
 +
 +msgid "Number of Default Menu Entries per Page"
-+msgstr "К-во пунктов меню на одну страницу"
++msgstr "К-во пунктов меню на страницу"
 +
 +msgid "Adjust Font Size - Default Menu Item"
-+msgstr "Настр. размер шрифта - по умол. для п. меню"
++msgstr "Шрифт - по умол. для п. меню"
 +
 +msgid "Adjustment of narrow menus"
 +msgstr "Регулировка узких меню"
 +
 +msgid "Scale Video size to fit into menu window"
-+msgstr "Масштаб. видео, чтобы впис. в окне меню"
++msgstr "Маштабировать видео превью"
 +
 +msgid "Header Height (Percent of OSD Height)"
-+msgstr "Высота заголовка (% от высота OSD)"
++msgstr "Высота заг. (% от высота OSD)"
 +
 +msgid "Footer Height (Percent of OSD Height)"
-+msgstr "Высота Footer (% от высоты OSD)"
++msgstr "Высота н.п. (% от высоты OSD)"
 +
 +msgid "Rounded Corners for menu items and buttons"
-+msgstr "Закруг. углы для п. меню и кнопок"
++msgstr "Закруг. для п. меню и кнопок"
 +
 +msgid "Radius of rounded corners"
 +msgstr "Радиус закругленных углов"
 +
 +msgid "Use Channel Logo background"
-+msgstr "Использовать фон для лого. канала"
++msgstr "Исп. фон для лого канала"
 +
 +msgid "Fade-In Time in ms (Zero for switching off fading)"
 +msgstr "Время изчезн. в мс (0 для выкл.)"
 +
 +msgid "Menu Items Scroll Style"
-+msgstr "Стиль прокрутки для пунктов меню"
++msgstr "Стиль прокрутки для п. меню"
 +
 +msgid "Menu Items Scrolling Speed"
-+msgstr "Скорость прокрутки пунктов меню"
++msgstr "Скорость прокрутки п. меню"
 +
 +msgid "Menu Items Scrolling Delay in s"
-+msgstr "Задержка прокрутки п. меню в сек."
++msgstr "Задержка прок. п. меню в сек"
 +
 +msgid "Adjust Font Size - Header"
-+msgstr "Настр. раз. шрифта - заголовок"
++msgstr "Шрифт заголовок"
 +
 +msgid "Adjust Font Size - Date"
-+msgstr "Настр. раз. шрифта - дата"
++msgstr "Шрифт дата"
 +
 +msgid "Adjust Font Size - Color Buttons"
-+msgstr "Настр. раз. шрифта - цветные кнопки"
++msgstr "Шрифт цветные кнопки"
 +
 +msgid "Adjust Font Size - Messages"
-+msgstr "Настр. раз. шрифта - сообщения"
++msgstr "Шрифт сообщения"
 +
 +msgid "Adjust Font Size - Detail View Text"
-+msgstr "Настр. раз. шрифта - Дет. просм. текст"
++msgstr "Шрифт дет. просм. текст"
 +
 +msgid "Adjust Font Size - Detail View Text Small"
-+msgstr "Настр. раз. шрифта - Дет. просм. маленький текст"
++msgstr "Шрифт дет. просм. м. текст"
 +
 +msgid "Adjust Font Size - Detail View Header"
-+msgstr "Настр. раз. шрифта - Дет. просм. заголовок"
++msgstr "Шрифт дет. просм. заг."
 +
 +msgid "Adjust Font Size - Detail View Header Large"
-+msgstr "Настр. раз. шрифта - Дет. просм. большой заголовок"
++msgstr "Шрифт дет. просм. б. заг."
 +
 +msgid "\"VDR\" plus VDR version"
 +msgstr "\"VDR\" плюс VDR версия"
@@ -346,19 +346,19 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Главное меню стиль заголовка"
 +
 +msgid "Display Disk Usage"
-+msgstr "Показывать использование диска"
++msgstr "Показывать исп. диска"
 +
 +msgid "Size (square, Percent of OSD Width)"
-+msgstr "Раз. (квадратные, % от ширины OSD)"
++msgstr "Раз. (квад., % от ширины OSD)"
 +
 +msgid "Free Disc Display"
 +msgstr "Пок. свободное п-во на диске"
 +
 +msgid "Adjust Font Size - free"
-+msgstr "Настр. раз. шрифта - свободно"
++msgstr "Шрифт свободно"
 +
 +msgid "Adjust Font Size - percent"
-+msgstr "Настр. раз. шрифта - процент"
++msgstr "Шрифт процент"
 +
 +msgid "Display Timers"
 +msgstr "Показывать таймеры"
@@ -367,13 +367,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Максимальное к-во таймеров"
 +
 +msgid "Width of Timers (Percent of OSD Width)"
-+msgstr "Ширина таймера (% о ширины OSD)"
++msgstr "Ш. таймера (% о ширины OSD)"
 +
 +msgid "Width of Channel Logos (Percent of Timer Width)"
-+msgstr "Ширина лого канала (% от ширины таймера)"
++msgstr "Ш. лого (% от ширины т-ра)"
 +
 +msgid "Adjust Font Size - Title"
-+msgstr "Настр. раз. шрифта - Заголовок"
++msgstr "Шрифт заголовок"
 +
 +msgid "Show Timer Conflicts"
 +msgstr "Показывать конф. таймеров"
@@ -385,7 +385,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Высота логотипа заголовка"
 +
 +msgid "Adjust Font Size - Menu Items"
-+msgstr "Настр. раз. шрифта - елемент меню"
++msgstr "Шрифт элемент меню"
 +
 +msgid "window"
 +msgstr "окно"
@@ -400,31 +400,31 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Режим EPG окна"
 +
 +msgid "EPG Window Fade-In Time in ms (Zero for switching off fading)"
-+msgstr "EPG окно время изчезн. в мс (0 для выкл.)"
++msgstr "EPG вр. изчезн. в мс (0 - выкл.)"
 +
 +msgid "EPG Window Display Delay in s"
-+msgstr "EPG окно зад. отображения в сек"
++msgstr "EPG зад. отображения в сек"
 +
 +msgid "EPG Window Scroll Delay in s"
-+msgstr "EPG окно зад. прокрутки в сек"
++msgstr "EPG зад. прокрутки в сек"
 +
 +msgid "EPG Window Text Scrolling Speed"
-+msgstr "EPG окно скор. прокрутки текста"
++msgstr "EPG скор. прокрутки текста"
 +
 +msgid "Height of EPG Info Window (Percent of OSD Height)"
-+msgstr "Высота EPG Info окна (% от высоты OSD)"
++msgstr "В. EPG инфо (% от высоты OSD)"
 +
 +msgid "Adjust Font Size - Menu Item"
-+msgstr "Настр. раз. шрифта - елемент меню"
++msgstr "Шрифт элемент меню"
 +
 +msgid "Adjust Font Size - Menu Item Small"
-+msgstr "Настр. раз. шрифта - маленкий елемент меню"
++msgstr "Шрифт маленкий эл. меню"
 +
 +msgid "Adjust Font Size - EPG Info Window"
-+msgstr "Настр. раз. шрифта - EPG Info окно"
++msgstr "Шрифт EPG инфо окно"
 +
 +msgid "Adjust Font Size - EPG Info Window Header"
-+msgstr "Настр. раз. шрифта - EPG Info заголовок окна"
++msgstr "Шрифт EPG инфо заг. окна"
 +
 +msgid "Transponder Information"
 +msgstr "Информация о транспондере"
@@ -436,13 +436,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Plain каналы"
 +
 +msgid "Menu Items display mode"
-+msgstr "Режим отображения пунктов меню"
++msgstr "Режим отображения п. меню"
 +
 +msgid "Display schedules with time info"
 +msgstr "Показать расписание с временной информации"
 +
 +msgid "Number of EPG Entries in Schedules Info Window"
-+msgstr "К-во EPG записей в иформационном окне"
++msgstr "К-во EPG записей в инфо окне"
 +
 +msgid "never"
 +msgstr "никогда"
@@ -457,16 +457,16 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Режим окна записи"
 +
 +msgid "Border around detailed recording view"
-+msgstr "Граница вокруг детального просмотра записи"
++msgstr "Граница вокруг дет. просм. зап."
 +
 +msgid "Use folder poster if available"
-+msgstr "Использовать папки для poster при наличии"
++msgstr "Исп. папки для постера"
 +
 +msgid "Width of manually set recording poster"
-+msgstr "Ширина установленного вручную записи poster"
++msgstr "Шир. уст. вручную зап. постера"
 +
 +msgid "Height of manually set recording poster"
-+msgstr "Высота установленного вручную записи poster"
++msgstr "Выс. уст. вручную зап. постера"
 +
 +msgid "if exists"
 +msgstr "если существует"
@@ -475,19 +475,19 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Граница вокруг вида"
 +
 +msgid "Scroll Speed with up / down (number of lines)"
-+msgstr "Скорость прокрутки с вверх / вниз (к-во строк)"
++msgstr "Ск. прок. с вверх/вниз (к-во стр.)"
 +
 +msgid "Header Height detailed EPG view (Perc. of OSD Height)"
-+msgstr "Высота заголовока подробного вида EPG (% от высоты OSD)"
++msgstr "Заг. EPG (% от высоты OSD)"
 +
 +msgid "Header Height detailed recording view (Perc. of OSD Height)"
-+msgstr "Высота заголовока детального вида записи (% от высоты OSD)"
++msgstr "Заг. записи (% от высоты OSD)"
 +
 +msgid "Number of reruns to display"
 +msgstr "К-во повторов для отображения"
 +
 +msgid "Use Subtitle for reruns"
-+msgstr "Использовать субтитры для повторов"
++msgstr "Исп. субтитры для повторов"
 +
 +msgid "EPG Image Width"
 +msgstr "Ширина EPG изображения"
@@ -496,10 +496,10 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Высота EPG изображения"
 +
 +msgid "Large EPG Image Width"
-+msgstr "Ширина большого EPG изображения"
++msgstr "Ширина бол. EPG изображения"
 +
 +msgid "Large EPG Image Height"
-+msgstr "Высота большого EPG изображения"
++msgstr "Высота бол. EPG изображения"
 +
 +msgid "transparent channel logo"
 +msgstr "прозрачный логотип канала"
@@ -526,7 +526,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "показывать оставшееся время"
 +
 +msgid "Height of Channel Display (Percent of OSD Height)"
-+msgstr "Высота отображения канала (% от высоты OSD)"
++msgstr "Высота (% от высоты OSD)"
 +
 +msgid "Left & Right Border Width"
 +msgstr "Ширина границы слева и справа"
@@ -535,7 +535,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Высота нижней границы"
 +
 +msgid "Background Transparency in Percent"
-+msgstr "Прозрачность фона в поцентах"
++msgstr "Прозрачность фона в процентах"
 +
 +msgid "Background Style"
 +msgstr "Стиль фона"
@@ -544,97 +544,97 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Закругленные углы"
 +
 +msgid "Vertical Channel Logo Alignment"
-+msgstr "Вертикальное выравнивание логотипа канала"
++msgstr "Верт. выравнивание лого канала"
 +
 +msgid "Channel Logo Position"
 +msgstr "Пизиция логотипа канала"
 +
 +msgid "Channel Logo original Width"
-+msgstr "Ширина оригинального логотипа канала"
++msgstr "Ширина ориг. лого канала"
 +
 +msgid "Channel Logo original Height"
-+msgstr "Высота оригинального логотипа канала"
++msgstr "Высота ориг. лого канала"
 +
 +msgid "Kind of time display for current schedule"
-+msgstr "Вид отображения времени для текущей программы"
++msgstr "Временя для тек. программы"
 +
 +msgid "Display Signal Strength & Quality"
-+msgstr "Показывать Мощность сигнала и Качество"
++msgstr "Мощность сигнала и Качество"
 +
 +msgid "Display Channel Source & Rec. Info"
-+msgstr "Показывать Источник и Информация о записи"
++msgstr "Источник и Инфо о записи"
 +
 +msgid "Display Poster or Fanart from TVScraper"
-+msgstr "Показывать Poster или Fanart из TVScraper"
++msgstr "Постер и Фартран из TVScraper"
 +
 +msgid "Border in Pixel"
 +msgstr "Граница в пикселях"
 +
 +msgid "Display previous and next Channel Group"
-+msgstr "Отображение предыдущей и следующей группы каналов"
++msgstr "Пред. и след. группы каналов"
 +
 +msgid "Adjust Font Size - EPG Text"
-+msgstr "Настройте размер шрифта - EPG текст"
++msgstr "Шрифт EPG текст"
 +
 +msgid "Adjust Font Size - EPG Infotext"
-+msgstr "Настройте размер шрифта - EPG info текст"
++msgstr "Шрифт EPG инфо текст"
 +
 +msgid "Adjust Font Size - Channel Source Info"
-+msgstr "Настройте размер шрифта - Источник канала"
++msgstr "Шрифт источник канала"
 +
 +msgid "Adjust Font Size - Channel Group"
-+msgstr "Настройте размер шрифта - Группа каналов"
++msgstr "Шрифт группа каналов"
 +
 +msgid "Adjust Font Size - Next/Prev Channel Group"
-+msgstr "Настройте размер шрифта - След./Пред. группа каналов"
++msgstr "Шрифт След./Пред. гр. каналов"
 +
 +msgid "Height of Replay Display (Percent of OSD Height)"
-+msgstr "Высота replay дисплея (% от высоты OSD)"
++msgstr "Высота (% от высоты OSD)"
 +
 +msgid "Adjust Font Size - Text"
-+msgstr "Настройте размер шрифта - Текст"
++msgstr "Шрифт текст"
 +
 +msgid "Width of Tracks Display (Percent of OSD Width)"
-+msgstr "Ширина дисплея трека (% от ширины OSD)"
++msgstr "Ширина (% от ширины OSD)"
 +
 +msgid "Height of Track Items (in pixels)"
-+msgstr "Высота элемента трека (в пикселях)"
++msgstr "Высота эл. трека (в пикселях)"
 +
 +msgid "Position (0: bot. center, 1: bot. left, ... , 7: bot. right)"
-+msgstr "Позиция (0: bot. center, 1: bot. left, ... , 7: bot. right)"
++msgstr "Позиция"
 +
 +msgid "Border Left / Right"
-+msgstr "Граница слева / справа"
++msgstr "Граница слева/справа"
 +
 +msgid "Border Top / Bottom"
-+msgstr "Граница сверху / снизу"
++msgstr "Граница сверху/снизу"
 +
 +msgid "Adjust Font Size - Buttons"
-+msgstr "Настройте размер шрифта - Кнопки"
++msgstr "Шрифт кнопки"
 +
 +msgid "Width of Message Display (Percent of OSD Height)"
-+msgstr "Ширина сообщения (% от ширины OSD)"
++msgstr "Ширина (% от ширины OSD)"
 +
 +msgid "Height of Message Display (Percent of OSD Height)"
-+msgstr "Высота сообщения (% от высоты OSD)"
++msgstr "Высота (% от высоты OSD)"
 +
 +msgid "Adjust Font Size"
 +msgstr "Настройка размера шрифта"
 +
 +msgid "Volume Display"
-+msgstr "Дисплей громкости"
++msgstr "Громкость"
 +
 +msgid "Width of Volume Display (Percent of OSD Height)"
-+msgstr "Ширина дисплея громкости (% от ширины OSD)"
++msgstr "Ширина (% от ширины OSD)"
 +
 +msgid "Height of Volume Display (Percent of OSD Height)"
-+msgstr "Высота дисплея громкости (% от высоты OSD)"
++msgstr "Высота (% от высоты OSD)"
 +
 +msgid "Limit Logo Cache"
 +msgstr "Лимит кеша логотипов"
 +
 +msgid "Maximal number of logos to cache"
-+msgstr "Максимальное кол-во лого в кэше"
++msgstr "Макс. кол-во лого в кэше"
 +
 +msgid "Number of  logos to cache at start"
 +msgstr "К-во лого для кэш. при запуске"

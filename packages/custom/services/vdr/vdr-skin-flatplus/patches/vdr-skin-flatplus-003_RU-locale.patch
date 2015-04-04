@@ -1,6 +1,6 @@
 diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 --- a/po/ru_RU.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/po/ru_RU.po	2015-04-04 06:34:46.161886480 +0300
++++ b/po/ru_RU.po	2015-04-04 16:02:21.984301920 +0300
 @@ -0,0 +1,916 @@
 +# VDR plugin language source file.
 +# Copyright (C) 2008 Martin Schirrmacher <vdr.skinflat@schirrmacher.eu>
@@ -8,7 +8,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +#
 +msgid ""
 +msgstr ""
-+"Project-Id-Version: vdr-skinflat 0.4.3\n"
++"Project-Id-Version: vdr-skinflat 0.5.1\n"
 +"Report-Msgid-Bugs-To: <see README>\n"
 +"POT-Creation-Date: 2014-10-21 20:56+0300\n"
 +"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -154,11 +154,11 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgid "not used"
 +msgstr "не используется"
 +
-+msgid "Active Timer"
-+msgstr "Активный Таймер"
++msgid "Timer"
++msgstr "Таймер"
 +
-+msgid "no active timer"
-+msgstr "нет активных таймеров"
++msgid "no active/recording timer"
++msgstr "нет активных/записывающих таймеров"
 +
 +msgid "Last Recordings"
 +msgstr "Последняя запись"
@@ -227,13 +227,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Обновления"
 +
 +msgid "Security Updates"
-+msgstr ""
++msgstr "Обновления безопасности"
 +
 +msgid "System Updates"
-+msgstr ""
++msgstr "Системные обновления"
 +
 +msgid "Updatestatus not available please check the widget"
-+msgstr "UpdateStatus не доступны, пожалуйста, проверьте виджет"
++msgstr "Статус обновления не доступен, пожалуйста, проверьте виджет"
 +
 +msgid "Temperatures"
 +msgstr "Температуры"
@@ -254,10 +254,10 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr ""
 +
 +msgid "no title available"
-+msgstr "Kein Titel vorhanden"
++msgstr "нет заголовка"
 +
 +msgid "no output available"
-+msgstr "Нет вывода"
++msgstr "нет вывода"
 +
 +msgid "Weather"
 +msgstr "Погода"

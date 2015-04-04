@@ -20,8 +20,8 @@
 ################################################################################
 
 PKG_NAME="oscam-addon"
-PKG_VERSION="10646"
-PKG_REV="13"
+PKG_VERSION="10647"
+PKG_REV="14"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.streamboard.tv/oscam/wiki"
@@ -46,7 +46,7 @@ makeinstall_target() {
 }
 
 addon() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10646
+  OSCAM_DIR=$ROOT/$BUILD/oscam-10647
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $ADDON_BUILD/$PKG_ADDON_ID/bin
