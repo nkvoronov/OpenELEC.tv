@@ -137,11 +137,11 @@ init_vdr_plugins() {
     fi
 
     if [ "$VDR_ENABLE_EPGFIXER" == "true" ] ; then
-       VDR_ARG="$VDR_ARG -P epgfixer"
+        VDR_ARG="$VDR_ARG -P epgfixer"
     fi
 	
     if [ "$VDR_ENABLE_EPGSEARCH" == "true" ] ; then
-        VDR_ARG="$VDR_ARG -P epgsearch -P epgsearchonly -P quicksearch -P conflictcheckonly"
+        VDR_ARG="$VDR_ARG -P epgsearch -P epgsearchonly -P quickepgsearch -P conflictcheckonly"
     fi
 	
     if [ "$VDR_ENABLE_DUMMYDEVICE" == "true" ] ; then
