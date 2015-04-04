@@ -1,6 +1,6 @@
 diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 --- a/po/ru_RU.po	2014-12-28 08:52:05.000000000 +0200
-+++ b/po/ru_RU.po	2015-04-02 22:31:47.000000000 +0300
++++ b/po/ru_RU.po	2015-04-04 03:46:12.000000000 +0300
 @@ -17,49 +17,49 @@
  "Content-Transfer-Encoding: 8bit\n"
  
@@ -50,7 +50,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Direct access to epgsearch's conflict check menu"
 -msgstr ""
-+msgstr "Прямой доступ к меню - Проверка конфликтов"
++msgstr "Проверка конфликтов"
  
  msgid "Timer conflicts"
 -msgstr ""
@@ -58,7 +58,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Conflict info in main menu"
 -msgstr ""
-+msgstr "Конфликт информации в главном меню"
++msgstr "Показывать в главном меню"
  
  msgid "next"
 -msgstr ""
@@ -71,19 +71,19 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "search the EPG for repeats and more"
 -msgstr ""
-+msgstr "поиск EPG для повторов и остального"
++msgstr "Поиск EPG для повторов и других дополнительных функций"
  
  msgid "Program guide"
 -msgstr ""
-+msgstr "Программа"
++msgstr "Телегид"
  
  msgid "search timer update running"
 -msgstr ""
-+msgstr "Поиск таймера, работающего обновление"
++msgstr "Поиск таймера, запущено обновление"
  
  msgid "Direct access to epgsearch's search menu"
 -msgstr ""
-+msgstr "Прямой доступ к меню - Поиск"
++msgstr "Только поиск EPG"
  
  msgid "Search"
 -msgstr ""
@@ -91,7 +91,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "EpgSearch-Search in main menu"
 -msgstr ""
-+msgstr "EpgSearch-поиск в главном меню"
++msgstr "Показывать в главном меню"
  
  msgid "Button$Help"
 -msgstr ""
@@ -143,7 +143,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "User-defined EPG times"
 -msgstr ""
-+msgstr "Пользов. EPG таймера"
++msgstr "Пользовательские EPG таймера"
  
  msgid "Timer programming"
 -msgstr ""
@@ -151,15 +151,15 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Search and search timers"
 -msgstr ""
-+msgstr "Поиск и поиск таймеров"
++msgstr "Поиск таймеров"
  
  msgid "Timer conflict checking"
 -msgstr ""
-+msgstr "Проверка конфликта таймера"
++msgstr "Проверка конфликтов таймера"
  
  msgid "Email notification"
 -msgstr ""
-+msgstr "уведомление по Email"
++msgstr "Уведомление по почте"
  
  msgid "Hide main menu entry"
 -msgstr ""
@@ -167,7 +167,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$Hides the main menu entry and may be useful if this plugin is used to replace the original 'Schedule' entry."
 -msgstr ""
-+msgstr "Скрыть в главном меню, это может быть полезно, если этот плагин используется, чтобы заменить исходное 'Расписание'."
++msgstr "Скрыть в главном меню, это может быть полезно, если этот плагин используется, чтобы заменить исходный 'Телегид'."
  
  msgid "Main menu entry"
 -msgstr ""
@@ -175,15 +175,15 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$The name of the main menu entry which defaults to 'Programm guide'."
 -msgstr ""
-+msgstr "Пункт главного меню, по умолчанию меню 'Программа'."
++msgstr "Пункт главного меню, по умолчанию меню 'Телегид'."
  
  msgid "Replace original schedule"
 -msgstr ""
-+msgstr "Заменить оригинальное расписание"
++msgstr "Заменить оригинальный Телегид"
  
  msgid "Help$When VDR is patched to allow this plugin to replace the original 'Schedule' entry, you can de/activate this replacement here."
 -msgstr ""
-+msgstr "Для замены оригинального 'Расписание', вы можете отключить / включить эту замену здесь."
++msgstr "Для замены оригинального 'Телегид', вы можете отключить / включить эту замену здесь."
  
  msgid "Start menu"
 -msgstr ""
@@ -191,7 +191,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$Choose between 'Overview - Now' and 'Schedule' as start menu when this plugin is called."
 -msgstr ""
-+msgstr "Выбор между 'Обзор - Сейчас' и 'Расписание' в качестве стартового меню."
++msgstr "Выбор между 'Обзор - Сейчас' и 'Телегид' в качестве стартового меню."
  
  msgid "Ok key"
 -msgstr ""
@@ -201,7 +201,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  "Help$Choose here the behaviour of key 'Ok'. You can use it to display the summary or to switch to the corresponding channel.\n"
  "Note: the functionality of key 'blue' (Switch/Info/Search) depends on this setting."
  msgstr ""
-+"Выберите здесь поведение кнопки 'Ok'. Вы можете использовать его для отображения резюме или для переключения на соответствующий канал.\n"
++"Выберите здесь поведение кнопки 'Ok'. Вы можете использовать его для отображения информации или для переключения на соответствующий канал.\n"
 +"Примечание: функциональность кнопки 'Blue' (Переключение/Информация/Поиск) зависит от значения этого параметра."
  
  msgid "Red key"
@@ -232,7 +232,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$Shows a progressbar in 'Overview - Now' that informs about the remaining time of the current event."
 -msgstr ""
-+msgstr "Показывает ProgressBar в 'Обзор - Сейчас', которая информирует об оставшемся времени текущего события."
++msgstr "Показывает индикатор выполнения в 'Обзор - Сейчас', которая информирует об оставшемся времени текущего события."
  
  msgid "Show channel numbers"
 -msgstr ""
@@ -245,11 +245,11 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  msgstr ""
 +"Показывать номера каналов в 'Обзор - Сейчас'.\n"
 +"\n"
-+"(Чтобы полностью определить свой собственный вид меню, пожалуйста, проверьте руководство)"
++"(Чтобы полностью определить свой собственный вид меню, пожалуйста, смотрите руководство)"
  
  msgid "Show channel separators"
 -msgstr ""
-+msgstr "Показывать раздел. каналов"
++msgstr "Показывать разделитель каналов"
  
  msgid "Help$Display VDR channel groups as separators between your channels in 'Overview - Now'."
 -msgstr ""
@@ -257,11 +257,11 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Show day separators"
 -msgstr ""
-+msgstr "Показывать раздел. дней"
++msgstr "Показывать разделитель дней"
  
  msgid "Help$Display a separator line at day break in 'Schedule'."
 -msgstr ""
-+msgstr "Показывать разделительную линию для дней в 'Расписании'."
++msgstr "Показывать разделительную линию для дней в 'Телегиде'."
  
  msgid "Show radio channels"
 -msgstr ""
@@ -285,7 +285,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$When a timer is created with 'Record' you can choose between an immediate creation of the timer or the display of the timer edit menu."
 -msgstr ""
-+msgstr "Когда таймер создается с «записи», вы можете выбрать между непосредственной создания таймера или отображение меню таймера редактирования."
++msgstr "Когда таймер создается с 'Запись', вы можете выбрать между непосредственной создания таймера или отображение меню таймера редактирования."
  
  msgid "Show channels without EPG"
 -msgstr ""
@@ -297,7 +297,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Time interval for FRew/FFwd [min]"
 -msgstr ""
-+msgstr "Временной интервал для  FRew/FFwd (мин.)"
++msgstr "Врем. инт. для FRew/FFwd (мин.)"
  
  msgid ""
  "Help$Choose here the time interval which should be used for jumping through the EPG by pressing FRew/FFwd.\n"
@@ -324,7 +324,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  "Help$A favorites menu can display a list of your favorite broadcasts. Enable this if you want an additional menu besides 'Now' and 'Next'\n"
  "Any search can be used as a favorite. You only have to set the option 'Use in favorites menu' when editing a search."
  msgstr ""
-+"Избранное может отобразить список любимых передач. Включить, если вы хотите дополнительное меню, кроме 'Now' и 'Next'\n"
++"Избранное может отобразить список любимых передач. Включить, если вы хотите дополнительное меню, кроме 'Сейчас' и 'Далее'\n"
 +"Любой поиск может быть использован в избранного. Вы только должны установить опцию 'Использовать в меню избранного' при редактировании поиска.."
  
  msgid "for the next ... hours"
@@ -341,7 +341,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$Besides 'Now' and 'Next' you can specify up to 4 other times in the EPG which can be used by repeatedly pressing the green key, e.g. 'prime time', 'late night',..."
 -msgstr ""
-+msgstr "Кроме того, 'Now' и 'Next' вы можете указать до 4 установки в EPG, которые могут быть использованы несколько раз нажав на зеленую кнопку, например, 'прайм-тайм', 'поздно ночью', ..."
++msgstr "Кроме, 'Сейчас' и 'Далее' вы можете указать до 4х установок в EPG, которые могут быть использованы несколько раз нажав на зеленую кнопку, например, 'прайм-тайм', 'поздно ночью', ..."
  
  msgid "Description"
 -msgstr ""
@@ -361,19 +361,27 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use VDR's timer edit menu"
 -msgstr ""
-+msgstr "Использовать меню редактирования таймера"
++msgstr "Исп. меню ред. таймера"
  
  msgid ""
  "Help$This plugin has its own timer edit menu extending the original one with some extra functionality like\n"
-@@ -296,13 +310,13 @@
+@@ -294,15 +308,20 @@
+ "- adding an episode name\n"
+ "- support for EPG variables (see MANUAL)"
  msgstr ""
++"Этот плагин имеет свое собственное меню редактирования таймера с дополнительной функциональностью, с такой как\n"
++"- дополнительная папка записи\n"
++"- определяемые пользователем дни недели для повторения таймера\n"
++"- добавить имя эпизода\n"
++"- поддержка EPG переменных (смотрите руководство)"
  
  msgid "Default recording dir"
 -msgstr ""
-+msgstr "Папка записи по умол."
++msgstr "Папка записи по умолчанию"
  
  msgid "Help$When creating a timer you can specify here a default recording directory."
- msgstr ""
+-msgstr ""
++msgstr "При создании таймер, который вы можете задать здесь папку по записи по умолчанию."
  
  msgid "Add episode to manual timers"
 -msgstr ""
@@ -381,8 +389,15 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid ""
  "Help$If you create a timer for a series, you can automatically add the episode name.\n"
-@@ -313,7 +327,7 @@
+@@ -311,9 +330,14 @@
+ "- always: always add episode name if present\n"
+ "- smart: add only if event lasts less than 80 mins."
  msgstr ""
++"Если вы создаете таймер для сериала, вы можете автоматически добавить имя эпизода.\n"
++"\n"
++"- никогда: без добавления\n"
++"- всегда: всегда добавлять имя эпизода если присутствует\n"
++"- умный: добавить только, если событие длится меньше 80 минут."
  
  msgid "Default timer check method"
 -msgstr ""
@@ -390,7 +405,17 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid ""
  "Help$Manual timers can be checked for EPG changes. Here you can setup the default check method for each channel. Choose between\n"
-@@ -327,19 +341,19 @@
+@@ -322,164 +346,171 @@
+ "- by event ID: checks by an event ID supplied by the channel provider.\n"
+ "- by channel and time: check by the duration match."
+ msgstr ""
++"Вручную установленные таймеры могут быть проверены на изменения EPG. Здесь вы можете настроить метод проверки по умолчанию для каждого канала. Выберите\n"
++"\n"
++"- нет проверки\n"
++"- по ID события: проверяет по идентификатору события, предоставленный поставщиком канала.\n"
++"- по каналу и времени: проверить на совпадение продолжительности."
+ 
+ msgid "Button$Setup"
  msgstr "Настройка"
  
  msgid "Use search timers"
@@ -398,109 +423,140 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Использовать поиск таймеров"
  
  msgid "Help$'Search timers' can be used to automatically create timers for events that match your search criterions."
- msgstr ""
+-msgstr ""
++msgstr "'Поиск таймеров' может быть использован для автоматического создания таймеров для событий, которые соответствуют вашим поисковым критериям."
  
  msgid "  Update interval [min]"
 -msgstr ""
 +msgstr "  Интервал обновления (мин.)"
  
  msgid "Help$Specify here the time intervall to be used when searching for events in the background."
- msgstr ""
+-msgstr ""
++msgstr "Укажите интервал времени, которые будут использоваться при поиске событий в фоновом режиме."
  
  msgid "  SVDRP port"
 -msgstr ""
 +msgstr "  SVDRP порт"
  
  msgid "Help$Programming of new timers or timer changes is done with SVDRP. The default value should be correct, so change it only if you know what you are doing."
- msgstr ""
-@@ -357,55 +371,55 @@
- msgstr ""
+-msgstr ""
++msgstr "Программирование новых таймеров или изменения таймера осуществляется по SVDRP. Значение по умолчанию должно быть правильным, изменяйте его если вы знаете что делаете."
+ 
+ msgid "Help$Specify here the default priority of timers created with this plugin. This value can also be adjusted for each search itself."
+-msgstr ""
++msgstr "Укажите здесь приоритет по умолчанию для таймеров, созданных с помощью этого плагина. Это значение также может быть скорректирована для каждого поиска."
+ 
+ msgid "Help$Specify here the default lifetime of timers/recordings created with this plugin. This value can also be adjusted for each search itself."
+-msgstr ""
++msgstr "Укажите здесь срок хранения по умолчанию для таймеров/записей, созданные с помощью этого плагина. Это значение также может быть скорректирована для каждого поиска."
+ 
+ msgid "Help$Specify here the default start recording margin of timers/recordings created with this plugin. This value can also be adjusted for each search itself."
+-msgstr ""
++msgstr "Укажите здесь опережение начала записи по умолчанию для таймеров/записей, созданные с помощью этого плагина. Это значение также может быть скорректирована для каждого поиска."
+ 
+ msgid "Help$Specify here the default stop recording margin of timers/recordings created with this plugin. This value can also be adjusted for each search itself."
+-msgstr ""
++msgstr "Укажите здесь запаздывание конца записи по умолчанию для таймеров/записей, созданные с помощью этого плагина. Это значение также может быть скорректирована для каждого поиска."
  
  msgid "No announcements when replaying"
 -msgstr ""
-+msgstr "Нет объявлений при воспроизведении"
++msgstr "Нет уведомл. при воспроизведении"
  
  msgid "Help$Set this to 'yes' if you don't like to get any announcements of broadcasts if you currently replay anything."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', чтобы не получать какие-либо сообщения при воспроизведении."
  
  msgid "Recreate timers after deletion"
 -msgstr ""
-+msgstr "Повторное таймеры после удаления"
++msgstr "Пересозд. тайм. после удаления"
  
  msgid "Help$Set this to 'yes' if you want timers to be recreated with the next search timer update after deleting them."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если вы хотите чтобы таймеры были воссозданы при следующем обновлении поиска по таймеру после их удаления."
  
  msgid "Check if EPG exists for ... [h]"
 -msgstr ""
-+msgstr "Проверить если EPG существует ... (ч.)"
++msgstr "Пров. если EPG существует ... (ч.)"
  
  msgid "Help$Specify how many hours of future EPG there should be and get warned else after a search timer update."
- msgstr ""
+-msgstr ""
++msgstr "Укажите, сколько часов в EPG должно существовать и получать уведомления после обновления Поиск по таймеру."
  
  msgid "Warn by OSD"
 -msgstr ""
 +msgstr "Предупреждать по OSD"
  
  msgid "Help$Set this to 'yes' if you want get warnings from the EPG check via OSD."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если вы хотите получать уведомления OSD."
  
  msgid "Warn by mail"
 -msgstr ""
 +msgstr "Предупреждать по почте"
  
  msgid "Help$Set this to 'yes' if you want get warnings from the EPG check by mail."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если вы хотите получать предупреждения о проверки EPG по почте."
  
  msgid "Channel group to check"
 -msgstr ""
 +msgstr "Группа каналов для проверки"
  
  msgid "Help$Specify the channel group to check."
- msgstr ""
+-msgstr ""
++msgstr "Укажите группу каналов для проверки."
  
  msgid "Ignore PayTV channels"
 -msgstr ""
-+msgstr "Игнорировать PayTV каналы"
++msgstr "Игнорировать платные ТВ каналы"
  
  msgid "Help$Set this to 'yes' if don't want to see events on PayTV channels when searching for repeats."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если не хотите увидеть события для платных ТВ каналов при поиске повторов."
  
  msgid "Search templates"
 -msgstr ""
 +msgstr "Поисковые шаблоны"
  
  msgid "Help$Here you can setup templates for your searches."
- msgstr ""
+-msgstr ""
++msgstr "Здесь вы можете установить шаблоны для ваших поисков."
  
  msgid "Blacklists"
 -msgstr ""
 +msgstr "Черный список"
  
  msgid "Help$Here you can setup blacklists which can be used within a search to exclude events you don't like."
- msgstr ""
-@@ -414,46 +428,46 @@
- msgstr ""
+-msgstr ""
++msgstr "Здесь вы можете настроить черные списки, которые могут быть использованы в поиске, чтобы исключить события, которые вы не хотите."
+ 
+ msgid "Help$Here you can setup channel groups which can be used within a search. These are different to VDR channel groups and represent a set of arbitrary channels, e.g. 'FreeTV'."
+-msgstr ""
++msgstr "Здесь вы можете настроить группы каналов, которые могут быть использованы в этой категории. Они отличаются от VDR групп каналов и представляют собой набор произвольных каналов, например, 'FreeTV'."
  
  msgid "Ignore below priority"
 -msgstr ""
 +msgstr "Игнорировать ниже приоритета"
  
  msgid "Help$If a timer with priority below the given value will fail it will not be classified as important. Only important conflicts will produce an OSD message about the conflict after an automatic conflict check."
- msgstr ""
+-msgstr ""
++msgstr "Если таймер с приоритетом ниже заданного значения не будет классифицирован как важный. Только важные конфликты будут отображать OSD сообщение о конфликте после автоматической проверки конфликтов."
  
  msgid "Ignore conflict duration less ... min."
 -msgstr ""
-+msgstr "Игнорировать продолжительность конфликта менее ... мин."
++msgstr "Игн. прод. конф. менее ... мин."
  
  msgid "Help$If a conflicts duration is less then the given number of minutes it will not be classified as important. Only important conflicts will produce an OSD message about the conflict after an automatic conflict check."
- msgstr ""
+-msgstr ""
++msgstr "Если продолжительность конфликтов меньше, чем заданное число минут он не будет классифицироваться как важный. Только важные конфликты будут отображать OSD сообщение о конфликте после автоматической проверки конфликтов."
  
  msgid "Only check within next ... days"
 -msgstr ""
-+msgstr "Проверять только в следующие ... дней"
++msgstr "Пров. только в следующие ... дней"
  
  msgid "Help$This value reduces the conflict check to the given range of days. All other conflicts are classified as 'not yet important'."
- msgstr ""
+-msgstr ""
++msgstr "Это значение уменьшает проверку конфликтов в заданном диапазоне дней. Все другие конфликты классифицируются как 'не важно'."
  
  msgid "--- Automatic checking ---"
 -msgstr ""
@@ -508,24 +564,27 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "After each timer programming"
 -msgstr ""
-+msgstr "После каждого таймера программирования"
++msgstr "После каждого таймера програм."
  
  msgid "Help$Set this to 'yes' if the conflict check should be performed after each manual timer programming. In the case of a conflict you get immediately a message that informs you about it. The message is only displayed if this timer is involved in any conflict."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если проверка конфликт должен быть выполнен после каждой ручного программирования таймера. В случае конфликта вы сразу же получите сообщение об этом. Сообщение отображается, только если этот таймер участвует в любом конфликте."
  
  msgid "When a recording starts"
 -msgstr ""
 +msgstr "Когда начинается запись"
  
  msgid "Help$Set this to 'yes' if the conflict check should be performed when a recording starts. In the case of a conflict you get immediately a message that informs you about it. The message is only displayed if the conflict is within the next 2 hours."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если проверка конфликт должен быть выполнен при запуске записи. В случае конфликта вы сразу же получите сообщение об этом. Сообщение отображается, только если конфликт в ближайшие 2 часа."
  
  msgid "After each search timer update"
 -msgstr ""
-+msgstr "После каждого поиска таймер обновлять"
++msgstr "Обн. после каждого поиска таймера"
  
  msgid "Help$Set this to 'yes' if the conflict check should be performed after each search timer update."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если проверка конфликта должена быть выполнен после каждого обновления поиск по таймеру."
  
  msgid "every ... minutes"
 -msgstr ""
@@ -533,29 +592,34 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid ""
  "Help$Specify here the time intervall to be used for an automatic conflict check in the background.\n"
-@@ -461,25 +475,25 @@
+ "('0' disables an automatic check)"
  msgstr ""
++"Укажите здесь интервал времени, который будет использоваться для автоматической проверки конфликтов в фоновом режиме.\n"
++"('0' отключает автоматическую проверку)"
  
  msgid "if conflicts within next ... minutes"
 -msgstr ""
-+msgstr "Если конфликты в пределах ... минут"
++msgstr "Если конф. в пределах ... минут"
  
  msgid "Help$If the next conflict will appear in the given number of minutes you can specify here a shorter check intervall to get more OSD notifications about it."
- msgstr ""
+-msgstr ""
++msgstr "Если следующий конфликт появится в пределе заданного числа минут вы можете указать здесь короткий интервал проверки, чтобы получить уведомления OSD об этом."
  
  msgid "Avoid notification when replaying"
 -msgstr ""
-+msgstr "Избегать уведомлений при воспроизведении"
++msgstr "Нет уведомл. при воспроизведении"
  
  msgid "Help$Set this to 'yes' if the don't want to get OSD messages about conflicts if you currently replay something. Nevertheless messages will be displayed if the first upcoming conflict is within the next 2 hours."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если не хотите получить OSD сообщения о конфликтах при воспроизведении. Тем не менее сообщения будут отображаться, если первый предстоящий конфликт будет в ближайшие 2 часа."
  
  msgid "Search timer notification"
 -msgstr ""
-+msgstr "Поиск таймера уведомления "
++msgstr "Уведомления поиска таймера"
  
  msgid "Help$Set this to 'yes' if you want to get an email notification about the search timers that where programmed automatically in the background."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если вы хотите получить уведомление по электронной почте о поиске таймеров, когда настроено автоматически в фоновом режиме."
  
  msgid "Time between mails [h]"
 -msgstr ""
@@ -563,15 +627,22 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid ""
  "Help$Specifiy how much time in [h] you would\n"
-@@ -489,19 +503,19 @@
+@@ -487,21 +518,25 @@
+ "With '0' you get a new mail after each\n"
+ "search timer update with new results."
  msgstr ""
++"Сколько времени в (ч) вы\n"
++"хотели бы иметь по крайней мере между двумя приемами почты.\n"
++"С '0' вы получите новую почту после каждого\n"
++"обновления поиск таймера с новыми результатами."
  
  msgid "Timer conflict notification"
 -msgstr ""
-+msgstr "Конфликт таймера уведомления"
++msgstr "Уведомления конфликтов таймера"
  
  msgid "Help$Set this to 'yes' if you want to get an email notification about the timer conflicts."
- msgstr ""
+-msgstr ""
++msgstr "Установите в 'да', если вы хотите получить уведомление по электронной почте о конфликте таймеров."
  
  msgid "Send to"
 -msgstr ""
@@ -587,22 +658,22 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid ""
  "Help$Specify here the method to use when sending mails.\n"
-@@ -509,484 +523,488 @@
+@@ -509,484 +544,488 @@
  " - 'sendmail': requires a properly configured email system\n"
  " - 'SendEmail.pl': simple script for mail delivery"
  msgstr ""
-+"Help$Specify here the method to use when sending mails.\n"
-+"You can choose between\n"
-+" - 'sendmail': requires a properly configured email system\n"
-+" - 'SendEmail.pl': simple script for mail delivery"
++"Укажите здесь метод, используемый при отправке почты.\n"
++"Вы можете выбрать между\n"
++" - 'sendmail': требует правильной конфигурации почтовой системы\n"
++" - 'SendEmail.pl': простой скрипт для отправки почты"
  
  msgid "--- Email account ---"
 -msgstr ""
-+msgstr "--- Email данные ---"
++msgstr "--- Данные почты ---"
  
  msgid "Email address"
 -msgstr ""
-+msgstr "Email адрес"
++msgstr "Адрес почты"
  
  msgid "Help$Specify the email address where notifications should be sent from."
 -msgstr ""
@@ -626,7 +697,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Auth user"
 -msgstr ""
-+msgstr "Авт. пользователь"
++msgstr "Пользователь"
  
  msgid "Help$Specify the auth user, if this account needs authentication for SMTP."
 -msgstr ""
@@ -634,7 +705,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Auth password"
 -msgstr ""
-+msgstr "Авт. пароль"
++msgstr "Пароль"
  
  msgid "Help$Specify the auth password, if this account needs authentication for SMTP."
 -msgstr ""
@@ -653,7 +724,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Start/Stop time has changed"
 -msgstr ""
-+msgstr "Нач./Кон. время изменено"
++msgstr "Нач./Кон. время было изменено"
  
  msgid "Title/episode has changed"
 -msgstr ""
@@ -677,7 +748,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "This version of EPGSearch does not support this service!"
 -msgstr ""
-+msgstr "Эта версия EPGSearch не поддерживает эту услугу!"
++msgstr "Эта версия EPGSearch не поддерживает эту функцию!"
  
  msgid "EPGSearch does not exist!"
 -msgstr ""
@@ -753,7 +824,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "user-defined"
 -msgstr ""
-+msgstr "опред. пользователем"
++msgstr "определенные пользователем"
  
  msgid "interval"
 -msgstr ""
@@ -769,7 +840,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Search term"
 -msgstr ""
-+msgstr "Термин поиска"
++msgstr "Слово поиска"
  
  msgid "Search mode"
 -msgstr ""
@@ -777,23 +848,23 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Tolerance"
 -msgstr ""
-+msgstr "Допуск"
++msgstr "Допустимое отклонение"
  
  msgid "Match case"
 -msgstr ""
-+msgstr "Учитывать"
++msgstr "Учитывать регистр"
  
  msgid "Use title"
 -msgstr ""
-+msgstr "Исп. заголовок"
++msgstr "Использовать заголовок"
  
  msgid "Use subtitle"
 -msgstr ""
-+msgstr "Исп. суб заголовок"
++msgstr "Использовать подзаголовок"
  
  msgid "Use description"
 -msgstr ""
-+msgstr "Исп. описание"
++msgstr "Использовать описание"
  
  msgid "Use extended EPG info"
 -msgstr ""
@@ -805,7 +876,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use channel"
 -msgstr ""
-+msgstr "Исп. канал"
++msgstr "Использовать канал"
  
  msgid "  from channel"
 -msgstr ""
@@ -821,7 +892,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use time"
 -msgstr ""
-+msgstr "Исп. время"
++msgstr "Использовать время"
  
  msgid "  Start after"
 -msgstr ""
@@ -833,7 +904,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use duration"
 -msgstr ""
-+msgstr "Исп. продолжительность"
++msgstr "Использовать продолжительность"
  
  msgid "  Min. duration"
 -msgstr ""
@@ -845,7 +916,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use day of week"
 -msgstr ""
-+msgstr "Исп. день недели"
++msgstr "Использовать день недели"
  
  msgid "Day of week"
 -msgstr ""
@@ -853,7 +924,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use global"
 -msgstr ""
-+msgstr "Исп. глобально"
++msgstr "Использовать глобально"
  
  msgid "Button$Templates"
 -msgstr ""
@@ -1016,7 +1087,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use blacklists"
 -msgstr ""
-+msgstr "Исп. черные списки"
++msgstr "Использовать черные списки"
  
  msgid "Edit$Search text too short - use anyway?"
 -msgstr ""
@@ -1052,7 +1123,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Summary"
 -msgstr ""
-+msgstr "Резюме"
++msgstr "Инфо"
  
  msgid "Auxiliary info"
 -msgstr ""
@@ -1064,7 +1135,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Search actions"
 -msgstr ""
-+msgstr "Поиск действий"
++msgstr "Действия для поиска"
  
  msgid "Execute search"
 -msgstr ""
@@ -1072,7 +1143,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use as search timer on/off"
 -msgstr ""
-+msgstr "Исп. как поиск таймера вкл./выкл."
++msgstr "Использовать как поиск таймера вкл./выкл."
  
  msgid "Trigger search timer update"
 -msgstr ""
@@ -1092,7 +1163,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use as template"
 -msgstr ""
-+msgstr "Исп. как шаблон"
++msgstr "Использовать как шаблон"
  
  msgid "Show switch list"
 -msgstr ""
@@ -1227,17 +1298,17 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$Specify here the term to search for."
 -msgstr ""
-+msgstr "Укажите термин для поиска"
++msgstr "Укажите слово для поиска"
  
  msgid ""
  "Help$The following search modes exist:\n"
-@@ -998,27 +1016,35 @@
+@@ -998,237 +1037,245 @@
  "- regular expression: match a regular expression\n"
  "- fuzzy searching: searches approximately"
  msgstr ""
 +"Доступны следующие режимы поиска:\n"
 +"\n"
-+"- фраза: поиск суб термов\n"
++"- фраза: поиск суб слов\n"
 +"- все слова: должны соответствовать все отдельные слова\n"
 +"- по меньшей мере, одно слово: по меньшей мере, одного слова должно соответствовать\n"
 +"- в точности совпадать: должны точно соответствовать\n"
@@ -1246,7 +1317,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$This sets the tolerance of fuzzy searching. The value represents the allowed errors."
 -msgstr ""
-+msgstr "Это устанавливает допуск неточного поиска.Значение представляет допустимые ошибки."
++msgstr "Это устанавливает допустимое отклонение неточного поиска. Значение определяет допустимые ошибки."
  
  msgid "Help$Set this to 'Yes' if your search should match the case."
 -msgstr ""
@@ -1262,24 +1333,31 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Help$Set this to 'Yes' if you like to search in the summary of an event."
 -msgstr ""
-+msgstr "Установите 'да', если вы хотите найти в резюме события."
++msgstr "Установите 'да', если вы хотите найти в инфо события."
  
  msgid "Use content descriptor"
 -msgstr ""
-+msgstr "Использовать содержимое описания"
++msgstr "Использовать сод. описания"
  
  msgid "Help$Set this to 'Yes' if you want to search the contents by a descriptor."
 -msgstr ""
 +msgstr "Установите 'да', если вы хотите, чтобы был поиск по содержимому описания."
  
  msgid "Help$The summary of an event, can contain additional information like 'Genre', 'Category', 'Year',... called 'EPG categories' within EPGSearch. External EPG providers often deliver this information. This allows refining a search and other nice things, like searching for the 'tip of the day'. To use it set this to 'Yes'."
- msgstr ""
-@@ -1030,205 +1056,205 @@
- msgstr ""
+-msgstr ""
++msgstr "Инфо события, может содержать дополнительную информацию, например 'Жанр', 'Категория', 'Год', которая называлась ... 'EPG категории EPG' в EPGSearch. Внешние поставщики EPG часто доставить эту информацию. Это позволяет уточнить поиск, такие как поиск для 'Совет дня'. Чтобы использовать это установить его в значение 'Да'."
+ 
+ msgid "Help$The file epgsearchcats.conf specifies the search mode for this entry. One can search by text or by value. You can also edit a list of predefined values in this file that can be selected here."
+-msgstr ""
++msgstr "Файл epgsearchcats.conf определяет режим поиска для этой записи. Можно искать по тексту или по значению. Вы также можете редактировать список предопределенных значений в этом файле, который может быть здесь выбрана."
+ 
+ msgid "Help$If a selected category is not part of the summary of an event this normally excludes this event from the search results. To avoid this, set this option to 'Yes', but please handle this with care to avoid a huge amount of results."
+-msgstr ""
++msgstr "Если выбранная категория не является частью инфо события это обычно исключает это событие из результатов поиска. Чтобы избежать этого, установите эту опцию в 'да', но будьте осторожны, чтобы избежать огромного количества результатов."
  
  msgid "Use in favorites menu"
 -msgstr ""
-+msgstr "Исп. в меню избранное"
++msgstr "Использовать в меню избранное"
  
  msgid "Result menu layout"
 -msgstr ""
@@ -1287,7 +1365,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Use as search timer"
 -msgstr ""
-+msgstr "Исп. как поиск таймера"
++msgstr "Использовать как поиск таймера"
  
  msgid "Action"
 -msgstr ""
@@ -1339,11 +1417,11 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Compare subtitle"
 -msgstr ""
-+msgstr "Сравнить суб заголовок"
++msgstr "Сравнить подзаголовок"
  
  msgid "Compare summary"
 -msgstr ""
-+msgstr "Сравнить резюме"
++msgstr "Сравнить инфо"
  
  msgid "Min. match in %"
 -msgstr ""

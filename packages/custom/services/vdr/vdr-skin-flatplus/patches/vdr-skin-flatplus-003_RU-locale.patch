@@ -1,7 +1,7 @@
 diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 --- a/po/ru_RU.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/po/ru_RU.po	2014-12-04 16:46:40.000000000 +0200
-@@ -0,0 +1,889 @@
++++ b/po/ru_RU.po	2015-04-04 06:34:46.161886480 +0300
+@@ -0,0 +1,916 @@
 +# VDR plugin language source file.
 +# Copyright (C) 2008 Martin Schirrmacher <vdr.skinflat@schirrmacher.eu>
 +# This file is distributed under the same license as the skinflat package.
@@ -35,7 +35,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Жанр"
 +
 +msgid "FSK"
-+msgstr ""
++msgstr "FSK"
 +
 +msgid "Video"
 +msgstr "Видео"
@@ -143,7 +143,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "DVB устройство"
 +
 +msgid "LiveTV"
-+msgstr ""
++msgstr "LiveTV"
 +
 +msgid "Unknown"
 +msgstr "Неизвестно"
@@ -269,55 +269,55 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Громкость"
 +
 +msgid "none"
-+msgstr ""
++msgstr "нет"
 +
 +msgid "rect"
-+msgstr ""
++msgstr "прямоугольник"
 +
 +msgid "round"
-+msgstr ""
++msgstr "скругленный"
 +
 +msgid "invert round"
-+msgstr ""
++msgstr "инв. скругленный"
 +
 +msgid "rect + alpha blend"
-+msgstr ""
++msgstr "прямоугольник + alpha blend"
 +
 +msgid "round + alpha blend"
-+msgstr ""
++msgstr "скругленный + alpha blend"
 +
 +msgid "invert round + alpha blend"
-+msgstr ""
++msgstr "инв. скругленный + alpha blend"
 +
 +msgid "small line + big line"
-+msgstr ""
++msgstr "тонкая линия + большая линия"
 +
 +msgid "big line"
-+msgstr ""
++msgstr "большая линия"
 +
 +msgid "big line + outline"
-+msgstr ""
++msgstr "большая линия + контур"
 +
 +msgid "small line + big line + dot"
-+msgstr ""
++msgstr "тонкая линия + большая линия + точки"
 +
 +msgid "big line + dot"
-+msgstr ""
++msgstr "большая линия + точки"
 +
 +msgid "big line + outline + dot"
-+msgstr ""
++msgstr "большая линия + контур + точки"
 +
 +msgid "small line + dot"
-+msgstr ""
++msgstr "тонкая линия + точки"
 +
 +msgid "outline + dot"
-+msgstr ""
++msgstr "контур + точки"
 +
 +msgid "small line + big line + alpha blend"
-+msgstr ""
++msgstr "тонкая линия + большая линия + alpha blend"
 +
 +msgid "big line + alpha blend"
-+msgstr ""
++msgstr "большая линия + alpha blend"
 +
 +msgid "do not show"
 +msgstr "не показывать"
@@ -332,22 +332,22 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "показывать всегда"
 +
 +msgid "VDR default"
-+msgstr ""
++msgstr "VDR default"
 +
 +msgid "flatPlus long"
-+msgstr ""
++msgstr "длинный"
 +
 +msgid "flatPlus long + EPG"
-+msgstr ""
++msgstr "длинный + EPG"
 +
 +msgid "flatPlus short"
-+msgstr ""
++msgstr "короткий"
 +
 +msgid "flatPlus short + EPG"
-+msgstr ""
++msgstr "короткий + EPG"
 +
 +msgid "flatPlus short + Info"
-+msgstr ""
++msgstr "короткий + Инфо"
 +
 +msgid "vertical"
 +msgstr "вертикально"
@@ -359,46 +359,46 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "возврат каретки"
 +
 +msgid "left-right-left"
-+msgstr ""
++msgstr "влево-вправо-влево"
 +
 +msgid "left line + rect bar"
-+msgstr ""
++msgstr "левая линия + заполн. прямоугольник"
 +
 +msgid "left line + round bar"
-+msgstr ""
++msgstr "левая линия + скругленный заполн. прямоугольник"
 +
 +msgid "middle line + rect bar"
-+msgstr ""
++msgstr "средняя линия + заполн. прямоугольник"
 +
 +msgid "middle line + round bar"
-+msgstr ""
++msgstr "средняя линия + скругленный заполн. прямоугольник"
 +
 +msgid "outline + rect bar"
-+msgstr ""
++msgstr "контур + заполн. прямоугольник"
 +
 +msgid "outline + round bar"
-+msgstr ""
++msgstr "контур + скругленный заполн. прямоугольник"
 +
 +msgid "rect bar"
-+msgstr ""
++msgstr "заполн. прямоугольник"
 +
 +msgid "round bar"
-+msgstr ""
++msgstr "скругленный заполн. прямоугольник"
 +
 +msgid "past / remaining"
-+msgstr ""
++msgstr "прошло/осталось"
 +
 +msgid "past"
-+msgstr ""
++msgstr "прошло"
 +
 +msgid "remaining"
-+msgstr ""
++msgstr "осталось"
 +
 +msgid "short"
-+msgstr ""
++msgstr "короткий"
 +
 +msgid "long"
-+msgstr ""
++msgstr "длинный"
 +
 +msgid "General settings"
 +msgstr "Общие настройки"
@@ -419,13 +419,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Настройки треков"
 +
 +msgid "TVScraper / scraper2vdr settings"
-+msgstr "Настройки TVScraper / scraper2vdr"
++msgstr "Настройки tvscraper/scraper2vdr"
 +
 +msgid "TVScraper / scraper2vdr not installed"
-+msgstr "TVScraper / scraper2vdr не установлен"
++msgstr "tvscraper/scraper2vdr не установлен"
 +
 +msgid "Main menu widgets settings"
-+msgstr "Главное меню настройки виджетов"
++msgstr "Настройки виджетов"
 +
 +msgid "configfile"
 +msgstr "Конфиг. файл"
@@ -446,7 +446,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "конфигурационный файл не найдены, проверте установку"
 +
 +msgid "Press ok to load config file"
-+msgstr "Нажмите ОК, чтобы загрузить конф. файл"
++msgstr "Нажмите ОК, загрузить конф. файл"
 +
 +msgid "Save current settings"
 +msgstr "Сохранить текущие настройки"
@@ -458,7 +458,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Показать пустые цветовые кнопки"
 +
 +msgid "Show TopBar menu icons"
-+msgstr "Показать иконки меню в верхней панели"
++msgstr "Иконки меню в верхней панели"
 +
 +msgid "Diskusage show"
 +msgstr "Показывать использование диска"
@@ -467,7 +467,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Использование диска коротко"
 +
 +msgid "Diskusage free/occupied"
-+msgstr "Использование диска свободно/занято"
++msgstr "Исп. диска свободно/занято"
 +
 +msgid "OSD vertical margin"
 +msgstr "OSD вертикальный отступ"
@@ -482,16 +482,16 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Верхняя панель показывать запись"
 +
 +msgid "TopBar show conflicts"
-+msgstr "Верхняя панель показывать конфликты"
++msgstr "Верхняя панель показывать конф."
 +
 +msgid "TopBar hide clock text"
-+msgstr "Верхняя панель скрыть часы текст"
++msgstr "Верхняя панель скрыть текст часов"
 +
 +msgid "TopBar clock font scale"
-+msgstr "Верхняя панель часы масштаб шрифта"
++msgstr "Верхняя панель часы масшт. шрифта"
 +
 +msgid "Conflicts min value for red"
-+msgstr "Конфликты значение мин для красного"
++msgstr "Конфликты мин. зн. для красного"
 +
 +msgid "Message bottom offset"
 +msgstr "Сообщения отступ снизу"
@@ -512,7 +512,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Тип скроллера"
 +
 +msgid "TopBar border by decor-file?"
-+msgstr "Верхняя панель бордер из декор файла"
++msgstr "Верхняя пн. бордер из декор файла"
 +
 +msgid "TopBar border type"
 +msgstr "Верхняя панель тип бордера"
@@ -569,7 +569,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Простой аспект и формат"
 +
 +msgid "program past/remaining time format"
-+msgstr "Программа просм./ост. формат времени"
++msgstr "Просм./ост. формат времени"
 +
 +msgid "Channelinfo border by decor-file?"
 +msgstr "Инфо канала из декор файла"
@@ -590,7 +590,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "EPG инфо канала  размер бордера"
 +
 +msgid "Channelinfo progress by decor-file?"
-+msgstr "Прогресс инфо канала из декор файла"
++msgstr "Прогресс инфо канала из дек. файла"
 +
 +msgid "Channelinfo progress type"
 +msgstr "Прогресс инфо канала тип"
@@ -599,7 +599,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Прогресс инфо канала размер"
 +
 +msgid "Signalquality progress by decor-file?"
-+msgstr "Прогресс качество сигн. из декор файла"
++msgstr "Прогресс к-во сигн. из декор файла"
 +
 +msgid "Signalquality progress type"
 +msgstr "Прогресс качество сигнала тип"
@@ -620,7 +620,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Показывать доп. инфо. о записи"
 +
 +msgid "Show additional EPG info"
-+msgstr "Показывать дополнительную EPG инфо"
++msgstr "Показывать доп. EPG инфо"
 +
 +msgid "Show reruns in EPG info"
 +msgstr "Показывать повторы в EPG инфо"
@@ -632,13 +632,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Фон меню отрисов. по всей высоте"
 +
 +msgid "Recording menu show recording count in title"
-+msgstr "Меню записи показыв. к-во записей в заголовке"
++msgstr "Мн. записи - к-во записей в заг."
 +
 +msgid "Timer menu show timer count in title"
-+msgstr "Меню таймера показыв. к-во таймеров в заголовке"
++msgstr "Мн. таймера - к-во таймеров в заг."
 +
 +msgid "Channel menu show channel count in title"
-+msgstr "Меню каналов показыв. к-во каналов в заголовке"
++msgstr "Мн. каналов - к-во каналов в заг."
 +
 +msgid "Menu channel view"
 +msgstr "Вид меню каналов"
@@ -680,16 +680,16 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Меню контент размер бордера"
 +
 +msgid "Menucont. head border by decor-file?"
-+msgstr "Заголовок меню конт. бордер из декор файла"
++msgstr "Загол. мн. конт. бордер из дек. файла"
 +
 +msgid "Menucont. head border type"
-+msgstr "Заголовок меню контента тип бордера"
++msgstr "Загол. меню конт. тип бордера"
 +
 +msgid "Menucont. head border size"
-+msgstr "Заголовок меню конт. размер бордера"
++msgstr "Загол. меню конт. размер бордера"
 +
 +msgid "Menuitem progress by decor-file?"
-+msgstr "Прогресс элемента меню из декор файла"
++msgstr "Прогресс эл. меню из декор файла"
 +
 +msgid "Menuitem progress type"
 +msgstr "Прогресс элемента меню тип"
@@ -698,7 +698,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Прогресс элемента меню размер"
 +
 +msgid "Dimm on pause?"
-+msgstr "Dimm на паузу?"
++msgstr "Dimm на паузу"
 +
 +msgid "Dimm on pause delay"
 +msgstr "Dimm задержка паузы"
@@ -767,13 +767,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "EPG инфо показывать постер"
 +
 +msgid "recording info show poster?"
-+msgstr "Информации о записи показыв. постер"
++msgstr "Инфо о записи показыв. постер"
 +
 +msgid "EPG info show actors?"
 +msgstr "EPG инфо показывать актеров"
 +
 +msgid "recording info show actors?"
-+msgstr "Информация о записи показыв. актеров"
++msgstr "Инфо о записи показыв. актеров"
 +
 +msgid "Enable main menu widgets"
 +msgstr "Включить виджеты в главном меню"
@@ -806,10 +806,10 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Виджет DVB устр.: позиция"
 +
 +msgid "Widget DVB devices: don't show unknown"
-+msgstr "Виджет DVB устр.: не показыв. неизвестно"
++msgstr "Виджет DVB устр.: неизвестно"
 +
 +msgid "Widget DVB devices: don't show not used"
-+msgstr "Виджет DVB устр.: не показыв. не используется"
++msgstr "Виджет DVB устр.: не используется"
 +
 +msgid "Widget active timer"
 +msgstr "Виджет активный таймер"
@@ -826,6 +826,33 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgid "Widget active timer: hide if empty"
 +msgstr "Виджет активный таймер: скрыть, если пусто"
 +
++msgid "Widget timer"
++msgstr "Виджет таймера"
++
++msgid "Widget timer: enable"
++msgstr "Виджет таймера: включить"
++
++msgid "Widget timer: position"
++msgstr "Виджет таймера: позиция"
++
++msgid "Widget timer: show recording timer"
++msgstr "Виджет таймера: пок. рек. таймер"
++
++msgid "Widget timer: show active timer"
++msgstr "Виджет таймера: пок. акт. таймер"
++
++msgid "Widget timer: show remote recording timer"
++msgstr "Виджет таймера: пок. удл. рек. таймер"
++
++msgid "Widget timer: show remote active timer"
++msgstr "Виджет таймера: пок. удл. акт. таймер"
++
++msgid "Widget timer: max show"
++msgstr "Виджет таймера: макс пок."
++
++msgid "Widget timer: hide if empty"
++msgstr "Виджет таймера: скрыть, если пусто"
++
 +msgid "Widget last recordings"
 +msgstr "Виджет последние записи"
 +
@@ -836,7 +863,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Виджет последние записи: позиция"
 +
 +msgid "Widget last recordings: max show"
-+msgstr "Виджет последние записи: макс шоу"
++msgstr "Виджет последние записи: макс пок."
 +
 +msgid "Widget timer conflicts"
 +msgstr "Виджет конфликты таймера"
@@ -848,28 +875,28 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Виджет конф. таймера: позиция"
 +
 +msgid "Widget timer conflicts: hide if empty"
-+msgstr "Виджет конф. таймера: скрыть, если пусто"
++msgstr "Виджет конф. тм.: скрыть, если пусто"
 +
 +msgid "Widget system information"
 +msgstr "Виджет информация о системе"
 +
 +msgid "Widget system information: enable"
-+msgstr "Виджет информация о системе: включить"
++msgstr "Виджет инфо о системе: включить"
 +
 +msgid "Widget system information: position"
-+msgstr "Виджет информация о системе: позиция"
++msgstr "Виджет инфо о системе: позиция"
 +
 +msgid "Widget system updates"
 +msgstr "Виджет системных обновлений"
 +
 +msgid "Widget system updates: enable"
-+msgstr "Виджет системных обновлений: включить"
++msgstr "Виджет сис. обновлений: включить"
 +
 +msgid "Widget system updates: position"
-+msgstr "Виджет системных обновлений: позиция"
++msgstr "Виджет сис. обновлений: позиция"
 +
 +msgid "Widget system updates: hide if empty"
-+msgstr "Виджет системных обновлений: скрыть, если пусто"
++msgstr "Виджет сист. обн.: скрыть, если пусто"
 +
 +msgid "Widget temperatures"
 +msgstr "Виджет температуры"
@@ -892,8 +919,8 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgid "'flatPlus' Skin"
 +msgstr "скин flatPlus"
 diff -Naur a/skinflatplus.c b/skinflatplus.c
---- a/skinflatplus.c	2014-12-03 22:04:27.000000000 +0200
-+++ b/skinflatplus.c	2014-12-04 15:31:36.645610287 +0200
+--- a/skinflatplus.c	2015-02-24 05:01:33.000000000 +0200
++++ b/skinflatplus.c	2015-04-04 06:28:10.785895102 +0300
 @@ -17,7 +17,7 @@
  #include "imageloader.h"
  

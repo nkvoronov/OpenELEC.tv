@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-addon"
 PKG_VERSION="2.2.0"
-PKG_REV="15"
+PKG_REV="16"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -370,7 +370,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-36e2b61
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-7977868
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
