@@ -25,14 +25,10 @@
 . /etc/profile
 
 if [ -f /storage/.cache/services/vdr-front.run ]; then
-    mv /storage/.cache/services/vdr-front.run /storage/.cache/services/vdr-front.conf    
 
-    killall -q -TERM vdr.bin
-    
-    while [ $(pidof vdr.bin) ];
-    do
-      sleep 1
-    done
+    systemctl stop vdr-front.service;
+
+    mv /storage/.cache/services/vdr-front.run /storage/.cache/services/vdr-front.conf
 
     case "$1" in
         -p) # poweroff
@@ -58,7 +54,7 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
 
             systemctl restart lcdd.service;
 
-            systemctl restart  kodi.service;
+            systemctl restart kodi.service;
         ;;
     esac
 fi

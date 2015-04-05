@@ -25,26 +25,13 @@
 . /etc/profile
 
 if [ -f /storage/.cache/services/vdr-front.conf ]; then
+
     systemctl stop kodi.service;
 
     systemctl restart lcdd.service;
 
     mv /storage/.cache/services/vdr-front.conf /storage/.cache/services/vdr-front.run;
 
-    #systemctl start vdr-front.service;
+    systemctl start vdr-front.service;
 
-    VDRLOOP=1
-
-    while [ $(( $VDRLOOP )) = "1" ]; 
-    do
-
-        /bin/sh -c 'exec /usr/bin/vdr-front.start'
-
-        if [ ! -f /storage/.cache/services/vdr-front.run ]; then
-            VDRLOOP=0
-        fi
-
-        sleep 4
-
-    done
 fi
