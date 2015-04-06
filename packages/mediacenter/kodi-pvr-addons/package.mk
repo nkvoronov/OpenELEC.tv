@@ -17,7 +17,8 @@
 ################################################################################
 
 PKG_NAME="kodi-pvr-addons"
-PKG_VERSION="4854fbe"
+#PKG_VERSION="4854fbe"
+PKG_VERSION="c2f8ea7"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

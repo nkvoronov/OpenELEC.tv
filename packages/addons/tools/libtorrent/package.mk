@@ -20,7 +20,7 @@
 
 PKG_NAME="libtorrent"
 PKG_VERSION="1.0.3"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.libtorrent.org/"
@@ -45,4 +45,9 @@ makeinstall_target() {
 
 addon() {
   LIBTORRENT_DIR=$ROOT/$BUILD/libtorrent-rasterbar-1.0.3
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -P $LIBTORRENT_DIR/.install_pkg/usr/lib/libtorrent-rasterbar.so.8.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtorrent-rasterbar.so.8
+    cp -P $LIBTORRENT_DIR/.install_pkg/usr/lib/python2.7/site-packages/libtorrent.so $ADDON_BUILD/$PKG_ADDON_ID/lib
+
 }
