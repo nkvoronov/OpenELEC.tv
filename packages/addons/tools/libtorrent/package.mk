@@ -1,7 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
-#      Copyright (C) 2011-2011 Gregor Fuis (gujs@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,42 +18,31 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="oscam"
-PKG_VERSION="10647"
+PKG_NAME="libtorrent"
+PKG_VERSION="1.0.3"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.streamboard.tv/oscam/wiki"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain pcsc-lite"
+PKG_SITE="http://www.libtorrent.org/"
+PKG_URL=""
+PKG_DEPENDS_TARGET="toolchain libtorrent-rasterbar"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom"
-PKG_SHORTDESC="oscam: OSCam is Open Source Conditional Access Modul."
-PKG_LONGDESC="OSCam is Open Source Conditional Access Modul."
-PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not install"
+PKG_SECTION="tools"
+PKG_SHORTDESC="libtorrent (Version: $PKG_VERSION): libtorrent is a feature complete C++ bittorrent implementation focusing on efficiency and scalability. It runs on embedded devices as well as desktops. It boasts a well documented library interface that is easy to use. It comes with a simple bittorrent client demonstrating the use of the library."
+PKG_LONGDESC="libtorrent (Version: $PKG_VERSION): libtorrent is a feature complete C++ bittorrent implementation focusing on efficiency and scalability. It runs on embedded devices as well as desktops. It boasts a well documented library interface that is easy to use. It comes with a simple bittorrent client demonstrating the use of the library."
 
-PKG_IS_ADDON="no"
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
-configure_target() {
-  cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DLIBUSBDIR=$SYSROOT_PREFIX/usr \
-      -DWITH_SSL=0 \
-      -DHAVE_LIBCRYPTO=0 \
-      -DHAVE_DVBAPI=1 -DWITH_STAPI=0 \
-      -DWEBIF=1 \
-      -DWITH_DEBUG=0 \
-      -DOPTIONAL_INCLUDE_DIR=$SYSROOT_PREFIX/usr/include \
-      -DSTATIC_LIBUSB=1 \
-      -DCLOCKFIX=0 \
-      ..
+make_target() {
+  : # nothing to make here
 }
 
 makeinstall_target() {
-  : # nop
+  : # nothing to install here
 }
 
-makeinstall_target() {
-  : # nop
+addon() {
+  LIBTORRENT_DIR=$ROOT/$BUILD/libtorrent-rasterbar-1.0.3
 }
