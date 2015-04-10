@@ -1,7 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
-#      Copyright (C) 2011-2011 Gregor Fuis (gujs@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,41 +18,36 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="oscam-service"
-PKG_VERSION="10648"
-PKG_REV="18"
+PKG_NAME="szap-s2a"
+PKG_VERSION="5.10"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.streamboard.tv/oscam/wiki"
+PKG_SITE="https://bitbucket.org/CrazyCat/szap-s2"
 PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain oscam"
+PKG_DEPENDS_TARGET="toolchain szap-s2"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom"
-PKG_SHORTDESC="oscam: OSCam is Open Source Conditional Access Modul."
-PKG_LONGDESC="OSCam is Open Source Conditional Access Modul."
-PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not install"
+PKG_SECTION="tools"
+PKG_SHORTDESC="szap-s2"
+PKG_LONGDESC="szap-s2"
 
-PKG_IS_ADDON="no"
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
 make_target() {
-  : # nothing to do here
+  : # nothing to make here
 }
 
 makeinstall_target() {
-  : # nothing to do here
+  : # nothing to install here
 }
 
-post_install() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10648
+addon() {
+  SZAPS2_DIR=$ROOT/$BUILD/szap-s2-69ff3584caf9
 
-  mkdir -p $INSTALL/usr/bin
-    cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $INSTALL/usr/bin
-    cp -P $OSCAM_DIR/.$TARGET_NAME/utils/list_smargo $INSTALL/usr/bin
-    cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -PR $SZAPS2_DIR/.install_pkg/usr/bin/szap-s2 $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -PR $SZAPS2_DIR/.install_pkg/usr/bin/tzap-t2 $ADDON_BUILD/$PKG_ADDON_ID/bin
 
-  mkdir -p $INSTALL/usr/config/oscam/default
-    cp -p $PKG_DIR/config/* $INSTALL/usr/config/oscam/default
-
-  enable_service oscam.service
 }

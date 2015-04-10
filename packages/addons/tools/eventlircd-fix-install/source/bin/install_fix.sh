@@ -1,3 +1,5 @@
+#!/bin/sh
+
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
@@ -16,31 +18,33 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="kodi-pvr-addons"
-PKG_VERSION="c2f8ea7"
-PKG_REV="1"
-PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/opdenkamp/xbmc-pvr-addons"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain curl kodi"
-PKG_PRIORITY="optional"
-PKG_SECTION="mediacenter"
-PKG_SHORTDESC="Various PVR addons for Kodi"
-PKG_LONGDESC="This addons allows Kodi PVR to connect to various TV/PVR backends and tuners."
-PKG_IS_ADDON="no"
-PKG_AUTORECONF="yes"
+. /etc/profile
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-addons-with-dependencies $PVRADDONS_MYSQL"
+WORK_DIR="/storage/tmp"
 
-pre_configure_target() {
-  # kodi-pvr-addons fails to build in subdirs
-  cd $ROOT/$PKG_BUILD
-    rm -rf .$TARGET_NAME
-}
+ADDON_DIR="/storage/.kodi/addons/tools.eventlircd-fix-install"
+UPDATE="$ADDON_DIR/update"
 
-post_makeinstall_target() {
-  if [ "$DEBUG" != yes ]; then
-    $STRIP $INSTALL/usr/lib/kodi/addons/pvr.*/*.pvr
-  fi
-}
+################ set source ########################################
+
+mkdir -p $WORK_DIR
+mkdir -p $WORK_DIR/source
+mkdir -p $WORK_DIR/system.new
+#Get source SYSTEM
+mount -t squashfs -o loop /flash/SYSTEM $WORK_DIR/source
+cp -a $WORK_DIR/source/* $WORK_DIR/system.new
+umount $WORK_DIR/source
+
+################ set changes  ######################################
+
+#Install fix
+cp -a $UPDATE/* $WORK_DIR/system.new/
+
+################ set update and clean ################################
+
+mksquashfs $WORK_DIR/system.new $WORK_DIR/SYSTEM.new
+cp $WORK_DIR/SYSTEM.new /storage/.update/SYSTEM
+cp /flash/KERNEL /storage/.update
+md5sum /storage/.update/SYSTEM > /storage/.update/SYSTEM.md5
+md5sum /storage/.update/KERNEL > /storage/.update/KERNEL.md5
+rm -R $WORK_DIR

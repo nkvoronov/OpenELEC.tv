@@ -16,31 +16,39 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="kodi-pvr-addons"
-PKG_VERSION="c2f8ea7"
+PKG_NAME="vdr-plugin-weatherforecast"
+PKG_VERSION="b2ae607"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/opdenkamp/xbmc-pvr-addons"
+PKG_SITE="http://projects.vdr-developer.org/projects/plg-sleeptimer"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain curl kodi"
+PKG_DEPENDS_TARGET="toolchain vdr jansson vdr-plugin-skindesigner"
 PKG_PRIORITY="optional"
-PKG_SECTION="mediacenter"
-PKG_SHORTDESC="Various PVR addons for Kodi"
-PKG_LONGDESC="This addons allows Kodi PVR to connect to various TV/PVR backends and tuners."
-PKG_IS_ADDON="no"
-PKG_AUTORECONF="yes"
+PKG_SECTION="custom"
+PKG_SHORTDESC="WeatherForecast provides a weather forecast (who'd have thought? ;) ) based on forecast.io data."
+PKG_LONGDESC="WeatherForecast provides a weather forecast (who'd have thought? ;) ) based on forecast.io data."
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-addons-with-dependencies $PVRADDONS_MYSQL"
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="no"
 
 pre_configure_target() {
-  # kodi-pvr-addons fails to build in subdirs
-  cd $ROOT/$PKG_BUILD
-    rm -rf .$TARGET_NAME
+  export CFLAGS="$CFLAGS -fPIC"
+  export CXXFLAGS="$CXXFLAGS -fPIC"
+  export LDFLAGS="$LDFLAGS -fPIC"
 }
 
-post_makeinstall_target() {
-  if [ "$DEBUG" != yes ]; then
-    $STRIP $INSTALL/usr/lib/kodi/addons/pvr.*/*.pvr
-  fi
+make_target() {
+  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+  make VDRDIR=$VDR_DIR \
+    LIBDIR="." \
+    LOCALEDIR="./locale"
+}
+
+post_make_target() {
+  $STRIP libvdr-*.so*
+}
+
+makeinstall_target() {
+  : # installation not needed, done by create-addon script
 }

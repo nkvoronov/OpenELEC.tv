@@ -1,7 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
-#      Copyright (C) 2011-2011 Gregor Fuis (gujs@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,41 +18,34 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="oscam-service"
-PKG_VERSION="10648"
-PKG_REV="18"
+PKG_NAME="mksquashfs"
+PKG_VERSION="4.3"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.streamboard.tv/oscam/wiki"
+PKG_SITE="http://squashfs.sourceforge.net/"
 PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain oscam"
+PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom"
-PKG_SHORTDESC="oscam: OSCam is Open Source Conditional Access Modul."
-PKG_LONGDESC="OSCam is Open Source Conditional Access Modul."
-PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not install"
+PKG_SECTION="tools"
+PKG_SHORTDESC="mksquashfs (Version: $PKG_VERSION): squashfs-tools: A compressed read-only filesystem for Linux"
+PKG_LONGDESC="mksquashfs (Version: $PKG_VERSION): Squashfs is intended to be a general read-only filesystem, for archival use (i.e. in cases where a .tar.gz file may be used), and in constrained block device/memory systems (e.g. embedded systems) where low overhead is needed. The filesystem is currently stable and has been tested on PowerPC, i386, SPARC and ARM architectures."
 
-PKG_IS_ADDON="no"
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
 make_target() {
-  : # nothing to do here
+  : # nothing to make here
 }
 
 makeinstall_target() {
-  : # nothing to do here
+  : # nothing to install here
 }
 
-post_install() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10648
+addon() {
+  SQUASHFS_DIR=$ROOT/$BUILD/squashfs-4.3
 
-  mkdir -p $INSTALL/usr/bin
-    cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $INSTALL/usr/bin
-    cp -P $OSCAM_DIR/.$TARGET_NAME/utils/list_smargo $INSTALL/usr/bin
-    cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
-
-  mkdir -p $INSTALL/usr/config/oscam/default
-    cp -p $PKG_DIR/config/* $INSTALL/usr/config/oscam/default
-
-  enable_service oscam.service
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -PR $SQUASHFS_DIR/squashfs-tools/mksquashfs $ADDON_BUILD/$PKG_ADDON_ID/bin
 }

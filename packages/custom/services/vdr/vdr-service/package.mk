@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="18"
+PKG_REV="19"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -63,6 +63,8 @@ ENABLE_VDR_SKIN_FLAT="yes"
 ENABLE_VDR_SKIN_FLATPLUS="yes"
 ENABLE_VDR_SKIN_NOPACITY="yes"
 ENABLE_VDR_SYSTEMINFO="yes"
+ENABLE_VDR_PLUGIN_SKINDESIGNER="no"
+ENABLE_VDR_PLUGIN_WEATHERFORECAST="no"
 
 if [ "$ENABLE_VDR_CONTROL" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-control"  
@@ -182,6 +184,14 @@ fi
 
 if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-systeminfo"  
+fi
+
+if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-skindesigner"  
+fi
+
+if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-weatherforecast"  
 fi
 
 make_target() {
@@ -593,6 +603,14 @@ post_install() {
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
         cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-systeminfo.mo    
     done
+  fi
+
+  if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-97f3d37
+  fi
+
+  if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
+    VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-b2ae607
   fi
 
   enable_service vdr.service

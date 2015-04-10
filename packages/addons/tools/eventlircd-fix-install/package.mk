@@ -16,31 +16,33 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="kodi-pvr-addons"
-PKG_VERSION="c2f8ea7"
+PKG_NAME="eventlircd-fix-install"
+PKG_VERSION="42"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/opdenkamp/xbmc-pvr-addons"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain curl kodi"
+PKG_SITE="http://code.google.com/p/eventlircd"
+PKG_URL=""
+PKG_DEPENDS_TARGET="toolchain eventlircd"
 PKG_PRIORITY="optional"
-PKG_SECTION="mediacenter"
-PKG_SHORTDESC="Various PVR addons for Kodi"
-PKG_LONGDESC="This addons allows Kodi PVR to connect to various TV/PVR backends and tuners."
-PKG_IS_ADDON="no"
-PKG_AUTORECONF="yes"
+PKG_SECTION="tools"
+PKG_SHORTDESC="eventlircd fix: imon-pad (15c2:0038)"
+PKG_LONGDESC="eventlircd fix: imon-pad (15c2:0038)"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-addons-with-dependencies $PVRADDONS_MYSQL"
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
+PKG_AUTORECONF="no"
 
-pre_configure_target() {
-  # kodi-pvr-addons fails to build in subdirs
-  cd $ROOT/$PKG_BUILD
-    rm -rf .$TARGET_NAME
+make_target() {
+  : # nothing to do here
 }
 
-post_makeinstall_target() {
-  if [ "$DEBUG" != yes ]; then
-    $STRIP $INSTALL/usr/lib/kodi/addons/pvr.*/*.pvr
-  fi
+makeinstall_target() {
+  : # nothing to do here
 }
+
+addon() {
+  : # nothing to do here
+}
+
+

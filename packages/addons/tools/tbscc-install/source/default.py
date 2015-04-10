@@ -18,42 +18,10 @@
 #  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
+import os
+import xbmcgui
 
-PKG_NAME="oscam-service"
-PKG_VERSION="10648"
-PKG_REV="18"
-PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="http://www.streamboard.tv/oscam/wiki"
-PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain oscam"
-PKG_PRIORITY="optional"
-PKG_SECTION="custom"
-PKG_SHORTDESC="oscam: OSCam is Open Source Conditional Access Modul."
-PKG_LONGDESC="OSCam is Open Source Conditional Access Modul."
-PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not install"
-
-PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
-
-make_target() {
-  : # nothing to do here
-}
-
-makeinstall_target() {
-  : # nothing to do here
-}
-
-post_install() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10648
-
-  mkdir -p $INSTALL/usr/bin
-    cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $INSTALL/usr/bin
-    cp -P $OSCAM_DIR/.$TARGET_NAME/utils/list_smargo $INSTALL/usr/bin
-    cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
-
-  mkdir -p $INSTALL/usr/config/oscam/default
-    cp -p $PKG_DIR/config/* $INSTALL/usr/config/oscam/default
-
-  enable_service oscam.service
-}
+dialog = xbmcgui.Dialog()
+dialog.ok('', 'Run script install!!!')
+os.system('/storage/.kodi/addons/tools.tbscc-install/bin/install_drivers.sh')
+dialog.ok('', 'Install done, reboot system!!!')
