@@ -16,39 +16,20 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="vdr-plugin-weatherforecast"
-PKG_VERSION="36f7ac9"
+PKG_NAME="librsvg"
+PKG_VERSION="2.40.2"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://projects.vdr-developer.org/projects/plg-weatherforecast"
+PKG_SITE="http://live.gnome.org/LibRsvg"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain vdr jansson"
+PKG_DEPENDS_TARGET="toolchain cairo pango gdk-pixbuf libcroco"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="WeatherForecast provides a weather forecast (who'd have thought? ;) ) based on forecast.io data."
-PKG_LONGDESC="WeatherForecast provides a weather forecast (who'd have thought? ;) ) based on forecast.io data."
+PKG_SHORTDESC="librsvg is a free software SVG rendering library written as part of the GNOME project, intended to be lightweight and portable."
+PKG_LONGDESC="librsvg is a free software SVG rendering library written as part of the GNOME project, intended to be lightweight and portable."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-pre_configure_target() {
-  export CFLAGS="$CFLAGS -fPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC"
-  export LDFLAGS="$LDFLAGS -fPIC"
-}
-
-make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
-  make VDRDIR=$VDR_DIR \
-    LIBDIR="." \
-    LOCALEDIR="./locale"
-}
-
-post_make_target() {
-  $STRIP libvdr-*.so*
-}
-
-makeinstall_target() {
-  : # installation not needed, done by create-addon script
-}
+PKG_CONFIGURE_OPTS_TARGET="--disable-introspection --disable-gtk-doc"

@@ -221,6 +221,13 @@ addon() {
   JANSSON_DIR=$ROOT/$BUILD/jansson-2.6
   IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
   XINELIB_DIR=$ROOT/$BUILD/xine-lib-ade430c
+  CAIRO_DIR=$ROOT/$BUILD/cairo-1.12.16
+  PANGO_DIR=$ROOT/$BUILD/pango-1.36.3
+  HARFBUZZ_DIR=$ROOT/$BUILD/harfbuzz-0.9.27
+  GDK_PIXBUF_DIR=$ROOT/$BUILD/gdk-pixbuf-2.28.2
+  LIBCROCO_DIR=$ROOT/$BUILD/libcroco-0.6.8
+  LIBRSVG_DIR=$ROOT/$BUILD/librsvg-2.40.2
+
   
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin
@@ -680,10 +687,46 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-97f3d37
-  fi
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-5bbd592
+    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib
+      ln -s libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
+      ln -s libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/themes
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/themes
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/dtd $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/skins $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/scripts $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/skindesigner
+    for fmo in `ls $VDR_PLUGIN_SKINDESINGER_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skindesigner.mo    
+    done
 
-  if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
-    VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-b2ae607
+    cp -PR $CAIRO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -PR $PANGO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -PR $HARFBUZZ_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -PR $GDK_PIXBUF_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -PR $LIBCROCO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -PR $LIBRSVG_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+
+    if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
+      VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-36f7ac9
+      cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/weatherforecast
+        cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/templates $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/weatherforecast
+      for fmo in `ls $VDR_PLUGIN_WEATHERFORECAST_DIR/po/*.mo`;do
+        fname=`basename $fmo .mo`
+        mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
+        mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
+          cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-weatherforecast.mo    
+      done
+
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+        cp -PR $JANSSON_DIR/.install_pkg/usr/lib/libjansson.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    fi
   fi
 }

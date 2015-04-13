@@ -17,13 +17,13 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-skindesigner"
-PKG_VERSION="97f3d37"
+PKG_VERSION="5bbd592"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://projects.vdr-developer.org/projects/plg-sleeptimer"
+PKG_SITE="http://projects.vdr-developer.org/projects/plg-skindesigner"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain vdr libjpeg-turbo librsvg2 libcairo2 libxml2"
+PKG_DEPENDS_TARGET="toolchain vdr librsvg" 
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
 PKG_SHORTDESC="A VDR skinning engine that displays XML based Skins"
@@ -32,6 +32,8 @@ PKG_LONGDESC="A VDR skinning engine that displays XML based Skins"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
+VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+
 pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC"
   export CXXFLAGS="$CXXFLAGS -fPIC"
@@ -39,7 +41,7 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+  make subprojects VDRDIR=$VDR_DIR
   make VDRDIR=$VDR_DIR \
     LIBDIR="." \
     LOCALEDIR="./locale"
@@ -50,5 +52,17 @@ post_make_target() {
 }
 
 makeinstall_target() {
-  : # installation not needed, done by create-addon script
+  : # nothing
+}
+
+post_install() {
+  mkdir -p $SYSROOT_PREFIX/usr/include/libskindesignerapi
+    cp -PR $ROOT/$PKG_BUILD/libskindesignerapi/*.h $SYSROOT_PREFIX/usr/include/libskindesignerapi
+  mkdir -p $SYSROOT_PREFIX/usr/lib
+    rm -f $SYSROOT_PREFIX/usr/lib/libskindesignerapi.*
+    cp -PR $ROOT/$PKG_BUILD/libskindesignerapi/libskindesignerapi.so.0.0.1 $SYSROOT_PREFIX/usr/lib
+    ln -s libskindesignerapi.so.0.0.1 $SYSROOT_PREFIX/usr/lib/libskindesignerapi.so.0
+    ln -s libskindesignerapi.so.0.0.1 $SYSROOT_PREFIX/usr/lib/libskindesignerapi.so
+  mkdir -p $SYSROOT_PREFIX/usr/lib/pkgconfig
+    cp -PR $ROOT/$PKG_BUILD/libskindesignerapi/libskindesignerapi.pc $SYSROOT_PREFIX/usr/lib/pkgconfig
 }

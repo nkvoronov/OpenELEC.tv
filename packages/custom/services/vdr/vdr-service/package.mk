@@ -606,11 +606,36 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-97f3d37
-  fi
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-5bbd592
+    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
+    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $INSTALL/usr/lib
+    ln -s libskindesignerapi.so.0.0.1 $INSTALL/usr/lib/libskindesignerapi.so.0
+    ln -s libskindesignerapi.so.0.0.1 $INSTALL/usr/lib/libskindesignerapi.so
+    mkdir -p $INSTALL/usr/config/vdr/themes
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/themes/* $INSTALL/usr/config/vdr/themes
+    mkdir -p $INSTALL/usr/config/vdr/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/dtd $INSTALL/usr/config/vdr/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/skins $INSTALL/usr/config/vdr/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/scripts $INSTALL/usr/config/vdr/plugins/skindesigner
+    for fmo in `ls $VDR_PLUGIN_SKINDESINGER_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $INSTALL/usr/share/locale/$fname
+      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skindesigner.mo    
+    done
 
-  if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
-    VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-b2ae607
+    if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
+      VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-36f7ac9
+      cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
+      mkdir -p $INSTALL/usr/config/vdr/plugins/weatherforecast
+        cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/templates $INSTALL/usr/config/vdr/plugins/weatherforecast
+      for fmo in `ls $VDR_PLUGIN_WEATHERFORECAST_DIR/po/*.mo`;do
+        fname=`basename $fmo .mo`
+        mkdir -p $INSTALL/usr/share/locale/$fname
+        mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+          cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-weatherforecast.mo    
+      done
+    fi
   fi
 
   enable_service vdr.service

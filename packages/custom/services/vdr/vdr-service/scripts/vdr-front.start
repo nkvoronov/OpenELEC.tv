@@ -242,6 +242,15 @@ init_vdr_front_plugins() {
     if [ "$VDR_ENABLE_TVSCRAPER" == "true" ]; then
        VDR_ARG="$VDR_ARG -P tvscraper"
     fi
+
+    if [ "$VDR_ENABLE_SKINDESIGNER" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P skindesigner"
+    fi
+
+    if [ "$VDR_ENABLE_WEATHERFORECAST" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P weatherforecast"
+    fi
+
 }
 
 init_vdr_soft() {

@@ -16,39 +16,20 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="vdr-plugin-weatherforecast"
-PKG_VERSION="36f7ac9"
+PKG_NAME="libXft"
+PKG_VERSION="2.3.2"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="http://projects.vdr-developer.org/projects/plg-weatherforecast"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain vdr jansson"
+PKG_LICENSE="OSS"
+PKG_SITE="http://www.X.org"
+PKG_URL="http://xorg.freedesktop.org/archive/individual/lib/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET="toolchain util-macros xproto libXrender fontconfig freetype"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="WeatherForecast provides a weather forecast (who'd have thought? ;) ) based on forecast.io data."
-PKG_LONGDESC="WeatherForecast provides a weather forecast (who'd have thought? ;) ) based on forecast.io data."
+PKG_SHORTDESC="libxft: X FreeType library"
+PKG_LONGDESC="X FreeType library"
 
 PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
+PKG_AUTORECONF="yes"
 
-pre_configure_target() {
-  export CFLAGS="$CFLAGS -fPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC"
-  export LDFLAGS="$LDFLAGS -fPIC"
-}
-
-make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
-  make VDRDIR=$VDR_DIR \
-    LIBDIR="." \
-    LOCALEDIR="./locale"
-}
-
-post_make_target() {
-  $STRIP libvdr-*.so*
-}
-
-makeinstall_target() {
-  : # installation not needed, done by create-addon script
-}
+PKG_CONFIGURE_OPTS_TARGET="--disable-static --enable-shared"
