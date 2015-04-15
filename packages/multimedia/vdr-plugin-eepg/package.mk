@@ -30,7 +30,6 @@ PKG_SHORTDESC="vdr-plugin-eepg"
 PKG_LONGDESC="This plugin parses the Extended (2 to 10 day) EPG data which is send by providers on their portal channels. This EEPG data is transmitted in a non-standard format on a non-standard PID."
 
 PKG_IS_ADDON="no"
-
 PKG_AUTORECONF="no"
 
 pre_configure_target() {
@@ -42,8 +41,8 @@ pre_configure_target() {
 make_target() {
   VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   make VDRDIR=$VDR_DIR \
-    LIBDIR="." \
-    LOCALEDIR="./locale"
+  LIBDIR="." \
+  LOCALEDIR="./locale"
 }
 
 makeinstall_target() {

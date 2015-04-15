@@ -27,7 +27,7 @@ PKG_SITE="http://www.xine-project.org/"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain ffmpeg"
 PKG_PRIORITY="optional"
-PKG_SECTION="multimedia"
+PKG_SECTION="custom"
 PKG_SHORTDESC="xine is a high-performance, portable and reusable multimedia playback engine."
 PKG_LONGDESC="xine is a high-performance, portable and reusable multimedia playback engine."
 

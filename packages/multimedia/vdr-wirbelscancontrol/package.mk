@@ -31,7 +31,6 @@ PKG_SHORTDESC="TV"
 PKG_LONGDESC="TV"
 
 PKG_IS_ADDON="no"
-
 PKG_AUTORECONF="no"
 
 pre_configure_target() {
@@ -48,8 +47,8 @@ pre_build_target() {
 make_target() {
   VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   make VDRDIR=$VDR_DIR \
-    LIBDIR="." \
-    LOCALEDIR="./locale"
+  LIBDIR="." \
+  LOCALEDIR="./locale"
 }
 
 makeinstall_target() {

@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="librsvg"
-PKG_VERSION="2.40.2"
+PKG_VERSION="2.40.9"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -30,6 +30,7 @@ PKG_SHORTDESC="librsvg is a free software SVG rendering library written as part 
 PKG_LONGDESC="librsvg is a free software SVG rendering library written as part of the GNOME project, intended to be lightweight and portable."
 
 PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
+PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--disable-introspection --disable-gtk-doc"
+PKG_CONFIGURE_OPTS_TARGET="--enable-introspection=no --disable-gtk-doc"
+

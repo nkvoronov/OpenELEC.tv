@@ -27,7 +27,7 @@ PKG_SITE="http://libevent.org/"
 PKG_URL="https://github.com/downloads/libevent/libevent/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain libressl zlib"
 PKG_PRIORITY="optional"
-PKG_SECTION="devel"
+PKG_SECTION="custom"
 PKG_SHORTDESC="libevent: A library for asynchronous event notification"
 PKG_LONGDESC="The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached. It is meant to replace the asynchronous event loop found in event-driven network servers."
 

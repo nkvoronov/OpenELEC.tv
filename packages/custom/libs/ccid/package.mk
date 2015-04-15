@@ -27,7 +27,7 @@ PKG_SITE="http://pcsclite.alioth.debian.org/ccid.html"
 PKG_URL="https://alioth.debian.org/frs/download.php/file/4091/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain pcsc-lite"
 PKG_PRIORITY="optional"
-PKG_SECTION="driver"
+PKG_SECTION="custom"
 PKG_SHORTDESC="CCID free software driver"
 PKG_LONGDESC="CCID free software driver"
 
