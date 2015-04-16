@@ -1,7 +1,7 @@
 diff -Naur a/language/English/strings.po b/language/English/strings.po
 --- a/language/English/strings.po	2015-01-23 00:05:40.000000000 +0200
-+++ b/language/English/strings.po	2015-03-28 21:46:34.307261164 +0200
-@@ -1141,3 +1141,645 @@
++++ b/language/English/strings.po	2015-04-16 05:46:57.202603880 +0300
+@@ -1141,3 +1141,661 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr ""
@@ -576,6 +576,22 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgid "Enter softhddevice options"
 +msgstr ""
 +
++msgctxt "#38100"
++msgid "Enable plugin: skindesigner"
++msgstr ""
++
++msgctxt "#1310"
++msgid "Enabled skindesigner plugin"
++msgstr ""
++
++msgctxt "#38101"
++msgid "Enable plugin: weatherforecast"
++msgstr ""
++
++msgctxt "#1311"
++msgid "Enabled weatherforecast plugin"
++msgstr ""
++
 +##########################################################
 +## DVB
 +
@@ -649,7 +665,7 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgstr ""
 diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 --- a/language/Russian/strings.po	2015-01-23 00:05:40.000000000 +0200
-+++ b/language/Russian/strings.po	2015-03-28 22:45:25.391307612 +0200
++++ b/language/Russian/strings.po	2015-04-16 05:50:08.746608760 +0300
 @@ -100,6 +100,10 @@
  msgid "709"
  msgstr "709"
@@ -718,7 +734,7 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
  msgctxt "#743"
  msgid "Set to ON if you have copied private SSH keys to your HTPC and would like to improve security by disabling SSH username and password authentication."
  msgstr "Выберите ВКЛ, если Вы скопировали Ваш публичный SSH-ключ на Ваш HTPC и хотите усилить безопасность путем выключения авторизации по паролю, оставив только авторизацию по ключу. "
-@@ -1039,3 +1071,645 @@
+@@ -1039,3 +1071,661 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr "Включить поддержку драйвера ЖК-экрана"
@@ -1292,6 +1308,22 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgctxt "#1438"
 +msgid "Enter softhddevice options"
 +msgstr "Введите softhddevice опции"
++
++msgctxt "#38100"
++msgid "Enable plugin: skindesigner"
++msgstr "Плагин: skindesigner"
++
++msgctxt "#1310"
++msgid "Enabled skindesigner plugin"
++msgstr "Разрешить skindesigner плагин"
++
++msgctxt "#38101"
++msgid "Enable plugin: weatherforecast"
++msgstr "Плагин: weatherforecast"
++
++msgctxt "#1311"
++msgid "Enabled weatherforecast plugin"
++msgstr "Разрешить weatherforecast плагин"
 +
 +##########################################################
 +## DVB
