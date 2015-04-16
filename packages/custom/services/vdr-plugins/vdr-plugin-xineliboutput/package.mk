@@ -68,10 +68,6 @@ make_target() {
      LOCALEDIR="./locale"
 }
 
-post_make_target() {
-  $STRIP libvdr-*.so*
-}
-
 makeinstall_target() {
   : # installation not needed, done by create-addon script
 }

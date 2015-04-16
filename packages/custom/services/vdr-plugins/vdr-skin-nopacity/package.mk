@@ -48,10 +48,6 @@ make_target() {
   IMAGELIB=$IMAGELIB
 }
 
-post_make_target() {
-  $STRIP libvdr-*.so*
-}
-
 makeinstall_target() {
   : # installation not needed, done by create-addon script
 }

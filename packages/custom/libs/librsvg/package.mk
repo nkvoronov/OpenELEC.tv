@@ -34,3 +34,6 @@ PKG_AUTORECONF="yes"
 
 PKG_CONFIGURE_OPTS_TARGET="--enable-introspection=no --disable-gtk-doc"
 
+pre_configure_target() {
+  export GDK_PIXBUF_QUERYLOADERS=$SYSROOT_PREFIX/usr/bin
+}

@@ -33,7 +33,7 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 post_unpack() {
-    mv $BUILD/systeminfo-$PKG_VERSION $BUILD/$PKG_NAME-$PKG_VERSION
+  mv $BUILD/systeminfo-$PKG_VERSION $BUILD/$PKG_NAME-$PKG_VERSION
 }
 
 pre_configure_target() {
@@ -47,10 +47,6 @@ make_target() {
   make VDRDIR=$VDR_DIR \
   LIBDIR="." \
   LOCALEDIR="./locale"
-}
-
-post_make_target() {
-  $STRIP libvdr-*.so*
 }
 
 makeinstall_target() {
