@@ -56,16 +56,16 @@ configure_target() {
 
 make_target() {
   make mpg2c \
-     CC="$HOST_CC" \
-     CFLAGS="$HOST_CFLAGS" \
-     LDFLAGS="$HOST_LDFLAGS" \
-     VDRDIR=$VDR_DIR \
-     LIBDIR="." \
-     LOCALEDIR="./locale"
+  CC="$HOST_CC" \
+  CFLAGS="$HOST_CFLAGS" \
+  LDFLAGS="$HOST_LDFLAGS" \
+  VDRDIR=$VDR_DIR \
+  LIBDIR="." \
+  LOCALEDIR="./locale"
 
   make -i VDRDIR=$VDR_DIR \
-     LIBDIR="." \
-     LOCALEDIR="./locale"
+  LIBDIR="." \
+  LOCALEDIR="./locale"
 }
 
 makeinstall_target() {
