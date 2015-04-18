@@ -18,7 +18,7 @@
 
 PKG_NAME="tbscc-install"
 PKG_VERSION="4.3"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="nonfree"
 PKG_SITE="http://www.tbsdtv.com/english/Download.html"
@@ -44,7 +44,7 @@ makeinstall_target() {
 }
 
 addon() {
-  TBS_DRIVER_DIR=$ROOT/$BUILD/tbs-linux-drivers-cc-c640286
+  TBS_DRIVER_DIR=$ROOT/$BUILD/tbs-linux-drivers-cc-63817d7
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/update/lib/modules/$VER_KERNEL/updates/tbs
     find $TBS_DRIVER_DIR/v4l/ -name \*.ko -exec cp {} $ADDON_BUILD/$PKG_ADDON_ID/update/lib/modules/$VER_KERNEL/updates/tbs \;

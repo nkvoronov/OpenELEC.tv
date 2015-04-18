@@ -27,14 +27,14 @@ XMLTV_LOCATION_FILE=`grep XMLTV_LOCATION_FILE $ADDON_SETTINGS | awk '{print $3 }
 XMLTV_LOCATION_WEB=`grep XMLTV_LOCATION_WEB $ADDON_SETTINGS | awk '{print $3 }' | sed -e "s,value=,," -e "s,\",,g"`
 XMLTV_LOCATION_SCRIPT=`grep XMLTV_LOCATION_SCRIPT $ADDON_SETTINGS | awk '{print $3 }' | sed -e "s,value=,," -e "s,\",,g"`
 
-if [ "$XMLTV_TYPE" = "FILE" ]; then
+if [ "$XMLTV_TYPE" = "file" ]; then
   cat "$XMLTV_LOCATION_FILE"
   exit 0
-elif [ "$XMLTV_TYPE" = "SCRIPT" ]; then
+elif [ "$XMLTV_TYPE" = "script" ]; then
   if [ -e "$XMLTV_LOCATION_SCRIPT" ] ; then
     exec "$XMLTV_LOCATION_SCRIPT"
   fi
-elif [ "$XMLTV_TYPE" = "WEB" ]; then
+elif [ "$XMLTV_TYPE" = "web" ]; then
   wget -qO - "$XMLTV_LOCATION_WEB"
   exit 0
 fi
