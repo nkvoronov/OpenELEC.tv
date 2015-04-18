@@ -254,15 +254,16 @@ init_vdr_front_plugins() {
 }
 
 init_vdr_soft() {
+
     init_vdr_plugins
     init_vdr_front_plugins
     
     if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
-        VDR_ARG="$VDR_ARG -P 'softhddevice -a hw:$VDR_SOUND_CARD,$VDR_SOUND_DEV $VDR_SOFT_PARAM'"    
+        VDR_ARG="$VDR_ARG -P 'softhddevice -a $VDR_SOUND_SOFT $VDR_SOFT_PARAM'"    
     elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
-        VDR_ARG="$VDR_ARG -P 'softhddevice -v vdpau -a hw:$VDR_SOUND_CARD,$VDR_SOUND_DEV $VDR_SOFT_PARAM'"
+        VDR_ARG="$VDR_ARG -P 'softhddevice -v vdpau -a $VDR_SOUND_SOFT $VDR_SOFT_PARAM'"
     else
-        VDR_ARG="$VDR_ARG -P 'softhddevice -v va-api -a hw:$VDR_SOUND_CARD,$VDR_SOUND_DEV $VDR_SOFT_PARAM'"
+        VDR_ARG="$VDR_ARG -P 'softhddevice -v va-api -a $VDR_SOUND_SOFT $VDR_SOFT_PARAM'"
     fi
 }
 
@@ -281,11 +282,11 @@ init_vdr_xine() {
     VDR_XINE_CONFIG="$HOME/.config/xine/config_xineliboutput"
     
     if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=alsa'" 
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
     elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vdpau --config=$VDR_XINE_CONFIG --audio=alsa'"
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vdpau --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
     else
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vaapi --config=$VDR_XINE_CONFIG --audio=alsa'"
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vaapi --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
     fi
 }
 

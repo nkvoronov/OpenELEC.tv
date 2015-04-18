@@ -1,7 +1,7 @@
 diff -Naur a/language/English/strings.po b/language/English/strings.po
 --- a/language/English/strings.po	2015-01-23 00:05:40.000000000 +0200
-+++ b/language/English/strings.po	2015-04-16 05:46:57.202603880 +0300
-@@ -1141,3 +1141,661 @@
++++ b/language/English/strings.po	2015-04-18 18:12:14.536145904 +0300
+@@ -1141,3 +1141,669 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr ""
@@ -553,19 +553,19 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgstr ""
 +
 +msgctxt "#39036"
-+msgid "VDR sound card"
++msgid "softhddevice audio device"
 +msgstr ""
 +
 +msgctxt "#1436"
-+msgid "Enter VDR sound card"
++msgid "Enter softhddevice audio device"
 +msgstr ""
 +
 +msgctxt "#39037"
-+msgid "VDR sound dev"
++msgid "xineliboutput audio device"
 +msgstr ""
 +
 +msgctxt "#1437"
-+msgid "Enter VDR sound dev"
++msgid "Enter xineliboutput audio device"
 +msgstr ""
 +
 +msgctxt "#39038"
@@ -574,6 +574,14 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +
 +msgctxt "#1438"
 +msgid "Enter softhddevice options"
++msgstr ""
++
++msgctxt "#39039"
++msgid "xineliboutput options"
++msgstr ""
++
++msgctxt "#1439"
++msgid "Enter xineliboutput options"
 +msgstr ""
 +
 +msgctxt "#38100"
@@ -665,7 +673,7 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgstr ""
 diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 --- a/language/Russian/strings.po	2015-01-23 00:05:40.000000000 +0200
-+++ b/language/Russian/strings.po	2015-04-16 05:50:08.746608760 +0300
++++ b/language/Russian/strings.po	2015-04-18 18:11:31.096144798 +0300
 @@ -100,6 +100,10 @@
  msgid "709"
  msgstr "709"
@@ -734,7 +742,7 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
  msgctxt "#743"
  msgid "Set to ON if you have copied private SSH keys to your HTPC and would like to improve security by disabling SSH username and password authentication."
  msgstr "Выберите ВКЛ, если Вы скопировали Ваш публичный SSH-ключ на Ваш HTPC и хотите усилить безопасность путем выключения авторизации по паролю, оставив только авторизацию по ключу. "
-@@ -1039,3 +1071,661 @@
+@@ -1039,3 +1071,669 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr "Включить поддержку драйвера ЖК-экрана"
@@ -1286,20 +1294,20 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgstr "Выбрать VDR видео драйвер"
 +
 +msgctxt "#39036"
-+msgid "VDR sound card"
-+msgstr "VDR звуковая карта"
++msgid "softhddevice audio device"
++msgstr "softhddevice аудио устройство"
 +
 +msgctxt "#1436"
-+msgid "Enter VDR sound card"
-+msgstr "Введите звуковую карту"
++msgid "Enter softhddevice audio device"
++msgstr "Введите softhddevice аудио устройство"
 +
 +msgctxt "#39037"
-+msgid "VDR sound dev"
-+msgstr "VDR sound dev"
++msgid "xineliboutput audio device"
++msgstr "xineliboutput аудио устройство"
 +
 +msgctxt "#1437"
-+msgid "Enter VDR sound dev"
-+msgstr "Введите VDR sound dev"
++msgid "Enter xineliboutput audio device"
++msgstr "Введите xineliboutput аудио устройство"
 +
 +msgctxt "#39038"
 +msgid "softhddevice options"
@@ -1308,6 +1316,14 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgctxt "#1438"
 +msgid "Enter softhddevice options"
 +msgstr "Введите softhddevice опции"
++
++msgctxt "#39039"
++msgid "xineliboutput options"
++msgstr "xineliboutput опции"
++
++msgctxt "#1439"
++msgid "Enter xineliboutput options"
++msgstr "Введите xineliboutput опции"
 +
 +msgctxt "#38100"
 +msgid "Enable plugin: skindesigner"

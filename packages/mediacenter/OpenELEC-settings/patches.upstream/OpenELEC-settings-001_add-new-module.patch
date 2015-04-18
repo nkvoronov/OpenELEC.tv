@@ -1,7 +1,7 @@
 diff -Naur a/src/defaults.py b/src/defaults.py
 --- a/src/defaults.py	2015-01-23 00:05:40.000000000 +0200
-+++ b/src/defaults.py	2015-04-16 05:26:07.126572030 +0300
-@@ -91,7 +91,149 @@
++++ b/src/defaults.py	2015-04-18 17:37:49.956093302 +0300
+@@ -91,7 +91,150 @@
          "D_LCD_DRIVER"          : "none",
          
      }
@@ -134,9 +134,10 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_F_ENABLE_WEATHERFORECAST" : "0",
 +        "D_F_FRONT"                  : "soft",
 +        "D_F_OUTPUT_VIDEO"           : "auto",
-+        "D_F_SOUND_CARD"             : "0",
-+        "D_F_SOUND_DEV"              : "0",
++        "D_F_SOUND_SOFT"             : "",
++        "D_F_SOUND_XINE"             : "",
 +        "D_F_SOFT_PARAM"             : "",
++        "D_F_XINE_PARAM"             : "",
 +
 +    #DVB
 +        "D_WAIT_FOR_FEINIT"          : "0",
@@ -152,7 +153,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
  system = \
      {
          "ENABLED"             : True,
-@@ -133,11 +275,15 @@
+@@ -133,11 +276,15 @@
  
  _services = \
      {
@@ -631,8 +632,8 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-04-16 05:51:08.002610270 +0300
-@@ -0,0 +1,2077 @@
++++ b/src/resources/lib/modules/tvservers.py	2015-04-18 18:20:28.392158487 +0300
+@@ -0,0 +1,2091 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
 +#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
@@ -759,9 +760,10 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_F_ENABLE_WEATHERFORECAST = None
 +    D_F_FRONT = None
 +    D_F_OUTPUT_VIDEO = None
-+    D_F_SOUND_CARD = None
-+    D_F_SOUND_DEV = None
++    D_F_SOUND_SOFT = None
++    D_F_SOUND_XINE = None
 +    D_F_SOFT_PARAM = None
++    D_F_XINE_PARAM = None
 +
 +    D_WAIT_FOR_FEINIT = None
 +    D_NUM_ADAPTERS = None
@@ -1455,9 +1457,9 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1433,
 +                        },
-+                        'enable_skindesigner': {
++                        'enable_skingesigner': {
 +                            'order': 40,
-+                            'name': 38100,
++                            'name': 39033,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
@@ -1465,7 +1467,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                        },
 +                        'enable_weatherforecast': {
 +                            'order': 41,
-+                            'name': 38101,
++                            'name': 38100,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
@@ -1473,7 +1475,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                        },
 +                        'vdr_output': {
 +                            'order': 42,
-+                            'name': 39034,
++                            'name': 38101,
 +                            'value': 'soft',
 +                            'values': ['soft','xine'],
 +                            'action': 'initialize_vdr_front',
@@ -1489,22 +1491,22 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'multivalue',
 +                            'InfoText': 1435,
 +                        },                        
-+                        'vdr_sound_card': {
++                        'vdr_sound_soft': {
 +                            'order': 44,
 +                            'name': 39036,
-+                            'value': '0',
++                            'value': 'alsa',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['soft']},
 +                            'InfoText': 1436,
 +                        },                        
-+                        'vdr_sound_dev': {
++                        'vdr_sound_xine': {
 +                            'order': 45,
 +                            'name': 39037,
-+                            'value': '0',
++                            'value': 'alsa',
 +                            'action': 'initialize_vdr_front',
-+                            'type': 'num',
-+                            'parent': {'entry': 'vdr_output','value': ['soft']},
++                            'type': 'text',
++                            'parent': {'entry': 'vdr_output','value': ['xine']},
 +                            'InfoText': 1437,
 +                        },
 +                        'vdr_soft_param': {
@@ -1515,6 +1517,15 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['soft']},
 +                            'InfoText': 1438,
++                        },
++                        'vdr_xine_param': {
++                            'order': 47,
++                            'name': 39039,
++                            'value': '',
++                            'action': 'initialize_vdr_front',
++                            'type': 'text',
++                            'parent': {'entry': 'vdr_output','value': ['xine']},
++                            'InfoText': 1439,
 +                        },
 +                    },
 +                },
@@ -1947,14 +1958,17 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['vdr-front']['settings']['vdr_video']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_OUTPUT_VIDEO', self.D_F_OUTPUT_VIDEO).replace('"', '')
 +
-+                self.struct['vdr-front']['settings']['vdr_sound_card']['value'] = \
-+                self.oe.get_service_option('vdr-front', 'VDR_SOUND_CARD', self.D_F_SOUND_CARD).replace('"', '')
++                self.struct['vdr-front']['settings']['vdr_sound_soft']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_SOUND_SOFT', self.D_F_SOUND_SOFT).replace('"', '')
 +
-+                self.struct['vdr-front']['settings']['vdr_sound_dev']['value'] = \
-+                self.oe.get_service_option('vdr-front', 'VDR_SOUND_DEV', self.D_F_SOUND_DEV).replace('"', '')
++                self.struct['vdr-front']['settings']['vdr_sound_xine']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_SOUND_XINE', self.D_F_SOUND_XINE).replace('"', '')
 +
 +                self.struct['vdr-front']['settings']['vdr_soft_param']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_SOFT_PARAM', self.D_F_SOFT_PARAM).replace('"', '')
++
++                self.struct['vdr-front']['settings']['vdr_xine_param']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_XINE_PARAM', self.D_F_XINE_PARAM).replace('"', '')
 +
 +            else:
 +                self.struct['vdr-front']['hidden'] = 'true'
@@ -2592,9 +2606,10 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_ENABLE_WEATHERFORECAST'] = '"%s"' % val31
 +                options['VDR_FRONT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_output']['value']
 +                options['VDR_OUTPUT_VIDEO'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_video']['value']
-+                options['VDR_SOUND_CARD'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_sound_card']['value']
-+                options['VDR_SOUND_DEV'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_sound_dev']['value']
++                options['VDR_SOUND_SOFT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_sound_soft']['value']
++                options['VDR_SOUND_XINE'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_sound_xine']['value']
 +                options['VDR_SOFT_PARAM'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_soft_param']['value']
++                options['VDR_XINE_PARAM'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_xine_param']['value']
 +
 +                self.oe.dbg_log('tvservers::initialize_vdr_front', 'save option', 0)
 +
