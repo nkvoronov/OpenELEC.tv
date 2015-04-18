@@ -134,8 +134,8 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_F_ENABLE_WEATHERFORECAST" : "0",
 +        "D_F_FRONT"                  : "soft",
 +        "D_F_OUTPUT_VIDEO"           : "auto",
-+        "D_F_SOUND_SOFT"             : "",
-+        "D_F_SOUND_XINE"             : "",
++        "D_F_SOUND_SOFT"             : "alsa",
++        "D_F_SOUND_XINE"             : "alsa",
 +        "D_F_SOFT_PARAM"             : "",
 +        "D_F_XINE_PARAM"             : "",
 +
@@ -1457,9 +1457,9 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1433,
 +                        },
-+                        'enable_skingesigner': {
++                        'enable_skindesigner': {
 +                            'order': 40,
-+                            'name': 39033,
++                            'name': 38100,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
@@ -1467,7 +1467,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                        },
 +                        'enable_weatherforecast': {
 +                            'order': 41,
-+                            'name': 38100,
++                            'name': 38101,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
@@ -1475,7 +1475,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                        },
 +                        'vdr_output': {
 +                            'order': 42,
-+                            'name': 38101,
++                            'name': 39034,
 +                            'value': 'soft',
 +                            'values': ['soft','xine'],
 +                            'action': 'initialize_vdr_front',
