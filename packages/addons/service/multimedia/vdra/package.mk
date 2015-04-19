@@ -219,14 +219,15 @@ addon() {
   LIBXCBUTILRENDERUTIL_DIR=$ROOT/$BUILD/xcb-util-renderutil-0.3.9
   LIBXCBUTILWM_DIR=$ROOT/$BUILD/xcb-util-wm-0.4.1
   JANSSON_DIR=$ROOT/$BUILD/jansson-2.6
-  IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
+  #IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
+  IM_DIR=$ROOT/$BUILD/ImageMagick-6.7.7-10
   XINELIB_DIR=$ROOT/$BUILD/xine-lib-ade430c
   CAIRO_DIR=$ROOT/$BUILD/cairo-1.12.16
   PANGO_DIR=$ROOT/$BUILD/pango-1.36.3
   HARFBUZZ_DIR=$ROOT/$BUILD/harfbuzz-0.9.27
   GDK_PIXBUF_DIR=$ROOT/$BUILD/gdk-pixbuf-2.28.2
   LIBCROCO_DIR=$ROOT/$BUILD/libcroco-0.6.8
-  LIBRSVG_DIR=$ROOT/$BUILD/librsvg-2.40.2
+  LIBRSVG_DIR=$ROOT/$BUILD/librsvg-2.40.9
 
   
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
