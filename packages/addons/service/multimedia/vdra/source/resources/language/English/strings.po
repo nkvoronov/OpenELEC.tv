@@ -229,11 +229,19 @@ msgid "- video driver"
 msgstr ""
 
 msgctxt "#2217"
-msgid "- audio params"
+msgid "- soft audio device"
 msgstr ""
 
 msgctxt "#2218"
-msgid "- other params"
+msgid "- xine audio device"
+msgstr ""
+
+msgctxt "#2219"
+msgid "- soft params"
+msgstr ""
+
+msgctxt "#2220"
+msgid "- xine params"
 msgstr ""
 
 msgctxt "#3000"

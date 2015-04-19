@@ -229,12 +229,20 @@ msgid "- video driver"
 msgstr "- видео драйвер"
 
 msgctxt "#2217"
-msgid "- audio params"
-msgstr "- аудио параметры"
+msgid "- soft audio device"
+msgstr "- soft аудио устройство"
 
 msgctxt "#2218"
-msgid "- other params"
-msgstr "- другие параметры"
+msgid "- xine audio device"
+msgstr "- xine аудио устройство"
+
+msgctxt "#2219"
+msgid "- soft params"
+msgstr "- soft параметры"
+
+msgctxt "#2220"
+msgid "- xine params"
+msgstr "- xine параметры"
 
 msgctxt "#3000"
 msgid "DVB"

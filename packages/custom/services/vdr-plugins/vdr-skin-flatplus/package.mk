@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-skin-flatplus"
-PKG_VERSION="6cfbe89"
+PKG_VERSION="d6ef829"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

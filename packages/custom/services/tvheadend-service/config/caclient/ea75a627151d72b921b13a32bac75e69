@@ -1,5 +1,5 @@
 {
-	"mode": 3,
+	"mode": 5,
 	"camdfilename": "127.0.0.1",
 	"port": 9000,
 	"class": "caclient_capmt",

@@ -8,7 +8,7 @@
                 <setting id="VDR_VIDEO_DIR" type="folder" label="1102" value="" default="/storage/videos" />
                 <setting type="sep" />
 		<setting id="ENABLE_CHARSET_OVERRIDE" type="bool" label="1103" default="false" />
-		<setting id="CHARSET_OVERRIDE_STR" type="text" label="1104" visible="!eq(-1,false)" default="" />
+		<setting id="CHARSET_OVERRIDE_STR" type="text" label="1104" visible="!eq(-1,false)" default="ru_RU.UTF-8" />
                 <setting type="sep" />
                 <setting id="ENABLE_EXTERNAL_RECCMD" type="bool" label="1105" default="false" />
                 <setting id="EXTERNAL_RECCMD_PATH" type="file" label="1106" visible="!eq(-1,false)" default="" />
@@ -86,8 +86,10 @@
 		<setting id="ENABLE_WEATHERFORECAST_FRONTEND" type="bool" label="2214" default="false" />
 		<setting id="VIDEO_OUT_FRONTEND" type="labelenum" label="2215" values="soft|xine" default="soft" />" />
 		<setting id="VIDEO_DRIVER_FRONTEND" type="labelenum" label="2216" values="vdpau|vaapi|auto" default="auto"/>
-		<setting id="AUDIO_PARAMS_FRONTEND" type="text" label="2217" values="alsa|oss" default="" />
-		<setting id="VIDEO_OUT_PARAMS_FRONTEND" type="text" label="2218" values="" default="" />
+		<setting id="AUDIO_SOFT_FRONTEND" type="text" label="2217" values="" visible="eq(-2,0)" default="hw:0,0" />
+		<setting id="AUDIO_XINE_FRONTEND" type="text" label="2218" values="" visible="eq(-3,1)" default="auto" />
+		<setting id="PARAMS_SOFT_FRONTEND" type="text" label="2219" values="" visible="eq(-4,0)" default="" />
+		<setting id="PARAMS_XINE_FRONTEND" type="text" label="2220" values="" visible="eq(-5,1)" default="" />
     </category>
     <category label="3000">
 		<setting label="3100" type="lsep"/>
