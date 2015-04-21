@@ -360,8 +360,6 @@ addon() {
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-restfulapi.mo    
     done
 
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib 
   fi
@@ -521,8 +519,6 @@ addon() {
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
 
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
@@ -541,8 +537,6 @@ addon() {
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-tvguide.mo    
     done
 
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
@@ -620,8 +614,6 @@ addon() {
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinflat.mo    
     done
 
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
@@ -643,8 +635,6 @@ addon() {
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinflatplus.mo    
     done
 
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
@@ -665,8 +655,6 @@ addon() {
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinnopacity.mo    
     done
 
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-      cp -PR $IM_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
   fi
