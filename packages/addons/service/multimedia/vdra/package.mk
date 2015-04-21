@@ -212,7 +212,6 @@ addon() {
   LIBXMLPP_DIR=$ROOT/$BUILD/libxml++-2.36.0
   LIBSIGPP_DIR=$ROOT/$BUILD/libsigc++-2.2.10
   LIBXCB_DIR=$ROOT/$BUILD/libxcb-1.11
-  LIBXCBPROTO_DIR=$ROOT/$BUILD/xcb-proto-1.11
   LIBXCBUTIL_DIR=$ROOT/$BUILD/xcb-util-0.3.9
   LIBXCBUTILIMAGE_DIR=$ROOT/$BUILD/xcb-util-image-0.3.9
   LIBXCBUTILKEYSYMS_DIR=$ROOT/$BUILD/xcb-util-keysyms-0.3.9
@@ -222,13 +221,13 @@ addon() {
   #IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
   IM_DIR=$ROOT/$BUILD/ImageMagick-6.7.7-10
   XINELIB_DIR=$ROOT/$BUILD/xine-lib-ade430c
+  LIBXFT_DIR=$ROOT/$BUILD/libXft-2.3.2
   CAIRO_DIR=$ROOT/$BUILD/cairo-1.12.16
   PANGO_DIR=$ROOT/$BUILD/pango-1.36.3
   HARFBUZZ_DIR=$ROOT/$BUILD/harfbuzz-0.9.27
   GDK_PIXBUF_DIR=$ROOT/$BUILD/gdk-pixbuf-2.28.2
   LIBCROCO_DIR=$ROOT/$BUILD/libcroco-0.6.8
   LIBRSVG_DIR=$ROOT/$BUILD/librsvg-2.40.9
-
   
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin
@@ -507,10 +506,8 @@ addon() {
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-softhddevice.mo    
     done
 
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-      cp -PR $LIBXCBPROTO_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXCBPROTO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $LIBXCBUTIL_DIR/.install_pkg/usr/lib/libxcb-util.* $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $LIBXCBUTILIMAGE_DIR/.install_pkg/usr/lib/libxcb-image.* $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $LIBXCBUTILKEYSYMS_DIR/.install_pkg/usr/lib/libxcb-keysyms.* $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -707,12 +704,15 @@ addon() {
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skindesigner.mo    
     done
 
-    cp -PR $CAIRO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -PR $PANGO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -PR $HARFBUZZ_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -PR $GDK_PIXBUF_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -PR $LIBCROCO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -PR $LIBRSVG_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $JANSSON_DIR/.install_pkg/usr/lib/libjansson.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBXFT_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $CAIRO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $PANGO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $HARFBUZZ_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $GDK_PIXBUF_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBCROCO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $LIBRSVG_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
 
     if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
       VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-36f7ac9
@@ -725,9 +725,6 @@ addon() {
         mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
           cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-weatherforecast.mo    
       done
-
-      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-        cp -PR $JANSSON_DIR/.install_pkg/usr/lib/libjansson.* $ADDON_BUILD/$PKG_ADDON_ID/lib
     fi
   fi
 }
