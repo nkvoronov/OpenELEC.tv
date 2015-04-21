@@ -5,7 +5,7 @@
 		<setting type="sep" />
     		<setting id="TVHEADEND_BACKUP" type="bool" label="1101" default="false" />
     		<setting id="TVHEADEND_ADAPTERS" type="text" label="1102" default="" />
-		<setting id="PRELOAD_CAPMT_CA" type="bool" label="1103" default="false" />
+		<setting id="TVHEADEND_PRELOAD_CAPMT_CA" type="bool" label="1103" default="false" />
     </category>
     <category label="2000">
 		<setting label="2100" type="lsep"/>
@@ -18,8 +18,8 @@
     <category label="3000">
 		<setting label="3100" type="lsep"/>
 		<setting type="sep" />
-		<setting id="WAIT_FOR_FEINIT" type="bool" label="3101" default="false" />
-		<setting id="NUM_ADAPTERS" type="slider" range="1,16" option="int" label="3102" default="1" visible="eq(-1,true)" />
-		<setting id="REMOVE_MODULES" type="text" label="3103" values="" default=""/>
+		<setting id="DVB_WAIT_FOR_FEINIT" type="bool" label="3101" default="false" />
+		<setting id="DVB_NUM_ADAPTERS" type="slider" range="1,16" option="int" label="3102" default="1" visible="eq(-1,true)" />
+		<setting id="DVB_REMOVE_MODULES" type="text" label="3103" values="" default=""/>
     </category>
 </settings>

@@ -45,8 +45,8 @@ OSCAM_ARG="-d $OSCAM_DEBUG -r 2 -u -c $OSCAM_CONF"
 
 chmod a+x $ADDON_DIR/bin/*
 
-if [ "$WAIT_FOR_NET" == "true" ] ; then
-  cm-online $WAIT_FOR_NET_TIME
+if [ "$OSCAM_WAIT_FOR_NET" == "true" ] ; then
+  cm-online $OSCAM_WAIT_FOR_NET_TIME
 fi
 
 # start userspace DVB driver/addon
@@ -57,9 +57,9 @@ for driver_dvb in $(find /storage/.kodi/addons/driver.dvb.*/bin/userspace-driver
   . $driver_dvb
 done
 
-if [ "$WAIT_FOR_FEINIT" == "true" ] ; then
+if [ "$DVB_WAIT_FOR_FEINIT" == "true" ] ; then
   while [ true ] ; do
-    if [ -e /dev/dvb/adapter$((NUM_ADAPTERS-1))/frontend0 ] ; then
+    if [ -e /dev/dvb/adapter$((DVB_NUM_ADAPTERS-1))/frontend0 ] ; then
       break
     fi
     sleep 1

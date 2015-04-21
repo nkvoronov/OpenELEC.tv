@@ -26,7 +26,7 @@ oe_setup_addon service.softcam.oscama
 
 SERVICE="service.softcam.oscama.service"
 
-if [ "$RESTART_ON_RESUME" == "true" ] ; then
+if [ "$OSCAM_RESTART_ON_RESUME" == "true" ] ; then
   case "$1" in
     pre)
       if systemctl is-active "$SERVICE" &>/dev/null ; then
