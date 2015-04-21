@@ -18,7 +18,7 @@
 
 PKG_NAME="tvheadenda"
 PKG_VERSION="3.9.2711"
-PKG_REV="20"
+PKG_REV="21"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
