@@ -3,99 +3,103 @@
     <category label="1000">
 		<setting label="1100" type="lsep"/>
 		<setting type="sep" />
-                <setting id="VDR_TYPE" type="labelenum" label="1101" values="service|frontend|all" default="service" />
+    		<setting id="VDR_TYPE" type="labelenum" label="1101" values="service|frontend|all" default="service" />
 		<setting type="sep" />
-                <setting id="VDR_VIDEO_DIR" type="folder" label="1102" value="" default="/storage/videos" />
-                <setting type="sep" />
-		<setting id="ENABLE_CHARSET_OVERRIDE" type="bool" label="1103" default="false" />
-		<setting id="CHARSET_OVERRIDE_STR" type="text" label="1104" visible="!eq(-1,false)" default="ru_RU.UTF-8" />
-                <setting type="sep" />
-                <setting id="ENABLE_EXTERNAL_RECCMD" type="bool" label="1105" default="false" />
-                <setting id="EXTERNAL_RECCMD_PATH" type="file" label="1106" visible="!eq(-1,false)" default="" />
+    		<setting id="VDR_VIDEO_DIR" type="folder" label="1102" value="" default="/storage/videos" />
+    		<setting type="sep" />
+		<setting id="VDR_ENABLE_CHARSET_OVERRIDE" type="bool" label="1103" default="false" />
+		<setting id="VDR_CHARSET_OVERRIDE_STR" type="text" label="1104" visible="!eq(-1,false)" default="ru_RU.UTF-8" />
+    		<setting type="sep" />
+    		<setting id="VDR_ENABLE_EXTERNAL_RECCMD" type="bool" label="1105" default="false" />
+    		<setting id="VDR_EXTERNAL_RECCMD_PATH" type="file" label="1106" visible="!eq(-1,false)" default="" />
+		<setting type="sep" />
+		<setting id="DEBUG" type="bool" label="1107" default="false" />
 		<setting label="1200" type="lsep"/>
 		<setting type="sep" />
-		<setting id="COMMAND_SERVICE" label="1201" type="text" default=""/>
-    		<setting id="COMMAND_FRONTEND" label="1202" type="text" default="/usr/bin/vdr-front.run"/>
+		<setting id="VDR_COMMAND_SERVICE" label="1201" type="text" default=""/>
+		<setting id="VDR_COMMAND_FRONTEND" label="1202" type="text" default="/usr/bin/vdr-front.run"/>
     </category>
     <category label="2000">
 		<setting label="2100" type="lsep"/>
 		<setting type="sep" />
-		<setting id="PVR_PLUGIN" type="labelenum" label="2101" values="xvdr|vnsiserver" default="vnsiserver" />
-		<setting id="ENABLE_IPTV" type="bool" label="2102" default="false" />
-		<setting id="IPTV_NUM_DEVICES" type="slider" option="int" range="1,4" label="2103" visible="!eq(-1,false)" default="1" />
-		<setting id="ENABLE_STREAMDEV_CLIENT" type="bool" label="2104" default="false" />
-		<setting id="ENABLE_STREAMDEV_SERVER" type="bool" label="2105" default="false" />
-		<setting id="ENABLE_LIVE" type="bool" label="2106" default="false" />
-		<setting id="LIVE_IP" type="ipaddress" label="2107" values="" visible="!eq(-1,false)" default="0.0.0.0"/>
-		<setting id="LIVE_PORT" type="number" label="2108" values="" visible="!eq(-2,false)"  default="8008"/>
-		<setting id="ENABLE_CONTROL" type="bool" label="2109" default="false" />
-		<setting id="CONTROL_PORT" type="number" label="2110" values="" visible="!eq(-1,false)"  default="2002"/>
-		<setting id="ENABLE_EEPG" type="bool" label="2111" default="false" />
-		<setting id="ENABLE_EPGSEARCH" type="bool" label="2112" default="false" />
-		<setting id="ENABLE_XMLTV2VDR" type="bool" label="2113" default="false" />
-		<setting id="ENABLE_DUMMYDEVICE" type="bool" label="2114" default="false" />
-		<setting id="ENABLE_SATIP" type="bool" label="2115" default="false" />
-		<setting id="ENABLE_EPGFIXER" type="bool" label="2116" default="false" />
-		<setting id="ENABLE_RESTFULAPI" type="bool" label="2117" default="false" />
-		<setting id="RESTFULAPI_IP" type="ipaddress" label="2118" values="" visible="!eq(-1,false)" default="0.0.0.0"/>
-		<setting id="RESTFULAPI_PORT" type="number" label="2119" values="" visible="!eq(-2,false)"  default="8002"/>
-                <setting id="ENABLE_WIRBELSCAN" type="bool" label="2120" default="false" />
-                <setting id="ENABLE_UPNP" type="bool" label="2121" default="false" />
+		<setting id="VDR_PVR_PLUGIN" type="labelenum" label="2101" values="xvdr|vnsiserver" default="xvdr" />
+		<setting id="VDR_ENABLE_IPTV" type="bool" label="2102" default="false" />
+		<setting id="VDR_IPTV_NUM_DEVICES" type="slider" option="int" range="1,4" label="2103" visible="!eq(-1,false)" default="1" />
+		<setting id="VDR_ENABLE_STREAMDEV_CLIENT" type="bool" label="2104" default="false" />
+		<setting id="VDR_ENABLE_STREAMDEV_SERVER" type="bool" label="2105" default="false" />
+		<setting id="VDR_ENABLE_LIVE" type="bool" label="2106" default="false" />
+		<setting id="VDR_LIVE_IP" type="ipaddress" label="2107" values="" visible="!eq(-1,false)" default="0.0.0.0"/>
+		<setting id="VDR_LIVE_PORT" type="number" label="2108" values="" visible="!eq(-2,false)"  default="8008"/>
+		<setting id="VDR_ENABLE_CONTROL" type="bool" label="2109" default="false" />
+		<setting id="VDR_CONTROL_PORT" type="number" label="2110" values="" visible="!eq(-1,false)"  default="2002"/>
+		<setting id="VDR_ENABLE_EEPG" type="bool" label="2111" default="false" />
+		<setting id="VDR_ENABLE_EPGSEARCH" type="bool" label="2112" default="false" />
+		<setting id="VDR_ENABLE_XMLTV2VDR" type="bool" label="2113" default="false" />
+		<setting id="VDR_ENABLE_DUMMYDEVICE" type="bool" label="2114" default="false" />
+		<setting id="VDR_ENABLE_SATIP" type="bool" label="2115" default="false" />
+		<setting id="VDR_ENABLE_EPGFIXER" type="bool" label="2116" default="false" />
+		<setting id="VDR_ENABLE_RESTFULAPI" type="bool" label="2117" default="false" />
+		<setting id="VDR_RESTFULAPI_IP" type="ipaddress" label="2118" values="" visible="!eq(-1,false)" default="0.0.0.0"/>
+		<setting id="VDR_RESTFULAPI_PORT" type="number" label="2119" values="" visible="!eq(-2,false)"  default="8002"/>
+    		<setting id="VDR_ENABLE_WIRBELSCAN" type="bool" label="2120" default="false" />
+    		<setting id="VDR_ENABLE_UPNP" type="bool" label="2121" default="false" />
 		<setting type="sep" />
-		<setting id="ENABLE_SOFTCAM" type="bool" label="2122" default="true" />
-                <setting id="SOFTCAM_OPTION" type="text" label="2123" values="" visible="!eq(-1,false)" default="" />
-		<setting label="2200" type="lsep"/>
+		<setting id="VDR_ENABLE_SOFTCAM" type="bool" label="2122" default="true" />
+        <setting id="VDR_SOFTCAM_OPTION" type="text" label="2123" values="" visible="!eq(-1,false)" default="" />
+    </category>
+    <category label="4000">
+		<setting label="4100" type="lsep"/>
 		<setting type="sep" />
-		<setting id="ENABLE_IPTV_FRONTEND" type="bool" label="2102" default="false" />
-		<setting id="IPTV_NUM_DEVICES_FRONTEND" type="slider" option="int" range="1,4" label="2103" visible="!eq(-1,false)" default="1" />
-		<setting id="ENABLE_STREAMDEV_CLIENT_FRONTEND" type="bool" label="2104" default="false" />
-		<setting id="ENABLE_STREAMDEV_SERVER_FRONTEND" type="bool" label="2105" default="false" />
-		<setting id="ENABLE_LIVE_FRONTEND" type="bool" label="2106" default="false" />
-		<setting id="LIVE_IP_FRONTEND" type="ipaddress" label="2107" values="" visible="!eq(-1,false)" default="0.0.0.0"/>
-		<setting id="LIVE_PORT_FRONTEND" type="number" label="2108" values="" visible="!eq(-2,false)"  default="8008"/>
-		<setting id="ENABLE_CONTROL_FRONTEND" type="bool" label="2109" default="false" />
-		<setting id="CONTROL_PORT_FRONTEND" type="number" label="2110" values="" visible="!eq(-1,false)"  default="2002"/>
-		<setting id="ENABLE_EEPG_FRONTEND" type="bool" label="2111" default="false" />
-		<setting id="ENABLE_EPGSEARCH_FRONTEND" type="bool" label="2112" default="false" />
-		<setting id="ENABLE_XMLTV2VDR_FRONTEND" type="bool" label="2113" default="false" />
-		<setting id="ENABLE_DUMMYDEVICE_FRONTEND" type="bool" label="2114" default="false" />
-		<setting id="ENABLE_SATIP_FRONTEND" type="bool" label="2115" default="false" />
-		<setting id="ENABLE_EPGFIXER_FRONTEND" type="bool" label="2116" default="false" />
-		<setting id="ENABLE_RESTFULAPI_FRONTEND" type="bool" label="2117" default="false" />
-		<setting id="RESTFULAPI_IP_FRONTEND" type="ipaddress" label="2118" values="" visible="!eq(-1,false)" default="0.0.0.0"/>
-		<setting id="RESTFULAPI_PORT_FRONTEND" type="number" label="2119" values="" visible="!eq(-2,false)"  default="8002"/>
-                <setting id="ENABLE_WIRBELSCAN_FRONTEND" type="bool" label="2120" default="false" />
-                <setting id="ENABLE_UPNP_FRONTEND" type="bool" label="2121" default="false" />
+		<setting id="VDR_ENABLE_IPTV_F" type="bool" label="2102" default="false" />
+		<setting id="VDR_IPTV_NUM_DEVICES_F" type="slider" option="int" range="1,4" label="2103" visible="!eq(-1,false)" default="1" />
+		<setting id="VDR_ENABLE_STREAMDEV_CLIENT_F" type="bool" label="2104" default="false" />
+		<setting id="VDR_ENABLE_STREAMDEV_SERVER_F" type="bool" label="2105" default="false" />
+		<setting id="VDR_ENABLE_LIVE_F" type="bool" label="2106" default="false" />
+		<setting id="VDR_LIVE_IP_F" type="ipaddress" label="2107" values="" visible="!eq(-1,false)" default="0.0.0.0"/>
+		<setting id="VDR_LIVE_PORT_F" type="number" label="2108" values="" visible="!eq(-2,false)"  default="8008"/>
+		<setting id="VDR_ENABLE_CONTROL_F" type="bool" label="2109" default="false" />
+		<setting id="VDR_CONTROL_PORT_F" type="number" label="2110" values="" visible="!eq(-1,false)"  default="2002"/>
+		<setting id="VDR_ENABLE_EEPG_F" type="bool" label="2111" default="false" />
+		<setting id="VDR_ENABLE_EPGSEARCH_F" type="bool" label="2112" default="false" />
+		<setting id="VDR_ENABLE_XMLTV2VDR_F" type="bool" label="2113" default="false" />
+		<setting id="VDR_ENABLE_DUMMYDEVICE_F" type="bool" label="2114" default="false" />
+		<setting id="VDR_ENABLE_SATIP_F" type="bool" label="2115" default="false" />
+		<setting id="VDR_ENABLE_EPGFIXER_F" type="bool" label="2116" default="false" />
+		<setting id="VDR_ENABLE_RESTFULAPI_F" type="bool" label="2117" default="false" />
+		<setting id="VDR_RESTFULAPI_IP_F" type="ipaddress" label="2118" values="" visible="!eq(-1,false)" default="0.0.0.0"/>
+		<setting id="VDR_RESTFULAPI_PORT_F" type="number" label="2119" values="" visible="!eq(-2,false)"  default="8002"/>
+    		<setting id="VDR_ENABLE_WIRBELSCAN_F" type="bool" label="2120" default="false" />
+    		<setting id="VDR_ENABLE_UPNP_F" type="bool" label="2121" default="false" />
 		<setting type="sep" />
-		<setting id="ENABLE_SOFTCAM_FRONTEND" type="bool" label="2122" default="true" />
-                <setting id="SOFTCAM_OPTION_FRONTEND" type="text" label="2123" values="" visible="!eq(-1,false)" default="" />
+		<setting id="VDR_ENABLE_SOFTCAM_F" type="bool" label="2122" default="true" />
+    		<setting id="VDR_SOFTCAM_OPTION_F" type="text" label="2123" values="" visible="!eq(-1,false)" default="" />
 		<setting type="sep" />
-		<setting id="ENABLE_FEMON_FRONTEND" type="bool" label="2201" default="false" />
-		<setting id="ENABLE_SYSTEMINFO_FRONTEND" type="bool" label="2202" default="false" />
-		<setting id="ENABLE_SLEEPTIMER_FRONTEND" type="bool" label="2203" default="false" />
-		<setting id="ENABLE_FILEBROWSER_FRONTEND" type="bool" label="2204" default="false" />
-		<setting id="ENABLE_LCDPROC_FRONTEND" type="bool" label="2205" default="false" />
-		<setting id="ENABLE_TEXT2SKIN_FRONTEND" type="bool" label="2206" default="false" />
-		<setting id="ENABLE_SKINNOPACITY_FRONTEND" type="bool" label="2207" default="false" />
-		<setting id="ENABLE_SKINFLAT_FRONTEND" type="bool" label="2208" default="false" />
-		<setting id="ENABLE_SKINFLATPLUS_FRONTEND" type="bool" label="2209" default="false" />
-		<setting id="ENABLE_SKINDESIGNER_FRONTEND" type="bool" label="2210" default="false" />
-		<setting id="ENABLE_MENUORG_FRONTEND" type="bool" label="2211" default="false" />
-		<setting id="ENABLE_TVGUIDE_FRONTEND" type="bool" label="2212" default="false" />
-		<setting id="ENABLE_TVSCRAPER_FRONTEND" type="bool" label="2213" default="false" />
-		<setting id="ENABLE_WEATHERFORECAST_FRONTEND" type="bool" label="2214" default="false" />
-		<setting id="VIDEO_OUT_FRONTEND" type="labelenum" label="2215" values="soft|xine" default="soft" />" />
-		<setting id="VIDEO_DRIVER_FRONTEND" type="labelenum" label="2216" values="vdpau|vaapi|auto" default="auto"/>
-		<setting id="AUDIO_SOFT_FRONTEND" type="text" label="2217" values="" visible="eq(-2,0)" default="hw:0,0" />
-		<setting id="AUDIO_XINE_FRONTEND" type="text" label="2218" values="" visible="eq(-3,1)" default="auto" />
-		<setting id="PARAMS_SOFT_FRONTEND" type="text" label="2219" values="" visible="eq(-4,0)" default="" />
-		<setting id="PARAMS_XINE_FRONTEND" type="text" label="2220" values="" visible="eq(-5,1)" default="" />
+		<setting id="VDR_ENABLE_FEMON" type="bool" label="4101" default="false" />
+		<setting id="VDR_ENABLE_SYSTEMINFO" type="bool" label="4102" default="false" />
+		<setting id="VDR_ENABLE_SLEEPTIMER" type="bool" label="4103" default="false" />
+		<setting id="VDR_ENABLE_FILEBROWSER" type="bool" label="4104" default="false" />
+		<setting id="VDR_ENABLE_LCDPROC" type="bool" label="4105" default="false" />
+		<setting id="VDR_ENABLE_TEXT2SKIN" type="bool" label="4106" default="false" />
+		<setting id="VDR_ENABLE_SKINNOPACITY" type="bool" label="4107" default="false" />
+		<setting id="VDR_ENABLE_SKINFLAT" type="bool" label="4108" default="false" />
+		<setting id="VDR_ENABLE_SKINFLATPLUS" type="bool" label="4109" default="false" />
+		<setting id="VDR_ENABLE_SKINDESIGNER" type="bool" label="4110" default="false" />
+		<setting id="VDR_ENABLE_MENUORG" type="bool" label="4111" default="false" />
+		<setting id="VDR_ENABLE_TVGUIDE" type="bool" label="4112" default="false" />
+		<setting id="VDR_ENABLE_TVSCRAPER" type="bool" label="4113" default="false" />
+		<setting id="VDR_ENABLE_WEATHERFORECAST" type="bool" label="4114" default="false" />
+		<setting id="VDR_FRONT" type="labelenum" label="4115" values="soft|xine" default="soft" />" />
+		<setting id="VDR_OUTPUT_VIDEO" type="labelenum" label="4116" values="vdpau|vaapi|auto" default="auto"/>
+		<setting id="VDR_SOUND_SOFT" type="text" label="4117" values="" visible="eq(-2,0)" default="hw:0,0" />
+		<setting id="VDR_SOUND_XINE" type="text" label="4118" values="" visible="eq(-3,1)" default="auto" />
+		<setting id="VDR_SOFT_PARAM" type="text" label="4119" values="" visible="eq(-4,0)" default="" />
+		<setting id="VDR_XINE_PARAM" type="text" label="4120" values="" visible="eq(-5,1)" default="" />
     </category>
     <category label="3000">
 		<setting label="3100" type="lsep"/>
 		<setting type="sep" />
-		<setting id="WAIT_FOR_FEINIT" type="bool" label="3101" default="false" />
-		<setting id="NUM_ADAPTERS" type="slider" range="1,16" option="int" label="3102" default="1" visible="eq(-1,true)" />
-		<setting id="REMOVE_MODULES" type="text" label="3103" values="" default=""/>
+		<setting id="DVB_WAIT_FOR_FEINIT" type="bool" label="3101" default="false" />
+		<setting id="DVB_NUM_ADAPTERS" type="slider" range="1,16" option="int" label="3102" default="1" visible="eq(-1,true)" />
+		<setting id="DVB_REMOVE_MODULES" type="text" label="3103" values="" default=""/>
     </category>
 </settings>

@@ -48,6 +48,10 @@ msgctxt "#1106"
 msgid "- recdmd path"
 msgstr "- путь к команде записи"
 
+msgctxt "#1107"
+msgid "Debug"
+msgstr "Отладка"
+
 msgctxt "#1200"
 msgid "Commands"
 msgstr "Команды"
@@ -61,8 +65,8 @@ msgid "Execute frontend"
 msgstr "Запустить фронтенд"
 
 msgctxt "#2000"
-msgid "Plugins"
-msgstr "Плагины"
+msgid "Plugins - service"
+msgstr "Плагины - сервис"
 
 msgctxt "#2100"
 msgid "Plugin configuration for service"
@@ -160,90 +164,6 @@ msgctxt "#2123"
 msgid "- option"
 msgstr "- параметры"
 
-msgctxt "#2200"
-msgid "Plugin configuration for frontend"
-msgstr "Конфигурация плагинов для фронтенда"
-
-msgctxt "#2201"
-msgid "Enable plugin: femon"
-msgstr "Разрешить плагин: femon"
-
-msgctxt "#2202"
-msgid "Enable plugin: systeminfo"
-msgstr "Разрешить плагин: systeminfo"
-
-msgctxt "#2203"
-msgid "Enable plugin: sleeptimer"
-msgstr "Разрешить плагин: sleeptimer"
-
-msgctxt "#2204"
-msgid "Enable plugin: filebrowser"
-msgstr "Разрешить плагин: filebrowser"
-
-msgctxt "#2205"
-msgid "Enable plugin: lcdproc"
-msgstr "Разрешить плагин: lcdproc"
-
-msgctxt "#2206"
-msgid "Enable plugin: text2skin"
-msgstr "Разрешить плагин: text2skin"
-
-msgctxt "#2207"
-msgid "Enable plugin: skinnopacity"
-msgstr "Разрешить плагин: skinnopacity"
-
-msgctxt "#2208"
-msgid "Enable plugin: skinflat"
-msgstr "Разрешить плагин: skinflat"
-
-msgctxt "#2209"
-msgid "Enable plugin: skinflatplus"
-msgstr "Разрешить плагин: skinflatplus"
-
-msgctxt "#2210"
-msgid "Enable plugin: skindesigner"
-msgstr "Разрешить плагин: skindesigner"
-
-msgctxt "#2211"
-msgid "Enable plugin: menuorg"
-msgstr "Разрешить плагин: menuorg"
-
-msgctxt "#2212"
-msgid "Enable plugin: tvguide"
-msgstr "Разрешить плагин: tvguide"
-
-msgctxt "#2213"
-msgid "Enable plugin: tvscraper"
-msgstr "Разрешить плагин: tvscraper"
-
-msgctxt "#2214"
-msgid "Enable plugin: weatherforecast"
-msgstr "Разрешить плагин: weatherforecast"
-
-msgctxt "#2215"
-msgid "Video output plugin"
-msgstr "Плагин вывода видео"
-
-msgctxt "#2216"
-msgid "- video driver"
-msgstr "- видео драйвер"
-
-msgctxt "#2217"
-msgid "- soft audio device"
-msgstr "- soft аудио устройство"
-
-msgctxt "#2218"
-msgid "- xine audio device"
-msgstr "- xine аудио устройство"
-
-msgctxt "#2219"
-msgid "- soft params"
-msgstr "- soft параметры"
-
-msgctxt "#2220"
-msgid "- xine params"
-msgstr "- xine параметры"
-
 msgctxt "#3000"
 msgid "DVB"
 msgstr "DVB"
@@ -263,3 +183,91 @@ msgstr "Номера адаптеров"
 msgctxt "#3103"
 msgid "Unload DVB mudules before suspend"
 msgstr "Выгружать DVB модули перед засыпанием"
+
+msgctxt "#4000"
+msgid "Plugins - front"
+msgstr "Плагины - фронт"
+
+msgctxt "#4100"
+msgid "Plugin configuration for frontend"
+msgstr "Конфигурация плагинов для фронтенда"
+
+msgctxt "#4101"
+msgid "Enable plugin: femon"
+msgstr "Разрешить плагин: femon"
+
+msgctxt "#4102"
+msgid "Enable plugin: systeminfo"
+msgstr "Разрешить плагин: systeminfo"
+
+msgctxt "#4103"
+msgid "Enable plugin: sleeptimer"
+msgstr "Разрешить плагин: sleeptimer"
+
+msgctxt "#4104"
+msgid "Enable plugin: filebrowser"
+msgstr "Разрешить плагин: filebrowser"
+
+msgctxt "#4105"
+msgid "Enable plugin: lcdproc"
+msgstr "Разрешить плагин: lcdproc"
+
+msgctxt "#4106"
+msgid "Enable plugin: text2skin"
+msgstr "Разрешить плагин: text2skin"
+
+msgctxt "#4107"
+msgid "Enable plugin: skinnopacity"
+msgstr "Разрешить плагин: skinnopacity"
+
+msgctxt "#4108"
+msgid "Enable plugin: skinflat"
+msgstr "Разрешить плагин: skinflat"
+
+msgctxt "#4109"
+msgid "Enable plugin: skinflatplus"
+msgstr "Разрешить плагин: skinflatplus"
+
+msgctxt "#4110"
+msgid "Enable plugin: skindesigner"
+msgstr "Разрешить плагин: skindesigner"
+
+msgctxt "#4111"
+msgid "Enable plugin: menuorg"
+msgstr "Разрешить плагин: menuorg"
+
+msgctxt "#4112"
+msgid "Enable plugin: tvguide"
+msgstr "Разрешить плагин: tvguide"
+
+msgctxt "#4113"
+msgid "Enable plugin: tvscraper"
+msgstr "Разрешить плагин: tvscraper"
+
+msgctxt "#4114"
+msgid "Enable plugin: weatherforecast"
+msgstr "Разрешить плагин: weatherforecast"
+
+msgctxt "#4115"
+msgid "Video output plugin"
+msgstr "Плагин вывода видео"
+
+msgctxt "#4116"
+msgid "- video driver"
+msgstr "- видео драйвер"
+
+msgctxt "#4117"
+msgid "- soft audio device"
+msgstr "- soft аудио устройство"
+
+msgctxt "#4118"
+msgid "- xine audio device"
+msgstr "- xine аудио устройство"
+
+msgctxt "#4119"
+msgid "- soft params"
+msgstr "- soft параметры"
+
+msgctxt "#4120"
+msgid "- xine params"
+msgstr "- xine параметры"

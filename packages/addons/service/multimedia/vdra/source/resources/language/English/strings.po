@@ -48,6 +48,10 @@ msgctxt "#1106"
 msgid "- recdmd path"
 msgstr ""
 
+msgctxt "#1107"
+msgid "Debug"
+msgstr ""
+
 msgctxt "#1200"
 msgid "Commands"
 msgstr ""
@@ -61,7 +65,7 @@ msgid "Execute frontend"
 msgstr ""
 
 msgctxt "#2000"
-msgid "Plugins"
+msgid "Plugins - service"
 msgstr ""
 
 msgctxt "#2100"
@@ -160,90 +164,6 @@ msgctxt "#2123"
 msgid "- option"
 msgstr ""
 
-msgctxt "#2200"
-msgid "Plugin configuration for frontend"
-msgstr ""
-
-msgctxt "#2201"
-msgid "Enable plugin: femon"
-msgstr ""
-
-msgctxt "#2202"
-msgid "Enable plugin: systeminfo"
-msgstr ""
-
-msgctxt "#2203"
-msgid "Enable plugin: sleeptimer"
-msgstr ""
-
-msgctxt "#2204"
-msgid "Enable plugin: filebrowser"
-msgstr ""
-
-msgctxt "#2205"
-msgid "Enable plugin: lcdproc"
-msgstr ""
-
-msgctxt "#2206"
-msgid "Enable plugin: text2skin"
-msgstr ""
-
-msgctxt "#2207"
-msgid "Enable plugin: skinnopacity"
-msgstr ""
-
-msgctxt "#2208"
-msgid "Enable plugin: skinflat"
-msgstr ""
-
-msgctxt "#2209"
-msgid "Enable plugin: skinflatplus"
-msgstr ""
-
-msgctxt "#2210"
-msgid "Enable plugin: skindesigner"
-msgstr ""
-
-msgctxt "#2211"
-msgid "Enable plugin: menuorg"
-msgstr ""
-
-msgctxt "#2212"
-msgid "Enable plugin: tvguide"
-msgstr ""
-
-msgctxt "#2213"
-msgid "Enable plugin: tvscraper"
-msgstr ""
-
-msgctxt "#2214"
-msgid "Enable plugin: weatherforecast"
-msgstr ""
-
-msgctxt "#2215"
-msgid "Video output plugin"
-msgstr ""
-
-msgctxt "#2216"
-msgid "- video driver"
-msgstr ""
-
-msgctxt "#2217"
-msgid "- soft audio device"
-msgstr ""
-
-msgctxt "#2218"
-msgid "- xine audio device"
-msgstr ""
-
-msgctxt "#2219"
-msgid "- soft params"
-msgstr ""
-
-msgctxt "#2220"
-msgid "- xine params"
-msgstr ""
-
 msgctxt "#3000"
 msgid "DVB"
 msgstr ""
@@ -262,4 +182,92 @@ msgstr ""
 
 msgctxt "#3103"
 msgid "Unload DVB mudules before suspend"
+msgstr ""
+
+msgctxt "#4000"
+msgid "Plugins - front"
+msgstr ""
+
+msgctxt "#4100"
+msgid "Plugin configuration for frontend"
+msgstr ""
+
+msgctxt "#4101"
+msgid "Enable plugin: femon"
+msgstr ""
+
+msgctxt "#4102"
+msgid "Enable plugin: systeminfo"
+msgstr ""
+
+msgctxt "#4103"
+msgid "Enable plugin: sleeptimer"
+msgstr ""
+
+msgctxt "#4104"
+msgid "Enable plugin: filebrowser"
+msgstr ""
+
+msgctxt "#4105"
+msgid "Enable plugin: lcdproc"
+msgstr ""
+
+msgctxt "#4106"
+msgid "Enable plugin: text2skin"
+msgstr ""
+
+msgctxt "#4107"
+msgid "Enable plugin: skinnopacity"
+msgstr ""
+
+msgctxt "#4108"
+msgid "Enable plugin: skinflat"
+msgstr ""
+
+msgctxt "#4109"
+msgid "Enable plugin: skinflatplus"
+msgstr ""
+
+msgctxt "#4110"
+msgid "Enable plugin: skindesigner"
+msgstr ""
+
+msgctxt "#4111"
+msgid "Enable plugin: menuorg"
+msgstr ""
+
+msgctxt "#4112"
+msgid "Enable plugin: tvguide"
+msgstr ""
+
+msgctxt "#4113"
+msgid "Enable plugin: tvscraper"
+msgstr ""
+
+msgctxt "#4114"
+msgid "Enable plugin: weatherforecast"
+msgstr ""
+
+msgctxt "#4115"
+msgid "Video output plugin"
+msgstr ""
+
+msgctxt "#4116"
+msgid "- video driver"
+msgstr ""
+
+msgctxt "#4117"
+msgid "- soft audio device"
+msgstr ""
+
+msgctxt "#4118"
+msgid "- xine audio device"
+msgstr ""
+
+msgctxt "#4119"
+msgid "- soft params"
+msgstr ""
+
+msgctxt "#4120"
+msgid "- xine params"
 msgstr ""
