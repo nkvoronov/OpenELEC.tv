@@ -20,15 +20,18 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-# can be called from openelec addon.
-# ensure that environment is sane
 . /etc/profile
 
-if [ -f /storage/.cache/services/vdr-front.run ]; then
+oe_setup_addon service.multimedia.vdra
 
-    systemctl stop vdr-front.service;
+CONF_FILE="$ADDON_HOME/vdr-front.conf"
+RUN_FILE="$ADDON_HOME/vdr-front.run"
 
-    mv /storage/.cache/services/vdr-front.run /storage/.cache/services/vdr-front.conf
+if [ -f "$RUN_FILE" ]; then
+
+    systemctl stop service.multimedia.vdra-front.service;
+
+    mv $RUN_FILE $CONF_FILE
 
     case "$1" in
         -p) # poweroff
@@ -42,12 +45,12 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
         ;;
         -e) # exit to XBMC
 
-            if [ -f /storage/.cache/services/vdr.conf ]; then
-                systemctl start vdr.service;
+            if systemctl is-enabled service.multimedia.vdra.service &>/dev/null ; then
+        	systemctl start service.multimedia.vdra.service;
             fi
 
-            if [ -f /storage/.cache/services/tvheadend.conf ]; then
-                systemctl start tvheadend.service;
+            if systemctl is-enabled service.multimedia.tvheadenda.service &>/dev/null ; then
+        	systemctl start service.multimedia.tvheadenda.service;
             fi
 
             sleep 4

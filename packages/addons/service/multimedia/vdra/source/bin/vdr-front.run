@@ -20,18 +20,21 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-# can be called from openelec addon.
-# ensure that environment is sane
 . /etc/profile
 
-if [ -f /storage/.cache/services/vdr-front.conf ]; then
+oe_setup_addon service.multimedia.vdra
+
+CONF_FILE="$ADDON_HOME/vdr-front.conf"
+RUN_FILE="$ADDON_HOME/vdr-front.run"
+
+if [ -f "$CONF_FILE" ]; then
 
     systemctl stop kodi.service;
 
     systemctl restart lcdd.service;
 
-    mv /storage/.cache/services/vdr-front.conf /storage/.cache/services/vdr-front.run;
+    mv $CONF_FILE $RUN_FILE;
 
-    systemctl start vdr-front.service;
+    systemctl start service.multimedia.vdra-front;
 
 fi

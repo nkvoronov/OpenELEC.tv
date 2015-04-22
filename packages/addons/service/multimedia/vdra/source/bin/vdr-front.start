@@ -20,52 +20,69 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-# can be called from openelec addon.
-# ensure that environment is sane
 . /etc/profile
 
-LOG_VDR="/var/log/vdr.log"
-VDR_HOME="$HOME/.config/vdr"
-VDR_PLUGIN_DIR="/usr/lib/vdr"
-VDR_CACHE_DIR="$HOME/.cache/vdr"
+oe_setup_addon service.multimedia.vdra
+
+vdr_init() {
+
+    ADDON_CONFIG_DIR="$ADDON_HOME/config"
+    ADDON_PLUGIN_DIR="$ADDON_DIR/plugin"
+
+    chmod a+x $ADDON_DIR/bin/*
+    chmod a+x $ADDON_DIR/sleep.d/*
+
+    ADDON_CACHE_DIR="$ADDON_HOME/cache"
+    mkdir -p $ADDON_CACHE_DIR
+
+    cd $ADDON_DIR/config
+    mkdir -p $ADDON_CONFIG_DIR
+    mkdir -p "$VDR_VIDEO_DIR"
+
+    for dir in `find . -type d`; do
+	mkdir -p $ADDON_CONFIG_DIR/$dir
+    done
+
+    for config in `find . -type f`; do
+	if [ ! -f $ADDON_CONFIG_DIR/$config ]; then
+	    cp $config $ADDON_CONFIG_DIR/$config
+	fi
+    done
+
+    VDR_ARG="-g /tmp"
+
+}
 
 fix_config() {
-  if [ -f "$VDR_HOME/setup.conf" ]; then
-    sed -i -e '/^$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
-  fi
-  cat >>$VDR_HOME/setup.conf << MYDATA
-AlwaysSortFoldersFirst = 1
-SetSystemTime = 0
-epgsearch.SVDRPPort = 6419
-MYDATA
+
+    if [ -f "$VDR_HOME/setup.conf" ]; then
+	sed -i -e '/^$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
+    fi
+    cat >>$VDR_HOME/setup.conf << MYDATA
+    AlwaysSortFoldersFirst = 1
+    SetSystemTime = 0
+    epgsearch.SVDRPPort = 6419
+    MYDATA
 }
 
 stop_tv_backend() {
-    if systemctl is-active vdr.service &>/dev/null ; then
-        systemctl stop vdr.service
+
+    if systemctl is-active service.multimedia.vdra.service &>/dev/null ; then
+        systemctl stop service.multimedia.vdra.service
     fi
 
-    if systemctl is-active tvheadend.service &>/dev/null ; then
-        systemctl stop tvheadend.service
+    if systemctl is-active service.multimedia.tvheadenda.service &>/dev/null ; then
+        systemctl stop service.multimedia.tvheadenda.service
     fi
 }
 
 init_vdr_plugins() {
 
-    if [ ! -f "VDR_CACHE_DIR" ]; then
-        mkdir -p $VDR_CACHE_DIR
-    fi
-
-    mkdir -p $VDR_HOME
-    mkdir -p "$VDR_VIDEO_DIR"
-
-    VDR_ARG="-g /tmp"
-
-    if [ "$DEBUG" = "yes" ]; then
+    if [ "$VDR_DEBUG" = "yes" ]; then
         VDR_ARG="$VDR_ARG --log=3"
     else
         VDR_ARG="$VDR_ARG --log=1"
@@ -73,11 +90,7 @@ init_vdr_plugins() {
 
     LIRC_PATH="/run/lirc/lircd"
 
-    if [ "$VDR_FRONT" != "none" ] ; then
-	VDR_ARG="$VDR_ARG -s /usr/bin/vdrpoweroff --vfat --watchdog=60 --lirc=$LIRC_PATH"
-    else
-	VDR_ARG="$VDR_ARG --no-kbd"
-    fi
+    VDR_ARG="$VDR_ARG -s /usr/bin/vdrpoweroff --vfat --watchdog=60 --lirc=$LIRC_PATH"
 
     SVDRP_PORT=0
 
@@ -87,10 +100,10 @@ init_vdr_plugins() {
     fi
 
     VDR_ARG="$VDR_ARG --port=$SVDRP_PORT"
-    VDR_ARG="$VDR_ARG --config=$VDR_HOME"
-    VDR_ARG="$VDR_ARG --resdir=$VDR_HOME"
-    VDR_ARG="$VDR_ARG --cachedir=$VDR_CACHE_DIR"
-    VDR_ARG="$VDR_ARG --lib=$VDR_PLUGIN_DIR"
+    VDR_ARG="$VDR_ARG --config=$ADDON_CONFIG_DIR"
+    VDR_ARG="$VDR_ARG --resdir=$ADDON_CONFIG_DIR"
+    VDR_ARG="$VDR_ARG --cachedir=$ADDON_CACHE_DIR"
+    VDR_ARG="$VDR_ARG --lib=$ADDON_PLUGIN_DIR"
     VDR_ARG="$VDR_ARG --video=\"$VDR_VIDEO_DIR\""
 
     if [ "$VDR_ENABLE_EXTERNAL_RECCMD" == "true" ] ; then
@@ -107,7 +120,7 @@ init_vdr_plugins() {
 
     # keep softcam first
     if [ "$VDR_ENABLE_SOFTCAM" == "true" ] ; then
-        VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPT'"
+        VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPTION'"
     fi
 
     if [ "$VDR_ENABLE_WIRBELSCAN" == "true" ] ; then
@@ -119,7 +132,7 @@ init_vdr_plugins() {
     fi
 
     if [ "$VDR_ENABLE_UPNP" == "true" ] ; then
-        VDR_UPNP_DB_DIR="$VDR_HOME/plugins/upnp"
+        VDR_UPNP_DB_DIR="$ADDON_CONFIG_DIR/plugins/upnp"
         mkdir -p $VDR_UPNP_DB_DIR
         VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_UPNP_DB_DIR'"
     fi
@@ -161,31 +174,31 @@ init_vdr_plugins() {
     fi
 
     if [ "$VDR_ENABLE_XMLTV2VDR" == "true" ] ; then
-        VDR_ARG="$VDR_ARG -P 'xmltv2vdr --epgfile=$VDR_CACHE_DIR/epg.db'"
-        # xmltv2vdr needs /var/run/vdr
-        grep -q " /var/run/vdr " /proc/mounts || ( mkdir -p /var/run/vdr && mount -t tmpfs -o size=10% tmpfs /var/run/vdr )
-        #handle epgsources
-        mkdir -p /var/lib/epgsources
-        mkdir -p $HOME/epgsources
-        for source in `find $VDR_HOME/epgsources -type f`; do
-            if [ ! -e $HOME/epgsources/`basename $source` ] ; then
-                cp $source $HOME/epgsources/
-            fi
-        done
-        for source in `find $HOME/epgsources -type f`; do
-            cp $source /var/lib/epgsources
-        done
+	VDR_ARG="$VDR_ARG -P 'xmltv2vdr --epgfile=$ADDON_CACHE_DIR/epg.db'"
+	# xmltv2vdr needs /var/run/vdr
+	grep -q " /var/run/vdr " /proc/mounts || ( mkdir -p /var/run/vdr && mount -t tmpfs -o size=10% tmpfs /var/run/vdr )
+	#handle epgsources
+	mkdir -p /var/lib/epgsources
+	mkdir -p $ADDON_HOME/config/epgsources
+	for source in `find $ADDON_DIR/config/epgsources -type f`; do
+	    if [ ! -e $ADDON_HOME/config/epgsources/`basename $source` ] ; then
+    		cp $source $ADDON_HOME/config/epgsources/
+	    fi
+	done
+	for source in `find $ADDON_HOME/config/epgsources -type f`; do
+	    cp $source /var/lib/epgsources
+	done
     fi
 
     if [ "$VDR_ENABLE_RESTFULAPI" == "true" ] ; then
 	VDR_RESTFULAPI_ARGS="--ip $VDR_RESTFULAPI_IP --port $VDR_RESTFULAPI_PORT"
-        VDR_RESTFULAPI_EPGIMAGES="$VDR_HOME/plugins/restfulapi/epgimages"
+        VDR_RESTFULAPI_EPGIMAGES="$ADDON_CONFIG_DIR/plugins/restfulapi/epgimages"
 	mkdir -p $VDR_RESTFULAPI_EPGIMAGES
 	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --epgimages=\"$VDR_RESTFULAPI_EPGIMAGES\""
-        VDR_RESTFULAPI_CHANNELLOGOS="$VDR_HOME/plugins/restfulapi/channellogos"
+        VDR_RESTFULAPI_CHANNELLOGOS="$ADDON_CONFIG_DIR/plugins/restfulapi/channellogos"
 	mkdir -p $VDR_RESTFULAPI_CHANNELLOGOS
 	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --channellogos=\"$VDR_RESTFULAPI_CHANNELLOGOS\""
-        VDR_RESTFULAPI_WEBAPP="$VDR_HOME/plugins/restfulapi/webapp"
+        VDR_RESTFULAPI_WEBAPP="$ADDON_CONFIG_DIR/plugins/restfulapi/webapp"
         mkdir -p $VDR_RESTFULAPI_WEBAPP
         VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --webapp=\"$VDR_RESTFULAPI_WEBAPP\""
 	VDR_ARG="$VDR_ARG -P 'restfulapi $VDR_RESTFULAPI_ARGS'"
@@ -199,7 +212,7 @@ init_vdr_front_plugins() {
     fi
 
     if [ "$VDR_ENABLE_SYSTEMINFO" == "true" ]; then
-       VDR_SYSTEMINFO_SCRIPT="$VDR_HOME/plugins/systeminfo/systeminfo.sh"
+       VDR_SYSTEMINFO_SCRIPT="$ADDON_CONFIG_DIR/plugins/systeminfo/systeminfo.sh"
        VDR_ARG="$VDR_ARG -P 'systeminfo -s $VDR_SYSTEMINFO_SCRIPT'"
     fi
 
@@ -279,7 +292,7 @@ init_vdr_xine() {
     init_vdr_plugins
     init_vdr_front_plugins
 
-    VDR_XINE_CONFIG="$HOME/.config/xine/config_xineliboutput"
+    VDR_XINE_CONFIG="$/xine/config_xineliboutput"
     
     if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
         VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
@@ -290,15 +303,13 @@ init_vdr_xine() {
     fi
 }
 
-if [ -f /storage/.cache/services/vdr-front.run ]; then
+RUN_FILE="$ADDON_HOME/vdr-front.run"
 
-    . /storage/.cache/services/vdr-front.run
-
-    if [ -f /storage/.cache/services/dvb.conf ]; then
-       . /storage/.cache/services/dvb.conf
-    fi
+if [ -f "$RUN_FILE" ]; then
     
     echo  "Starting vdr frontend ..."
+
+    vdr_init
     
     stop_tv_backend
 
@@ -333,5 +344,7 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
 
     fix_config
 
-    eval DISPLAY=:0.0 LANG=en_US.UTF-8 VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE" exec vdr.bin $VDR_ARG &>$LOG_VDR
+    export LD_LIBRARY_PATH=$ADDON_DIR/lib
+
+    eval DISPLAY=:0.0 LANG=en_US.UTF-8 VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE" exec vdr.bin $VDR_ARG &>$ADDON_LOG_FILE
 fi

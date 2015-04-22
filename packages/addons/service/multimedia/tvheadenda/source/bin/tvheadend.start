@@ -22,7 +22,6 @@
 
 oe_setup_addon service.multimedia.tvheadenda
 
-
 TVHEADEND_CONF="$ADDON_HOME/config"
 DVR_DIR="$HOME/recordings"
 TIMESHIFT_DIR="$ADDON_HOME/cache/timeshift"

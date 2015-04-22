@@ -20,31 +20,14 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-# can be called from openelec addon.
-# ensure that environment is sane
 . /etc/profile
 
-LOG_VDR="/var/log/vdr.log"
-VDR_HOME="$HOME/.config/vdr"
-VDR_PLUGIN_DIR="/usr/lib/vdr"
-VDR_CACHE_DIR="$HOME/.cache/vdr"
+vdr_init() {
 
-fix_config() {
-  if [ -f "$VDR_HOME/setup.conf" ]; then
-    sed -i -e '/^$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
-  fi
-  cat >>$VDR_HOME/setup.conf << MYDATA
-AlwaysSortFoldersFirst = 1
-SetSystemTime = 0
-epgsearch.SVDRPPort = 6419
-MYDATA
-}
-
-init_vdr_plugins() {
+    LOG_VDR="/var/log/vdr.log"
+    VDR_HOME="$HOME/.config/vdr"
+    VDR_PLUGIN_DIR="/usr/lib/vdr"
+    VDR_CACHE_DIR="$HOME/.cache/vdr"
 
     if [ ! -f "VDR_CACHE_DIR" ]; then
         mkdir -p $VDR_CACHE_DIR
@@ -56,6 +39,26 @@ init_vdr_plugins() {
     VDR_FRONT="none"
 
     VDR_ARG="-g /tmp"
+
+}
+
+fix_config() {
+
+    if [ -f "$VDR_HOME/setup.conf" ]; then
+	sed -i -e '/^$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
+    fi
+    cat >>$VDR_HOME/setup.conf << MYDATA
+    AlwaysSortFoldersFirst = 1
+    SetSystemTime = 0
+    epgsearch.SVDRPPort = 6419
+    MYDATA
+}
+
+init_vdr_plugins() {
 
     if [ "$DEBUG" = "yes" ]; then
         VDR_ARG="$VDR_ARG --log=3"
@@ -195,7 +198,9 @@ if [ -f /storage/.cache/services/vdr.conf ]; then
        . /storage/.cache/services/dvb.conf
     fi
 
-    echo  "Starting vdr server ..."
+    echo  "Starting vdr service ..."
+
+    vdr_init
 	
     init_vdr_plugins
 
