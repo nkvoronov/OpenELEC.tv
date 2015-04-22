@@ -20,8 +20,8 @@
 ################################################################################
 
 PKG_NAME="oscam-service"
-PKG_VERSION="10649"
-PKG_REV="18"
+PKG_VERSION="10651"
+PKG_REV="20"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.streamboard.tv/oscam/wiki"
@@ -45,7 +45,7 @@ makeinstall_target() {
 }
 
 post_install() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10649
+  OSCAM_DIR=$ROOT/$BUILD/oscam-10651
 
   mkdir -p $INSTALL/usr/bin
     cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $INSTALL/usr/bin

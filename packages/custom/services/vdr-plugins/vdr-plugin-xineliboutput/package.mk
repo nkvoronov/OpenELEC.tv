@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-xineliboutput"
-PKG_VERSION="fd21e7a"
+PKG_VERSION="fa97b86"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
