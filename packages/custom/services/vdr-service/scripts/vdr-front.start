@@ -20,31 +20,44 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-# can be called from openelec addon.
-# ensure that environment is sane
 . /etc/profile
 
-LOG_VDR="/var/log/vdr.log"
-VDR_HOME="$HOME/.config/vdr"
-VDR_PLUGIN_DIR="/usr/lib/vdr"
-VDR_CACHE_DIR="$HOME/.cache/vdr"
+vdr_init() {
+
+    LOG_VDR="/var/log/vdr.log"
+    VDR_HOME="$HOME/.config/vdr"
+    VDR_PLUGIN_DIR="/usr/lib/vdr"
+    VDR_CACHE_DIR="$HOME/.cache/vdr"
+
+    if [ ! -f "VDR_CACHE_DIR" ]; then
+        mkdir -p $VDR_CACHE_DIR
+    fi
+
+    mkdir -p $VDR_HOME
+    mkdir -p "$VDR_VIDEO_DIR"
+
+    VDR_ARG="-g /tmp"
+
+}
 
 fix_config() {
-  if [ -f "$VDR_HOME/setup.conf" ]; then
-    sed -i -e '/^$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
-    sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
-  fi
-  cat >>$VDR_HOME/setup.conf << MYDATA
-AlwaysSortFoldersFirst = 1
-SetSystemTime = 0
-epgsearch.SVDRPPort = 6419
-MYDATA
+
+    if [ -f "$VDR_HOME/setup.conf" ]; then
+	sed -i -e '/^$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
+	sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
+    fi
+    cat >>$VDR_HOME/setup.conf << MYDATA
+    AlwaysSortFoldersFirst = 1
+    SetSystemTime = 0
+    epgsearch.SVDRPPort = 6419
+    MYDATA
 }
 
 stop_tv_backend() {
+
     if systemctl is-active vdr.service &>/dev/null ; then
         systemctl stop vdr.service
     fi
@@ -55,15 +68,6 @@ stop_tv_backend() {
 }
 
 init_vdr_plugins() {
-
-    if [ ! -f "VDR_CACHE_DIR" ]; then
-        mkdir -p $VDR_CACHE_DIR
-    fi
-
-    mkdir -p $VDR_HOME
-    mkdir -p "$VDR_VIDEO_DIR"
-
-    VDR_ARG="-g /tmp"
 
     if [ "$DEBUG" = "yes" ]; then
         VDR_ARG="$VDR_ARG --log=3"
@@ -161,7 +165,7 @@ init_vdr_plugins() {
     fi
 
     if [ "$VDR_ENABLE_XMLTV2VDR" == "true" ] ; then
-        VDR_ARG="$VDR_ARG -P 'xmltv2vdr --epgfile=$VDR_CACHE_DIR/epg.db'"
+	VDR_ARG="$VDR_ARG -P 'xmltv2vdr --epgfile=$VDR_CACHE_DIR/epg.db'"
         # xmltv2vdr needs /var/run/vdr
         grep -q " /var/run/vdr " /proc/mounts || ( mkdir -p /var/run/vdr && mount -t tmpfs -o size=10% tmpfs /var/run/vdr )
         #handle epgsources
@@ -299,6 +303,8 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
     fi
     
     echo  "Starting vdr frontend ..."
+
+    vdr_init
     
     stop_tv_backend
 

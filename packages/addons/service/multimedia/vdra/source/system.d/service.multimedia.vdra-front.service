@@ -1,10 +1,10 @@
 [Unit]
 Description=vdr-front
-ConditionPathExists=|/storage/.cache/services/vdr-front.run
+ConditionPathExists=|/storage/.kodi/userdata/addon_data/service.multimedia.vdra/vdr-front.run
 After=multi-user.target
 
 [Service]
-EnvironmentFile=-/storage/.cache/services/vdr-front.run
+EnvironmentFile=-/storage/.kodi/userdata/addon_data/service.multimedia.vdra/vdr-front.run
 ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.multimedia.vdra/bin/vdr-front.start"
 KillMode=process
 TimeoutStopSec=5
