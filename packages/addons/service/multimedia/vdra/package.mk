@@ -505,6 +505,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb.so.1.1.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb.so.1
       cp -PR $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $LIBXCBUTIL_DIR/.install_pkg/usr/lib/libxcb-util.* $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -PR $LIBXCBUTILIMAGE_DIR/.install_pkg/usr/lib/libxcb-image.* $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -679,12 +680,12 @@ addon() {
       cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib
       ln -s libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
       ln -s libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/themes
-      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/themes
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/skindesigner
-      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/dtd $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/skindesigner
-      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/skins $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/skindesigner
-      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/scripts $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/skindesigner
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/dtd $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/skins $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/skindesigner
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/scripts $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/skindesigner
     for fmo in `ls $VDR_PLUGIN_SKINDESINGER_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
@@ -705,8 +706,8 @@ addon() {
     if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
       VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-36f7ac9
       cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/weatherforecast
-        cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/templates $ADDON_BUILD/$PKG_ADDON_ID/config/vdr/plugins/weatherforecast
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/weatherforecast
+        cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/templates $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/weatherforecast
       for fmo in `ls $VDR_PLUGIN_WEATHERFORECAST_DIR/po/*.mo`;do
         fname=`basename $fmo .mo`
         mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname

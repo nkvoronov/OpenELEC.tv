@@ -24,14 +24,15 @@
 
 oe_setup_addon service.multimedia.vdra
 
-ENBL_FILE="$ADDON_HOME/vdr-front.enable"
-RUN_FILE="$ADDON_HOME/vdr-front.run"
+VDR_FRONT_RUN_FILE="$ADDON_HOME/vdr-front.run"
 
-if [ -f "$RUN_FILE" ]; then
+if [ -f "$VDR_FRONT_RUN_FILE" ]; then
 
-    systemctl stop service.multimedia.vdra-front.service;
+    systemctl stop service.multimedia.vdra.service;
+    
+    echo "Stop VDR ..."
 
-    mv $RUN_FILE $ENBL_FILE
+    rm $VDR_FRONT_RUN_FILE
 
     case "$1" in
         -p) # poweroff

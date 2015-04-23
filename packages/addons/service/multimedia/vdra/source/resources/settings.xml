@@ -14,10 +14,6 @@
     		<setting id="VDR_EXTERNAL_RECCMD_PATH" type="file" label="1106" visible="!eq(-1,false)" default="" />
 		<setting type="sep" />
 		<setting id="VDR_DEBUG" type="bool" label="1107" default="false" />
-		<setting label="1200" type="lsep"/>
-		<setting type="sep" />
-		<setting id="VDR_COMMAND_SERVICE" label="1201" type="text" default=""/>
-		<setting id="VDR_COMMAND_FRONTEND" label="1202" type="text" default="/usr/bin/vdr-front.run"/>
     </category>
     <category label="2000">
 		<setting label="2100" type="lsep"/>
