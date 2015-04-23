@@ -24,16 +24,16 @@
 
 oe_setup_addon service.multimedia.vdra
 
-CONF_FILE="$ADDON_HOME/vdr-front.conf"
+ENBL_FILE="$ADDON_HOME/vdr-front.enable"
 RUN_FILE="$ADDON_HOME/vdr-front.run"
 
-if [ -f "$CONF_FILE" ]; then
+if [ -f "$ENBL_FILE" ]; then
 
     systemctl stop kodi.service;
 
     systemctl restart lcdd.service;
 
-    mv $CONF_FILE $RUN_FILE;
+    mv $ENBL_FILE $RUN_FILE;
 
     systemctl start service.multimedia.vdra-front;
 

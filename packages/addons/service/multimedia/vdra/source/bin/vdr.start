@@ -194,9 +194,9 @@ init_vdr_plugins() {
 
 }
 
-CONF_FILE="$ADDON_HOME/vdr.conf"
+ENBL_FILE="$ADDON_HOME/vdr.enable"
 
-if [ -f "$CONF_FILE" ]; then
+if [ -f "$ENBL_FILE" ]; then
 
     echo  "Starting vdr service ..."
 
