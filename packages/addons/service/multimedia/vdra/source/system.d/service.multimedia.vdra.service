@@ -1,8 +1,10 @@
 [Unit]
 Description=vdr
+ConditionPathExists=|/storage/.kodi/userdata/addon_data/service.multimedia.vdra/vdr.enable
 After=graphical.target
 
 [Service]
+EnvironmentFile=-/storage/.kodi/userdata/addon_data/service.multimedia.vdra/vdr.enable
 ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.multimedia.vdra/bin/vdr.start"
 TimeoutStopSec=2
 Restart=always

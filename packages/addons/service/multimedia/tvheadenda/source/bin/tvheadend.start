@@ -49,7 +49,7 @@ if [ "$TVHEADEND_BACKUP" != "true" ] ; then
   TVHEADEND_ARG="$TVHEADEND_ARG -B"
 fi
 
-if [ "$DEBUG" = "yes" ]; then
+if [ "$TVHEADEND_DEBUG" = "true" ]; then
   TVHEADEND_ARG="$TVHEADEND_ARG -C -s -u root -g video -c $TVHEADEND_CONF"
 else
   TVHEADEND_ARG="$TVHEADEND_ARG -C -u root -g video -c $TVHEADEND_CONF"

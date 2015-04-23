@@ -36,6 +36,10 @@ msgctxt "#1103"
 msgid "Preload capmt_ca.so library"
 msgstr ""
 
+msgctxt "#1104"
+msgid "Debug"
+msgstr ""
+
 msgctxt "#2000"
 msgid "XMLTV"
 msgstr ""
