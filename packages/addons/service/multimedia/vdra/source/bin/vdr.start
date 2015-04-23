@@ -63,10 +63,11 @@ fix_config() {
 	sed -i -e '/^Font.*$/d' $ADDON_CONFIG_DIR/setup.conf
     fi
     cat >>$ADDON_CONFIG_DIR/setup.conf << MYDATA
-    AlwaysSortFoldersFirst = 1
-    SetSystemTime = 0
-    epgsearch.SVDRPPort = 6419
-    MYDATA
+AlwaysSortFoldersFirst = 1
+SetSystemTime = 0
+epgsearch.SVDRPPort = 6419
+MYDATA
+
 }
 
 init_vdr_plugins() {

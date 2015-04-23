@@ -63,10 +63,11 @@ fix_config() {
 	sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
     fi
     cat >>$VDR_HOME/setup.conf << MYDATA
-    AlwaysSortFoldersFirst = 1
-    SetSystemTime = 0
-    epgsearch.SVDRPPort = 6419
-    MYDATA
+AlwaysSortFoldersFirst = 1
+SetSystemTime = 0
+epgsearch.SVDRPPort = 6419
+MYDATA
+
 }
 
 stop_tv_backend() {
