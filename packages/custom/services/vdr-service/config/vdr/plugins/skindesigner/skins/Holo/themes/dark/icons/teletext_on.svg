@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="113.35"
+   height="113.86"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="teletext_on.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="-187.06548"
+     inkscape:cy="371.8166"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="836"
+     inkscape:window-height="983"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-7.3243039,-931.43178)">
+    <g
+       id="g2985"
+       transform="translate(-218.83483,91.123796)">
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         ry="7.2126875"
+         y="-339.51053"
+         x="884.797"
+         height="113.35139"
+         width="24.646446"
+         id="rect3093-5"
+         style="fill:#1a1a1a" />
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         ry="7.2126622"
+         y="-339.51038"
+         x="840.30878"
+         height="113.351"
+         width="24.646446"
+         id="rect3093"
+         style="fill:#1a1a1a" />
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         ry="7.2126622"
+         y="-339.51013"
+         x="929.52155"
+         height="113.351"
+         width="24.646446"
+         id="rect3093-5-6"
+         style="fill:#1a1a1a" />
+    </g>
+  </g>
+</svg>

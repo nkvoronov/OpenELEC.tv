@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE displayvolume SYSTEM "../../../dtd/displayvolume.dtd">
+
+<displayvolume x="0" y="0" width="100%" height="100%" fadetime="0">
+    <background>
+      <area x="{areawidth}*0.2" y="{areaheight}*0.69" width="60%" height="8%" layer="1">
+        <fill color="{clrMessBack}" />
+        <drawellipse x="0" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-2"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.05" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-1"/>
+        <drawellipse x="0" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-3"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.05" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-4"/>
+      </area>
+    </background>
+
+    <volume>
+      <area x="20%" y="69%" width="60%" height="4%" layer="2">
+        <drawtext valign="center" align="center" width="100%" font="{regular}" fontsize="90%" color="{clrText}" text="{tr(volume)}" />
+        <drawrectangle condition="not{mute}" x="0" y="94%" height="6%" width="100%" color="{clrMessInfo}" />
+        <drawrectangle condition="{mute}" x="0" y="94%" height="6%" width="100%" color="{clrMessError}" />
+      </area>
+        <area x="20%" y="73%" width="60%" height="4%" layer="2">
+           <drawrectangle x="0" y="0" valign="center" width="{areawidth}" height="{areaheight}*0.05625" color="{clrText2}" />
+           <drawrectangle condition="not{mute}" x="0" y="0" valign="center" width="{areawidth}/{maxvolume}*{volume}" height="11%" color="{clrSpacer}" />
+           <drawellipse condition="not{mute}" x="{areawidth}/{maxvolume}*{volume}-{areaheight}*0.4" y="0" valign="center" width="{areaheight}*0.4" height="{areaheight}*0.4" color="{clrSpacer}" quadrant="0"/>
+        </area>
+    </volume>
+</displayvolume>

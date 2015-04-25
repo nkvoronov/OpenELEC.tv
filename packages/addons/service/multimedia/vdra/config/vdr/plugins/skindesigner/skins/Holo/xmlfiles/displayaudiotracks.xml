@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE displayaudiotracks SYSTEM "../../../dtd/displayaudiotracks.dtd">
+
+<displayaudiotracks x="0" y="0" width="100%" height="100%" fadetime="{fadeTime}">
+    <background>
+        <!-- Header -->
+        <area x="0" y="{areaheight}-{areaheight}*0.16-{areaheight}*{numtracks}*0.04" width="18%" height="{areaheight}*0.04" layer="1">
+            <fill color="{clrMessBack}" />
+            <drawellipse x="0" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-2"/>
+            <drawellipse x="{areawidth} - {areaheight}*0.05" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-1"/>
+            <drawrectangle x="0" y="97%" height="3%" width="100%" color="{clrSpacer}" />
+        </area>
+        <!-- Main -->
+        <area x="0" y="{areaheight}-{areaheight}*0.12-{areaheight}*{numtracks}*0.04" width="18%" height="{numtracks}*{areaheight}*0.04+{areaheight}*0.12" layer="1">
+            <fill color="{clrMessBack}" />
+        </area>
+        <!-- Footer -->
+        <area x="0" y="{areaheight}-{areaheight}*0.04" width="18%" height="{areaheight}*0.04" layer="1">
+            <fill color="{clrMessBack}" />
+            <drawellipse x="0" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-3"/>
+            <drawellipse x="{areawidth} - {areaheight}*0.05" y="{areaheight} - {areaheight}*0.5" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-4"/>
+        </area>
+    </background>
+
+    <header>
+        <area x="0" y="{areaheight}-{areaheight}*0.16-{areaheight}*{numtracks}*0.04" width="18%" height="{areaheight}*0.04" layer="2">
+            <drawtext x="{areaheight}*0.5" width="50%" valign="center" font="{regular}" fontsize="100%" color="{clrText}" text="{title}" />
+        </area>
+    </header>
+
+    <menuitems x="0" y="{areaheight}-{areaheight}*0.08-{areaheight}*{numelements}*0.04" orientation="vertical" width="18%" height="{numelements}*{areaheight}*0.04" align="top" numlistelements="{numelements}">
+        <listelement>
+            <area x="0" width="100%" layer="1">
+                <fill condition="{current}" color="{clrSpacer}" />
+            </area>
+            <area x="0%" width="100%" layer="2">
+                <drawtext condition="{current}" x="{areaheight}*0.5" width="{areawidth}-{areaheight}*0.5" valign="center" font="{regular}" fontsize="100%" color="{clrTextSelected}" text="{title}" />
+                <drawtext condition="not{current}" x="{areaheight}*0.5" width="{areawidth}-{areaheight}*0.5" valign="center" font="{regular}" fontsize="100%" color="{clrText}" text="{title}" />
+            </area>
+        </listelement>
+    </menuitems>
+</displayaudiotracks>

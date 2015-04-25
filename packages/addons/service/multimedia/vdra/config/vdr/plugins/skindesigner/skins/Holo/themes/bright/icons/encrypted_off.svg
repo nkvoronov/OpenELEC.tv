@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="23.59375"
+   height="12"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="encrypted_on.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8"
+     inkscape:cx="18.19298"
+     inkscape:cy="43.981779"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1680"
+     inkscape:window-height="988"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-379.42856,-726.36218)">
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="M 10.96875,2 C 7.6784957,2 5,4.6886681 5,8 c 0,3.311332 2.6784957,6 5.96875,6 2.375152,0 4.386876,-1.413771 5.34375,-3.4375 l 4.34375,0 0.875,-0.875 4.90625,0 2.15625,-2.15625 -2.0625,-2.0625 -10.1875,0 C 15.394991,3.4237442 13.359325,2 10.96875,2 z m 0,3.125 0,3 0,3 c -2.1924497,0 -3.9687499,-1.3402718 -3.96875,-3 -1e-7,-1.6597282 1.7763003,-3 3.96875,-3 z"
+       transform="translate(374.42856,724.36218)"
+       id="path2996"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
