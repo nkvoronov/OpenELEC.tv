@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE globals SYSTEM "../../../../dtd/globals.dtd">
+<globals>
+    <colors>
+      <color name="clrBack">FFE6E6E6</color>
+      <color name="clrMessBack">FFE6E6E6</color>
+      <color name="clrSpacer">FF36ADDA</color>
+      <color name="clrText">FF000000</color>
+      <color name="clrText2">FF333333</color>
+      <color name="clrTextSelected">FFFFFFFF</color>
+      <color name="clrMark">FFFF0000</color>
+      <color name="clrTransparent">00000000</color>
+      <color name="clrMessInfo">FF000080</color>
+      <color name="clrMessWarn">FF808000</color>
+      <color name="clrMessError">FF800000</color>
+      <color name="clrMessStatus">FF008000</color>
+    </colors>
+</globals>

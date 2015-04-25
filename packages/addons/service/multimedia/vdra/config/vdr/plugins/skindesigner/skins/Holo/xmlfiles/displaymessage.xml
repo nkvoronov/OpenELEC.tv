@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE displaymessage SYSTEM "../../../dtd/displaymessage.dtd">
+
+<displaymessage x="0" y="0" width="100%" height="100%" fadetime="0">
+    <background>
+      <area x="{areawidth}*0.2" y="{areaheight}*0.69" width="60%" height="8%" layer="7">
+        <fill color="{clrMessBack}" />
+        <drawellipse x="0" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-2"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.05" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-1"/>
+        <drawellipse x="0" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-3"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.05" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-4"/>
+      </area>
+    </background>
+
+    <message>
+      <area condition="{error}" x="20%" y="69%" width="60%" height="8%" layer="7">
+        <drawtext y="1%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrMessError}" text="{tr(error)}" />
+        <drawtext y="51%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrText}" text="{text}" />
+        <drawrectangle x="0" y="48%" height="3%" width="100%" color="{clrMessError}" />
+      </area>
+
+      <area condition="{info}" x="20%" y="69%" width="60%" height="8%" layer="7">
+        <drawtext y="1%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrMessInfo}" text="{tr(info)}" />
+        <drawtext y="51%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrText}" text="{text}" />
+        <drawrectangle x="0" y="49%" height="3%" width="100%" color="{clrMessInfo}" />
+      </area>
+
+      <area condition="{status}" x="20%" y="69%" width="60%" height="8%" layer="7">
+        <drawtext y="1%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrMessStatus}" text="{tr(status)}" />
+        <drawtext y="51%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrText}" text="{text}" />
+        <drawrectangle x="0" y="49%" height="3%" width="100%" color="{clrMessStatus}" />
+      </area>
+
+      <area condition="{warning}" x="20%" y="69%" width="60%" height="8%" layer="7">
+        <drawtext y="1%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrMessWarn}" text="{tr(warning)}" />
+        <drawtext y="51%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrText}" text="{text}" />
+        <drawrectangle x="0" y="49%" height="3%" width="100%" color="{clrMessWarn}" />
+      </area>
+    </message>
+</displaymessage>

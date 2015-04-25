@@ -1,32 +1,17 @@
-# -*- coding: utf-8 -*-
-# Licence: GPL v.3 http://www.gnu.org/licenses/gpl.html
-
-import sys
-import os
-import xbmc
-import xbmcaddon
-
-# Script constants
-__settings__      = xbmcaddon.Addon(id = 'script.vdr.front')
-__addon__      = xbmcaddon.Addon('script.vdr.front')
-__cwd__           = __settings__.getAddonInfo('path')
-__resources_lib__ = xbmc.translatePath(os.path.join(__cwd__, 'resources', 'lib'))
-sys.path.append(__resources_lib__)
-import functions
-
-type = __addon__.getSetting("VDR_TYPE")
-
-functions.dbg_log('vdr type', ' type [%s]' % type)
-
-if (__name__ == "__main__"):
-    if type == 'frontend':
-        functions.run_vdr_front(1)
-        functions.set_vdr_conf(0)
-    if type == 'service':
-        functions.run_vdr(1)
-        functions.set_vdr_front_conf(0)
-    if type == 'all':
-        functions.run_vdr(1)
-        functions.run_vdr_front(1)
-
-	    
+################################################################################
+#      This file is part of OpenELEC - http://www.openelec.tv
+#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#
+#  OpenELEC is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  OpenELEC is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
+################################################################################

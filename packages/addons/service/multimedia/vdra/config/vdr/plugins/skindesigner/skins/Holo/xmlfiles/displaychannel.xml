@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE displaychannel SYSTEM "../../../dtd/displaychannel.dtd">
+
+<displaychannel x="0" y="0" width="100%" height="100%" fadetime="{fadeTime}">
+    <background>
+      <area x="0" y="82%" width="100%" height="18%" layer="1">
+        <fill color="{clrBack}" />
+        <!-- Separator: Header-Main -->
+        <drawrectangle x="0" y="22%" height="2%" width="100%" color="{clrSpacer}" />
+        <!-- Separator: Main-Footer -->
+        <drawrectangle x="5%" y="78%" height="1%" width="90%" color="{clrText2}" />
+        <!-- Rounded corners -->
+        <drawellipse x="0" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-2"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.05" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-1"/>
+        <drawellipse x="0" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-3"/>
+         <drawellipse x="{areawidth} - {areaheight}*0.05" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-4"/>
+      </area>
+      <!-- Fake colorbuttons -->
+      <area x="5%" y="96%" width="90%" height="4%" layer="2">
+        <drawimage name="red" x="0" imagetype="icon" path="ButtonRed" width="{areaheight}*0.75" height="{areaheight}*0.75" valign="center" />
+        <drawtext x="{posx(red)}+{areaheight}*1.5" y="0" valign="center" font="{regular}" fontsize="75%" color="{clrText2}" text="{tr(recordings)}" />
+
+        <drawimage name="green" x="25%" imagetype="icon" path="ButtonGreen" width="{areaheight}*0.75" height="{areaheight}*0.75" valign="center" />
+        <drawtext x="{posx(green)}+{areaheight}*1.5" y="0" valign="center" font="{regular}" fontsize="75%" color="{clrText2}" text="{tr(schedule)}" />
+
+        <drawimage name="yellow" x="50%" imagetype="icon" path="ButtonYellow" width="{areaheight}*0.75" height="{areaheight}*0.75" valign="center" />
+        <drawtext x="{posx(yellow)}+{areaheight}*1.5" y="0" valign="center" font="{regular}" fontsize="75%" color="{clrText2}" text="{tr(info)}" />
+
+        <drawimage name="blue" x="75%" imagetype="icon" path="ButtonBlue" width="{areaheight}*0.75" height="{areaheight}*0.75" valign="center" />
+        <drawtext x="{posx(blue)}+{areaheight}*1.5" y="0" valign="center" font="{regular}" fontsize="75%" color="{clrText2}" text="{tr(timer)}" />
+      </area>
+    </background>
+
+    <channelinfo>
+      <area x="25%" y="82%" width="20%" height="4%" layer="2">
+        <drawtext x="0" y="0" valign="center" font="{regular}" fontsize="90%" color="{clrText}" text="{channelname}" />
+      </area>
+      <area x="0" y="{areaheight}*0.865" width="20%" height="9%" layer="2">
+        <drawimage cache="true" imagetype="channellogo" path="{channelid}" width="90%" height="90%" align="center" valign="center" />
+      </area>
+    </channelinfo>
+
+    <epginfo>
+      <area x="21%" y="87%" width="68%" height="9%" layer="2">
+        <drawimage name="event" x="0" imagetype="icon" path="event_active" width="{areaheight}*0.4" height="{areaheight}*0.4" />
+        <drawtext x="{width(event)}*2" y="0" font="{regular}" fontsize="40%" color="{clrText}" text="{currentstart}   {currenttitle}" />
+        <drawtext x="0" y="0" align="right" font="{regular}" fontsize="40%" color="{clrText}" text="+{currentelapsed} min" />
+        <drawtext x="{width(event)}*2" y="55%" font="{regular}" fontsize="40%" color="{clrText2}" text="{nextstart}   {nexttitle}" />
+        <drawtext x="0" y="55%" align="right" font="{regular}" fontsize="40%" color="{clrText2}" text="{nextduration} min" />
+      </area>
+    </epginfo>
+
+    <progressbar>
+        <area x="25%" y="90%" width="68%" height="2%" layer="3">
+           <drawrectangle x="0" y="0" valign="center" width="{areawidth}" height="{areaheight}*0.1125" color="{clrText2}" />
+           <drawrectangle x="0" y="0" valign="center" width="{areawidth}/{duration}*{elapsed}" height="22%" color="{clrSpacer}" />
+           <drawellipse x="{areawidth}/{duration}*{elapsed}-{areaheight}*0.75" y="0" valign="center" width="{areaheight}*0.75" height="{areaheight}*0.75" color="{clrSpacer}" quadrant="0"/>
+        </area>
+    </progressbar>
+
+    <statusinfo>
+      <area x="90%" y="82%" width="15%" height="4%" layer="3">
+        <!-- Width is taken from SVG. If you change width here, do the same in the SVG file -->
+        <drawimage name="txt" condition="{hasVT}" imagetype="icon" path="teletext_off" x="0" valign="center" width="{areaheight}*0.6/114*113" height="60%"/>
+        <drawimage condition="not{hasVT}" imagetype="icon" path="teletext_on" x="{posx(txt)}" valign="center" width="{width(txt)}" height="{height(txt)}"/>
+
+        <drawimage name="dolby" condition="{isDolby}" imagetype="icon" path="dolby_off" x="{posx(txt)}+{width(txt)}+{areaheight}*0.4" valign="center" width="{areaheight}*0.6/12*18" height="60%"/>
+        <drawimage condition="not{isDolby}" imagetype="icon" path="dolby_on" x="{posx(dolby)}" valign="center" width="{width(dolby)}" height="{height(dolby)}"/>
+
+        <drawimage name="encrypted" condition="{isEncrypted}" imagetype="icon" path="encrypted_off" x="{posx(dolby)}+{width(dolby)}+{areaheight}*0.4" valign="center" width="{areaheight}*0.6/12*24" height="60%"/>
+        <drawimage condition="not{isEncrypted}" imagetype="icon" path="encrypted_on" x="{posx(encrypted)}" valign="center" width="{width(encrypted)}" height="{height(encrypted)}"/>
+      </area>
+    </statusinfo>
+
+    <screenresolution>
+      <area x="82%" y="82%" width="7%" height="4%" layer="3">
+        <!-- Width is taken from SVG. If you change width here, do the same in the SVG file -->
+        <drawimage name="isHD" condition="{isHD}" imagetype="icon" path="hd_off" x="0" valign="center" width="{areaheight}*0.6/11.66*20.88" height="60%"/>
+        <drawimage condition="not{isHD}" imagetype="icon" path="hd_on" x="{posx(isHD)}" valign="center" width="{width(isHD)}" height="{height(isHD)}"/>
+        <drawimage name="isWide" condition="{isWideScreen}" imagetype="icon" path="format_off" x="{posx(isHD)}+{width(isHD)}+{areaheight}*0.4" valign="center" width="{areaheight}*0.6/12*32" height="60%"/>
+        <drawimage condition="not{isWideScreen}" imagetype="icon" path="format_on" x="{posx(isWide)}" valign="center" width="{width(isWide)}" height="{height(isWide)}"/>
+      </area>
+    </screenresolution>
+
+    <channelgroup>
+      <area x="25%" y="82%" width="20%" height="4%" layer="2">
+        <drawtext x="0" y="0" valign="center" font="{regular}" fontsize="90%" color="{clrText}" text="{group}" />
+      </area>
+    </channelgroup>
+
+    <signalquality>
+      <area x="60%" y="82%" width="20%" height="4%" layer="2">
+        <drawtext name="snr" x="0" y="0" valign="center" font="{regular}" fontsize="90%" color="{clrText}" text="SNR: " />
+        <drawtext x="{posx(snr)}+{width(snr)}" y="0" valign="center" font="{regular}" fontsize="90%" color="{clrText2}" text="{signalquality} %" />
+        <drawtext name="str" x="{posx(snr)}+{width(snr)}+{areawidth}*0.4" y="0" valign="center" font="{regular}" fontsize="90%" color="{clrText}" text="STR: " />
+        <drawtext x="{posx(str)}+{width(str)}" y="0" valign="center" font="{regular}" fontsize="90%" color="{clrText2}" text="{signalstrength} %" />
+      </area>
+    </signalquality>
+
+    <signalqualityback>
+    </signalqualityback>
+
+    <scrapercontent>
+      <area condition="{isbanner}" x="{areaheight}*0.05" y="{areaheight}*0.05" width="{areaheight}*0.13*{mediawidth}/{mediaheight}" height="13%" layer="2">
+        <drawimage imagetype="image" path="{mediapath}" align="center" valign="center"  width="{areawidth}" height="{areaheight}"/>
+      </area>
+      <area condition="not{isbanner}" x="{areaheight}*0.05" y="{areaheight}*0.05" width="{areaheight}*0.5*{mediawidth}/{mediaheight}" height="50%" layer="2">
+        <drawimage imagetype="image" path="{mediapath}" x="5" y="5" width="{areawidth}-10" height="{areaheight}-10"/>
+      </area>
+    </scrapercontent>
+
+    <datetime>
+      <area x="5%" y="82%" width="20%" height="4%" layer="2">
+        <drawtext x="0" y="0" valign="center" font="{regular}" fontsize="90%" color="{clrText}" text="{daynameshort}, {dayleadingzero}.{month}.  {time}" />
+      </area>
+    </datetime>
+
+    <message>
+      <area x="{areawidth}*0.2" y="{areaheight}*0.69" width="60%" height="8%" layer="4">
+        <fill color="{clrMessBack}" />
+        <drawellipse x="0" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-2"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.05" y="0" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-1"/>
+        <drawellipse x="0" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-3"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.05" y="{areaheight} - {areaheight}*0.05" width="{areaheight}*0.05" height="{areaheight}*0.05" color="{clrTransparent}" quadrant="-4"/>
+      </area>
+
+      <area condition="{error}" x="20%" y="69%" width="60%" height="8%" layer="7">
+        <drawtext y="1%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrMessError}" text="{tr(error)}" />
+        <drawtext y="51%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrText}" text="{text}" />
+        <drawrectangle x="0" y="48%" height="3%" width="100%" color="{clrMessError}" />
+      </area>
+
+      <area condition="{info}" x="20%" y="69%" width="60%" height="8%" layer="7">
+        <drawtext y="1%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrMessInfo}" text="{tr(info)}" />
+        <drawtext y="51%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrText}" text="{text}" />
+        <drawrectangle x="0" y="49%" height="3%" width="100%" color="{clrMessInfo}" />
+      </area>
+
+      <area condition="{status}" x="20%" y="69%" width="60%" height="8%" layer="7">
+        <drawtext y="1%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrMessStatus}" text="{tr(status)}" />
+        <drawtext y="51%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrText}" text="{text}" />
+        <drawrectangle x="0" y="49%" height="3%" width="100%" color="{clrMessStatus}" />
+      </area>
+
+      <area condition="{warning}" x="20%" y="69%" width="60%" height="8%" layer="7">
+        <drawtext y="1%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrMessWarn}" text="{tr(warning)}" />
+        <drawtext y="51%" align="center" width="100%" font="{regular}" fontsize="45%" color="{clrText}" text="{text}" />
+        <drawrectangle x="0" y="49%" height="3%" width="100%" color="{clrMessWarn}" />
+      </area>
+    </message>
+</displaychannel>

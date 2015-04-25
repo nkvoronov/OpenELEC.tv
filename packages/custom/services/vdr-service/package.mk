@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="21"
+PKG_REV="22"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -274,7 +274,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-02d064a
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-6ac4bcd
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`

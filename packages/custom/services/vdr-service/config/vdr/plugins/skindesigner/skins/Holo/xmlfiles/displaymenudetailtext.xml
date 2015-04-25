@@ -1,0 +1,5 @@
+<menudetailedtext x="2%" y="{areaheight}*0.02+{areaheight}*0.04" width="96%" height="88%" fadetime="0">
+    <tab name="Tab1" x="0" y="9%" width="100%" height="90%" layer="2" scrollheight="{areaheight}/4">
+      <drawtextbox x="0" y="0" width="100%" font="{regular}" fontsize="4%" color="{clrText}" text="{text}" />
+    </tab>
+</menudetailedtext>

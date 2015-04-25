@@ -29,7 +29,7 @@ vdr_init() {
     VDR_PLUGIN_DIR="/usr/lib/vdr"
     VDR_CACHE_DIR="$HOME/.cache/vdr"
 
-    if [ ! -f "VDR_CACHE_DIR" ]; then
+    if [ ! -f "$VDR_CACHE_DIR" ]; then
         mkdir -p $VDR_CACHE_DIR
     fi
 
@@ -52,10 +52,11 @@ fix_config() {
 	sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
     fi
     cat >>$VDR_HOME/setup.conf << MYDATA
-    AlwaysSortFoldersFirst = 1
-    SetSystemTime = 0
-    epgsearch.SVDRPPort = 6419
-    MYDATA
+AlwaysSortFoldersFirst = 1
+SetSystemTime = 0
+epgsearch.SVDRPPort = 6419
+MYDATA
+
 }
 
 init_vdr_plugins() {

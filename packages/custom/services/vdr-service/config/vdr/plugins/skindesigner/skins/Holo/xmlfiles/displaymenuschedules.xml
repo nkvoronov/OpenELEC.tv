@@ -1,0 +1,102 @@
+<menuschedules x="0" y="0" width="100%" height="100%" fadetime="0" scaletvx="68%" scaletvy="63%" scaletvwidth="30%" scaletvheight="30%">
+    <background>
+      <area x="0" y="0" width="100%" height="100%" layer="2">
+        <fill color="{clrBack}" />
+        <drawrectangle x="0" y="4%" height="{areaheight}*0.0032" width="100%" color="{clrSpacer}" />
+        <drawrectangle x="5%" y="96%" height="{areaheight}*0.0016" width="90%" color="{clrText2}" />
+        <drawrectangle x="66%" y="5%" height="90%" width="{areaheight}*0.0016" color="{clrText2}" />
+<!--         <drawellipse x="0" y="0" width="{areaheight}*0.008" height="{areaheight}*0.008" color="{clrTransparent}" quadrant="-2"/> -->
+<!--         <drawellipse x="{areawidth} - {areaheight}*0.008" y="0" width="{areaheight}*0.008" height="{areaheight}*0.008" color="{clrTransparent}" quadrant="-1"/> -->
+<!--         <drawellipse x="0" y="{areaheight} - {areaheight}*0.008" width="{areaheight}*0.008" height="{areaheight}*0.008" color="{clrTransparent}" quadrant="-3"/> -->
+<!--         <drawellipse x="{areawidth} - {areaheight}*0.008" y="{areaheight} - {areaheight}*0.008" width="{areaheight}*0.008" height="{areaheight}*0.008" color="{clrTransparent}" quadrant="-4"/> -->
+        <drawrectangle x="68%" y="63%" height="30%" width="30%" color="{clrTransparent}" />
+      </area>
+    </background>
+
+    <header>
+        <area x="0" y="0" width="100%" height="4%" layer="2">
+            <drawtext x="2%" width="50%" valign="center" font="{regular}" fontsize="100%" color="{clrSpacer}" text="{title}" />
+        </area>
+    </header>
+
+    <menuitems x="{areaheight}*0.02" y="{areaheight}*0.02+{areaheight}*0.04" orientation="vertical" width="100%" height="88%" align="center" numlistelements="{bigMenuItems}">
+        <listelement>
+            <area condition="{current}" x="1%" y="0" width="62%" height="50%" layer="2">
+                <drawrectangle x="0" y="0" align="center" valign="center" height="90%" width="100%" color="{clrSpacer}" />
+            </area>
+            <area condition="{whatson}++not{current}++not{separator}" x="1%" width="62%" layer="3">
+                <drawtext name="spacer" x="{areaheight}*0.2" y="0" valign="center" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrTransparent}" text="Sam 88" />
+                <drawtext x="{areaheight}*0.2" y="0" valign="center" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrText}" text="{day} {printf('%02d', daynumeric)}" />
+                <drawtext name="time" x="{posx(spacer)}+{width(spacer)}+{areaheight}*0.2" y="0" valign="center" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrText}" text="{start}" />
+                <drawtext name="title" x="{posx(time)}+{width(time)}+{areaheight}*0.2" y="0" valign="center" width="{posx(rec_icon)}-{posx(title)}" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrText}" text="{title}" />
+                <drawtext name="short" condition="isset{shorttext}" x="{posx(title)}+{width(title)}" y="0" valign="center" width="{posx(rec_icon)}-{posx(short)}" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrSpacer}" text=" ({shorttext})" />
+                <drawimage name="rec_icon" condition="{timerfull}" x="{areawidth}*0.93" imagetype="icon" path="rec_off" width="{areaheight}*0.35*{bigMenuItems}/10" height="{areaheight}*0.35*{bigMenuItems}/10" valign="center" />
+            </area>
+            <area condition="{whatson}++{current}" x="1%" width="62%" layer="3">
+                <drawtext name="spacer" x="{areaheight}*0.2" y="0" valign="center" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrTransparent}" text="Sam 88" />
+                <drawtext x="{areaheight}*0.2" y="0" valign="center" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrTextSelected}" text="{day} {printf('%02d', daynumeric)}" />
+                <drawtext name="time" x="{posx(spacer)}+{width(spacer)}+{areaheight}*0.2" y="0" valign="center" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrTextSelected}" text="{start}" />
+                <drawtext name="title" x="{posx(time)}+{width(time)}+{areaheight}*0.2" y="0" valign="center" width="{posx(rec_icon)}-{posx(title)}" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrTextSelected}" text="{title}" />
+                <drawtext name="short" condition="isset{shorttext}" x="{posx(title)}+{width(title)}" y="0" valign="center" width="{posx(rec_icon)}-{posx(short)}" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrText}" text=" ({shorttext})" />
+                <drawimage name="rec_icon" condition="{timerfull}" x="{areawidth}*0.93" imagetype="icon" path="rec_on" width="{areaheight}*0.35*{bigMenuItems}/10" height="{areaheight}*0.35*{bigMenuItems}/10" valign="center" />
+            </area>
+            <area condition="{whatson}++{separator}" x="1%" width="62%" layer="3">
+                <drawtext x="{areaheight}*0.2" y="0" valign="center" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrText2}" text="{title}" />
+            </area>
+
+            <area condition="not{whatson}++not{current}++not{separator}" x="1%" width="62%" layer="3">
+                <drawimage condition="{channellogoexists}" name="image" x="1%" cache="true" imagetype="channellogo" path="{channelid}" width="10%" height="85%" valign="center" />
+                <drawtext condition="not{channellogoexists}" x="0" valign="center" fontsize="{areaheight}*0.4*{bigMenuItems}/10" text="{channelname}" width="10%" font="{regular}" color="{clrText}"/>
+                <drawtext name="title" x="25%" y="0" valign="center" width="{posx(rec_icon)}-{posx(title)}" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrText}" text="{title}" />
+                <drawtext name="short" condition="isset{shorttext}" x="{posx(title)}+{width(title)}" y="0" valign="center" width="{posx(rec_icon)}-{posx(short)}" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrSpacer}" text=" ({shorttext})" />
+                <drawimage name="rec_icon" condition="{timerfull}" x="{areawidth}*0.93" imagetype="icon" path="rec_off" width="{areaheight}*0.35*{bigMenuItems}/10" height="{areaheight}*0.35*{bigMenuItems}/10" valign="center" />
+            </area>
+            <area condition="not{whatson}++{current}" x="1%" width="62%" layer="3">
+                <drawimage condition="{channellogoexists}" name="image" x="1%" cache="true" imagetype="channellogo" path="{channelid}" width="10%" height="85%" valign="center" />
+                <drawtext condition="not{channellogoexists}" x="0" valign="center" fontsize="{areaheight}*0.4*{bigMenuItems}/10" text="{channelname}" width="10%" font="{regular}" color="{clrTextSelected}" />
+                <drawtext name="title" x="25%" y="0" valign="center" width="{posx(rec_icon)}-{posx(title)}" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrTextSelected}" text="{title}" />
+                <drawtext name="short" condition="isset{shorttext}" x="{posx(title)}+{width(title)}" y="0" valign="center" width="{posx(rec_icon)}-{posx(short)}" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrText}" text=" ({shorttext})" />
+                <drawimage name="rec_icon" condition="{timerfull}" x="{areawidth}*0.93" imagetype="icon" path="rec_on" width="{areaheight}*0.35*{bigMenuItems}/10" height="{areaheight}*0.35*{bigMenuItems}/10" valign="center" />
+            </area>
+            <area condition="not{whatson}++{separator}" x="1%" width="62%" layer="3">
+                <drawtext x="25%" y="0" valign="center" font="{regular}" fontsize="{areaheight}*0.4*{bigMenuItems}/10" color="{clrText2}" text="{title}" />
+            </area>
+
+            <!-- Progressbar -->
+            <area condition="{whatsonnow}++not{current}++not{separator}" x="10%" width="4%" layer="3">
+              <drawrectangle x="0" y="0" valign="center" width="100%" height="{areaheight}*0.15*{bigMenuItems}/10" color="{clrSpacer}" />
+              <drawrectangle x="2" y="0" valign="center" width="{areawidth}-4" height="{areaheight}*0.15*{bigMenuItems}/10-4" color="{clrTransparent}" />
+              <drawrectangle x="0" y="0" valign="center" width="{areawidth}*0.96*{elapsed}/{duration}" height="{areaheight}*0.15*{bigMenuItems}/10" color="{clrSpacer}" />
+            </area>
+            <area condition="{whatsonnow}++{current}" x="10%" width="4%" layer="3">
+              <drawrectangle x="0" y="0" valign="center" width="100%" height="{areaheight}*0.15*{bigMenuItems}/10" color="{clrText}" />
+              <drawrectangle x="2" y="0" valign="center" width="{areawidth}-4" height="{areaheight}*0.15*{bigMenuItems}/10-4" color="{clrTransparent}" />
+              <drawrectangle x="0" y="0" valign="center" width="{areawidth}*0.96*{elapsed}/{duration}" height="{areaheight}*0.15*{bigMenuItems}/10" color="{clrText}" />
+            </area>
+        </listelement>
+
+        <currentelement delay="0" fadetime="0">
+          <area x="66%" y="3%" width="32%" height="{areaheight}*0.04*0.8" layer="3">
+            <drawtext x="0" width="70%" valign="center" font="{regular}" fontsize="100%" color="{clrText}" text="{channelname}" />
+            <drawtext x="0" width="30%" y="0" font="{regular}" align="right" fontsize="100%" color="{clrText}" text="{start} - {stop}" />
+          </area>
+          <area x="66%" y="6%" width="32%" height="3%" layer="3">
+            <drawrectangle x="0" y="0" valign="center" width="{areawidth}" height="{areaheight}*0.075" color="{clrText2}" />
+            <drawrectangle x="0" y="0" valign="center" width="{areawidth}/{duration}*{elapsed}" height="15%" color="{clrSpacer}" />
+            <drawellipse condition="{running}" x="{areawidth}/{duration}*{elapsed}-{areaheight}*0.5" y="0" valign="center" width="{areaheight}*0.5" height="{areaheight}*0.5" color="{clrSpacer}" quadrant="0"/>
+          </area>
+          <areascroll x="66%" y="9%" width="32%" height="54%" layer="3" mode="forthandback" orientation="vertical" delay="1000" scrollspeed="medium">
+            <drawtext name="title" x="0" y="0" font="{regular}" fontsize="6%" width="100%" color="{clrSpacer}" text="{title}" />
+            <drawtext name="short" x="0" y="{posy(title)}+{height(title)}+{areaheight}*0.01" font="{regular}" width="100%" fontsize="6%" color="{clrSpacer}" text="{shorttext}" />
+            <drawtextbox x="0" y="{posy(short)}+{height(short)}+{areaheight}*0.01" width="100%" font="{regular}" fontsize="6%" color="{clrText}" text="{description}" />
+          </areascroll>
+        </currentelement>
+    </menuitems>
+
+    <scrollbar>
+        <area condition="lt({height},1000)" x="{areawidth}*0.645" y="7%" width="1%" height="86%" layer="4">
+            <drawrectangle x="0" y="0" width="10%" height="100%" align="center" color="{clrSpacer}" />
+            <drawrectangle x="0" y="{areaheight}*{offset}/1000" align="center" width="50%" height="{areaheight}*{height}/1000" color="{clrSpacer}" />
+        </area>
+    </scrollbar>
+</menuschedules>

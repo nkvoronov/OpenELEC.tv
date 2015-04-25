@@ -52,18 +52,6 @@ msgctxt "#1107"
 msgid "Debug"
 msgstr "Отладка"
 
-msgctxt "#1200"
-msgid "Commands"
-msgstr "Команды"
-
-msgctxt "#1201"
-msgid "Execute service"
-msgstr "Запустить сервис"
-
-msgctxt "#1202"
-msgid "Execute frontend"
-msgstr "Запустить фронтенд"
-
 msgctxt "#2000"
 msgid "Plugins - service"
 msgstr "Плагины - сервис"
