@@ -95,7 +95,7 @@ init_vdr_plugins() {
     SVDRP_PORT=0
 
     # epgsearch needs svdrp
-    if [ "$ENABLE_EPGSEARCH" == "true" ]; then
+    if [ "$VDR_ENABLE_EPGSEARCH" == "true" ]; then
 	SVDRP_PORT=6419
     fi
 
