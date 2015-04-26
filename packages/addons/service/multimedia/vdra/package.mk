@@ -360,7 +360,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick++.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick++.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
@@ -545,7 +545,7 @@ addon() {
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick++.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick++.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
@@ -565,7 +565,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick++.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick++.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
@@ -660,7 +660,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick++.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick++.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
@@ -683,7 +683,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick++.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick++.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
@@ -705,7 +705,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick++.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick++.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
@@ -747,7 +747,7 @@ addon() {
       cp -P $HARFBUZZ_DIR/.install_pkg/usr/lib/libharfbuzz.so.0.927.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libharfbuzz.so.0
       cp -P $LIBCROCO_DIR/.install_pkg/usr/lib/libcroco-0.6.so.3.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcroco-0.6.so.3
       cp -PR $GDK_PIXBUF_DIR/.install_pkg/usr/lib/gdk-pixbuf-2.0 $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $GDK_PIXBUF_DIR/.install_pkg/usr/lib/libgdk-pixbuf-2.0.so.0.2800.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libgdk-pixbuf-2.0.so.0
+      cp -P $GDK_PIXBUF_DIR/.install_pkg/usr/lib/libgdk_pixbuf-2.0.so.0.2800.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libgdk_pixbuf-2.0.so.0
       cp -P $CAIRO_DIR/.install_pkg/usr/lib/libcairo.so.2.11200.16 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcairo.so.2
       cp -P $CAIRO_DIR/.install_pkg/usr/lib/libcairo-script-interpreter.so.2.11200.16 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcairo-script-interpreter.so.2
       cp -PR $PANGO_DIR/.install_pkg/usr/lib/pango $ADDON_BUILD/$PKG_ADDON_ID/lib
