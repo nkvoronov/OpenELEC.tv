@@ -28,9 +28,9 @@
 		<setting id="VDR_LIVE_PORT" type="number" label="2108" values="" visible="!eq(-2,false)"  default="8008"/>
 		<setting id="VDR_ENABLE_CONTROL" type="bool" label="2109" default="false" />
 		<setting id="VDR_CONTROL_PORT" type="number" label="2110" values="" visible="!eq(-1,false)"  default="2002"/>
-		<setting id="VDR_ENABLE_EEPG" type="bool" label="2111" default="false" />
-		<setting id="VDR_ENABLE_EPGSEARCH" type="bool" label="2112" default="false" />
-		<setting id="VDR_ENABLE_XMLTV2VDR" type="bool" label="2113" default="false" />
+		<setting id="VDR_ENABLE_EPGSEARCH" type="bool" label="2111" default="false" />
+		<setting id="VDR_ENABLE_XMLTV2VDR" type="bool" label="2112" default="false" />
+		<setting id="VDR_ENABLE_EEPG" type="bool" label="2113" default="false" />
 		<setting id="VDR_ENABLE_DUMMYDEVICE" type="bool" label="2114" default="false" />
 		<setting id="VDR_ENABLE_SATIP" type="bool" label="2115" default="false" />
 		<setting id="VDR_ENABLE_EPGFIXER" type="bool" label="2116" default="false" />
@@ -55,9 +55,9 @@
 		<setting id="VDR_LIVE_PORT_F" type="number" label="2108" values="" visible="!eq(-2,false)"  default="8008"/>
 		<setting id="VDR_ENABLE_CONTROL_F" type="bool" label="2109" default="false" />
 		<setting id="VDR_CONTROL_PORT_F" type="number" label="2110" values="" visible="!eq(-1,false)"  default="2002"/>
-		<setting id="VDR_ENABLE_EEPG_F" type="bool" label="2111" default="false" />
-		<setting id="VDR_ENABLE_EPGSEARCH_F" type="bool" label="2112" default="false" />
-		<setting id="VDR_ENABLE_XMLTV2VDR_F" type="bool" label="2113" default="false" />
+		<setting id="VDR_ENABLE_EPGSEARCH_F" type="bool" label="2111" default="false" />
+		<setting id="VDR_ENABLE_XMLTV2VDR_F" type="bool" label="2112" default="false" />
+		<setting id="VDR_ENABLE_EEPG_F" type="bool" label="2113" default="false" />
 		<setting id="VDR_ENABLE_DUMMYDEVICE_F" type="bool" label="2114" default="false" />
 		<setting id="VDR_ENABLE_SATIP_F" type="bool" label="2115" default="false" />
 		<setting id="VDR_ENABLE_EPGFIXER_F" type="bool" label="2116" default="false" />
