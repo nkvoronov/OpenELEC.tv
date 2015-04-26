@@ -231,8 +231,6 @@ addon() {
   
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin
-    #cp -P $PKG_DIR/scripts/* $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
     cp $VDR_DIR/scr.conf $ADDON_BUILD/$PKG_ADDON_ID/config
@@ -342,8 +340,9 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-live.mo    
     done
+
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.* $ADDON_BUILD/$PKG_ADDON_ID/lib 
+      cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet.so.12
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
@@ -361,7 +360,9 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib 
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_STREAMDEV" = yes ]; then
@@ -395,8 +396,8 @@ addon() {
     VDR_PLUGIN_XMLTV2VDR_DIR=$ROOT/$BUILD/vdr-plugin-xmltv2vdr-b48e0be
     cp -P $VDR_PLUGIN_XMLTV2VDR_DIR/dist/epgdata2xmltv/epgdata2xmltv $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -PR $VDR_PLUGIN_XMLTV2VDR_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/epgsources
-      cp $VDR_PLUGIN_XMLTV2VDR_DIR/dist/epgdata2xmltv/epgdata2xmltv.dist $ADDON_BUILD/$PKG_ADDON_ID/epgsources/epgdata2xmltv
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/epgsources
+      cp $VDR_PLUGIN_XMLTV2VDR_DIR/dist/epgdata2xmltv/epgdata2xmltv.dist $ADDON_BUILD/$PKG_ADDON_ID/config/epgsources/epgdata2xmltv
     cp -PR $VDR_PLUGIN_XMLTV2VDR_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
   fi
 
@@ -476,11 +477,11 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $GLIBMM_DIR/.install_pkg/usr/lib/libgiomm-2.4.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $GLIBMM_DIR/.install_pkg/usr/lib/libglibmm-2.4.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $GLIBMM_DIR/.install_pkg/usr/lib/libglibmm_generate_extra_defs-2.4.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBSIGPP_DIR/.install_pkg/usr/lib/libsigc-2.0.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXMLPP_DIR/.install_pkg/usr/lib/libxml++-2.6.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $GLIBMM_DIR/.install_pkg/usr/lib/libgiomm-2.4.so.1.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libgiomm-2.4.so.1
+      cp -P $GLIBMM_DIR/.install_pkg/usr/lib/libglibmm-2.4.so.1.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libglibmm-2.4.so.1
+      cp -P $GLIBMM_DIR/.install_pkg/usr/lib/libglibmm_generate_extra_defs-2.4.so.1.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libglibmm_generate_extra_defs-2.4.so.1
+      cp -P $LIBSIGPP_DIR/.install_pkg/usr/lib/libsigc-2.0.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libsigc-2.0.so.0
+      cp -P $LIBXMLPP_DIR/.install_pkg/usr/lib/libxml++-2.6.so.2.0.7 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxml++-2.6.so.2
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SLEEPTIMER" = yes ]; then
@@ -506,13 +507,36 @@ addon() {
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb.so.1.1.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb.so.1
-      cp -PR $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXCBUTIL_DIR/.install_pkg/usr/lib/libxcb-util.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXCBUTILIMAGE_DIR/.install_pkg/usr/lib/libxcb-image.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXCBUTILKEYSYMS_DIR/.install_pkg/usr/lib/libxcb-keysyms.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXCBUTILRENDERUTIL_DIR/.install_pkg/usr/lib/libxcb-render-util.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXCBUTILWM_DIR/.install_pkg/usr/lib/libxcb-ewmh.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXCBUTILWM_DIR/.install_pkg/usr/lib/libxcb-icccm.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-composite.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-composite.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-damage.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-damage.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-dpms.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-dpms.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-dri2.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-dri2.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-dri3.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-dri3.so.0
+      cp -P $LIBXCBUTILWM_DIR/.install_pkg/usr/lib/libxcb-ewmh.so.2.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-ewmh.so.2
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-glx.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-glx.so.0
+      cp -P $LIBXCBUTILWM_DIR/.install_pkg/usr/lib/libxcb-icccm.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-icccm.so.4
+      cp -P $LIBXCBUTILIMAGE_DIR/.install_pkg/usr/lib/libxcb-image.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-image.so.0
+      cp -P $LIBXCBUTILKEYSYMS_DIR/.install_pkg/usr/lib/libxcb-keysyms.so.1.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-keysyms.so.1
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-present.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-present.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-randr.so.0.1.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-randr.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-record.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-record.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-render.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-render.so.0
+      cp -P $LIBXCBUTILRENDERUTIL_DIR/.install_pkg/usr/lib/libxcb-render-util.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-render-util.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-res.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-res.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-screensaver.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-screensaver.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-shape.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-shape.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-shm.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-shm.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-sync.so.1.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-sync.so.1
+      cp -P $LIBXCBUTIL_DIR/.install_pkg/usr/lib/libxcb-util.so.1.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-util.so.1
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xevie.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xevie.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xf86dri.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xf86dri.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xfixes.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xfixes.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xinerama.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xinerama.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xkb.so.1.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xkb.so.1
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xprint.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xprint.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xtest.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xtest.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xv.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xv.so.0
+      cp -P $LIBXCB_DIR/.install_pkg/usr/lib/libxcb-xvmc.so.0.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxcb-xvmc.so.0
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TEXT2SKIN" = yes ]; then
@@ -521,7 +545,9 @@ addon() {
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVGUIDE" = yes ]; then
@@ -539,7 +565,9 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
@@ -555,7 +583,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $JANSSON_DIR/.install_pkg/usr/lib/libjansson.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $JANSSON_DIR/.install_pkg/usr/lib/libjansson.so.4.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libjansson.so.4
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
@@ -572,9 +600,18 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $TNTNET_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $TNTDB_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBUPNP_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet.so.12
+      cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet_sdk.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet_sdk.so.12
+      cp -P $TNTDB_DIR/.install_pkg/usr/lib/libtntdb.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntdb.so.4
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/tntnet
+      cp -P $TNTNET_DIR/.install_pkg/usr/lib/tntnet/tntnet.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/tntnet/tntnet.so.12
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/tntdb
+      cp -P $TNTDB_DIR/.install_pkg/usr/lib/tntdb/tntdb4-mysql.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/tntdb/tntdb4-mysql.so
+      cp -P $TNTDB_DIR/.install_pkg/usr/lib/tntdb/tntdb4-replicate.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/tntdb/tntdb4-replicate.so
+      cp -P $TNTDB_DIR/.install_pkg/usr/lib/tntdb/tntdb4-sqlite.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/tntdb/tntdb4-sqlite.so
+      cp -P $LIBUPNP_DIR/.install_pkg/usr/lib/libixml.so.2.0.8 $ADDON_BUILD/$PKG_ADDON_ID/lib/libixml.so.2
+      cp -P $LIBUPNP_DIR/.install_pkg/usr/lib/libthreadutil.so.6.0.4 $ADDON_BUILD/$PKG_ADDON_ID/lib/libthreadutil.so.6
+      cp -P $LIBUPNP_DIR/.install_pkg/usr/lib/libupnp.so.6.3.3 $ADDON_BUILD/$PKG_ADDON_ID/lib/libupnp.so.6
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
@@ -598,7 +635,14 @@ addon() {
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
         cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-xineliboutput.mo    
     done
-    cp -PR $XINELIB_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+      cp -PR $XINELIB_DIR/.install_pkg/usr/bin/* $ADDON_BUILD/$PKG_ADDON_ID/bin
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -PR $XINELIB_DIR/.install_pkg/usr/lib/xine $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $XINELIB_DIR/.install_pkg/usr/lib/libxine.so.2.5.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libxine.so.2
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
+      cp -PR $XINELIB_DIR/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLAT" = yes ]; then
@@ -616,7 +660,9 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
@@ -637,7 +683,9 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
 
   if [ "$ENABLE_VDR_SKIN_NOPACITY" = yes ]; then
@@ -657,7 +705,9 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $IM_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagick.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore.so.5
+      cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand.so.5.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand.so.5
   fi
 
   if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
@@ -677,9 +727,7 @@ addon() {
     VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-4fb0b9d
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/plugin
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib
-      ln -s libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
-      ln -s libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so
+      cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/skindesigner
@@ -694,14 +742,21 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $JANSSON_DIR/.install_pkg/usr/lib/libjansson.* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBXFT_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $CAIRO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $PANGO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $HARFBUZZ_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $GDK_PIXBUF_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBCROCO_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -PR $LIBRSVG_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $JANSSON_DIR/.install_pkg/usr/lib/libjansson.so.4.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libjansson.so.4
+      cp -P $LIBXFT_DIR/.install_pkg/usr/lib/libXft.so.2.3.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libXft.so.2
+      cp -P $HARFBUZZ_DIR/.install_pkg/usr/lib/libharfbuzz.so.0.927.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libharfbuzz.so.0
+      cp -P $LIBCROCO_DIR/.install_pkg/usr/lib/libcroco-0.6.so.3.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcroco-0.6.so.3
+      cp -PR $GDK_PIXBUF_DIR/.install_pkg/usr/lib/gdk-pixbuf-2.0 $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $GDK_PIXBUF_DIR/.install_pkg/usr/lib/libgdk-pixbuf-2.0.so.0.2800.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libgdk-pixbuf-2.0.so.0
+      cp -P $CAIRO_DIR/.install_pkg/usr/lib/libcairo.so.2.11200.16 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcairo.so.2
+      cp -P $CAIRO_DIR/.install_pkg/usr/lib/libcairo-script-interpreter.so.2.11200.16 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcairo-script-interpreter.so.2
+      cp -PR $PANGO_DIR/.install_pkg/usr/lib/pango $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $PANGO_DIR/.install_pkg/usr/lib/libpango-1.0.so.0.3600.3 $ADDON_BUILD/$PKG_ADDON_ID/lib/libpango-1.0.so.0
+      cp -P $PANGO_DIR/.install_pkg/usr/lib/libpangoft2-1.0.so.0.3600.3 $ADDON_BUILD/$PKG_ADDON_ID/lib/libpangoft2-1.0.so.0
+      cp -P $PANGO_DIR/.install_pkg/usr/lib/libpangoxft-1.0.so.0.3600.3 $ADDON_BUILD/$PKG_ADDON_ID/lib/libpangoxft-1.0.so.0
+      cp -P $PANGO_DIR/.install_pkg/usr/lib/libpangocairo-1.0.so.0.3600.3 $ADDON_BUILD/$PKG_ADDON_ID/lib/libpangocairo-1.0.so.0
+      cp -PR $LIBRSVG_DIR/.install_pkg/usr/lib/gdk-pixbuf-2.0 $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $LIBRSVG_DIR/.install_pkg/usr/lib/librsvg-2.so.2.40.9 $ADDON_BUILD/$PKG_ADDON_ID/lib/librsvg-2.so.2
 
     if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
       VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-36f7ac9
