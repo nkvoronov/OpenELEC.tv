@@ -28,7 +28,7 @@ oe_setup_addon service.softcam.oscama
 OSCAM_CONF="$ADDON_HOME/config"
 OSCAM_LOG="$ADDON_HOME/log"
 
-if [ ! -f "$OSCAM_CONF" ]; then
+if [ ! -d "$OSCAM_CONF" ]; then
   mkdir -p $OSCAM_CONF
     cp -PR $ADDON_DIR/config/* $OSCAM_CONF
 fi

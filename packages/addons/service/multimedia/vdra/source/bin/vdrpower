@@ -27,12 +27,12 @@ oe_setup_addon service.multimedia.vdra
 VDR_FRONT_RUN_FILE="$ADDON_HOME/vdr-front.run"
 
 if [ -f "$VDR_FRONT_RUN_FILE" ]; then
-
-    systemctl stop service.multimedia.vdra.service;
     
     echo "Stop VDR ..."
 
-    rm $VDR_FRONT_RUN_FILE
+    rm $VDR_FRONT_RUN_FILE    
+
+    systemctl stop service.multimedia.vdra.service
 
     case "$1" in
         -p) # poweroff
@@ -47,18 +47,18 @@ if [ -f "$VDR_FRONT_RUN_FILE" ]; then
         -e) # exit to XBMC
 
             if systemctl is-enabled service.multimedia.vdra.service &>/dev/null ; then
-        	systemctl start service.multimedia.vdra.service;
+        	systemctl start service.multimedia.vdra.service
             fi
-
+            
             if systemctl is-enabled service.multimedia.tvheadenda.service &>/dev/null ; then
-        	systemctl start service.multimedia.tvheadenda.service;
+        	systemctl start service.multimedia.tvheadenda.service
             fi
 
             sleep 4
 
-            systemctl restart lcdd.service;
+            systemctl restart lcdd.service
 
-            systemctl restart kodi.service;
+            systemctl restart kodi.service
         ;;
     esac
 fi

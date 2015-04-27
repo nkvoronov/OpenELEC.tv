@@ -28,7 +28,7 @@ TIMESHIFT_DIR="$ADDON_HOME/cache/timeshift"
 ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 XMLTV_FILE="$ADDON_DIR/bin/tv_grab_file"
 
-if [ ! -f "$TVHEADEND_CONF" ]; then
+if [ ! -d "$TVHEADEND_CONF" ]; then
   mkdir -p $TVHEADEND_CONF
     cp -PR $ADDON_DIR/config/* $TVHEADEND_CONF
 fi
