@@ -23,11 +23,12 @@
 oe_setup_addon service.multimedia.vdra
 
 VDR_FRONT_RUN_FILE="$ADDON_HOME/vdr-front.run"
+VDR_RUN_FILE="$ADDON_HOME/vdr.enable"
 
 vdr_init() {
 
     ADDON_CONFIG_DIR="$ADDON_HOME/config"
-    ADDON_PLUGIN_DIR="$ADDON_DIR/plugin"
+    ADDON_PLUGIN_DIR="$ADDON_DIR/lib/vdr"
     ADDON_LOCALE_DIR="$ADDON_DIR/locale"
 
     chmod a+x $ADDON_DIR/bin/*
@@ -49,6 +50,12 @@ vdr_init() {
     VDR_ARG="-g /tmp"
     
     RUN_FRONT="false"
+    
+    if [ "$VDR_TYPE" != "frontend" ]; then
+	touch $VDR_RUN_FILE
+    else
+        rm -f $VDR_RUN_FILE
+    fi
     
     if [ -f "$VDR_FRONT_RUN_FILE" ]; then
         if [ "$VDR_TYPE" != "service" ]; then 
@@ -111,7 +118,8 @@ init_vdr_plugins() {
 	    VDR_ARG="$VDR_ARG -r \"$VDR_EXTERNAL_RECCMD_PATH\""
 	fi
     fi
-
+    
+    VDR_CHARSET_OVERRIDE="en_US.UTF-8"
     if [ "$VDR_ENABLE_CHARSET_OVERRIDE" == "true" ]; then
 	if [ ! -z "$VDR_CHARSET_OVERRIDE_STR" ]; then
 	    VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE_STR"
@@ -394,11 +402,11 @@ init_vdr_xine() {
     VDR_XINE_CONFIG="$ADDON_CONFIG_DIR/xine/config_xineliboutput"
     
     if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxfe --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
     elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=vdpau --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxfe --video=vdpau --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
     else
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=vaapi --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxfe --video=vaapi --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
     fi
 }
 
@@ -430,8 +438,8 @@ run_init() {
     init_vdr_plugins
 
     fix_config
-
-    export LD_LIBRARY_PATH=$ADDON_DIR/lib:$ADDON_DIR/lib/tntnet:$ADDON_DIR/lib/tntdb
+    
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ADDON_DIR/lib/tntnet:$ADDON_DIR/lib/tntdb
 }
 
 vdr_init
@@ -450,11 +458,11 @@ if [ "$RUN_FRONT" == "true" ]; then
         exit
     fi
     
-    eval DISPLAY=:0.0 LANG=en_US.UTF-8 VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE" exec vdr $VDR_ARG &>$ADDON_LOG_FILE
+    eval DISPLAY=:0.0 LANG=$VDR_CHARSET_OVERRIDE exec vdr $VDR_ARG &>$ADDON_LOG_FILE
 
 elif [ "$VDR_TYPE" != "frontend" ]; then
 
     run_init   
 
-    eval LANG=en_US.UTF-8 VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE" exec vdr $VDR_ARG &>$ADDON_LOG_FILE
+    eval LANG=$VDR_CHARSET_OVERRIDE exec vdr $VDR_ARG &>$ADDON_LOG_FILE
 fi

@@ -1,5 +1,7 @@
 [Unit]
 Description=vdr
+ConditionPathExists=|/storage/.kodi/userdata/addon_data/service.multimedia.vdra/vdr.enable
+ConditionPathExists=|/storage/.kodi/userdata/addon_data/service.multimedia.vdra/vdr-front.run
 After=graphical.target
 
 [Service]

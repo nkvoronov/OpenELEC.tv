@@ -71,6 +71,4 @@ if [ "$DVB_WAIT_FOR_FEINIT" == "true" ] ; then
   done
 fi
 
-export LD_LIBRARY_PATH=$ADDON_DIR/lib
-
 exec oscam $OSCAM_ARG > /dev/null 2>&1
