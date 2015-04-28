@@ -25,6 +25,7 @@
 oe_setup_addon service.multimedia.vdra
 
 VDR_FRONT_RUN_FILE="$ADDON_HOME/vdr-front.run"
+VDR_RUN_FILE="$ADDON_HOME/vdr.enable"
 
 if [ "$VDR_TYPE" != "service" ]; then
 
@@ -32,11 +33,11 @@ if [ "$VDR_TYPE" != "service" ]; then
 
     systemctl restart lcdd.service
 
-    if systemctl is-active service.multimedia.vdra.service &>/dev/null ; then
+    if [ -f $VDR_RUN_FILE ]; then
         systemctl stop service.multimedia.vdra.service
     fi
     
-    touch $VDR_FRONT_RUN_FILE;    
+    touch $VDR_FRONT_RUN_FILE
 
     systemctl start service.multimedia.vdra.service
 

@@ -20,7 +20,7 @@
 
 PKG_NAME="libtorrent"
 PKG_VERSION="1.0.3"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.libtorrent.org/"
