@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="25"
+PKG_REV="26"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -64,7 +64,7 @@ ENABLE_VDR_SKIN_FLATPLUS="yes"
 ENABLE_VDR_SKIN_NOPACITY="yes"
 ENABLE_VDR_SYSTEMINFO="yes"
 ENABLE_VDR_PLUGIN_SKINDESIGNER="yes"
-ENABLE_VDR_PLUGIN_WEATHERFORECAST="yes"
+ENABLE_VDR_PLUGIN_WEATHERFORECAST="no"
 
 if [ "$ENABLE_VDR_CONTROL" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-control"  
@@ -209,7 +209,7 @@ post_install() {
 
   mkdir -p $INSTALL/usr/bin
     cp -P $VDR_DIR/vdr $INSTALL/usr/bin/vdr.bin
-    cp -P $VDR_DIR/vdr $INSTALL/usr/bin/svdrpsend
+    cp -P $VDR_DIR/svdrpsend $INSTALL/usr/bin/svdrpsend
     cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
 
   mkdir -p $INSTALL/usr/config/vdr
@@ -274,7 +274,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-f5ae09a
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-85da7b2
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -606,7 +606,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-e7d8a19
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-4fe74f8
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $INSTALL/usr/lib
     ln -s libskindesignerapi.so.0.0.1 $INSTALL/usr/lib/libskindesignerapi.so.0

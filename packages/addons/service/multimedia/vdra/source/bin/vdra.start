@@ -458,11 +458,11 @@ if [ "$RUN_FRONT" == "true" ]; then
         exit
     fi
     
-    eval DISPLAY=:0.0 LANG=$VDR_CHARSET_OVERRIDE exec vdr $VDR_ARG &>$ADDON_LOG_FILE
+    eval DISPLAY=:0.0 LANG=$VDR_CHARSET_OVERRIDE exec vdr.bin $VDR_ARG &>$ADDON_LOG_FILE
 
 elif [ "$VDR_TYPE" != "frontend" ]; then
 
     run_init   
 
-    eval LANG=$VDR_CHARSET_OVERRIDE exec vdr $VDR_ARG &>$ADDON_LOG_FILE
+    eval LANG=$VDR_CHARSET_OVERRIDE exec vdr.bin $VDR_ARG &>$ADDON_LOG_FILE
 fi
