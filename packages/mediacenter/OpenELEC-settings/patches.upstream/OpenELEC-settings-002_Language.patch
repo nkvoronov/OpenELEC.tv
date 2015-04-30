@@ -1,7 +1,7 @@
 diff -Naur a/language/English/strings.po b/language/English/strings.po
 --- a/language/English/strings.po	2015-01-23 00:05:40.000000000 +0200
-+++ b/language/English/strings.po	2015-04-18 18:12:14.536145904 +0300
-@@ -1141,3 +1141,669 @@
++++ b/language/English/strings.po	2015-04-30 02:14:26.925432490 +0300
+@@ -1141,3 +1141,685 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr ""
@@ -149,42 +149,50 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgstr ""
 +
 +msgctxt "#36003"
-+msgid "Аdapters"
++msgid "Enable Tvheadend debug"
 +msgstr ""
 +
 +msgctxt "#1103"
-+msgid "Used adapters"
++msgid "Enable Tvheadend debug"
 +msgstr ""
 +
 +msgctxt "#36004"
-+msgid "XMLTV source type"
++msgid "Аdapters"
 +msgstr ""
 +
 +msgctxt "#1104"
-+msgid "Select XMLTV type"
++msgid "Used adapters"
 +msgstr ""
 +
 +msgctxt "#36005"
-+msgid "XMLTV File location"
++msgid "XMLTV source type"
 +msgstr ""
 +
 +msgctxt "#1105"
-+msgid "Local location XMLTV file"
++msgid "Select XMLTV type"
 +msgstr ""
 +
 +msgctxt "#36006"
-+msgid "XMLTV Web location"
++msgid "XMLTV File location"
 +msgstr ""
 +
 +msgctxt "#1106"
-+msgid "Web location XMLTV file"
++msgid "Local location XMLTV file"
 +msgstr ""
 +
 +msgctxt "#36007"
-+msgid "XMLTV Script location"
++msgid "XMLTV Web location"
 +msgstr ""
 +
 +msgctxt "#1107"
++msgid "Web location XMLTV file"
++msgstr ""
++
++msgctxt "#36008"
++msgid "XMLTV Script location"
++msgstr ""
++
++msgctxt "#1108"
 +msgid "Location XMLTV script"
 +msgstr ""
 +
@@ -236,186 +244,194 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgstr ""
 +
 +msgctxt "#37006"
-+msgid "PVR plugin"
++msgid "Enable VDR debug"
 +msgstr ""
 +
 +msgctxt "#1206"
-+msgid "Select PVR plugin"
++msgid "Enable VDR debug"
 +msgstr ""
 +
 +msgctxt "#37007"
-+msgid "Enable plugin: iptv"
++msgid "PVR plugin"
 +msgstr ""
 +
 +msgctxt "#1207"
-+msgid "Enabled iptv plugin"
++msgid "Select PVR plugin"
 +msgstr ""
 +
 +msgctxt "#37008"
-+msgid "iptv num devices"
++msgid "Enable plugin: iptv"
 +msgstr ""
 +
 +msgctxt "#1208"
-+msgid "iptv num devices"
++msgid "Enabled iptv plugin"
 +msgstr ""
 +
 +msgctxt "#37009"
-+msgid "Enable plugin: streamdev-client"
++msgid "iptv num devices"
 +msgstr ""
 +
 +msgctxt "#1209"
-+msgid "Enable streamdev-client plugin"
++msgid "iptv num devices"
 +msgstr ""
 +
 +msgctxt "#37010"
-+msgid "Enable plugin: streamdev-server"
++msgid "Enable plugin: streamdev-client"
 +msgstr ""
 +
 +msgctxt "#1210"
-+msgid "Enabled streamdev-server plugin"
++msgid "Enable streamdev-client plugin"
 +msgstr ""
 +
 +msgctxt "#37011"
-+msgid "Enable plugin: wirbelscan"
++msgid "Enable plugin: streamdev-server"
 +msgstr ""
 +
 +msgctxt "#1211"
-+msgid "Enabled wirbelscan plugin"
++msgid "Enabled streamdev-server plugin"
 +msgstr ""
 +
 +msgctxt "#37012"
-+msgid "Enable plugin: live"
++msgid "Enable plugin: wirbelscan"
 +msgstr ""
 +
 +msgctxt "#1212"
-+msgid "Enabled live plugin"
++msgid "Enabled wirbelscan plugin"
 +msgstr ""
 +
 +msgctxt "#37013"
-+msgid "live: listen on ip"
++msgid "Enable plugin: live"
 +msgstr ""
 +
 +msgctxt "#1213"
-+msgid "Listen ip address for live plugin"
++msgid "Enabled live plugin"
 +msgstr ""
 +
 +msgctxt "#37014"
-+msgid "live: listen on port"
++msgid "live: listen on ip"
 +msgstr ""
 +
 +msgctxt "#1214"
-+msgid "Listen port for live plugin"
++msgid "Listen ip address for live plugin"
 +msgstr ""
 +
 +msgctxt "#37015"
-+msgid "Enable plugin: control"
++msgid "live: listen on port"
 +msgstr ""
 +
 +msgctxt "#1215"
-+msgid "Enabled control plugin"
++msgid "Listen port for live plugin"
 +msgstr ""
 +
 +msgctxt "#37016"
-+msgid "control: listen on port"
++msgid "Enable plugin: control"
 +msgstr ""
 +
 +msgctxt "#1216"
-+msgid "Listen port for control plugin"
++msgid "Enabled control plugin"
 +msgstr ""
 +
 +msgctxt "#37017"
-+msgid "Enable plugin: eepg"
++msgid "control: listen on port"
 +msgstr ""
 +
 +msgctxt "#1217"
-+msgid "Enabled eepg plugin"
++msgid "Listen port for control plugin"
 +msgstr ""
 +
 +msgctxt "#37018"
-+msgid "Enable plugin: epgsearch"
++msgid "Enable plugin: eepg"
 +msgstr ""
 +
 +msgctxt "#1218"
-+msgid "Enabled epgsearch plugin"
++msgid "Enabled eepg plugin"
 +msgstr ""
 +
 +msgctxt "#37019"
-+msgid "Enable plugin: xmltv2vdr"
++msgid "Enable plugin: epgsearch"
 +msgstr ""
 +
 +msgctxt "#1219"
-+msgid "Enabled xmltv2vdr plugin"
++msgid "Enabled epgsearch plugin"
 +msgstr ""
 +
 +msgctxt "#37020"
-+msgid "Enable plugin: softcam"
++msgid "Enable plugin: xmltv2vdr"
 +msgstr ""
 +
 +msgctxt "#1220"
-+msgid "Enabled softcam plugin"
++msgid "Enabled xmltv2vdr plugin"
 +msgstr ""
 +
 +msgctxt "#37021"
-+msgid "softcam: options"
++msgid "Enable plugin: softcam"
 +msgstr ""
 +
 +msgctxt "#1221"
-+msgid "softcam plugin options"
++msgid "Enabled softcam plugin"
 +msgstr ""
 +
 +msgctxt "#37022"
-+msgid "Enable plugin: dummydevice"
++msgid "softcam: options"
 +msgstr ""
 +
 +msgctxt "#1222"
-+msgid "Enabled dummydevice plugin"
++msgid "softcam plugin options"
 +msgstr ""
 +
 +msgctxt "#37023"
-+msgid "Enable plugin: satip"
++msgid "Enable plugin: dummydevice"
 +msgstr ""
 +
 +msgctxt "#1223"
-+msgid "Enabled satip plugin"
++msgid "Enabled dummydevice plugin"
 +msgstr ""
 +
 +msgctxt "#37024"
-+msgid "Enable plugin: upnp"
++msgid "Enable plugin: satip"
 +msgstr ""
 +
 +msgctxt "#1224"
-+msgid "Enabled upnp plugin"
++msgid "Enabled satip plugin"
 +msgstr ""
 +
 +msgctxt "#37025"
-+msgid "Enable plugin: epgfixer"
++msgid "Enable plugin: upnp"
 +msgstr ""
 +
 +msgctxt "#1225"
-+msgid "Enabled epgfixer plugin"
++msgid "Enabled upnp plugin"
 +msgstr ""
 +
 +msgctxt "#37026"
-+msgid "Enable plugin: restfulapi"
++msgid "Enable plugin: epgfixer"
 +msgstr ""
 +
 +msgctxt "#1226"
-+msgid "Enabled restfulapi plugin"
++msgid "Enabled epgfixer plugin"
 +msgstr ""
 +
 +msgctxt "#37027"
-+msgid "restfulapi: listen on ip"
++msgid "Enable plugin: restfulapi"
 +msgstr ""
 +
 +msgctxt "#1227"
-+msgid "Listen ip address for restfulapi plugin"
++msgid "Enabled restfulapi plugin"
 +msgstr ""
 +
 +msgctxt "#37028"
-+msgid "restfulapi: listen on port"
++msgid "restfulapi: listen on ip"
 +msgstr ""
 +
 +msgctxt "#1228"
++msgid "Listen ip address for restfulapi plugin"
++msgstr ""
++
++msgctxt "#37029"
++msgid "restfulapi: listen on port"
++msgstr ""
++
++msgctxt "#1229"
 +msgid "Listen port for restfulapi plugin"
 +msgstr ""
 +
@@ -537,67 +553,67 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgstr ""
 +
 +msgctxt "#39034"
-+msgid "VDR output plugin"
-+msgstr ""
-+
-+msgctxt "#1434"
-+msgid "Select VDR output plugin"
-+msgstr ""
-+
-+msgctxt "#39035"
-+msgid "VDR video output"
-+msgstr ""
-+
-+msgctxt "#1435"
-+msgid "Select VDR video output"
-+msgstr ""
-+
-+msgctxt "#39036"
-+msgid "softhddevice audio device"
-+msgstr ""
-+
-+msgctxt "#1436"
-+msgid "Enter softhddevice audio device"
-+msgstr ""
-+
-+msgctxt "#39037"
-+msgid "xineliboutput audio device"
-+msgstr ""
-+
-+msgctxt "#1437"
-+msgid "Enter xineliboutput audio device"
-+msgstr ""
-+
-+msgctxt "#39038"
-+msgid "softhddevice options"
-+msgstr ""
-+
-+msgctxt "#1438"
-+msgid "Enter softhddevice options"
-+msgstr ""
-+
-+msgctxt "#39039"
-+msgid "xineliboutput options"
-+msgstr ""
-+
-+msgctxt "#1439"
-+msgid "Enter xineliboutput options"
-+msgstr ""
-+
-+msgctxt "#38100"
 +msgid "Enable plugin: skindesigner"
 +msgstr ""
 +
-+msgctxt "#1310"
++msgctxt "#1434"
 +msgid "Enabled skindesigner plugin"
 +msgstr ""
 +
-+msgctxt "#38101"
++msgctxt "#39035"
 +msgid "Enable plugin: weatherforecast"
 +msgstr ""
 +
-+msgctxt "#1311"
++msgctxt "#1435"
 +msgid "Enabled weatherforecast plugin"
++msgstr ""
++
++msgctxt "#39036"
++msgid "VDR output plugin"
++msgstr ""
++
++msgctxt "#1436"
++msgid "Select VDR output plugin"
++msgstr ""
++
++msgctxt "#39037"
++msgid "VDR video output"
++msgstr ""
++
++msgctxt "#1437"
++msgid "Select VDR video output"
++msgstr ""
++
++msgctxt "#39038"
++msgid "softhddevice audio device"
++msgstr ""
++
++msgctxt "#1438"
++msgid "Enter softhddevice audio device"
++msgstr ""
++
++msgctxt "#39039"
++msgid "xineliboutput audio device"
++msgstr ""
++
++msgctxt "#1439"
++msgid "Enter xineliboutput audio device"
++msgstr ""
++
++msgctxt "#39040"
++msgid "softhddevice options"
++msgstr ""
++
++msgctxt "#1440"
++msgid "Enter softhddevice options"
++msgstr ""
++
++msgctxt "#39041"
++msgid "xineliboutput options"
++msgstr ""
++
++msgctxt "#1441"
++msgid "Enter xineliboutput options"
 +msgstr ""
 +
 +##########################################################
@@ -673,7 +689,7 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgstr ""
 diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 --- a/language/Russian/strings.po	2015-01-23 00:05:40.000000000 +0200
-+++ b/language/Russian/strings.po	2015-04-18 18:11:31.096144798 +0300
++++ b/language/Russian/strings.po	2015-04-30 02:45:59.241350861 +0300
 @@ -100,6 +100,10 @@
  msgid "709"
  msgstr "709"
@@ -742,7 +758,7 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
  msgctxt "#743"
  msgid "Set to ON if you have copied private SSH keys to your HTPC and would like to improve security by disabling SSH username and password authentication."
  msgstr "Выберите ВКЛ, если Вы скопировали Ваш публичный SSH-ключ на Ваш HTPC и хотите усилить безопасность путем выключения авторизации по паролю, оставив только авторизацию по ключу. "
-@@ -1039,3 +1071,669 @@
+@@ -1039,3 +1071,685 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr "Включить поддержку драйвера ЖК-экрана"
@@ -890,42 +906,50 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgstr "Разрешить резервное копирование при обновлении"
 +
 +msgctxt "#36003"
++msgid "Enable Tvheadend debug"
++msgstr "Разрешить отладку"
++
++msgctxt "#1103"
++msgid "Enable Tvheadend debug"
++msgstr "Разрешить отладку tvheadend"
++
++msgctxt "#36004"
 +msgid "Аdapters"
 +msgstr "Адаптеры"
 +
-+msgctxt "#1103"
++msgctxt "#1104"
 +msgid "Used adapters"
 +msgstr "Использовать адаптеры"
 +
-+msgctxt "#36004"
++msgctxt "#36005"
 +msgid "XMLTV source type"
 +msgstr "XMLTV тип источника"
 +
-+msgctxt "#1104"
++msgctxt "#1105"
 +msgid "Select XMLTV type"
 +msgstr "Выбрат XMLTV тип"
 +
-+msgctxt "#36005"
++msgctxt "#36006"
 +msgid "XMLTV File location"
 +msgstr "XMLTV путь"
 +
-+msgctxt "#1105"
++msgctxt "#1107"
 +msgid "Local location XMLTV file"
 +msgstr "Выбрать XMLTV файлы"
 +
-+msgctxt "#36006"
++msgctxt "#36007"
 +msgid "XMLTV Web location"
 +msgstr "XMLTV ссылка"
 +
-+msgctxt "#1106"
++msgctxt "#1107"
 +msgid "Web location XMLTV file"
 +msgstr "Выбрать XMLTV ссылку"
 +
-+msgctxt "#36007"
++msgctxt "#36008"
 +msgid "XMLTV Script location"
 +msgstr "XMLTV скрипт"
 +
-+msgctxt "#1107"
++msgctxt "#1108"
 +msgid "Location XMLTV script"
 +msgstr "Выбрать XMLTV script"
 +
@@ -977,186 +1001,194 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgstr "Выбрать папку для видео"
 +
 +msgctxt "#37006"
++msgid "Enable VDR debug"
++msgstr "Разрешить отладку"
++
++msgctxt "#1206"
++msgid "Enable VDR debug"
++msgstr "Разрешить отладку VDR"
++
++msgctxt "#37007"
 +msgid "PVR plugin"
 +msgstr "PVR плагин"
 +
-+msgctxt "#1206"
++msgctxt "#1207"
 +msgid "Select PVR plugin"
 +msgstr "Выбрать PVR плагин"
 +
-+msgctxt "#37007"
++msgctxt "#37008"
 +msgid "Enable plugin: iptv"
 +msgstr "Плагин: iptv"
 +
-+msgctxt "#1207"
++msgctxt "#1208"
 +msgid "Enabled iptv plugin"
 +msgstr "Разрешить iptv плагин"
 +
-+msgctxt "#37008"
-+msgid "iptv num devices"
-+msgstr "Количество устройств iptv"
-+
-+msgctxt "#1208"
-+msgid "iptv num devices"
-+msgstr "Количество устройств iptv"
-+
 +msgctxt "#37009"
++msgid "iptv num devices"
++msgstr "Количество устройств iptv"
++
++msgctxt "#1209"
++msgid "iptv num devices"
++msgstr "Количество устройств iptv"
++
++msgctxt "#37010"
 +msgid "Enable plugin: streamdev-client"
 +msgstr "Плагин: streamdev-client"
 +
-+msgctxt "#1209"
++msgctxt "#1210"
 +msgid "Enable streamdev-client plugin"
 +msgstr "Разрешить streamdev-client плагин"
 +
-+msgctxt "#37010"
++msgctxt "#37011"
 +msgid "Enable plugin: streamdev-server"
 +msgstr "Плагин: streamdev-server"
 +
-+msgctxt "#1210"
++msgctxt "#1211"
 +msgid "Enabled streamdev-server plugin"
 +msgstr "Разрешить streamdev-server плагин"
 +
-+msgctxt "#37011"
++msgctxt "#37012"
 +msgid "Enable plugin: wirbelscan"
 +msgstr "Плагин: wirbelscan"
 +
-+msgctxt "#1211"
++msgctxt "#1212"
 +msgid "Enabled wirbelscan plugin"
 +msgstr "Разрешить wirbelscan плагин"
 +
-+msgctxt "#37012"
++msgctxt "#37013"
 +msgid "Enable plugin: live"
 +msgstr "Плагин: live"
 +
-+msgctxt "#1212"
++msgctxt "#1213"
 +msgid "Enabled live plugin"
 +msgstr "Разрешить live плагин"
 +
-+msgctxt "#37013"
++msgctxt "#37014"
 +msgid "live: listen on ip"
 +msgstr "live: IP"
 +
-+msgctxt "#1213"
++msgctxt "#1214"
 +msgid "Listen ip address for live plugin"
 +msgstr "IP-адрес для live плагина"
 +
-+msgctxt "#37014"
++msgctxt "#37015"
 +msgid "live: listen on port"
 +msgstr "live: Порт"
 +
-+msgctxt "#1214"
++msgctxt "#1215"
 +msgid "Listen port for live plugin"
 +msgstr "Порт для live плагина"
 +
-+msgctxt "#37015"
++msgctxt "#37016"
 +msgid "Enable plugin: control"
 +msgstr "Плагин: control"
 +
-+msgctxt "#1215"
++msgctxt "#1216"
 +msgid "Enabled control plugin"
 +msgstr "Разрешить control плагин"
 +
-+msgctxt "#37016"
++msgctxt "#37017"
 +msgid "control: listen on port"
 +msgstr "control: Порт"
 +
-+msgctxt "#1216"
++msgctxt "#1217"
 +msgid "Listen port for control plugin"
 +msgstr "Порт для control плагина"
 +
-+msgctxt "#37017"
++msgctxt "#37018"
 +msgid "Enable plugin: eepg"
 +msgstr "Плагин: eepg"
 +
-+msgctxt "#1217"
++msgctxt "#1218"
 +msgid "Enabled eepg plugin"
 +msgstr "Разрешить eepg плагин"
 +
-+msgctxt "#37018"
++msgctxt "#37019"
 +msgid "Enable plugin: epgsearch"
 +msgstr "Плагин: epgsearch"
 +
-+msgctxt "#1218"
++msgctxt "#1219"
 +msgid "Enabled epgsearch plugin"
 +msgstr "Разрешить epgsearch плагин"
 +
-+msgctxt "#37019"
++msgctxt "#37020"
 +msgid "Enable plugin: xmltv2vdr"
 +msgstr "Плагин: xmltv2vdr"
 +
-+msgctxt "#1219"
++msgctxt "#1220"
 +msgid "Enabled xmltv2vdr plugin"
 +msgstr "Разрешить xmltv2vdr плагин"
 +
-+msgctxt "#37020"
++msgctxt "#37021"
 +msgid "Enable plugin: softcam"
 +msgstr "Плагин: softcam"
 +
-+msgctxt "#1220"
++msgctxt "#1221"
 +msgid "Enabled softcam plugin"
 +msgstr "Разрешить softcam плагин"
 +
-+msgctxt "#37021"
++msgctxt "#37022"
 +msgid "softcam: options"
 +msgstr "softcam: опции"
 +
-+msgctxt "#1221"
++msgctxt "#1222"
 +msgid "softcam plugin options"
 +msgstr "Опции для softcam плагина"
 +
-+msgctxt "#37022"
++msgctxt "#37023"
 +msgid "Enable plugin: dummydevice"
 +msgstr "Плагин: dummydevice"
 +
-+msgctxt "#1222"
++msgctxt "#1223"
 +msgid "Enabled dummydevice plugin"
 +msgstr "Разрешить dummydevice плагин"
 +
-+msgctxt "#37023"
++msgctxt "#37024"
 +msgid "Enable plugin: satip"
 +msgstr "Плагин: satip"
 +
-+msgctxt "#1223"
++msgctxt "#1224"
 +msgid "Enabled satip plugin"
 +msgstr "Разрешить satip плагин"
 +
-+msgctxt "#37024"
++msgctxt "#37025"
 +msgid "Enable plugin: upnp"
 +msgstr "Плагин: upnp"
 +
-+msgctxt "#1224"
++msgctxt "#1225"
 +msgid "Enabled upnp plugin"
 +msgstr "Разрешить upnp плагин"
 +
-+msgctxt "#37025"
++msgctxt "#37026"
 +msgid "Enable plugin: epgfixer"
 +msgstr "Плагин: epgfixer"
 +
-+msgctxt "#1225"
++msgctxt "#1226"
 +msgid "Enabled epgfixer plugin"
 +msgstr "Разрешить epgfixer плагин"
 +
-+msgctxt "#37026"
++msgctxt "#37027"
 +msgid "Enable plugin: restfulapi"
 +msgstr "Плагин: restfulapi"
 +
-+msgctxt "#1226"
++msgctxt "#1227"
 +msgid "Enabled restfulapi plugin"
 +msgstr "Разрешить restfulapi плагин"
 +
-+msgctxt "#37027"
++msgctxt "#37028"
 +msgid "restfulapi: listen on ip"
 +msgstr "restfulapi: IP"
 +
-+msgctxt "#1227"
++msgctxt "#1228"
 +msgid "Listen ip address for restfulapi plugin"
 +msgstr "IP-адрес для restfulapi плагина"
 +
-+msgctxt "#37028"
++msgctxt "#37029"
 +msgid "restfulapi: listen on port"
 +msgstr "restfulapi: Порт"
 +
-+msgctxt "#1228"
++msgctxt "#1229"
 +msgid "Listen port for restfulapi plugin"
 +msgstr "Порт для restfulapi плагина"
 +
@@ -1278,68 +1310,68 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgstr "Разрешить tvscraper плагин"
 +
 +msgctxt "#39034"
-+msgid "VDR output plugin"
-+msgstr "VDR плагин вывода"
-+
-+msgctxt "#1434"
-+msgid "Select VDR output plugin"
-+msgstr "Выбрать VDR плагин вывода"
-+
-+msgctxt "#39035"
-+msgid "VDR video output"
-+msgstr "VDR видео драйвер"
-+
-+msgctxt "#1435"
-+msgid "Select VDR video output"
-+msgstr "Выбрать VDR видео драйвер"
-+
-+msgctxt "#39036"
-+msgid "softhddevice audio device"
-+msgstr "softhddevice аудио устройство"
-+
-+msgctxt "#1436"
-+msgid "Enter softhddevice audio device"
-+msgstr "Введите softhddevice аудио устройство"
-+
-+msgctxt "#39037"
-+msgid "xineliboutput audio device"
-+msgstr "xineliboutput аудио устройство"
-+
-+msgctxt "#1437"
-+msgid "Enter xineliboutput audio device"
-+msgstr "Введите xineliboutput аудио устройство"
-+
-+msgctxt "#39038"
-+msgid "softhddevice options"
-+msgstr "softhddevice опции"
-+
-+msgctxt "#1438"
-+msgid "Enter softhddevice options"
-+msgstr "Введите softhddevice опции"
-+
-+msgctxt "#39039"
-+msgid "xineliboutput options"
-+msgstr "xineliboutput опции"
-+
-+msgctxt "#1439"
-+msgid "Enter xineliboutput options"
-+msgstr "Введите xineliboutput опции"
-+
-+msgctxt "#38100"
 +msgid "Enable plugin: skindesigner"
 +msgstr "Плагин: skindesigner"
 +
-+msgctxt "#1310"
++msgctxt "#1434"
 +msgid "Enabled skindesigner plugin"
 +msgstr "Разрешить skindesigner плагин"
 +
-+msgctxt "#38101"
++msgctxt "#39035"
 +msgid "Enable plugin: weatherforecast"
 +msgstr "Плагин: weatherforecast"
 +
-+msgctxt "#1311"
++msgctxt "#1435"
 +msgid "Enabled weatherforecast plugin"
 +msgstr "Разрешить weatherforecast плагин"
++
++msgctxt "#39036"
++msgid "VDR output plugin"
++msgstr "VDR плагин вывода"
++
++msgctxt "#1436"
++msgid "Select VDR output plugin"
++msgstr "Выбрать VDR плагин вывода"
++
++msgctxt "#39037"
++msgid "VDR video output"
++msgstr "VDR видео драйвер"
++
++msgctxt "#1437"
++msgid "Select VDR video output"
++msgstr "Выбрать VDR видео драйвер"
++
++msgctxt "#39038"
++msgid "softhddevice audio device"
++msgstr "softhddevice аудио устройство"
++
++msgctxt "#1438"
++msgid "Enter softhddevice audio device"
++msgstr "Введите softhddevice аудио устройство"
++
++msgctxt "#39039"
++msgid "xineliboutput audio device"
++msgstr "xineliboutput аудио устройство"
++
++msgctxt "#1439"
++msgid "Enter xineliboutput audio device"
++msgstr "Введите xineliboutput аудио устройство"
++
++msgctxt "#39040"
++msgid "softhddevice options"
++msgstr "softhddevice опции"
++
++msgctxt "#1440"
++msgid "Enter softhddevice options"
++msgstr "Введите softhddevice опции"
++
++msgctxt "#39041"
++msgid "xineliboutput options"
++msgstr "xineliboutput опции"
++
++msgctxt "#1441"
++msgid "Enter xineliboutput options"
++msgstr "Введите xineliboutput опции"
 +
 +##########################################################
 +## DVB
