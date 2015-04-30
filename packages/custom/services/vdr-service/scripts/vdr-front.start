@@ -287,11 +287,11 @@ init_vdr_xine() {
     VDR_XINE_CONFIG="$HOME/.config/xine/config_xineliboutput"
     
     if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
     elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vdpau --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=vdpau --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
     else
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vaapi --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=vaapi --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
     fi
 }
 
