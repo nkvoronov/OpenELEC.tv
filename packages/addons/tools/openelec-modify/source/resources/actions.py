@@ -16,43 +16,17 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="vdr-plugin-dvbapi"
-PKG_VERSION="5fdb21e"
-PKG_REV="1"
-PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/manio/vdr-plugin-dvbapi"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain vdr libdvbcsa"
-PKG_PRIORITY="optional"
-PKG_SECTION="multimedia"
-PKG_SHORTDESC="TV"
-PKG_LONGDESC="TV"
+import os
+import sys
+import xbmcaddon
 
-PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
+__addon__         = xbmcaddon.Addon('tools.openelec-modify')
+__cwd__           = __addon__.getAddonInfo('path')
+__resources_lib__ = xbmc.translatePath(os.path.join(__cwd__, 'resources', 'lib'))
+__settings_xml__  = xbmc.translatePath(os.path.join(__cwd__, 'resources', 'settings.xml'))
 
-pre_configure_target() {
-  export CFLAGS="$CFLAGS -fPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC"
-  export LDFLAGS="$LDFLAGS -fPIC"
-  export CSAFLAGS="$CFLAGS -Wall -fomit-frame-pointer -fexpensive-optimizations -funroll-loops"
-}
-
-pre_make_target() {
-  # dont build parallel
-  MAKEFLAGS=-j1
-}
-
-make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
-  make VDRDIR=$VDR_DIR \
-  VDRSRC=$VDR_DIR \
-  LIBDIR="." \
-  LOCALEDIR="./locale" \
-  LIBDVBCSA=1
-}
-
-makeinstall_target() {
-  : # installation not needed, done by create-addon script
-}
+if len(sys.argv) == 2 and sys.argv[1] == 'refresh_updates':
+  sys.path.append(__resources_lib__)
+  from functions import refresh_updates
+  refresh_updates(__settings_xml__)
+  __addon__.openSettings()
