@@ -70,7 +70,7 @@ stop_tv_backend() {
 
 init_vdr_plugins() {
 
-    if [ "$DEBUG" = "yes" ]; then
+    if [ "$VDR_DEBUG" == "true" ]; then
         VDR_ARG="$VDR_ARG --log=3"
     else
         VDR_ARG="$VDR_ARG --log=1"
@@ -112,7 +112,7 @@ init_vdr_plugins() {
 
     # keep softcam first
     if [ "$VDR_ENABLE_SOFTCAM" == "true" ] ; then
-        VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPT'"
+        VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPTION'"
     fi
 
     if [ "$VDR_ENABLE_WIRBELSCAN" == "true" ] ; then
@@ -287,11 +287,11 @@ init_vdr_xine() {
     VDR_XINE_CONFIG="$HOME/.config/xine/config_xineliboutput"
     
     if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
     elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vdpau --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=vdpau --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
     else
-        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --hud --local=sxf --video=vaapi --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
+        VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxf --video=vaapi --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'"
     fi
 }
 

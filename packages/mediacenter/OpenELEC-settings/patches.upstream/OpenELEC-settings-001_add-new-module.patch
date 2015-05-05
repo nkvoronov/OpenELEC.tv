@@ -1,7 +1,7 @@
 diff -Naur a/src/defaults.py b/src/defaults.py
 --- a/src/defaults.py	2015-01-23 00:05:40.000000000 +0200
-+++ b/src/defaults.py	2015-04-18 17:37:49.956093302 +0300
-@@ -91,7 +91,150 @@
++++ b/src/defaults.py	2015-04-30 17:25:02.013037879 +0300
+@@ -91,7 +91,153 @@
          "D_LCD_DRIVER"          : "none",
          
      }
@@ -51,6 +51,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +    #TVHEADEND
 +        "D_PRELOAD_CAPMT_CA"         : "0",
 +        "D_TVH_BACKUP"               : "0",
++        "D_TVH_DEBUG"                : "0",
 +        "D_ADAPTERS"                 : "",
 +        "D_XMLTV_TYPE"               : "none",
 +        "D_XMLTV_LOCATION_FILE"      : "",
@@ -63,6 +64,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_ENABLE_CHARSET_OVERRIDE"  : "0",
 +        "D_CHARSET_OVERRIDE_STR"     : "",
 +        "D_VDR_VIDEO_DIR"            : "/storage/videos/",
++        "D_VDR_DEBUG"                : "0",
 +        "D_PVR_PLUGIN"               : "xvdr",
 +        "D_ENABLE_IPTV"              : "0",
 +        "D_IPTV_NUM_DEVICES"         : "1",
@@ -78,7 +80,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_ENABLE_EPGSEARCH"         : "1",
 +        "D_ENABLE_XMLTV2VDR"         : "0",
 +        "D_ENABLE_SOFTCAM"           : "1",
-+        "D_SOFTCAM_OPT"              : "",
++        "D_SOFTCAM_OPTION"           : "",
 +        "D_ENABLE_DUMMYDEVICE"       : "0",
 +        "D_ENABLE_SATIP"             : "0",
 +        "D_ENABLE_UPNP"              : "0",
@@ -96,6 +98,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_F_ENABLE_CHARSET_OVERRIDE": "0",
 +        "D_F_CHARSET_OVERRIDE_STR"   : "",
 +        "D_F_VDR_VIDEO_DIR"          : "/storage/videos/",
++        "D_F_VDR_DEBUG"              : "0",
 +        "D_F_ENABLE_IPTV"            : "1",
 +        "D_F_IPTV_NUM_DEVICES"       : "1",
 +        "D_F_ENABLE_STREAMDEV_CLIENT": "1",
@@ -110,7 +113,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +        "D_F_ENABLE_EPGSEARCH"       : "1",
 +        "D_F_ENABLE_XMLTV2VDR"       : "1",
 +        "D_F_ENABLE_SOFTCAM"         : "1",
-+        "D_F_SOFTCAM_OPT"            : "",
++        "D_F_SOFTCAM_OPTION"         : "",
 +        "D_F_ENABLE_DUMMYDEVICE"     : "0",
 +        "D_F_ENABLE_SATIP"           : "1",
 +        "D_F_ENABLE_UPNP"            : "0",
@@ -153,7 +156,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
  system = \
      {
          "ENABLED"             : True,
-@@ -133,11 +276,15 @@
+@@ -133,11 +279,15 @@
  
  _services = \
      {
@@ -178,7 +181,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
      }
 diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/system.py
 --- a/src/resources/lib/modules/system.py	2015-01-23 00:05:40.000000000 +0200
-+++ b/src/resources/lib/modules/system.py	2015-04-16 05:23:00.818567283 +0300
++++ b/src/resources/lib/modules/system.py	2015-03-28 21:45:50.411260587 +0200
 @@ -127,7 +127,15 @@
                          'action': 'set_keyboard_layout',
                          'type': 'multivalue',
@@ -297,7 +300,7 @@ diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/sys
              self.oe.dbg_log('system::get_keyboard_layouts', 'ERROR: ('
 diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modules/transmission.py
 --- a/src/resources/lib/modules/transmission.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/transmission.py	2015-04-16 05:23:00.818567283 +0300
++++ b/src/resources/lib/modules/transmission.py	2015-03-28 21:45:50.411260587 +0200
 @@ -0,0 +1,331 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -632,8 +635,8 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-04-18 18:20:28.392158487 +0300
-@@ -0,0 +1,2091 @@
++++ b/src/resources/lib/modules/tvservers.py	2015-04-30 17:22:24.749041475 +0300
+@@ -0,0 +1,2146 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
 +#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
@@ -680,6 +683,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +    D_PRELOAD_CAPMT_CA = None
 +    D_TVH_BACKUP = None
++    D_TVH_DEBUG = None
 +    D_ADAPTERS = None
 +    D_XMLTV_TYPE = None
 +    D_XMLTV_LOCATION_FILE = None
@@ -691,6 +695,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_ENABLE_CHARSET_OVERRIDE = None
 +    D_CHARSET_OVERRIDE_STR = None
 +    D_VDR_VIDEO_DIR = None
++    D_VDR_DEBUG = None
 +    D_PVR_PLUGIN = None
 +    D_ENABLE_IPTV = None
 +    D_IPTV_NUM_DEVICES = None
@@ -706,7 +711,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_ENABLE_EPGSEARCH = None
 +    D_ENABLE_XMLTV2VDR = None
 +    D_ENABLE_SOFTCAM = None
-+    D_SOFTCAM_OPT = None
++    D_SOFTCAM_OPTION = None
 +    D_ENABLE_DUMMYDEVICE = None
 +    D_ENABLE_SATIP = None
 +    D_ENABLE_UPNP = None
@@ -722,6 +727,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_F_ENABLE_CHARSET_OVERRIDE = None
 +    D_F_CHARSET_OVERRIDE_STR = None
 +    D_F_VDR_VIDEO_DIR = None
++    D_F_VDR_DEBUG = None
 +    D_F_ENABLE_IPTV = None
 +    D_F_IPTV_NUM_DEVICES = None
 +    D_F_ENABLE_STREAMDEV_CLIENT = None
@@ -736,7 +742,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_F_ENABLE_EPGSEARCH = None
 +    D_F_ENABLE_XMLTV2VDR = None
 +    D_F_ENABLE_SOFTCAM = None
-+    D_F_SOFTCAM_OPT = None
++    D_F_SOFTCAM_OPTION = None
 +    D_F_ENABLE_DUMMYDEVICE = None
 +    D_F_ENABLE_SATIP = None
 +    D_F_ENABLE_UPNP = None
@@ -828,49 +834,57 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1102,
 +                        },
-+                        'adapters': {
-+                            'order': 2,
++                        'tvh_debug': {
++                            'order': 3,
 +                            'name': 36003,
++                            'value': '0',
++                            'action': 'initialize_tvheadend',
++                            'type': 'bool',
++                            'InfoText': 1103,
++                        },
++                        'adapters': {
++                            'order': 4,
++                            'name': 36004,
 +                            'value': '',
 +                            'action': 'initialize_tvheadend',
 +                            'type': 'text',
-+                            'InfoText': 1103,
++                            'InfoText': 1104,
 +                        },
 +                        'xmltv_type': {
-+                            'order': 4,
-+                            'name': 36004,
++                            'order': 5,
++                            'name': 36005,
 +                            'value': 'none',
 +                            'values': ['none','file','web','script'],
 +                            'action': 'initialize_tvheadend',
 +                            'type': 'multivalue',
-+                            'InfoText': 1104,
++                            'InfoText': 1105,
 +                        },
 +                        'xmltv_location_file': {
-+                            'order': 5,
-+                            'name': 36005,
++                            'order': 6,
++                            'name': 36006,
 +                            'value': '',
 +                            'action': 'initialize_tvheadend',
 +                            'type': 'file',
 +                            'parent': {'entry': 'xmltv_type','value': ['file']},
-+                            'InfoText': 1105,
++                            'InfoText': 1106,
 +                        },
 +                        'xmltv_location_web': {
-+                            'order': 6,
-+                            'name': 36006,
++                            'order': 7,
++                            'name': 36007,
 +                            'value': 'http://',
 +                            'action': 'initialize_tvheadend',
 +                            'type': 'text',
 +                            'parent': {'entry': 'xmltv_type','value': ['web']},
-+                            'InfoText': 1106,
++                            'InfoText': 1107,
 +                        },
 +                        'xmltv_location_script': {
-+                            'order': 7,
-+                            'name': 36007,
++                            'order': 8,
++                            'name': 36008,
 +                            'value': '',
 +                            'action': 'initialize_tvheadend',
 +                            'type': 'folder',
 +                            'parent': {'entry': 'xmltv_type','value': ['script']},
-+                            'InfoText': 1107,
++                            'InfoText': 1108,
 +                        },
 +                    },
 +                },
@@ -921,41 +935,41 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'folder',
 +                            'InfoText': 1205,
 +                        },
-+                        'pvr_plugin': {
++                        'vdr_debug': {
 +                            'order': 6,
 +                            'name': 37006,
++                            'value': '0',
++                            'action': 'initialize_vdr',
++                            'type': 'bool',
++                            'InfoText': 1206,
++                        },
++                        'pvr_plugin': {
++                            'order': 7,
++                            'name': 37007,
 +                            'value': 'xvdr',
 +                            'values': ['xvdr','vnsiserver'],
 +                            'action': 'initialize_vdr',
 +                            'type': 'multivalue',
-+                            'InfoText': 1206,
++                            'InfoText': 1207,
 +                        },
 +                        'enable_iptv': {
-+                            'order': 7,
-+                            'name': 37007,
++                            'order': 8,
++                            'name': 37008,
 +                            'value': '0',
 +                            'action': 'initialize_vdr',
 +                            'type': 'bool',
-+                            'InfoText': 1207,
++                            'InfoText': 1208,
 +                        },
 +                        'num_devices': {
-+                            'order': 8,
-+                            'name': 37008,
++                            'order': 9,
++                            'name': 37009,
 +                            'value': '1',
 +                            'action': 'initialize_vdr',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_iptv','value': ['1']},
-+                            'InfoText': 1208,
-+                        },
-+                        'enable_streamdev_client': {
-+                            'order': 9,
-+                            'name': 37009,
-+                            'value': '0',
-+                            'action': 'initialize_vdr',
-+                            'type': 'bool',
 +                            'InfoText': 1209,
 +                        },
-+                        'enable_streamdev_server': {
++                        'enable_streamdev_client': {
 +                            'order': 10,
 +                            'name': 37010,
 +                            'value': '0',
@@ -963,7 +977,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1210,
 +                        },
-+                        'enable_wirbelscan': {
++                        'enable_streamdev_server': {
 +                            'order': 11,
 +                            'name': 37011,
 +                            'value': '0',
@@ -971,7 +985,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1211,
 +                        },
-+                        'enable_live': {
++                        'enable_wirbelscan': {
 +                            'order': 12,
 +                            'name': 37012,
 +                            'value': '0',
@@ -979,50 +993,50 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1212,
 +                        },
-+                        'live_ip': {
++                        'enable_live': {
 +                            'order': 13,
 +                            'name': 37013,
++                            'value': '0',
++                            'action': 'initialize_vdr',
++                            'type': 'bool',
++                            'InfoText': 1213,
++                        },
++                        'live_ip': {
++                            'order': 14,
++                            'name': 37014,
 +                            'value': '0.0.0.0',
 +                            'action': 'initialize_vdr',
 +                            'type': 'text',
 +                            'parent': {'entry': 'enable_live','value': ['1']},
-+                            'InfoText': 1213,
++                            'InfoText': 1214,
 +                        },
 +                        'live_port': {
-+                            'order': 14,
-+                            'name': 37014,
++                            'order': 15,
++                            'name': 37015,
 +                            'value': '8008',
 +                            'action': 'initialize_vdr',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_live','value': ['1']},
-+                            'InfoText': 1214,
++                            'InfoText': 1215,
 +                        },
 +                        'enable_control': {
-+                            'order': 15,
-+                            'name': 37015,
++                            'order': 16,
++                            'name': 37016,
 +                            'value': '0',
 +                            'action': 'initialize_vdr',
 +                            'type': 'bool',
-+                            'InfoText': 1215,
++                            'InfoText': 1216,
 +                        },
 +                        'control_port': {
-+                            'order': 16,
-+                            'name': 37016,
++                            'order': 17,
++                            'name': 37017,
 +                            'value': '2002',
 +                            'action': 'initialize_vdr',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_control','value': ['1']},
-+                            'InfoText': 1216,
-+                        },
-+                        'enable_eepg': {
-+                            'order': 17,
-+                            'name': 37017,
-+                            'value': '1',
-+                            'action': 'initialize_vdr',
-+                            'type': 'bool',
 +                            'InfoText': 1217,
 +                        },
-+                        'enable_epgsearch': {
++                        'enable_eepg': {
 +                            'order': 18,
 +                            'name': 37018,
 +                            'value': '1',
@@ -1030,40 +1044,40 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1218,
 +                        },
-+                        'enable_xmltv2vdr': {
++                        'enable_epgsearch': {
 +                            'order': 19,
 +                            'name': 37019,
-+                            'value': '0',
++                            'value': '1',
 +                            'action': 'initialize_vdr',
 +                            'type': 'bool',
 +                            'InfoText': 1219,
 +                        },
-+                        'enable_softcam': {
++                        'enable_xmltv2vdr': {
 +                            'order': 20,
 +                            'name': 37020,
-+                            'value': '1',
++                            'value': '0',
 +                            'action': 'initialize_vdr',
 +                            'type': 'bool',
 +                            'InfoText': 1220,
 +                        },
-+                        'softcam_opt': {
++                        'enable_softcam': {
 +                            'order': 21,
 +                            'name': 37021,
++                            'value': '1',
++                            'action': 'initialize_vdr',
++                            'type': 'bool',
++                            'InfoText': 1221,
++                        },
++                        'softcam_option': {
++                            'order': 22,
++                            'name': 37022,
 +                            'value': '',
 +                            'action': 'initialize_vdr',
 +                            'type': 'text',
 +                            'parent': {'entry': 'enable_softcam','value': ['1']},
-+                            'InfoText': 1221,
-+                        },
-+                        'enable_dummydevice': {
-+                            'order': 22,
-+                            'name': 37022,
-+                            'value': '0',
-+                            'action': 'initialize_vdr',
-+                            'type': 'bool',
 +                            'InfoText': 1222,
 +                        },
-+                        'enable_satip': {
++                        'enable_dummydevice': {
 +                            'order': 23,
 +                            'name': 37023,
 +                            'value': '0',
@@ -1071,7 +1085,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1223,
 +                        },
-+                        'enable_upnp': {
++                        'enable_satip': {
 +                            'order': 24,
 +                            'name': 37024,
 +                            'value': '0',
@@ -1079,7 +1093,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1224,
 +                        },
-+                        'enable_epgfixer': {
++                        'enable_upnp': {
 +                            'order': 25,
 +                            'name': 37025,
 +                            'value': '0',
@@ -1087,7 +1101,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1225,
 +                        },
-+                        'enable_restfulapi': {
++                        'enable_epgfixer': {
 +                            'order': 26,
 +                            'name': 37026,
 +                            'value': '0',
@@ -1095,23 +1109,31 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1226,
 +                        },
-+                        'restfulapi_ip': {
++                        'enable_restfulapi': {
 +                            'order': 27,
 +                            'name': 37027,
++                            'value': '0',
++                            'action': 'initialize_vdr',
++                            'type': 'bool',
++                            'InfoText': 1227,
++                        },
++                        'restfulapi_ip': {
++                            'order': 28,
++                            'name': 37028,
 +                            'value': '0.0.0.0',
 +                            'action': 'initialize_vdr',
 +                            'type': 'text',
 +                            'parent': {'entry': 'enable_restfulapi','value': ['1']},
-+                            'InfoText': 1227,
++                            'InfoText': 1228,
 +                        },
 +                        'restfulapi_port': {
-+                            'order': 28,
-+                            'name': 37028,
++                            'order': 29,
++                            'name': 37029,
 +                            'value': '8002',
 +                            'action': 'initialize_vdr',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_restfulapi','value': ['1']},
-+                            'InfoText': 1228,
++                            'InfoText': 1229,
 +                        },
 +                    },
 +                },
@@ -1178,32 +1200,32 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'folder',
 +                            'InfoText': 1205,
 +                        },
-+                        'enable_iptv': {
++                        'vdr_debug': {
 +                            'order': 6,
-+                            'name': 37007,
++                            'name': 37006,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
-+                            'InfoText': 1207,
++                            'InfoText': 1206,
 +                        },
-+                        'num_devices': {
++                        'enable_iptv': {
 +                            'order': 7,
 +                            'name': 37008,
++                            'value': '0',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1208,
++                        },
++                        'num_devices': {
++                            'order': 8,
++                            'name': 37009,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_iptv','value': ['1']},
-+                            'InfoText': 1208,
-+                        },
-+                        'enable_streamdev_client': {
-+                            'order': 8,
-+                            'name': 37009,
-+                            'value': '0',
-+                            'action': 'initialize_vdr_front',
-+                            'type': 'bool',
 +                            'InfoText': 1209,
 +                        },
-+                        'enable_streamdev_server': {
++                        'enable_streamdev_client': {
 +                            'order': 9,
 +                            'name': 37010,
 +                            'value': '0',
@@ -1211,66 +1233,66 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1210,
 +                        },
-+                        'enable_wirbelscan': {
++                        'enable_streamdev_server': {
 +                            'order': 10,
 +                            'name': 37011,
-+                            'value': '1',
++                            'value': '0',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1211,
 +                        },
-+                        'enable_live': {
++                        'enable_wirbelscan': {
 +                            'order': 11,
 +                            'name': 37012,
-+                            'value': '0',
++                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1212,
 +                        },
-+                        'live_ip': {
++                        'enable_live': {
 +                            'order': 12,
 +                            'name': 37013,
++                            'value': '0',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1213,
++                        },
++                        'live_ip': {
++                            'order': 13,
++                            'name': 37014,
 +                            'value': '0.0.0.0',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'enable_live','value': ['1']},
-+                            'InfoText': 1213,
++                            'InfoText': 1214,
 +                        },
 +                        'live_port': {
-+                            'order': 13,
-+                            'name': 37014,
++                            'order': 14,
++                            'name': 37015,
 +                            'value': '8008',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_live','value': ['1']},
-+                            'InfoText': 1214,
++                            'InfoText': 1215,
 +                        },
 +                        'enable_control': {
-+                            'order': 14,
-+                            'name': 37015,
++                            'order': 15,
++                            'name': 37016,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
-+                            'InfoText': 1215,
++                            'InfoText': 1216,
 +                        },
 +                        'control_port': {
-+                            'order': 15,
-+                            'name': 37016,
++                            'order': 16,
++                            'name': 37017,
 +                            'value': '2002',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_control','value': ['1']},
-+                            'InfoText': 1216,
-+                        },
-+                       'enable_eepg': {
-+                            'order': 16,
-+                            'name': 37017,
-+                            'value': '1',
-+                            'action': 'initialize_vdr_front',
-+                            'type': 'bool',
 +                            'InfoText': 1217,
 +                        },
-+                        'enable_epgsearch': {
++                       'enable_eepg': {
 +                            'order': 17,
 +                            'name': 37018,
 +                            'value': '1',
@@ -1278,40 +1300,40 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1218,
 +                        },
-+                        'enable_xmltv2vdr': {
++                        'enable_epgsearch': {
 +                            'order': 18,
 +                            'name': 37019,
-+                            'value': '0',
++                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1219,
 +                        },
-+                        'enable_softcam': {
++                        'enable_xmltv2vdr': {
 +                            'order': 19,
 +                            'name': 37020,
-+                            'value': '1',
++                            'value': '0',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1220,
 +                        },
-+                        'softcam_opt': {
++                        'enable_softcam': {
 +                            'order': 20,
 +                            'name': 37021,
++                            'value': '1',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1221,
++                        },
++                        'softcam_option': {
++                            'order': 21,
++                            'name': 37022,
 +                            'value': '',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'enable_softcam','value': ['1']},
-+                            'InfoText': 1221,
-+                        },
-+                        'enable_dummydevice': {
-+                            'order': 21,
-+                            'name': 37022,
-+                            'value': '0',
-+                            'action': 'initialize_vdr_front',
-+                            'type': 'bool',
 +                            'InfoText': 1222,
 +                        },
-+                        'enable_satip': {
++                        'enable_dummydevice': {
 +                            'order': 22,
 +                            'name': 37023,
 +                            'value': '0',
@@ -1319,7 +1341,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1223,
 +                        },
-+                        'enable_upnp': {
++                        'enable_satip': {
 +                            'order': 23,
 +                            'name': 37024,
 +                            'value': '0',
@@ -1327,7 +1349,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1224,
 +                        },
-+                        'enable_epgfixer': {
++                        'enable_upnp': {
 +                            'order': 24,
 +                            'name': 37025,
 +                            'value': '0',
@@ -1335,7 +1357,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1225,
 +                        },
-+                        'enable_restfulapi': {
++                        'enable_epgfixer': {
 +                            'order': 25,
 +                            'name': 37026,
 +                            'value': '0',
@@ -1343,26 +1365,34 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1226,
 +                        },
-+                        'restfulapi_ip': {
++                        'enable_restfulapi': {
 +                            'order': 26,
 +                            'name': 37027,
++                            'value': '0',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1227,
++                        },
++                        'restfulapi_ip': {
++                            'order': 27,
++                            'name': 37028,
 +                            'value': '0.0.0.0',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'enable_restfulapi','value': ['1']},
-+                            'InfoText': 1227,
++                            'InfoText': 1228,
 +                        },
 +                        'restfulapi_port': {
-+                            'order': 27,
-+                            'name': 37028,
++                            'order': 28,
++                            'name': 37029,
 +                            'value': '8002',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'num',
 +                            'parent': {'entry': 'enable_restfulapi','value': ['1']},
-+                            'InfoText': 1228,
++                            'InfoText': 1229,
 +                        },
 +                        'enable_femon': {
-+                            'order': 28,
++                            'order': 29,
 +                            'name': 39022,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1370,7 +1400,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1422,
 +                        },
 +                        'enable_systeminfo': {
-+                            'order': 29,
++                            'order': 30,
 +                            'name': 39023,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1378,7 +1408,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1423,
 +                        }, 
 +                        'enable_sleeptimer': {
-+                            'order': 30,
++                            'order': 31,
 +                            'name': 39024,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1386,7 +1416,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1424,
 +                        },
 +                        'enable_filebrowser': {
-+                            'order': 31,
++                            'order': 32,
 +                            'name': 39025,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1394,7 +1424,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1425,
 +                        }, 
 +                        'enable_lcdproc': {
-+                            'order': 32,
++                            'order': 33,
 +                            'name': 39026,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1402,7 +1432,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1426,
 +                        },
 +                        'enable_text2skin': {
-+                            'order': 33,
++                            'order': 34,
 +                            'name': 39027,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1410,7 +1440,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1427,
 +                        },  
 +                        'enable_skinnopacity': {
-+                            'order': 34,
++                            'order': 35,
 +                            'name': 39028,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1418,7 +1448,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1428,
 +                        },  
 +                        'enable_skinflat': {
-+                            'order': 35,
++                            'order': 36,
 +                            'name': 39029,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1426,7 +1456,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1429,
 +                        },
 +                        'enable_skinflat_plus': {
-+                            'order': 36,
++                            'order': 37,
 +                            'name': 39030,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1434,7 +1464,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1430,
 +                        }, 
 +                        'enable_menuorg': {
-+                            'order': 37,
++                            'order': 38,
 +                            'name': 39031,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -1442,7 +1472,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1431,
 +                        },                         
 +                        'enable_tvguide': {
-+                            'order': 38,
++                            'order': 39,
 +                            'name': 39032,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1450,7 +1480,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1432,
 +                        },  
 +                        'enable_tvscraper': {
-+                            'order': 39,
++                            'order': 40,
 +                            'name': 39033,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -1458,74 +1488,74 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1433,
 +                        },
 +                        'enable_skindesigner': {
-+                            'order': 40,
-+                            'name': 38100,
++                            'order': 41,
++                            'name': 39034,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
-+                            'InfoText': 1310,
++                            'InfoText': 1434,
 +                        },
 +                        'enable_weatherforecast': {
-+                            'order': 41,
-+                            'name': 38101,
++                            'order': 42,
++                            'name': 39035,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
-+                            'InfoText': 1311,
++                            'InfoText': 1435,
 +                        },
 +                        'vdr_output': {
-+                            'order': 42,
-+                            'name': 39034,
++                            'order': 43,
++                            'name': 39036,
 +                            'value': 'soft',
 +                            'values': ['soft','xine'],
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'multivalue',
-+                            'InfoText': 1434,
++                            'InfoText': 1436,
 +                        },
 +                        'vdr_video': {
-+                            'order': 43,
-+                            'name': 39035,
++                            'order': 44,
++                            'name': 39037,
 +                            'value': 'auto',
 +                            'values': ['auto','vdpau','vaapi'],
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'multivalue',
-+                            'InfoText': 1435,
++                            'InfoText': 1437,
 +                        },                        
 +                        'vdr_sound_soft': {
-+                            'order': 44,
-+                            'name': 39036,
-+                            'value': 'alsa',
-+                            'action': 'initialize_vdr_front',
-+                            'type': 'text',
-+                            'parent': {'entry': 'vdr_output','value': ['soft']},
-+                            'InfoText': 1436,
-+                        },                        
-+                        'vdr_sound_xine': {
 +                            'order': 45,
-+                            'name': 39037,
-+                            'value': 'alsa',
-+                            'action': 'initialize_vdr_front',
-+                            'type': 'text',
-+                            'parent': {'entry': 'vdr_output','value': ['xine']},
-+                            'InfoText': 1437,
-+                        },
-+                        'vdr_soft_param': {
-+                            'order': 46,
 +                            'name': 39038,
-+                            'value': '',
++                            'value': 'alsa',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['soft']},
 +                            'InfoText': 1438,
-+                        },
-+                        'vdr_xine_param': {
-+                            'order': 47,
++                        },                        
++                        'vdr_sound_xine': {
++                            'order': 46,
 +                            'name': 39039,
-+                            'value': '',
++                            'value': 'auto',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['xine']},
 +                            'InfoText': 1439,
++                        },
++                        'vdr_soft_param': {
++                            'order': 47,
++                            'name': 39040,
++                            'value': '',
++                            'action': 'initialize_vdr_front',
++                            'type': 'text',
++                            'parent': {'entry': 'vdr_output','value': ['soft']},
++                            'InfoText': 1440,
++                        },
++                        'vdr_xine_param': {
++                            'order': 48,
++                            'name': 39041,
++                            'value': '',
++                            'action': 'initialize_vdr_front',
++                            'type': 'text',
++                            'parent': {'entry': 'vdr_output','value': ['xine']},
++                            'InfoText': 1441,
 +                        },
 +                    },
 +                },
@@ -1700,6 +1730,9 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['tvheadend']['settings']['tvh_backup']['value'] = \
 +                self.oe.get_service_option('tvheadend', 'TVHEADEND_BACKUP', self.D_TVH_BACKUP).replace('true','1').replace('false','0').replace('"', '')
 +
++                self.struct['tvheadend']['settings']['tvh_debug']['value'] = \
++                self.oe.get_service_option('tvheadend', 'TVHEADEND_DEBUG', self.D_TVH_DEBUG).replace('true','1').replace('false','0').replace('"', '')
++
 +                self.struct['tvheadend']['settings']['adapters']['value'] = \
 +                self.oe.get_service_option('tvheadend', 'TVHEADEND_ADAPTERS', self.D_ADAPTERS).replace('true','1').replace('false','0').replace('"', '')
 +
@@ -1739,6 +1772,9 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +                self.struct['vdr']['settings']['vdr_video_dir']['value'] = \
 +                self.oe.get_service_option('vdr', 'VDR_VIDEO_DIR', self.D_VDR_VIDEO_DIR).replace('"', '')
++
++                self.struct['vdr']['settings']['vdr_debug']['value'] = \
++                self.oe.get_service_option('vdr', 'VDR_DEBUG', self.D_VDR_DEBUG).replace('true','1').replace('false','0').replace('"', '')
 +
 +                self.struct['vdr']['settings']['pvr_plugin']['value'] = \
 +                self.oe.get_service_option('vdr', 'VDR_PVR_PLUGIN', self.D_PVR_PLUGIN).replace('"', '')
@@ -1785,8 +1821,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['vdr']['settings']['enable_softcam']['value'] = \
 +                self.oe.get_service_option('vdr', 'VDR_ENABLE_SOFTCAM', self.D_ENABLE_SOFTCAM).replace('true','1').replace('false','0').replace('"', '')
 +
-+                self.struct['vdr']['settings']['softcam_opt']['value'] = \
-+                self.oe.get_service_option('vdr', 'VDR_DVBAPI_OPT', self.D_SOFTCAM_OPT).replace('"', '')
++                self.struct['vdr']['settings']['softcam_option']['value'] = \
++                self.oe.get_service_option('vdr', 'VDR_DVBAPI_OPTION', self.D_SOFTCAM_OPTION).replace('"', '')
 +
 +                self.struct['vdr']['settings']['enable_dummydevice']['value'] = \
 +                self.oe.get_service_option('vdr', 'VDR_ENABLE_DUMMYDEVICE', self.D_ENABLE_DUMMYDEVICE).replace('true','1').replace('false','0').replace('"', '')
@@ -1844,6 +1880,9 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['vdr-front']['settings']['vdr_video_dir']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_VIDEO_DIR', self.D_F_VDR_VIDEO_DIR).replace('"', '')
 +
++                self.struct['vdr-front']['settings']['vdr_debug']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_DEBUG', self.D_F_VDR_DEBUG).replace('true','1').replace('false','0').replace('"', '')
++
 +                self.struct['vdr-front']['settings']['enable_iptv']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_IPTV', self.D_F_ENABLE_IPTV).replace('true','1').replace('false','0').replace('"', '')
 +
@@ -1886,8 +1925,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['vdr-front']['settings']['enable_softcam']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_SOFTCAM', self.D_F_ENABLE_SOFTCAM).replace('true','1').replace('false','0').replace('"', '')
 +
-+                self.struct['vdr-front']['settings']['softcam_opt']['value'] = \
-+                self.oe.get_service_option('vdr-front', 'VDR_DVBAPI_OPT', self.D_F_SOFTCAM_OPT).replace('"', '')
++                self.struct['vdr-front']['settings']['softcam_option']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_DVBAPI_OPTION', self.D_F_SOFTCAM_OPTION).replace('"', '')
 +
 +                self.struct['vdr-front']['settings']['enable_dummydevice']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_DUMMYDEVICE', self.D_F_ENABLE_DUMMYDEVICE).replace('true','1').replace('false','0').replace('"', '')
@@ -2090,8 +2129,15 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                else:
 +                    val2 ='false'
 +
++                if self.struct['tvheadend']['settings']['tvh_debug']['value'] == '1':
++                    val3 ='true'
++
++                else:
++                    val3 ='false'
++
 +                options['TVHEADEND_PRELOAD_CAPMT_CA']   = '"%s"' % val1
 +                options['TVHEADEND_BACKUP']   = '"%s"' % val2
++                options['TVHEADEND_DEBUG']   = '"%s"' % val3
 +                options['TVHEADEND_ADAPTERS'] = '"%s"' % self.struct['tvheadend']['settings']['adapters']['value']
 +                options['TVHEADEND_XMLTV_TYPE'] = '"%s"' % self.struct['tvheadend']['settings']['xmltv_type']['value']
 +                options['TVHEADEND_XMLTV_LOCATION_FILE'] = '"%s"' % self.struct['tvheadend']['settings']['xmltv_location_file']['value']
@@ -2151,122 +2197,129 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                else:
 +                    val2 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_iptv']['value'] == '1':
++                if self.struct['vdr']['settings']['vdr_debug']['value'] == '1':
 +                    val3 = 'true'
 +
 +                else:
 +                    val3 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_streamdev_client']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_iptv']['value'] == '1':
 +                    val4 = 'true'
 +
 +                else:
 +                    val4 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_streamdev_server']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_streamdev_client']['value'] == '1':
 +                    val5 = 'true'
 +
 +                else:
 +                    val5 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_wirbelscan']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_streamdev_server']['value'] == '1':
 +                    val6 = 'true'
 +
 +                else:
 +                    val6 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_live']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_wirbelscan']['value'] == '1':
 +                    val7 = 'true'
 +
 +                else:
 +                    val7 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_control']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_live']['value'] == '1':
 +                    val8 = 'true'
 +
 +                else:
 +                    val8 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_eepg']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_control']['value'] == '1':
 +                    val9 = 'true'
 +
 +                else:
 +                    val9 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_epgsearch']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_eepg']['value'] == '1':
 +                    val10 = 'true'
 +
 +                else:
 +                    val10 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_xmltv2vdr']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_epgsearch']['value'] == '1':
 +                    val11 = 'true'
 +
 +                else:
 +                    val11 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_softcam']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_xmltv2vdr']['value'] == '1':
 +                    val12 = 'true'
 +
 +                else:
 +                    val12 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_dummydevice']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_softcam']['value'] == '1':
 +                    val13 = 'true'
 +
 +                else:
 +                    val13 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_satip']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_dummydevice']['value'] == '1':
 +                    val14 = 'true'
 +
 +                else:
 +                    val14 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_upnp']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_satip']['value'] == '1':
 +                    val15 = 'true'
-+ 
++
 +                else:
 +                    val15 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_epgfixer']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_upnp']['value'] == '1':
 +                    val16 = 'true'
-+
++ 
 +                else:
 +                    val16 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_restfulapi']['value'] == '1':
++                if self.struct['vdr']['settings']['enable_epgfixer']['value'] == '1':
 +                    val17 = 'true'
 +
 +                else:
 +                    val17 = 'false'
++
++                if self.struct['vdr']['settings']['enable_restfulapi']['value'] == '1':
++                    val18 = 'true'
++
++                else:
++                    val18 = 'false'
 +
 +                options['VDR_ENABLE_EXTERNAL_RECCMD'] = '"%s"' % val1
 +                options['VDR_EXTERNAL_RECCMD_PATH'] = '"%s"' % self.struct['vdr']['settings']['ext_reccmd_path']['value']
 +                options['VDR_ENABLE_CHARSET_OVERRIDE'] = '"%s"' % val2
 +                options['VDR_CHARSET_OVERRIDE_STR'] = '"%s"' % self.struct['vdr']['settings']['charset_override']['value']
 +                options['VDR_VIDEO_DIR'] = '"%s"' % self.struct['vdr']['settings']['vdr_video_dir']['value']
++                options['VDR_DEBUG'] = '"%s"' % val3
 +                options['VDR_PVR_PLUGIN'] = '"%s"' % self.struct['vdr']['settings']['pvr_plugin']['value']
-+                options['VDR_ENABLE_IPTV'] = '"%s"' % val3
++                options['VDR_ENABLE_IPTV'] = '"%s"' % val4
 +                options['VDR_IPTV_NUM_DEVICES'] = '"%s"' % self.struct['vdr']['settings']['num_devices']['value']
-+                options['VDR_ENABLE_STREAMDEV_CLIENT'] = '"%s"' % val4
-+                options['VDR_ENABLE_STREAMDEV_SERVER'] = '"%s"' % val5
-+                options['VDR_ENABLE_WIRBELSCAN'] = '"%s"' % val6
-+                options['VDR_ENABLE_LIVE'] = '"%s"' % val7
++                options['VDR_ENABLE_STREAMDEV_CLIENT'] = '"%s"' % val5
++                options['VDR_ENABLE_STREAMDEV_SERVER'] = '"%s"' % val6
++                options['VDR_ENABLE_WIRBELSCAN'] = '"%s"' % val7
++                options['VDR_ENABLE_LIVE'] = '"%s"' % val8
 +                options['VDR_LIVE_IP'] = '"%s"' % self.struct['vdr']['settings']['live_ip']['value']
 +                options['VDR_LIVE_PORT'] = '"%s"' % self.struct['vdr']['settings']['live_port']['value']
-+                options['VDR_ENABLE_CONTROL'] = '"%s"' % val8
++                options['VDR_ENABLE_CONTROL'] = '"%s"' % val9
 +                options['VDR_CONTROL_PORT'] = '"%s"' % self.struct['vdr']['settings']['control_port']['value']
-+                options['VDR_ENABLE_EEPG'] = '"%s"' % val9
-+                options['VDR_ENABLE_EPGSEARCH'] = '"%s"' % val10
-+                options['VDR_ENABLE_XMLTV2VDR'] = '"%s"' % val11
-+                options['VDR_ENABLE_SOFTCAM'] = '"%s"' % val12
-+                options['VDR_DVBAPI_OPT'] = '"%s"' % self.struct['vdr']['settings']['softcam_opt']['value']
-+                options['VDR_ENABLE_DUMMYDEVICE'] = '"%s"' % val13
-+                options['VDR_ENABLE_SATIP'] = '"%s"' % val14
-+                options['VDR_ENABLE_UPNP'] = '"%s"' % val15
-+                options['VDR_ENABLE_EPGFIXER'] = '"%s"' % val16
-+                options['VDR_ENABLE_RESTFULAPI'] = '"%s"' % val17
++                options['VDR_ENABLE_EEPG'] = '"%s"' % val10
++                options['VDR_ENABLE_EPGSEARCH'] = '"%s"' % val11
++                options['VDR_ENABLE_XMLTV2VDR'] = '"%s"' % val12
++                options['VDR_ENABLE_SOFTCAM'] = '"%s"' % val13
++                options['VDR_DVBAPI_OPTION'] = '"%s"' % self.struct['vdr']['settings']['softcam_option']['value']
++                options['VDR_ENABLE_DUMMYDEVICE'] = '"%s"' % val14
++                options['VDR_ENABLE_SATIP'] = '"%s"' % val15
++                options['VDR_ENABLE_UPNP'] = '"%s"' % val16
++                options['VDR_ENABLE_EPGFIXER'] = '"%s"' % val17
++                options['VDR_ENABLE_RESTFULAPI'] = '"%s"' % val18
 +                options['VDR_RESTFULAPI_IP'] = '"%s"' % self.struct['vdr']['settings']['restfulapi_ip']['value']
 +                options['VDR_RESTFULAPI_PORT'] = '"%s"' % self.struct['vdr']['settings']['restfulapi_port']['value']
 +
@@ -2387,223 +2440,228 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                else:
 +                    val2 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_iptv']['value'] == '1':
++                if self.struct['vdr-front']['settings']['vdr_debug']['value'] == '1':
 +                    val3 = 'true'
 +
 +                else:
 +                    val3 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_streamdev_client']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_iptv']['value'] == '1':
 +                    val4 = 'true'
 +
 +                else:
 +                    val4 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_streamdev_server']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_streamdev_client']['value'] == '1':
 +                    val5 = 'true'
 +
 +                else:
 +                    val5 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_wirbelscan']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_streamdev_server']['value'] == '1':
 +                    val6 = 'true'
 +
 +                else:
 +                    val6 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_live']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_wirbelscan']['value'] == '1':
 +                    val7 = 'true'
 +
 +                else:
 +                    val7 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_control']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_live']['value'] == '1':
 +                    val8 = 'true'
 +
 +                else:
 +                    val8 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_eepg']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_control']['value'] == '1':
 +                    val9 = 'true'
 +
 +                else:
 +                    val9 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_epgsearch']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_eepg']['value'] == '1':
 +                    val10 = 'true'
 +
 +                else:
 +                    val10 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_xmltv2vdr']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_epgsearch']['value'] == '1':
 +                    val11 = 'true'
 +
 +                else:
 +                    val11 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_softcam']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_xmltv2vdr']['value'] == '1':
 +                    val12 = 'true'
 +
 +                else:
 +                    val12 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_dummydevice']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_softcam']['value'] == '1':
 +                    val13 = 'true'
 +
 +                else:
 +                    val13 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_satip']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_dummydevice']['value'] == '1':
 +                    val14 = 'true'
 +
 +                else:
 +                    val14 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_upnp']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_satip']['value'] == '1':
 +                    val15 = 'true'
-+ 
++
 +                else:
 +                    val15 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_epgfixer']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_upnp']['value'] == '1':
 +                    val16 = 'true'
-+
++ 
 +                else:
 +                    val16 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_restfulapi']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_epgfixer']['value'] == '1':
 +                    val17 = 'true'
 +
 +                else:
 +                    val17 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_femon']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_restfulapi']['value'] == '1':
 +                    val18 = 'true'
 +
 +                else:
 +                    val18 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_systeminfo']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_femon']['value'] == '1':
 +                    val19 = 'true'
 +
 +                else:
 +                    val19 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_sleeptimer']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_systeminfo']['value'] == '1':
 +                    val20 = 'true'
 +
 +                else:
 +                    val20 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_filebrowser']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_sleeptimer']['value'] == '1':
 +                    val21 = 'true'
 +
 +                else:
 +                    val21 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_lcdproc']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_filebrowser']['value'] == '1':
 +                    val22 = 'true'
 +
 +                else:
 +                    val22 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_text2skin']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_lcdproc']['value'] == '1':
 +                    val23 = 'true'
 +
 +                else:
 +                    val23 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_skinnopacity']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_text2skin']['value'] == '1':
 +                    val24 = 'true'
 +
 +                else:
 +                    val24 = 'false'
-+                    
-+                if self.struct['vdr-front']['settings']['enable_skinflat']['value'] == '1':
++
++                if self.struct['vdr-front']['settings']['enable_skinnopacity']['value'] == '1':
 +                    val25 = 'true'
 +
 +                else:
 +                    val25 = 'false'
 +                    
-+                if self.struct['vdr-front']['settings']['enable_skinflat_plus']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_skinflat']['value'] == '1':
 +                    val26 = 'true'
 +
 +                else:
 +                    val26 = 'false'
 +                    
-+                if self.struct['vdr-front']['settings']['enable_menuorg']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_skinflat_plus']['value'] == '1':
 +                    val27 = 'true'
 +
 +                else:
 +                    val27 = 'false'
-+
-+                if self.struct['vdr-front']['settings']['enable_tvguide']['value'] == '1':
++                    
++                if self.struct['vdr-front']['settings']['enable_menuorg']['value'] == '1':
 +                    val28 = 'true'
 +
 +                else:
 +                    val28 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_tvscraper']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_tvguide']['value'] == '1':
 +                    val29 = 'true'
 +
 +                else:
 +                    val29 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_skindesigner']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_tvscraper']['value'] == '1':
 +                    val30 = 'true'
 +
 +                else:
 +                    val30 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_weatherforecast']['value'] == '1':
++                if self.struct['vdr-front']['settings']['enable_skindesigner']['value'] == '1':
 +                    val31 = 'true'
 +
 +                else:
 +                    val31 = 'false'
 +
-+                self.oe.dbg_log('tvservers::initialize_vdr_front', '"%s"' % val1, 0)
++                if self.struct['vdr-front']['settings']['enable_weatherforecast']['value'] == '1':
++                    val32 = 'true'
++
++                else:
++                    val32 = 'false'
 +
 +                options['VDR_ENABLE_EXTERNAL_RECCMD'] = '"%s"' % val1
 +                options['VDR_EXTERNAL_RECCMD_PATH'] = '"%s"' % self.struct['vdr-front']['settings']['ext_reccmd_path']['value']
 +                options['VDR_ENABLE_CHARSET_OVERRIDE'] = '"%s"' % val2
 +                options['VDR_CHARSET_OVERRIDE_STR'] = '"%s"' % self.struct['vdr-front']['settings']['charset_override']['value']
 +                options['VDR_VIDEO_DIR'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_video_dir']['value']
-+                options['VDR_ENABLE_IPTV'] = '"%s"' % val3
++                options['VDR_DEBUG'] = '"%s"' % val3
++                options['VDR_ENABLE_IPTV'] = '"%s"' % val4
 +                options['VDR_IPTV_NUM_DEVICES'] = '"%s"' % self.struct['vdr-front']['settings']['num_devices']['value']
-+                options['VDR_ENABLE_STREAMDEV_CLIENT'] = '"%s"' % val4
-+                options['VDR_ENABLE_STREAMDEV_SERVER'] = '"%s"' % val5
-+                options['VDR_ENABLE_WIRBELSCAN'] = '"%s"' % val6
-+                options['VDR_ENABLE_LIVE'] = '"%s"' % val7
++                options['VDR_ENABLE_STREAMDEV_CLIENT'] = '"%s"' % val5
++                options['VDR_ENABLE_STREAMDEV_SERVER'] = '"%s"' % val6
++                options['VDR_ENABLE_WIRBELSCAN'] = '"%s"' % val7
++                options['VDR_ENABLE_LIVE'] = '"%s"' % val8
 +                options['VDR_LIVE_IP']   = '"%s"' % self.struct['vdr-front']['settings']['live_ip']['value']
 +                options['VDR_LIVE_PORT'] = '"%s"' % self.struct['vdr-front']['settings']['live_port']['value']
-+                options['VDR_ENABLE_CONTROL'] = '"%s"' % val8
++                options['VDR_ENABLE_CONTROL'] = '"%s"' % val9
 +                options['VDR_CONTROL_PORT'] = '"%s"' % self.struct['vdr-front']['settings']['control_port']['value']
-+                options['VDR_ENABLE_EEPG'] = '"%s"' % val9
-+                options['VDR_ENABLE_EPGSEARCH'] = '"%s"' % val10
-+                options['VDR_ENABLE_XMLTV2VDR'] = '"%s"' % val11
-+                options['VDR_ENABLE_SOFTCAM'] = '"%s"' % val12
-+                options['VDR_DVBAPI_OPT'] = '"%s"' % self.struct['vdr-front']['settings']['softcam_opt']['value']
-+                options['VDR_ENABLE_DUMMYDEVICE'] = '"%s"' % val13
-+                options['VDR_ENABLE_SATIP'] = '"%s"' % val14
-+                options['VDR_ENABLE_UPNP'] = '"%s"' % val15
-+                options['VDR_ENABLE_EPGFIXER'] = '"%s"' % val16
-+                options['VDR_ENABLE_RESTFULAPI'] = '"%s"' % val17
++                options['VDR_ENABLE_EEPG'] = '"%s"' % val10
++                options['VDR_ENABLE_EPGSEARCH'] = '"%s"' % val11
++                options['VDR_ENABLE_XMLTV2VDR'] = '"%s"' % val12
++                options['VDR_ENABLE_SOFTCAM'] = '"%s"' % val13
++                options['VDR_DVBAPI_OPTION'] = '"%s"' % self.struct['vdr-front']['settings']['softcam_option']['value']
++                options['VDR_ENABLE_DUMMYDEVICE'] = '"%s"' % val14
++                options['VDR_ENABLE_SATIP'] = '"%s"' % val15
++                options['VDR_ENABLE_UPNP'] = '"%s"' % val16
++                options['VDR_ENABLE_EPGFIXER'] = '"%s"' % val17
++                options['VDR_ENABLE_RESTFULAPI'] = '"%s"' % val18
 +                options['VDR_RESTFULAPI_IP'] = '"%s"' % self.struct['vdr-front']['settings']['restfulapi_ip']['value']
 +                options['VDR_RESTFULAPI_PORT'] = '"%s"' % self.struct['vdr-front']['settings']['restfulapi_port']['value']
-+                options['VDR_ENABLE_FEMON'] = '"%s"' % val18
-+                options['VDR_ENABLE_SYSTEMINFO'] = '"%s"' % val19
-+                options['VDR_ENABLE_SLEEPTIMER'] = '"%s"' % val20
-+                options['VDR_ENABLE_FILEBROWSER'] = '"%s"' % val21
-+                options['VDR_ENABLE_LCDPROC'] = '"%s"' % val22
-+                options['VDR_ENABLE_TEXT2SKIN'] = '"%s"' % val23
-+                options['VDR_ENABLE_SKINNOPACITY'] = '"%s"' % val24
-+                options['VDR_ENABLE_SKINFLAT'] = '"%s"' % val25
-+                options['VDR_ENABLE_SKINFLAT_PLUS'] = '"%s"' % val26
-+                options['VDR_ENABLE_MENUORG'] = '"%s"' % val27
-+                options['VDR_ENABLE_TVGUIDE'] = '"%s"' % val28
-+                options['VDR_ENABLE_TVSCRAPER'] = '"%s"' % val29
-+                options['VDR_ENABLE_SKINDESIGNER'] = '"%s"' % val30
-+                options['VDR_ENABLE_WEATHERFORECAST'] = '"%s"' % val31
++                options['VDR_ENABLE_FEMON'] = '"%s"' % val19
++                options['VDR_ENABLE_SYSTEMINFO'] = '"%s"' % val20
++                options['VDR_ENABLE_SLEEPTIMER'] = '"%s"' % val21
++                options['VDR_ENABLE_FILEBROWSER'] = '"%s"' % val22
++                options['VDR_ENABLE_LCDPROC'] = '"%s"' % val23
++                options['VDR_ENABLE_TEXT2SKIN'] = '"%s"' % val24
++                options['VDR_ENABLE_SKINNOPACITY'] = '"%s"' % val25
++                options['VDR_ENABLE_SKINFLAT'] = '"%s"' % val26
++                options['VDR_ENABLE_SKINFLAT_PLUS'] = '"%s"' % val27
++                options['VDR_ENABLE_MENUORG'] = '"%s"' % val28
++                options['VDR_ENABLE_TVGUIDE'] = '"%s"' % val29
++                options['VDR_ENABLE_TVSCRAPER'] = '"%s"' % val30
++                options['VDR_ENABLE_SKINDESIGNER'] = '"%s"' % val31
++                options['VDR_ENABLE_WEATHERFORECAST'] = '"%s"' % val32
 +                options['VDR_FRONT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_output']['value']
 +                options['VDR_OUTPUT_VIDEO'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_video']['value']
 +                options['VDR_SOUND_SOFT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_sound_soft']['value']
