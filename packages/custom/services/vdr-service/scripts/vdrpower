@@ -27,16 +27,23 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
     CHANNEL=$(svdrpsend CHAN | grep 250 | awk '{print $2}')
     VOLUME=$(svdrpsend VOLU | grep 250 | awk '{print $5}')
 
-    rm -f /storage/.cache/services/vdr-status
-    touch /storage/.cache/services/vdr-status
-    cat >>/storage/.cache/services/vdr-status << MYDATA
-ST_CHANNEL=$CHANNEL
-ST_VOLUME=$VOLUME
-MYDATA
-
     systemctl stop vdr-front.service
 
     mv /storage/.cache/services/vdr-front.run /storage/.cache/services/vdr-front.conf
+
+    while [ "$(pidof vdr.bin)" ]; do
+	sleep 1
+    done
+
+    if [ -f /storage/.config/vdr/setup.conf ]; then
+	sed -i -e '/^$/d' /storage/.config/vdr/setup.conf
+	sed -i -e '/^CurrentChannel.*$/d' /storage/.config/vdr/setup.conf
+	sed -i -e '/^CurrentVolume.*$/d' /storage/.config/vdr/setup.conf
+    fi
+    cat >>/storage/.config/vdr/setup.conf << MYDATA
+CurrentChannel = $CHANNEL
+CurrentVolume = $VOLUME
+MYDATA
 
     systemctl restart lcdd.service
 

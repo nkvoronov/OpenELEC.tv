@@ -47,7 +47,6 @@ fix_config() {
 	sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
 	sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
 	sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
-	sed -i -e '/^Font.*$/d' $VDR_HOME/setup.conf
     fi
     cat >>$VDR_HOME/setup.conf << MYDATA
 AlwaysSortFoldersFirst = 1

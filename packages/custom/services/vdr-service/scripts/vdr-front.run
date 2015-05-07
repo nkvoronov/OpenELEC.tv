@@ -24,13 +24,6 @@
 
 if [ -f /storage/.cache/services/vdr-front.conf ]; then
 
-    ST_CHANNEL=1
-    ST_VOLUME=5
-
-    if [ -f /storage/.cache/services/vdr-status ]; then
-       . /storage/.cache/services/vdr-status
-    fi
-
     systemctl stop kodi.service
 
     systemctl restart lcdd.service
@@ -39,8 +32,4 @@ if [ -f /storage/.cache/services/vdr-front.conf ]; then
 
     systemctl start vdr-front.service
 
-    sleep 4
-
-    svdrpsend CHAN $ST_CHANNEL
-    svdrpsend VOLU $ST_VOLUME
 fi
