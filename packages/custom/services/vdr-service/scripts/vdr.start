@@ -69,7 +69,7 @@ init_vdr_plugins() {
 
     LIRC_PATH="/run/lirc/lircd"
 
-    if [ "$VDR_FRONT" != "none" ] ; then
+    if [ "$VDR_FRONT" != "none" ]; then
 	VDR_ARG="$VDR_ARG -s /usr/bin/vdrpoweroff --vfat --watchdog=60 --lirc=$LIRC_PATH"
     else
 	VDR_ARG="$VDR_ARG --no-kbd"
@@ -78,7 +78,7 @@ init_vdr_plugins() {
     SVDRP_PORT=0
 
     # epgsearch needs svdrp
-    if [ "$VDR_ENABLE_EPGSEARCH" == "true" ] ; then
+    if [ "$VDR_ENABLE_EPGSEARCH" == "true" ]; then
         SVDRP_PORT=6419
     fi
 
@@ -89,74 +89,74 @@ init_vdr_plugins() {
     VDR_ARG="$VDR_ARG --lib=$VDR_PLUGIN_DIR"
     VDR_ARG="$VDR_ARG --video=\"$VDR_VIDEO_DIR\""
 
-    if [ "$VDR_ENABLE_EXTERNAL_RECCMD" == "true" ] ; then
+    if [ "$VDR_ENABLE_EXTERNAL_RECCMD" == "true" ]; then
         if [ ! -z "$VDR_EXTERNAL_RECCMD_PATH" -a -x "$VDR_EXTERNAL_RECCMD_PATH" ] ; then
             VDR_ARG="$VDR_ARG -r \"$VDR_EXTERNAL_RECCMD_PATH\""
         fi
     fi
 
-    if [ "$VDR_ENABLE_CHARSET_OVERRIDE" == "true" ] ; then
+    if [ "$VDR_ENABLE_CHARSET_OVERRIDE" == "true" ]; then
         if [ ! -z "$VDR_CHARSET_OVERRIDE_STR" ] ; then
             VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE_STR"
         fi
     fi
 
     # keep softcam first
-    if [ "$VDR_ENABLE_SOFTCAM" == "true" ] ; then
+    if [ "$VDR_ENABLE_SOFTCAM" == "true" ]; then
         VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPTION'"
     fi
 	
-    if [ "$VDR_ENABLE_WIRBELSCAN" == "true" ] ; then
+    if [ "$VDR_ENABLE_WIRBELSCAN" == "true" ]; then
         VDR_ARG="$VDR_ARG -P wirbelscan -P wirbelscancontrol"
     fi
 	
-    if [ "$VDR_ENABLE_IPTV" == "true" ] ; then
+    if [ "$VDR_ENABLE_IPTV" == "true" ]; then
         VDR_ARG="$VDR_ARG -P 'iptv -d $VDR_IPTV_NUM_DEVICES'"
     fi
 
-    if [ "$VDR_ENABLE_UPNP" == "true" ] ; then
+    if [ "$VDR_ENABLE_UPNP" == "true" ]; then
         VDR_UPNP_DB_DIR="$VDR_HOME/plugins/upnp"
         mkdir -p $VDR_UPNP_DB_DIR
         VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_UPNP_DB_DIR'"
     fi
 	
-    if [ "$VDR_ENABLE_STREAMDEV_SERVER" == "true" ] ; then
+    if [ "$VDR_ENABLE_STREAMDEV_SERVER" == "true" ]; then
         VDR_ARG="$VDR_ARG -P streamdev-server"
     fi
 
-    if [ "$VDR_ENABLE_STREAMDEV_CLIENT" == "true" ] ; then
+    if [ "$VDR_ENABLE_STREAMDEV_CLIENT" == "true" ]; then
         VDR_ARG="$VDR_ARG -P streamdev-client"
     fi
 	
-    if [ "$VDR_ENABLE_LIVE" == "true" ] ; then
+    if [ "$VDR_ENABLE_LIVE" == "true" ]; then
         VDR_ARG="$VDR_ARG -P 'live -i $VDR_LIVE_IP -p $VDR_LIVE_PORT'"
     fi
 
-    if [ "$VDR_ENABLE_CONTROL" == "true" ] ; then
+    if [ "$VDR_ENABLE_CONTROL" == "true" ]; then
         VDR_ARG="$VDR_ARG -P 'control -p $VDR_CONTROL_PORT'"
     fi
 
-    if [ "$VDR_ENABLE_EEPG" == "true" ] ; then
+    if [ "$VDR_ENABLE_EEPG" == "true" ]; then
         VDR_ARG="$VDR_ARG -P eepg"
     fi
 
-    if [ "$VDR_ENABLE_EPGFIXER" == "true" ] ; then
+    if [ "$VDR_ENABLE_EPGFIXER" == "true" ]; then
         VDR_ARG="$VDR_ARG -P epgfixer"
     fi
 	
-    if [ "$VDR_ENABLE_EPGSEARCH" == "true" ] ; then
+    if [ "$VDR_ENABLE_EPGSEARCH" == "true" ]; then
         VDR_ARG="$VDR_ARG -P epgsearch -P epgsearchonly -P quickepgsearch -P conflictcheckonly"
     fi
 	
-    if [ "$VDR_ENABLE_DUMMYDEVICE" == "true" ] ; then
+    if [ "$VDR_ENABLE_DUMMYDEVICE" == "true" ]; then
         VDR_ARG="$VDR_ARG -P dummydevice"
     fi
 	
-    if [ "$VDR_ENABLE_SATIP" == "true" ] ; then
+    if [ "$VDR_ENABLE_SATIP" == "true" ]; then
         VDR_ARG="$VDR_ARG -P satip"
     fi
 
-    if [ "$VDR_ENABLE_XMLTV2VDR" == "true" ] ; then
+    if [ "$VDR_ENABLE_XMLTV2VDR" == "true" ]; then
         VDR_ARG="$VDR_ARG -P 'xmltv2vdr --epgfile=$VDR_CACHE_DIR/epg.db'"
         # xmltv2vdr needs /var/run/vdr
         grep -q " /var/run/vdr " /proc/mounts || ( mkdir -p /var/run/vdr && mount -t tmpfs -o size=10% tmpfs /var/run/vdr )
@@ -164,7 +164,7 @@ init_vdr_plugins() {
         mkdir -p /var/lib/epgsources
         mkdir -p $HOME/epgsources
         for source in `find $VDR_HOME/epgsources -type f`; do
-            if [ ! -e $HOME/epgsources/`basename $source` ] ; then
+            if [ ! -e $HOME/epgsources/`basename $source` ]; then
                 cp $source $HOME/epgsources/
             fi
         done
@@ -173,7 +173,7 @@ init_vdr_plugins() {
         done
     fi
 
-    if [ "$VDR_ENABLE_RESTFULAPI" == "true" ] ; then
+    if [ "$VDR_ENABLE_RESTFULAPI" == "true" ]; then
 	VDR_RESTFULAPI_ARGS="--ip $VDR_RESTFULAPI_IP --port $VDR_RESTFULAPI_PORT"
         VDR_RESTFULAPI_EPGIMAGES="$VDR_HOME/plugins/restfulapi/epgimages"
 	mkdir -p $VDR_RESTFULAPI_EPGIMAGES
@@ -217,9 +217,9 @@ if [ -f /storage/.cache/services/vdr.conf ]; then
     [ "$DVB_NUM_ADAPTERS" == "" ] && DVB_NUM_ADAPTERS=1
     [ $DVB_NUM_ADAPTERS -lt 1 ] && DVB_NUM_ADAPTERS=1
 
-    if [ "$DVB_WAIT_FOR_FEINIT" == "true" ] ; then
+    if [ "$DVB_WAIT_FOR_FEINIT" == "true" ]; then
         while [ true ] ; do
-            if [ -e /dev/dvb/adapter$((DVB_NUM_ADAPTERS-1))/frontend0 ] ; then
+            if [ -e /dev/dvb/adapter$((DVB_NUM_ADAPTERS-1))/frontend0 ]; then
                 break
             fi
             sleep 1

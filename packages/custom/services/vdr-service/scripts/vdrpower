@@ -20,15 +20,25 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-# can be called from openelec addon.
-# ensure that environment is sane
 . /etc/profile
 
 if [ -f /storage/.cache/services/vdr-front.run ]; then
 
-    systemctl stop vdr-front.service;
+    CHANNEL=$(svdrpsend CHAN | grep 250 | awk '{print $2}')
+    VOLUME=$(svdrpsend VOLU | grep 250 | awk '{print $5}')
+
+    rm -f /storage/.cache/services/vdr-status
+    touch /storage/.cache/services/vdr-status
+    cat >>/storage/.cache/services/vdr-status << MYDATA
+ST_CHANNEL=$CHANNEL
+ST_VOLUME=$VOLUME
+MYDATA
+
+    systemctl stop vdr-front.service
 
     mv /storage/.cache/services/vdr-front.run /storage/.cache/services/vdr-front.conf
+
+    systemctl restart lcdd.service
 
     case "$1" in
         -p) # poweroff
@@ -43,18 +53,16 @@ if [ -f /storage/.cache/services/vdr-front.run ]; then
         -e) # exit to XBMC
 
             if [ -f /storage/.cache/services/vdr.conf ]; then
-                systemctl start vdr.service;
+                systemctl start vdr.service
             fi
 
             if [ -f /storage/.cache/services/tvheadend.conf ]; then
-                systemctl start tvheadend.service;
+                systemctl start tvheadend.service
             fi
 
             sleep 4
 
-            systemctl restart lcdd.service;
-
-            systemctl restart kodi.service;
+            systemctl restart kodi.service
         ;;
     esac
 fi
