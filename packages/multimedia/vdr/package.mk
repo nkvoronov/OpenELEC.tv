@@ -18,12 +18,12 @@
 ################################################################################
 
 PKG_NAME="vdr"
-PKG_VERSION="9ab55b4"
+PKG_VERSION="2.2.0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvdr.de"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="ftp://ftp.tvdr.de/vdr/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain fontconfig freetype libcap libjpeg-turbo bzip2"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
@@ -48,7 +48,6 @@ pre_make_target() {
   VIDEODIR = /storage/videos
   CONFDIR = /storage/.config/vdr
   LOCDIR = /usr/share/locale
-  RESDIR = /storage/.config/vdr
 
   NO_KBD=yes
   VDR_USER=root
@@ -57,7 +56,6 @@ EOF
 
 make_target() {
   make vdr
-  make i18n
   make include-dir
 }
 

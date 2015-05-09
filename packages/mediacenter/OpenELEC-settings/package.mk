@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="OpenELEC-settings"
-PKG_VERSION="0.5.8"
+PKG_VERSION="0.6.5"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="prop."
@@ -39,13 +39,6 @@ if [ "$DISPLAYSERVER" = "x11" ]; then
 else
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET bkeymaps"
 fi
-
-post_unpack() {
-  for patch in `ls $PKG_DIR/patches.upstream/*.patch`; do
-    cat $patch | patch -d \
-    `echo $BUILD/$PKG_NAME-$PKG_VERSION | cut -f1 -d\ ` -p1
-  done
-}
 
 post_makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/openelec

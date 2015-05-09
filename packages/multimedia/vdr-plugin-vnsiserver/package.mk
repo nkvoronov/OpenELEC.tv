@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-vnsiserver"
-PKG_VERSION="1772c92"
+PKG_VERSION="36e2b61"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/opdenkamp/xbmc-pvr-addons/tree/master/addons/pvr.vdr.vnsi/vdr-plugin-vnsiserver"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_SITE="https://github.com/FernetMenta/vdr-plugin-vnsiserver"
+PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain vdr"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
@@ -39,10 +39,10 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+  VDR_DIR=$(get_build_dir vdr)
   make VDRDIR=$VDR_DIR \
-  LIBDIR="." \
-  LOCALEDIR="./locale"
+    LIBDIR="." \
+    LOCALEDIR="./locale"
 }
 
 makeinstall_target() {

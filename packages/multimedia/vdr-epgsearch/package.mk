@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="vdr-epgsearch"
-PKG_VERSION="a908daa"
+PKG_VERSION="29c174a"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://winni.vdr-developer.org/epgsearch/"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain vdr"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
@@ -30,6 +30,7 @@ PKG_SHORTDESC="vdr-epgsearch"
 PKG_LONGDESC="vdr-epgsearch"
 
 PKG_IS_ADDON="no"
+
 PKG_AUTORECONF="no"
 
 pre_configure_target() {
@@ -39,10 +40,10 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+  VDR_DIR=$(get_build_dir vdr)
   make VDRDIR=$VDR_DIR \
-  LIBDIR="." \
-  LOCALEDIR="./locale"
+    LIBDIR="." \
+    LOCALEDIR="./locale"
 }
 
 makeinstall_target() {

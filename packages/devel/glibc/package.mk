@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="glibc"
-PKG_VERSION="2.20"
+PKG_VERSION="2.21"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gnu.org/software/libc/"
-PKG_URL="ftp://ftp.gnu.org/pub/gnu/glibc/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="http://ftp.gnu.org/pub/gnu/glibc/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="ccache:host autotools:host autoconf:host linux:host gcc:bootstrap"
 PKG_DEPENDS_INIT="glibc"
 PKG_PRIORITY="optional"
@@ -85,6 +85,10 @@ pre_configure_target() {
   export CFLAGS=`echo $CFLAGS | sed -e "s|-Ofast|-O2|g"`
   export CFLAGS=`echo $CFLAGS | sed -e "s|-O.|-O2|g"`
 
+  if [ -n "$PROJECT_CFLAGS" ]; then
+    export CFLAGS=`echo $CFLAGS | sed -e "s|$PROJECT_CFLAGS||g"`
+  fi
+
   export LDFLAGS=`echo $LDFLAGS | sed -e "s|-ffast-math||g"`
   export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Ofast|-O2|g"`
   export LDFLAGS=`echo $LDFLAGS | sed -e "s|-O.|-O2|g"`
@@ -133,23 +137,12 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/lib/*.map
   rm -rf $INSTALL/var
 
-# create locale
-  if [ "$LOCALES_SUPPORT" = yes ]; then
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/locale/localedef $INSTALL/usr/bin
-    mkdir -p $INSTALL/usr/share/i18n/locales/
-      cp $ROOT/$PKG_BUILD/localedata/locales/* $INSTALL/usr/share/i18n/locales/
-    mkdir -p $INSTALL/usr/share/i18n/charmaps
-      cp $ROOT/$PKG_BUILD/localedata/charmaps/* $INSTALL/usr/share/i18n/charmaps/
-      cp $ROOT/$PKG_BUILD/localedata/SUPPORTED $INSTALL/usr/share/i18n/
-    ln -s /storage/locale $INSTALL/usr/lib/locale
-  else
 # remove locales and charmaps
-    rm -rf $INSTALL/usr/share/i18n/charmaps
-    rm -rf $INSTALL/usr/share/i18n/locales
+  rm -rf $INSTALL/usr/share/i18n/charmaps
+  rm -rf $INSTALL/usr/share/i18n/locales
 
-    mkdir -p $INSTALL/usr/share/i18n/locales
-      cp -PR $ROOT/$PKG_BUILD/localedata/locales/POSIX $INSTALL/usr/share/i18n/locales
-  fi
+  mkdir -p $INSTALL/usr/share/i18n/locales
+    cp -PR $ROOT/$PKG_BUILD/localedata/locales/POSIX $INSTALL/usr/share/i18n/locales
 
 # create default configs
   mkdir -p $INSTALL/etc

@@ -28,28 +28,6 @@
 # install extra subtitle Fonts for KODI (yes / no)
   KODI_EXTRA_FONTS="yes"
 
-# build and install 'RSXS' Screensaver (yes / no)
-  KODI_SCR_RSXS="yes"
-
-# build and install 'ProjectM' Visualization (yes / no)
-  KODI_VIS_PROJECTM="yes"
-
-# build and install 'GOOM' Visualization (yes / no)
-  KODI_VIS_GOOM="yes"
-
-# build and install 'Waveform' Visualization (yes / no)
-  KODI_VIS_WAVEFORM="yes"
-
-# build and install 'Spectrum' Visualization (yes / no)
-  KODI_VIS_SPECTRUM="yes"
-
-# build and install 'FishBMC' Visualization (yes / no)
-  # does not work on RPi
-  KODI_VIS_FISHBMC="yes"
-
-# build and install PulseAudio support (yes / no)
-  PULSEAUDIO_SUPPORT="no"
-
 # build and install espeak support (yes / no)
   ESPEAK_SUPPORT="yes"
 
@@ -76,7 +54,7 @@
 # for a list of additinoal drivers see packages/linux-drivers
 # Space separated list is supported,
 # e.g. ADDITIONAL_DRIVERS="DRIVER1 DRIVER2"
-  ADDITIONAL_DRIVERS="RTL8192CU RTL8192DU RTL8188EU RTL8812AU dvbhdhomerun tbs-linux-drivers-cc"
+  ADDITIONAL_DRIVERS="RTL8192CU RTL8192DU RTL8188EU RTL8812AU dvbhdhomerun"
 
 # build and install bluetooth support (yes / no)
   BLUETOOTH_SUPPORT="yes"
@@ -98,11 +76,6 @@
 
 # build xbmc with optical drive support (yes / no)
   KODI_OPTICAL_SUPPORT="yes"
-
-# KODI Audio encoders for usage with optical drive support
-# Space separated list is supported,
-# e.g. KODI_AUDIOENCODER_ADDONS="ENCODER1 ENCODER2"
-  KODI_AUDIOENCODER_ADDONS="flac lame vorbis wav"
 
 # build with AirPlay support (stream videos from iDevices to KODI) (yes / no)
   KODI_AIRPLAY_SUPPORT="yes"
@@ -128,12 +101,6 @@
 # build and install SFTP Server (yes / no)
   SFTP_SERVER="yes"
 
-# build and install PPP support (yes / no)
-  PPTP_SUPPORT="yes"
-
-# build and install OpenVPN support (yes / no)
-  OPENVPN_SUPPORT="yes"
-
 # build and install diskmounter support (udevil)
 # this service provide auto mounting support for external drives in the
 # mediacenter also automount internally drives at boottime via udev (yes / no)
@@ -151,16 +118,10 @@
 # Windowmanager to use (ratpoison / fluxbox / none)
   WINDOWMANAGER="fluxbox"
 
-# Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,nvidia,nouveau)
+# Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,nvidia)
 # Space separated list is supported,
-# e.g. GRAPHIC_DRIVERS="i915 i965 r300 r600 radeonsi nvidia nouveau"
-  if [ "$TARGET_ARCH" = "i386" ]; then
-    # TODO: create Legacy build with OpenELEC-4.2
-    # install legacy drivers to i386 ARCH
-    GRAPHIC_DRIVERS="r200 r300 r600 i915 i965 nvidia-legacy"
-  elif [ "$TARGET_ARCH" = "x86_64" ]; then
-    GRAPHIC_DRIVERS="r300 r600 radeonsi i915 i965 nvidia"
-  fi
+# e.g. GRAPHIC_DRIVERS="i915 i965 r300 r600 radeonsi nvidia"
+  GRAPHIC_DRIVERS="r300 r600 radeonsi i915 i965 nvidia"
 
 # build and install remote support (yes / no)
   REMOTE_SUPPORT="yes"
@@ -213,16 +174,13 @@
   TESTING="no"
 
 # OEM packages for OEM's (yes / no)
-  OEM_SUPPORT="yes"
+  OEM_SUPPORT="no"
 
 # build and install nano text editor (yes / no)
   NANO_EDITOR="yes"
 
 # cron support (yes / no)
   CRON_SUPPORT="yes"
-
-# Perf support in development builds (yes / no)
-  PERF_SUPPORT="yes"
 
 # Distribution Specific source location
   DISTRO_MIRROR="http://sources.openelec.tv/mirror"
@@ -234,64 +192,3 @@
 # set the addon dirs
   ADDON_PATH="$ADDON_VERSION/$PROJECT/$TARGET_ARCH"
   ADDON_URL="$ADDON_SERVER_URL/$ADDON_PATH"
-
-### CUSTOM OPTIONS ###
-  DISTRO_CUSTOM_SRC="https://dl.dropboxusercontent.com/u/6711518/packages"
-
-# Alsa mixer enabled
-  if [ "$TARGET_ARCH" = "i386" ]; then
-    ALSAMIXER_ENABLED="yes"
-    ALSAEQUAL_ENABLED="yes"
-  elif [ "$TARGET_ARCH" = "x86_64" ]; then
-    ALSAMIXER_ENABLED="yes"
-    ALSAEQUAL_ENABLED="yes"
-  fi
-
-# Locales
-  LOCALES_SUPPORT="yes"
-
-# Libxcb extention
-  LIBXCB_EXT="yes"
-
-# KODI addons
-  KODI_ADDON_LCD="yes"
-  KODI_ADDON_TRANSMISSION="yes"
-  KODI_ADDON_AUDIO_MIXER="yes"
-  KODI_ADDON_VDRFRONT="yes"
-  KODI_THEME_CONFLUENCE_PLOOD="yes"
-  OPENELEC_DEV_UPDATE="yes"
-
-# Services
-  TRANSMISSION_SERVICE="yes"
-  OSCAM_SERVICE="yes"
-
-# TV Services
-  TVHEADEND_SERVICE="yes"
-  VDR_SERVICE="yes"
-
-# Tools
-  ADD_ARCHIVERS_ENABLED="yes"
-  DEV_TOOLS_ENABLED="yes"
-  DVB_TOOLS_ENABLED="yes"
-  PYTHON_ADD_LIB_SUPPORT="yes"
-  PHP_SUPPORT="yes"
-
-# Perl
-  PERL_VERSION="5.18.2"
-  if [ "$TARGET_ARCH" = "i386" ]; then
-    PERL_SUPPORT="yes"
-  elif [ "$TARGET_ARCH" = "x86_64" ]; then
-    PERL_SUPPORT="yes"
-  fi
-
-# EPG Updaters
-  EPGUpdaters_SUPPORT="yes"
-
-# Lib Torrents
-  LIBTORRENTS_SUPPORT="yes"
-
-# Acestream Engine
-  ACESTREAM_SUPPORT="yes"
-
-# Other
-  GAME_EMULATORS="yes"

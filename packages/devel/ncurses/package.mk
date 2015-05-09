@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://www.gnu.org/software/ncurses/"
 PKG_URL="http://ftp.gnu.org/pub/gnu/ncurses/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_DEPENDS_TARGET="toolchain zlib"
 PKG_PRIORITY="optional"
 PKG_SECTION="devel"
 PKG_SHORTDESC="ncurses: The ncurses (new curses) library"
@@ -40,7 +40,7 @@ PKG_CONFIGURE_OPTS_TARGET="--without-ada \
                            --without-progs \
                            --without-tests \
                            --with-curses-h \
-                           --with-shared \
+                           --without-shared \
                            --with-normal \
                            --without-debug \
                            --without-profile \

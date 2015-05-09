@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="tbs-linux-drivers"
-PKG_VERSION="150429"
+PKG_VERSION="141225"
 PKG_REV="1"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tbsdtv.com/english/Download.html"
 PKG_URL="http://www.tbsdtv.com/download/document/common/tbs-linux-drivers_v${PKG_VERSION}.zip"
@@ -36,17 +36,11 @@ PKG_AUTORECONF="no"
 post_unpack() {
   tar xjf $ROOT/$PKG_BUILD/linux-tbs-drivers.tar.bz2 -C $ROOT/$PKG_BUILD
   chmod -R u+rwX $ROOT/$PKG_BUILD/linux-tbs-drivers/*
-
-  for patch in `ls $PKG_DIR/patches.upstream/*.patch`; do
-    cat $patch | patch -d \
-    `echo $BUILD/$PKG_NAME-$PKG_VERSION | cut -f1 -d\ ` -p1
-  done
 }
 
 make_target() {
   cd $ROOT/$PKG_BUILD/linux-tbs-drivers
-  [ "$TARGET_ARCH" = "i386" ] && ./v4l/tbs-x86_r3.sh
-  [ "$TARGET_ARCH" = "x86_64" ] && ./v4l/tbs-x86_64.sh
+  ./v4l/tbs-x86_64.sh
   LDFLAGS="" make DIR=$(kernel_path) prepare
   LDFLAGS="" make DIR=$(kernel_path)
 }

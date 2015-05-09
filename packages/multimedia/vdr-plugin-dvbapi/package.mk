@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-dvbapi"
-PKG_VERSION="5fdb21e"
+PKG_VERSION="c0c7fa2"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/manio/vdr-plugin-dvbapi"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain vdr libdvbcsa"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
@@ -30,6 +30,7 @@ PKG_SHORTDESC="TV"
 PKG_LONGDESC="TV"
 
 PKG_IS_ADDON="no"
+
 PKG_AUTORECONF="no"
 
 pre_configure_target() {
@@ -45,12 +46,12 @@ pre_make_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+  VDR_DIR=$(get_build_dir vdr)
   make VDRDIR=$VDR_DIR \
-  VDRSRC=$VDR_DIR \
-  LIBDIR="." \
-  LOCALEDIR="./locale" \
-  LIBDVBCSA=1
+    VDRSRC=$VDR_DIR \
+    LIBDIR="." \
+    LOCALEDIR="./locale" \
+    LIBDVBCSA=1
 }
 
 makeinstall_target() {

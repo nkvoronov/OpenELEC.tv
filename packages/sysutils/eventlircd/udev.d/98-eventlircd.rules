@@ -64,6 +64,11 @@ SUBSYSTEMS=="acpi", ATTRS{hid}=="LNXPWRBN", \
   ENV{eventlircd_enable}="true", \
   ENV{eventlircd_evmap}="power.evmap"
 
+# WeTek Play keyboard (power button)
+SUBSYSTEMS=="input", ATTRS{name}=="key_input", \
+  ENV{eventlircd_enable}="true", \
+  ENV{eventlircd_evmap}="power.evmap"
+
 #-------------------------------------------------------------------------------
 # Ask eventlircd to handle USB HID devices that show up as event devices and are
 # known to be remote controls. For simplicity, the event map file names have the
@@ -171,10 +176,6 @@ ENV{ID_VENDOR_ID}=="0471", ENV{ID_MODEL_ID}=="206c", \
 ENV{ID_VENDOR_ID}=="0471", ENV{ID_MODEL_ID}=="20cc", \
   ENV{eventlircd_enable}="true", \
   ENV{eventlircd_evmap}="spinelplus.evmap"
-
-ENV{ID_VENDOR_ID}=="15c2", ENV{ID_MODEL_ID}=="0038", \
-  ENV{eventlircd_enable}="true", \
-  ENV{eventlircd_evmap}="imon_pad_$env{ID_VENDOR_ID}_$env{ID_MODEL_ID}.evmap"
 
 # Enable wake-on-usb for the USB remotes.
   RUN+="wakeup_enable"

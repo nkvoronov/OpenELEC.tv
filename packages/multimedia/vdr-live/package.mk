@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="vdr-live"
-PKG_VERSION="6ea279a"
+PKG_VERSION="0.3.0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://live.vdr-developer.org/en/index.php"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="http://live.vdr-developer.org/downloads/${PKG_NAME}-${PKG_VERSION}.tar.gz"
+PKG_SOURCE_DIR="live-${PKG_VERSION}"
 PKG_DEPENDS_TARGET="toolchain vdr tntnet pcre:host pcre"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
@@ -44,10 +45,10 @@ pre_make_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+  VDR_DIR=$(get_build_dir vdr)
   make VDRDIR=$VDR_DIR \
-  LIBDIR="." \
-  LOCALEDIR="./locale"
+    LIBDIR="." \
+    LOCALEDIR="./locale"
 }
 
 makeinstall_target() {

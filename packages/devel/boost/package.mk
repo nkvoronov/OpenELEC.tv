@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="boost"
-PKG_VERSION="1_57_0"
+PKG_VERSION="1_58_0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
@@ -64,30 +64,15 @@ make_target() {
 }
 
 makeinstall_target() {
-  if [ "$LIBTORRENTS_SUPPORT" = yes ]; then
-    $ROOT/$TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
-                                  --prefix=$SYSROOT_PREFIX/usr \
-                                  --ignore-site-config \
-                                  --layout=system \
-                                  --with-thread \
-                                  --with-iostreams \
-                                  --with-system \
-                                  --with-serialization \
-                                  --with-filesystem \
-				  --with-python \
-                                  --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
-                                  install
-  else
-    $ROOT/$TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
-                                  --prefix=$SYSROOT_PREFIX/usr \
-                                  --ignore-site-config \
-                                  --layout=system \
-                                  --with-thread \
-                                  --with-iostreams \
-                                  --with-system \
-                                  --with-serialization \
-                                  --with-filesystem \
-                                  --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
-                                  install
-  fi
+  $ROOT/$TOOLCHAIN/bin/bjam -d2 --toolset=gcc link=static \
+                                --prefix=$SYSROOT_PREFIX/usr \
+                                --ignore-site-config \
+                                --layout=system \
+                                --with-thread \
+                                --with-iostreams \
+                                --with-system \
+                                --with-serialization \
+                                --with-filesystem \
+                                --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
+                                install
 }
