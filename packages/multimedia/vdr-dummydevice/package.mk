@@ -22,7 +22,7 @@ PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.vdr-wiki.de/wiki/index.php/Dummydevice-plugin"
-PKG_URL="$DISTRO_MIRROR/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tgz"
+PKG_URL="http://phivdr.dyndns.org/vdr/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tgz"
 PKG_SOURCE_DIR="dummydevice-${PKG_VERSION}"
 PKG_DEPENDS_TARGET="toolchain vdr"
 PKG_PRIORITY="optional"
@@ -40,14 +40,10 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$(get_build_dir vdr)
+  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   make VDRDIR=$VDR_DIR \
-    LIBDIR="." \
-    LOCALEDIR="./locale"
-}
-
-post_make_target() {
-  $STRIP libvdr-*.so*
+  LIBDIR="." \
+  LOCALEDIR="./locale"
 }
 
 makeinstall_target() {

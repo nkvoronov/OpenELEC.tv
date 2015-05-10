@@ -31,7 +31,6 @@ PKG_SHORTDESC="TV"
 PKG_LONGDESC="TV"
 
 PKG_IS_ADDON="no"
-
 PKG_AUTORECONF="no"
 
 pre_configure_target() {
@@ -41,15 +40,15 @@ pre_configure_target() {
 }
 
 pre_build_target() {
-  WIRBELSCAN_DIR=$(get_build_dir vdr-wirbelscan)
+  WIRBELSCAN_DIR=$ROOT/$BUILD/vdr-wirbelscan-0.0.9
   ln -sf $WIRBELSCAN_DIR/wirbelscan_services.h $PKG_BUILD
 }
 
 make_target() {
-  VDR_DIR=$(get_build_dir vdr)
+  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   make VDRDIR=$VDR_DIR \
-    LIBDIR="." \
-    LOCALEDIR="./locale"
+  LIBDIR="." \
+  LOCALEDIR="./locale"
 }
 
 makeinstall_target() {

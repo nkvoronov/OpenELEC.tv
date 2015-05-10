@@ -1,0 +1,2629 @@
+diff -Naur a/addon.xml b/addon.xml
+--- a/addon.xml	2015-01-23 02:25:58.000000000 +0200
++++ b/addon.xml	2015-01-26 07:52:12.000000000 +0200
+@@ -1,8 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <addon id="script.xbmc.audio.mixer"
+        name="Kodi Audio Mixer"
+-       version="3.0.1"
+-       provider-name="Team XBMC">
++       version="3.1.1"
++       provider-name="Team XBMC, YLLOW_DRAGON">
+   <requires>
+     <import addon="xbmc.python" version="2.14.0"/>
+   </requires>
+@@ -12,6 +12,8 @@
+     <platform>osx linux</platform>
+     <summary lang="en">Kodi Audio Mixer</summary>
+     <description lang="en">Kodi Audio Mixer</description>
++    <summary lang="ru">Kodi Аудио Микшер</summary>
++    <description lang="ru">Kodi Аудио Микшер</description>
+     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+     <forum></forum>
+     <website></website>
+diff -Naur a/resources/language/English/strings.po b/resources/language/English/strings.po
+--- a/resources/language/English/strings.po	2015-01-23 02:25:58.000000000 +0200
++++ b/resources/language/English/strings.po	2015-01-26 07:33:25.000000000 +0200
+@@ -20,3 +20,7 @@
+ msgctxt "#30010"
+ msgid "Mute"
+ msgstr ""
++
++msgctxt "#30020"
++msgid "Audio Mixer"
++msgstr ""
+diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/strings.po
+--- a/resources/language/Russian/strings.po	1970-01-01 03:00:00.000000000 +0300
++++ b/resources/language/Russian/strings.po	2015-01-26 07:37:16.000000000 +0200
+@@ -0,0 +1,26 @@
++# Kodi Media Center language file
++# Addon Name: Kodi Audio Mixer
++# Addon id: script.xbmc.audio.mixer
++# Addon Provider: Team-Kodi
++
++msgid ""
++msgstr ""
++"Project-Id-Version: XBMC Addons\n"
++"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
++"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: Kodi Translation Team\n"
++"Language-Team: Russian (http://www.transifex.com/projects/p/xbmc-addons/language/ru/)\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Language: ru\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++
++msgctxt "#30010"
++msgid "Mute"
++msgstr "Выкл."
++
++msgctxt "#30020"
++msgid "Audio Mixer"
++msgstr "Аудио Микшер"
+diff -Naur a/resources/lib/gui.py b/resources/lib/gui.py
+--- a/resources/lib/gui.py	2015-01-23 02:25:58.000000000 +0200
++++ b/resources/lib/gui.py	2015-01-26 08:59:35.080143605 +0200
+@@ -131,6 +131,8 @@
+       self.close()
+ 
+     def onClick( self, controlId ):
++     if ( controlId == 117 ):
++        self.exit_script()
+      if ( controlId >= 1000 ):
+         self.getControl( controlId + 1 ).setLabel("%.2d %s" % (int(self.getControl( controlId ).getPercent()), "%",))
+         if self.getControl( controlId ).getPercent() == 0:
+@@ -172,9 +174,9 @@
+           
+         if ( action.getButtonCode() in CANCEL_DIALOG ):
+           self.log("Exit")
+-          if ( self.controlId >= 1000 ) or (action.getId() == 92):
+-              self.slider_onfocus(0)
+-              self.controlId = 0
++          #if ( self.controlId >= 1000 ) or (action.getId() == 92):
++              #self.slider_onfocus(0)
++              #self.controlId = 0
+           self.exit_script()
+ 
+ 
+diff -Naur a/resources/skins/Default/720p/script-xbmc-audio-mixer.xml b/resources/skins/Default/720p/script-xbmc-audio-mixer.xml
+--- a/resources/skins/Default/720p/script-xbmc-audio-mixer.xml	2015-01-23 02:25:58.000000000 +0200
++++ b/resources/skins/Default/720p/script-xbmc-audio-mixer.xml	2015-01-26 07:46:16.000000000 +0200
+@@ -4,51 +4,62 @@
+ 	<animation effect="fade" time="250">WindowOpen</animation>
+ 	<animation effect="fade" time="250">WindowClose</animation>
+ 	<coordinates>
+-		<posx>200</posx>
+-		<posy>45</posy>
++		<left>200</left>
++		<top>45</top>
+ 	</coordinates>
+ 	<controls>
+ 		<control type="image">
+-			<posx>-200</posx>
+-			<posy>-45</posy>
+-			<width>1280</width>
+-			<height>720</height>
+-			<texture>alsa-black.png</texture>
+-		</control>
+-		<control type="image">
+-			<posx>0</posx>
+-			<posy>0</posy>
++                        <description>background image</description>
++			<left>0</left>
++			<top>0</top>
+ 			<width>880</width>
+ 			<height>630</height>
+-			<texture border="40">alsa-panel.png</texture>
++			<texture border="40">DialogBack.png</texture>
++		</control>
++		<control type="button" id="117">
++			<description>Close Window button</description>
++			<left>790</left>
++			<top>15</top>
++			<width>64</width>
++			<height>32</height>
++			<label>-</label>
++			<font>-</font>
++			<onclick>PreviousMenu</onclick>
++			<texturefocus>DialogCloseButton-focus.png</texturefocus>
++			<texturenofocus>DialogCloseButton.png</texturenofocus>
++			<onleft>17</onleft>
++			<onright>17</onright>
++			<onup>17</onup>
++			<ondown>17</ondown>
++			<visible>system.getbool(input.enablemouse)</visible>
+ 		</control>
+ 		<control type="image">
+-			<posx>80</posx>
+-			<posy>10</posy>
++			<description>Dialog Header image</description>
++			<left>80</left>
++			<top>15</top>
+ 			<width>720</width>
+-			<height>90</height>
+-			<aspectratio>stretch</aspectratio>
+-			<texture>alsa-GlassTitleBar.png</texture>
++			<height>50</height>
++			<texture>dialogheader.png</texture>
+ 		</control>
+ 		<control type="label" id="1">
+ 			<description>header label</description>
+-			<posx>40</posx>
+-			<posy>18</posy>
++			<left>40</left>
++			<top>22</top>
+ 			<width>800</width>
+ 			<height>30</height>
+ 			<font>font13_title</font>
+-			<label>Audio Mixer</label>
++			<label>$ADDON[script.xbmc.audio.mixer 30020]</label>
+ 			<align>center</align>
+ 			<aligny>center</aligny>
+-			<textcolor>white</textcolor>
++			<textcolor>selected</textcolor>
+ 			<shadowcolor>black</shadowcolor>
+ 		</control>
+ 		<control type="grouplist" id="17">
+ 			<description>Grouplist</description>
+-			<posx>40</posx>
+-			<posy>70</posy>
++			<left>40</left>
++			<top>70</top>
+ 			<width>800</width>
+-			<height>450</height>
++			<height>500</height>
+ 			<itemgap>5</itemgap>
+ 			<pagecontrol>121</pagecontrol>
+ 			<scrolltime>200</scrolltime>
+@@ -59,15 +70,14 @@
+ 			<ondown>10</ondown>
+ 			<onleft>121</onleft>
+ 			<onright>121</onright>
+-
+ 			<control type="group" id="1000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+ 				<height>50</height>
+ 				<control type="radiobutton" id="901">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -75,7 +85,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -89,8 +99,8 @@
+ 				</control>
+ 				<control type="label" id="1900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -101,22 +111,22 @@
+ 				</control>
+ 				<control type="slider" id="1902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>901</onup>
+ 					<ondown>901</ondown>
+ 				</control>
+ 				<control type="label" id="1903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -127,15 +137,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="2000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -143,8 +152,8 @@
+ 				<visible>Control.IsVisible(1000)</visible>
+ 				<control type="radiobutton" id="902">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -152,7 +161,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -166,8 +175,8 @@
+ 				</control>
+ 				<control type="label" id="2900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -178,22 +187,22 @@
+ 				</control>
+ 				<control type="slider" id="2902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>902</onup>
+ 					<ondown>902</ondown>
+ 				</control>
+ 				<control type="label" id="2903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -204,15 +213,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="3000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -220,8 +228,8 @@
+ 				<visible>Control.IsVisible(2000)</visible>
+ 				<control type="radiobutton" id="903">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -229,7 +237,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -243,8 +251,8 @@
+ 				</control>
+ 				<control type="label" id="3900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -255,22 +263,22 @@
+ 				</control>
+ 				<control type="slider" id="3902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>903</onup>
+ 					<ondown>903</ondown>
+ 				</control>
+ 				<control type="label" id="3903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -281,15 +289,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="4000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -297,8 +304,8 @@
+ 				<visible>Control.IsVisible(3000)</visible>
+ 				<control type="radiobutton" id="904">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -306,7 +313,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -320,8 +327,8 @@
+ 				</control>
+ 				<control type="label" id="4900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -332,22 +339,22 @@
+ 				</control>
+ 				<control type="slider" id="4902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>904</onup>
+ 					<ondown>904</ondown>
+ 				</control>
+ 				<control type="label" id="4903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -358,15 +365,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="5000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -374,8 +380,8 @@
+ 				<visible>Control.IsVisible(4000)</visible>
+ 				<control type="radiobutton" id="905">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -383,7 +389,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -397,8 +403,8 @@
+ 				</control>
+ 				<control type="label" id="5900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -409,22 +415,22 @@
+ 				</control>
+ 				<control type="slider" id="5902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>905</onup>
+ 					<ondown>905</ondown>
+ 				</control>
+ 				<control type="label" id="5903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -435,15 +441,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="6000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -451,8 +456,8 @@
+ 				<visible>Control.IsVisible(5000)</visible>
+ 				<control type="radiobutton" id="906">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -460,7 +465,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -474,8 +479,8 @@
+ 				</control>
+ 				<control type="label" id="6900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -486,22 +491,22 @@
+ 				</control>
+ 				<control type="slider" id="6902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>906</onup>
+ 					<ondown>906</ondown>
+ 				</control>
+ 				<control type="label" id="6903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -512,15 +517,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="7000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -528,8 +532,8 @@
+ 				<visible>Control.IsVisible(6000)</visible>
+ 				<control type="radiobutton" id="907">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -537,7 +541,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -551,8 +555,8 @@
+ 				</control>
+ 				<control type="label" id="7900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -563,22 +567,22 @@
+ 				</control>
+ 				<control type="slider" id="7902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>907</onup>
+ 					<ondown>907</ondown>
+ 				</control>
+ 				<control type="label" id="7903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -589,15 +593,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="8000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -605,8 +608,8 @@
+ 				<visible>Control.IsVisible(7000)</visible>
+ 				<control type="radiobutton" id="908">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -614,7 +617,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -628,8 +631,8 @@
+ 				</control>
+ 				<control type="label" id="8900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -640,22 +643,22 @@
+ 				</control>
+ 				<control type="slider" id="8902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>908</onup>
+ 					<ondown>908</ondown>
+ 				</control>
+ 				<control type="label" id="8903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -666,15 +669,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="9000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -682,8 +684,8 @@
+ 				<visible>Control.IsVisible(8000)</visible>
+ 				<control type="radiobutton" id="909">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -691,7 +693,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -705,8 +707,8 @@
+ 				</control>
+ 				<control type="label" id="9900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -717,22 +719,22 @@
+ 				</control>
+ 				<control type="slider" id="9902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>909</onup>
+ 					<ondown>909</ondown>
+ 				</control>
+ 				<control type="label" id="9903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -743,15 +745,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="10000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -759,8 +760,8 @@
+ 				<visible>Control.IsVisible(9000)</visible>
+ 				<control type="radiobutton" id="910">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -768,7 +769,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -782,8 +783,8 @@
+ 				</control>
+ 				<control type="label" id="10900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -794,22 +795,22 @@
+ 				</control>
+ 				<control type="slider" id="10902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>910</onup>
+ 					<ondown>910</ondown>
+ 				</control>
+ 				<control type="label" id="10903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -820,15 +821,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="11000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -836,8 +836,8 @@
+ 				<visible>Control.IsVisible(10000)</visible>
+ 				<control type="radiobutton" id="911">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -845,7 +845,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -859,8 +859,8 @@
+ 				</control>
+ 				<control type="label" id="11900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -871,22 +871,22 @@
+ 				</control>
+ 				<control type="slider" id="11902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>911</onup>
+ 					<ondown>911</ondown>
+ 				</control>
+ 				<control type="label" id="11903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -897,15 +897,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="12000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -913,8 +912,8 @@
+ 				<visible>Control.IsVisible(11000)</visible>
+ 				<control type="radiobutton" id="912">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -922,7 +921,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -936,8 +935,8 @@
+ 				</control>
+ 				<control type="label" id="12900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -948,22 +947,22 @@
+ 				</control>
+ 				<control type="slider" id="12902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>912</onup>
+ 					<ondown>912</ondown>
+ 				</control>
+ 				<control type="label" id="12903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -974,15 +973,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="13000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -990,8 +988,8 @@
+ 				<visible>Control.IsVisible(12000)</visible>
+ 				<control type="radiobutton" id="913">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -999,7 +997,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1013,8 +1011,8 @@
+ 				</control>
+ 				<control type="label" id="13900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1025,22 +1023,22 @@
+ 				</control>
+ 				<control type="slider" id="13902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>913</onup>
+ 					<ondown>913</ondown>
+ 				</control>
+ 				<control type="label" id="13903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1051,15 +1049,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="14000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1067,8 +1064,8 @@
+ 				<visible>Control.IsVisible(13000)</visible>
+ 				<control type="radiobutton" id="914">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1076,7 +1073,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1090,8 +1087,8 @@
+ 				</control>
+ 				<control type="label" id="14900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1102,22 +1099,22 @@
+ 				</control>
+ 				<control type="slider" id="14902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>914</onup>
+ 					<ondown>914</ondown>
+ 				</control>
+ 				<control type="label" id="14903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1128,15 +1125,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="15000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1144,8 +1140,8 @@
+ 				<visible>Control.IsVisible(14000)</visible>
+ 				<control type="radiobutton" id="915">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1153,7 +1149,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1167,8 +1163,8 @@
+ 				</control>
+ 				<control type="label" id="15900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1179,22 +1175,22 @@
+ 				</control>
+ 				<control type="slider" id="15902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>915</onup>
+ 					<ondown>915</ondown>
+ 				</control>
+ 				<control type="label" id="15903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1205,15 +1201,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="16000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1221,8 +1216,8 @@
+ 				<visible>Control.IsVisible(15000)</visible>
+ 				<control type="radiobutton" id="916">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1230,7 +1225,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1244,8 +1239,8 @@
+ 				</control>
+ 				<control type="label" id="16900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1256,22 +1251,22 @@
+ 				</control>
+ 				<control type="slider" id="16902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>916</onup>
+ 					<ondown>916</ondown>
+ 				</control>
+ 				<control type="label" id="16903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1282,15 +1277,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="17000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1298,8 +1292,8 @@
+ 				<visible>Control.IsVisible(16000)</visible>
+ 				<control type="radiobutton" id="917">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1307,7 +1301,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1321,8 +1315,8 @@
+ 				</control>
+ 				<control type="label" id="17900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1333,22 +1327,22 @@
+ 				</control>
+ 				<control type="slider" id="17902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>917</onup>
+ 					<ondown>917</ondown>
+ 				</control>
+ 				<control type="label" id="17903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1359,15 +1353,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="18000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1375,8 +1368,8 @@
+ 				<visible>Control.IsVisible(17000)</visible>
+ 				<control type="radiobutton" id="918">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1384,7 +1377,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1398,8 +1391,8 @@
+ 				</control>
+ 				<control type="label" id="18900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1410,22 +1403,22 @@
+ 				</control>
+ 				<control type="slider" id="18902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>918</onup>
+ 					<ondown>918</ondown>
+ 				</control>
+ 				<control type="label" id="18903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1436,15 +1429,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="19000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1452,8 +1444,8 @@
+ 				<visible>Control.IsVisible(18000)</visible>
+ 				<control type="radiobutton" id="919">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1461,7 +1453,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1475,8 +1467,8 @@
+ 				</control>
+ 				<control type="label" id="19900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1487,22 +1479,22 @@
+ 				</control>
+ 				<control type="slider" id="19902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>919</onup>
+ 					<ondown>919</ondown>
+ 				</control>
+ 				<control type="label" id="19903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1513,15 +1505,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="20000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1529,8 +1520,8 @@
+ 				<visible>Control.IsVisible(19000)</visible>
+ 				<control type="radiobutton" id="920">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1538,7 +1529,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1552,8 +1543,8 @@
+ 				</control>
+ 				<control type="label" id="20900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1564,22 +1555,22 @@
+ 				</control>
+ 				<control type="slider" id="20902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>920</onup>
+ 					<ondown>920</ondown>
+ 				</control>
+ 				<control type="label" id="20903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1590,11 +1581,11 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+@@ -1605,8 +1596,8 @@
+ 				<visible>Control.IsVisible(20000)</visible>
+ 				<control type="radiobutton" id="921">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1614,7 +1605,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1628,8 +1619,8 @@
+ 				</control>
+ 				<control type="label" id="21900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1640,22 +1631,22 @@
+ 				</control>
+ 				<control type="slider" id="21902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>921</onup>
+ 					<ondown>921</ondown>
+ 				</control>
+ 				<control type="label" id="21903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1666,15 +1657,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="22000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1682,8 +1672,8 @@
+ 				<visible>Control.IsVisible(21000)</visible>
+ 				<control type="radiobutton" id="922">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1691,7 +1681,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1705,8 +1695,8 @@
+ 				</control>
+ 				<control type="label" id="22900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1717,22 +1707,22 @@
+ 				</control>
+ 				<control type="slider" id="22902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>922</onup>
+ 					<ondown>922</ondown>
+ 				</control>
+ 				<control type="label" id="22903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1743,15 +1733,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="23000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1759,8 +1748,8 @@
+ 				<visible>Control.IsVisible(22000)</visible>
+ 				<control type="radiobutton" id="923">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1768,7 +1757,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1782,8 +1771,8 @@
+ 				</control>
+ 				<control type="label" id="23900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1794,22 +1783,22 @@
+ 				</control>
+ 				<control type="slider" id="23902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>923</onup>
+ 					<ondown>923</ondown>
+ 				</control>
+ 				<control type="label" id="23903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1820,15 +1809,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="24000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1836,8 +1824,8 @@
+ 				<visible>Control.IsVisible(23000)</visible>
+ 				<control type="radiobutton" id="924">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1845,7 +1833,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1859,8 +1847,8 @@
+ 				</control>
+ 				<control type="label" id="24900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1871,22 +1859,22 @@
+ 				</control>
+ 				<control type="slider" id="24902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>924</onup>
+ 					<ondown>924</ondown>
+ 				</control>
+ 				<control type="label" id="24903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1897,15 +1885,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="25000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1913,8 +1900,8 @@
+ 				<visible>Control.IsVisible(24000)</visible>
+ 				<control type="radiobutton" id="925">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1922,7 +1909,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -1936,8 +1923,8 @@
+ 				</control>
+ 				<control type="label" id="25900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1948,22 +1935,22 @@
+ 				</control>
+ 				<control type="slider" id="25902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>925</onup>
+ 					<ondown>925</ondown>
+ 				</control>
+ 				<control type="label" id="25903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -1974,15 +1961,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="26000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -1990,8 +1976,8 @@
+ 				<visible>Control.IsVisible(25000)</visible>
+ 				<control type="radiobutton" id="926">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -1999,7 +1985,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -2013,8 +1999,8 @@
+ 				</control>
+ 				<control type="label" id="26900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2025,22 +2011,22 @@
+ 				</control>
+ 				<control type="slider" id="26902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>926</onup>
+ 					<ondown>926</ondown>
+ 				</control>
+ 				<control type="label" id="26903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2051,15 +2037,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="27000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -2067,8 +2052,8 @@
+ 				<visible>Control.IsVisible(26000)</visible>
+ 				<control type="radiobutton" id="927">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -2076,7 +2061,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -2090,8 +2075,8 @@
+ 				</control>
+ 				<control type="label" id="27900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2102,22 +2087,22 @@
+ 				</control>
+ 				<control type="slider" id="27902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>927</onup>
+ 					<ondown>927</ondown>
+ 				</control>
+ 				<control type="label" id="27903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2128,15 +2113,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="28000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -2144,8 +2128,8 @@
+ 				<visible>Control.IsVisible(27000)</visible>
+ 				<control type="radiobutton" id="928">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -2153,7 +2137,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -2167,8 +2151,8 @@
+ 				</control>
+ 				<control type="label" id="28900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2179,22 +2163,22 @@
+ 				</control>
+ 				<control type="slider" id="28902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>928</onup>
+ 					<ondown>928</ondown>
+ 				</control>
+ 				<control type="label" id="28903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2205,15 +2189,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="29000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -2221,8 +2204,8 @@
+ 				<visible>Control.IsVisible(28000)</visible>
+ 				<control type="radiobutton" id="929">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -2230,7 +2213,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -2244,8 +2227,8 @@
+ 				</control>
+ 				<control type="label" id="19900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2256,22 +2239,22 @@
+ 				</control>
+ 				<control type="slider" id="29902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>929</onup>
+ 					<ondown>929</ondown>
+ 				</control>
+ 				<control type="label" id="29903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2282,15 +2265,14 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+-
+ 			<control type="group" id="30000">
+ 				<description>ControlGroup</description>
+ 				<width>800</width>
+@@ -2298,8 +2280,8 @@
+ 				<visible>Control.IsVisible(29000)</visible>
+ 				<control type="radiobutton" id="930">
+ 					<description>mute button</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>400</width>
+ 					<height>45</height>
+ 					<visible>true</visible>
+@@ -2307,7 +2289,7 @@
+ 					<label>$ADDON[script.xbmc.audio.mixer 30010]</label>
+ 					<font>font12</font>
+ 					<textcolor>FFFFFFFF</textcolor>
+-					<texturefocus>alsa-MenuItemFO.png</texturefocus>
++					<texturefocus>MenuItemFO.png</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+ 					<disabledcolor>80FFFFFF</disabledcolor>
+ 					<align>right</align>
+@@ -2321,8 +2303,8 @@
+ 				</control>
+ 				<control type="label" id="30900">
+ 					<description>ControlName</description>
+-					<posx>0</posx>
+-					<posy>0</posy>
++					<left>0</left>
++					<top>0</top>
+ 					<width>300</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2333,22 +2315,22 @@
+ 				</control>
+ 				<control type="slider" id="30902">
+ 					<description>Slider</description>
+-					<posx>410</posx>
+-					<posy>10</posy>
++					<left>410</left>
++					<top>10</top>
+ 					<width>300</width>
+ 					<height>25</height>
+ 					<texturefocus>-</texturefocus>
+ 					<texturenofocus>-</texturenofocus>
+-					<texturesliderbar>alsa-slider-background.png</texturesliderbar>
+-					<textureslidernib>alsa-slider-nib-nofocus.png</textureslidernib>
+-					<textureslidernibfocus>alsa-slider-nib-focus.png</textureslidernibfocus>
++					<texturesliderbar>osd_slider_bg_2.png</texturesliderbar>
++					<textureslidernib>osd_slider_nibNF.png</textureslidernib>
++					<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+ 					<onup>930</onup>
+ 					<ondown>930</ondown>
+ 				</control>
+ 				<control type="label" id="30903">
+ 					<description>ControlPercentage</description>
+-					<posx>800</posx>
+-					<posy>0</posy>
++					<left>700</left>
++					<top>0</top>
+ 					<width>90</width>
+ 					<height>45</height>
+ 					<font>font13</font>
+@@ -2359,48 +2341,29 @@
+ 				</control>
+ 				<control type="image">
+ 					<description>separator</description>
+-					<posx>0</posx>
+-					<posy>50</posy>
++					<left>0</left>
++					<top>50</top>
+ 					<width>800</width>
+ 					<height>1</height>
+-					<texture>alsa-separator.png</texture>
++					<texture>separator.png</texture>
+ 					<colordiffuse>22FFFFFF</colordiffuse>
+ 				</control>
+ 			</control>
+ 		</control>
+-		<control type="spincontrol" id="121">
+-			<description>Nextpagebutton</description>
+-			<posx>800</posx>
+-			<posy>530</posy>
+-			<width>20</width>
+-			<height>20</height>
+-			<font>font13</font>
+-			<align>right</align>
+-			<subtype>page</subtype>
+-			<ondown>901</ondown>
+-			<onup>901</onup>
+-			<textoffsetx>10</textoffsetx>
+-			<textureup>alsa-scroll-up.png</textureup>
+-			<texturedown>alsa-scroll-down.png</texturedown>
+-			<textureupfocus>alsa-scroll-up-focus.png</textureupfocus>
+-			<texturedownfocus>alsa-scroll-down-focus.png</texturedownfocus>
++		<control type="scrollbar" id="121">
++			<left>840</left>
++			<top>70</top>
++			<width>25</width>
++			<height>500</height>
++			<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
++			<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
++			<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
++			<textureslidernib>ScrollBarNib.png</textureslidernib>
++			<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
++			<onleft>99</onleft>
++			<onright>98</onright>
+ 			<showonepage>false</showonepage>
+-			<visible>Control.IsVisible(17)</visible>
+-		</control>
+-		<control type="button" id="10">
+-			<description>OK button</description>
+-			<posx>340</posx>
+-			<posy>560</posy>
+-			<width>200</width>
+-			<height>40</height>
+-			<label>$LOCALIZE[186]</label>
+-			<font>font12_title</font>
+-			<textcolor>white</textcolor>
+-			<focusedcolor>white</focusedcolor>
+-			<align>center</align>
+-			<texturefocus>alsa-button-focus.png</texturefocus>
+-			<texturenofocus>alsa-button-nofocus.png</texturenofocus>
+-			<onclick>Dialog.Close(all,true)</onclick>
+-		</control>
++			<orientation>vertical</orientation>
++		</control>		
+ 	</controls>
+ </window>

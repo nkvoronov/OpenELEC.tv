@@ -54,7 +54,7 @@
 # for a list of additinoal drivers see packages/linux-drivers
 # Space separated list is supported,
 # e.g. ADDITIONAL_DRIVERS="DRIVER1 DRIVER2"
-  ADDITIONAL_DRIVERS="RTL8192CU RTL8192DU RTL8188EU RTL8812AU dvbhdhomerun"
+  ADDITIONAL_DRIVERS="RTL8192CU RTL8192DU RTL8188EU RTL8812AU dvbhdhomerun tbs-linux-drivers-cc"
 
 # build and install bluetooth support (yes / no)
   BLUETOOTH_SUPPORT="yes"
@@ -174,7 +174,7 @@
   TESTING="no"
 
 # OEM packages for OEM's (yes / no)
-  OEM_SUPPORT="no"
+  OEM_SUPPORT="yes"
 
 # build and install nano text editor (yes / no)
   NANO_EDITOR="yes"
@@ -192,3 +192,60 @@
 # set the addon dirs
   ADDON_PATH="$ADDON_VERSION/$PROJECT/$TARGET_ARCH"
   ADDON_URL="$ADDON_SERVER_URL/$ADDON_PATH"
+
+### CUSTOM OPTIONS ###
+  DISTRO_CUSTOM_SRC="https://dl.dropboxusercontent.com/u/6711518/packages"
+
+# Alsa mixer enabled
+  if [ "$TARGET_ARCH" = "x86_64" ]; then
+    ALSAMIXER_ENABLED="yes"
+    ALSAEQUAL_ENABLED="yes"
+  fi
+
+# Locales
+  LOCALES_SUPPORT="yes"
+
+# Libxcb extention
+  LIBXCB_EXT="yes"
+
+# KODI addons
+  KODI_ADDON_LCD="yes"
+  KODI_ADDON_TRANSMISSION="yes"
+  KODI_ADDON_AUDIO_MIXER="yes"
+  KODI_ADDON_VDRFRONT="no"
+  KODI_THEME_CONFLUENCE_PLOOD="no"
+  OPENELEC_DEV_UPDATE="yes"
+
+# Services
+  TRANSMISSION_SERVICE="yes"
+  OSCAM_SERVICE="yes"
+
+# TV Services
+  TVHEADEND_SERVICE="yes"
+  VDR_SERVICE="yes"
+
+# Tools
+  ADD_ARCHIVERS_ENABLED="yes"
+  DEV_TOOLS_ENABLED="yes"
+  DVB_TOOLS_ENABLED="yes"
+  PYTHON_ADD_LIB_SUPPORT="yes"
+  PHP_SUPPORT="yes"
+
+# Perl
+  PERL_VERSION="5.18.2"
+
+  if [ "$TARGET_ARCH" = "x86_64" ]; then
+    PERL_SUPPORT="yes"
+  fi
+
+# EPG Updaters
+  EPGUpdaters_SUPPORT="yes"
+
+# Lib Torrents
+  LIBTORRENTS_SUPPORT="yes"
+
+# Acestream Engine
+  ACESTREAM_SUPPORT="yes"
+
+# Other
+  GAME_EMULATORS="no"

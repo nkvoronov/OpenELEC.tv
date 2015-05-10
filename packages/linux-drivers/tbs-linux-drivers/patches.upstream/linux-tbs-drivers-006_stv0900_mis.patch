@@ -1,0 +1,76 @@
+diff -ru a/linux-tbs-drivers/linux/drivers/media/dvb/frontends/stv0900_core.c linux-tbs-drivers/linux/drivers/media/dvb/frontends/stv0900_core.c
+--- a/linux-tbs-drivers/linux/drivers/media/dvb/frontends/stv0900_core.c	2011-03-03 06:45:11.000000000 +0200
++++ a/linux-tbs-drivers/linux/drivers/media/dvb/frontends/stv0900_core.c	2013-01-25 21:33:11.453884552 +0200
+@@ -1574,6 +1574,37 @@
+ 	return locked;
+ }
+ 
++static int stv0900_set_pls(struct stv0900_internal *intp,
++				enum fe_stv0900_demod_num demod, u8 pls_mode, u32 pls_code)
++{
++	enum fe_stv0900_error error = STV0900_NO_ERROR;
++
++	dprintk("Set PLS code %d (mode %d)", pls_code, pls_mode);
++	stv0900_write_reg(intp, PLROOT2, (pls_mode<<2) | (pls_code>>16));
++	stv0900_write_reg(intp, PLROOT1, pls_code>>8);
++	stv0900_write_reg(intp, PLROOT0, pls_code);
++
++	return error;
++}
++
++static int stv0900_set_mis(struct stv0900_internal *intp,
++				enum fe_stv0900_demod_num demod, int mis)
++{
++	enum fe_stv0900_error error = STV0900_NO_ERROR;
++
++	if (mis == NO_STREAM_ID_FILTER) {
++		dprintk("Disable MIS filtering\n");
++		stv0900_write_bits(intp, FILTER_EN, 0);
++	} else {
++		dprintk("Enable MIS filtering - %d\n", mis);
++		stv0900_write_bits(intp, FILTER_EN, 1);
++		stv0900_write_reg(intp, ISIENTRY, mis);
++		stv0900_write_reg(intp, ISIBITENA, 0xff);
++	}
++
++	return error;
++}
++
+ static enum dvbfe_search stv0900_search(struct dvb_frontend *fe,
+ 					struct dvb_frontend_parameters *params)
+ {
+@@ -1595,6 +1626,9 @@
+ 	if (state->config->set_ts_params)
+ 		state->config->set_ts_params(fe, 0);
+ 
++	stv0900_set_pls(intp, demod, (c->dvbt2_plp_id>>24) & 0x3, (c->dvbt2_plp_id>>8) & 0x3FFFF);
++	stv0900_set_mis(intp, demod, c->dvbt2_plp_id);
++
+ 	p_result.locked = FALSE;
+ 	p_search.path = demod;
+ 	p_search.frequency = c->frequency;
+@@ -1962,6 +1996,9 @@
+ 		if (err_stv0900)
+ 			goto error;
+ 
++		if (state->internal->chip_id >= 0x30)
++			state->frontend.ops.info.caps |= FE_CAN_MULTISTREAM;
++
+ 		break;
+ 	default:
+ 		goto error;
+diff -ru a/linux-tbs-drivers/linux/drivers/media/dvb/frontends/stv0900_reg.h b/linux-tbs-drivers/linux/drivers/media/dvb/frontends/stv0900_reg.h
+--- a/linux-tbs-drivers/linux/drivers/media/dvb/frontends/stv0900_reg.h	2010-07-04 00:22:08.000000000 +0300
++++ b/linux-tbs-drivers/linux/drivers/media/dvb/frontends/stv0900_reg.h	2012-12-14 19:33:04.745213369 +0200
+@@ -3446,8 +3446,11 @@
+ #define R0900_P1_PDELCTRL1 0xf550
+ #define PDELCTRL1 REGx(R0900_P1_PDELCTRL1)
+ #define F0900_P1_INV_MISMASK 0xf5500080
++#define INV_MISMASK FLDx(F0900_P1_INV_MISMASK)
+ #define F0900_P1_FILTER_EN 0xf5500020
++#define FILTER_EN FLDx(F0900_P1_FILTER_EN)
+ #define F0900_P1_EN_MIS00 0xf5500002
++#define EN_MIS00 FLDx(F0900_P1_EN_MIS00)
+ #define F0900_P1_ALGOSWRST 0xf5500001
+ #define ALGOSWRST FLDx(F0900_P1_ALGOSWRST)
+ 

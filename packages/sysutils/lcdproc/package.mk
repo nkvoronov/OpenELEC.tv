@@ -61,8 +61,14 @@ post_makeinstall_target() {
       -e "s|^#GoodBye=\"   LCDproc!\"|GoodBye=\"$DISTRONAME\"|" \
       -i $INSTALL/etc/LCDd.conf
 
-    mkdir -p $INSTALL/usr/lib/openelec
-      cp $PKG_DIR/scripts/lcd-wrapper $INSTALL/usr/lib/openelec
+  mkdir -p $INSTALL/usr/lib/openelec
+    cp $PKG_DIR/scripts/lcd-wrapper $INSTALL/usr/lib/openelec
+
+  mkdir -p $INSTALL/etc
+    cp $PKG_DIR/config/LCDd.conf $INSTALL/etc
+
+  mkdir -p $INSTALL/usr/share/lcdproc/fonts
+    cp -PR $PKG_DIR/fonts/*.fnt $INSTALL/usr/share/lcdproc/fonts
 
 }
 

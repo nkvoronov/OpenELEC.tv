@@ -1,0 +1,265 @@
+diff -Naur a/po/ru_RU.po b/po/ru_RU.po
+--- a/po/ru_RU.po	1970-01-01 03:00:00.000000000 +0300
++++ b/po/ru_RU.po	2015-03-24 14:18:17.070571920 +0200
+@@ -0,0 +1,261 @@
++# German translations for vdr-upnp package.
++# Copyright (C) 2012 THE vdr-upnp'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the vdr-upnp package.
++# Denis Loh <denis.loh@web.de>, 2012.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: vdr-upnp 1.0.0\n"
++"Report-Msgid-Bugs-To: <see README>\n"
++"POT-Creation-Date: 2013-04-21 11:57+0200\n"
++"PO-Revision-Date: 2012-11-01 16:04+0100\n"
++"Last-Translator: Denis Loh <denis.loh@web.de>\n"
++"Language-Team: Russan\n"
++"Language: ru\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++
++msgid "Enable UPnP server"
++msgstr "Включить UPnP сервер"
++
++msgid "disabled"
++msgstr "нет"
++
++msgid "enabled"
++msgstr "да"
++
++msgid "Use expert settings"
++msgstr "Использовать расширенные настройки"
++
++msgid "Webserver settings"
++msgstr "Настройки Веб-сервера"
++
++msgid "Webserver root directory"
++msgstr "Корневая папка Веб-сервера"
++
++msgid "Webserver port (0=auto)"
++msgstr "Порт Веб-сервера (0=авто)"
++
++msgid "Max. request time in seconds (0=auto)"
++msgstr "Макс. время запроса в сек. (0=авто)"
++
++msgid "Presentation URL"
++msgstr "URL презентации"
++
++msgid "Use \"live\" plugin for presentation"
++msgstr "\"Live\"-плагин для презентации"
++
++msgid "Live webserver port (0=auto)"
++msgstr "Порт Live-плагина (0=авто)"
++
++msgid "UPnP server settings"
++msgstr "Настройки UPnP сервера"
++
++msgid "Generate new device UUID"
++msgstr "Генерировать новый UUID устройства"
++
++msgid "Current device UUID"
++msgstr "Текущее UUID устройство"
++
++msgid "Max. content length of SOAP Messages"
++msgstr "Макс. длина SOAP сообщения"
++
++msgid "Max. age of UPnP announcements"
++msgstr "Макс. возраст UPnP объявлений"
++
++msgid "Bind UPnP server to "
++msgstr "Привязать UPnP сервер к "
++
++msgid "interface"
++msgstr ""
++
++msgid "address"
++msgstr ""
++
++msgid "Set IP address"
++msgstr "Установить IP адрес"
++
++msgid "Set network interface"
++msgstr "Установить интернет интерфейс"
++
++msgid "UPnP server port (0=auto)"
++msgstr "Порт UPnP сервера (0=авто)"
++
++msgid "Database settings"
++msgstr "Настройки Базы данных"
++
++msgid "Path to database file"
++msgstr "Путь к файлу базы данных"
++
++msgid "Incompatible protocol info"
++msgstr ""
++
++msgid "Incompatible directions"
++msgstr ""
++
++msgid "Insufficient network resources"
++msgstr ""
++
++msgid "Local restrictions"
++msgstr ""
++
++msgid "Access denied"
++msgstr ""
++
++msgid "Invalid connection reference"
++msgstr ""
++
++msgid "Not in network"
++msgstr ""
++
++msgid "Bad metadata"
++msgstr ""
++
++msgid "Cannot process the request"
++msgstr ""
++
++msgid "Destination resource access denied"
++msgstr ""
++
++msgid "Invalid current tag"
++msgstr ""
++
++msgid "Invalid new tag"
++msgstr ""
++
++msgid "Invalid or unsupported search criteria"
++msgstr ""
++
++msgid "Invalid or unsupported sort criteria"
++msgstr ""
++
++msgid "No such container"
++msgstr ""
++
++msgid "No such destination resource"
++msgstr ""
++
++msgid "No such file transfer"
++msgstr ""
++
++msgid "No such objectID"
++msgstr ""
++
++msgid "No such source resource"
++msgstr ""
++
++msgid "Parameter mismatch"
++msgstr ""
++
++msgid "Read only tag"
++msgstr ""
++
++msgid "Required tag"
++msgstr ""
++
++msgid "Resource access denied"
++msgstr ""
++
++msgid "Restricted object"
++msgstr ""
++
++msgid "Restricted parent"
++msgstr ""
++
++msgid "Transfer busy"
++msgstr ""
++
++msgid "Invalid action"
++msgstr ""
++
++msgid "Invalid args"
++msgstr ""
++
++msgid "Invalid var"
++msgstr ""
++
++msgid "Action failed"
++msgstr ""
++
++msgid "Argument value invalid"
++msgstr ""
++
++msgid "Argument value out of range"
++msgstr ""
++
++msgid "Optional action not implemented"
++msgstr ""
++
++msgid "Out of memory"
++msgstr ""
++
++msgid "Human intervention required"
++msgstr ""
++
++msgid "String argument to long"
++msgstr ""
++
++msgid "Action not authorized"
++msgstr ""
++
++msgid "Signature failure"
++msgstr ""
++
++msgid "Signature missing"
++msgstr ""
++
++msgid "Not encrypted"
++msgstr ""
++
++msgid "Invalid sequence"
++msgstr ""
++
++msgid "Invalid control URL"
++msgstr ""
++
++msgid "No such session"
++msgstr ""
++
++msgid "Unknown error code. Contact the device manufacturer"
++msgstr ""
++
++msgid ""
++"  The UPnP/DLNA server is designed to detect everything automatically.\n"
++"  Therefore the user is not required to change most of the settings.\n"
++"  \n"
++"  -d <DB directory>    --db-dir=<DB directory>  Specifies the directory\n"
++"                                                where the the database\n"
++"                                                file shall be located.\n"
++"  -a <IP address>      --address=<IP address>   Binds the server to the\n"
++"                                                specific IP address.\n"
++"  -i <Interface>       --interface=<Interface>  Binds the server to the\n"
++"                                                specific network\n"
++"                                                interface.\n"
++"  -p <Port>            --port=<Port>            Sets the port where the\n"
++"                                                UPnP server shall listen\n"
++"                                                on."
++msgstr ""
++"  Der UPnP/DLNA-Server ist so ausgelegt, dass alle Einstellungen\n"
++"  automatisch erkannt werden. Es ist daher nicht notwendig, dass\n"
++"  Einstellungen durch den Nutzer vorgenommen werden müssen\n"
++"  \n"
++"  -d <DB Verzeichnis> --db-dir=<DB Verzeichnis> Legt das Verzeichnis\n"
++"                                                fest, wo die Datenbank-\n"
++"                                                datei gespeichert werden\n"
++"                                                soll.\n"
++"  -a <IP-Adresse>     --address=<IP-Adresse>    Bindet den Server an\n"
++"                                                diese IP-Adresse\n"
++"  -i <Interface>      --interface=<Interface>   Bindet den Server an\n"
++"                                                diese Netzwerkkarte\n"
++"  -p <Port>            --port=<Port>            Setzt den Port, auf den\n"
++"                                                der UPnP server lauschen\n"
++"                                                soll."
++
++#, c-format
++msgid "There are %d requests active."
++msgstr "Es sind noch %d Anfragen aktiv."
++
++msgid "UPnP/DLNA compliant Media Server functionality for VDR"
++msgstr "UPnP/DLNA медиа сервер для VDR"

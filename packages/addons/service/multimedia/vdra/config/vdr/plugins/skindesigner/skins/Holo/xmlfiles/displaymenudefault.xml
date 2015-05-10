@@ -1,0 +1,67 @@
+ <menudefault x="0" y="0" width="100%" height="100%" fadetime="0">
+    <background>
+      <area x="0" y="0" width="100%" height="100%" layer="1">
+        <fill color="{clrBack}" />
+        <drawrectangle x="0" y="4%" height="{areaheight}*0.0032" width="100%" color="{clrSpacer}" />
+        <drawrectangle x="5%" y="96%" height="{areaheight}*0.0016" width="90%" color="{clrText2}" />
+        <drawellipse x="0" y="0" width="{areaheight}*0.008" height="{areaheight}*0.008" color="{clrTransparent}" quadrant="-2"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.008" y="0" width="{areaheight}*0.008" height="{areaheight}*0.008" color="{clrTransparent}" quadrant="-1"/>
+        <drawellipse x="0" y="{areaheight} - {areaheight}*0.008" width="{areaheight}*0.008" height="{areaheight}*0.008" color="{clrTransparent}" quadrant="-3"/>
+        <drawellipse x="{areawidth} - {areaheight}*0.008" y="{areaheight} - {areaheight}*0.008" width="{areaheight}*0.008" height="{areaheight}*0.008" color="{clrTransparent}" quadrant="-4"/>
+      </area>
+    </background>
+
+    <header>
+        <area x="0" y="0" width="100%" height="4%" layer="2">
+            <drawtext x="2%" width="50%" valign="center" font="{regular}" fontsize="100%" color="{clrSpacer}" text="{title}" />
+        </area>
+    </header>
+
+    <menuitems x="1%" y="6%" orientation="vertical" width="98%" height="88%" align="center" menuitemwidth="100%" determinatefont="column1" numlistelements="25">
+        <listelement>
+            <area x="0" width="98%" layer="2">
+                <fill condition="{current}" color="{clrSpacer}" />
+            </area>
+
+            <areascroll condition="not{current}" scrollelement="column1" mode="forthandback" orientation="horizontal" delay="1000" scrollspeed="medium" x="1%" width="{column1width}" layer="3">
+                <drawtext name="column1" x="{column1x}" width="{column1width}" valign="center" font="{regular}" fontsize="100%" color="{clrText}" text="{column1}" />
+            </areascroll>
+            <areascroll condition="{current}" scrollelement="column1" mode="forthandback" orientation="horizontal" delay="1000" scrollspeed="medium" x="1%" width="{column1width}" layer="3">
+                <drawtext name="column1" x="{column1x}" width="{column1width}" valign="center" font="{regular}" fontsize="100%" color="{clrTextSelected}" text="{column1}" />
+            </areascroll>
+            <areascroll condition="{separator}" scrollelement="column1" mode="forthandback" orientation="horizontal" delay="1000" scrollspeed="medium" x="1%" width="{column1width}" layer="3">
+                <drawtext name="column1" x="{column1x}" width="{column1width}" valign="center" font="{regular}" fontsize="100%" color="{clrText2}" text="{column1}" />
+            </areascroll>
+
+            <area condition="not{current}" x="0" width="100%" layer="3">
+                <drawtext condition="{column2set}" x="{column2x}" valign="center" font="{regular}" fontsize="100%" width="{column2width}" color="{clrText}" text="{column2}" />
+                <drawtext condition="{column3set}" x="{column3x}" valign="center" font="{regular}" fontsize="100%" width="{column3width}" color="{clrText}" text="{column3}" />
+                <drawtext condition="{column4set}" x="{column4x}" valign="center" font="{regular}" fontsize="100%" width="{column4width}" color="{clrText}" text="{column4}" />
+                <drawtext condition="{column5set}" x="{column5x}" valign="center" font="{regular}" fontsize="100%" width="{column5width}" color="{clrText}" text="{column5}" />
+                <drawtext condition="{column6set}" x="{column6x}" valign="center" font="{regular}" fontsize="100%" width="{column6width}" color="{clrText}" text="{column6}" />
+            </area>
+            <area condition="{current}" x="0" width="100%" layer="3">
+                <drawtext condition="{column2set}" x="{column2x}" valign="center" font="{regular}" fontsize="100%" width="{column2width}" color="{clrTextSelected}" text="{column2}" />
+                <drawtext condition="{column3set}" x="{column3x}" valign="center" font="{regular}" fontsize="100%" width="{column3width}" color="{clrTextSelected}" text="{column3}" />
+                <drawtext condition="{column4set}" x="{column4x}" valign="center" font="{regular}" fontsize="100%" width="{column4width}" color="{clrTextSelected}" text="{column4}" />
+                <drawtext condition="{column5set}" x="{column5x}" valign="center" font="{regular}" fontsize="100%" width="{column5width}" color="{clrTextSelected}" text="{column5}" />
+                <drawtext condition="{column6set}" x="{column6x}" valign="center" font="{regular}" fontsize="100%" width="{column6width}" color="{clrTextSelected}" text="{column6}" />
+            </area>
+            <area condition="{separator}" x="0" width="100%" layer="3">
+                <drawtext condition="{column2set}" x="{column2x}" valign="center" font="{regular}" fontsize="100%" width="{column2width}" color="{clrText2}" text="{column2}" />
+                <drawtext condition="{column3set}" x="{column3x}" valign="center" font="{regular}" fontsize="100%" width="{column3width}" color="{clrText2}" text="{column3}" />
+                <drawtext condition="{column4set}" x="{column4x}" valign="center" font="{regular}" fontsize="100%" width="{column4width}" color="{clrText2}" text="{column4}" />
+                <drawtext condition="{column5set}" x="{column5x}" valign="center" font="{regular}" fontsize="100%" width="{column5width}" color="{clrText2}" text="{column5}" />
+                <drawtext condition="{column6set}" x="{column6x}" valign="center" font="{regular}" fontsize="100%" width="{column6width}" color="{clrText2}" text="{column6}" />
+            </area>
+        </listelement>
+    </menuitems>
+
+    <scrollbar>
+        <area condition="lt({height},1000)" x="98%" y="7%" width="1%" height="86%" layer="4">
+            <drawrectangle x="0" y="0" width="10%" height="100%" align="center" color="{clrSpacer}" />
+            <drawrectangle x="0" y="{areaheight}*{offset}/1000" align="center" width="50%" height="{areaheight}*{height}/1000" color="{clrSpacer}" />
+        </area>
+    </scrollbar>
+
+</menudefault>

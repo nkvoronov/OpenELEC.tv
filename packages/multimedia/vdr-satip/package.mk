@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-satip"
-PKG_VERSION="2.2.1"
+PKG_VERSION="2.2.0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -40,11 +40,11 @@ pre_configure_target() {
 }
 
 make_target() {
-  VDR_DIR=$(get_build_dir vdr)
+  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   make VDRDIR=$VDR_DIR \
-    SATIP_USE_TINYXML=1 \
-    LIBDIR="." \
-    LOCALEDIR="./locale"
+  SATIP_USE_TINYXML=1 \
+  LIBDIR="." \
+  LOCALEDIR="./locale"
 }
 
 makeinstall_target() {
