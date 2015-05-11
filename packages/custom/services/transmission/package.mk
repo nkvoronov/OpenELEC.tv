@@ -18,51 +18,46 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="transmission"
-PKG_VERSION="2.84"
-PKG_REV="4"
+PKG_NAME="tvheadend-service"
+PKG_VERSION="3.9.2825"
+PKG_REV="31"
 PKG_ARCH="any"
-PKG_LICENSE="OSS"
-PKG_SITE="http://www.transmissionbt.com/"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain zlib libressl curl libevent"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.lonelycoder.com/hts/tvheadend_overview.html"
+PKG_URL=""
+PKG_DEPENDS_TARGET="toolchain tvheadend"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="transmission: a fast, easy and free BitTorrent client"
-PKG_LONGDESC="transmission is a fast, easy and free BitTorrent client"
+PKG_SHORTDESC="tvheadend service: a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources."
+PKG_LONGDESC="Tvheadend service: $PKG_VERSION) is a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources. It also comes with a powerful and easy to use web interface both used for configuration and day-to-day operations, such as searching the EPG and scheduling recordings. Even so, the most notable feature of Tvheadend is how easy it is to set up: Install it, navigate to the web user interface, drill into the TV adapters tab, select your current location and Tvheadend will start scanning channels and present them to you in just a few minutes. If installing as an Addon a reboot is needed"
 
 PKG_IS_ADDON="no"
-PKG_AUTORECONF="yes"
+PKG_AUTORECONF="no"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-utp \
-            --disable-static \
-            --enable-shared \
-            --enable-largefile \
-            --disable-nls \
-            --disable-cli \
-            --disable-mac \
-            --enable-lightweight \
-            --enable-daemon \
-            --with-gnu-ld"
+make_target() {
+  : # nothing to do here
+}
 
 makeinstall_target() {
-  : # nothing
+  : # nothing to do here
 }
 
 post_install() {
+  TVHEADEND_DIR=$ROOT/$BUILD/tvheadend-ae281c9
 
   mkdir -p $INSTALL/usr/bin
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/daemon/transmission-daemon $INSTALL/usr/bin
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/daemon/transmission-remote $INSTALL/usr/bin
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/utils/transmission-create $INSTALL/usr/bin
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/utils/transmission-edit $INSTALL/usr/bin
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/utils/transmission-show $INSTALL/usr/bin
+    cp -P $TVHEADEND_DIR/.$TARGET_NAME/build.linux/tvheadend $INSTALL/usr/bin
     cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
+    cp -P $PKG_DIR/tv_grabs/* $INSTALL/usr/bin
 
-  mkdir -p $INSTALL/usr/share/transmission/web
-    cp -R $ROOT/$PKG_BUILD/.$TARGET_NAME/web/* $INSTALL/usr/share/transmission/web
-    find $INSTALL/usr/share/transmission/web -name "Makefile*" -exec rm -rf {} ";"
-    rm -rf $INSTALL/usr/share/transmission/web/LICENSE
+  mkdir -p $INSTALL/usr/lib
+    cp -P $TVHEADEND_DIR/.$TARGET_NAME/capmt_ca.so $INSTALL/usr/lib
 
-  enable_service transmission.service
+  mkdir -p $INSTALL/usr/share/tvheadend
+    cp -pR $TVHEADEND_DIR/.$TARGET_NAME/data $INSTALL/usr/share/tvheadend
+
+  mkdir -p $INSTALL/usr/config/tvheadend
+    cp -pR $PKG_DIR/config/* $INSTALL/usr/config/tvheadend
+
+  enable_service tvheadend.service
 }
