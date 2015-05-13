@@ -174,7 +174,11 @@ ENV{ID_VENDOR_ID}=="0471", ENV{ID_MODEL_ID}=="20cc", \
 
 ENV{ID_VENDOR_ID}=="15c2", ENV{ID_MODEL_ID}=="0038", \
   ENV{eventlircd_enable}="true", \
-  ENV{eventlircd_evmap}="imon_pad_$env{ID_VENDOR_ID}_$env{ID_MODEL_ID}.evmap"
+  ENV{eventlircd_evmap}="imon_$env{ID_VENDOR_ID}_$env{ID_MODEL_ID}.evmap"
+
+ENV{ID_VENDOR_ID}=="6618", ENV{ID_MODEL_ID}=="0001", \
+  ENV{eventlircd_enable}="true", \
+  ENV{eventlircd_evmap}="saa716x_$env{ID_VENDOR_ID}_$env{ID_MODEL_ID}.evmap"
 
 # Enable wake-on-usb for the USB remotes.
   RUN+="wakeup_enable"
