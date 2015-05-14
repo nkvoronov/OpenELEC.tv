@@ -18,7 +18,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-module-beautifulsoup4"
+PKG_NAME="kodi-module-bs4"
 PKG_VERSION="4.3.2"
 PKG_REV="1"
 PKG_ARCH="any"
