@@ -18,41 +18,34 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="xine-lib"
-PKG_VERSION="666337a"
+PKG_NAME="kodi-module-bs4"
+PKG_VERSION="4.3.2"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.xine-project.org/"
+PKG_SITE=""
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain ffmpeg"
+PKG_DEPENDS_TARGET="toolchain Python"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
-PKG_SHORTDESC="xine is a high-performance, portable and reusable multimedia playback engine."
-PKG_LONGDESC="xine is a high-performance, portable and reusable multimedia playback engine."
+PKG_SHORTDESC="HTML/XML parser for quick-turnaround applications like screen-scraping"
+PKG_LONGDESC="Beautiful Soup parses arbitrarily invalid SGML and provides a variety of methods and Pythonic idioms for iterating and searching the parse tree."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-pre_build_target() {
-  mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
-}
-
-configure_target() {
-  strip_lto
-
-  ./autogen.sh --host=$TARGET_NAME \
-             --build=$HOST_NAME \
-             --prefix=/usr \
-             --with-external-ffmpeg \
-             --disable-dxr3 \
-             --disable-aalib \
-             --disable-vcd \
-             --disable-musepack
-}
-
 make_target() {
-  make
-  $MAKEINSTALL
+  : # nothing to make here
+}
+
+makeinstall_target() {
+  : # nothing to install here
+}
+
+post_install() {
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.module.beautifulsoup4
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.beautifulsoup4
+
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.beautifulsoup4/lib/bs4/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.beautifulsoup4/lib/bs4/ -name "*.py"`
 }

@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-dvbapi"
-PKG_VERSION="5fdb21e"
+PKG_VERSION="0489e01"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
