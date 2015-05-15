@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="29"
+PKG_REV="30"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -220,7 +220,7 @@ addon() {
   JANSSON_DIR=$ROOT/$BUILD/jansson-2.6
   #IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
   IM_DIR=$ROOT/$BUILD/ImageMagick-6.7.7-10
-  XINELIB_DIR=$ROOT/$BUILD/xine-lib-ade430c
+  XINELIB_DIR=$ROOT/$BUILD/xine-lib-666337a
   LIBXFT_DIR=$ROOT/$BUILD/libXft-2.3.2
   CAIRO_DIR=$ROOT/$BUILD/cairo-1.12.16
   PANGO_DIR=$ROOT/$BUILD/pango-1.36.3
@@ -295,7 +295,7 @@ addon() {
   fi 
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-5fdb21e
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-0489e01
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -663,7 +663,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-389a4ff
+    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-4420b93
     cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
@@ -721,7 +721,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-57999a4
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-727f206
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
