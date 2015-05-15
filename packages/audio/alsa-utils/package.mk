@@ -41,6 +41,7 @@ else
   ALSACONF="--disable-alsaconf"
 fi
 
+# package specific configure options
 PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
                            --disable-xmlto \
                            $ALSAMIXER \

@@ -20,18 +20,16 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-# can be called from openelec addon.
-# ensure that environment is sane
 . /etc/profile
 
 if [ -f /storage/.cache/services/vdr-front.conf ]; then
 
-    systemctl stop kodi.service;
+    systemctl stop kodi.service
 
-    systemctl restart lcdd.service;
+    systemctl restart lcdd.service
 
-    mv /storage/.cache/services/vdr-front.conf /storage/.cache/services/vdr-front.run;
+    mv /storage/.cache/services/vdr-front.conf /storage/.cache/services/vdr-front.run
 
-    systemctl start vdr-front.service;
+    systemctl start vdr-front.service
 
 fi

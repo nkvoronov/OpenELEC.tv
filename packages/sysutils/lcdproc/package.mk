@@ -22,8 +22,9 @@ PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://lcdproc.org/"
+# PKG_URL="$SOURCEFORGE_SRC/lcdproc/lcdproc/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libusb libhid libftdi"
+PKG_DEPENDS_TARGET="toolchain libusb libhid libftdi1"
 PKG_PRIORITY="optional"
 PKG_SECTION="system"
 PKG_SHORTDESC="lcdproc: Software to display system information from your Linux/*BSD box on a LCD"
@@ -36,11 +37,11 @@ if [ "$IRSERVER_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET irserver"
 fi
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-libusb --enable-extra-charmaps --enable-drivers=$LCD_DRIVER,!curses,!svga --enable-seamless-hbars"
+PKG_CONFIGURE_OPTS_TARGET="--enable-libusb --enable-drivers=$LCD_DRIVER,!curses,!svga --enable-seamless-hbars"
 
 pre_make_target() {
   # dont build parallel
-  MAKEFLAGS=-j1
+    MAKEFLAGS=-j1
 }
 
 post_makeinstall_target() {
@@ -67,8 +68,7 @@ post_makeinstall_target() {
     cp $PKG_DIR/config/LCDd.conf $INSTALL/etc
 
   mkdir -p $INSTALL/usr/share/lcdproc/fonts
-    cp $PKG_DIR/fonts/cp1251.fnt $INSTALL/usr/share/lcdproc/fonts
-    cp $PKG_DIR/fonts/iso8859_15.fnt $INSTALL/usr/share/lcdproc/fonts
+    cp -PR $PKG_DIR/fonts/*.fnt $INSTALL/usr/share/lcdproc/fonts
 
 }
 
