@@ -65,6 +65,11 @@ stop_tv_backend() {
     if systemctl is-active tvheadend.service &>/dev/null ; then
         systemctl stop tvheadend.service
     fi
+
+    if systemctl is-active lcdd.service &>/dev/null ; then
+        systemctl restart lcdd.service
+    fi
+    
 }
 
 init_vdr_plugins() {
