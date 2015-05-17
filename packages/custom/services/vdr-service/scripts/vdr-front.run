@@ -23,13 +23,15 @@
 . /etc/profile
 
 if [ -f /storage/.cache/services/vdr-front.conf ]; then
-
-    systemctl stop kodi.service
-
-    systemctl restart lcdd.service
-
+    
     mv /storage/.cache/services/vdr-front.conf /storage/.cache/services/vdr-front.run
 
     systemctl start vdr-front.service
-
+    
+    systemctl stop kodi.service
+    
+    sleep 4
+    
+    systemctl restart vdr-front.service
+    
 fi

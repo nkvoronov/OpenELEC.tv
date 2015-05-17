@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-vdrfront"
-PKG_VERSION="1.0.3"
-PKG_REV="1"
+PKG_VERSION="1.0.4"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
@@ -45,4 +45,7 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/script.vdr.front
     cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.vdr.front
+
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.vdr.front/resources/lib/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.vdr.front/resources/lib/ -name "*.py"`
 }
