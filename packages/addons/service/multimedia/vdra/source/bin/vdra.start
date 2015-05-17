@@ -87,6 +87,12 @@ stop_tv_backend() {
     if systemctl is-active service.multimedia.tvheadenda.service &>/dev/null ; then
         systemctl stop service.multimedia.tvheadenda.service
     fi
+
+    if [ "$VDR_TYPE" == "frontend" ]; then
+        if systemctl is-active lcdd.service &>/dev/null ; then
+            systemctl restart lcdd.service
+        fi
+    fi
 }
 
 init_vdr_plugins() {

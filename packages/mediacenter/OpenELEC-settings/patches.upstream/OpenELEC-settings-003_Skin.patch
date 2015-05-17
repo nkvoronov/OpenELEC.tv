@@ -1,35 +1,6 @@
-diff -Naur a/skins/Default/720p/contexMenu.xml b/skins/Default/720p/contexMenu.xml
---- a/skins/Default/720p/contexMenu.xml	2015-01-23 00:05:40.000000000 +0200
-+++ b/skins/Default/720p/contexMenu.xml	2015-03-28 21:47:17.735261735 +0200
-@@ -40,7 +40,7 @@
-                         <top>0</top>
-                         <width>304</width>
-                         <height>38</height>
--                        <texture border="5">default/button-nofocus.png</texture>
-+                        <texture border="5">button-nofocus.png</texture>
-                     </control>
-                     <control type="label">
-                         <left>0</left>
-@@ -61,14 +61,14 @@
-                         <top>0</top>
-                         <width>304</width>
-                         <height>38</height>
--                        <texture border="5">default/button-nofocus.png</texture>
-+                        <texture border="5">button-nofocus.png</texture>
-                     </control>	
-                     <control type="image">
-                         <left>0</left>
-                         <top>0</top>
-                         <width>304</width>
-                         <height>38</height>
--                        <texture border="5">default/button-focus2.png</texture>
-+                        <texture border="5">button-focus2.png</texture>
-                     </control>	
-                     <control type="label">
-                         <left>0</left>
 diff -Naur a/skins/Default/720p/getPasskey.xml b/skins/Default/720p/getPasskey.xml
---- a/skins/Default/720p/getPasskey.xml	2015-01-23 00:05:40.000000000 +0200
-+++ b/skins/Default/720p/getPasskey.xml	2015-03-28 21:47:17.735261735 +0200
+--- a/skins/Default/720p/getPasskey.xml	2015-03-07 01:32:37.000000000 +0200
++++ b/skins/Default/720p/getPasskey.xml	2015-05-17 01:49:09.000000000 +0300
 @@ -18,14 +18,14 @@
                  <top>5</top>
                  <width>600</width>
@@ -48,15 +19,15 @@ diff -Naur a/skins/Default/720p/getPasskey.xml b/skins/Default/720p/getPasskey.x
              <control type="group">
                  <left>17</left>
 diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.xml
---- a/skins/Default/720p/mainWindow.xml	2015-01-23 00:05:40.000000000 +0200
-+++ b/skins/Default/720p/mainWindow.xml	2015-03-28 21:47:17.739261735 +0200
+--- a/skins/Default/720p/mainWindow.xml	2015-03-07 01:32:37.000000000 +0200
++++ b/skins/Default/720p/mainWindow.xml	2015-05-17 01:58:42.000000000 +0300
 @@ -8,7 +8,8 @@
              <top>100r</top>
              <width>1280</width>
              <height>100</height>
 -            <texture>default/floor.png</texture>
 +            <texture>floor.png</texture>
-+            <visible>false</visible>            
++            <visible>false</visible>
              <include>VisibleFadeEffect</include>
          </control>
          <control type="image">
@@ -98,17 +69,16 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
              </control>
              <control type="scrollbar" id="1097">
                  <description>scroll bar indicator for lists</description>
-@@ -148,7 +149,8 @@
+@@ -148,7 +149,7 @@
                  <top>625</top>
                  <width>1090</width>
                  <height>64</height>
 -                <texture border="15">default/ContentPanelMirror.png</texture>
 +                <texture border="15">ContentPanelMirror.png</texture>
-+		<visible>false</visible>
              </control>
              <!-- Main Menu (left) -->
              <control type="list" id="1000">
-@@ -165,7 +167,7 @@
+@@ -165,7 +166,7 @@
                          <top>0</top>
                          <width>260</width>
                          <height>55</height>
@@ -117,7 +87,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                      </control>
                      <control type="label">
                          <left>10</left>
-@@ -185,7 +187,7 @@
+@@ -185,7 +186,7 @@
                          <top>0</top>
                          <width>260</width>
                          <height>55</height>
@@ -126,7 +96,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          <animation effect="fade" end="50" time="10">Unfocus</animation>
                      </control>
                      <control type="label">
-@@ -226,7 +228,7 @@
+@@ -226,7 +227,7 @@
                  <top>60</top>
                  <width>793</width>
                  <height>450</height>
@@ -135,34 +105,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
              </control>   
  	    <!-- Other Content (right)-->
              <control type="group">
-@@ -259,7 +261,7 @@
-                         <label>$ADDON[service.openelec.settings 606]</label>
-                     </control>	
-                     <control type="label">
--                        <left>140</left>
-+                        <left>150</left>
-                         <top>20</top>
-                         <width>400</width>
-                         <height>16</height>
-@@ -281,7 +283,7 @@
-                         <label>$ADDON[service.openelec.settings 607]</label>
-                     </control>	
-                     <control type="label">
--                        <left>140</left>
-+                        <left>150</left>
-                         <top>42</top>
-                         <width>400</width>
-                         <height>16</height>
-@@ -303,7 +305,7 @@
-                         <label>$ADDON[service.openelec.settings 608]</label>
-                     </control>
-                     <control type="label">
--                        <left>140</left>
-+                        <left>150</left>
-                         <top>64</top>
-                         <width>400</width>
-                         <height>16</height>
-@@ -368,7 +370,7 @@
+@@ -368,7 +369,7 @@
                                  <top>2</top>
                                  <width>786</width>
                                  <height>35</height>
@@ -171,7 +114,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                              </control>
                              <control type="label">
                                  <left>40</left>
-@@ -419,7 +421,7 @@
+@@ -419,7 +420,7 @@
                                  <width>30</width>
                                  <height>30</height>
                                  <aspectratio>keep</aspectratio>
@@ -180,7 +123,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                                  <visible>StringCompare(ListItem.Property(value), 0) | StringCompare(ListItem.Property(value), false) | IsEmpty(ListItem.Property(value))</visible>
                              </control>
                              <control type="image">
-@@ -428,7 +430,7 @@
+@@ -428,7 +429,7 @@
                                  <width>30</width>
                                  <height>30</height>
                                  <aspectratio>keep</aspectratio>
@@ -189,7 +132,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                                  <visible>StringCompare(ListItem.Property(value), 1) | StringCompare(ListItem.Property(value), true)</visible>
                              </control>
                          </control>
-@@ -453,7 +455,7 @@
+@@ -453,7 +454,7 @@
                                  <width>786</width>
                                  <height>38</height>
  				<visible>Control.HasFocus(1100)</visible>
@@ -198,7 +141,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                              </control>
                              <control type="label">
                                  <left>40</left>
-@@ -522,7 +524,7 @@
+@@ -522,7 +523,7 @@
                                  <width>30</width>
                                  <height>30</height>
                                  <aspectratio>keep</aspectratio>
@@ -207,7 +150,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                                  <visible>StringCompare(ListItem.Property(value), 0) | StringCompare(ListItem.Property(value),false) | IsEmpty(ListItem.Property(value))</visible>
                              </control>
                              <control type="image">
-@@ -531,7 +533,7 @@
+@@ -531,7 +532,7 @@
                                  <width>30</width>
                                  <height>30</height>
                                  <aspectratio>keep</aspectratio>
@@ -216,7 +159,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                                  <visible>StringCompare(ListItem.Property(value), 1) | StringCompare(ListItem.Property(value),true)</visible>
                              </control>
                          </control>
-@@ -567,7 +569,7 @@
+@@ -567,7 +568,7 @@
                              <top>0</top>
                              <width>788</width>
                              <height>98</height>
@@ -225,7 +168,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          </control>
                          <!-- Icon ethernet -->
                          <control type="image">
-@@ -712,7 +714,7 @@
+@@ -702,7 +703,7 @@
                              <top>0</top>
                              <width>788</width>
                              <height>98</height>
@@ -234,7 +177,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          </control>
                          <control type="image">
                              <left>0</left>
-@@ -720,7 +722,7 @@
+@@ -710,7 +711,7 @@
                              <width>788</width>
                              <height>98</height>
                              <visible>Control.HasFocus(1200)</visible>
@@ -243,7 +186,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                              <animation type="Visible" reversible="false">
                                  <effect type="fade" start="0" end="100" time="300" />
                              </animation>
-@@ -890,7 +892,7 @@
+@@ -870,7 +871,7 @@
                              <top>0</top>
                              <width>786</width>
                              <height>68</height>
@@ -252,7 +195,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          </control>
                          <!-- default -->
                          <control type="image">
-@@ -1072,7 +1074,7 @@
+@@ -1052,7 +1053,7 @@
                              <top>0</top>
                              <width>788</width>
                              <height>68</height>
@@ -261,7 +204,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          </control>
                          <control type="image">
                              <left>0</left>
-@@ -1080,7 +1082,7 @@
+@@ -1060,7 +1061,7 @@
                              <width>788</width>
                              <height>68</height>
                              <visible>Control.HasFocus(1300)</visible>
@@ -270,7 +213,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                              <animation type="Visible" reversible="false">
                                  <effect type="fade" start="0" end="100" time="300" />
                              </animation>
-@@ -1278,8 +1280,8 @@
+@@ -1258,8 +1259,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -281,7 +224,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-@@ -1299,8 +1301,8 @@
+@@ -1279,8 +1280,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -292,7 +235,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-@@ -1320,8 +1322,8 @@
+@@ -1300,8 +1301,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -303,7 +246,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-@@ -1341,8 +1343,8 @@
+@@ -1321,8 +1322,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -314,7 +257,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-@@ -1362,8 +1364,8 @@
+@@ -1342,8 +1343,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -325,59 +268,19 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-diff -Naur a/skins/Default/720p/selectWindow.xml b/skins/Default/720p/selectWindow.xml
---- a/skins/Default/720p/selectWindow.xml	2015-01-23 00:05:40.000000000 +0200
-+++ b/skins/Default/720p/selectWindow.xml	2015-03-28 21:47:17.739261735 +0200
-@@ -18,14 +18,14 @@
-                 <top>5</top>
-                 <width>600</width>
-                 <height>174</height>
--                <texture border="15">default/ContentPanel.png</texture>
-+                <texture border="15">ContentPanel.png</texture>
-             </control>
-             <control type="image">
-                 <left>5</left>
-                 <top>5</top>
-                 <width>600</width>
-                 <height>174</height>
--                <texture border="15">default/ContentPanel.png</texture>
-+                <texture border="15">ContentPanel.png</texture>
-             </control>
-             <control type="group">
-                 <left>17</left>
-@@ -47,7 +47,7 @@
-                             <top>2</top>
-                             <width>555</width>
-                             <height>28</height>
--                            <texture border="5">default/button-nofocus.png</texture>
-+                            <texture border="5">button-nofocus.png</texture>
-                         </control>
-                         <control type="label">
-                             <left>20</left>
-@@ -75,7 +75,7 @@
-                             <top>2</top>
-                             <width>555</width>
-                             <height>28</height>
--                            <texture border="5">default/button-focus2.png</texture>
-+                            <texture border="5">button-focus2.png</texture>
-                         </control>
-                         <control type="label">
-                             <left>20</left>
 diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
---- a/skins/Default/720p/wizard.xml	2015-01-23 00:05:40.000000000 +0200
-+++ b/skins/Default/720p/wizard.xml	2015-03-28 21:47:17.739261735 +0200
-@@ -7,9 +7,10 @@
+--- a/skins/Default/720p/wizard.xml	2015-03-07 01:32:37.000000000 +0200
++++ b/skins/Default/720p/wizard.xml	2015-05-17 02:03:11.000000000 +0300
+@@ -7,7 +7,8 @@
              <top>100r</top>
              <width>1280</width>
              <height>100</height>
 -            <texture>default/floor.png</texture>
 +            <texture>floor.png</texture>
++            <visible>false</visible>
              <animation effect="fade" time="300">Visible</animation>
              <animation effect="fade" time="300">Hidden</animation>
-+	    <visible>false</visible>
          </control>		
-         <control type="group">
-             <left>90</left>
 @@ -27,14 +28,14 @@
                  <top>5</top>
                  <width>1090</width>
@@ -395,13 +298,12 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
              </control>
              <control type="image">
                  <left>10</left>
-@@ -48,14 +49,15 @@
+@@ -48,14 +49,14 @@
                  <top>625</top>
                  <width>1090</width>
                  <height>64</height>
 -                <texture border="15">default/ContentPanelMirror.png</texture>
 +                <texture border="15">ContentPanelMirror.png</texture>
-+		<visible>false</visible>
              </control>			
              <control type="image">
                  <left>268</left>
@@ -413,7 +315,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
              </control>
              <control type="image">
                  <left>268</left>
-@@ -63,7 +65,7 @@
+@@ -63,7 +64,7 @@
                  <width>804</width>
                  <height>70</height>
                  <aspectratio>stretch</aspectratio>
@@ -422,7 +324,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
              </control>
              <control type="label" id="32300">
                  <description>header label</description>
-@@ -84,21 +86,21 @@
+@@ -84,21 +85,21 @@
                  <top>60</top>
                  <width>800</width>
                  <height>450</height>
@@ -447,7 +349,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
              </control>
              <control type="group" id="1398">
                  <visible>IsEmpty(Control.GetLabel(1390))</visible>
-@@ -162,7 +164,7 @@
+@@ -162,7 +163,7 @@
                          </label>                                    
                          <textcolor>FF999999</textcolor>
                          <focusedcolor>white</focusedcolor>
@@ -456,7 +358,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                      </control>		
                      <control type="radiobutton" id="1407">
                          <left>550</left>
-@@ -173,7 +175,7 @@
+@@ -173,7 +174,7 @@
                          </label>                                    
                          <textcolor>FF999999</textcolor>
                          <focusedcolor>white</focusedcolor>
@@ -465,7 +367,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                      </control>			      	            
                      <control type="button" id="1401">
                          <left>300</left>
-@@ -182,8 +184,8 @@
+@@ -182,8 +183,8 @@
                          <height>40</height>
                          <visible>true</visible>
                          <colordiffuse>FFFFFFFF</colordiffuse>
@@ -476,7 +378,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                          <label>
                          </label>
                          <font>font12</font>
-@@ -198,8 +200,8 @@
+@@ -198,8 +199,8 @@
                          <height>40</height>
                          <visible>true</visible>
                          <colordiffuse>FFFFFFFF</colordiffuse>
@@ -487,7 +389,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                          <label>
                          </label>
                          <font>font12</font>
-@@ -235,7 +237,7 @@
+@@ -235,7 +236,7 @@
                          <top>330</top>
                          <width>768</width>
                          <height>170</height>
@@ -496,7 +398,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                      </control>			     			          
                      <!-- Main Menu (left) -->	    
                      <control type="list" id="1000">
-@@ -270,7 +272,7 @@
+@@ -270,7 +271,7 @@
                                  <top>2</top>
                                  <width>727</width>
                                  <height>48</height>
@@ -505,7 +407,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                              </control>
                              <!-- Icon ethernet -->
                              <control type="image">
-@@ -352,7 +354,7 @@
+@@ -352,7 +353,7 @@
                                  <top>2</top>
                                  <width>727</width>
                                  <height>48</height>
@@ -514,7 +416,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                              </control>						
                              <control type="image">
                                  <left>0</left>
-@@ -360,7 +362,7 @@
+@@ -360,7 +361,7 @@
                                  <width>727</width>
                                  <height>48</height>
                                  <visible>Control.HasFocus(1200)</visible>
@@ -523,7 +425,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                                  <animation type="Visible" reversible="false">
                                      <effect type="fade" start="0" end="100" time="300" />
                                  </animation>			        							
-@@ -463,8 +465,8 @@
+@@ -463,8 +464,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
