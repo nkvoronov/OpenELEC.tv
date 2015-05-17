@@ -31,8 +31,6 @@ if [ "$VDR_TYPE" != "service" ]; then
 
     systemctl stop kodi.service
 
-    systemctl restart lcdd.service
-
     if [ -f $VDR_RUN_FILE ]; then
         systemctl stop service.multimedia.vdra.service
     fi
