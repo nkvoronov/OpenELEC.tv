@@ -16,22 +16,22 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="pvr.iptvsimple"
-PKG_VERSION="191972c"
+PKG_NAME="adsp.biquad.filters"
+PKG_VERSION="258cfcf"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.kodi.tv"
+PKG_SITE="https://github.com/kodi-adsp/adsp.biquad.filters"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain kodi-platform zlib"
+PKG_DEPENDS_TARGET="toolchain kodi-platform asplib"
 PKG_PRIORITY="optional"
 PKG_SECTION=""
-PKG_SHORTDESC="pvr.iptvsimple"
-PKG_LONGDESC="pvr.iptvsimple"
+PKG_SHORTDESC="adsp.biquad.filters"
+PKG_LONGDESC="adsp.biquad.filters"
 PKG_AUTORECONF="no"
 
 PKG_IS_ADDON="yes"
-PKG_ADDON_TYPE="xbmc.pvrclient"
+PKG_ADDON_TYPE="kodi.adsp"
 
 configure_target() {
   cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \

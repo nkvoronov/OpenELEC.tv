@@ -16,22 +16,22 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="pvr.iptvsimple"
-PKG_VERSION="191972c"
+PKG_NAME="adsp.basic"
+PKG_VERSION="a2965f7"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.kodi.tv"
+PKG_SITE="https://github.com/kodi-adsp/adsp.basic"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain kodi-platform zlib"
+PKG_DEPENDS_TARGET="toolchain kodi-platform libsamplerate"
 PKG_PRIORITY="optional"
 PKG_SECTION=""
-PKG_SHORTDESC="pvr.iptvsimple"
-PKG_LONGDESC="pvr.iptvsimple"
+PKG_SHORTDESC="adsp.basic"
+PKG_LONGDESC="adsp.basic"
 PKG_AUTORECONF="no"
 
 PKG_IS_ADDON="yes"
-PKG_ADDON_TYPE="xbmc.pvrclient"
+PKG_ADDON_TYPE="kodi.adsp"
 
 configure_target() {
   cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
