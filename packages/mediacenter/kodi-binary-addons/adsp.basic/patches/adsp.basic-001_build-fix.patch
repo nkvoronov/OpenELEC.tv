@@ -1,0 +1,122 @@
+diff -Naur a/src/addon.cpp b/src/addon.cpp
+--- a/src/addon.cpp	2015-05-18 01:24:35.000000000 +0300
++++ b/src/addon.cpp	2015-05-20 02:35:36.434206433 +0300
+@@ -21,8 +21,8 @@
+ #include <string>
+ #include "addon.h"
+ #include "kodi/kodi_adsp_dll.h"
+-#include "kodi/util/util.h"
+-#include "kodi/util/StdString.h"
++#include "platform/util/util.h"
++#include "platform/util/StdString.h"
+ #include "AudioDSPBasic.h"
+ 
+ using namespace std;
+diff -Naur a/src/AudioDSPBasic.cpp b/src/AudioDSPBasic.cpp
+--- a/src/AudioDSPBasic.cpp	2015-05-18 01:24:35.000000000 +0300
++++ b/src/AudioDSPBasic.cpp	2015-05-20 02:30:35.546219413 +0300
+@@ -26,8 +26,8 @@
+ 
+ #include "addon.h"
+ #include "kodi/util/XMLUtils.h"
+-#include "kodi/util/util.h"
+-#include "kodi/util/StdString.h"
++#include "platform/util/util.h"
++#include "platform/util/StdString.h"
+ 
+ #include "AudioDSPBasic.h"
+ #include "AudioDSPSoundTest.h"
+diff -Naur a/src/AudioDSPBasic.h b/src/AudioDSPBasic.h
+--- a/src/AudioDSPBasic.h	2015-05-18 01:24:35.000000000 +0300
++++ b/src/AudioDSPBasic.h	2015-05-20 02:31:39.742216643 +0300
+@@ -25,8 +25,8 @@
+ 
+ #include "kodi/kodi_adsp_types.h"
+ 
+-#include "kodi/threads/threads.h"
+-#include "kodi/threads/mutex.h"
++#include "platform/threads/threads.h"
++#include "platform/threads/mutex.h"
+ #include "filter/delay.h"
+ 
+ #include "DSPProcessMaster.h"
+diff -Naur a/src/AudioDSPSettings.cpp b/src/AudioDSPSettings.cpp
+--- a/src/AudioDSPSettings.cpp	2015-05-18 01:24:35.000000000 +0300
++++ b/src/AudioDSPSettings.cpp	2015-05-20 02:32:11.390215278 +0300
+@@ -22,8 +22,8 @@
+ #include "kodi/libKODI_guilib.h"
+ 
+ #include "kodi/util/XMLUtils.h"
+-#include "kodi/util/util.h"
+-#include "kodi/util/StdString.h"
++#include "platform/util/util.h"
++#include "platform/util/StdString.h"
+ 
+ #include "AudioDSPSettings.h"
+ #include "GUIDialogSpeakerGain.h"
+diff -Naur a/src/AudioDSPSoundTest.h b/src/AudioDSPSoundTest.h
+--- a/src/AudioDSPSoundTest.h	2015-05-18 01:24:35.000000000 +0300
++++ b/src/AudioDSPSoundTest.h	2015-05-20 02:33:13.290212608 +0300
+@@ -18,8 +18,8 @@
+  *
+  */
+ 
+-#include "kodi/threads/threads.h"
+-#include "kodi/threads/mutex.h"
++#include "platform/threads/threads.h"
++#include "platform/threads/mutex.h"
+ 
+ #define SOUND_TEST_OFF              0
+ #define SOUND_TEST_PINK_NOICE       1
+diff -Naur a/src/DSPProcessMaster.cpp b/src/DSPProcessMaster.cpp
+--- a/src/DSPProcessMaster.cpp	2015-05-18 01:24:35.000000000 +0300
++++ b/src/DSPProcessMaster.cpp	2015-05-20 02:33:42.858211332 +0300
+@@ -18,8 +18,8 @@
+  */
+ 
+ #include "kodi/libXBMC_addon.h"
+-#include "kodi/util/util.h"
+-#include "kodi/util/StdString.h"
++#include "platform/util/util.h"
++#include "platform/util/StdString.h"
+ 
+ #include "DSPProcessMaster.h"
+ #include "Process_Stereo/DSPProcessStereo.h"
+diff -Naur a/src/GUIDialogSpeakerDistance.cpp b/src/GUIDialogSpeakerDistance.cpp
+--- a/src/GUIDialogSpeakerDistance.cpp	2015-05-18 01:24:35.000000000 +0300
++++ b/src/GUIDialogSpeakerDistance.cpp	2015-05-20 02:34:14.954209948 +0300
+@@ -22,7 +22,7 @@
+ #include "kodi/libKODI_guilib.h"
+ 
+ #include "kodi/util/XMLUtils.h"
+-#include "kodi/util/util.h"
++#include "platform/util/util.h"
+ 
+ #include "GUIDialogSpeakerDistance.h"
+ #include "AudioDSPSoundTest.h"
+diff -Naur a/src/GUIDialogSpeakerDistance.h b/src/GUIDialogSpeakerDistance.h
+--- a/src/GUIDialogSpeakerDistance.h	2015-05-18 01:24:35.000000000 +0300
++++ b/src/GUIDialogSpeakerDistance.h	2015-05-20 02:34:35.154209077 +0300
+@@ -18,7 +18,7 @@
+  *
+  */
+ 
+-#include "kodi/util/StdString.h"
++#include "platform/util/StdString.h"
+ #include "addon.h"
+ #include "AudioDSPSettings.h"
+ 
+diff -Naur a/src/GUIDialogSpeakerGain.cpp b/src/GUIDialogSpeakerGain.cpp
+--- a/src/GUIDialogSpeakerGain.cpp	2015-05-18 01:24:35.000000000 +0300
++++ b/src/GUIDialogSpeakerGain.cpp	2015-05-20 02:35:00.606207979 +0300
+@@ -22,8 +22,8 @@
+ #include "kodi/libKODI_guilib.h"
+ 
+ #include "kodi/util/XMLUtils.h"
+-#include "kodi/util/util.h"
+-#include "kodi/util/StdString.h"
++#include "platform/util/util.h"
++#include "platform/util/StdString.h"
+ 
+ #include "GUIDialogSpeakerGain.h"
+ #include "AudioDSPSoundTest.h"

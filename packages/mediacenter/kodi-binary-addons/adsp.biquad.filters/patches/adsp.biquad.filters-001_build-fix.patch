@@ -1,0 +1,48 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2015-05-18 01:33:11.000000000 +0300
++++ b/CMakeLists.txt	2015-05-20 02:44:50.418182536 +0300
+@@ -9,7 +9,7 @@
+ find_package(kodi REQUIRED)
+ find_package(kodiplatform REQUIRED)
+ find_package(TinyXML REQUIRED)
+-find_package(asplib REQUIRED)
++#find_package(asplib REQUIRED)
+ 
+ include_directories(${kodiplatform_INCLUDE_DIRS}
+ 					${TINYXML_INCLUDE_DIRS}
+diff -Naur a/src/template/ADSPAddonHandler.cpp b/src/template/ADSPAddonHandler.cpp
+--- a/src/template/ADSPAddonHandler.cpp	2015-05-18 01:33:11.000000000 +0300
++++ b/src/template/ADSPAddonHandler.cpp	2015-05-20 02:47:17.486176192 +0300
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include <string>
+-#include <kodi/util/util.h>
++#include <platform/util/util.h>
+ 
+ #include "include/client.h"
+ 
+diff -Naur a/src/template/client.cpp b/src/template/client.cpp
+--- a/src/template/client.cpp	2015-05-18 01:33:11.000000000 +0300
++++ b/src/template/client.cpp	2015-05-20 02:48:25.994173236 +0300
+@@ -29,7 +29,7 @@
+ 
+ // include kodi platform header files
+ #include <kodi/kodi_adsp_dll.h>
+-#include <kodi/util/util.h>
++#include <platform/util/util.h>
+ 
+ // include adsp template specific header files
+ #include "include/client.h"
+diff -Naur a/src/template/include/ADSPAddonHandler.h b/src/template/include/ADSPAddonHandler.h
+--- a/src/template/include/ADSPAddonHandler.h	2015-05-18 01:33:11.000000000 +0300
++++ b/src/template/include/ADSPAddonHandler.h	2015-05-20 02:50:09.050168791 +0300
+@@ -21,7 +21,7 @@
+ 
+ #include <string>
+ #include <kodi/kodi_adsp_types.h>
+-#include <kodi/threads/mutex.h>
++#include <platform/threads/mutex.h>
+ 
+ #include "../configuration/templateConfiguration.h"
+ #include "ADSPProcessorHandle.h"
