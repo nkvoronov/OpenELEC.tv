@@ -29,6 +29,8 @@ VDR_RUN_FILE="$ADDON_HOME/vdr.enable"
 
 if [ "$VDR_TYPE" != "service" ]; then
 
+    systemctl stop kodi.service
+
     if [ -f $VDR_RUN_FILE ]; then
         systemctl stop service.multimedia.vdra.service
     fi
@@ -36,11 +38,5 @@ if [ "$VDR_TYPE" != "service" ]; then
     touch $VDR_FRONT_RUN_FILE
 
     systemctl start service.multimedia.vdra.service
-
-    systemctl stop kodi.service
-
-    sleep 4
-    
-    systemctl restart service.multimedia.vdra.service
 
 fi
