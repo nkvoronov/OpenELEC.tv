@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="33"
+PKG_REV="34"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -261,7 +261,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_IPTV" = yes ]; then
-    VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.2.0
+    VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.2.1
     cp -PR $VDR_PLUGIN_IPTV_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/iptv
       cp -PR $VDR_PLUGIN_IPTV_DIR/iptv/* $INSTALL/usr/config/vdr/plugins/iptv
@@ -323,7 +323,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-10489c9
+    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-2347f4e
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi/webapp
@@ -387,7 +387,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_SATIP" = yes ]; then
-    VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-2.2.0
+    VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-2.2.2
     cp -PR $VDR_PLUGIN_SATIP_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SATIP_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -407,7 +407,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_FEMON" = yes ]; then
-    VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.2.0
+    VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.2.1
     cp -PR $VDR_PLUGIN_FEMON_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_FEMON_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -606,9 +606,9 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-d405f84
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-d2947bf
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $INSTALL/usr/lib
+    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $INSTALL/usr/lib
     ln -s libskindesignerapi.so.0.0.1 $INSTALL/usr/lib/libskindesignerapi.so.0
     ln -s libskindesignerapi.so.0.0.1 $INSTALL/usr/lib/libskindesignerapi.so
     mkdir -p $INSTALL/usr/config/vdr/themes

@@ -23,6 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://firefly.vdr-developer.org/systeminfo"
 PKG_URL="http://firefly.vdr-developer.org/systeminfo/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_SOURCE_DIR="systeminfo-${PKG_VERSION}"
 PKG_DEPENDS_TARGET="toolchain vdr"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
@@ -31,10 +32,6 @@ PKG_LONGDESC="vdr systeminfo"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-post_unpack() {
-  mv $BUILD/systeminfo-$PKG_VERSION $BUILD/$PKG_NAME-$PKG_VERSION
-}
 
 pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC"
