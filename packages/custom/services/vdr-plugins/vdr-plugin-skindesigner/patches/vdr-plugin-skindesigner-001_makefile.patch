@@ -1,6 +1,6 @@
 diff -Naur a/libskindesignerapi/Makefile b/libskindesignerapi/Makefile
---- a/libskindesignerapi/Makefile	2015-04-13 09:56:45.000000000 +0300
-+++ b/libskindesignerapi/Makefile	2015-04-13 12:15:17.366256149 +0300
+--- a/libskindesignerapi/Makefile	2015-06-01 23:34:52.000000000 +0300
++++ b/libskindesignerapi/Makefile	2015-06-02 00:57:37.003294550 +0300
 @@ -9,7 +9,7 @@
  SONAME = $(LIBNAME).so.$(MAJOR)
  TARGET_LIB = $(SONAME).$(MINOR)
@@ -27,9 +27,9 @@ diff -Naur a/libskindesignerapi/Makefile b/libskindesignerapi/Makefile
  SRCS = $(wildcard *.c)
  OBJS = $(SRCS:.c=.o)
 diff -Naur a/Makefile b/Makefile
---- a/Makefile	2015-04-13 09:56:46.000000000 +0300
-+++ b/Makefile	2015-04-13 12:18:38.726251545 +0300
-@@ -15,25 +15,14 @@
+--- a/Makefile	2015-06-01 23:34:55.000000000 +0300
++++ b/Makefile	2015-06-02 01:05:26.523274297 +0300
+@@ -15,25 +15,15 @@
  ### The directory environment:
  
  # Use package data if installed...otherwise assume we're under the VDR source directory:
@@ -45,7 +45,7 @@ diff -Naur a/Makefile b/Makefile
  ### The compiler options:
 -export CFLAGS   = $(call PKGCFG,cflags)
 -export CXXFLAGS = $(call PKGCFG,cxxflags)
--
+ 
 -### Allow user defined options to overwrite defaults:
 -
 --include $(PLGCFG)
@@ -57,31 +57,24 @@ diff -Naur a/Makefile b/Makefile
  
  ### The name of the distribution archive:
  ARCHIVE = $(PLUGIN)-$(VERSION)
-@@ -47,11 +36,11 @@
+@@ -47,6 +37,7 @@
  DEFINES += $(shell xml2-config --cflags)
  DEFINES += -DSCRIPTFOLDER='"$(SKINDESIGNER_SCRIPTDIR)"'
  
 +INCLUDES += -I$(VDRDIR)/include
  INCLUDES += $(shell pkg-config --cflags freetype2 fontconfig)
--
  INCLUDES += $(shell pkg-config --cflags librsvg-2.0 cairo-png) -ljpeg
--LIBS += $(shell pkg-config --libs librsvg-2.0 cairo-png) -ljpeg
  
-+LIBS += $(shell pkg-config --libs librsvg-2.0 cairo-png) -ljpeg
- LIBS += $(shell xml2-config --libs)
- 
- ### The object files:
-@@ -110,7 +99,8 @@
+@@ -112,7 +103,7 @@
  
  ### The main target:
  
 -all: subprojects $(SOFILE) i18n
-+#all: subprojects $(SOFILE) i18n
 +all: $(SOFILE) i18n
  
  ### subprojects:
  
-@@ -176,6 +166,7 @@
+@@ -178,6 +169,7 @@
  
  $(SOFILE): $(OBJS)
  	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared $(OBJS) $(LIBS) $(SUB_LIBS) -o $@

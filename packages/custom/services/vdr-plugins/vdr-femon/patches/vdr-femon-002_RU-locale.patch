@@ -1,27 +1,25 @@
 diff -Naur a/femon.c b/femon.c
---- a/femon.c	2015-02-19 04:20:00.000000000 +0200
-+++ b/femon.c	2015-03-25 17:45:00.879486373 +0200
-@@ -22,7 +22,7 @@
+--- a/femon.c	2015-04-04 04:20:00.000000000 +0300
++++ b/femon.c	2015-06-02 02:59:13.946979781 +0300
+@@ -25,7 +25,7 @@
  #define GITVERSION ""
  #endif
  
--static const char VERSION[]       = "2.2.0" GITVERSION;
-+static const char VERSION[]       = "2.2.0";
+-static const char VERSION[]       = "2.2.1" GITVERSION;
++static const char VERSION[]       = "2.2.1";
  static const char DESCRIPTION[]   = trNOOP("DVB Signal Information Monitor (OSD)");
  static const char MAINMENUENTRY[] = trNOOP("Signal Information");
  
 diff -Naur a/po/ru_RU.po b/po/ru_RU.po
---- a/po/ru_RU.po	2015-02-20 21:04:10.000000000 +0200
-+++ b/po/ru_RU.po	2015-03-25 18:09:04.187453372 +0200
-@@ -13,26 +13,28 @@
+--- a/po/ru_RU.po	2015-04-04 14:32:43.000000000 +0300
++++ b/po/ru_RU.po	2015-06-02 04:21:41.114193196 +0300
+@@ -13,29 +13,29 @@
  "Language-Team: Russian <vdr@linuxtv.org>\n"
  "Language: ru\n"
  "MIME-Version: 1.0\n"
 -"Content-Type: text/plain; charset=ISO-8859-5\n"
 +"Content-Type: text/plain; charset=UTF-8\n"
  "Content-Transfer-Encoding: 8bit\n"
-+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-+"X-Generator: KBabel 1.11.4\n"
  
  msgid "DVB Signal Information Monitor (OSD)"
 -msgstr "������� �������� �������"
@@ -35,6 +33,107 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 -msgstr ""
 +msgstr "Femon не доступен"
  
+ msgid "Video"
+-msgstr "�����"
++msgstr "Видео"
+ 
+ msgid "AC-3"
+ msgstr "AC-3"
+ 
+ msgid "Audio"
+-msgstr "�����"
++msgstr "Аудио"
+ 
+ msgid "Transponder Information"
+-msgstr "�������� � ������"
++msgstr "Информация о транспондере"
+ 
+ msgid "Apid"
+ msgstr "Apid"
+@@ -59,76 +59,76 @@
+ msgstr "Coderate"
+ 
+ msgid "Protocol"
+-msgstr ""
++msgstr "Протокол"
+ 
+ msgid "Bitrate"
+-msgstr ""
++msgstr "Битрейт"
+ 
+ msgid "Stream Information"
+-msgstr ""
++msgstr "Информация о потоке"
+ 
+ msgid "Video Stream"
+-msgstr ""
++msgstr "Видео поток"
+ 
+ msgid "Codec"
+-msgstr ""
++msgstr "Кодек"
+ 
+ msgid "Aspect Ratio"
+-msgstr ""
++msgstr "Cоотношение сторон"
+ 
+ msgid "Frame Rate"
+-msgstr ""
++msgstr "Частота кадров"
+ 
+ msgid "Video Format"
+-msgstr ""
++msgstr "Видео формат"
+ 
+ msgid "Resolution"
+-msgstr ""
++msgstr "Разрешение"
+ 
+ msgid "Audio Stream"
+-msgstr ""
++msgstr "Аудио поток"
+ 
+ msgid "Channel Mode"
+-msgstr ""
++msgstr "Режим каналов"
+ 
+ msgid "Sampling Frequency"
+-msgstr ""
++msgstr "Частота дискретизации"
+ 
+ msgid "AC-3 Stream"
+-msgstr ""
++msgstr "AC-3 поток"
+ 
+ msgid "Bit Stream Mode"
+-msgstr ""
+-
++msgstr "Режим битового потока"
++ 
+ msgid "Audio Coding Mode"
+-msgstr ""
++msgstr "Режим кодирования аудио"
+ 
+ msgid "Center Mix Level"
+-msgstr ""
++msgstr "Центральный уровень микширования"
+ 
+ msgid "Surround Mix Level"
+-msgstr ""
++msgstr "Объемный уровень микширования"
+ 
+ msgid "Dolby Surround Mode"
+-msgstr ""
++msgstr "Режим объемного Dolby"
+ 
+ msgid "Low Frequency Effects"
+-msgstr ""
++msgstr "Нижняя частота эффектов"
+ 
+ msgid "Dialogue Normalization"
+-msgstr ""
++msgstr "Нормализация диалогов"
+ 
  msgid "basic"
 -msgstr ""
 +msgstr "основной"
@@ -47,9 +146,13 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 -msgstr ""
 +msgstr "поток"
  
- msgid "AC-3"
- msgstr "AC-3"
-@@ -68,94 +70,94 @@
+ msgid "Classic"
+-msgstr ""
++msgstr "Classic"
+ 
+ msgid "Elchi"
+ msgstr "Elchi"
+@@ -158,151 +158,151 @@
  msgstr "PearlHD"
  
  msgid "Hide main menu entry"
@@ -78,7 +181,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Position"
 -msgstr "���������� ����"
-+msgstr "Позиция окна"
++msgstr "Позиция"
  
  msgid "Define the position of OSD."
 -msgstr ""
@@ -138,7 +241,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Define whether the SVDRP service is used in client/server setups."
 -msgstr ""
-+msgstr "Определить, используется ли служба SVDRP в клиент / сервер установок."
++msgstr "Определить, используется ли сервис SVDRP в настройках клиент/сервер."
  
  msgid "SVDRP service port"
 -msgstr ""
@@ -146,7 +249,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Define the port number of SVDRP service."
 -msgstr ""
-+msgstr "Определить номер порта SVDRP службы."
++msgstr "Определить номер порта SVDRP сервиса."
  
  msgid "SVDRP service IP"
 -msgstr ""
@@ -154,93 +257,11 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "Define the IP address of SVDRP service."
 -msgstr ""
-+msgstr "Определите IP-адрес SVDRP службы."
++msgstr "Определите IP-адрес SVDRP сервиса."
  
  msgid "Help"
 -msgstr ""
 +msgstr "Помощь"
- 
- msgid "Video"
--msgstr "�����"
-+msgstr "Видео"
- 
- msgid "Audio"
--msgstr "�����"
-+msgstr "Аудио"
- 
- msgid "Transponder Information"
--msgstr "�������� � ������"
-+msgstr "Информация о транспондере"
- 
- msgid "Apid"
- msgstr "Apid"
-@@ -179,49 +181,49 @@
- msgstr "Coderate"
- 
- msgid "Protocol"
--msgstr ""
-+msgstr "Протокол"
- 
- msgid "Bitrate"
--msgstr ""
-+msgstr "Битрейт"
- 
- msgid "Stream Information"
--msgstr ""
-+msgstr "Информация о потоке"
- 
- msgid "Video Stream"
--msgstr ""
-+msgstr "Видео поток"
- 
- msgid "Codec"
--msgstr ""
-+msgstr "Кодек"
- 
- msgid "Aspect Ratio"
--msgstr ""
-+msgstr "Cоотношение сторон"
- 
- msgid "Frame Rate"
--msgstr ""
-+msgstr "Частота кадров"
- 
- msgid "Video Format"
--msgstr ""
-+msgstr "Видео формат"
- 
- msgid "Resolution"
--msgstr ""
-+msgstr "Разрешение"
- 
- msgid "Audio Stream"
--msgstr ""
-+msgstr "Аудио поток"
- 
- msgid "Channel Mode"
--msgstr ""
-+msgstr "Режим каналов"
- 
- msgid "Sampling Frequency"
--msgstr ""
-+msgstr "Частота дискретизации"
- 
- msgid "AC-3 Stream"
--msgstr ""
-+msgstr "AC-3 поток"
- 
- msgid "Bit Stream Mode"
--msgstr ""
-+msgstr "Режим битового потока"
- 
- msgid "Audio Coding Mode"
--msgstr ""
-+msgstr "Режим кодирования аудио"
- 
- msgid "Center Mix Level"
- msgstr ""
-@@ -239,70 +241,70 @@
- msgstr ""
  
  msgid "Fixed"
 -msgstr ""
@@ -332,7 +353,7 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "PAL"
  msgstr "PAL"
-@@ -311,13 +313,13 @@
+@@ -311,79 +311,79 @@
  msgstr "NTSC"
  
  msgid "SECAM"
@@ -348,9 +369,36 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "Гц"
  
  msgid "Complete Main (CM)"
- msgstr ""
-@@ -344,46 +346,46 @@
- msgstr ""
+-msgstr ""
++msgstr "Законченный (CM)"
+ 
+ msgid "Music and Effects (ME)"
+-msgstr ""
++msgstr "Музыка и Еффекты (ME)"
+ 
+ msgid "Visually Impaired (VI)"
+-msgstr ""
++msgstr "Слабовидящие (VI)"
+ 
+ msgid "Hearing Impaired (HI)"
+-msgstr ""
++msgstr "Слабослышащие (HI)"
+ 
+ msgid "Dialogue (D)"
+-msgstr ""
++msgstr "Диалог (D)"
+ 
+ msgid "Commentary (C)"
+-msgstr ""
++msgstr "Комментарии (C)"
+ 
+ msgid "Emergency (E)"
+-msgstr ""
++msgstr "Аварийный (E)"
+ 
+ msgid "Voice Over (VO)"
+-msgstr ""
++msgstr "Голос за кадром (VO)"
  
  msgid "Karaoke"
 -msgstr ""
@@ -366,15 +414,15 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
  
  msgid "C"
 -msgstr ""
-+msgstr "C"
++msgstr "С"
  
  msgid "L"
 -msgstr ""
-+msgstr "L"
++msgstr "Д"
  
  msgid "R"
 -msgstr ""
-+msgstr "R"
++msgstr "К"
  
  msgid "S"
 -msgstr ""
@@ -389,7 +437,8 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgstr "SR"
  
  msgid "dB"
- msgstr "dB"
+-msgstr "dB"
++msgstr "дБ"
  
  msgid "not indicated"
 -msgstr ""

@@ -18,7 +18,7 @@
 
 PKG_NAME="openelec-modify"
 PKG_VERSION="1"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
@@ -44,8 +44,8 @@ makeinstall_target() {
 addon() {
   SQUASHFS_DIR=$ROOT/$BUILD/squashfs-4.3
   LCDPROC_DIR=$ROOT/$BUILD/lcdproc-0.5.7-cvs20140217
-  TBS_DRIVER_DIR=$ROOT/$BUILD/tbs-linux-drivers-cc-b4443d1
-  VER_KERNEL="4.0.1"
+  TBS_DRIVER_DIR=$ROOT/$BUILD/tbs-linux-drivers-cc-59649e8
+  VER_KERNEL="3.17.8"
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -PR $SQUASHFS_DIR/squashfs-tools/mksquashfs $ADDON_BUILD/$PKG_ADDON_ID/bin

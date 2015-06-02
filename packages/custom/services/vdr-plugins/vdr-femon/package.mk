@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="vdr-femon"
-PKG_VERSION="2.2.0"
+PKG_VERSION="2.2.1"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.saunalahti.fi/~rahrenbe/vdr/femon/"
 PKG_URL="http://www.saunalahti.fi/~rahrenbe/vdr/femon/files/$PKG_NAME-$PKG_VERSION.tgz"
+PKG_SOURCE_DIR="femon-${PKG_VERSION}"
 PKG_DEPENDS_TARGET="toolchain vdr"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
@@ -31,10 +32,6 @@ PKG_LONGDESC="vdr femon"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-post_unpack() {
-  mv $BUILD/femon-$PKG_VERSION $BUILD/$PKG_NAME-$PKG_VERSION
-}
 
 pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC"
