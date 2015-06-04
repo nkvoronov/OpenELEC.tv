@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="31"
+PKG_REV="34"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -282,7 +282,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_IPTV" = yes ]; then
-    VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.2.0
+    VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.2.1
     cp -PR $VDR_PLUGIN_IPTV_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/iptv
       cp -PR $VDR_PLUGIN_IPTV_DIR/iptv/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/iptv
@@ -347,7 +347,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-a9d2053
+    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-2347f4e
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/restfulapi
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/restfulapi/webapp
@@ -387,7 +387,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-1772c92
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-a7b0670
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
@@ -416,7 +416,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SATIP" = yes ]; then
-    VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-2.2.0
+    VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-2.2.2
     cp -PR $VDR_PLUGIN_SATIP_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SATIP_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -436,7 +436,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_FEMON" = yes ]; then
-    VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.2.0
+    VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.2.1
     cp -PR $VDR_PLUGIN_FEMON_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_FEMON_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -721,10 +721,10 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-f9278c8
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-d2947bf
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
+      cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/skindesigner

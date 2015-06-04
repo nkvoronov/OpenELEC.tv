@@ -19,9 +19,9 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="ea70c10"
-PKG_VERSIONA="4.1.5"
-PKG_REV="34"
+PKG_VERSION="0f0fcd3"
+PKG_VERSIONA="4.1.155"
+PKG_REV="40"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.lonelycoder.com/hts/tvheadend_overview.html"
@@ -35,6 +35,10 @@ PKG_LONGDESC="Tvheadend (Version: $PKG_VERSION) is a TV streaming server for Lin
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
+if [ "$TARGET_ARCH" == "arm" ] ; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libdvbcsa"
+fi
+
 post_unpack() {
   sed -e 's/VER="0.0.0~unknown"/VER="'$PKG_VERSIONA'~g'$PKG_VERSION'~openelec"/g' -i $PKG_BUILD/support/version
 }
@@ -43,30 +47,31 @@ pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
   cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
   export CROSS_COMPILE=$TARGET_PREFIX
-  # meh imx6..
   if [ "$TARGET_ARCH" == "arm" ] ; then
-    export CFLAGS="$CFLAGS -mno-unaligned-access"
+    DVBCSA="--enable-dvbcsa"
+  else
+    # TODO force dvbcsa on all projects
+    DVBCSA="--disable-dvbcsa"
   fi
-
 }
 
 configure_target() {
   ./configure --prefix=/usr \
-              --arch=$TARGET_ARCH \
-              --cpu=$TARGET_CPU \
-              --cc=$TARGET_CC \
-              --enable-hdhomerun_client \
-              --enable-hdhomerun_static \
-              --enable-timeshift \
-              --disable-avahi \
-              --disable-libav \
-              --enable-inotify \
-              --enable-epoll \
-              --disable-uriparser \
-              --enable-tvhcsa \
-              --enable-bundle \
-              --disable-dbus_1 \
-              --python=$ROOT/$TOOLCHAIN/bin/python
+            --arch=$TARGET_ARCH \
+            --cpu=$TARGET_CPU \
+            --cc=$TARGET_CC \
+            --enable-hdhomerun_client \
+            --enable-hdhomerun_static \
+            --disable-avahi \
+            --disable-libav \
+            --enable-inotify \
+            --enable-epoll \
+            --disable-uriparser \
+            --enable-tvhcsa \
+            --enable-bundle \
+            $DVBCSA \
+            --disable-dbus_1 \
+            --python=$ROOT/$TOOLCHAIN/bin/python
 }
 
 post_make_target() {

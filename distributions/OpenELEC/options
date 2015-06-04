@@ -196,6 +196,8 @@
 ### CUSTOM OPTIONS ###
   DISTRO_CUSTOM_SRC="https://dl.dropboxusercontent.com/u/6711518/packages"
 
+  ADSP_SUPPORT="no"
+
 # Alsa mixer enabled
   if [ "$TARGET_ARCH" = "x86_64" ]; then
     ALSAMIXER_ENABLED="yes"

@@ -23,6 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/herrwiese/gentoo-portage/tree/master/media-plugins/vdr-filebrowser"
 PKG_URL="http://opensource.holgerbrunn.net/vdr/filebrowser/$PKG_NAME-$PKG_VERSION.tgz"
+PKG_SOURCE_DIR="filebrowser-${PKG_VERSION}"
 PKG_DEPENDS_TARGET="toolchain vdr"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
@@ -31,10 +32,6 @@ PKG_LONGDESC="vdr-filebrowser"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-post_unpack() {
-  mv $BUILD/filebrowser-$PKG_VERSION $BUILD/$PKG_NAME-$PKG_VERSION
-}
 
 pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC"
