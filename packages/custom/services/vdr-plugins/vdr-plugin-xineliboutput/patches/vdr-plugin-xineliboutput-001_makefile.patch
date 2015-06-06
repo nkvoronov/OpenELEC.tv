@@ -63,7 +63,7 @@ diff -Naur a/Makefile b/Makefile
  
  $(VDRPLUGIN): $(OBJS) $(OBJS_MPG)
  	$(CXX) $(CXXFLAGS) $(LDFLAGS_SO) $(LDFLAGS) -shared $(OBJS) $(OBJS_MPG) $(LIBS) $(LIBS_VDR) -o $@
-+	@cp --remove-destination $@ $(LIBDIR)/$@.$(APIVERSION)
++#	@cp --remove-destination $@ $(LIBDIR)/$@.$(APIVERSION)
  ifeq ($(VDR_TREE), yes)
  	$(INSTALL) $@ $(LIBDIR)/
  endif
@@ -71,7 +71,7 @@ diff -Naur a/Makefile b/Makefile
  
  $(VDRPLUGIN_SXFE): $(OBJS_SXFE_SO)
  	$(CC) $(CFLAGS) $(LDFLAGS_SO) $(LDFLAGS) $(OBJS_SXFE_SO) $(LIBS_X11) $(LIBS_XINE) $(LIBS_JPEG) -o $@
-+	@cp --remove-destination $@ $(LIBDIR)/$@
++#	@cp --remove-destination $@ $(LIBDIR)/$@
  ifeq ($(VDR_TREE), yes)
  	$(INSTALL) $@ $(LIBDIR)/
  endif
@@ -79,7 +79,7 @@ diff -Naur a/Makefile b/Makefile
  
  $(VDRPLUGIN_FBFE): $(OBJS_FBFE_SO)
  	$(CC) $(CFLAGS) $(LDFLAGS_SO) $(LDFLAGS) $(OBJS_FBFE_SO) $(LIBS_XINE) $(LIBS_JPEG) -o $@
-+	@cp --remove-destination $@ $(LIBDIR)/$@
++#	@cp --remove-destination $@ $(LIBDIR)/$@
  ifeq ($(VDR_TREE), yes)
  	$(INSTALL) $@ $(LIBDIR)/
  endif

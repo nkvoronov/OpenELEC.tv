@@ -20,7 +20,7 @@
 ################################################################################
 
 PKG_NAME="oscam-service"
-PKG_VERSION="10671"
+PKG_VERSION="10678"
 PKG_REV="34"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -45,7 +45,7 @@ makeinstall_target() {
 }
 
 post_install() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10671
+  OSCAM_DIR=$ROOT/$BUILD/oscam-10678
 
   mkdir -p $INSTALL/usr/bin
     cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $INSTALL/usr/bin

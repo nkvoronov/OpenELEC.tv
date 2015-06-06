@@ -20,7 +20,7 @@
 ################################################################################
 
 PKG_NAME="oscama"
-PKG_VERSION="10671"
+PKG_VERSION="10678"
 PKG_REV="34"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -46,7 +46,7 @@ makeinstall_target() {
 }
 
 addon() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10671
+  OSCAM_DIR=$ROOT/$BUILD/oscam-10678
   PCSCLITE_DIR=$ROOT/$BUILD/pcsc-lite-1.8.11
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
