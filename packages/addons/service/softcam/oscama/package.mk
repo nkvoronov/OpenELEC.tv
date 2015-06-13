@@ -20,8 +20,8 @@
 ################################################################################
 
 PKG_NAME="oscama"
-PKG_VERSION="10697"
-PKG_REV="35"
+PKG_VERSION="10721"
+PKG_REV="36"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.streamboard.tv/oscam/wiki"
@@ -46,7 +46,7 @@ makeinstall_target() {
 }
 
 addon() {
-  OSCAM_DIR=$ROOT/$BUILD/oscam-10697
+  OSCAM_DIR=$ROOT/$BUILD/oscam-10721
   PCSCLITE_DIR=$ROOT/$BUILD/pcsc-lite-1.8.11
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
