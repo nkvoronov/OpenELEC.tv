@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="35"
+PKG_REV="36"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -721,7 +721,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-64b131e
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-1f09f99
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
