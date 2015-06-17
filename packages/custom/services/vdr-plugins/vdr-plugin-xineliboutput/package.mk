@@ -49,6 +49,7 @@ configure_target() {
               --enable-vdr \
               --enable-libxine \
               --disable-dbus-glib-1 \
+              --disable-libcec \
               --cc=$CC \
               --cxx=$CXX \
               --add-cflags="$CFLAGS"

@@ -522,8 +522,8 @@ post_install() {
   if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
     VDR_PLUGIN_XINEOUTPUT_DIR=$ROOT/$BUILD/vdr-plugin-xineliboutput-fa97b86
     XINE_VERSION="2.5"
-    #cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-fbfe $INSTALL/usr/bin
-    #cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-sxfe $INSTALL/usr/bin
+    cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-fbfe $INSTALL/usr/bin
+    cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-sxfe $INSTALL/usr/bin
     cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/libxineliboutput*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/lib/xine/plugins/$XINE_VERSION
