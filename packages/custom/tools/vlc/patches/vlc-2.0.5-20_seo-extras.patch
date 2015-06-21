@@ -1,0 +1,103 @@
+diff --git a/lib/core.c b/lib/core.c
+index 86bdaea..1f06312 100644
+--- a/lib/core.c
++++ b/lib/core.c
+@@ -71,6 +71,8 @@ libvlc_instance_t * libvlc_new( int argc, const char *const *argv )
+     vlc_mutex_init(&p_new->instance_lock);
+     var_Create( p_libvlc_int, "http-user-agent",
+                 VLC_VAR_STRING|VLC_VAR_DOINHERIT );
++    var_Create( p_libvlc_int, "stbid",
++                VLC_VAR_STRING|VLC_VAR_DOINHERIT );
+     return p_new;
+ 
+ error:
+diff --git a/modules/access/http.c b/modules/access/http.c
+index a75689c..0e5a53c 100644
+--- a/modules/access/http.c
++++ b/modules/access/http.c
+@@ -116,6 +116,9 @@ vlc_module_begin ()
+     add_string( "http-user-agent", NULL, UA_TEXT, UA_LONGTEXT, false )
+         change_safe()
+         change_private()
++    add_string( "stbid", NULL, UA_TEXT, UA_LONGTEXT, false )
++        change_safe()
++        change_private()
+     add_bool( "http-reconnect", false, RECONNECT_TEXT,
+               RECONNECT_LONGTEXT, true )
+     add_bool( "http-continuous", false, CONTINUOUS_TEXT,
+@@ -124,7 +127,7 @@ vlc_module_begin ()
+     add_bool( "http-forward-cookies", true, FORWARD_COOKIES_TEXT,
+               FORWARD_COOKIES_LONGTEXT, true )
+     /* 'itpc' = iTunes Podcast */
+-    add_shortcut( "http", "https", "unsv", "itpc", "icyx" )
++    add_shortcut( "http", "https", "httpv", "unsv", "itpc", "icyx" )
+     set_callbacks( Open, Close )
+ vlc_module_end ()
+ 
+@@ -142,6 +145,7 @@ struct access_sys_t
+     /* From uri */
+     vlc_url_t url;
+     char    *psz_user_agent;
++    char    *psz_stbid;
+     char    *psz_referrer;
+     http_auth_t auth;
+ 
+@@ -264,6 +268,7 @@ static int OpenWithCookies( vlc_object_t *p_this, const char *psz_access,
+     p_sys->b_icecast = false;
+     p_sys->psz_location = NULL;
+     p_sys->psz_user_agent = NULL;
++    p_sys->psz_stbid = NULL;
+     p_sys->psz_referrer = NULL;
+     p_sys->b_pace_control = true;
+     p_sys->b_ssl = false;
+@@ -358,6 +363,7 @@ static int OpenWithCookies( vlc_object_t *p_this, const char *psz_access,
+         }
+     }
+ 
++    p_sys->psz_stbid = var_InheritString( p_access, "stbid" );
+     /* HTTP referrer */
+     p_sys->psz_referrer = var_InheritString( p_access, "http-referrer" );
+ 
+@@ -573,6 +579,8 @@ connect:
+         const char *psz_protocol;
+         if( !strncmp( p_sys->psz_location, "http://", 7 ) )
+             psz_protocol = "http";
++        else if( !strncmp( p_sys->psz_location, "httpv://", 8 ) )
++            psz_protocol = "httpv";
+         else if( !strncmp( p_sys->psz_location, "https://", 8 ) )
+             psz_protocol = "https";
+         else
+@@ -1260,6 +1268,8 @@ static int Request( access_t *p_access, uint64_t i_tell )
+     /* User Agent */
+     net_Printf( p_access, p_sys->fd, pvs, "User-Agent: %s\r\n",
+                 p_sys->psz_user_agent );
++    net_Printf( p_access, p_sys->fd, pvs, "STBID: %s\r\n",
++                p_sys->psz_stbid );
+     /* Referrer */
+     if (p_sys->psz_referrer)
+     {
+diff --git a/modules/control/dbus/dbus_root.c b/modules/control/dbus/dbus_root.c
+index a55d19b..7d0c31e 100644
+--- a/modules/control/dbus/dbus_root.c
++++ b/modules/control/dbus/dbus_root.c
+@@ -38,7 +38,7 @@
+ #include "dbus_common.h"
+ 
+ static const char const ppsz_supported_uri_schemes[][9] = {
+-    "file", "http", "https", "rtsp", "realrtsp", "pnm", "ftp", "mtp", "smb",
++    "file", "http", "https", "httpv", "rtsp", "realrtsp", "pnm", "ftp", "mtp", "smb",
+     "mms", "mmsu", "mmst", "mmsh", "unsv", "itpc", "icyx", "rtmp", "rtp",
+     "dccp", "dvd", "vcd", "vcdx"
+ };
+diff --git a/modules/demux/playlist/m3u.c b/modules/demux/playlist/m3u.c
+index d062b9f..d017d90 100644
+--- a/modules/demux/playlist/m3u.c
++++ b/modules/demux/playlist/m3u.c
+@@ -108,6 +108,7 @@ static bool ContainsURL( demux_t *p_demux )
+     {
+         /* One line starting with a URL is enough */
+         if( !strncasecmp( (const char *)p_peek, "http://", 7 ) ||
++            !strncasecmp( (const char *)p_peek, "httpv://", 8 ) ||
+             !strncasecmp( (const char *)p_peek, "mms://", 6 ) ||
+             !strncasecmp( (const char *)p_peek, "rtsp://", 7 ) ||
+             !strncasecmp( (const char *)p_peek, "https://", 8 ) ||

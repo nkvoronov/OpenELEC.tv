@@ -250,4 +250,6 @@
   ACESTREAM_SUPPORT="yes"
 
 # Other
-  GAME_EMULATORS="no"
+  GAME_EMULATORS="yes"
+
+  VLC_ENABLE="yes"

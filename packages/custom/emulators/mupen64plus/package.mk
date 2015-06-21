@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="mupen64plus"
-PKG_VERSION="2.0.0"
+PKG_VERSION="2.5.0"
 PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="LGPL"
 PKG_SITE="http://mupen64plus.googlecode.com"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain SDL libpng glib freetype"
+PKG_DEPENDS_TARGET="toolchain SDL2 libpng glib freetype"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
 PKG_SHORTDESC="Nintendo 64 emulator"
@@ -33,6 +33,11 @@ PKG_LONGDESC="Nintendo 64 emulator"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
+
+
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/SDL2"
+}
 
 make_target() {
   cd $ROOT/$PKG_BUILD
@@ -53,14 +58,9 @@ post_install() {
     cp -P $PKG_BUILD/test/libmupen64plus.so.* $INSTALL/usr/lib
     cp -P $PKG_BUILD/test/mupen64plus-*.so $INSTALL/usr/lib
 
-  if [ "$TARGET_ARCH" = "x86_64" ]; then
-    cp -P $ROOT/$BUILD/SDL-1.2.15/.x86_64-openelec-linux-gnu/build/.libs/libSDL-1.2.so.* $INSTALL/usr/lib
-  fi
-
   mkdir -p $INSTALL/usr/config/mupen64plus
     cp -P $PKG_DIR/config/* $INSTALL/usr/config/mupen64plus
     cp -PR $PKG_BUILD/test/*.ini $INSTALL/usr/config/mupen64plus
-    cp -P $PKG_BUILD/test/mupen64plus.cht $INSTALL/usr/config/mupen64plus
     cp -P $PKG_BUILD/test/mupencheat.txt $INSTALL/usr/config/mupen64plus
     cp -P $PKG_BUILD/test/font.ttf $INSTALL/usr/config/mupen64plus
     cp -P $PKG_BUILD/test/m64p_test_rom.v64 $INSTALL/usr/config/mupen64plus
