@@ -184,6 +184,7 @@ post_install() {
 
   mkdir -p $INSTALL/usr/bin
     cp -P $PKG_BUILD/.$TARGET_NAME/bin/.libs/vlc $INSTALL/usr/bin/vlc.bin
+    cp -p $PKG_DIR/scripts/* $INSTALL/usr/bin
 
   mkdir -p $INSTALL/usr/lib
     cp -P $PKG_BUILD/.$TARGET_NAME/lib/.libs/libvlc.so* $INSTALL/usr/lib
