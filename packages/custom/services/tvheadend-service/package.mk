@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="tvheadend-service"
-PKG_VERSION="4.1.243"
-PKG_REV="47"
+PKG_VERSION="4.1.288"
+PKG_REV="48"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.lonelycoder.com/hts/tvheadend_overview.html"
@@ -43,7 +43,7 @@ makeinstall_target() {
 }
 
 post_install() {
-  TVHEADEND_DIR=$ROOT/$BUILD/tvheadend-b935caf
+  TVHEADEND_DIR=$ROOT/$BUILD/tvheadend-5fa3343
 
   mkdir -p $INSTALL/usr/bin
     cp -P $TVHEADEND_DIR/.$TARGET_NAME/build.linux/tvheadend $INSTALL/usr/bin
