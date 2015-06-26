@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="tvheadenda"
-PKG_VERSION="4.1.288"
-PKG_REV="48"
+PKG_VERSION="4.1.309"
+PKG_REV="49"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
@@ -41,7 +41,7 @@ makeinstall_target() {
 }
 
 addon() {
-  TVHEADEND_DIR=$ROOT/$BUILD/tvheadend-5fa3343
+  TVHEADEND_DIR=$ROOT/$BUILD/tvheadend-a3f213e
   
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $TVHEADEND_DIR/.$TARGET_NAME/build.linux/tvheadend $ADDON_BUILD/$PKG_ADDON_ID/bin
