@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="38"
+PKG_REV="39"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -461,7 +461,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-396d5fa
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-ec58e45
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
