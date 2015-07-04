@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="vlc"
-PKG_VERSION="2.0.7"
+PKG_VERSION="2.0.9"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
