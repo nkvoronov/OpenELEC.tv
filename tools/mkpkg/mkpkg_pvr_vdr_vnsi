@@ -21,7 +21,7 @@
 
 echo "getting sources..."
   if [ ! -d pvr.vdr.vnsi.git ]; then
-    git clone https://github.com/kodi-pvr/pvr.vdr.vnsi.git pvr.vdr.vnsi.git
+    git clone -b Isengard https://github.com/kodi-pvr/pvr.vdr.vnsi.git pvr.vdr.vnsi.git
   fi
 
   cd pvr.vdr.vnsi.git
