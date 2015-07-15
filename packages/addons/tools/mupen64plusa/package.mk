@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="mupen64plusa"
-PKG_VERSION="2.0.0"
-PKG_REV="1"
+PKG_VERSION="2.5.0"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://mupen64plus.googlecode.com"
 PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain mupen64plus mupen64plus-extraplugins"
+PKG_DEPENDS_TARGET="toolchain mupen64plus"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="mupen64plus (Version: $PKG_VERSION): Nintendo 64 emulator."
@@ -44,16 +44,13 @@ makeinstall_target() {
 }
 
 addon() {
-  MUPEN64PLUS_DIR=$ROOT/$BUILD/mupen64plus-2.0.0
-  MUPEN64PLUS_EXT_DIR=$ROOT/$BUILD/mupen64plus-extraplugins-2.0.0
+  MUPEN64PLUS_DIR=$ROOT/$BUILD/mupen64plus-2.5.0
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
     cp -PR $MUPEN64PLUS_DIR/test/*.ini $ADDON_BUILD/$PKG_ADDON_ID/config
-    cp -P $MUPEN64PLUS_DIR/test/mupen64plus.cht $ADDON_BUILD/$PKG_ADDON_ID/config
     cp -P $MUPEN64PLUS_DIR/test/mupencheat.txt $ADDON_BUILD/$PKG_ADDON_ID/config
     cp -P $MUPEN64PLUS_DIR/test/font.ttf $ADDON_BUILD/$PKG_ADDON_ID/config
     cp -P $MUPEN64PLUS_DIR/test/m64p_test_rom.v64 $ADDON_BUILD/$PKG_ADDON_ID/config
-    cp -P $MUPEN64PLUS_EXT_DIR/source/mupen64plus-video-glide64/data/*.ini $ADDON_BUILD/$PKG_ADDON_ID/config
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $MUPEN64PLUS_DIR/test/mupen64plus $ADDON_BUILD/$PKG_ADDON_ID/bin
@@ -61,12 +58,6 @@ addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
     cp -P $MUPEN64PLUS_DIR/test/libmupen64plus.so.2.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libmupen64plus.so.2
     cp -P $MUPEN64PLUS_DIR/test/mupen64plus-*.so $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -P $MUPEN64PLUS_EXT_DIR/test/mupen64plus-*.so $ADDON_BUILD/$PKG_ADDON_ID/lib
-
-  if [ "$TARGET_ARCH" = "i386" ]; then
-    cp -P $ROOT/$BUILD/SDL-1.2.15/.i686-openelec-linux-gnu/build/.libs/libSDL-1.2.so.0.11.4 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSDL-1.2.so.0
-  elif [ "$TARGET_ARCH" = "x86_64" ]; then
-    cp -P $ROOT/$BUILD/SDL-1.2.15/.x86_64-openelec-linux-gnu/build/.libs/libSDL-1.2.so.0.11.4 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSDL-1.2.so.0
-  fi
+    cp -P $ROOT/$BUILD/SDL2-2.0.3/.x86_64-openelec-linux-gnu/build/.libs/libSDL2-2.0.so.0.2.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSDL2-2.0.so.0
 
 }

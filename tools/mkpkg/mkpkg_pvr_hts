@@ -21,7 +21,7 @@
 
 echo "getting sources..."
   if [ ! -d pvr.hts.git ]; then
-    git clone https://github.com/kodi-pvr/pvr.hts.git pvr.hts.git
+    git clone -b Isengard https://github.com/kodi-pvr/pvr.hts.git pvr.hts.git
   fi
 
   cd pvr.hts.git

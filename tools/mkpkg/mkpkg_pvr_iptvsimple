@@ -21,7 +21,7 @@
 
 echo "getting sources..."
   if [ ! -d pvr.iptvsimple.git ]; then
-    git clone https://github.com/kodi-pvr/pvr.iptvsimple.git pvr.iptvsimple.git
+    git clone -b Isengard https://github.com/kodi-pvr/pvr.iptvsimple.git pvr.iptvsimple.git
   fi
 
   cd pvr.iptvsimple.git

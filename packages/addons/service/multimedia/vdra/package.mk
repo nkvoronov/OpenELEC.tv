@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="35"
+PKG_REV="42"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -347,7 +347,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-2347f4e
+    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-0018c99
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/restfulapi
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/restfulapi/webapp
@@ -387,7 +387,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-a7b0670
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-1c63a8a
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
@@ -403,7 +403,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XVDR" = yes ]; then 
-    VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-bf7f671
+    VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-2d5e3f6
     cp -PR $VDR_PLUGIN_XVDR_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/xvdr
       cp -PR $VDR_PLUGIN_XVDR_DIR/xvdr/*.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/xvdr
@@ -497,7 +497,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-f0d31ad
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-ec58e45
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -618,9 +618,8 @@ addon() {
   if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
     VDR_PLUGIN_XINEOUTPUT_DIR=$ROOT/$BUILD/vdr-plugin-xineliboutput-fa97b86
     XINE_VERSION="2.5"
-    #libcec 3 fix
-    #cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-fbfe $ADDON_BUILD/$PKG_ADDON_ID/bin
-    #cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-sxfe $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-fbfe $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-sxfe $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/libxineliboutput*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/xine/plugins/$XINE_VERSION
@@ -722,7 +721,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-64b131e
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-9611291
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
