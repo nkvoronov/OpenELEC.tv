@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-Confluence-plood"
-PKG_VERSION="a9e7104"
+PKG_VERSION="12c6c8b"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -44,5 +44,5 @@ makeinstall_target() {
 
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-plood
-    cp -PR $PKG_BUILD/skin.confluence-plood-helix/* $INSTALL/usr/share/kodi/addons/skin.confluence-plood
+    cp -PR $PKG_BUILD/skin.confluence-plood-isengard/* $INSTALL/usr/share/kodi/addons/skin.confluence-plood
 }
