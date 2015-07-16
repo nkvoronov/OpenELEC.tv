@@ -17,11 +17,12 @@
 ################################################################################
 
 PKG_NAME="kodi"
+PKG_VERSION="15.0-rc2-0aa930b"
 if [ "$ADSP_SUPPORT" = yes ]; then
   PKG_VERSION="15.0-beta2-2532c2c"
   PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/adsp/$PKG_NAME-$PKG_VERSION.tar.xz"
 else
-  PKG_VERSION="15.0-rc3-15faee5"
+  PKG_VERSION="15.0-rc3-eb4467a"
   PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 fi
 PKG_REV="1"
