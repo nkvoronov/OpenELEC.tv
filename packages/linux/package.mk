@@ -40,7 +40,7 @@ case "$LINUX" in
     PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET imx6-status-led imx6-soc-fan"
     ;;
   *)
-    PKG_VERSION="4.0.5"
+    PKG_VERSION="4.1.2"
     PKG_URL="http://www.kernel.org/pub/linux/kernel/v4.x/$PKG_NAME-$PKG_VERSION.tar.xz"
     ;;
 esac
@@ -74,11 +74,6 @@ post_patch() {
 
   # set default hostname based on $DISTRONAME
     sed -i -e "s|@DISTRONAME@|$DISTRONAME|g" $PKG_BUILD/.config
-
-  # disable PPP support if not enabled
-  if [ ! "$PPTP_SUPPORT" = yes ]; then
-    sed -i -e "s|^CONFIG_PPP=.*$|# CONFIG_PPP is not set|" $PKG_BUILD/.config
-  fi
 
   # disable swap support if not enabled
   if [ ! "$SWAP_SUPPORT" = yes ]; then
@@ -191,6 +186,4 @@ makeinstall_init() {
 post_install() {
   mkdir -p $INSTALL/lib/firmware/
     ln -sf /storage/.config/firmware/ $INSTALL/lib/firmware/updates
-
-  enable_service cpufreq-threshold.service
 }
