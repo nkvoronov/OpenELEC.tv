@@ -18,10 +18,10 @@
 
 PKG_NAME="kodi-theme-Confluence"
 if [ "$ADSP_SUPPORT" = yes ]; then
-  PKG_VERSION="15.0-beta2-2532c2c"
+  PKG_VERSION="16.0-alpha1-bad8efc"
   PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/adsp/$PKG_NAME-$PKG_VERSION.tar.xz"
 else
-  PKG_VERSION="15.0-version_tag-2f34a0c"
+  PKG_VERSION="15.1-rc1-8de83a8"
   PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 fi
 PKG_REV="1"
