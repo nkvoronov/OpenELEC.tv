@@ -295,7 +295,7 @@ addon() {
   fi 
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-9d1ebaa
+    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-ce8a124
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
