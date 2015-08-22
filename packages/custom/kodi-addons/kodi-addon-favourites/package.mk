@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-favourites"
-PKG_VERSION="e6af61c"
+PKG_VERSION="9bdd433"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

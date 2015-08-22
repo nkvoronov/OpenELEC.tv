@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-transmission"
-PKG_VERSION="6fc9046"
+PKG_VERSION="10f319d"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
