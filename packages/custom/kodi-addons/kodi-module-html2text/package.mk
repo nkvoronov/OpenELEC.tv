@@ -1,4 +1,3 @@
-#!/bin/sh
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -19,25 +18,34 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-echo "getting sources..."
-  if [ ! -d kodi-addon-xvdr.git ]; then
-    git clone git://github.com/pipelka/xbmc-addon-xvdr.git kodi-addon-xvdr.git
-  fi
+PKG_NAME="kodi-module-html2text"
+PKG_VERSION="2015.6.21"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="https://github.com/XBMC-Addons/script.module.simplejson.git"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET="toolchain Python"
+PKG_PRIORITY="optional"
+PKG_SECTION="custom"
+PKG_SHORTDESC="Simple, fast, extensible JSON encoder/decoder for Python"
+PKG_LONGDESC="Simple, fast, extensible JSON encoder/decoder for Python"
 
-  cd kodi-addon-xvdr.git
-    git pull
-    GIT_REV=`git log -n1 --format=%h`
-  cd ..
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="no"
 
-echo "copying sources..."
-  rm -rf kodi-addon-xvdr-$GIT_REV
-  cp -R kodi-addon-xvdr.git kodi-addon-xvdr-$GIT_REV
+make_target() {
+  : # nothing to make here
+}
 
-echo "cleaning sources..."
-  rm -rf kodi-addon-xvdr-$GIT_REV/.git
+makeinstall_target() {
+  : # nothing to install here
+}
 
-echo "packing sources..."
-  tar cvJf kodi-addon-xvdr-$GIT_REV.tar.xz kodi-addon-xvdr-$GIT_REV
+post_install() {
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.module.html2text
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.html2text
 
-echo "remove temporary sourcedir..."
-  rm -rf kodi-addon-xvdr-$GIT_REV
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.html2text/lib/html2text/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.html2text/lib/html2text/ -name "*.py"`
+}

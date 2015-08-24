@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="openelec-dev-update"
-PKG_VERSION="82dfe59"
+PKG_VERSION="e93d520"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain Python kodi-module-requests kodi-module-bs4 kodi-backup"
+PKG_DEPENDS_TARGET="toolchain Python kodi-module-requests kodi-module-bs4 kodi-module-html2text kodi-backup"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom"
 PKG_SHORTDESC="This KODI  addon downloads and extracts OpenELEC development (nightly) builds and official releases, ready to be installed on the next reboot."
@@ -54,6 +54,8 @@ post_install() {
     cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.openelec.devupdate
   
   rm -rf $INSTALL/usr/share/kodi/addons/script.openelec.devupdate/resources/lib/.gitignore
+  rm -rf $INSTALL/usr/share/kodi/addons/script.openelec.devupdate/.gitignore
+  rm -rf $INSTALL/usr/share/kodi/addons/script.openelec.devupdate/.project
   rm -rf $INSTALL/usr/share/kodi/addons/script.openelec.devupdate/icon.svg
   rm -rf $INSTALL/usr/share/kodi/addons/script.openelec.devupdate/README.md
 

@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-module-requests"
-PKG_VERSION="2.6.0"
+PKG_VERSION="9b063ee"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
