@@ -134,7 +134,7 @@ diff -urN a/drivers/media/pci/saa7164/saa7164-cards.c b/drivers/media/pci/saa716
 +			.name		= "SI2168-1",
 +			.i2c_bus_nr	= SAA7164_I2C_BUS_2,
 +			.i2c_bus_addr	= 0xc8 >> 1,
-+			.i2c_reg_len	= REGLEN_8bit,
++			.i2c_reg_len	= REGLEN_0bit,
 +		}, {
 +			.id		= 0x25,
 +			.type		= SAA7164_UNIT_TUNER,
@@ -148,7 +148,7 @@ diff -urN a/drivers/media/pci/saa7164/saa7164-cards.c b/drivers/media/pci/saa716
 +			.name		= "SI2168-2",
 +			.i2c_bus_nr	= SAA7164_I2C_BUS_2,
 +			.i2c_bus_addr	= 0xcc >> 1,
-+			.i2c_reg_len	= REGLEN_8bit,
++			.i2c_reg_len	= REGLEN_0bit,
 +		} },
 +	},
  };
@@ -540,29 +540,6 @@ diff -urN a/drivers/media/pci/saa7164/saa7164-dvb.c b/drivers/media/pci/saa7164/
 +	return -1;
  }
  
-diff -urN a/drivers/media/pci/saa7164/saa7164-encoder.c b/drivers/media/pci/saa7164/saa7164-encoder.c
---- a/drivers/media/pci/saa7164/saa7164-encoder.c	2015-06-22 08:05:43.000000000 +0300
-+++ b/drivers/media/pci/saa7164/saa7164-encoder.c	2015-06-24 18:41:23.254376349 +0300
-@@ -721,13 +721,14 @@
- 		sizeof(cap->card));
- 	sprintf(cap->bus_info, "PCI:%s", pci_name(dev->pci));
- 
--	cap->capabilities =
-+	cap->device_caps =
- 		V4L2_CAP_VIDEO_CAPTURE |
--		V4L2_CAP_READWRITE     |
--		0;
-+		V4L2_CAP_READWRITE |
-+		V4L2_CAP_TUNER;
- 
--	cap->capabilities |= V4L2_CAP_TUNER;
--	cap->version = 0;
-+	cap->capabilities = cap->device_caps |
-+		V4L2_CAP_VBI_CAPTURE |
-+		V4L2_CAP_DEVICE_CAPS;
- 
- 	return 0;
- }
 diff -urN a/drivers/media/pci/saa7164/saa7164.h b/drivers/media/pci/saa7164/saa7164.h
 --- a/drivers/media/pci/saa7164/saa7164.h	2015-06-22 08:05:43.000000000 +0300
 +++ b/drivers/media/pci/saa7164/saa7164.h	2015-06-24 18:41:57.246377117 +0300
@@ -593,26 +570,21 @@ diff -urN a/drivers/media/pci/saa7164/saa7164.h b/drivers/media/pci/saa7164/saa7
  
  	struct cmd			cmds[SAA_CMD_MAX_MSG_UNITS];
  	struct mutex			lock;
-diff -urN a/drivers/media/pci/saa7164/saa7164-vbi.c b/drivers/media/pci/saa7164/saa7164-vbi.c
---- a/drivers/media/pci/saa7164/saa7164-vbi.c	2015-06-22 08:05:43.000000000 +0300
-+++ b/drivers/media/pci/saa7164/saa7164-vbi.c	2015-06-24 18:42:05.582377305 +0300
-@@ -660,13 +660,14 @@
- 		sizeof(cap->card));
- 	sprintf(cap->bus_info, "PCI:%s", pci_name(dev->pci));
- 
--	cap->capabilities =
-+	cap->device_caps =
- 		V4L2_CAP_VBI_CAPTURE |
--		V4L2_CAP_READWRITE     |
--		0;
-+		V4L2_CAP_READWRITE |
-+		V4L2_CAP_TUNER;
- 
--	cap->capabilities |= V4L2_CAP_TUNER;
--	cap->version = 0;
-+	cap->capabilities = cap->device_caps |
-+		V4L2_CAP_VIDEO_CAPTURE |
-+		V4L2_CAP_DEVICE_CAPS;
- 
- 	return 0;
- }
+diff -urN a/drivers/media/pci/saa7164/saa7164-i2c.c b/drivers/media/pci/saa7164/saa7164-i2c.c
+--- a/drivers/media/pci/saa7164/saa7164-i2c.c
++++ b/drivers/media/pci/saa7164/saa7164-i2c.c
+@@ -39,9 +39,10 @@ static int i2c_xfer(struct i2c_adapter *i2c_adap, struct i2c_msg *msgs, int num)
+ 		dprintk(DBGLVL_I2C, "%s(num = %d) addr = 0x%02x  len = 0x%x\n",
+ 			__func__, num, msgs[i].addr, msgs[i].len);
+ 		if (msgs[i].flags & I2C_M_RD) {
+-			/* Unsupported - Yet*/
+-			printk(KERN_ERR "%s() Unsupported - Yet\n", __func__);
+-			continue;
++			retval = saa7164_api_i2c_read(bus,
++				msgs[i].addr,
++				0 /* reglen */,
++				NULL /* reg */, msgs[i].len, msgs[i].buf);
+ 		} else if (i + 1 < num && (msgs[i + 1].flags & I2C_M_RD) &&
+ 			   msgs[i].addr == msgs[i + 1].addr) {
+ 			/* write then read from same address */
+

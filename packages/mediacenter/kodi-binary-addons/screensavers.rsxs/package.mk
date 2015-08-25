@@ -46,10 +46,8 @@ configure_target() {
 }
 
 addon() {
-  echo "**************** ADDON **********************"
   for _ADDON in $PKG_BUILD/.install_pkg/usr/share/kodi/addons/* ; do
     _ADDON_ID=$(basename $_ADDON)
-    echo $_ADDON_ID
 
     mkdir -p $ADDON_BUILD/$_ADDON_ID/
     cp -PR $PKG_BUILD/.install_pkg/usr/share/kodi/addons/$_ADDON_ID/* $ADDON_BUILD/$_ADDON_ID/
@@ -58,10 +56,7 @@ addon() {
     MULTI_ADDONS="$MULTI_ADDONS $_ADDON_ID"
   done
 
-  echo $MULTI_ADDONS
-
   # export MULTI_ADDONS so create_addon knows multiple addons
   # were installed in $ADDON_BUILD/
   export MULTI_ADDONS="$MULTI_ADDONS"
-  echo "******************************************************"
 }

@@ -21,8 +21,8 @@
 
 PKG_NAME="kodi"
 PKG_VERSION=""
-BRANCH="Isengard"
-BRANCH_FOR_ADDONS="Isengard"
+BRANCH="master"
+BRANCH_FOR_ADDONS="master"
 GIT_REPO="git://github.com/xbmc/xbmc.git"
 DEST_DIR="$PKG_NAME-$BRANCH"
 
@@ -103,6 +103,10 @@ VERSION_MAJOR=$(grep ^VERSION_MAJOR version.txt | cut -d" " -f2)
 VERSION_MINOR=$(grep ^VERSION_MINOR version.txt | cut -d" " -f2)
 VERSION_TAG=$(grep ^VERSION_TAG version.txt | cut -d" " -f2 | tr A-Z a-z)
 PKG_VERSION="$VERSION_MAJOR.$VERSION_MINOR-$VERSION_TAG-$GIT_HASH"
+# hack: empty version tag on release builds:
+if [ "$VERSION_TAG" = "version_tag" ] ; then
+  PKG_VERSION="$VERSION_MAJOR.$VERSION_MINOR-$GIT_HASH"
+fi
 echo $PKG_VERSION
 cd ..
 
