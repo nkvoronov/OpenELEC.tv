@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="41"
+PKG_REV="42"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -347,7 +347,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-b6dacd3
+    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-be2b8bc
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/restfulapi
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/restfulapi/webapp
@@ -387,7 +387,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-1c63a8a
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-8da5f80
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
@@ -721,7 +721,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-b5c587b
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-196dd7e
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0

@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="42"
+PKG_REV="43"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -323,7 +323,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-b6dacd3
+    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-be2b8bc
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi/webapp
@@ -358,7 +358,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-1c63a8a
+    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-8da5f80
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $INSTALL/usr/config/vdr/plugins/vnsiserver
@@ -606,7 +606,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-b5c587b
+    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-196dd7e
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $INSTALL/usr/lib
     ln -s libskindesignerapi.so.0.0.2 $INSTALL/usr/lib/libskindesignerapi.so.0
