@@ -21,7 +21,7 @@ if [ "$ADSP_SUPPORT" = yes ]; then
   PKG_VERSION="16.0-alpha1-bad8efc"
   PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/adsp/$PKG_NAME-$PKG_VERSION.tar.xz"
 else
-  PKG_VERSION="15.2-rc1-df0f4ad"
+  PKG_VERSION="15.2-rc1-6e33ea7"
   PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 fi
 PKG_REV="1"
