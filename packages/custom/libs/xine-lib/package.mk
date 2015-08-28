@@ -49,7 +49,8 @@ configure_target() {
              --disable-dxr3 \
              --disable-aalib \
              --disable-vcd \
-             --disable-musepack
+             --disable-musepack \
+	     --disable-vpx
 }
 
 make_target() {
