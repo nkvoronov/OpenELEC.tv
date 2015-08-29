@@ -220,7 +220,7 @@ addon() {
   JANSSON_DIR=$ROOT/$BUILD/jansson-2.6
   #IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
   IM_DIR=$ROOT/$BUILD/ImageMagick-6.7.7-10
-  XINELIB_DIR=$ROOT/$BUILD/xine-lib-666337a
+  XINELIB_DIR=$ROOT/$BUILD/xine-lib-e6a81be
   LIBXFT_DIR=$ROOT/$BUILD/libXft-2.3.2
   CAIRO_DIR=$ROOT/$BUILD/cairo-1.12.16
   PANGO_DIR=$ROOT/$BUILD/pango-1.36.3
