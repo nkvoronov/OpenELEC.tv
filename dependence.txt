@@ -51,3 +51,4 @@ xsltproc
 libproc-processtable-perl
 libtest-inter-perl
 xmlstarlet
+md5dep

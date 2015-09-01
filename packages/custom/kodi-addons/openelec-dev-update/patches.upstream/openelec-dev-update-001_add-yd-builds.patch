@@ -1,13 +1,13 @@
 diff -Naur a/addon.xml b/addon.xml
---- a/addon.xml	2015-08-22 14:04:31.000000000 +0300
-+++ b/addon.xml	2015-08-22 21:37:03.000000000 +0300
+--- a/addon.xml	2015-08-28 18:39:04.000000000 +0300
++++ b/addon.xml	2015-08-28 20:36:29.000000000 +0300
 @@ -1,8 +1,8 @@
  <?xml version="1.0" encoding="UTF-8"?>
  <addon id="script.openelec.devupdate"
         name="OpenELEC Dev Update"
--       version="4.16.3"
+-       version="4.18.0"
 -       provider-name="Leopold">
-+       version="14.16.3"
++       version="14.18.0"
 +       provider-name="Leopold, YLLOW_DRAGON">
    <requires>
      <import addon="xbmc.python" version="2.13.0"/>
@@ -29,17 +29,26 @@ diff -Naur a/addon.xml b/addon.xml
      <website>http://ls80.github.io/script.openelec.devupdate</website>
      <source>http://github.com/LS80/script.openelec.devupdate.git</source>
 diff -Naur a/default.py b/default.py
---- a/default.py	2015-08-22 14:04:31.000000000 +0300
-+++ b/default.py	2015-08-22 23:01:03.000000000 +0300
-@@ -42,6 +42,7 @@
+--- a/default.py	2015-08-28 18:39:05.000000000 +0300
++++ b/default.py	2015-08-29 00:11:53.000000000 +0300
+@@ -26,7 +26,6 @@
+ import glob
+ from urlparse import urlparse
+ import threading
+-
+ import xbmc, xbmcgui, xbmcaddon, xbmcvfs
+ import requests
+ 
+@@ -42,7 +41,7 @@
  ADDON_DATA = xbmc.translatePath(addon.getAddonInfo('profile'))
  ADDON_PATH = xbmc.translatePath(addon.getAddonInfo('path'))
  ADDON_NAME = addon.getAddonInfo('name')
+-
 +LANG = addon.getLocalizedString
  
- 
  def check_update_files():
-@@ -52,17 +53,15 @@
+     # Check if the update files are already in place.
+@@ -52,17 +51,15 @@
          try:
              with open(notify_file) as f:
                  selected = f.read()
@@ -64,7 +73,7 @@ diff -Naur a/default.py b/default.py
              xbmc.restart()
              sys.exit(0)
          else:
-@@ -112,9 +111,9 @@
+@@ -112,9 +109,9 @@
      if backup == 0:
          do_backup = False
      elif backup == 1:
@@ -77,20 +86,33 @@ diff -Naur a/default.py b/default.py
          utils.log("Backup requested")
      elif backup == 2:
          do_backup = True
-@@ -313,7 +312,7 @@
+@@ -181,7 +178,8 @@
+             else:
+                 custom_extractors = (builds.BuildLinkExtractor,
+                                      builds.ReleaseLinkExtractor,
+-                                     builds.MilhouseBuildLinkExtractor)
++                                     builds.MilhouseBuildLinkExtractor,
++                                     builds.CustomBuildLinkExtractor)
+ 
+                 extractor = custom_extractors[int(addon.getSetting('build_type'))]
+                 self._sources[custom_name] = builds.BuildsURL(custom_url,
+@@ -316,8 +314,8 @@
              utils.url_error(build_url.url, str(e))
          else:
              if not links:
--                utils.bad_url(build_url.url, "No builds were found for {}.".format(self._arch))
-+                utils.bad_url(build_url.url, LANG(32509).format(self._arch))
+-                utils.bad_url(build_url.url,
+-                              "No builds were found for {}.".format(self._arch))
++        	utils.bad_url(build_url.url, LANG(32509).format(self._arch))
++
          return links
  
      def _get_build_infos(self, build_url):
-@@ -430,14 +429,16 @@
+@@ -434,16 +432,16 @@
              utils.log("Archive builds to " + self.archive_dir)
              if not xbmcvfs.exists(self.archive_root):
                  utils.log("Unable to access archive")
--                xbmcgui.Dialog().ok("Directory Error", "{} is not accessible.".format(self.archive_root),
+-                xbmcgui.Dialog().ok("Directory Error",
+-                                    "{} is not accessible.".format(self.archive_root),
 -                                    "Check the archive directory in the addon settings.")
 +                xbmcgui.Dialog().ok(LANG(32510), 
 +                                    LANG(32511).format(self.archive_root),
@@ -99,20 +121,21 @@ diff -Naur a/default.py b/default.py
                  sys.exit(1)
              elif not xbmcvfs.mkdir(self.archive_dir):
                  utils.log("Unable to create directory in archive")
--                xbmcgui.Dialog().ok("Directory Error", "Unable to create {}.".format(self.archive_dir),
+-                xbmcgui.Dialog().ok("Directory Error",
+-                                    "Unable to create {}.".format(self.archive_dir),
 -                                    "Check the archive directory permissions.")
 +                xbmcgui.Dialog().ok(LANG(32510),
-+		                    LANG(32513).format(self.archive_dir),
-+    		                    LANG(32514))
++	                	    LANG(32513).format(self.archive_dir),
++	                    	    LANG(32514))
                  sys.exit(1)
  
      def select_build(self):
-@@ -457,16 +458,17 @@
+@@ -463,16 +461,17 @@
      
          # Confirm the update.
          msg = ("[COLOR=lightskyblue][B]{}[/B][/COLOR]"
--         "  to  [COLOR=lightskyblue][B]{}[/B][/COLOR] ?").format(self.installed_build,
--                                                                 selected_build)
+-               "  to  [COLOR=lightskyblue][B]{}[/B][/COLOR] ?").format(self.installed_build,
+-                                                                       selected_build)
 +         " {} [COLOR=lightskyblue][B]{}[/B][/COLOR] ?").format(self.installed_build, 
 +                                                               LANG(32537),
 +                                                               selected_build)
@@ -132,7 +155,7 @@ diff -Naur a/default.py b/default.py
          if not xbmcgui.Dialog().yesno(*args):
              sys.exit(0)
              
-@@ -500,7 +502,7 @@
+@@ -507,7 +506,7 @@
                  else:
                      # Do the download
                      utils.log("Starting download of " + self.selected_build.url)
@@ -141,7 +164,7 @@ diff -Naur a/default.py b/default.py
                                                 remote_file, filename, size,
                                                 self.background) as downloader:
                          downloader.start()
-@@ -519,7 +521,7 @@
+@@ -526,7 +525,7 @@
              try:
                  bf = open(filename, 'rb')
                  utils.log("Starting decompression of " + filename)
@@ -150,7 +173,7 @@ diff -Naur a/default.py b/default.py
                                                   bf, tar_name, size,
                                                   self.background) as decompressor:
                      decompressor.start()
-@@ -552,7 +554,7 @@
+@@ -559,7 +558,7 @@
                  ti = tf.extractfile(member)
                  outfile = os.path.join(constants.UPDATE_DIR, os.path.basename(member.name))
                  try:
@@ -159,7 +182,7 @@ diff -Naur a/default.py b/default.py
                                                 self.background) as extractor:
                          extractor.start()
                      utils.log("Extracted " + outfile)
-@@ -579,7 +581,7 @@
+@@ -586,7 +585,7 @@
                  tarfile = os.path.join(ADDON_DATA, self.selected_build.tar_name)
          
                  try:
@@ -168,7 +191,7 @@ diff -Naur a/default.py b/default.py
                                                 archive, tarfile, archive.size(),
                                                 self.background) as extractor:
                          extractor.start()
-@@ -602,7 +604,7 @@
+@@ -609,7 +608,7 @@
              size = os.path.getsize(tarpath)
  
              try:
@@ -177,7 +200,7 @@ diff -Naur a/default.py b/default.py
                                             tar, self.archive_tar_path, size,
                                             self.background) as extractor:
                      extractor.start()
-@@ -631,7 +633,7 @@
+@@ -638,7 +637,7 @@
          else:
              verify_progress = progress.Progress()
              
@@ -186,7 +209,7 @@ diff -Naur a/default.py b/default.py
      
          BLOCK_SIZE = 8192
          
-@@ -665,10 +667,10 @@
+@@ -672,10 +671,10 @@
          
                  if not self.md5sum_verified(md5sum, f):
                      utils.log("{} md5 mismatch!".format(f))
@@ -200,31 +223,37 @@ diff -Naur a/default.py b/default.py
                      utils.remove_update_files()
                      sys.exit(1)
                  else:
-@@ -679,18 +681,17 @@
+@@ -686,23 +685,17 @@
              f.write(str(self.selected_build))
  
          if addon.getSetting('confirm_reboot') == 'true':
--            if xbmcgui.Dialog().yesno("Confirm reboot",
+-            if xbmcgui.Dialog().yesno(
+-                    "Confirm reboot",
+-                    " ",
+-                    "Reboot now to install build  [COLOR=lightskyblue][B]{}[/COLOR][/B] ?"
+-                    .format(self.selected_build)):
 +            if xbmcgui.Dialog().yesno(LANG(32500),
-                                       " ",
--                                      "Reboot now to install build  [COLOR=lightskyblue][B]{}[/COLOR][/B] ?"
--                                      .format(self.selected_build)):
++                                      " ",
 +                                      LANG(32529).format(self.selected_build)):
                  xbmc.restart() 
              else:
--                utils.notify("Build {} will install on the next reboot".format(self.selected_build))
+-                utils.notify("Build {} will install on the next reboot"
+-                             .format(self.selected_build))
 +                utils.notify(LANG(32530).format(self.selected_build))
          else:
--            if progress.restart_countdown("Build  [COLOR=lightskyblue][B]{}[/COLOR][/B]  is ready to install.".format(self.selected_build)):
+-            if progress.restart_countdown("Build  [COLOR=lightskyblue][B]{}[/COLOR][/B]"
+-                                          "  is ready to install."
+-                                          .format(self.selected_build)):
 +            if progress.restart_countdown(LANG(32531).format(self.selected_build)):
                  xbmc.restart()
              else:
--                utils.notify("Build {} will install on the next reboot".format(self.selected_build))
+-                utils.notify("Build {} will install on the next reboot"
+-                             .format(self.selected_build))
 +                utils.notify(LANG(32530).format(self.selected_build))
  
  
  def check_for_new_build():
-@@ -738,18 +739,15 @@
+@@ -750,18 +743,15 @@
                  utils.log("New build {} is available, "
                            "prompting to show build list".format(latest))
  
@@ -249,7 +278,7 @@ diff -Naur a/default.py b/default.py
  
  
  def notify_installation():
-@@ -764,7 +762,7 @@
+@@ -776,7 +766,7 @@
          installed = builds.get_installed_build()
          utils.log("Installed build: {}".format(installed))
          if str(installed) == selected:
@@ -260,12 +289,12 @@ diff -Naur a/default.py b/default.py
          else:
 diff -Naur a/resources/language/English/strings.po b/resources/language/English/strings.po
 --- a/resources/language/English/strings.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/resources/language/English/strings.po	2015-08-22 22:05:18.000000000 +0300
-@@ -0,0 +1,378 @@
++++ b/resources/language/English/strings.po	2015-08-28 22:53:57.000000000 +0300
+@@ -0,0 +1,382 @@
 +# XBMC Media Center language file
 +# Addon Name: OpenELEC Dev Update
 +# Addon id: script.openelec.devupdate
-+# Addon version: 14.6.0
++# Addon version: 14.8.0
 +# Addon Provider: Leopold, YLLOW_DRAGON
 +msgid ""
 +msgstr ""
@@ -289,143 +318,147 @@ diff -Naur a/resources/language/English/strings.po b/resources/language/English/
 +msgid "Selected source name"
 +msgstr ""
 +
-+msgctxt "#32010"
-+msgid "Custom source"
-+msgstr ""
-+
-+msgctxt "#32011"
-+msgid "Name"
-+msgstr ""
-+
-+msgctxt "#32012"
-+msgid "URL"
-+msgstr ""
-+
-+msgctxt "#32013"
-+msgid "Build type"
-+msgstr ""
-+
-+msgctxt "#32014"
-+msgid "Development"
-+msgstr ""
-+
-+msgctxt "#32015"
-+msgid "Realease"
-+msgstr ""
-+
-+msgctxt "#32033"
-+msgid "Milhouse"
-+msgstr ""
-+
-+msgctxt "#32020"
-+msgid "Archive"
-+msgstr ""
-+
-+msgctxt "#32021"
-+msgid "Archive tar files (for quicker re-installs)"
-+msgstr ""
-+
-+msgctxt "#32022"
-+msgid "Archive directory"
-+msgstr ""
-+
-+msgctxt "#32030"
-+msgid "Misc"
-+msgstr ""
-+
-+msgctxt "#32031"
++msgctxt "#32002"
 +msgid "Run in background"
 +msgstr ""
 +
-+msgctxt "#32032"
++msgctxt "#32003"
++msgid "Archive tar files (for quicker re-installs)"
++msgstr ""
++
++msgctxt "#32004"
++msgid "Archive directory"
++msgstr ""
++
++msgctxt "#32005"
 +msgid "Verify files"
++msgstr ""
++
++msgctxt "#32006"
++msgid "Backup"
++msgstr ""
++
++msgctxt "#32010"
++msgid "Never"
++msgstr ""
++
++msgctxt "#32011"
++msgid "When not playing video"
++msgstr ""
++
++msgctxt "#32012"
++msgid "Always"
++msgstr ""
++
++msgctxt "#32013"
++msgid "Prompt every time"
 +msgstr ""
 +
 +msgctxt "#32100"
 +msgid "Notifications"
 +msgstr ""
 +
-+msgctxt "#32111"
-+msgid "Enable reboot confirmation"
-+msgstr ""
-+
-+msgctxt "#32121"
++msgctxt "#32101"
 +msgid "Enable new build notifications"
 +msgstr ""
 +
-+msgctxt "#32122"
++msgctxt "#32102"
 +msgid "Check only on boot"
 +msgstr ""
 +
-+msgctxt "#32123"
-+msgid "Prompt to show build list"
-+msgstr ""
-+
-+msgctxt "#32124"
-+msgid "Enable for official releases"
-+msgstr ""
-+
-+msgctxt "#32125"
-+msgid "Never"
-+msgstr ""
-+
-+msgctxt "#32126"
-+msgid "When not playing video"
-+msgstr ""
-+
-+msgctxt "#32127"
-+msgid "Always"
-+msgstr ""
-+
-+msgctxt "#32128"
++msgctxt "#32103"
 +msgid "Check interval in hours (requires restart)"
 +msgstr ""
 +
++msgctxt "#32104"
++msgid "Prompt to show build list"
++msgstr ""
++
++msgctxt "#32105"
++msgid "Enable for official releases"
++msgstr ""
++
++msgctxt "#32106"
++msgid "Enable reboot confirmation"
++msgstr ""
++
 +msgctxt "#32200"
-+msgid "Actions"
++msgid "Custom source"
++msgstr ""
++
++msgctxt "#32201"
++msgid "Enable"
++msgstr ""
++
++msgctxt "#32202"
++msgid "Name"
++msgstr ""
++
++msgctxt "#32203"
++msgid "URL"
++msgstr ""
++
++msgctxt "#32204"
++msgid "Build type"
++msgstr ""
++
++msgctxt "#32205"
++msgid "Custom RE"
++msgstr ""
++
++msgctxt "#32210"
++msgid "Development"
 +msgstr ""
 +
 +msgctxt "#32211"
-+msgid "Cancel pending update"
++msgid "Realease"
++msgstr ""
++
++msgctxt "#32212"
++msgid "Milhouse"
++msgstr ""
++
++msgctxt "#32213"
++msgid "Custom"
 +msgstr ""
 +
 +msgctxt "#32300"
++msgid "Actions"
++msgstr ""
++
++msgctxt "#32301"
++msgid "Cancel pending update"
++msgstr ""
++
++msgctxt "#32400"
 +msgid "Advanced"
 +msgstr ""
 +
-+msgctxt "#32311"
++msgctxt "#32401"
 +msgid "Override installed build type"
 +msgstr ""
 +
-+msgctxt "#32312"
++msgctxt "#32402"
 +msgid "Build type to install"
 +msgstr ""
 +
-+msgctxt "#32321"
++msgctxt "#32403"
 +msgid "Disable overclocking during update"
 +msgstr ""
 +
-+msgctxt "#32331"
++msgctxt "#32404"
 +msgid "Also update extlinux"
 +msgstr ""
 +
-+msgctxt "#32341"
++msgctxt "#32405"
 +msgid "Set timeout"
 +msgstr ""
 +
-+msgctxt "#32342"
++msgctxt "#32406"
 +msgid "Timeout (seconds)"
 +msgstr ""
 +
-+msgctxt "#32351"
-+msgid "Backup"
-+msgstr ""
-+
-+msgctxt "#32352"
-+msgid "Prompt every time"
-+msgstr ""
-+
-+msgctxt "#32361"
++msgctxt "#32407"
 +msgid "Debug"
 +msgstr ""
 +
@@ -642,12 +675,12 @@ diff -Naur a/resources/language/English/strings.po b/resources/language/English/
 +msgstr ""
 diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/strings.po
 --- a/resources/language/Russian/strings.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/resources/language/Russian/strings.po	2015-08-22 22:05:35.000000000 +0300
-@@ -0,0 +1,378 @@
++++ b/resources/language/Russian/strings.po	2015-08-28 22:53:21.000000000 +0300
+@@ -0,0 +1,382 @@
 +# XBMC Media Center language file
 +# Addon Name: OpenELEC Dev Update
 +# Addon id: script.openelec.devupdate
-+# Addon version: 14.6.0
++# Addon version: 14.8.0
 +# Addon Provider: Leopold, YLLOW_DRAGON
 +msgid ""
 +msgstr ""
@@ -671,143 +704,147 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +msgid "Selected source name"
 +msgstr "Выбранный ресурс"
 +
-+msgctxt "#32010"
-+msgid "Custom source"
-+msgstr "Пользовательский ресурс"
-+
-+msgctxt "#32011"
-+msgid "Name"
-+msgstr "Название"
-+
-+msgctxt "#32012"
-+msgid "URL"
-+msgstr "Ссылка"
-+
-+msgctxt "#32013"
-+msgid "Build type"
-+msgstr "Тип сборки"
-+
-+msgctxt "#32014"
-+msgid "Development"
-+msgstr "Разработка"
-+
-+msgctxt "#32015"
-+msgid "Realease"
-+msgstr "Релиз"
-+
-+msgctxt "#32033"
-+msgid "Milhouse"
-+msgstr ""
-+
-+msgctxt "#32020"
-+msgid "Archive"
-+msgstr "Архив"
-+
-+msgctxt "#32021"
-+msgid "Archive tar files (for quicker re-installs)"
-+msgstr "tar архив файлов (для более быстрой переустановки)"
-+
-+msgctxt "#32022"
-+msgid "Archive directory"
-+msgstr "Папка для архива"
-+
-+msgctxt "#32030"
-+msgid "Misc"
-+msgstr "Разное"
-+
-+msgctxt "#32031"
++msgctxt "#32002"
 +msgid "Run in background"
 +msgstr "Запуск в фоне"
 +
-+msgctxt "#32032"
++msgctxt "#32003"
++msgid "Archive tar files (for quicker re-installs)"
++msgstr "tar архив файлов (для более быстрой переустановки)"
++
++msgctxt "#32004"
++msgid "Archive directory"
++msgstr "Папка для архива"
++
++msgctxt "#32005"
 +msgid "Verify files"
 +msgstr "Проверка файлов"
++
++msgctxt "#32006"
++msgid "Backup"
++msgstr "Резервная копия"
++
++msgctxt "#32010"
++msgid "Never"
++msgstr "Никогда"
++
++msgctxt "#32011"
++msgid "When not playing video"
++msgstr "Когда не воспроизводится видео"
++
++msgctxt "#32012"
++msgid "Always"
++msgstr "Всегда"
++
++msgctxt "#32013"
++msgid "Prompt every time"
++msgstr "Запрашивать каждый раз"
 +
 +msgctxt "#32100"
 +msgid "Notifications"
 +msgstr "Уведомления"
 +
-+msgctxt "#32111"
-+msgid "Enable reboot confirmation"
-+msgstr "Включить подтверждение перезагрузки"
-+
-+msgctxt "#32121"
++msgctxt "#32101"
 +msgid "Enable new build notifications"
 +msgstr "Включить уведомления о новых сборках"
 +
-+msgctxt "#32122"
++msgctxt "#32102"
 +msgid "Check only on boot"
 +msgstr "Проверять только при загрузке"
 +
-+msgctxt "#32123"
-+msgid "Prompt to show build list"
-+msgstr "Предлагать показывать список сборок"
-+
-+msgctxt "#32124"
-+msgid "Enable for official releases"
-+msgstr "Включить для официальных релизов"
-+
-+msgctxt "#32125"
-+msgid "Never"
-+msgstr "Никогда"
-+
-+msgctxt "#32126"
-+msgid "When not playing video"
-+msgstr "Когда не воспроизводится видео"
-+
-+msgctxt "#32127"
-+msgid "Always"
-+msgstr "Всегда"
-+
-+msgctxt "#32128"
++msgctxt "#32103"
 +msgid "Check interval in hours (requires restart)"
 +msgstr "Интервал проверки в часах (требуется перезапуск)"
 +
++msgctxt "#32104"
++msgid "Prompt to show build list"
++msgstr "Предлагать показывать список сборок"
++
++msgctxt "#32105"
++msgid "Enable for official releases"
++msgstr "Включить для официальных релизов"
++
++msgctxt "#32106"
++msgid "Enable reboot confirmation"
++msgstr "Включить подтверждение перезагрузки"
++
 +msgctxt "#32200"
++msgid "Custom source"
++msgstr "Пользовательский ресурс"
++
++msgctxt "#32201"
++msgid "Enable"
++msgstr "Разрешить"
++
++msgctxt "#32202"
++msgid "Name"
++msgstr "Название"
++
++msgctxt "#32203"
++msgid "URL"
++msgstr "Ссылка"
++
++msgctxt "#32204"
++msgid "Build type"
++msgstr "Тип сборки"
++
++msgctxt "#32205"
++msgid "Custom RE"
++msgstr "Пользовательское выражение"
++
++msgctxt "#32210"
++msgid "Development"
++msgstr "Разработка"
++
++msgctxt "#32211"
++msgid "Realease"
++msgstr "Релиз"
++
++msgctxt "#32212"
++msgid "Milhouse"
++msgstr ""
++
++msgctxt "#32213"
++msgid "Custom"
++msgstr "Пользовательская"
++
++msgctxt "#32300"
 +msgid "Actions"
 +msgstr "Действия"
 +
-+msgctxt "#32211"
++msgctxt "#32301"
 +msgid "Cancel pending update"
 +msgstr "Отменить отложенные обновления"
 +
-+msgctxt "#32300"
++msgctxt "#32400"
 +msgid "Advanced"
 +msgstr "Расширенные"
 +
-+msgctxt "#32311"
++msgctxt "#32401"
 +msgid "Override installed build type"
 +msgstr "Переопределить тип установливаемой сборки"
 +
-+msgctxt "#32312"
++msgctxt "#32402"
 +msgid "Build type to install"
 +msgstr "Тип сборки для установки"
 +
-+msgctxt "#32321"
++msgctxt "#32403"
 +msgid "Disable overclocking during update"
 +msgstr "Отключить разгон во время обновления"
 +
-+msgctxt "#32331"
++msgctxt "#32404"
 +msgid "Also update extlinux"
 +msgstr "Также обновлять extlinux"
 +
-+msgctxt "#32341"
++msgctxt "#32405"
 +msgid "Set timeout"
 +msgstr "Установить время ожидания"
 +
-+msgctxt "#32342"
++msgctxt "#32406"
 +msgid "Timeout (seconds)"
 +msgstr "Время ожидания(в секундах)"
 +
-+msgctxt "#32351"
-+msgid "Backup"
-+msgstr "Резервная копия"
-+
-+msgctxt "#32352"
-+msgid "Prompt every time"
-+msgstr "Запрашивать каждый раз"
-+
-+msgctxt "#32361"
++msgctxt "#32407"
 +msgid "Debug"
 +msgstr "Отладка"
 +
@@ -1023,34 +1060,85 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +msgid "Invalid URL"
 +msgstr "Неправильный URL"
 diff -Naur a/resources/lib/builds.py b/resources/lib/builds.py
---- a/resources/lib/builds.py	2015-08-22 14:04:31.000000000 +0300
-+++ b/resources/lib/builds.py	2015-08-22 22:18:03.000000000 +0300
-@@ -249,8 +249,10 @@
+--- a/resources/lib/builds.py	2015-08-28 18:39:05.000000000 +0300
++++ b/resources/lib/builds.py	2015-08-29 00:09:20.000000000 +0300
+@@ -2,6 +2,7 @@
  
+ # This is required to work around the ImportError exception
+ # "Failed to import _strptime because the import lock is held by another thread."
++
+ import _strptime
+ 
+ import time
+@@ -11,13 +12,13 @@
+ from datetime import datetime
+ from collections import OrderedDict
+ from urllib2 import unquote
+-
++import xbmcaddon
+ from bs4 import BeautifulSoup, SoupStrainer
+ import requests
+ import html2text
+-
+ import constants
+ 
++addon = xbmcaddon.Addon(constants.ADDON_ID)
+ 
+ class BuildURLError(Exception):
+     pass
+@@ -250,7 +251,12 @@
  class DropboxBuildLinkExtractor(BuildLinkExtractor):
      CSS_CLASS = 'filename-link'
-+    
-+class YDBuildLinkExtractor(BuildLinkExtractor):
-+    BUILD_RE = ".*OpenELEC.*-{arch}-[\d\.]+-(\d+)-r\d+[a-z]*-g([0-9a-z]+)\.tar(|\.bz2)"
  
 -        
++class YDBuildLinkExtractor(BuildLinkExtractor):
++    BUILD_RE = ".*OpenELEC.*-{arch}-[\d\.]+-(\d+)-r\d+[a-z]*-g([0-9a-z]+)\.tar(|\.bz2)"
++    
++class CustomBuildLinkExtractor(BuildLinkExtractor):
++    BUILD_RE = addon.getSetting('custom_re')
++
  class ReleaseLinkExtractor(BuildLinkExtractor):
      BUILD_RE = ".*OpenELEC.*-{arch}-([\d\.]+)\.tar(|\.bz2)"
      BASE_URL = None
-@@ -378,10 +380,9 @@
+@@ -260,7 +266,6 @@
+         baseurl = self.BASE_URL if self.BASE_URL is not None else self.url
+         return ReleaseLink(baseurl, href, self.build_re.match(href).group(1))
  
-     def __repr__(self):
-         return "{}('{}')".format(self.__class__.__name__, self.url)
 -
+ class OfficialReleaseLinkExtractor(ReleaseLinkExtractor):
+     BASE_URL = "http://releases.openelec.tv"
+ 
+@@ -273,7 +278,6 @@
+     BUILD_RE = ("OpenELEC-{arch}-(?:\d+\.\d+-|)"
+                 "Milhouse-(\d+)-(?:r|%23)(\d+[a-z]*)-g[0-9a-z]+\.tar(|\.bz2)")
+ 
 -
-+        
+ class BuildInfo(object):
+     def __init__(self, summary, details=None):
+         self.summary = summary
+@@ -282,12 +286,10 @@
+     def __str__(self):
+         return self.summary
+ 
+-
+ class BuildDetailsExtractor(BaseExtractor):
+     def get_text(self, timeout=None):
+         return ""
+ 
+-
+ class MilhouseBuildDetailsExtractor(BuildDetailsExtractor):
+     def get_text(self, timeout=None):
+         soup = BeautifulSoup(self._get_text(timeout), 'html.parser')
+@@ -381,7 +383,7 @@
+ 
+ 
  def get_installed_build():
 -    DEVEL_RE = "devel-(\d+)-r\d+-g([a-z0-9]+)"
 +    DEVEL_RE = ".*-(\d+)-r\d+-g([a-z0-9]+)"
-     try:
-         os_release = open('/etc/os-release').read()
-     except IOError:
-@@ -448,6 +449,9 @@
+ 
+     if constants.OS_RELEASE['NAME'] == "OpenELEC":
+         version = constants.OS_RELEASE['VERSION']
+@@ -443,6 +445,9 @@
                             subdir=arch,
                             extractor=DualAudioReleaseLinkExtractor)
      _sources["DarkAngel2401 Dual Audio Builds"] = builds_url
@@ -1061,17 +1149,27 @@ diff -Naur a/resources/lib/builds.py b/resources/lib/builds.py
      return _sources
  
 diff -Naur a/resources/lib/utils.py b/resources/lib/utils.py
---- a/resources/lib/utils.py	2015-08-22 14:04:31.000000000 +0300
-+++ b/resources/lib/utils.py	2015-08-22 22:35:07.000000000 +0300
-@@ -14,6 +14,7 @@
- ADDON_NAME = addon.getAddonInfo('name')
+--- a/resources/lib/utils.py	2015-08-28 18:39:05.000000000 +0300
++++ b/resources/lib/utils.py	2015-08-29 00:09:53.000000000 +0300
+@@ -5,9 +5,7 @@
+ import glob
+ import functools
+ import stat
+-
+ import xbmc, xbmcaddon, xbmcgui
+-
+ import constants
+ 
+ addon = xbmcaddon.Addon(constants.ADDON_ID)
+@@ -16,6 +14,7 @@
  ADDON_VERSION = xbmc.translatePath(addon.getAddonInfo('version'))
  ICON_PATH = addon.getAddonInfo('icon')
+ ADDON_PATH = xbmc.translatePath(addon.getAddonInfo('path'))
 +LANG = addon.getLocalizedString
  
  
  def log(txt, level=xbmc.LOGNOTICE):
-@@ -27,28 +28,28 @@
+@@ -29,30 +28,30 @@
      log("".join(traceback.format_exception(*sys.exc_info())), xbmc.LOGERROR)
      
  def connection_error(msg):
@@ -1108,15 +1206,12 @@ diff -Naur a/resources/lib/utils.py b/resources/lib/utils.py
 +    xbmcgui.Dialog().ok(LANG(32548),
 +                        LANG(32549),
                          " ", msg)
-         
+-        
++                        
  def mount_readwrite():    
-@@ -103,12 +104,11 @@
-     check_prompt = int(addon.getSetting('check_prompt'))
-     return check_prompt == 2 or (check_prompt == 1 and not xbmc.Player().isPlayingVideo())
- 
--            
- if __name__ == "__main__":
-     if len(sys.argv) > 1:
+     subprocess.call(['mount', '-o', 'rw,remount', '/flash'])
+     
+@@ -138,6 +137,6 @@
          if sys.argv[1] == 'cancel':
              success = remove_update_files()
              if success:
@@ -1126,84 +1221,85 @@ diff -Naur a/resources/lib/utils.py b/resources/lib/utils.py
 -                notify("Update file(s) not deleted")
 +                notify(LANG(32551))
 diff -Naur a/resources/settings.xml b/resources/settings.xml
---- a/resources/settings.xml	2015-08-22 14:04:31.000000000 +0300
-+++ b/resources/settings.xml	2015-08-22 22:09:51.000000000 +0300
-@@ -1,44 +1,44 @@
+--- a/resources/settings.xml	2015-08-28 18:39:04.000000000 +0300
++++ b/resources/settings.xml	2015-08-28 23:05:22.000000000 +0300
+@@ -1,47 +1,47 @@
 -﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 +<?xml version="1.0" encoding="utf-8" standalone="yes"?>
  <settings>
 -    <category label="General">
 -        <setting label="Selected source name" type="text" id="source_name" default="Official Snapshot Builds" visible="false"/>
--        <setting type="lsep" label="Custom source"/>
--        <setting label="Name" type="text" id="custom_source"/>
--        <setting label="URL" type="text" id="custom_url" enable="!eq(-1,)"/>
--        <setting label="Build type" type="enum" id="build_type" values="Development|Release|Milhouse" enable="!eq(-2,)"/>
--        <setting type="lsep" label="Archive"/>
+-
+-        <setting label="Show progress in background" type="bool" id="background" default="true"/>
++    <category label="32000">
++        <setting label="32001" type="text" id="source_name" default="YLLOW_DRAGON Builds" visible="false"/>
++        <setting label="32002" type="bool" id="background" default="true"/>
+         <setting type="sep"/>
 -        <setting label="Archive tar files (for quicker re-installs)" type="bool" id="archive" default="false"/>
--        <setting label="Archive directory" type="folder" id="archive_root" default="/storage/" enable="eq(-1,true)"/>
--        <setting type="lsep" label="Misc"/>
--        <setting label="Run in background" type="bool" id="background" default="true"/>
--        <setting label="Verify files" type="bool" id="verify_files" default="false"/>
-+    <category label="32000">    
-+    <setting label="32001" type="text" id="source_name" default="YLLOW_DRAGON Builds" visible="false"/>
-+        <setting type="lsep" label="32010"/>
-+        <setting label="32011" type="text" id="custom_source"/>
-+        <setting label="32012" type="text" id="custom_url" enable="!eq(-1,)"/>
-+        <setting label="32013" type="enum" id="build_type" lvalues="32014|32015|32033" enable="!eq(-2,)"/>
-+        <setting type="lsep" label="32020"/>
-+        <setting label="32021" type="bool" id="archive" default="false"/>
-+        <setting label="32022" type="folder" id="archive_root" default="/storage/" enable="eq(-1,true)"/>
-+        <setting type="lsep" label="32030"/>
-+        <setting label="32031" type="bool" id="background" default="true"/>
-+        <setting label="32032" type="bool" id="verify_files" default="false"/>
+-        <setting label="Archive directory" type="folder" id="archive_root" default="/storage/" enable="eq(-1,true)" subsetting="true"/>
++        <setting label="32003" type="bool" id="archive" default="false"/>
++        <setting label="32004" type="folder" id="archive_root" default="/storage/" enable="eq(-1,true)" subsetting="true"/>
+         <setting type="sep"/>
+-        <setting label="Verify update files" type="bool" id="verify_files" default="false"/>
++        <setting label="32005" type="bool" id="verify_files" default="false"/>
+         <setting type="sep"/>
+-        <setting label="Backup" type="enum" id="backup" values="Never|Prompt every time|Always" default="1"/>
++        <setting label="32006" type="enum" id="backup" lvalues="32010|32013|32012" default="1"/>
      </category>
 -    <category label="Notifications">
--        <setting label="Enable reboot confirmation" type="bool" id="confirm_reboot" default="false"/>
-+    <category label="32100">
-+        <setting label="32111" type="bool" id="confirm_reboot" default="false"/>
-         <setting type="sep"/>
 -        <setting label="Enable new build notifications" type="bool" id="check" default="true"/>
 -        <setting label="Check only on boot" type="bool" id="check_onbootonly" enable="eq(-1,true)" subsetting="true" default="false"/>
 -        <setting label="Check interval in hours (requires restart)" type="slider" id="check_interval" enable="eq(-2,true) + eq(-1,false)" subsetting="true" default="3" range="1,1,24" option="int"/>
 -        <setting label="Prompt to show build list" type="enum" id="check_prompt" values="Never|When not playing video|Always" enable="eq(-3,true)" subsetting="true" default="1"/>
 -        <setting label="Enable for official releases" type="bool" id="check_official" enable="eq(-4,true)" subsetting="true" default="false"/>
-+        <setting label="32121" type="bool" id="check" default="true"/>
-+        <setting label="32122" type="bool" id="check_onbootonly" enable="eq(-1,true)" subsetting="true" default="false"/>
-+        <setting label="32128" type="slider" id="check_interval" enable="eq(-2,true) + eq(-1,false)" subsetting="true" default="3" range="1,1,24" option="int"/>
-+        <setting label="32123" type="enum" id="check_prompt" lvalues="32125|32126|32127" enable="eq(-3,true)" subsetting="true" default="1"/>
-+        <setting label="32124" type="bool" id="check_official" enable="eq(-4,true)" subsetting="true" default="false"/>
++    <category label="32100">
++        <setting label="32101" type="bool" id="check" default="true"/>
++        <setting label="32102" type="bool" id="check_onbootonly" enable="eq(-1,true)" subsetting="true" default="false"/>
++        <setting label="32103" type="slider" id="check_interval" enable="eq(-2,true) + eq(-1,false)" subsetting="true" default="3" range="1,1,24" option="int"/>
++        <setting label="32104" type="enum" id="check_prompt" lvalues="32010|32011|32012" enable="eq(-3,true)" subsetting="true" default="1"/>
++        <setting label="32105" type="bool" id="check_official" enable="eq(-4,true)" subsetting="true" default="false"/>
+         <setting type="sep"/>
+-        <setting label="Enable reboot confirmation" type="bool" id="confirm_reboot" default="false"/>
++        <setting label="32106" type="bool" id="confirm_reboot" default="false"/>
+     </category>
+-    <category label="Custom Source">
+-        <setting label="Enable" type="bool" id="custom_source_enable" default="true"/>
+-        <setting label="Name" type="text" id="custom_source" enable="eq(-1,true)" subsetting="true"/>
+-        <setting label="URL" type="text" id="custom_url" enable="eq(-2,true) + !eq(-1,)"  subsetting="true"/>
+-        <setting label="Build type" type="enum" id="build_type" values="Development|Release|Milhouse" enable="eq(-3,true) + !eq(-2,)" subsetting="true"/>
++    <category label="32200">
++        <setting label="32201" type="bool" id="custom_source_enable" default="true"/>
++        <setting label="32202" type="text" id="custom_source" enable="eq(-1,true)" subsetting="true"/>
++        <setting label="32203" type="text" id="custom_url" enable="eq(-2,true) + !eq(-1,)"  subsetting="true"/>
++        <setting label="32204" type="enum" id="build_type" lvalues="32210|32211|32212|32213" enable="eq(-3,true) + !eq(-2,)" subsetting="true"/>
++        <setting label="32205" type="text" id="custom_re" enable="eq(-4,true) + !eq(-3,)" visible="eq(-1,3)"/>
      </category>
 -    <category label="Actions">
-+    <category label="32200">
++    <category label="32300">
          <setting type="bool" id="update_pending" visible="false"/>
 -        <setting label="Cancel pending update" type="action" action="RunScript($CWD/resources/lib/utils.py, cancel)" enable="eq(-1,true)"/>
-+        <setting label="32211" type="action" action="RunScript($CWD/resources/lib/utils.py, cancel)" enable="eq(-1,true)"/>
++        <setting label="32301" type="action" action="RunScript($CWD/resources/lib/utils.py, cancel)" enable="eq(-1,true)"/>
      </category>
 -    <category label="Advanced">
 -        <setting label="Override installed build type" type="bool" id="set_arch" default="false"/>
 -        <setting label="Build type to install" type="select" id="arch" values="Generic.i386|Generic.x86_64|ION.x86_64|Intel.x86_64|Fusion.x86_64|Cuboxi.arm|imx6.arm|RPi.arm|RPi2.arm" enable="eq(-1,true)" subsetting="true"/>
-+    <category label="32300">
-+        <setting label="32311" type="bool" id="set_arch" default="false"/>
-+        <setting label="32312" type="select" id="arch" values="Generic.i386|Generic.x86_64|ION.x86_64|Intel.x86_64|Fusion.x86_64|Cuboxi.arm|imx6.arm|RPi.arm|RPi2.arm" enable="eq(-1,true)" subsetting="true"/>
++    <category label="32400">
++        <setting label="32401" type="bool" id="set_arch" default="false"/>
++        <setting label="32402" type="select" id="arch" values="Generic.i386|Generic.x86_64|ION.x86_64|Intel.x86_64|Fusion.x86_64|Cuboxi.arm|imx6.arm|RPi.arm|RPi2.arm" enable="eq(-1,true)" subsetting="true"/>
 +        <setting type="sep" visible="System.Platform.Linux.RaspberryPi"/>
-+        <setting label="32321" type="bool" id="disable_overclock" default="false" visible="System.Platform.Linux.RaspberryPi"/>
++        <setting label="32403" type="bool" id="disable_overclock" default="false" visible="System.Platform.Linux.RaspberryPi"/>
          <setting type="sep"/>
 -        <setting label="Disable overclocking during update" type="bool" id="disable_overclock" default="false" visible="System.Platform.Linux.RaspberryPi"/>
-+        <setting label="32331" type="bool" id="update_extlinux" default="false" visible="!System.Platform.Linux.RaspberryPi"/>
++        <setting label="32404" type="bool" id="update_extlinux" default="false" visible="!System.Platform.Linux.RaspberryPi"/>
          <setting type="sep"/>
 -        <setting label="Also update extlinux" type="bool" id="update_extlinux" default="false" visible="!System.Platform.Linux.RaspberryPi"/>
-+        <setting label="32341" type="bool" id="set_timeout" default="false"/>
-+        <setting label="32342" type="number" id="timeout" enable="eq(-1,true)" subsetting="true" default="10"/>
++        <setting label="32405" type="bool" id="set_timeout" default="false"/>
++        <setting label="32406" type="number" id="timeout" enable="eq(-1,true)" subsetting="true" default="10"/>
          <setting type="sep"/>
 -        <setting label="Set timeout" type="bool" id="set_timeout" default="false"/>
 -        <setting label="Timeout (seconds)" type="number" id="timeout" enable="eq(-1,true)" subsetting="true" default="10"/>
-+        <setting label="32351" type="enum" id="backup" lvalues="32125|32352|32127" default="1"/>       
-         <setting type="sep"/>
--        <setting label="Backup" type="enum" id="backup" values="Never|Prompt every time|Always" default="1"/>       
 -        <setting type="sep"/>
 -        <setting label="Debug" type="bool" id="debug" default="false"/>
-+        <setting label="32361" type="bool" id="debug" default="false"/>
++        <setting label="32407" type="bool" id="debug" default="false"/>
      </category>
--</settings>
-+</settings>
-\ В конце файла нет новой строки
+ </settings>
