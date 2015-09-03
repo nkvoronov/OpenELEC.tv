@@ -47,7 +47,7 @@ if [ "$KODI_ADDON_AUDIO_MIXER" = yes ]; then
 fi
 
 if [ "$KODI_ADDON_VDRFRONT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-vdrfront"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-vdrfront kodi-addon-xvdr"  
 fi
 
 if [ "$KODI_THEME_CONFLUENCE_PLOOD" = yes ]; then

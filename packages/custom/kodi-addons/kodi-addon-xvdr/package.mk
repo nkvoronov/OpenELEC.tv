@@ -16,40 +16,33 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="vdr-plugin-restfulapi"
-PKG_VERSION="ef51cb0"
+PKG_NAME="kodi-addon-xvdr"
+PKG_VERSION="88265b8"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/yavdr/vdr-plugin-restfulapi.git"
+PKG_SITE="https://github.com/pipelka/xbmc-addon-xvdr"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain vdr cxxtools vdr-wirbelscan ImageMagick"
+PKG_DEPENDS_TARGET="toolchain zlib kodi"
 PKG_PRIORITY="optional"
-PKG_SECTION="multimedia"
-PKG_SHORTDESC="vdr-plugin-restfulapi: the restful API for the VDR/"
-PKG_LONGDESC="vdr-plugin-restfulapi allows to access many internals of the VDR via a restful API"
+PKG_SECTION="mediacenter"
+PKG_SHORTDESC="XVDR addon for Kodi"
+PKG_LONGDESC="This addon allows Kodi PVR to connect to the VDR server."
 
 PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
+PKG_AUTORECONF="yes"
 
-pre_configure_target() {
-  export CFLAGS="$CFLAGS -fPIC -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
-  export CXXFLAGS="$CXXFLAGS -fPIC -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
-  export LDFLAGS="$LDFLAGS -fPIC -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
-}
+PKG_CONFIGURE_OPTS_TARGET="--prefix=/usr/share/kodi"
+
+export CXXFLAGS="$CXXFLAGS -DZLIB_INTERNAL=1"
 
 pre_make_target() {
   # dont build parallel
   MAKEFLAGS=-j1
 }
 
-make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
-  make VDRDIR=$VDR_DIR \
-  LIBDIR="." \
-  LOCALEDIR="./locale"
-}
-
-makeinstall_target() {
-  : # installation not needed, done by create-addon script
+post_makeinstall_target() {
+  if [ "$DEBUG" != yes ]; then
+    $STRIP $INSTALL/usr/share/kodi/addons/pvr.vdr.xvdr/XBMC_VDR_xvdr.pvr
+  fi
 }

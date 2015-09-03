@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="53"
+PKG_REV="54"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -323,7 +323,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-be2b8bc
+    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-ef51cb0
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi/webapp
