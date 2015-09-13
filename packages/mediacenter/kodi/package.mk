@@ -17,13 +17,8 @@
 ################################################################################
 
 PKG_NAME="kodi"
-if [ "$ADSP_SUPPORT" = yes ]; then
-  PKG_VERSION="16.0-alpha1-bad8efc"
-  PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/adsp/$PKG_NAME-$PKG_VERSION.tar.xz"
-else
-  PKG_VERSION="15.2-rc2-c48205e"
-  PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-fi
+PKG_VERSION="15.2-rc2-f9f93ff"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
