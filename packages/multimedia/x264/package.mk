@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="x264"
-PKG_VERSION="snapshot-20141218-2245-stable"
+PKG_VERSION="snapshot-20150917-2245"
 PKG_REV="333"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -71,14 +71,15 @@ configure_target() {
               --sysroot=$SYSROOT_PREFIX \
               --extra-cflags="$CFLAGS" \
               --extra-ldflags="$LDFLAGS" \
-              --enable-static \
               $X264_DEBUG \
               $X264_PIC \
+	      --enable-static \
               --disable-opencl \
               --disable-avs \
               --disable-cli \
               --disable-ffms \
               --disable-gpac \
               --disable-lavf \
-              --disable-swscale
+              --disable-swscale \
+	      --disable-asm
 }
