@@ -32,7 +32,7 @@ PKG_LONGDESC="A VDR skinning engine that displays XML based Skins"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+VDR_DIR=$(get_build_dir vdr)
 
 pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC"

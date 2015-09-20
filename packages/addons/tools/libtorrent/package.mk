@@ -44,7 +44,7 @@ makeinstall_target() {
 }
 
 addon() {
-  LIBTORRENT_DIR=$ROOT/$BUILD/libtorrent-rasterbar-1.0.3
+  LIBTORRENT_DIR=$(get_build_dir libtorrent-rasterbar)
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
     cp -P $LIBTORRENT_DIR/.install_pkg/usr/lib/libtorrent-rasterbar.so.8.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtorrent-rasterbar.so.8

@@ -44,8 +44,8 @@ makeinstall_target() {
 }
 
 addon() {
-  MUPEN64PLUS_DIR=$ROOT/$BUILD/mupen64plus-2.0.0
-  MUPEN64PLUS_EXT_DIR=$ROOT/$BUILD/mupen64plus-extraplugins-2.0.0
+  MUPEN64PLUS_DIR=$(get_build_dir mupen64plus)
+  MUPEN64PLUS_EXT_DIR=$(get_build_dir mupen64plus-extraplugins)
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
     cp -PR $MUPEN64PLUS_DIR/test/*.ini $ADDON_BUILD/$PKG_ADDON_ID/config

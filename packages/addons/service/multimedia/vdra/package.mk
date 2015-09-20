@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="46"
+PKG_REV="47"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -203,31 +203,32 @@ makeinstall_target() {
 }
 
 addon() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+
   API_VERSION="2.2.0"
-  TNTNET_DIR=$ROOT/$BUILD/tntnet-2.2.1
-  TNTDB_DIR=$ROOT/$BUILD/tntdb-1.3
-  LIBUPNP_DIR=$ROOT/$BUILD/libupnp-1.6.19
-  GLIBMM_DIR=$ROOT/$BUILD/glibmm-2.39.93
-  LIBXMLPP_DIR=$ROOT/$BUILD/libxml++-2.36.0
-  LIBSIGPP_DIR=$ROOT/$BUILD/libsigc++-2.2.10
-  LIBXCB_DIR=$ROOT/$BUILD/libxcb-1.11
-  LIBXCBUTIL_DIR=$ROOT/$BUILD/xcb-util-0.3.9
-  LIBXCBUTILIMAGE_DIR=$ROOT/$BUILD/xcb-util-image-0.3.9
-  LIBXCBUTILKEYSYMS_DIR=$ROOT/$BUILD/xcb-util-keysyms-0.3.9
-  LIBXCBUTILRENDERUTIL_DIR=$ROOT/$BUILD/xcb-util-renderutil-0.3.9
-  LIBXCBUTILWM_DIR=$ROOT/$BUILD/xcb-util-wm-0.4.1
-  JANSSON_DIR=$ROOT/$BUILD/jansson-2.6
-  #IM_DIR=$ROOT/$BUILD/ImageMagick-6.9.0-10
-  IM_DIR=$ROOT/$BUILD/ImageMagick-6.7.7-10
-  XINELIB_DIR=$ROOT/$BUILD/xine-lib-e6a81be
-  LIBXFT_DIR=$ROOT/$BUILD/libXft-2.3.2
-  CAIRO_DIR=$ROOT/$BUILD/cairo-1.12.16
-  PANGO_DIR=$ROOT/$BUILD/pango-1.36.3
-  HARFBUZZ_DIR=$ROOT/$BUILD/harfbuzz-0.9.27
-  GDK_PIXBUF_DIR=$ROOT/$BUILD/gdk-pixbuf-2.28.2
-  LIBCROCO_DIR=$ROOT/$BUILD/libcroco-0.6.8
-  LIBRSVG_DIR=$ROOT/$BUILD/librsvg-2.40.9
+  VDR_DIR=$(get_build_dir vdr)
+
+  TNTNET_DIR=$(get_build_dir tntnet)
+  TNTDB_DIR=$(get_build_dir tntdb)
+  LIBUPNP_DIR=$(get_build_dir libupnp)
+  GLIBMM_DIR=$(get_build_dir glibmm)
+  LIBXMLPP_DIR=$(get_build_dir libxml++)
+  LIBSIGPP_DIR=$(get_build_dir libsigc++)
+  LIBXCB_DIR=$(get_build_dir libxcb)
+  LIBXCBUTIL_DIR=$(get_build_dir xcb-util)
+  LIBXCBUTILIMAGE_DIR=$(get_build_dir xcb-util-image)
+  LIBXCBUTILKEYSYMS_DIR=$(get_build_dir xcb-util-keysyms)
+  LIBXCBUTILRENDERUTIL_DIR=$(get_build_dir xcb-util-renderutil)
+  LIBXCBUTILWM_DIR=$(get_build_dir xcb-util-wm)
+  JANSSON_DIR=$(get_build_dir jansson)
+  IM_DIR=$(get_build_dir ImageMagick)
+  XINELIB_DIR=$(get_build_dir xine-lib)
+  LIBXFT_DIR=$(get_build_dir libXft)
+  CAIRO_DIR=$(get_build_dir cairo)
+  PANGO_DIR=$(get_build_dir pango)
+  HARFBUZZ_DIR=$(get_build_dir harfbuzz)
+  GDK_PIXBUF_DIR=$(get_build_dir gdk-pixbuf)
+  LIBCROCO_DIR=$(get_build_dir libcroco)
+  LIBRSVG_DIR=$(get_build_dir librsvg)
   
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin/vdr.bin
@@ -238,7 +239,7 @@ addon() {
     cp $VDR_DIR/sources.conf $ADDON_BUILD/$PKG_ADDON_ID/config
     cp $VDR_DIR/svdrphosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config
     echo '0.0.0.0/0' >> $ADDON_BUILD/$PKG_ADDON_ID/config/svdrphosts.conf
-    cp -PR $PKG_DIR/config/vdr/* $ADDON_BUILD/$PKG_ADDON_ID/config
+    cp -PR $PKG_DIR/config/* $ADDON_BUILD/$PKG_ADDON_ID/config
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale
@@ -253,7 +254,7 @@ addon() {
   done
 
   if [ "$ENABLE_VDR_CONTROL" = yes ]; then
-    VDR_PLUGIN_CONTROL_DIR=$ROOT/$BUILD/vdr-control-0.0.2a
+    VDR_PLUGIN_CONTROL_DIR=$(get_build_dir vdr-control)
     cp -PR $VDR_PLUGIN_CONTROL_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_CONTROL_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -264,12 +265,12 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
-    VDR_PLUGIN_DUMMYDEVICE_DIR=$ROOT/$BUILD/vdr-dummydevice-2.0.0
+    VDR_PLUGIN_DUMMYDEVICE_DIR=$(get_build_dir vdr-dummydevice)
     cp -PR $VDR_PLUGIN_DUMMYDEVICE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
   fi
 
   if [ "$ENABLE_VDR_EPGSEARCH" = yes ]; then
-    VDR_PLUGIN_EPGSEARCH_DIR=$ROOT/$BUILD/vdr-epgsearch-0b09f90
+    VDR_PLUGIN_EPGSEARCH_DIR=$(get_build_dir vdr-epgsearch)
     cp -PR $VDR_PLUGIN_EPGSEARCH_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/epgsearch
       cp -PR $VDR_PLUGIN_EPGSEARCH_DIR/conf/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/epgsearch
@@ -282,7 +283,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_IPTV" = yes ]; then
-    VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.2.1
+    VDR_PLUGIN_IPTV_DIR=$(get_build_dir vdr-iptv)
     cp -PR $VDR_PLUGIN_IPTV_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/iptv
       cp -PR $VDR_PLUGIN_IPTV_DIR/iptv/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/iptv
@@ -295,7 +296,7 @@ addon() {
   fi 
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-ce8a124
+    VDR_PLUGIN_DVBAPI_DIR=$(get_build_dir vdr-plugin-dvbapi)
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -306,7 +307,7 @@ addon() {
   fi 
 
   if [ "$ENABLE_VDR_PLUGIN_EEPG" = yes ]; then
-    VDR_PLUGIN_EEPG_DIR=$ROOT/$BUILD/vdr-plugin-eepg-9cd9a75
+    VDR_PLUGIN_EEPG_DIR=$(get_build_dir vdr-plugin-eepg)
     cp -PR $VDR_PLUGIN_EEPG_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     #mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/eepg
     for fmo in `ls $VDR_PLUGIN_EEPG_DIR/po/*.mo`;do
@@ -318,7 +319,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_EPGFIXER" = yes ]; then
-    VDR_PLUGIN_EPGFIXER_DIR=$ROOT/$BUILD/vdr-plugin-epgfixer-1ad4aaf
+    VDR_PLUGIN_EPGFIXER_DIR=$(get_build_dir vdr-plugin-epgfixer)
     cp -PR $VDR_PLUGIN_EPGFIXER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/epgfixer
       cp -PR $VDR_PLUGIN_EPGFIXER_DIR/epgfixer/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/epgfixer
@@ -331,7 +332,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_LIVE" = yes ]; then
-    VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-6ea279a
+    VDR_PLUGIN_LIVE_DIR=$(get_build_dir vdr-live)
     cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/live
       cp -PR $VDR_PLUGIN_LIVE_DIR/live/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/live
@@ -347,7 +348,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-ef51cb0
+    VDR_PLUGIN_RESTFULAPI_DIR=$(get_build_dir vdr-plugin-restfulapi)
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/restfulapi
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/restfulapi/webapp
@@ -367,7 +368,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_STREAMDEV" = yes ]; then
-    VDR_PLUGIN_STREAMDEV_DIR=$ROOT/$BUILD/vdr-plugin-streamdev-84c6f6b
+    VDR_PLUGIN_STREAMDEV_DIR=$(get_build_dir vdr-plugin-streamdev)
     cp -PR $VDR_PLUGIN_STREAMDEV_DIR/server/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     cp -PR $VDR_PLUGIN_STREAMDEV_DIR/client/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/streamdev-server
@@ -387,14 +388,14 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-7c6ff30
+    VDR_PLUGIN_VNSISERVER_DIR=$(get_build_dir vdr-plugin-vnsiserver)
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/vnsiserver
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XMLTV2VDR" = yes ]; then
-    VDR_PLUGIN_XMLTV2VDR_DIR=$ROOT/$BUILD/vdr-plugin-xmltv2vdr-b48e0be
+    VDR_PLUGIN_XMLTV2VDR_DIR=$(get_build_dir vdr-plugin-xmltv2vdr)
     cp -P $VDR_PLUGIN_XMLTV2VDR_DIR/dist/epgdata2xmltv/epgdata2xmltv $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -PR $VDR_PLUGIN_XMLTV2VDR_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/epgsources
@@ -403,7 +404,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XVDR" = yes ]; then 
-    VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-2d5e3f6
+    VDR_PLUGIN_XVDR_DIR=$(get_build_dir vdr-plugin-xvdr)
     cp -PR $VDR_PLUGIN_XVDR_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/xvdr
       cp -PR $VDR_PLUGIN_XVDR_DIR/xvdr/*.conf $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/xvdr
@@ -416,7 +417,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SATIP" = yes ]; then
-    VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-2.2.2
+    VDR_PLUGIN_SATIP_DIR=$(get_build_dir vdr-satip)
     cp -PR $VDR_PLUGIN_SATIP_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SATIP_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -427,8 +428,8 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_WIRBELSCAN" = yes ]; then
-    VDR_PLUGIN_WIRBELSCAN_DIR=$ROOT/$BUILD/vdr-wirbelscan-0.0.9
-    VDR_PLUGIN_WIRBELSCANCONTROL_DIR=$ROOT/$BUILD/vdr-wirbelscancontrol-0.0.2
+    VDR_PLUGIN_WIRBELSCAN_DIR=$(get_build_dir vdr-wirbelscan)
+    VDR_PLUGIN_WIRBELSCANCONTROL_DIR=$(get_build_dir vdr-wirbelscancontrol)
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
@@ -436,18 +437,18 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_FEMON" = yes ]; then
-    VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.2.1
+    VDR_PLUGIN_FEMON_DIR=$(get_build_dir vdr-femon)
     cp -PR $VDR_PLUGIN_FEMON_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_FEMON_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-femon.mo
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-femon.mo    
     done
   fi
 
   if [ "$ENABLE_VDR_FILEBROWSER" = yes ]; then
-    VDR_PLUGIN_FILEBROWSER_DIR=$ROOT/$BUILD/vdr-filebrowser-0.2.1
+    VDR_PLUGIN_FILEBROWSER_DIR=$(get_build_dir vdr-filebrowser)
     cp -PR $VDR_PLUGIN_FILEBROWSER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/filebrowser
       cp -PR $VDR_PLUGIN_FILEBROWSER_DIR/examples/filebrowser/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/filebrowser
@@ -455,7 +456,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_LCDPROC" = yes ]; then
-    VDR_PLUGIN_LCDPROC_DIR=$ROOT/$BUILD/vdr-plugin-lcdproc-0c54897
+    VDR_PLUGIN_LCDPROC_DIR=$(get_build_dir vdr-plugin-lcdproc)
     cp -PR $VDR_PLUGIN_LCDPROC_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_LCDPROC_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -466,7 +467,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_MENUORG" = yes ]; then
-    VDR_PLUGIN_MENUORG_DIR=$ROOT/$BUILD/vdr-plugin-menuorg-cec1981
+    VDR_PLUGIN_MENUORG_DIR=$(get_build_dir vdr-plugin-menuorg)
     cp -PR $VDR_PLUGIN_MENUORG_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/menuorg
       cp -PR $VDR_PLUGIN_MENUORG_DIR/menuorg.* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/menuorg
@@ -486,7 +487,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SLEEPTIMER" = yes ]; then
-    VDR_PLUGIN_SLEEPTIMER_DIR=$ROOT/$BUILD/vdr-plugin-sleeptimer-b777501
+    VDR_PLUGIN_SLEEPTIMER_DIR=$(get_build_dir vdr-plugin-sleeptimer)
     cp -PR $VDR_PLUGIN_SLEEPTIMER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SLEEPTIMER_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -497,7 +498,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-8c347fd
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$(get_build_dir vdr-plugin-softhddevice)
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -541,7 +542,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TEXT2SKIN" = yes ]; then
-    VDR_PLUGIN_TEXT2SKIN_DIR=$ROOT/$BUILD/vdr-plugin-text2skin-7bd88a0 
+    VDR_PLUGIN_TEXT2SKIN_DIR=$(get_build_dir vdr-plugin-text2skin)
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
 
@@ -552,7 +553,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVGUIDE" = yes ]; then
-    VDR_PLUGIN_TVGUIDE_DIR=$ROOT/$BUILD/vdr-plugin-tvguide-8287bb5  
+    VDR_PLUGIN_TVGUIDE_DIR=$(get_build_dir vdr-plugin-tvguide)
     cp -PR $VDR_PLUGIN_TVGUIDE_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_TVGUIDE_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
@@ -572,7 +573,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
-    VDR_PLUGIN_TVSCRAPER_DIR=$ROOT/$BUILD/vdr-plugin-tvscraper-9a000ca
+    VDR_PLUGIN_TVSCRAPER_DIR=$(get_build_dir vdr-plugin-tvscraper)
     cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/tvscraper
       cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/conf/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/tvscraper
@@ -588,7 +589,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
-    VDR_PLUGIN_UPNP_DIR=$ROOT/$BUILD/vdr-plugin-upnp-11a035a
+    VDR_PLUGIN_UPNP_DIR=$(get_build_dir vdr-plugin-upnp)
     cp -P $VDR_PLUGIN_UPNP_DIR/libvdr-upnp.so $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr/libvdr-upnp.so.$API_VERSION
     cp -PR $VDR_PLUGIN_UPNP_DIR/libupnp*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/upnp
@@ -616,7 +617,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
-    VDR_PLUGIN_XINEOUTPUT_DIR=$ROOT/$BUILD/vdr-plugin-xineliboutput-fa97b86
+    VDR_PLUGIN_XINEOUTPUT_DIR=$(get_build_dir vdr-plugin-xineliboutput)
     XINE_VERSION="2.5"
     cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-fbfe $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-sxfe $ADDON_BUILD/$PKG_ADDON_ID/bin
@@ -629,7 +630,7 @@ addon() {
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/xineliboutput
       cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/examples/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/xineliboutput
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/xine
-      cp -PR $PKG_DIR/config/xine/* $ADDON_BUILD/$PKG_ADDON_ID/config/xine
+      cp -PR $PKG_DIR/config-xine/* $ADDON_BUILD/$PKG_ADDON_ID/config/xine
     for fmo in `ls $VDR_PLUGIN_XINEOUTPUT_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
@@ -643,7 +644,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLAT" = yes ]; then
-    VDR_PLUGIN_SKINFLAT_DIR=$ROOT/$BUILD/vdr-skin-flat-1040bb7 
+    VDR_PLUGIN_SKINFLAT_DIR=$(get_build_dir vdr-skin-flat)
     cp -PR $VDR_PLUGIN_SKINFLAT_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINFLAT_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
@@ -663,7 +664,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-4420b93
+    VDR_PLUGIN_SKINFLATPLUS_DIR=$(get_build_dir vdr-skin-flatplus)
     cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
@@ -686,7 +687,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_NOPACITY" = yes ]; then
-    VDR_PLUGIN_SKINNOPACITY_DIR=$ROOT/$BUILD/vdr-skin-nopacity-f593ad5
+    VDR_PLUGIN_SKINNOPACITY_DIR=$(get_build_dir vdr-skin-nopacity)
     cp -PR $VDR_PLUGIN_SKINNOPACITY_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINNOPACITY_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
@@ -708,7 +709,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
-    VDR_PLUGIN_SYSTEMINFO_DIR=$ROOT/$BUILD/vdr-systeminfo-0.1.3 
+    VDR_PLUGIN_SYSTEMINFO_DIR=$(get_build_dir vdr-systeminfo)
     cp -PR $VDR_PLUGIN_SYSTEMINFO_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     #mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/systeminfo
       #cp -PR $VDR_PLUGIN_SYSTEMINFO_DIR/scripts/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/systeminfo
@@ -721,7 +722,7 @@ addon() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-196dd7e
+    VDR_PLUGIN_SKINDESINGER_DIR=$(get_build_dir vdr-plugin-skindesigner)
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
@@ -756,7 +757,7 @@ addon() {
       cp -P $LIBRSVG_DIR/.install_pkg/usr/lib/librsvg-2.so.2.40.9 $ADDON_BUILD/$PKG_ADDON_ID/lib/librsvg-2.so.2
 
     if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
-      VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-36f7ac9
+      VDR_PLUGIN_WEATHERFORECAST_DIR=$(get_build_dir vdr-plugin-weatherforecast)
       cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/weatherforecast
         cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/templates $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/weatherforecast

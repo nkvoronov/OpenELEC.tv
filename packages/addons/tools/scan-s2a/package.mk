@@ -44,7 +44,7 @@ makeinstall_target() {
 }
 
 addon() {
-  SCANS2_DIR=$ROOT/$BUILD/scan-s2-05b33bab69a1
+  SCANS2_DIR=$(get_build_dir scan-s2)
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -PR $SCANS2_DIR/.install_pkg/usr/bin/scan-s2 $ADDON_BUILD/$PKG_ADDON_ID/bin

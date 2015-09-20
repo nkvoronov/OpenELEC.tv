@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-restfulapi"
-PKG_VERSION="ef51cb0"
+PKG_VERSION="936c525"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -44,7 +44,7 @@ pre_make_target() {
 }
 
 make_target() {
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
+  VDR_DIR=$(get_build_dir vdr)
   make VDRDIR=$VDR_DIR \
   LIBDIR="." \
   LOCALEDIR="./locale"
