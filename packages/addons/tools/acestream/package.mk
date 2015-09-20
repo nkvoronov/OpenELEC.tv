@@ -44,7 +44,7 @@ makeinstall_target() {
 }
 
 addon() {
-  ACESTREAM_DIR=$ROOT/$BUILD/acestream-engine-3.0.3
+  ACESTREAM_DIR=$(get_build_dir acestream-engine)
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
   if [ "$PROJECT" = "Generic" ]; then

@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="55"
+PKG_REV="56"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -204,8 +204,8 @@ makeinstall_target() {
 
 post_install() {
 
-  VDR_DIR=$ROOT/$BUILD/vdr-9ab55b4
   API_VERSION="2.2.0"
+  VDR_DIR=$(get_build_dir vdr)
 
   mkdir -p $INSTALL/usr/bin
     cp -P $VDR_DIR/vdr $INSTALL/usr/bin/vdr.bin
@@ -217,7 +217,7 @@ post_install() {
     cp $VDR_DIR/sources.conf $INSTALL/usr/config/vdr
     cp $VDR_DIR/svdrphosts.conf $INSTALL/usr/config/vdr
     echo '0.0.0.0/0' >> $INSTALL/usr/config/vdr/svdrphosts.conf
-    cp -PR $PKG_DIR/config/vdr/* $INSTALL/usr/config/vdr
+    cp -PR $PKG_DIR/config/* $INSTALL/usr/config/vdr
 
   mkdir -p $INSTALL/usr/config/vdr/plugins
   mkdir -p $INSTALL/usr/share/locale
@@ -232,7 +232,7 @@ post_install() {
   done
 
   if [ "$ENABLE_VDR_CONTROL" = yes ]; then
-    VDR_PLUGIN_CONTROL_DIR=$ROOT/$BUILD/vdr-control-0.0.2a
+    VDR_PLUGIN_CONTROL_DIR=$(get_build_dir vdr-control)
     cp -PR $VDR_PLUGIN_CONTROL_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_CONTROL_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -243,12 +243,12 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
-    VDR_PLUGIN_DUMMYDEVICE_DIR=$ROOT/$BUILD/vdr-dummydevice-2.0.0
+    VDR_PLUGIN_DUMMYDEVICE_DIR=$(get_build_dir vdr-dummydevice)
     cp -PR $VDR_PLUGIN_DUMMYDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
   fi
 
   if [ "$ENABLE_VDR_EPGSEARCH" = yes ]; then
-    VDR_PLUGIN_EPGSEARCH_DIR=$ROOT/$BUILD/vdr-epgsearch-0b09f90
+    VDR_PLUGIN_EPGSEARCH_DIR=$(get_build_dir vdr-epgsearch)
     cp -PR $VDR_PLUGIN_EPGSEARCH_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/epgsearch
       cp -PR $VDR_PLUGIN_EPGSEARCH_DIR/conf/* $INSTALL/usr/config/vdr/plugins/epgsearch
@@ -261,7 +261,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_IPTV" = yes ]; then
-    VDR_PLUGIN_IPTV_DIR=$ROOT/$BUILD/vdr-iptv-2.2.1
+    VDR_PLUGIN_IPTV_DIR=$(get_build_dir vdr-iptv)
     cp -PR $VDR_PLUGIN_IPTV_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/iptv
       cp -PR $VDR_PLUGIN_IPTV_DIR/iptv/* $INSTALL/usr/config/vdr/plugins/iptv
@@ -274,7 +274,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-    VDR_PLUGIN_DVBAPI_DIR=$ROOT/$BUILD/vdr-plugin-dvbapi-ce8a124
+    VDR_PLUGIN_DVBAPI_DIR=$(get_build_dir vdr-plugin-dvbapi)
     cp -PR $VDR_PLUGIN_DVBAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_DVBAPI_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -285,7 +285,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_EEPG" = yes ]; then
-    VDR_PLUGIN_EEPG_DIR=$ROOT/$BUILD/vdr-plugin-eepg-9cd9a75
+    VDR_PLUGIN_EEPG_DIR=$(get_build_dir vdr-plugin-eepg)
     cp -PR $VDR_PLUGIN_EEPG_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     #mkdir -p $INSTALL/usr/config/vdr/plugins/eepg
     for fmo in `ls $VDR_PLUGIN_EEPG_DIR/po/*.mo`;do
@@ -297,7 +297,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_EPGFIXER" = yes ]; then
-    VDR_PLUGIN_EPGFIXER_DIR=$ROOT/$BUILD/vdr-plugin-epgfixer-1ad4aaf
+    VDR_PLUGIN_EPGFIXER_DIR=$(get_build_dir vdr-plugin-epgfixer)
     cp -PR $VDR_PLUGIN_EPGFIXER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/epgfixer
       cp -PR $VDR_PLUGIN_EPGFIXER_DIR/epgfixer/* $INSTALL/usr/config/vdr/plugins/epgfixer
@@ -310,7 +310,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_LIVE" = yes ]; then
-    VDR_PLUGIN_LIVE_DIR=$ROOT/$BUILD/vdr-live-6ea279a
+    VDR_PLUGIN_LIVE_DIR=$(get_build_dir vdr-live)
     cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/live
       cp -PR $VDR_PLUGIN_LIVE_DIR/live/* $INSTALL/usr/config/vdr/plugins/live
@@ -323,7 +323,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-    VDR_PLUGIN_RESTFULAPI_DIR=$ROOT/$BUILD/vdr-plugin-restfulapi-ef51cb0
+    VDR_PLUGIN_RESTFULAPI_DIR=$(get_build_dir vdr-plugin-restfulapi)
     cp -PR $VDR_PLUGIN_RESTFULAPI_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi
     mkdir -p $INSTALL/usr/config/vdr/plugins/restfulapi/webapp
@@ -338,7 +338,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_STREAMDEV" = yes ]; then
-    VDR_PLUGIN_STREAMDEV_DIR=$ROOT/$BUILD/vdr-plugin-streamdev-84c6f6b
+    VDR_PLUGIN_STREAMDEV_DIR=$(get_build_dir vdr-plugin-streamdev)
     cp -PR $VDR_PLUGIN_STREAMDEV_DIR/server/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_STREAMDEV_DIR/client/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/streamdev-server
@@ -358,14 +358,14 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-    VDR_PLUGIN_VNSISERVER_DIR=$ROOT/$BUILD/vdr-plugin-vnsiserver-7c6ff30
+    VDR_PLUGIN_VNSISERVER_DIR=$(get_build_dir vdr-plugin-vnsiserver)
     cp -PR $VDR_PLUGIN_VNSISERVER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/vnsiserver
       cp -PR $VDR_PLUGIN_VNSISERVER_DIR/vnsiserver/allowed_hosts.conf $INSTALL/usr/config/vdr/plugins/vnsiserver
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XMLTV2VDR" = yes ]; then
-    VDR_PLUGIN_XMLTV2VDR_DIR=$ROOT/$BUILD/vdr-plugin-xmltv2vdr-b48e0be
+    VDR_PLUGIN_XMLTV2VDR_DIR=$(get_build_dir vdr-plugin-xmltv2vdr)
     cp -P $VDR_PLUGIN_XMLTV2VDR_DIR/dist/epgdata2xmltv/epgdata2xmltv $INSTALL/usr/bin
     cp -PR $VDR_PLUGIN_XMLTV2VDR_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/epgsources/
@@ -374,7 +374,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XVDR" = yes ]; then 
-    VDR_PLUGIN_XVDR_DIR=$ROOT/$BUILD/vdr-plugin-xvdr-2d5e3f6
+    VDR_PLUGIN_XVDR_DIR=$(get_build_dir vdr-plugin-xvdr)
     cp -PR $VDR_PLUGIN_XVDR_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/xvdr
       cp -PR $VDR_PLUGIN_XVDR_DIR/xvdr/*.conf $INSTALL/usr/config/vdr/plugins/xvdr
@@ -387,7 +387,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_SATIP" = yes ]; then
-    VDR_PLUGIN_SATIP_DIR=$ROOT/$BUILD/vdr-satip-2.2.2
+    VDR_PLUGIN_SATIP_DIR=$(get_build_dir vdr-satip)
     cp -PR $VDR_PLUGIN_SATIP_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SATIP_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -398,8 +398,8 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_WIRBELSCAN" = yes ]; then
-    VDR_PLUGIN_WIRBELSCAN_DIR=$ROOT/$BUILD/vdr-wirbelscan-0.0.9
-    VDR_PLUGIN_WIRBELSCANCONTROL_DIR=$ROOT/$BUILD/vdr-wirbelscancontrol-0.0.2
+    VDR_PLUGIN_WIRBELSCAN_DIR=$(get_build_dir vdr-wirbelscan)
+    VDR_PLUGIN_WIRBELSCANCONTROL_DIR=$(get_build_dir vdr-wirbelscancontrol)
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr 
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/locale/* $INSTALL/usr/share/locale
@@ -407,7 +407,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_FEMON" = yes ]; then
-    VDR_PLUGIN_FEMON_DIR=$ROOT/$BUILD/vdr-femon-2.2.1
+    VDR_PLUGIN_FEMON_DIR=$(get_build_dir vdr-femon)
     cp -PR $VDR_PLUGIN_FEMON_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_FEMON_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -418,7 +418,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_FILEBROWSER" = yes ]; then
-    VDR_PLUGIN_FILEBROWSER_DIR=$ROOT/$BUILD/vdr-filebrowser-0.2.1  
+    VDR_PLUGIN_FILEBROWSER_DIR=$(get_build_dir vdr-filebrowser) 
     cp -PR $VDR_PLUGIN_FILEBROWSER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/filebrowser
       cp -PR $VDR_PLUGIN_FILEBROWSER_DIR/examples/filebrowser/*  $INSTALL/usr/config/vdr/plugins/filebrowser
@@ -426,7 +426,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_LCDPROC" = yes ]; then
-    VDR_PLUGIN_LCDPROC_DIR=$ROOT/$BUILD/vdr-plugin-lcdproc-0c54897
+    VDR_PLUGIN_LCDPROC_DIR=$(get_build_dir vdr-plugin-lcdproc)
     cp -PR $VDR_PLUGIN_LCDPROC_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_LCDPROC_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -437,7 +437,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_MENUORG" = yes ]; then
-    VDR_PLUGIN_MENUORG_DIR=$ROOT/$BUILD/vdr-plugin-menuorg-cec1981
+    VDR_PLUGIN_MENUORG_DIR=$(get_build_dir vdr-plugin-menuorg)
     cp -PR $VDR_PLUGIN_MENUORG_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/menuorg
       cp -PR $VDR_PLUGIN_MENUORG_DIR/menuorg.*  $INSTALL/usr/config/vdr/plugins/menuorg
@@ -450,7 +450,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SLEEPTIMER" = yes ]; then
-    VDR_PLUGIN_SLEEPTIMER_DIR=$ROOT/$BUILD/vdr-plugin-sleeptimer-b777501
+    VDR_PLUGIN_SLEEPTIMER_DIR=$(get_build_dir vdr-plugin-sleeptimer)
     cp -PR $VDR_PLUGIN_SLEEPTIMER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SLEEPTIMER_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -461,7 +461,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-    VDR_PLUGIN_SOFTHDDEVICE_DIR=$ROOT/$BUILD/vdr-plugin-softhddevice-8c347fd
+    VDR_PLUGIN_SOFTHDDEVICE_DIR=$(get_build_dir vdr-plugin-softhddevice)
     cp -PR $VDR_PLUGIN_SOFTHDDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SOFTHDDEVICE_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -472,13 +472,13 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TEXT2SKIN" = yes ]; then
-    VDR_PLUGIN_TEXT2SKIN_DIR=$ROOT/$BUILD/vdr-plugin-text2skin-7bd88a0 
+    VDR_PLUGIN_TEXT2SKIN_DIR=$(get_build_dir vdr-plugin-text2skin)
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/locale/* $INSTALL/usr/share/locale  
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVGUIDE" = yes ]; then
-    VDR_PLUGIN_TVGUIDE_DIR=$ROOT/$BUILD/vdr-plugin-tvguide-8287bb5  
+    VDR_PLUGIN_TVGUIDE_DIR=$(get_build_dir vdr-plugin-tvguide)
     cp -PR $VDR_PLUGIN_TVGUIDE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_TVGUIDE_DIR/themes/* $INSTALL/usr/config/vdr/themes
@@ -493,7 +493,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
-    VDR_PLUGIN_TVSCRAPER_DIR=$ROOT/$BUILD/vdr-plugin-tvscraper-9a000ca
+    VDR_PLUGIN_TVSCRAPER_DIR=$(get_build_dir vdr-plugin-tvscraper)
     cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/tvscraper
       cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/conf/* $INSTALL/usr/config/vdr/plugins/tvscraper
@@ -506,7 +506,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
-    VDR_PLUGIN_UPNP_DIR=$ROOT/$BUILD/vdr-plugin-upnp-11a035a
+    VDR_PLUGIN_UPNP_DIR=$(get_build_dir vdr-plugin-upnp)
     cp -P $VDR_PLUGIN_UPNP_DIR/libvdr-upnp.so $INSTALL/usr/lib/vdr/libvdr-upnp.so.$API_VERSION
     cp -PR $VDR_PLUGIN_UPNP_DIR/libupnp*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/upnp
@@ -520,7 +520,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
-    VDR_PLUGIN_XINEOUTPUT_DIR=$ROOT/$BUILD/vdr-plugin-xineliboutput-fa97b86
+    VDR_PLUGIN_XINEOUTPUT_DIR=$(get_build_dir vdr-plugin-xineliboutput)
     XINE_VERSION="2.5"
     cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-fbfe $INSTALL/usr/bin
     cp -P $VDR_PLUGIN_XINEOUTPUT_DIR/vdr-sxfe $INSTALL/usr/bin
@@ -533,7 +533,7 @@ post_install() {
     mkdir -p $INSTALL/usr/config/vdr/plugins/xineliboutput
       cp -PR $VDR_PLUGIN_XINEOUTPUT_DIR/examples/* $INSTALL/usr/config/vdr/plugins/xineliboutput
     mkdir -p $INSTALL/usr/config/xine
-      cp -PR $PKG_DIR/config/xine/* $INSTALL/usr/config/xine
+      cp -PR $PKG_DIR/config-xine/* $INSTALL/usr/config/xine
     for fmo in `ls $VDR_PLUGIN_XINEOUTPUT_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
@@ -543,7 +543,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLAT" = yes ]; then
-    VDR_PLUGIN_SKINFLAT_DIR=$ROOT/$BUILD/vdr-skin-flat-1040bb7 
+    VDR_PLUGIN_SKINFLAT_DIR=$(get_build_dir vdr-skin-flat)
     cp -PR $VDR_PLUGIN_SKINFLAT_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINFLAT_DIR/themes/* $INSTALL/usr/config/vdr/themes
@@ -558,7 +558,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-    VDR_PLUGIN_SKINFLATPLUS_DIR=$ROOT/$BUILD/vdr-skin-flatplus-4420b93
+    VDR_PLUGIN_SKINFLATPLUS_DIR=$(get_build_dir vdr-skin-flatplus)
     cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/themes/* $INSTALL/usr/config/vdr/themes
@@ -576,7 +576,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_SKIN_NOPACITY" = yes ]; then
-    VDR_PLUGIN_SKINNOPACITY_DIR=$ROOT/$BUILD/vdr-skin-nopacity-f593ad5
+    VDR_PLUGIN_SKINNOPACITY_DIR=$(get_build_dir vdr-skin-nopacity)
     cp -PR $VDR_PLUGIN_SKINNOPACITY_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINNOPACITY_DIR/themes/* $INSTALL/usr/config/vdr/themes
@@ -593,7 +593,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
-    VDR_PLUGIN_SYSTEMINFO_DIR=$ROOT/$BUILD/vdr-systeminfo-0.1.3 
+    VDR_PLUGIN_SYSTEMINFO_DIR=$(get_build_dir vdr-systeminfo)
     cp -PR $VDR_PLUGIN_SYSTEMINFO_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     #mkdir -p $INSTALL/usr/config/vdr/plugins/systeminfo
       #cp -PR $VDR_PLUGIN_SYSTEMINFO_DIR/scripts/* $INSTALL/usr/config/vdr/plugins/systeminfo
@@ -606,7 +606,7 @@ post_install() {
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-    VDR_PLUGIN_SKINDESINGER_DIR=$ROOT/$BUILD/vdr-plugin-skindesigner-196dd7e
+    VDR_PLUGIN_SKINDESINGER_DIR=$(get_build_dir vdr-plugin-skindesigner)
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $INSTALL/usr/lib
     ln -s libskindesignerapi.so.0.0.2 $INSTALL/usr/lib/libskindesignerapi.so.0
@@ -625,7 +625,7 @@ post_install() {
     done
 
     if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
-      VDR_PLUGIN_WEATHERFORECAST_DIR=$ROOT/$BUILD/vdr-plugin-weatherforecast-36f7ac9
+      VDR_PLUGIN_WEATHERFORECAST_DIR=$(get_build_dir vdr-plugin-weatherforecast)
       cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
       mkdir -p $INSTALL/usr/config/vdr/plugins/weatherforecast
         cp -PR $VDR_PLUGIN_WEATHERFORECAST_DIR/templates $INSTALL/usr/config/vdr/plugins/weatherforecast

@@ -42,11 +42,11 @@ makeinstall_target() {
 }
 
 addon() {
-  SQUASHFS_DIR=$ROOT/$BUILD/squashfs-4.3
-  LCDPROC_DIR=$ROOT/$BUILD/lcdproc-0.5.7-cvs20140217
-  TBS_DRIVER_DIR=$ROOT/$BUILD/tbs-linux-drivers-cc-7ec1f79
-  VER_KERNEL="4.1.6"
-
+  VER_KERNEL=$(kernel_version)
+  TBS_DRIVER_DIR=$(get_build_dir tbs-linux-drivers-cc)
+  SQUASHFS_DIR=$(get_build_dir squashfs)
+  LCDPROC_DIR=$(get_build_dir_usr lcdproc)
+  
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -PR $SQUASHFS_DIR/squashfs-tools/mksquashfs $ADDON_BUILD/$PKG_ADDON_ID/bin
 

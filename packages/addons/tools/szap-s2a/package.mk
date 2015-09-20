@@ -44,7 +44,7 @@ makeinstall_target() {
 }
 
 addon() {
-  SZAPS2_DIR=$ROOT/$BUILD/szap-s2-69ff3584caf9
+  SZAPS2_DIR=$(get_build_dir szap-s2)
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -PR $SZAPS2_DIR/.install_pkg/usr/bin/szap-s2 $ADDON_BUILD/$PKG_ADDON_ID/bin
