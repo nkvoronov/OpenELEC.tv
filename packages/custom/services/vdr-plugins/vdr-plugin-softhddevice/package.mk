@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-softhddevice"
-PKG_VERSION="509329c"
+PKG_VERSION="5dc5601"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
