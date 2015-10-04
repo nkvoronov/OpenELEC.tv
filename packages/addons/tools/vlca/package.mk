@@ -45,8 +45,6 @@ makeinstall_target() {
 addon() {
   VLC_DIR=$(get_build_dir_usr vlc)
 
-  echo $VLC_DIR
-
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $VLC_DIR/.$TARGET_NAME/bin/.libs/vlc $ADDON_BUILD/$PKG_ADDON_ID/bin/vlc.bin
   cp -P $VLC_DIR/.$TARGET_NAME/bin/.libs/vlc-cache-gen $ADDON_BUILD/$PKG_ADDON_ID/bin
