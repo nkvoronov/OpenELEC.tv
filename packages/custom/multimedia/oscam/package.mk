@@ -20,15 +20,15 @@
 ################################################################################
 
 PKG_NAME="oscam"
-PKG_VERSION="11030"
-PKG_REV="57"
+PKG_VERSION="11036"
+PKG_REV="58"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.streamboard.tv/oscam/wiki"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain pcsc-lite"
 PKG_PRIORITY="optional"
-PKG_SECTION="multimedia"
+PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="oscam: OSCam is Open Source Conditional Access Modul."
 PKG_LONGDESC="OSCam is Open Source Conditional Access Modul."
 PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not install"
