@@ -20,7 +20,7 @@
 
 PKG_NAME="vlca"
 PKG_VERSION="2.2.1"
-PKG_REV="1"
+PKG_REV="6"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -46,14 +46,11 @@ addon() {
   VLC_DIR=$(get_build_dir_usr vlc)
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $VLC_DIR/.$TARGET_NAME/bin/.libs/vlc $ADDON_BUILD/$PKG_ADDON_ID/bin/vlc.bin
-  cp -P $VLC_DIR/.$TARGET_NAME/bin/.libs/vlc-cache-gen $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -R $VLC_DIR/.install_pkg/usr/bin/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-  cp -P $VLC_DIR/.$TARGET_NAME/lib/.libs/libvlc.so* $ADDON_BUILD/$PKG_ADDON_ID/lib
-  cp -P $VLC_DIR/.$TARGET_NAME/src/.libs/libvlccore.so* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -R $VLC_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
 
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/vlc/plugins
-  cp -P $VLC_DIR/.$TARGET_NAME/modules/.libs/*_plugin.so $ADDON_BUILD/$PKG_ADDON_ID/lib/vlc/plugins
- 
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share/vlc
+    cp -R $VLC_DIR/.install_pkg/usr/share/vlc/* $ADDON_BUILD/$PKG_ADDON_ID/share/vlc/
 }
