@@ -123,5 +123,5 @@ if [ "$GAME_EMULATORS" = yes ]; then
 fi
 
 if [ "$VLC_ENABLE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vlc lua"
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vlc"
 fi

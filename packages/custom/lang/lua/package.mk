@@ -38,12 +38,6 @@ pre_build_host() {
   cp -RP $PKG_BUILD/src/* $PKG_BUILD/.$HOST_NAME
 }
 
-pre_build_target() {
-  mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/src/* $PKG_BUILD/.$TARGET_NAME
-}
-
-
 make_host() {
   make -C .$HOST_NAME \
        INSTALL_TOP=/usr \
@@ -57,15 +51,7 @@ make_host() {
 }
 
 make_target() {
-  make -C .$TARGET_NAME \
-       INSTALL_TOP=/usr \
-       PLAT=linux \
-       CC="$TARGET_CC" \
-       AR="$TARGET_AR rcu" \
-       RANLIB="$TARGET_RANLIB" \
-       CFLAGS="$TARGET_CFLAGS -fPIC -DPIC" \
-       LDFLAGS="$HOST_LDFLAGS -fPIC -DPIC" \
-       linux
+  : # nothing to do here
 }
 
 makeinstall_host() {
@@ -94,3 +80,10 @@ post_makeinstall_host() {
     cp $ROOT/$PKG_BUILD/.$HOST_NAME/lauxlib.h $SYSROOT_PREFIX/usr/include
     cp $ROOT/$PKG_BUILD/.$HOST_NAME/lua.hpp $SYSROOT_PREFIX/usr/include
 }
+
+post_makeinstall_target() {
+  mkdir -p $INSTALL/usr/bin
+    cp -P $ROOT/$PKG_BUILD/.$HOST_NAME/lua $INSTALL/usr/bin
+    cp -P $ROOT/$PKG_BUILD/.$HOST_NAME/luac $INSTALL/usr/bin
+}
+

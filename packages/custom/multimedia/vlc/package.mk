@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host liblivemedia:host libbluray samba libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec libcdio taglib libva libvdpau zvbi chromaprint fdk-aac libvpx x264 lirc"
+PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host lua liblivemedia:host libbluray samba libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec libcdio taglib libva libvdpau zvbi chromaprint fdk-aac libvpx x264 lirc"
 # libvncserver
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
