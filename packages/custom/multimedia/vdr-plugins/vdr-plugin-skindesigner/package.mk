@@ -45,13 +45,7 @@ make_target() {
   make VDRDIR=$VDR_DIR \
   LIBDIR="." \
   LOCALEDIR="./locale"
-}
 
-makeinstall_target() {
-  : # installation not needed, done by create-addon script
-}
-
-post_install() {
   mkdir -p $SYSROOT_PREFIX/usr/include/libskindesignerapi
     cp -PR $ROOT/$PKG_BUILD/libskindesignerapi/*.h $SYSROOT_PREFIX/usr/include/libskindesignerapi
   mkdir -p $SYSROOT_PREFIX/usr/lib
@@ -61,4 +55,8 @@ post_install() {
     ln -s libskindesignerapi.so.0.0.2 $SYSROOT_PREFIX/usr/lib/libskindesignerapi.so
   mkdir -p $SYSROOT_PREFIX/usr/lib/pkgconfig
     cp -PR $ROOT/$PKG_BUILD/libskindesignerapi/libskindesignerapi.pc $SYSROOT_PREFIX/usr/lib/pkgconfig
+}
+
+makeinstall_target() {
+  : # installation not needed, done by create-addon script
 }

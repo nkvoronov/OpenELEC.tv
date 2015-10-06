@@ -39,9 +39,11 @@ pre_build_target() {
   cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
 }
 
-configure_target() {
+pre_configure_target() {
   strip_lto
+}
 
+configure_target() {
   ./autogen.sh --host=$TARGET_NAME \
              --build=$HOST_NAME \
              --prefix=/usr \
@@ -50,7 +52,7 @@ configure_target() {
              --disable-aalib \
              --disable-vcd \
              --disable-musepack \
-	     --disable-vpx
+             --disable-vpx
 }
 
 make_target() {
