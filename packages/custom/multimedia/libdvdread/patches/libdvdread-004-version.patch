@@ -1,0 +1,14 @@
+Author: Daniel Baumann <mail@daniel-baumann.ch>
+Description: Bumping version to match original upstream (Closes: #532438).
+
+--- a/src/dvdread/dvd_reader.h
++++ b/src/dvdread/dvd_reader.h
+@@ -43,7 +43,7 @@
+ /**
+  * The current version.
+  */
+-#define DVDREAD_VERSION 904
++#define DVDREAD_VERSION 907
+ 
+ /**
+  * The length of one Logical Block of a DVD.

@@ -1,0 +1,17 @@
+Author: Lorenz Minder <lminder@gmx.net>
+Description: Use correct endianess on big-endian machines (Closes: #531621).
+
+--- a/src/bswap.h
++++ b/src/bswap.h
+@@ -22,6 +22,11 @@
+ #ifndef LIBDVDREAD_BSWAP_H
+ #define LIBDVDREAD_BSWAP_H
+ 
++#include <endian.h>
++#if BYTE_ORDER == BIG_ENDIAN
++#define WORDS_BIGENDIAN
++#endif
++
+ #include <config.h>
+ 
+ #if defined(WORDS_BIGENDIAN)

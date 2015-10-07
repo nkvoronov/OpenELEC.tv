@@ -1,0 +1,13 @@
+Author: Peter Van Eynde <pvaneynd@debian.org>
+Description: Fix miscompilation leading to a segfault (Closes: #688574).
+
+--- a/src/dvd_reader.c
++++ b/src/dvd_reader.c
+@@ -31,6 +31,7 @@
+ #include <strings.h>
+ #include <ctype.h>
+ #define _GNU_SOURCE
++#define __USE_GNU
+ #include <unistd.h>
+ #include <limits.h>
+ #include <dirent.h>

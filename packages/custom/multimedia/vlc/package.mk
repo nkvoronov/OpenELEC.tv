@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host lua liblivemedia:host libbluray samba libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec libcdio taglib libva libvdpau zvbi chromaprint fdk-aac libvpx x264 lirc"
-# libvncserver
+PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host lua liblivemedia:host libbluray samba libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib libva libvdpau zvbi chromaprint fdk-aac libvpx x264 lirc libavc1394 libdvdnav a52dec"
+# libvncserver libcddb libdc1394
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
@@ -68,10 +68,10 @@ PKG_CONFIGURE_OPTIMIZATION_OPTS="--disable-debug \
 
 PKG_CONFIGURE_INPUT_PLUGINS_OPTS="--enable-live555 \
 				  --disable-dc1394 \
-				  --disable-dv1394 \
+				  --enable-dv1394 \
 				  --enable-linsys \
-				  --disable-dvdread \
-				  --disable-dvdnav \
+				  --enable-dvdread \
+				  --enable-dvdnav \
 				  --enable-bluray \
 				  --disable-opencv \
 				  --enable-smbclient \
@@ -123,7 +123,7 @@ PKG_CONFIGURE_CODEC_PLUGINS_OPTS="--disable-wma-fixed \
 				  --disable-twolame \
 				  --enable-fdkaac \
 				  --disable-quicktime \
-				  --disable-a52 \
+				  --enable-a52 \
 				  --disable-dca \
 				  --enable-flac \
 				  --enable-libmpeg2 \

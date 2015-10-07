@@ -1,0 +1,36 @@
+Description: Disable PDF refman until upstream fixes their docs
+Author: Adam Conrad <adconrad@ubuntu.com>
+Bug-Debian: http://bugs.debian.org/716985
+Forwarded: no
+
+Index: libcaca/doc/Makefile.am
+===================================================================
+--- libcaca.orig/doc/Makefile.am
++++ libcaca/doc/Makefile.am
+@@ -9,10 +9,6 @@
+ if BUILD_DOCUMENTATION
+ htmldoc_DATA = html/doxygen.css
+ htmldocdir = $(datadir)/doc/libcaca-dev/html
+-if USE_LATEX
+-pdfdoc_DATA = latex/libcaca.pdf
+-pdfdocdir = $(datadir)/doc/libcaca-dev/pdf
+-endif
+ endif
+ 
+ html/doxygen.css html/doxygen.png: stamp-doxygen
+@@ -26,15 +22,6 @@
+ 
+ stamp-latex: stamp-doxygen
+ if BUILD_DOCUMENTATION
+-if USE_LATEX
+-	rm -f latex/libcaca.tex latex/libcaca.pdf
+-	mv latex/refman.tex latex/libcaca.tex
+-	sed 's/setlength{/renewcommand{/' latex/libcaca.tex \
+-	  | sed 's/.*usepackage.*times.*//' > latex/refman.tex
+-	cd latex && $(MAKE) $(AM_CFLAGS) refman.pdf || (cat refman.log; exit 1)
+-	mv latex/refman.pdf latex/libcaca.pdf
+-	touch stamp-latex
+-endif
+ endif
+ 
+ clean-local:
