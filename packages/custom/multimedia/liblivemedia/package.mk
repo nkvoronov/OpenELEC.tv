@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="liblivemedia"
-PKG_VERSION="2014.01.13"
+PKG_VERSION="2015.06.24"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

@@ -18,20 +18,20 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="libdvdread"
-PKG_VERSION="5.0.0"
+PKG_NAME="libssh2"
+PKG_VERSION="1.4.3"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://dvdnav.mplayerhq.hu"
-PKG_URL="http://download.videolan.org/pub/contrib/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_SITE="http://libssh2.org"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain libgcrypt zlib"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
-PKG_SHORTDESC="library for reading DVDs libdvdread provides the functionality that is required to access many DVDs. It parses IFO files, reads NAV-blocks, and performs CSS authentication and descrambling."
-PKG_LONGDESC="library for reading DVDs libdvdread provides the functionality that is required to access many DVDs. It parses IFO files, reads NAV-blocks, and performs CSS authentication and descrambling."
+PKG_SECTION="custom/network"
+PKG_SHORTDESC="libssh2 is a client-side C library implementing the SSH2 protocol. It supports regular terminal, SCP and SFTP sessions; port forwarding; password, key-based and keyboard-interactive authentication."
+PKG_LONGDESC="libssh2 is a client-side C library implementing the SSH2 protocol. It supports regular terminal, SCP and SFTP sessions; port forwarding; password, key-based and keyboard-interactive authentication."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared"
+PKG_CONFIGURE_OPTS_TARGET="--with-libgcrypt --disable-rpath"

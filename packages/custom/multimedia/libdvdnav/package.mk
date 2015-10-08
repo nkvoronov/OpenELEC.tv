@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="libdvdnav"
-PKG_VERSION="4.2.1"
+PKG_VERSION="5.0.0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://dvdnav.mplayerhq.hu"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="http://download.videolan.org/pub/contrib/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain libdvdread"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
@@ -34,4 +34,4 @@ PKG_LONGDESC="DVD navigation library libdvdnav is a DVD navigation library, whic
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-static"
+PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared"

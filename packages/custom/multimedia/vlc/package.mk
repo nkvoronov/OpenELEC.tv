@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host lua liblivemedia:host libbluray samba libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib libva libvdpau zvbi chromaprint fdk-aac libvpx x264 lirc libavc1394 libdvdnav a52dec"
+PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host lua liblivemedia:host libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib-vlc libva libvdpau zvbi chromaprint fdk-aac libvpx x264 lirc libavc1394 libdvdnav a52dec libssh2 qt"
 # libvncserver libcddb libdc1394
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
@@ -46,8 +46,7 @@ PKG_CONFIGURE_MAIN_OPTS="--enable-silent-rules \
 			 --without-gnu-ld \
 			 --disable-nls \
 			 --disable-rpath \
-			 --disable-dbus \
-			 --disable-dbus-control"
+			 --enable-dbus"
 
 PKG_CONFIGURE_OPTIMIZATION_OPTS="--disable-debug \
 				 --disable-gprof \
@@ -75,7 +74,7 @@ PKG_CONFIGURE_INPUT_PLUGINS_OPTS="--enable-live555 \
 				  --enable-bluray \
 				  --disable-opencv \
 				  --enable-smbclient \
-				  --disable-sftp \
+				  --enable-sftp \
 				  --enable-v4l2 \
 				  --disable-decklink \
 				  --disable-gnomevfs \
@@ -179,7 +178,7 @@ PKG_CONFIGURE_AUDIO_PLUGINS_OPTS="--disable-pulse \
 				  --disable-kai \
 				  --enable-chromaprint"
 
-PKG_CONFIGURE_INTERFACE_PLUGINS_OPTS="--disable-qt \
+PKG_CONFIGURE_INTERFACE_PLUGINS_OPTS="--enable-qt \
 				      --disable-skins2 \
 				      --disable-libtar \
 				      --disable-macosx \
@@ -189,10 +188,10 @@ PKG_CONFIGURE_INTERFACE_PLUGINS_OPTS="--disable-qt \
 				      --enable-lirc"
 
 PKG_CONFIGURE_VISUALISATIONS_OPTS="--disable-goom \
-				  --disable-projectm \
-				  --disable-vsxu \
-				  --enable-atmo \
-				  --enable-glspectrum"
+				   --disable-projectm \
+				   --disable-vsxu \
+				   --enable-atmo \
+				   --enable-glspectrum"
 
 PKG_CONFIGURE_SERVICE_DISCOVERY_PLUGINS_OPTS="--enable-bonjour \
 					      --enable-udev \
@@ -224,6 +223,11 @@ PKG_CONFIGURE_OPTS_TARGET="$PKG_CONFIGURE_MAIN_OPT \
 			   $PKG_CONFIGURE_MISC_OPTIONS_OPTS \
 			   $PKG_CONFIGURE_COMPONENTS_OPTS"
 
+pre_configure_target() {
+  PKG_CONFIG_PATH="$(get_build_dir taglib-vlc)/.install_tmp/usr/lib/pkgconfig"
+  CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include"
+  LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib"
+}
 
 post_install() {
   mkdir -p $INSTALL/usr/bin
