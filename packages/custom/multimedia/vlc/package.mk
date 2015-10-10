@@ -20,7 +20,7 @@
 
 PKG_NAME="vlc"
 PKG_VERSION="2.2.1"
-PKG_REV="1"
+PKG_REV="11"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -227,9 +227,4 @@ pre_configure_target() {
   PKG_CONFIG_PATH="$(get_build_dir taglib-vlc)/.install_tmp/usr/lib/pkgconfig"
   CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include"
   LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib"
-}
-
-post_install() {
-  mkdir -p $INSTALL/usr/bin
-    cp -p $PKG_DIR/scripts/* $INSTALL/usr/bin
 }

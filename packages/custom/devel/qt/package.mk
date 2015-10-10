@@ -36,38 +36,6 @@ PKG_AUTORECONF="no"
 
 QTDIR=$SYSROOT_PREFIX/usr
 
-PKG_CONFIGURE_OPTS="-confirm-license \
-		    -prefix $QTDIR \
-		    -opensource \
-		    -fast \
-		    -system-sqlite \
-		    -xmlpatterns \
-		    -no-multimedia \
-		    -no-audio-backend \
-		    -no-phonon \
-		    -no-phonon-backend \
-		    -svg \
-		    -no-webkit \
-		    -script \
-		    -scripttools \
-		    -platform linux-g++-64 \
-		    -system-zlib \
-		    -system-libtiff \
-		    -system-libpng \
-		    -system-libjpeg \
-		    -no-rpath \
-		    -optimized-qmake \
-		    -dbus-linked \
-		    -reduce-relocations \
-		    -no-separate-debug-info \
-		    -verbose \
-		    -no-nas-sound \
-		    -no-openvg \
-		    -lfontconfig \
-		    -qvfb \
-		    -nomake examples \
-		    -nomake demos"
-
 configure_target() {
   unset CC CXX AR OBJCOPY STRIP CFLAGS CXXFLAGS CPPFLAGS LDFLAGS LD RANLIB
   export QT_FORCE_PKGCONFIG=yes
@@ -75,7 +43,43 @@ configure_target() {
   export QT4PREFIX=$QTDIR
 
   pushd $ROOT/$BUILD/$PKG_NAME-$PKG_VERSION
-  ./configure $PKG_CONFIGURE_OPTS
+  ./configure -prefix $QTDIR \
+	      -bindir $QTDIR/bin \
+	      -plugindir $QTDIR/lib/qt4/plugins \
+	      -importdir $QTDIR/lib/qt4/imports \
+	      -datadir $QTDIR/share/qt4 \
+	      -docdir $QTDIR/share/doc/qt4 \
+	      -translationdir $QTDIR/share/qt4/translations \
+	      -platform linux-g++-64 \
+	      -confirm-license \
+	      -opensource \
+	      -fast \
+	      -system-sqlite \
+	      -xmlpatterns \
+	      -no-multimedia \
+	      -no-audio-backend \
+	      -no-phonon \
+	      -no-phonon-backend \
+	      -svg \
+	      -no-webkit \
+	      -script \
+	      -scripttools \
+	      -system-zlib \
+	      -system-libtiff \
+	      -system-libpng \
+	      -system-libjpeg \
+	      -no-rpath \
+	      -optimized-qmake \
+	      -dbus-linked \
+	      -reduce-relocations \
+	      -no-separate-debug-info \
+	      -verbose \
+	      -no-nas-sound \
+	      -no-openvg \
+	      -lfontconfig \
+	      -qvfb \
+	      -nomake examples \
+	      -nomake demos
   popd
 }
 

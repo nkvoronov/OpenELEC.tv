@@ -1,2 +1,0 @@
-#! /bin/sh
-exec vlc --no-plugins-cache  -I "dummy" "$@"
