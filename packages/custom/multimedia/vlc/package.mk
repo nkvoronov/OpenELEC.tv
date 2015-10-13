@@ -223,7 +223,7 @@ PKG_CONFIGURE_OPTS_TARGET="$PKG_CONFIGURE_MAIN_OPT \
 			   $PKG_CONFIGURE_COMPONENTS_OPTS"
 
 pre_configure_target() {
-  PKG_CONFIG_PATH="$(get_build_dir taglib-vlc)/.install_tmp/usr/lib/pkgconfig:$(get_build_dir ncurses-wide)/.install_tmp/usr/lib/pkgconfig"
-  CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include -I$(get_build_dir ncurses-wide)/.install_tmp/usr/include"
-  LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib -L$(get_build_dir ncurses-wide)/.install_tmp/usr/lib"
+  PKG_CONFIG_PATH="$(get_build_dir taglib-vlc)/.install_tmp/usr/lib/pkgconfig:$(get_build_dir ncursesw5)/.install_tmp/usr/lib/pkgconfig"
+  CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include -I$(get_build_dir ncursesw5)/.install_tmp/usr/include"
+  LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib -L$(get_build_dir ncursesw5)/.install_tmp/usr/lib"
 }
