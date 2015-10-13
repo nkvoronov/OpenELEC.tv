@@ -34,5 +34,4 @@ PKG_LONGDESC="libdvbpsi is a simple library designed for MPEG TS and DVB PSI tab
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-# package specific configure options
 PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared"

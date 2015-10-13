@@ -20,13 +20,12 @@
 
 PKG_NAME="vlc"
 PKG_VERSION="2.2.1"
-PKG_REV="11"
+PKG_REV="12"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host lua liblivemedia:host libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib-vlc libva libvdpau zvbi chromaprint fdk-aac libvpx x264 lirc libavc1394 libdvdnav a52dec libssh2 qt"
-# libvncserver libcddb libdc1394
+PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host lua liblivemedia:host libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib-vlc libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 lirc libavc1394 libdc1394 libdvdnav a52dec libssh2 libmatroska libshout ncursesw-vlc SDL_image qt"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
@@ -66,7 +65,7 @@ PKG_CONFIGURE_OPTIMIZATION_OPTS="--disable-debug \
 				 --enable-addonmanagermodules"
 
 PKG_CONFIGURE_INPUT_PLUGINS_OPTS="--enable-live555 \
-				  --disable-dc1394 \
+				  --enable-dc1394 \
 				  --enable-dv1394 \
 				  --enable-linsys \
 				  --enable-dvdread \
@@ -95,8 +94,8 @@ PKG_CONFIGURE_MUX_DEMUX_PLUGINS_OPTS="--enable-dvbpsi \
 				      --disable-sid \
 				      --enable-ogg \
 				      --enable-mux_ogg \
-				      --disable-shout \
-				      --disable-mkv \
+				      --enable-shout \
+				      --enable-mkv \
 				      --enable-mod \
 				      --disable-mpc"
 
@@ -123,14 +122,14 @@ PKG_CONFIGURE_CODEC_PLUGINS_OPTS="--disable-wma-fixed \
 				  --enable-fdkaac \
 				  --disable-quicktime \
 				  --enable-a52 \
-				  --disable-dca \
+				  --enable-dca \
 				  --enable-flac \
 				  --enable-libmpeg2 \
 				  --enable-vorbis \
 				  --disable-tremor \
-				  --disable-speex \
+				  --enable-speex \
 				  --disable-opus \
-				  --disable-theora \
+				  --enable-theora \
 				  --disable-schroedinger \
 				  --enable-png \
 				  --enable-jpeg \
@@ -152,8 +151,8 @@ PKG_CONFIGURE_VIDEO_PLUGINS_OPTS="--disable-gles2 \
 				  --enable-xcb \
 				  --enable-xvideo \
 				  --enable-vdpau \
-				  --disable-sdl \
-				  --disable-sdl-image \
+				  --enable-sdl \
+				  --enable-sdl-image \
 				  --enable-freetype \
 				  --enable-fribidi \
 				  --enable-fontconfig \
@@ -184,7 +183,7 @@ PKG_CONFIGURE_INTERFACE_PLUGINS_OPTS="--enable-qt \
 				      --disable-macosx \
 				      --disable-minimal-macosx \
 				      --disable-macosx-dialog-provider \
-				      --disable-ncurses \
+				      --enable-ncurses \
 				      --enable-lirc"
 
 PKG_CONFIGURE_VISUALISATIONS_OPTS="--disable-goom \
@@ -224,7 +223,7 @@ PKG_CONFIGURE_OPTS_TARGET="$PKG_CONFIGURE_MAIN_OPT \
 			   $PKG_CONFIGURE_COMPONENTS_OPTS"
 
 pre_configure_target() {
-  PKG_CONFIG_PATH="$(get_build_dir taglib-vlc)/.install_tmp/usr/lib/pkgconfig"
-  CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include"
-  LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib"
+  PKG_CONFIG_PATH="$(get_build_dir taglib-vlc)/.install_tmp/usr/lib/pkgconfig:$(get_build_dir ncursesw-vlc)/.install_tmp/usr/lib/pkgconfig"
+  CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include -I$(get_build_dir ncursesw-vlc)/.install_tmp/usr/include"
+  LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib -L$(get_build_dir ncursesw-vlc)/.install_tmp/usr/lib"
 }

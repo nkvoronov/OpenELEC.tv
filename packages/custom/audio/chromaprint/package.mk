@@ -41,3 +41,7 @@ configure_target() {
         -DBUILD_EXAMPLES=ON \
         ..
 }
+
+post_makeinstall_target() {
+  rm -rf $INSTALL/usr/bin
+}

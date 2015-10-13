@@ -38,3 +38,8 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
             --disable-shared \
             --enable-static \
             --disable-mtpz"
+
+post_makeinstall_target() {
+  rm -rf $INSTALL/usr/bin
+  rm -rf $INSTALL/lib/udev
+}

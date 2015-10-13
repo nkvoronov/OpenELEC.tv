@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://aa-project.sourceforge.net/aalib"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain slang libX11 libXt ncurses libgpmg1 texinfo"
+PKG_DEPENDS_TARGET="toolchain slang libX11 libXt ncurses libgpmg texinfo"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/graphics"
 PKG_SHORTDESC="ASCII art library, development kit AAlib is a portable ASCII art graphics library. Internally, it works like a graphics display, but the output is rendered into platform-independent ASCII graphics."
@@ -34,4 +34,4 @@ PKG_LONGDESC="ASCII art library, development kit AAlib is a portable ASCII art g
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-#configure -- --with-curses-driver
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static --with-curses-driver"

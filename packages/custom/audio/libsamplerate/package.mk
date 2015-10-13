@@ -32,4 +32,8 @@ PKG_LONGDESC="libsamplerate is a sample rate converter for audio."
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-#PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static --with-sysroot=$SYSROOT_PREFIX"
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static --with-sysroot=$SYSROOT_PREFIX"
+
+post_makeinstall_target() {
+  rm -rf $INSTALL/usr/bin
+}

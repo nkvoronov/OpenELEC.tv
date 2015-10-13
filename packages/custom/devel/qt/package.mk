@@ -64,10 +64,10 @@ configure_target() {
 	      -no-webkit \
 	      -script \
 	      -scripttools \
-	      -system-zlib \
-	      -system-libtiff \
-	      -system-libpng \
-	      -system-libjpeg \
+	      -qt-zlib \
+	      -qt-libtiff \
+	      -qt-libpng \
+	      -qt-libjpeg \
 	      -no-rpath \
 	      -optimized-qmake \
 	      -dbus-linked \

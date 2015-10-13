@@ -33,3 +33,9 @@ PKG_LONGDESC="control IEEE 1394 audio/video devices (development files) libavc13
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
+
+PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared"
+
+post_makeinstall_target() {
+  rm -rf $INSTALL/usr/bin
+}

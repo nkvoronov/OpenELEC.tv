@@ -34,4 +34,8 @@ PKG_LONGDESC="library for decoding ATSC A/52 streams liba52 is a free library fo
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-shared"
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
+
+post_makeinstall_target() {
+  rm -rf $INSTALL/usr/bin
+}

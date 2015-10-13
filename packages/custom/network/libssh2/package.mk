@@ -34,4 +34,4 @@ PKG_LONGDESC="libssh2 is a client-side C library implementing the SSH2 protocol.
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--with-libgcrypt --disable-rpath"
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static --with-libgcrypt --disable-rpath"
