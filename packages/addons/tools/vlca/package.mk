@@ -20,7 +20,7 @@
 
 PKG_NAME="vlca"
 PKG_VERSION="2.2.1"
-PKG_REV="12"
+PKG_REV="14"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -44,13 +44,27 @@ makeinstall_target() {
 
 addon() {
   VLC_DIR=$(get_build_dir_usr vlc)
+  QT4=$(get_build_dir qt4)
+  LIB_EBML=$(get_build_dir libebml)
+  LIB_MATROSKA=$(get_build_dir libmatroska)
+  LIB_NCURSESW=$(get_build_dir ncursesw5)
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -R $VLC_DIR/.install_pkg/usr/bin/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
     cp -R $VLC_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
+    cp -P $QT4/lib/libQtCore.so.4.8.6 $ADDON_BUILD/$PKG_ADDON_ID/lib/libQtCore.so.4
+    cp -P $QT4/lib/libQtGui.so.4.8.6 $ADDON_BUILD/$PKG_ADDON_ID/lib/libQtGui.so.4
+    cp -P $LIB_EBML/.install_pkg/usr/lib/libebml.so.4 $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -P $LIB_MATROSKA/.install_pkg/usr/lib/libmatroska.so.6 $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -P $LIB_NCURSESW/.install_tmp/usr/lib/libncursesw.so.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libncursesw.so.6
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
+    cp -R $LIB_NCURSESW/.install_tmp/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share/vlc
     cp -R $VLC_DIR/.install_pkg/usr/share/vlc/* $ADDON_BUILD/$PKG_ADDON_ID/share/vlc/
+
+  $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/lib/vlc/vlc-cache-gen -f $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/lib/vlc/plugins
 }

@@ -35,9 +35,9 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {
-  make -C make/linux prefix=$SYSROOT_PREFIX/usr
+  make -C make/linux
 }
 
 makeinstall_target() {
-  make install -C make/linux prefix=$SYSROOT_PREFIX/usr
+  make install -C make/linux prefix=$ROOT/$PKG_BUILD/.install_pkg/usr
 }

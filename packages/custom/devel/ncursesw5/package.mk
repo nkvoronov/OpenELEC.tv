@@ -43,12 +43,13 @@ PKG_CONFIGURE_OPTS_TARGET="--without-ada \
                            --with-shared \
                            --with-normal \
                            --without-debug \
+			   --with-fallbacks=linux,screen,xterm,xterm-color \
                            --enable-widec \
 			   --enable-ext-colors \
 			   --enable-sigwinch \
                            --enable-echo \
                            --disable-warnings \
-                           --disable-home-terminfo \
+                           --enable-home-terminfo \
                            --disable-assertions"
 
 pre_configure_target() {
@@ -60,4 +61,12 @@ makeinstall_target() {
   make install DESTDIR=$ROOT/$PKG_BUILD/.install_tmp $PKG_MAKEINSTALL_OPTS_TARGET
   mkdir -p $ROOT/$PKG_BUILD/.install_tmp/usr/lib/pkgconfig
     cp -P $PKG_DIR/config/* $ROOT/$PKG_BUILD/.install_tmp/usr/lib/pkgconfig
+}
+
+post_install() {
+  mkdir -p $INSTALL/usr/lib
+    cp -P $ROOT/$PKG_BUILD/.install_tmp/usr/lib/libncursesw.so.* $INSTALL/usr/lib
+
+  mkdir -p $INSTALL/usr/share
+    cp -R $ROOT/$PKG_BUILD/.install_tmp/usr/share/* $INSTALL/usr/share
 }

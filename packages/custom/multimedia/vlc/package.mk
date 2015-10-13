@@ -227,3 +227,13 @@ pre_configure_target() {
   CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include -I$(get_build_dir ncursesw5)/.install_tmp/usr/include"
   LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib -L$(get_build_dir ncursesw5)/.install_tmp/usr/lib"
 }
+
+post_install() {
+  $INSTALL/usr/lib/vlc/vlc-cache-gen $INSTALL/usr/lib/vlc/plugins
+
+  QT4=$(get_build_dir qt4)
+
+  mkdir -p $INSTALL/usr/lib
+    cp -P $QT4/lib/libQtCore.so.* $INSTALL/usr/lib
+    cp -P $QT4/lib/libQtGui.so.* $INSTALL/usr/lib
+}
