@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="lua"
-PKG_VERSION="5.2.3"
+PKG_VERSION="5.3.1"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://www.lua.org/"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_HOST="readline:host"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
@@ -33,15 +33,10 @@ PKG_LONGDESC="Lua is a powerful light-weight programming language designed for e
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-pre_build_host() {
-  mkdir -p $PKG_BUILD/.$HOST_NAME
-  cp -RP $PKG_BUILD/src/* $PKG_BUILD/.$HOST_NAME
-}
-
-make_host() {
-  make -C .$HOST_NAME \
-       INSTALL_TOP=/usr \
-       PLAT=linux \
+make_target() {
+  #This command changes Lua search path to match the install paths.
+  sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h &&
+  make INSTALL_TOP=/usr \
        CC="$HOST_CC" \
        AR="$HOST_AR rcu" \
        RANLIB="$HOST_RANLIB" \
@@ -50,40 +45,58 @@ make_host() {
        linux
 }
 
-make_target() {
-  : # nothing to do here
-}
-
-makeinstall_host() {
-  : # nothing to do here
-}
-
 makeinstall_target() {
-  : # nothing to do here
-}
-
-post_makeinstall_host() {
-  mkdir -p $ROOT/$TOOLCHAIN/bin
-    cp -P $ROOT/$PKG_BUILD/.$HOST_NAME/lua $ROOT/$TOOLCHAIN/bin
-    cp -P $ROOT/$PKG_BUILD/.$HOST_NAME/luac $ROOT/$TOOLCHAIN/bin
-
-  mkdir -p $SYSROOT_PREFIX/usr/lib
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/liblua.a $SYSROOT_PREFIX/usr/lib
-
-  mkdir -p $SYSROOT_PREFIX/usr/lib/pkgconfig
-    cp $PKG_DIR/config/lua5.2.pc $SYSROOT_PREFIX/usr/lib/pkgconfig
-
-  mkdir -p $SYSROOT_PREFIX/usr/include
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/lua.h $SYSROOT_PREFIX/usr/include
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/luaconf.h $SYSROOT_PREFIX/usr/include
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/lualib.h $SYSROOT_PREFIX/usr/include
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/lauxlib.h $SYSROOT_PREFIX/usr/include
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/lua.hpp $SYSROOT_PREFIX/usr/include
+  : # nop
 }
 
 post_makeinstall_target() {
-  mkdir -p $INSTALL/usr/bin
-    cp -P $ROOT/$PKG_BUILD/.$HOST_NAME/lua $INSTALL/usr/bin
-    cp -P $ROOT/$PKG_BUILD/.$HOST_NAME/luac $INSTALL/usr/bin
+  mkdir -p $ROOT/$TOOLCHAIN/bin
+    cp -P $ROOT/$PKG_BUILD/src/lua $ROOT/$TOOLCHAIN/bin
+    cp -P $ROOT/$PKG_BUILD/src/luac $ROOT/$TOOLCHAIN/bin
+
+  mkdir -p $SYSROOT_PREFIX/usr/lib
+    cp -P $ROOT/$PKG_BUILD/src/liblua.a $SYSROOT_PREFIX/usr/lib
+    cp -P $ROOT/$PKG_BUILD/src/liblua.so $SYSROOT_PREFIX/usr/lib
+    cp -P $ROOT/$PKG_BUILD/src/liblua.so.* $SYSROOT_PREFIX/usr/lib
+
+  mkdir -p $SYSROOT_PREFIX/usr/lib/pkgconfig
+    cat > $SYSROOT_PREFIX/usr/lib/pkgconfig/lua5.3.pc << "EOF"
+V=5.3
+R=5.3.1
+
+prefix=/usr
+INSTALL_BIN=${prefix}/bin
+INSTALL_INC=${prefix}/include
+INSTALL_LIB=${prefix}/lib
+INSTALL_MAN=${prefix}/man/man1
+INSTALL_LMOD=${prefix}/share/lua/${V}
+INSTALL_CMOD=${prefix}/lib/lua/${V}
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Lua
+Description: An Extensible Extension Language
+Version: ${R}
+Requires: 
+Libs: -L${libdir} -llua -lm
+Cflags: -I${includedir}
+EOF
+
+  mkdir -p $SYSROOT_PREFIX/usr/include
+    cp -P $ROOT/$PKG_BUILD/src/lua.h $SYSROOT_PREFIX/usr/include
+    cp -P $ROOT/$PKG_BUILD/src/luaconf.h $SYSROOT_PREFIX/usr/include
+    cp -P $ROOT/$PKG_BUILD/src/lualib.h $SYSROOT_PREFIX/usr/include
+    cp -P $ROOT/$PKG_BUILD/src/lauxlib.h $SYSROOT_PREFIX/usr/include
+    cp -P $ROOT/$PKG_BUILD/src/lua.hpp $SYSROOT_PREFIX/usr/include
 }
 
+post_install() {
+  mkdir -p $INSTALL/usr/bin
+    cp -P $ROOT/$PKG_BUILD/src/lua $INSTALL/usr/bin
+    cp -P $ROOT/$PKG_BUILD/src/luac $INSTALL/usr/bin
+
+  mkdir -p $INSTALL/usr/lib
+    cp -P $ROOT/$PKG_BUILD/src/liblua.so $INSTALL/usr/lib
+    cp -P $ROOT/$PKG_BUILD/src/liblua.so.* $INSTALL/usr/lib
+}

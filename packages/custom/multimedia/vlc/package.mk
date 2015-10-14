@@ -20,12 +20,12 @@
 
 PKG_NAME="vlc"
 PKG_VERSION="2.2.1"
-PKG_REV="15"
+PKG_REV="16"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libass librsvg lua:host lua liblivemedia:host libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib-vlc libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 lirc libavc1394 libdc1394 libdvdnav a52dec libssh2 libmatroska libshout ncursesw5 SDL_image qt4"
+PKG_DEPENDS_TARGET="toolchain libass librsvg lua liblivemedia:host libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib-vlc libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 lirc libavc1394 libdc1394 libdvdnav a52dec libssh2 libmatroska libshout ncursesw5 SDL_image qt4"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
@@ -228,12 +228,30 @@ pre_configure_target() {
   LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib -L$(get_build_dir ncursesw5)/.install_tmp/usr/lib"
 }
 
+pre_make_target() {
+  #This sed fixes compilation with lua 5.3.
+  sed -e 's/luaL_optint/(int)&eger/' \
+    -i $(get_build_dir vlc)/modules/lua/libs/{net,osd,volume}.c
+  sed -e 's/luaL_checkint(/(int)luaL_checkinteger(/' \
+    -i $(get_build_dir vlc)/modules/lua/{demux,libs/{configuration,net,osd,playlist}}.c \
+       $(get_build_dir vlc)/modules/lua/{demux,libs/{stream,variables,volume}}.c
+}
+
 post_install() {
   $INSTALL/usr/lib/vlc/vlc-cache-gen $INSTALL/usr/lib/vlc/plugins
 
   QT4=$(get_build_dir qt4)
 
+  mkdir -p $INSTALL/usr/bin
+    mv $INSTALL/usr/bin/vlc $INSTALL/usr/bin/vlc.bin
+    cp -pR $PKG_DIR/scripts/* $INSTALL/usr/bin
+
   mkdir -p $INSTALL/usr/lib
     cp -P $QT4/lib/libQtCore.so.* $INSTALL/usr/lib
     cp -P $QT4/lib/libQtGui.so.* $INSTALL/usr/lib
+
+  #libs from ubuntu !!!
+  mkdir -p $INSTALL/usr/lib/external
+    cp -pR $PKG_DIR/libs/* $INSTALL/usr/lib/external
+
 }
