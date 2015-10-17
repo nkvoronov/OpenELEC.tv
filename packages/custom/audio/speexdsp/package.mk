@@ -18,14 +18,14 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="speex"
-PKG_VERSION="1.2rc2"
+PKG_NAME="speexdsp"
+PKG_VERSION="1.2rc3"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.speex.org"
 PKG_URL="http://download.videolan.org/pub/contrib/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libogg speexdsp"
+PKG_DEPENDS_TARGET="toolchain libogg"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/audio"
 PKG_SHORTDESC="Speex is an audio codec especially designed for compressing voice at low bit-rates for applications such as voice over IP (VoIP). In some senses, it is meant to be complementary to the Vorbis codec which places a greater emphasis on high-quality music reproduction."

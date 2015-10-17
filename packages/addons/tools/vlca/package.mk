@@ -20,7 +20,7 @@
 
 PKG_NAME="vlca"
 PKG_VERSION="2.2.1"
-PKG_REV="16"
+PKG_REV="17"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"

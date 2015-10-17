@@ -34,59 +34,50 @@ PKG_LONGDESC="This code forms a set of C++ libraries for multimedia streaming, u
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-pre_build_host() {
-  mkdir -p $PKG_BUILD/.$HOST_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$HOST_NAME
-}
-
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
   cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
 }
 
-pre_configure_host() {
+pre_configure_target() {
+  strip_lto
   export CFLAGS="$CFLAGS -fPIC -DPIC"
   export CXXFLAGS="$CXXFLAGS -fPIC -DPIC"
   export LDFLAGS="$LDFLAGS -fPIC -DPIC"
-}
-
-make_host() {
-  ./genMakefiles linux  
-  make
-
-  #./genMakefiles linux-with-shared-libraries
-  #make
-}
-
-make_target() {
-  ./genMakefiles linux-with-shared-libraries
-  make
-}
-
-makeinstall_host() {
-  : # nothing to do here  
+  ./genMakefiles linux
 }
 
 makeinstall_target() {
   : # nothing to do here
 }
 
-post_makeinstall_host() {
+post_makeinstall_target() {
 
   mkdir -p $SYSROOT_PREFIX/usr/lib
   mkdir -p $SYSROOT_PREFIX/usr/lib/pkgconfig
-    cp $PKG_DIR/config/live555.pc $SYSROOT_PREFIX/usr/lib/pkgconfig
+    cat > $SYSROOT_PREFIX/usr/lib/pkgconfig/live555.pc << "EOF"
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: live555
+Description: multimedia RTSP streaming library
+Version: 2015.06.24
+Cflags: -I${includedir}/liveMedia -I${includedir}/groupsock -I${includedir}/BasicUsageEnvironment -I${includedir}/UsageEnvironment
+Libs: -L${libdir} -lliveMedia -lgroupsock -lBasicUsageEnvironment -lUsageEnvironment
+EOF
 
   mkdir -p $SYSROOT_PREFIX/usr/include/BasicUsageEnvironment
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/BasicUsageEnvironment/include/* $SYSROOT_PREFIX/usr/include/BasicUsageEnvironment
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/BasicUsageEnvironment/*.a $SYSROOT_PREFIX/usr/lib
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/BasicUsageEnvironment/include/* $SYSROOT_PREFIX/usr/include/BasicUsageEnvironment
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/BasicUsageEnvironment/*.a $SYSROOT_PREFIX/usr/lib
   mkdir -p $SYSROOT_PREFIX/usr/include/UsageEnvironment
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/UsageEnvironment/include/* $SYSROOT_PREFIX/usr/include/UsageEnvironment
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/UsageEnvironment/*.a $SYSROOT_PREFIX/usr/lib
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/UsageEnvironment/include/* $SYSROOT_PREFIX/usr/include/UsageEnvironment
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/UsageEnvironment/*.a $SYSROOT_PREFIX/usr/lib
   mkdir -p $SYSROOT_PREFIX/usr/include/groupsock
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/groupsock/include/* $SYSROOT_PREFIX/usr/include/groupsock
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/groupsock/*.a $SYSROOT_PREFIX/usr/lib
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/groupsock/include/* $SYSROOT_PREFIX/usr/include/groupsock
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/groupsock/*.a $SYSROOT_PREFIX/usr/lib
   mkdir -p $SYSROOT_PREFIX/usr/include/liveMedia
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/liveMedia/include/* $SYSROOT_PREFIX/usr/include/liveMedia
-    cp $ROOT/$PKG_BUILD/.$HOST_NAME/liveMedia/*.a $SYSROOT_PREFIX/usr/lib
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/liveMedia/include/* $SYSROOT_PREFIX/usr/include/liveMedia
+    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/liveMedia/*.a $SYSROOT_PREFIX/usr/lib
 }

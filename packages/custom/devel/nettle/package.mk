@@ -18,23 +18,23 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="speex"
-PKG_VERSION="1.2rc2"
+PKG_NAME="nettle"
+PKG_VERSION="3.1.1"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.speex.org"
-PKG_URL="http://download.videolan.org/pub/contrib/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libogg speexdsp"
+PKG_SITE="http://www.lysator.liu.se/~nisse/nettle"
+PKG_URL="https://ftp.gnu.org/gnu/nettle/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/audio"
-PKG_SHORTDESC="Speex is an audio codec especially designed for compressing voice at low bit-rates for applications such as voice over IP (VoIP). In some senses, it is meant to be complementary to the Vorbis codec which places a greater emphasis on high-quality music reproduction."
-PKG_LONGDESC="Speex is an audio codec especially designed for compressing voice at low bit-rates for applications such as voice over IP (VoIP). In some senses, it is meant to be complementary to the Vorbis codec which places a greater emphasis on high-quality music reproduction."
+PKG_SECTION="custom/devel"
+PKG_SHORTDESC="The Nettle package contains the low-level cryptographic library that is designed to fit easily in many contexts."
+PKG_LONGDESC="The Nettle package contains the low-level cryptographic library that is designed to fit easily in many contexts."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
+PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared --enable-mini-gmp"
 
 post_makeinstall_target() {
   rm -rf $INSTALL/usr/bin

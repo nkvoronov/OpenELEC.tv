@@ -18,23 +18,23 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="speex"
-PKG_VERSION="1.2rc2"
+PKG_NAME="gnutls"
+PKG_VERSION="3.4.5"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.speex.org"
-PKG_URL="http://download.videolan.org/pub/contrib/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libogg speexdsp"
+PKG_SITE="http://www.gnutls.org"
+PKG_URL="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.4/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain nettle gmp libidn"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/audio"
-PKG_SHORTDESC="Speex is an audio codec especially designed for compressing voice at low bit-rates for applications such as voice over IP (VoIP). In some senses, it is meant to be complementary to the Vorbis codec which places a greater emphasis on high-quality music reproduction."
-PKG_LONGDESC="Speex is an audio codec especially designed for compressing voice at low bit-rates for applications such as voice over IP (VoIP). In some senses, it is meant to be complementary to the Vorbis codec which places a greater emphasis on high-quality music reproduction."
+PKG_SECTION="custom/devel"
+PKG_SHORTDESC="GnuTLS is a portable library which implements the Transport Layer Security (TLS 1.0, 1.1, 1.2) and Secure Sockets Layer (SSL) 3.0 and Datagram Transport Layer Security (DTLS 1.0, 1.2) protocols."
+PKG_LONGDESC="GnuTLS is a portable library which implements the Transport Layer Security (TLS 1.0, 1.1, 1.2) and Secure Sockets Layer (SSL) 3.0 and Datagram Transport Layer Security (DTLS 1.0, 1.2) protocols."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
+PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared --with-included-libtasn1 --without-p11-kit"
 
 post_makeinstall_target() {
   rm -rf $INSTALL/usr/bin

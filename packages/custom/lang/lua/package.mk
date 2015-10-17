@@ -37,11 +37,11 @@ make_target() {
   #This command changes Lua search path to match the install paths.
   sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h &&
   make INSTALL_TOP=/usr \
-       CC="$HOST_CC" \
-       AR="$HOST_AR rcu" \
-       RANLIB="$HOST_RANLIB" \
-       CFLAGS="$HOST_CFLAGS -fPIC -DPIC" \
-       LDFLAGS="$HOST_LDFLAGS -fPIC -DPIC" \
+       CC="$CC" \
+       AR="$AR rcu" \
+       RANLIB="$RANLIB" \
+       CFLAGS="$CFLAGS -fPIC -DPIC" \
+       LDFLAGS="$LDFLAGS -fPIC -DPIC" \
        linux
 }
 

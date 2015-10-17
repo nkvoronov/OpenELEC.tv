@@ -35,7 +35,14 @@ PKG_AUTORECONF="yes"
 
 PKG_CONFIGURE_OPTS_HOST="--enable-cxx --enable-static --disable-shared"
 
+PKG_CONFIGURE_OPTS_TARGET="--enable-cxx --enable-static --disable-shared"
+
 pre_configure_host() {
+  export CFLAGS="$CFLAGS -fPIC -DPIC"
+  export CPPFLAGS="$CPPFLAGS -fexceptions"
+}
+
+pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC -DPIC"
   export CPPFLAGS="$CPPFLAGS -fexceptions"
 }
