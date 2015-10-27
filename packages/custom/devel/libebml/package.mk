@@ -41,3 +41,10 @@ make_target() {
 makeinstall_target() {
   make install -C make/linux prefix=$ROOT/$PKG_BUILD/.install_pkg/usr
 }
+
+post_makeinstall_target() {
+  mkdir -p $SYSROOT_PREFIX/usr/include/ebml
+    cp -PR $ROOT/$PKG_BUILD/ebml/* $SYSROOT_PREFIX/usr/include/ebml
+  mkdir -p $SYSROOT_PREFIX/usr/lib
+    cp -P $ROOT/$PKG_BUILD/make/linux/{*.a,*.so*} $SYSROOT_PREFIX/usr/lib
+}

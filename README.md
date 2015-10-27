@@ -58,6 +58,7 @@ providing cutting edge hardware support to deliver a set-top box experience.
 * tvheadend (service)
 * vdr (service)
 * transmission (service)
+* vlc
 * libtorenter
 * acestream
 * perl

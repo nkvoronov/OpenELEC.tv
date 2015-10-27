@@ -255,5 +255,9 @@ post_install() {
   #libs from ubuntu !!!
   mkdir -p $INSTALL/usr/lib/external
     cp -pR $PKG_DIR/libs/* $INSTALL/usr/lib/external
+ 
+  rm -f $INSTALL/usr/lib/libICE.*
+  rm -f $INSTALL/usr/lib/libSM.*
+  rm -f $INSTALL/usr/lib/libXrender.*
 
 }
