@@ -18,11 +18,11 @@
 
 PKG_NAME="kodi"
 PKG_VERSION="15.2-02e7013"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain kodi:host libsquish boost Python zlib bzip2 systemd pciutils lzo pcre swig:host libass curl rtmpdump fontconfig fribidi tinyxml libjpeg-turbo libpng tiff freetype jasper libogg libcdio libmpeg2 taglib libxml2 libxslt yajl sqlite libvorbis ffmpeg"
 PKG_DEPENDS_HOST="lzo:host libpng:host libjpeg-turbo:host giflib:host"
 PKG_PRIORITY="optional"
@@ -71,6 +71,14 @@ if [ "$ALSA_SUPPORT" = yes ]; then
   KODI_ALSA="--enable-alsa"
 else
   KODI_ALSA="--disable-alsa"
+fi
+
+if [ "$PULSEAUDIO_SUPPORT" = yes ]; then
+# for PulseAudio support
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET pulseaudio"
+  KODI_PULSEAUDIO="--enable-pulse"
+else
+  KODI_PULSEAUDIO="--disable-pulse"
 fi
 
 if [ "$ESPEAK_SUPPORT" = yes ]; then
@@ -254,7 +262,7 @@ PKG_CONFIGURE_OPTS_TARGET="gl_cv_func_gettimeofday_clobber=no \
                            $KODI_XORG \
                            --disable-ccache \
                            $KODI_ALSA \
-                           --disable-pulse \
+                           $KODI_PULSEAUDIO \
                            --enable-rtmp \
                            $KODI_SAMBA \
                            $KODI_NFS \
