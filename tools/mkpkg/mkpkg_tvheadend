@@ -19,12 +19,12 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-epgfixer"
-PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-epgfixer.git"
+PKG_NAME="tvheadend"
+PKG_REPO="https://github.com/tvheadend/tvheadend.git"
 
 echo "getting sources..."
   if [ ! -d $PKG_NAME.git ]; then
-    git clone $PKG_REPO $PKG_NAME.git
+    git clone  $PKG_REPO $PKG_NAME.git
   fi
 
   cd $PKG_NAME.git

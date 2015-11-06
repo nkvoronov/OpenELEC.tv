@@ -19,28 +19,25 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-epgfixer"
-PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-epgfixer.git"
-
 echo "getting sources..."
-  if [ ! -d $PKG_NAME.git ]; then
-    git clone $PKG_REPO $PKG_NAME.git
+  if [ ! -d pvr.vdr.vnsi.git ]; then
+    git clone -b Isengard https://github.com/kodi-pvr/pvr.vdr.vnsi.git pvr.vdr.vnsi.git
   fi
 
-  cd $PKG_NAME.git
+  cd pvr.vdr.vnsi.git
     git pull
     GIT_REV=`git log -n1 --format=%h`
   cd ..
 
 echo "copying sources..."
-  rm -rf $PKG_NAME-$GIT_REV
-  cp -R $PKG_NAME.git $PKG_NAME-$GIT_REV
+  rm -rf pvr.vdr.vnsi-$GIT_REV
+  cp -R pvr.vdr.vnsi.git pvr.vdr.vnsi-$GIT_REV
 
 echo "cleaning sources..."
-  rm -rf $PKG_NAME-$GIT_REV/.git
+  rm -rf pvr.vdr.vnsi-$GIT_REV/.git
 
 echo "packing sources..."
-  tar cvJf $PKG_NAME-$GIT_REV.tar.xz $PKG_NAME-$GIT_REV
+  tar cvJf pvr.vdr.vnsi-$GIT_REV.tar.xz pvr.vdr.vnsi-$GIT_REV
 
 echo "remove temporary sourcedir..."
-  rm -rf $PKG_NAME-$GIT_REV
+  rm -rf pvr.vdr.vnsi-$GIT_REV

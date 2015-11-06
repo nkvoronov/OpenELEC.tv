@@ -1,4 +1,5 @@
 #!/bin/sh
+
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -19,28 +20,25 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-epgfixer"
-PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-epgfixer.git"
+PKG_NAME="oscam"
+PKG_REPO="http://www.streamboard.tv/svn/oscam/trunk"
 
 echo "getting sources..."
-  if [ ! -d $PKG_NAME.git ]; then
-    git clone $PKG_REPO $PKG_NAME.git
-  fi
+  svn checkout $PKG_REPO $PKG_NAME.svn
 
-  cd $PKG_NAME.git
-    git pull
-    GIT_REV=`git log -n1 --format=%h`
+echo "getting version..."
+  cd $PKG_NAME.svn
+  #svn update -r 9842
+    SVN_REV=`LANG=C svn info 2>/dev/null | grep Revision: | sed -e 's/.*\: //'`
+    echo $SVN_REV
   cd ..
 
 echo "copying sources..."
-  rm -rf $PKG_NAME-$GIT_REV
-  cp -R $PKG_NAME.git $PKG_NAME-$GIT_REV
-
-echo "cleaning sources..."
-  rm -rf $PKG_NAME-$GIT_REV/.git
+  rm -rf $PKG_NAME-$SVN_REV
+  cp -R $PKG_NAME.svn $PKG_NAME-$SVN_REV
 
 echo "packing sources..."
-  tar cvJf $PKG_NAME-$GIT_REV.tar.xz $PKG_NAME-$GIT_REV
+  tar cvJf $PKG_NAME-$SVN_REV.tar.xz $PKG_NAME-$SVN_REV
 
 echo "remove temporary sourcedir..."
-  rm -rf $PKG_NAME-$GIT_REV
+  rm -rf $PKG_NAME-$SVN_REV

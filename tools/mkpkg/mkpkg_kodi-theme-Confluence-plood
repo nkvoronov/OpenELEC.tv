@@ -19,8 +19,8 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-epgfixer"
-PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-epgfixer.git"
+PKG_NAME="kodi-theme-Confluence-plood"
+PKG_REPO="https://github.com/nkvoronov/skin.confluence-plood.git"
 
 echo "getting sources..."
   if [ ! -d $PKG_NAME.git ]; then

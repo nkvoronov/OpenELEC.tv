@@ -19,28 +19,25 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-epgfixer"
-PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-epgfixer.git"
-
 echo "getting sources..."
-  if [ ! -d $PKG_NAME.git ]; then
-    git clone $PKG_REPO $PKG_NAME.git
+  if [ ! -d kodi-addon-xvdr.git ]; then
+    git clone git://github.com/pipelka/xbmc-addon-xvdr.git kodi-addon-xvdr.git
   fi
 
-  cd $PKG_NAME.git
+  cd kodi-addon-xvdr.git
     git pull
     GIT_REV=`git log -n1 --format=%h`
   cd ..
 
 echo "copying sources..."
-  rm -rf $PKG_NAME-$GIT_REV
-  cp -R $PKG_NAME.git $PKG_NAME-$GIT_REV
+  rm -rf kodi-addon-xvdr-$GIT_REV
+  cp -R kodi-addon-xvdr.git kodi-addon-xvdr-$GIT_REV
 
 echo "cleaning sources..."
-  rm -rf $PKG_NAME-$GIT_REV/.git
+  rm -rf kodi-addon-xvdr-$GIT_REV/.git
 
 echo "packing sources..."
-  tar cvJf $PKG_NAME-$GIT_REV.tar.xz $PKG_NAME-$GIT_REV
+  tar cvJf kodi-addon-xvdr-$GIT_REV.tar.xz kodi-addon-xvdr-$GIT_REV
 
 echo "remove temporary sourcedir..."
-  rm -rf $PKG_NAME-$GIT_REV
+  rm -rf kodi-addon-xvdr-$GIT_REV

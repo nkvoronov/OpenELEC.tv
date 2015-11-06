@@ -19,28 +19,28 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-epgfixer"
-PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-epgfixer.git"
+PKG_NAME="scan-s2"
+PKG_REPO="https://bitbucket.org/CrazyCat/scan-s2"
 
 echo "getting sources..."
-  if [ ! -d $PKG_NAME.git ]; then
-    git clone $PKG_REPO $PKG_NAME.git
+  if [ ! -d $PKG_NAME.hg ]; then
+    hg clone $PKG_REPO $PKG_NAME.hg
   fi
 
-  cd $PKG_NAME.git
-    git pull
-    GIT_REV=`git log -n1 --format=%h`
+  cd $PKG_NAME.hg
+    hg pull
+    HG_REV=`hg identify --id`
   cd ..
 
 echo "copying sources..."
-  rm -rf $PKG_NAME-$GIT_REV
-  cp -R $PKG_NAME.git $PKG_NAME-$GIT_REV
+  rm -rf $PKG_NAME-$HG_REV
+  cp -R $PKG_NAME.hg $PKG_NAME-$HG_REV
 
 echo "cleaning sources..."
-  rm -rf $PKG_NAME-$GIT_REV/.git
+  rm -rf $PKG_NAME-$HG_REV/.hg
 
 echo "packing sources..."
-  tar cvJf $PKG_NAME-$GIT_REV.tar.xz $PKG_NAME-$GIT_REV
+  tar cvJf $PKG_NAME-$HG_REV.tar.xz $PKG_NAME-$HG_REV
 
 echo "remove temporary sourcedir..."
-  rm -rf $PKG_NAME-$GIT_REV
+  rm -rf $PKG_NAME-$HG_REV

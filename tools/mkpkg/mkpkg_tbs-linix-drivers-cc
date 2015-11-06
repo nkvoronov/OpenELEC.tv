@@ -19,8 +19,8 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-epgfixer"
-PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-epgfixer.git"
+PKG_NAME="tbs-linux-drivers-cc"
+PKG_REPO="https://bitbucket.org/CrazyCat/linux-tbs-drivers.git"
 
 echo "getting sources..."
   if [ ! -d $PKG_NAME.git ]; then

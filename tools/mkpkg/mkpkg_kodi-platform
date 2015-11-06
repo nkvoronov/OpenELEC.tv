@@ -19,28 +19,25 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="vdr-plugin-epgfixer"
-PKG_REPO="git://projects.vdr-developer.org/vdr-plugin-epgfixer.git"
-
 echo "getting sources..."
-  if [ ! -d $PKG_NAME.git ]; then
-    git clone $PKG_REPO $PKG_NAME.git
+  if [ ! -d kodi-platform.git ]; then
+    git clone https://github.com/xbmc/kodi-platform.git kodi-platform.git
   fi
 
-  cd $PKG_NAME.git
+  cd kodi-platform.git
     git pull
     GIT_REV=`git log -n1 --format=%h`
   cd ..
 
 echo "copying sources..."
-  rm -rf $PKG_NAME-$GIT_REV
-  cp -R $PKG_NAME.git $PKG_NAME-$GIT_REV
+  rm -rf kodi-platform-$GIT_REV
+  cp -R kodi-platform.git kodi-platform-$GIT_REV
 
 echo "cleaning sources..."
-  rm -rf $PKG_NAME-$GIT_REV/.git
+  rm -rf kodi-platform-$GIT_REV/.git
 
 echo "packing sources..."
-  tar cvJf $PKG_NAME-$GIT_REV.tar.xz $PKG_NAME-$GIT_REV
+  tar cvJf kodi-platform-$GIT_REV.tar.xz kodi-platform-$GIT_REV
 
 echo "remove temporary sourcedir..."
-  rm -rf $PKG_NAME-$GIT_REV
+  rm -rf kodi-platform-$GIT_REV
