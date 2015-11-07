@@ -1,3 +1,4 @@
+#!/bin/sh
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -18,34 +19,28 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-module-yaml"
-PKG_VERSION="6fe038a"
-PKG_REV="1"
-PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/robweber/script.module.yaml.git"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain Python"
-PKG_PRIORITY="optional"
-PKG_SECTION="custom/mediacentre"
-PKG_SHORTDESC="PyYaml library"
-PKG_LONGDESC="PyYaml library"
+PKG_NAME="kodi-module-requests"
+PKG_REPO="https://github.com/beenje/script.module.requests.git"
 
-PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
+echo "getting sources..."
+  if [ ! -d $PKG_NAME.git ]; then
+    git clone  $PKG_REPO $PKG_NAME.git
+  fi
 
-make_target() {
-  : # nothing to make here
-}
+  cd $PKG_NAME.git
+    git pull
+    GIT_REV=`git log -n1 --format=%h`
+  cd ..
 
-makeinstall_target() {
-  : # nothing to install here
-}
+echo "copying sources..."
+  rm -rf $PKG_NAME-$GIT_REV
+  cp -R $PKG_NAME.git $PKG_NAME-$GIT_REV
 
-post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/script.module.yaml
-    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.yaml
+echo "cleaning sources..."
+  rm -rf $PKG_NAME-$GIT_REV/.git
 
-  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.yaml/lib/yaml/ -f
-  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.yaml/lib/yaml/ -name "*.py"`
-}
+echo "packing sources..."
+  tar cvJf $PKG_NAME-$GIT_REV.tar.xz $PKG_NAME-$GIT_REV
+
+echo "remove temporary sourcedir..."
+  rm -rf $PKG_NAME-$GIT_REV
