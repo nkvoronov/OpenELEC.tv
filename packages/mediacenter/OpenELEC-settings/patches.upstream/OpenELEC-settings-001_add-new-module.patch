@@ -2775,7 +2775,12 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.oe.set_service('vdr', options, 0)
 +                self.oe.set_service('tvheadend', options, 0)
 +
-+            self.initialize_tvbackend()
++            self.initialize_tv_backend()
++            self.initialize_tvheadend()
++            self.initialize_vdr()
++            self.initialize_tv_frontends()
++            self.initialize_vdr_front()
++            self.initialize_oscam()
 +            self.load_values()
 +
 +            self.oe.dbg_log('tvservers::wizard_set_tvbackend', 'exit_function', 0)

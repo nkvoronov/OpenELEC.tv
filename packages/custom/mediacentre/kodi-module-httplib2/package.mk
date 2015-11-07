@@ -1,7 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
-#      Copyright (C) 2011-2011 Gregor Fuis (gujs@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,41 +18,34 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="oscam-service"
-PKG_VERSION="11107"
-PKG_REV="68"
+PKG_NAME="kodi-module-httplib2"
+PKG_VERSION="e5946d5"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.streamboard.tv/oscam/wiki"
-PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain oscam"
+PKG_SITE="https://github.com/XBMC-Addons/script.module.httplib2.git"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain Python"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
-PKG_SHORTDESC="oscam: OSCam is Open Source Conditional Access Modul."
-PKG_LONGDESC="OSCam is Open Source Conditional Access Modul."
-PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not install"
+PKG_SECTION="custom/mediacentre"
+PKG_SHORTDESC="httplib2 module"
+PKG_LONGDESC="httplib2 module"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {
-  : # nothing to do here
+  : # nothing to make here
 }
 
 makeinstall_target() {
-  : # nothing to do here
+  : # nothing to install here
 }
 
 post_install() {
-  OSCAM_DIR=$(get_build_dir oscam)
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.module.httplib2
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.httplib2
 
-  mkdir -p $INSTALL/usr/bin
-    cp -P $OSCAM_DIR/.$TARGET_NAME/oscam $INSTALL/usr/bin
-    cp -P $OSCAM_DIR/.$TARGET_NAME/utils/list_smargo $INSTALL/usr/bin
-    cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
-
-  mkdir -p $INSTALL/usr/config/oscam/default
-    cp -p $PKG_DIR/config/* $INSTALL/usr/config/oscam/default
-
-  enable_service oscam.service
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.httplib2/lib/httplib2/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.httplib2/lib/httplib2/ -name "*.py"`
 }
