@@ -1,6 +1,6 @@
 diff -Naur a/src/defaults.py b/src/defaults.py
 --- a/src/defaults.py	2015-01-23 00:05:40.000000000 +0200
-+++ b/src/defaults.py	2015-04-30 17:25:02.013037879 +0300
++++ b/src/defaults.py	2015-11-07 22:00:13.296044850 +0200
 @@ -91,7 +91,153 @@
          "D_LCD_DRIVER"          : "none",
          
@@ -181,7 +181,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
      }
 diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/system.py
 --- a/src/resources/lib/modules/system.py	2015-01-23 00:05:40.000000000 +0200
-+++ b/src/resources/lib/modules/system.py	2015-03-28 21:45:50.411260587 +0200
++++ b/src/resources/lib/modules/system.py	2015-11-07 22:00:13.296044850 +0200
 @@ -127,7 +127,15 @@
                          'action': 'set_keyboard_layout',
                          'type': 'multivalue',
@@ -300,7 +300,7 @@ diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/sys
              self.oe.dbg_log('system::get_keyboard_layouts', 'ERROR: ('
 diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modules/transmission.py
 --- a/src/resources/lib/modules/transmission.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/transmission.py	2015-03-28 21:45:50.411260587 +0200
++++ b/src/resources/lib/modules/transmission.py	2015-11-07 22:00:13.296044850 +0200
 @@ -0,0 +1,331 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -635,8 +635,8 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-04-30 17:22:24.749041475 +0300
-@@ -0,0 +1,2146 @@
++++ b/src/resources/lib/modules/tvservers.py	2015-11-07 22:01:20.028043324 +0200
+@@ -0,0 +1,2150 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
 +#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
@@ -2787,4 +2787,3 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +        except Exception, e:
 +            self.oe.dbg_log('tvservers::wizard_set_tvbackend', 'ERROR: (%s)' % repr(e))
-+
