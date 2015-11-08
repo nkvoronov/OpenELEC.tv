@@ -710,8 +710,8 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-11-08 02:30:30.403674042 +0200
-@@ -0,0 +1,2151 @@
++++ b/src/resources/lib/modules/tvservers.py	2015-11-08 03:57:33.327554619 +0200
+@@ -0,0 +1,2150 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
 +#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
@@ -738,6 +738,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +#  OpenELEC Licensing  <license@openelec.tv>  http://www.openelec.tv
 +################################################################################
 +# -*- coding: utf-8 -*-
++import xbmc
++import xbmcgui
 +import os
 +import glob
 +import oeWindows
@@ -2811,21 +2813,18 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +            self.oe.dbg_log('tvservers::select_tvbackend', 'enter_function', 0)
 +
 +            self.oe.set_busy(1)
++            
++            defaultValue = self.struct['tvbackends']['settings']['tv_backend']['value']
++            items = self.struct['tvbackends']['settings']['tv_backend']['values']
++            select_window = xbmcgui.Dialog()
++            title = self.struct['tvbackends']['settings']['tv_backend']['name']
++            result = select_window.select(title, items)
 +
-+            select_window = oeWindows.selectWindow('selectWindow.xml',self.oe.__cwd__, 'Default', oeMain=self.oe)
-+            select_window.defaultValue = self.struct['tvbackends']['settings']['tv_backend']['value']
-+            select_window.availValues = \
-+            ','.join(self.struct['tvbackends']['settings']['tv_backend']['values'])
-+            self.oe.set_busy(0)
-+            select_window.doModal()
-+
-+            if select_window.defaultValue != select_window.result:
-+                self.struct['tvbackends']['settings']['tv_backend']['value'] = select_window.result
-+                self.oe.write_setting('tvservers', 'tvbackends',select_window.result)
++            if defaultValue != result:
++                self.struct['tvbackends']['settings']['tv_backend']['value'] = result
++                self.oe.write_setting('tvservers', 'tvbackends', result)
 +                self.wizard_set_tvbackend()
 +                self.oe.winOeMain.set_wizard_button_2(self.oe._(34000).encode('utf-8')+self.get_tvbackend(), self,'select_tvbackend')
-+
-+            del select_window
 +
 +            self.oe.dbg_log('tvservers::select_tvbackend', 'exit_function', 0)
 +
