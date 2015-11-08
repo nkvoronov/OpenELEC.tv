@@ -1253,7 +1253,7 @@ diff -Naur a/resources/settings.xml b/resources/settings.xml
 -        <setting label="Prompt to show build list" type="enum" id="check_prompt" values="Never|When not playing video|Always" enable="eq(-3,true)" subsetting="true" default="1"/>
 -        <setting label="Enable for official releases" type="bool" id="check_official" enable="eq(-4,true)" subsetting="true" default="false"/>
 +    <category label="32100">
-+        <setting label="32101" type="bool" id="check" default="false"/>
++        <setting label="32101" type="bool" id="check" default="true"/>
 +        <setting label="32102" type="bool" id="check_onbootonly" enable="eq(-1,true)" subsetting="true" default="false"/>
 +        <setting label="32103" type="slider" id="check_interval" enable="eq(-2,true) + eq(-1,false)" subsetting="true" default="3" range="1,1,24" option="int"/>
 +        <setting label="32104" type="enum" id="check_prompt" lvalues="32010|32011|32012" enable="eq(-3,true)" subsetting="true" default="1"/>
@@ -1268,7 +1268,7 @@ diff -Naur a/resources/settings.xml b/resources/settings.xml
 -        <setting label="URL" type="text" id="custom_url" enable="eq(-2,true) + !eq(-1,)"  subsetting="true"/>
 -        <setting label="Build type" type="enum" id="build_type" values="Development|Release|Milhouse" enable="eq(-3,true) + !eq(-2,)" subsetting="true"/>
 +    <category label="32200">
-+        <setting label="32201" type="bool" id="custom_source_enable" default="true"/>
++        <setting label="32201" type="bool" id="custom_source_enable" default="false"/>
 +        <setting label="32202" type="text" id="custom_source" enable="eq(-1,true)" subsetting="true"/>
 +        <setting label="32203" type="text" id="custom_url" enable="eq(-2,true) + !eq(-1,)"  subsetting="true"/>
 +        <setting label="32204" type="enum" id="build_type" lvalues="32210|32211|32212|32213" enable="eq(-3,true) + !eq(-2,)" subsetting="true"/>
