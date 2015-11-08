@@ -1268,7 +1268,7 @@ diff -Naur a/resources/settings.xml b/resources/settings.xml
 -        <setting label="URL" type="text" id="custom_url" enable="eq(-2,true) + !eq(-1,)"  subsetting="true"/>
 -        <setting label="Build type" type="enum" id="build_type" values="Development|Release|Milhouse" enable="eq(-3,true) + !eq(-2,)" subsetting="true"/>
 +    <category label="32200">
-+        <setting label="32201" type="bool" id="custom_source_enable" default="true"/>
++        <setting label="32201" type="bool" id="custom_source_enable" default="false"/>
 +        <setting label="32202" type="text" id="custom_source" enable="eq(-1,true)" subsetting="true"/>
 +        <setting label="32203" type="text" id="custom_url" enable="eq(-2,true) + !eq(-1,)"  subsetting="true"/>
 +        <setting label="32204" type="enum" id="build_type" lvalues="32210|32211|32212|32213" enable="eq(-3,true) + !eq(-2,)" subsetting="true"/>

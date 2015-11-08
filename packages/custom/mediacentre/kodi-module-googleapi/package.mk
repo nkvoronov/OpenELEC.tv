@@ -18,21 +18,28 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-backup"
-PKG_VERSION="0926c5d"
+PKG_NAME="kodi-module-googleapi"
+PKG_VERSION="11709c0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE=""
+PKG_SITE="https://github.com/robweber/script.module.googleapi.git"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain Python kodi-module-httplib2 kodi-module-oauth2client kodi-module-uritemplate kodi-module-yaml kodi-module-googleapi"
+PKG_DEPENDS_TARGET="toolchain Python"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/mediacentre"
-PKG_SHORTDESC="Backup and restore your Kodi database and configuration files in the event of a crash or file corruption."
-PKG_LONGDESC="Backup and restore your Kodi database and configuration files in the event of a crash or file corruption."
+PKG_SHORTDESC="Google API python classes and dependencies"
+PKG_LONGDESC="Google API python classes and dependencies"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
+
+post_unpack() {
+  for patch in `ls $PKG_DIR/patches.upstream/*.patch`; do
+    cat $patch | patch -d \
+    `echo $BUILD/$PKG_NAME-$PKG_VERSION | cut -f1 -d\ ` -p1
+  done
+}
 
 make_target() {
   : # nothing to make here
@@ -43,9 +50,9 @@ makeinstall_target() {
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/script.xbmcbackup
-    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.xbmcbackup
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.module.googleapi
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.googleapi
 
-  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.xbmcbackup/resources/lib/ -f
-  rm -rf `find $INSTALL/usr/share/kodi/addons/script.xbmcbackup/resources/lib/ -name "*.py"`
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.googleapi/lib/apiclient/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.googleapi/lib/apiclient/ -name "*.py"`
 }

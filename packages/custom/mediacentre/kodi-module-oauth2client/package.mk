@@ -18,18 +18,18 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-backup"
-PKG_VERSION="0926c5d"
+PKG_NAME="kodi-module-oauth2client"
+PKG_VERSION="51dad8d"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE=""
+PKG_SITE="https://github.com/robweber/script.module.oauth2client.git"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain Python kodi-module-httplib2 kodi-module-oauth2client kodi-module-uritemplate kodi-module-yaml kodi-module-googleapi"
+PKG_DEPENDS_TARGET="toolchain Python"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/mediacentre"
-PKG_SHORTDESC="Backup and restore your Kodi database and configuration files in the event of a crash or file corruption."
-PKG_LONGDESC="Backup and restore your Kodi database and configuration files in the event of a crash or file corruption."
+PKG_SHORTDESC="Google Oauth2Client libraries"
+PKG_LONGDESC="Google Oauth2Client libraries"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
@@ -43,9 +43,9 @@ makeinstall_target() {
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/script.xbmcbackup
-    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.xbmcbackup
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.module.oauth2client
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.oauth2client
 
-  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.xbmcbackup/resources/lib/ -f
-  rm -rf `find $INSTALL/usr/share/kodi/addons/script.xbmcbackup/resources/lib/ -name "*.py"`
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.oauth2client/lib/oauth2client/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.oauth2client/lib/oauth2client/ -name "*.py"`
 }
