@@ -710,7 +710,7 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-11-08 04:42:40.023492730 +0200
++++ b/src/resources/lib/modules/tvservers.py	2015-11-08 05:05:28.599461437 +0200
 @@ -0,0 +1,2148 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -2817,12 +2817,12 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +            title = self.oe._(35001).encode('utf-8')
 +            select_window = xbmcgui.Dialog()
 +            result = select_window.select(title, items)
-+
++            
 +            if defaultValue != result:
 +                self.struct['tvbackends']['settings']['tv_backend']['value'] = result
-+                self.oe.write_setting('tvservers', 'tvbackends', result)
++                self.initialize_tv_backend()
 +                self.wizard_set_tvbackend()
-+                self.oe.winOeMain.set_wizard_button_2(self.oe._(34000).encode('utf-8')+self.get_tvbackend(), self,'select_tvbackend')
++                self.oe.winOeMain.set_wizard_button_2(self.oe._(34000).encode('utf-8')+self.get_tvbackend(), self, 'select_tvbackend')
 +
 +            self.oe.dbg_log('tvservers::select_tvbackend', 'exit_function', 0)
 +
