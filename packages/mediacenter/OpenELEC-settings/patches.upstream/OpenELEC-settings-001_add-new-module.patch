@@ -710,7 +710,7 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-11-08 03:57:33.327554619 +0200
++++ b/src/resources/lib/modules/tvservers.py	2015-11-08 04:22:19.551520636 +0200
 @@ -0,0 +1,2150 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -2816,8 +2816,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +            
 +            defaultValue = self.struct['tvbackends']['settings']['tv_backend']['value']
 +            items = self.struct['tvbackends']['settings']['tv_backend']['values']
++            title = self.oe._(35001).encode('utf-8')
 +            select_window = xbmcgui.Dialog()
-+            title = self.struct['tvbackends']['settings']['tv_backend']['name']
 +            result = select_window.select(title, items)
 +
 +            if defaultValue != result:
