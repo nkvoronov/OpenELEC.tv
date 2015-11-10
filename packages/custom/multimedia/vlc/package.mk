@@ -117,7 +117,7 @@ PKG_CONFIGURE_CODEC_PLUGINS_OPTS="--disable-wma-fixed \
 	--disable-vda \
 	--enable-avformat \
 	--enable-swscale \
-	--disable-postproc \
+	--enable-postproc \
 	--enable-faad \
 	--enable-vpx \
 	--disable-twolame \
@@ -256,8 +256,4 @@ post_install() {
   mkdir -p $INSTALL/usr/lib/external
     cp -pR $PKG_DIR/libs/* $INSTALL/usr/lib/external
  
-  #rm -f $INSTALL/usr/lib/libICE.*
-  #rm -f $INSTALL/usr/lib/libSM.*
-  #rm -f $INSTALL/usr/lib/libXrender.*
-
 }

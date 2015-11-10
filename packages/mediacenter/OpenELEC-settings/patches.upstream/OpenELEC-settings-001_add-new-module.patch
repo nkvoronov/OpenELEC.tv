@@ -710,8 +710,8 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-11-08 05:18:26.255443656 +0200
-@@ -0,0 +1,2149 @@
++++ b/src/resources/lib/modules/tvservers.py	2015-11-09 19:41:48.267716742 +0200
+@@ -0,0 +1,2148 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
 +#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
@@ -2818,7 +2818,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +            select_window = xbmcgui.Dialog()
 +            ret = select_window.select(title, items)
 +            result = items[ret]
-+            self.oe.dbg_log('tvservers::select_tvbackend', result)
 +            
 +            if defaultValue != result:
 +                self.struct['tvbackends']['settings']['tv_backend']['value'] = result
