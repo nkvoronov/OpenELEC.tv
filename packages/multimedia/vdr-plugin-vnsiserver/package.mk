@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-vnsiserver"
-PKG_VERSION="0b49c40"
+PKG_VERSION="b6ea352"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
