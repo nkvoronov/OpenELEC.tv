@@ -28,4 +28,12 @@
           <allowsharing>true</allowsharing>
       </source>
   </pictures>
+  <files>
+        <default pathversion="1"></default>
+        <source>
+            <name>SuperRepo</name>
+            <path pathversion="1">http://srp.nu/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </files>
 </sources>

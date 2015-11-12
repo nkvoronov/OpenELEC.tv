@@ -20,7 +20,7 @@
 
 PKG_NAME="vlc"
 PKG_VERSION="2.2.1"
-PKG_REV="16"
+PKG_REV="18"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -32,7 +32,6 @@ PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
 PKG_LONGDESC="VLC is the VideoLAN project's media player. It plays MPEG, MPEG2, MPEG4, DivX, MOV, WMV, QuickTime, mp3, Ogg/Vorbis files, DVDs, VCDs, and multimedia streams from various network sources."
-PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
@@ -241,19 +240,20 @@ pre_make_target() {
 
 post_install() {
   $INSTALL/usr/lib/vlc/vlc-cache-gen $INSTALL/usr/lib/vlc/plugins
-
-  QT4=$(get_build_dir qt4)
+  
+  rm -fR $INSTALL/usr/share/applications
+  rm -fR $INSTALL/usr/share/icons
+  rm -fR $INSTALL/usr/share/kde
 
   mkdir -p $INSTALL/usr/bin
     mv $INSTALL/usr/bin/vlc $INSTALL/usr/bin/vlc.bin
     cp -pR $PKG_DIR/scripts/* $INSTALL/usr/bin
-
-  mkdir -p $INSTALL/usr/lib
-    cp -P $QT4/lib/libQtCore.so.* $INSTALL/usr/lib
-    cp -P $QT4/lib/libQtGui.so.* $INSTALL/usr/lib
-
-  #libs from ubuntu !!!
-  mkdir -p $INSTALL/usr/lib/external
-    cp -pR $PKG_DIR/libs/* $INSTALL/usr/lib/external
- 
+    
+  mkdir -p $INSTALL/usr/share/locale
+  for fgmo in `ls $PKG_BUILD/po/*.gmo`;do
+    fname=`basename $fgmo .gmo`
+    mkdir -p $INSTALL/usr/share/locale/$fname
+    mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+    cp -p $fgmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vlc.mo    
+  done
 }

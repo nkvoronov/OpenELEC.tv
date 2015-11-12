@@ -1,3 +1,0 @@
-#!/bin/sh
-
-sudo apt-get install $(cat qt-dependence.txt)

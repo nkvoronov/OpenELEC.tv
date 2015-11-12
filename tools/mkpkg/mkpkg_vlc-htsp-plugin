@@ -1,3 +1,4 @@
+#!/bin/sh
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -18,20 +19,28 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="libXcursor"
-PKG_VERSION="1.1.13"
-PKG_REV="1"
-PKG_ARCH="any"
-PKG_LICENSE="OSS"
-PKG_SITE="http://www.X.org"
-PKG_URL="http://xorg.freedesktop.org/archive/individual/lib/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain libX11 libXfixes libXrender"
-PKG_PRIORITY="optional"
-PKG_SECTION="custom/x11/lib"
-PKG_SHORTDESC="libXcursor: X Cursor Library"
-PKG_LONGDESC="X11 Cursor management library"
+PKG_NAME="vlc-htsp-plugin"
+PKG_REPO="https://github.com/BtbN/vlc-htsp-plugin.git"
 
-PKG_IS_ADDON="no"
-PKG_AUTORECONF="yes"
+echo "getting sources..."
+  if [ ! -d $PKG_NAME.git ]; then
+    git clone $PKG_REPO $PKG_NAME.git
+  fi
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-shared --enable-static"
+  cd $PKG_NAME.git
+    git pull
+    GIT_REV=`git log -n1 --format=%h`
+  cd ..
+
+echo "copying sources..."
+  rm -rf $PKG_NAME-$GIT_REV
+  cp -R $PKG_NAME.git $PKG_NAME-$GIT_REV
+
+echo "cleaning sources..."
+  rm -rf $PKG_NAME-$GIT_REV/.git
+
+echo "packing sources..."
+  tar cvJf $PKG_NAME-$GIT_REV.tar.xz $PKG_NAME-$GIT_REV
+
+echo "remove temporary sourcedir..."
+  rm -rf $PKG_NAME-$GIT_REV

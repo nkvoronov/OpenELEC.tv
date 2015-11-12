@@ -36,6 +36,7 @@ make_target() {
   #This command changes Lua search path to match the install paths.
   sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h &&
   make INSTALL_TOP=/usr \
+       TO_LIB="liblua.so liblua.so.5.3 liblua.so.5.3.1" \
        CC="$CC" \
        AR="$AR rcu" \
        RANLIB="$RANLIB" \
