@@ -24,7 +24,7 @@ PKG_REV="18"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
-PKG_DEPENDS_TARGET="toolchain vlc"
+PKG_DEPENDS_TARGET="toolchain vlc vlc-htsp-plugin"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
@@ -44,6 +44,7 @@ makeinstall_target() {
 
 addon() {
   VLC_DIR=$(get_build_dir_usr vlc)
+  VLC_HTSP_DIR=$(get_build_dir vlc-htsp-plugin)
   QT4=$(get_build_dir qt4)
   LIB_EBML=$(get_build_dir libebml)
   LIB_MATROSKA=$(get_build_dir libmatroska)
@@ -66,6 +67,8 @@ addon() {
     cp -P $LIB_ICE/.install_pkg/usr/lib/libICE.so.6.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libICE.so.6
     cp -P $LIB_SM/.install_pkg/usr/lib/libSM.so.6.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSM.so.6
     cp -P $LIB_XRENDER/.install_pkg/usr/lib/libXrender.so.1.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libXrender.so.1
+    
+    cp -PR $VLC_HTSP_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
     
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts
     cp -P $QT4/lib/fonts/* $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts
