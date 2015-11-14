@@ -68,7 +68,7 @@ addon() {
     cp -P $LIB_SM/.install_pkg/usr/lib/libSM.so.6.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSM.so.6
     cp -P $LIB_XRENDER/.install_pkg/usr/lib/libXrender.so.1.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libXrender.so.1
     
-    cp -PR $VLC_HTSP_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
+    #cp -PR $VLC_HTSP_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
     
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts
     cp -P $QT4/lib/fonts/* $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts
