@@ -1,7 +1,7 @@
 diff -Naur a/Makefile b/Makefile
 --- a/Makefile	2015-11-12 05:44:29.000000000 +0200
-+++ b/Makefile	2015-11-12 07:20:42.804300104 +0200
-@@ -1,11 +1,11 @@
++++ b/Makefile	2015-11-14 07:05:04.356048766 +0200
+@@ -1,7 +1,7 @@
  PREFIX = /usr
 -LD = ld
 -CC = gcc
@@ -12,8 +12,3 @@ diff -Naur a/Makefile b/Makefile
  INSTALL = install
  CFLAGS = -pipe -O2 -Wall -Wextra -std=gnu99 -I. -g
  CXXFLAGS = -pipe -O2 -Wall -Wextra -std=gnu++0x -I. -g
--LDFLAGS = -Wl,-no-undefined,-z,defs -latomic
-+#LDFLAGS = -Wl,-no-undefined,-z,defs -latomic
- VLC_PLUGIN_CFLAGS := $(shell pkg-config --cflags vlc-plugin)
- VLC_PLUGIN_LIBS := $(shell pkg-config --libs vlc-plugin)
- VLC_PLUGIN_MAJOR := $(shell pkg-config --modversion vlc-plugin | cut -d . -f 1)

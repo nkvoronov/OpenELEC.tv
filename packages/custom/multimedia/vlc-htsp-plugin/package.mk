@@ -31,9 +31,25 @@ PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="The Service Discovery module is listed under LAN and grabs the channel list from TVH."
 PKG_LONGDESC="The Service Discovery module is listed under LAN and grabs the channel list from TVH."
 
+PKG_IS_GIT="no"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
+make_target() {
+  if [ "$PKG_IS_GIT" = yes ]; then
+    make
+  fi
+}
+
+makeinstall_target() {
+  if [ "$PKG_IS_GIT" = yes ]; then
+    make install
+  fi
+}
+
 post_install() {
-  : nop
+  if [ "$PKG_IS_GIT" != yes ]; then
+    mkdir -p $INSTALL/usr/lib/vlc/plugins/access
+      cp -p $PKG_DIR/lib/* $INSTALL/usr/lib/vlc/plugins/access
+  fi
 }
