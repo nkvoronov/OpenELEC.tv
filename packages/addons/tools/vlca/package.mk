@@ -20,7 +20,7 @@
 
 PKG_NAME="vlca"
 PKG_VERSION="2.2.1"
-PKG_REV="19"
+PKG_REV="20"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -52,6 +52,7 @@ addon() {
   LIB_ICE=$(get_build_dir libICE)
   LIB_SM=$(get_build_dir libSM)
   LIB_XRENDER=$(get_build_dir libXrender)
+  GCC_DIR=$(get_build_dir gcc)
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VLC_DIR/.install_pkg/usr/bin/vlc $ADDON_BUILD/$PKG_ADDON_ID/bin/vlc.bin
@@ -68,7 +69,8 @@ addon() {
     cp -P $LIB_SM/.install_pkg/usr/lib/libSM.so.6.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSM.so.6
     cp -P $LIB_XRENDER/.install_pkg/usr/lib/libXrender.so.1.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libXrender.so.1
     
-    #cp -PR $VLC_HTSP_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
+    cp -PR $VLC_HTSP_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
+    cp -PR $GCC_DIR/.install_pkg/usr/lib/libatomic.so.1.1.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libatomic.so.1
     
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts
     cp -P $QT4/lib/fonts/* $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts
@@ -96,6 +98,4 @@ addon() {
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share/locale/$fname/LC_MESSAGES
     cp -p $fgmo $ADDON_BUILD/$PKG_ADDON_ID/share/locale/$fname/LC_MESSAGES/vlc.mo    
   done
-
-  $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/lib/vlc/vlc-cache-gen -f $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/lib/vlc/plugins
 }

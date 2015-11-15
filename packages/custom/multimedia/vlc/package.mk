@@ -20,7 +20,7 @@
 
 PKG_NAME="vlc"
 PKG_VERSION="2.2.1"
-PKG_REV="19"
+PKG_REV="20"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -239,8 +239,6 @@ pre_make_target() {
 }
 
 post_install() {
-  $INSTALL/usr/lib/vlc/vlc-cache-gen $INSTALL/usr/lib/vlc/plugins
-  
   rm -fR $INSTALL/usr/share/applications
   rm -fR $INSTALL/usr/share/icons
   rm -fR $INSTALL/usr/share/kde

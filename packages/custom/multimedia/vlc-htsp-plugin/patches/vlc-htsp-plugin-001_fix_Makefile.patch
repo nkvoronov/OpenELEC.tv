@@ -1,6 +1,6 @@
 diff -Naur a/Makefile b/Makefile
 --- a/Makefile	2015-11-12 05:44:29.000000000 +0200
-+++ b/Makefile	2015-11-14 07:05:04.356048766 +0200
++++ b/Makefile	2015-11-15 20:54:16.305199271 +0200
 @@ -1,7 +1,7 @@
  PREFIX = /usr
 -LD = ld

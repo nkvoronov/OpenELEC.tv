@@ -3266,10 +3266,10 @@ http-reconnect=1
 #htsp-host=localhost
 
 # HTSP Username (string)
-htsp-user=tvhead
+#htsp-user=
 
 # HTSP Password (string)
-htsp-pass=tvhead
+#htsp-pass=
 
 # Disconnect Discovery (boolean)
 #htsp-disconnect=1
