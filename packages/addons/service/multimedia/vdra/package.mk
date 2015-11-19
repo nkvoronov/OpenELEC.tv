@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="66"
+PKG_REV="67"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"

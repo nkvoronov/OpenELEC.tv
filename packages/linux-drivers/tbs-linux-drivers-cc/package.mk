@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="tbs-linux-drivers-cc"
-PKG_VERSION="4296753"
+PKG_VERSION="e823c25"
 PKG_REV="1"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
