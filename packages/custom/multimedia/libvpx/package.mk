@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="libvpx"
-PKG_VERSION="1.5.0"
+PKG_VERSION="1.4.0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
