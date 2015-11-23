@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="x264"
-PKG_VERSION="snapshot-20150917-2245"
+PKG_VERSION="x264-snapshot-20151120-2245"
 PKG_REV="333"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

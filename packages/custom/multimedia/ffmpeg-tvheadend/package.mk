@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="ffmpeg-tvheadend"
-PKG_VERSION="2.8.1"
+PKG_VERSION="2.8.2"
 PKG_REV="8"
 PKG_ARCH="any"
 PKG_LICENSE="nonfree"
