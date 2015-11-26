@@ -28,7 +28,7 @@
     <setting id="VDR_ENABLE_WIRBELSCAN" value="true" />
     <setting id="VDR_ENABLE_UPNP" value="false" />
     <setting id="VDR_ENABLE_SOFTCAM" value="true" />
-    <setting id="VDR_SOFTCAM_OPTION" value="-d -o2" />
+    <setting id="VDR_SOFTCAM_OPTION" value="" />
     <setting id="VDR_ENABLE_IPTV_F" value="false" />
     <setting id="VDR_IPTV_NUM_DEVICES_F" value="1" />
     <setting id="VDR_ENABLE_STREAMDEV_CLIENT_F" value="true" />
@@ -50,7 +50,9 @@
     <setting id="VDR_ENABLE_WIRBELSCAN_F" value="true" />
     <setting id="VDR_ENABLE_UPNP_F" value="false" />
     <setting id="VDR_ENABLE_SOFTCAM_F" value="true" />
-    <setting id="VDR_SOFTCAM_OPTION_F" value="-d -o2" />
+    <setting id="VDR_SOFTCAM_OPTION_F" value="" />
+    <setting id="VDR_ENABLE_FAVORITES" value="true" />
+    <setting id="VDR_ENABLE_SCRAPER2VDR" value="false" />    
     <setting id="VDR_ENABLE_FEMON" value="false" />
     <setting id="VDR_ENABLE_SYSTEMINFO" value="false" />
     <setting id="VDR_ENABLE_SLEEPTIMER" value="false" />

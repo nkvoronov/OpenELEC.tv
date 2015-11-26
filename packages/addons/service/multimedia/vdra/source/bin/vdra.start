@@ -378,6 +378,14 @@ init_vdr_front_plugins() {
     if [ "$VDR_ENABLE_WEATHERFORECAST" == "true" ]; then
        VDR_ARG="$VDR_ARG -P weatherforecast"
     fi
+    
+    if [ "$VDR_ENABLE_FAVORITES" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P favorites"
+    fi
+
+    if [ "$VDR_ENABLE_SCRAPER2VDR" == "true" ]; then
+       VDR_ARG="$VDR_ARG -P scraper2vdr"
+    fi
 
 }
 

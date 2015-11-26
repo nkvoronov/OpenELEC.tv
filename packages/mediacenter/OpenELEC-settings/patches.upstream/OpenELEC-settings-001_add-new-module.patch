@@ -1,7 +1,1855 @@
+diff -Naur a/language/English/strings.po b/language/English/strings.po
+--- a/language/English/strings.po	2015-06-14 11:05:06.000000000 +0300
++++ b/language/English/strings.po	2015-11-26 18:34:47.307614041 +0200
+@@ -837,3 +837,701 @@
+ msgctxt "#32391"
+ msgid "Enable LCD Driver Support"
+ msgstr ""
++
++##########################################################
++## Keyboard Options
++
++msgctxt "#32400"
++msgid "Keyboard Switches"
++msgstr ""
++
++msgctxt "#799"
++msgid "Configure keyboard switches"
++msgstr ""
++
++##########################################################
++## Transmission
++
++msgctxt "#33000"
++msgid "Transmission"
++msgstr ""
++
++msgctxt "#800"
++msgid "Configuration transmission: a fast, easy and free BitTorrent client"
++msgstr ""
++
++msgctxt "#33001"
++msgid "Transmission daemon"
++msgstr ""
++
++msgctxt "#33002"
++msgid "Enable Transmission"
++msgstr ""
++
++msgctxt "#801"
++msgid "Enabled Transmission autostart"
++msgstr ""
++
++msgctxt "#33003"
++msgid "Enable Transmission Secure"
++msgstr ""
++
++msgctxt "#802"
++msgid "Use authentification"
++msgstr ""
++
++msgctxt "#33004"
++msgid "User Name"
++msgstr ""
++
++msgctxt "#803"
++msgid "Username for authentification"
++msgstr ""
++
++msgctxt "#33005"
++msgid "Password"
++msgstr ""
++
++msgctxt "#804"
++msgid "Password for authentification"
++msgstr ""
++
++msgctxt "#33006"
++msgid "Enabled IPs"
++msgstr ""
++
++msgctxt "#805"
++msgid "Allowed IP addresses (comma-delimited)"
++msgstr ""
++
++msgctxt "#33007"
++msgid "Limit Global"
++msgstr ""
++
++msgctxt "#806"
++msgid "Overall peer limit"
++msgstr ""
++
++msgctxt "#33008"
++msgid "Limit Torrent"
++msgstr ""
++
++msgctxt "#807"
++msgid "Peer limit per torrent"
++msgstr ""
++
++msgctxt "#33009"
++msgid "Download Directory"
++msgstr ""
++
++msgctxt "#808"
++msgid "Select directory for download"
++msgstr ""
++
++msgctxt "#33010"
++msgid "Transmission is a cross-platform BitTorrent client"
++msgstr ""
++
++##########################################################
++## Tv server
++
++msgctxt "#34000"
++msgid "TV"
++msgstr ""
++
++msgctxt "#1000"
++msgid "Configuration TV: Tvheadend or VDR and Oscam"
++msgstr ""
++
++##########################################################
++
++msgctxt "#35000"
++msgid "TV Server"
++msgstr ""
++
++msgctxt "#35001"
++msgid "TV Server"
++msgstr ""
++
++msgctxt "#1001"
++msgid "Select TV Server"
++msgstr ""
++
++##########################################################
++## Tvheadend
++
++msgctxt "#36000"
++msgid "Tvheadend Configuration"
++msgstr ""
++
++msgctxt "#36001"
++msgid "Preload capmt_ca.so library"
++msgstr ""
++
++msgctxt "#1101"
++msgid "Preload capmt_ca.so library with Tvheadend"
++msgstr ""
++
++msgctxt "#36002"
++msgid "Enable Tvheadend backup"
++msgstr ""
++
++msgctxt "#1102"
++msgid "Enable Tvheadend backup on update"
++msgstr ""
++
++msgctxt "#36003"
++msgid "Enable Tvheadend debug"
++msgstr ""
++
++msgctxt "#1103"
++msgid "Enable Tvheadend debug"
++msgstr ""
++
++msgctxt "#36004"
++msgid "Аdapters"
++msgstr ""
++
++msgctxt "#1104"
++msgid "Used adapters"
++msgstr ""
++
++msgctxt "#36005"
++msgid "XMLTV source type"
++msgstr ""
++
++msgctxt "#1105"
++msgid "Select XMLTV type"
++msgstr ""
++
++msgctxt "#36006"
++msgid "XMLTV File location"
++msgstr ""
++
++msgctxt "#1106"
++msgid "Local location XMLTV file"
++msgstr ""
++
++msgctxt "#36007"
++msgid "XMLTV Web location"
++msgstr ""
++
++msgctxt "#1107"
++msgid "Web location XMLTV file"
++msgstr ""
++
++msgctxt "#36008"
++msgid "XMLTV Script location"
++msgstr ""
++
++msgctxt "#1108"
++msgid "Location XMLTV script"
++msgstr ""
++
++##########################################################
++## VDR
++
++msgctxt "#37000"
++msgid "VDR Configuration"
++msgstr ""
++
++msgctxt "#37001"
++msgid "Enable external record command"
++msgstr ""
++
++msgctxt "#1201"
++msgid "Enable external record command"
++msgstr ""
++
++msgctxt "#37002"
++msgid "External record command patch"
++msgstr ""
++
++msgctxt "#1202"
++msgid "External record command patch"
++msgstr ""
++
++msgctxt "#37003"
++msgid "Enable charset override"
++msgstr ""
++
++msgctxt "#1203"
++msgid "Enable charset override"
++msgstr ""
++
++msgctxt "#37004"
++msgid "Charset override"
++msgstr ""
++
++msgctxt "#1204"
++msgid "Charset override"
++msgstr ""
++
++msgctxt "#37005"
++msgid "VDR Video Dir"
++msgstr ""
++
++msgctxt "#1205"
++msgid "Select Video Dir"
++msgstr ""
++
++msgctxt "#37006"
++msgid "Enable VDR debug"
++msgstr ""
++
++msgctxt "#1206"
++msgid "Enable VDR debug"
++msgstr ""
++
++msgctxt "#37007"
++msgid "PVR plugin"
++msgstr ""
++
++msgctxt "#1207"
++msgid "Select PVR plugin"
++msgstr ""
++
++msgctxt "#37008"
++msgid "Enable plugin: iptv"
++msgstr ""
++
++msgctxt "#1208"
++msgid "Enabled iptv plugin"
++msgstr ""
++
++msgctxt "#37009"
++msgid "iptv num devices"
++msgstr ""
++
++msgctxt "#1209"
++msgid "iptv num devices"
++msgstr ""
++
++msgctxt "#37010"
++msgid "Enable plugin: streamdev-client"
++msgstr ""
++
++msgctxt "#1210"
++msgid "Enable streamdev-client plugin"
++msgstr ""
++
++msgctxt "#37011"
++msgid "Enable plugin: streamdev-server"
++msgstr ""
++
++msgctxt "#1211"
++msgid "Enabled streamdev-server plugin"
++msgstr ""
++
++msgctxt "#37012"
++msgid "Enable plugin: wirbelscan"
++msgstr ""
++
++msgctxt "#1212"
++msgid "Enabled wirbelscan plugin"
++msgstr ""
++
++msgctxt "#37013"
++msgid "Enable plugin: live"
++msgstr ""
++
++msgctxt "#1213"
++msgid "Enabled live plugin"
++msgstr ""
++
++msgctxt "#37014"
++msgid "live: listen on ip"
++msgstr ""
++
++msgctxt "#1214"
++msgid "Listen ip address for live plugin"
++msgstr ""
++
++msgctxt "#37015"
++msgid "live: listen on port"
++msgstr ""
++
++msgctxt "#1215"
++msgid "Listen port for live plugin"
++msgstr ""
++
++msgctxt "#37016"
++msgid "Enable plugin: control"
++msgstr ""
++
++msgctxt "#1216"
++msgid "Enabled control plugin"
++msgstr ""
++
++msgctxt "#37017"
++msgid "control: listen on port"
++msgstr ""
++
++msgctxt "#1217"
++msgid "Listen port for control plugin"
++msgstr ""
++
++msgctxt "#37018"
++msgid "Enable plugin: eepg"
++msgstr ""
++
++msgctxt "#1218"
++msgid "Enabled eepg plugin"
++msgstr ""
++
++msgctxt "#37019"
++msgid "Enable plugin: epgsearch"
++msgstr ""
++
++msgctxt "#1219"
++msgid "Enabled epgsearch plugin"
++msgstr ""
++
++msgctxt "#37020"
++msgid "Enable plugin: xmltv2vdr"
++msgstr ""
++
++msgctxt "#1220"
++msgid "Enabled xmltv2vdr plugin"
++msgstr ""
++
++msgctxt "#37021"
++msgid "Enable plugin: softcam"
++msgstr ""
++
++msgctxt "#1221"
++msgid "Enabled softcam plugin"
++msgstr ""
++
++msgctxt "#37022"
++msgid "softcam: options"
++msgstr ""
++
++msgctxt "#1222"
++msgid "softcam plugin options"
++msgstr ""
++
++msgctxt "#37023"
++msgid "Enable plugin: dummydevice"
++msgstr ""
++
++msgctxt "#1223"
++msgid "Enabled dummydevice plugin"
++msgstr ""
++
++msgctxt "#37024"
++msgid "Enable plugin: satip"
++msgstr ""
++
++msgctxt "#1224"
++msgid "Enabled satip plugin"
++msgstr ""
++
++msgctxt "#37025"
++msgid "Enable plugin: upnp"
++msgstr ""
++
++msgctxt "#1225"
++msgid "Enabled upnp plugin"
++msgstr ""
++
++msgctxt "#37026"
++msgid "Enable plugin: epgfixer"
++msgstr ""
++
++msgctxt "#1226"
++msgid "Enabled epgfixer plugin"
++msgstr ""
++
++msgctxt "#37027"
++msgid "Enable plugin: restfulapi"
++msgstr ""
++
++msgctxt "#1227"
++msgid "Enabled restfulapi plugin"
++msgstr ""
++
++msgctxt "#37028"
++msgid "restfulapi: listen on ip"
++msgstr ""
++
++msgctxt "#1228"
++msgid "Listen ip address for restfulapi plugin"
++msgstr ""
++
++msgctxt "#37029"
++msgid "restfulapi: listen on port"
++msgstr ""
++
++msgctxt "#1229"
++msgid "Listen port for restfulapi plugin"
++msgstr ""
++
++##########################################################
++
++msgctxt "#38000"
++msgid "TV Frontend"
++msgstr ""
++
++msgctxt "#38001"
++msgid "TV Frontend"
++msgstr ""
++
++msgctxt "#1301"
++msgid "Select TV Frontend"
++msgstr ""
++
++##########################################################
++## VDR front
++
++msgctxt "#39000"
++msgid "VDR frontend"
++msgstr ""
++
++msgctxt "#39022"
++msgid "Enable plugin: femon"
++msgstr ""
++
++msgctxt "#1422"
++msgid "Enabled femon plugin"
++msgstr ""
++
++msgctxt "#39023"
++msgid "Enable plugin: systeminfo"
++msgstr ""
++
++msgctxt "#1423"
++msgid "Enabled systeminfo plugin"
++msgstr ""
++
++msgctxt "#39024"
++msgid "Enable plugin: sleeptimer"
++msgstr ""
++
++msgctxt "#1424"
++msgid "Enabled sleeptimer plugin"
++msgstr ""
++
++msgctxt "#39025"
++msgid "Enable plugin: filebrowser"
++msgstr ""
++
++msgctxt "#1425"
++msgid "Enabled filebrowser plugin"
++msgstr ""
++
++msgctxt "#39026"
++msgid "Enable plugin: lcdproc"
++msgstr ""
++
++msgctxt "#1426"
++msgid "Enabled lcdproc plugin"
++msgstr ""
++
++msgctxt "#39027"
++msgid "Enable plugin: text2skin"
++msgstr ""
++
++msgctxt "#1427"
++msgid "Enabled text2skin plugin"
++msgstr ""
++
++msgctxt "#39028"
++msgid "Enable plugin: skinnopacity"
++msgstr ""
++
++msgctxt "#1428"
++msgid "Enabled skinnopacity plugin"
++msgstr ""
++
++msgctxt "#39029"
++msgid "Enable plugin: skinflat"
++msgstr ""
++
++msgctxt "#1429"
++msgid "Enabled skinflat plugin"
++msgstr ""
++
++msgctxt "#39030"
++msgid "Enable plugin: skinflatplus"
++msgstr ""
++
++msgctxt "#1430"
++msgid "Enabled skinflatplus plugin"
++msgstr ""
++
++msgctxt "#39031"
++msgid "Enable plugin: menuorg"
++msgstr ""
++
++msgctxt "#1431"
++msgid "Enabled menuorg plugin"
++msgstr ""
++
++msgctxt "#39032"
++msgid "Enable plugin: tvguide"
++msgstr ""
++
++msgctxt "#1432"
++msgid "Enabled tvguide plugin"
++msgstr ""
++
++msgctxt "#39033"
++msgid "Enable plugin: tvscraper"
++msgstr ""
++
++msgctxt "#1433"
++msgid "Enabled tvscraper plugin"
++msgstr ""
++
++msgctxt "#39034"
++msgid "Enable plugin: skindesigner"
++msgstr ""
++
++msgctxt "#1434"
++msgid "Enabled skindesigner plugin"
++msgstr ""
++
++msgctxt "#39035"
++msgid "Enable plugin: weatherforecast"
++msgstr ""
++
++msgctxt "#1435"
++msgid "Enabled weatherforecast plugin"
++msgstr ""
++
++msgctxt "#39036"
++msgid "Enable plugin: favorites"
++msgstr ""
++
++msgctxt "#1436"
++msgid "Enabled favorites plugin"
++msgstr ""
++
++msgctxt "#39037"
++msgid "Enable plugin: scraper2vdr"
++msgstr ""
++
++msgctxt "#1437"
++msgid "Enabled scraper2vdr plugin"
++msgstr ""
++
++msgctxt "#39038"
++msgid "VDR output plugin"
++msgstr ""
++
++msgctxt "#1438"
++msgid "Select VDR output plugin"
++msgstr ""
++
++msgctxt "#39039"
++msgid "VDR video output"
++msgstr ""
++
++msgctxt "#1439"
++msgid "Select VDR video output"
++msgstr ""
++
++msgctxt "#39040"
++msgid "softhddevice audio device"
++msgstr ""
++
++msgctxt "#1440"
++msgid "Enter softhddevice audio device"
++msgstr ""
++
++msgctxt "#39041"
++msgid "xineliboutput audio device"
++msgstr ""
++
++msgctxt "#1441"
++msgid "Enter xineliboutput audio device"
++msgstr ""
++
++msgctxt "#39042"
++msgid "softhddevice options"
++msgstr ""
++
++msgctxt "#1442"
++msgid "Enter softhddevice options"
++msgstr ""
++
++msgctxt "#39043"
++msgid "xineliboutput options"
++msgstr ""
++
++msgctxt "#1443"
++msgid "Enter xineliboutput options"
++msgstr ""
++
++##########################################################
++## DVB
++
++msgctxt "#40000"
++msgid "DVB Configuration"
++msgstr ""
++
++msgctxt "#40001"
++msgid "Wait for frontend initialization"
++msgstr ""
++
++msgctxt "#1501"
++msgid "Wait for frontend initialization"
++msgstr ""
++
++msgctxt "#40002"
++msgid "Number of adapters to wait"
++msgstr ""
++
++msgctxt "#1502"
++msgid "Number of adapters to wait"
++msgstr ""
++
++msgctxt "#40003"
++msgid "Unload DVB mudules before suspend"
++msgstr ""
++
++msgctxt "#1503"
++msgid "Unload DVB mudules before suspend"
++msgstr ""
++
++##########################################################
++## Oscam
++
++msgctxt "#41000"
++msgid "Oscam Configuration"
++msgstr ""
++
++msgctxt "#41001"
++msgid "Enable Oscam"
++msgstr ""
++
++msgctxt "#1601"
++msgid "Enable Oscam"
++msgstr ""
++
++msgctxt "#41002"
++msgid "Oscam debug level"
++msgstr ""
++
++msgctxt "#1602"
++msgid "Oscam debug level"
++msgstr ""
++
++msgctxt "#41003"
++msgid "Restart on suspend / resume"
++msgstr ""
++
++msgctxt "#1603"
++msgid "Restart on resume"
++msgstr ""
++
++##########################################################
++
++msgctxt "#42000"
++msgid "Tvheadend is a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources."
++msgstr ""
++
++msgctxt "#42001"
++msgid "VDR (The Video Disk Recorder) is an open source application for Linux designed to allow any computer to function as a digital video recorder, in order to record and replay TV programming using the computer's hard drive."
++msgstr ""
+diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
+--- a/language/Russian/strings.po	2015-06-14 11:05:06.000000000 +0300
++++ b/language/Russian/strings.po	2015-11-26 18:39:38.195617867 +0200
+@@ -743,3 +743,701 @@
+ msgctxt "#32391"
+ msgid "Enable LCD Driver Support"
+ msgstr "Включить поддержку драйвера ЖК-экрана"
++
++##########################################################
++## Keyboard Options
++
++msgctxt "#32400"
++msgid "Keyboard Switches"
++msgstr "Переключение клавиатуры"
++
++msgctxt "#799"
++msgid "Configure keyboard switches"
++msgstr "Настроить переключение клавиатуры"
++
++##########################################################
++## Transmission
++
++msgctxt "#33000"
++msgid "Transmission"
++msgstr "Transmission"
++
++msgctxt "#800"
++msgid "Configuration transmission: a fast, easy and free BitTorrent client"
++msgstr "Конфигурация Transmission: быстрого, легкого и бесплатного BitTorrent клиента"
++
++msgctxt "#33001"
++msgid "Transmission daemon"
++msgstr "Transmission сервис"
++
++msgctxt "#33002"
++msgid "Enable Transmission"
++msgstr "Запуск Transmission"
++
++msgctxt "#801"
++msgid "Enabled Transmission autostart"
++msgstr "Разрешить запуск Transmission"
++
++msgctxt "#33003"
++msgid "Enable Transmission Secure"
++msgstr "Использовать авторизацию"
++
++msgctxt "#802"
++msgid "Use authentification"
++msgstr "Использовать авторизацию"
++
++msgctxt "#33004"
++msgid "User Name"
++msgstr "Пользователь"
++
++msgctxt "#803"
++msgid "Username for authentification"
++msgstr "Пользователь для авторизации"
++
++msgctxt "#33005"
++msgid "Password"
++msgstr "Пароль"
++
++msgctxt "#804"
++msgid "Password for authentification"
++msgstr "Пароль для авторизации"
++
++msgctxt "#33006"
++msgid "Enabled IPs"
++msgstr "Разрешенные IP адреса"
++
++msgctxt "#805"
++msgid "Allowed IP addresses (comma-delimited)"
++msgstr "Разрешенные IP адреса (разделитель-запятая)"
++
++msgctxt "#33007"
++msgid "Limit Global"
++msgstr "Общий лимит"
++
++msgctxt "#806"
++msgid "Overall peer limit"
++msgstr "Общий лимит"
++
++msgctxt "#33008"
++msgid "Limit Torrent"
++msgstr "Лимит на торрент"
++
++msgctxt "#807"
++msgid "Peer limit per torrent"
++msgstr "Лимит на торрент"
++
++msgctxt "#33009"
++msgid "Download Directory"
++msgstr "Папка загрузки"
++
++msgctxt "#808"
++msgid "Select directory for download"
++msgstr "Выбрать папку для загрузки"
++
++msgctxt "#33010"
++msgid "Transmission is a cross-platform BitTorrent client"
++msgstr "Transmission кросс-платформенный клиент BitTorrent"
++
++##########################################################
++## Tv server
++
++msgctxt "#34000"
++msgid "TV"
++msgstr "ТВ"
++
++msgctxt "#1000"
++msgid "Configuration TV: Tvheadend or VDR and Oscam"
++msgstr "Конфигурация ТВ: Tvheadend или VDR а также Oscam"
++
++##########################################################
++
++msgctxt "#35000"
++msgid "TV Server"
++msgstr "ТВ Сервер"
++
++msgctxt "#35001"
++msgid "TV Server"
++msgstr "Выбранный ТВ Сервер"
++
++msgctxt "#1001"
++msgid "Select TV Server"
++msgstr "Выбрать ТВ сервер"
++
++##########################################################
++## Tvheadend
++
++msgctxt "#36000"
++msgid "Tvheadend Configuration"
++msgstr "Конфигурация Tvheadend"
++
++msgctxt "#36001"
++msgid "Preload capmt_ca.so library"
++msgstr "Предзагрузка библиотеки capmt_ca.so"
++
++msgctxt "#1101"
++msgid "Preload capmt_ca.so library with Tvheadend"
++msgstr "Предзагрузка библиотеки capmt_ca.so с Tvheadend"
++
++msgctxt "#36002"
++msgid "Enable Tvheadend backup"
++msgstr "Разрешить резервное копирование"
++
++msgctxt "#1102"
++msgid "Enable Tvheadend backup on update"
++msgstr "Разрешить резервное копирование при обновлении"
++
++msgctxt "#36003"
++msgid "Enable Tvheadend debug"
++msgstr "Разрешить отладку"
++
++msgctxt "#1103"
++msgid "Enable Tvheadend debug"
++msgstr "Разрешить отладку tvheadend"
++
++msgctxt "#36004"
++msgid "Аdapters"
++msgstr "Адаптеры"
++
++msgctxt "#1104"
++msgid "Used adapters"
++msgstr "Использовать адаптеры"
++
++msgctxt "#36005"
++msgid "XMLTV source type"
++msgstr "XMLTV тип источника"
++
++msgctxt "#1105"
++msgid "Select XMLTV type"
++msgstr "Выбрат XMLTV тип"
++
++msgctxt "#36006"
++msgid "XMLTV File location"
++msgstr "XMLTV путь"
++
++msgctxt "#1107"
++msgid "Local location XMLTV file"
++msgstr "Выбрать XMLTV файлы"
++
++msgctxt "#36007"
++msgid "XMLTV Web location"
++msgstr "XMLTV ссылка"
++
++msgctxt "#1107"
++msgid "Web location XMLTV file"
++msgstr "Выбрать XMLTV ссылку"
++
++msgctxt "#36008"
++msgid "XMLTV Script location"
++msgstr "XMLTV скрипт"
++
++msgctxt "#1108"
++msgid "Location XMLTV script"
++msgstr "Выбрать XMLTV script"
++
++##########################################################
++## VDR
++
++msgctxt "#37000"
++msgid "VDR Configuration"
++msgstr "Конфигурация VDR"
++
++msgctxt "#37001"
++msgid "Enable external record command"
++msgstr "Разрешить внешнию команду записи"
++
++msgctxt "#1201"
++msgid "Enable external record command"
++msgstr "Разрешить внешнию команду записи"
++
++msgctxt "#37002"
++msgid "External record command patch"
++msgstr "Путь к внешней команде записи"
++
++msgctxt "#1202"
++msgid "External record command patch"
++msgstr "Путь к внешней команде записи"
++
++msgctxt "#37003"
++msgid "Enable charset override"
++msgstr "Разрешить кодировку переопределения"
++
++msgctxt "#1203"
++msgid "Enable charset override"
++msgstr "Разрешить кодировку переопределения"
++
++msgctxt "#37004"
++msgid "Charset override"
++msgstr "Кодировка переопределения"
++
++msgctxt "#1204"
++msgid "Charset override"
++msgstr "Кодировка переопределения"
++
++msgctxt "#37005"
++msgid "VDR Video Dir"
++msgstr "VDR папка для видео"
++
++msgctxt "#1205"
++msgid "Select Video Dir"
++msgstr "Выбрать папку для видео"
++
++msgctxt "#37006"
++msgid "Enable VDR debug"
++msgstr "Разрешить отладку"
++
++msgctxt "#1206"
++msgid "Enable VDR debug"
++msgstr "Разрешить отладку VDR"
++
++msgctxt "#37007"
++msgid "PVR plugin"
++msgstr "PVR плагин"
++
++msgctxt "#1207"
++msgid "Select PVR plugin"
++msgstr "Выбрать PVR плагин"
++
++msgctxt "#37008"
++msgid "Enable plugin: iptv"
++msgstr "Плагин: iptv"
++
++msgctxt "#1208"
++msgid "Enabled iptv plugin"
++msgstr "Разрешить iptv плагин"
++
++msgctxt "#37009"
++msgid "iptv num devices"
++msgstr "Количество устройств iptv"
++
++msgctxt "#1209"
++msgid "iptv num devices"
++msgstr "Количество устройств iptv"
++
++msgctxt "#37010"
++msgid "Enable plugin: streamdev-client"
++msgstr "Плагин: streamdev-client"
++
++msgctxt "#1210"
++msgid "Enable streamdev-client plugin"
++msgstr "Разрешить streamdev-client плагин"
++
++msgctxt "#37011"
++msgid "Enable plugin: streamdev-server"
++msgstr "Плагин: streamdev-server"
++
++msgctxt "#1211"
++msgid "Enabled streamdev-server plugin"
++msgstr "Разрешить streamdev-server плагин"
++
++msgctxt "#37012"
++msgid "Enable plugin: wirbelscan"
++msgstr "Плагин: wirbelscan"
++
++msgctxt "#1212"
++msgid "Enabled wirbelscan plugin"
++msgstr "Разрешить wirbelscan плагин"
++
++msgctxt "#37013"
++msgid "Enable plugin: live"
++msgstr "Плагин: live"
++
++msgctxt "#1213"
++msgid "Enabled live plugin"
++msgstr "Разрешить live плагин"
++
++msgctxt "#37014"
++msgid "live: listen on ip"
++msgstr "live: IP"
++
++msgctxt "#1214"
++msgid "Listen ip address for live plugin"
++msgstr "IP-адрес для live плагина"
++
++msgctxt "#37015"
++msgid "live: listen on port"
++msgstr "live: Порт"
++
++msgctxt "#1215"
++msgid "Listen port for live plugin"
++msgstr "Порт для live плагина"
++
++msgctxt "#37016"
++msgid "Enable plugin: control"
++msgstr "Плагин: control"
++
++msgctxt "#1216"
++msgid "Enabled control plugin"
++msgstr "Разрешить control плагин"
++
++msgctxt "#37017"
++msgid "control: listen on port"
++msgstr "control: Порт"
++
++msgctxt "#1217"
++msgid "Listen port for control plugin"
++msgstr "Порт для control плагина"
++
++msgctxt "#37018"
++msgid "Enable plugin: eepg"
++msgstr "Плагин: eepg"
++
++msgctxt "#1218"
++msgid "Enabled eepg plugin"
++msgstr "Разрешить eepg плагин"
++
++msgctxt "#37019"
++msgid "Enable plugin: epgsearch"
++msgstr "Плагин: epgsearch"
++
++msgctxt "#1219"
++msgid "Enabled epgsearch plugin"
++msgstr "Разрешить epgsearch плагин"
++
++msgctxt "#37020"
++msgid "Enable plugin: xmltv2vdr"
++msgstr "Плагин: xmltv2vdr"
++
++msgctxt "#1220"
++msgid "Enabled xmltv2vdr plugin"
++msgstr "Разрешить xmltv2vdr плагин"
++
++msgctxt "#37021"
++msgid "Enable plugin: softcam"
++msgstr "Плагин: softcam"
++
++msgctxt "#1221"
++msgid "Enabled softcam plugin"
++msgstr "Разрешить softcam плагин"
++
++msgctxt "#37022"
++msgid "softcam: options"
++msgstr "softcam: опции"
++
++msgctxt "#1222"
++msgid "softcam plugin options"
++msgstr "Опции для softcam плагина"
++
++msgctxt "#37023"
++msgid "Enable plugin: dummydevice"
++msgstr "Плагин: dummydevice"
++
++msgctxt "#1223"
++msgid "Enabled dummydevice plugin"
++msgstr "Разрешить dummydevice плагин"
++
++msgctxt "#37024"
++msgid "Enable plugin: satip"
++msgstr "Плагин: satip"
++
++msgctxt "#1224"
++msgid "Enabled satip plugin"
++msgstr "Разрешить satip плагин"
++
++msgctxt "#37025"
++msgid "Enable plugin: upnp"
++msgstr "Плагин: upnp"
++
++msgctxt "#1225"
++msgid "Enabled upnp plugin"
++msgstr "Разрешить upnp плагин"
++
++msgctxt "#37026"
++msgid "Enable plugin: epgfixer"
++msgstr "Плагин: epgfixer"
++
++msgctxt "#1226"
++msgid "Enabled epgfixer plugin"
++msgstr "Разрешить epgfixer плагин"
++
++msgctxt "#37027"
++msgid "Enable plugin: restfulapi"
++msgstr "Плагин: restfulapi"
++
++msgctxt "#1227"
++msgid "Enabled restfulapi plugin"
++msgstr "Разрешить restfulapi плагин"
++
++msgctxt "#37028"
++msgid "restfulapi: listen on ip"
++msgstr "restfulapi: IP"
++
++msgctxt "#1228"
++msgid "Listen ip address for restfulapi plugin"
++msgstr "IP-адрес для restfulapi плагина"
++
++msgctxt "#37029"
++msgid "restfulapi: listen on port"
++msgstr "restfulapi: Порт"
++
++msgctxt "#1229"
++msgid "Listen port for restfulapi plugin"
++msgstr "Порт для restfulapi плагина"
++
++##########################################################
++
++msgctxt "#38000"
++msgid "TV Frontend"
++msgstr "ТВ Фронтенд"
++
++msgctxt "#38001"
++msgid "TV Frontend"
++msgstr "Выбранный ТВ Фронтенд"
++
++msgctxt "#1301"
++msgid "Select TV Frontend"
++msgstr "Выбрать ТВ Фронтенд"
++
++##########################################################
++## VDR front
++
++msgctxt "#39000"
++msgid "VDR frontend"
++msgstr "VDR Фронтенд"
++
++msgctxt "#39022"
++msgid "Enable plugin: femon"
++msgstr "Плагин: femon"
++
++msgctxt "#1422"
++msgid "Enabled femon plugin"
++msgstr "Разрешить femon плагин"
++
++msgctxt "#39023"
++msgid "Enable plugin: systeminfo"
++msgstr "Плагин: systeminfo"
++
++msgctxt "#1423"
++msgid "Enabled systeminfo plugin"
++msgstr "Разрешить systeminfo плагин"
++
++msgctxt "#39024"
++msgid "Enable plugin: sleeptimer"
++msgstr "Плагин: sleeptimer"
++
++msgctxt "#1424"
++msgid "Enabled sleeptimer plugin"
++msgstr "Разрешить sleeptimer плагин"
++
++msgctxt "#39025"
++msgid "Enable plugin: filebrowser"
++msgstr "Плагин: filebrowser"
++
++msgctxt "#1425"
++msgid "Enabled filebrowser plugin"
++msgstr "Разрешить filebrowser плагин"
++
++msgctxt "#39026"
++msgid "Enable plugin: lcdproc"
++msgstr "Плагин: lcdproc"
++
++msgctxt "#1426"
++msgid "Enabled lcdproc plugin"
++msgstr "Разрешить lcdproc плагин"
++
++msgctxt "#39027"
++msgid "Enable plugin: text2skin"
++msgstr "Плагин: text2skin"
++
++msgctxt "#1427"
++msgid "Enabled text2skin plugin"
++msgstr "Разрешить text2skin плагин"
++
++msgctxt "#39028"
++msgid "Enable plugin: skinnopacity"
++msgstr "Плагин: skinnopacity"
++
++msgctxt "#1428"
++msgid "Enabled skinnopacity plugin"
++msgstr "Разрешить skinnopacity плагин"
++
++msgctxt "#39029"
++msgid "Enable plugin: skinflat"
++msgstr "Плагин: skinflat"
++
++msgctxt "#1429"
++msgid "Enabled skinflat plugin"
++msgstr "Разрешить skinflat плагин"
++
++msgctxt "#39030"
++msgid "Enable plugin: skinflatplus"
++msgstr "Плагин: skinflatplus"
++
++msgctxt "#1430"
++msgid "Enabled skinflatplus plugin"
++msgstr "Разрешить skinflatplus плагин"
++
++msgctxt "#39031"
++msgid "Enable plugin: menuorg"
++msgstr "Плагин: menuorg"
++
++msgctxt "#1431"
++msgid "Enabled menuorg plugin"
++msgstr "Разрешить menuorg плагин"
++
++msgctxt "#39032"
++msgid "Enable plugin: tvguide"
++msgstr "Плагин: tvguide"
++
++msgctxt "#1432"
++msgid "Enabled tvguide plugin"
++msgstr "Разрешить tvguide плагин"
++
++msgctxt "#39033"
++msgid "Enable plugin: tvscraper"
++msgstr "Плагин: tvscraper"
++
++msgctxt "#1433"
++msgid "Enabled tvscraper plugin"
++msgstr "Разрешить tvscraper плагин"
++
++msgctxt "#39034"
++msgid "Enable plugin: skindesigner"
++msgstr "Плагин: skindesigner"
++
++msgctxt "#1434"
++msgid "Enabled skindesigner plugin"
++msgstr "Разрешить skindesigner плагин"
++
++msgctxt "#39035"
++msgid "Enable plugin: weatherforecast"
++msgstr "Плагин: weatherforecast"
++
++msgctxt "#1435"
++msgid "Enabled weatherforecast plugin"
++msgstr "Разрешить weatherforecast плагин"
++
++msgctxt "#39036"
++msgid "Enable plugin: favorites"
++msgstr "Плагин: favorites"
++
++msgctxt "#1436"
++msgid "Enabled favorites plugin"
++msgstr "Разрешить favorites плагин"
++
++msgctxt "#39037"
++msgid "Enable plugin: scraper2vdr"
++msgstr "Плагин: scraper2vdr"
++
++msgctxt "#1437"
++msgid "Enabled scraper2vdr plugin"
++msgstr "Разрешить scraper2vdr плагин"
++
++msgctxt "#39038"
++msgid "VDR output plugin"
++msgstr "VDR плагин вывода"
++
++msgctxt "#1438"
++msgid "Select VDR output plugin"
++msgstr "Выбрать VDR плагин вывода"
++
++msgctxt "#39039"
++msgid "VDR video output"
++msgstr "VDR видео драйвер"
++
++msgctxt "#1439"
++msgid "Select VDR video output"
++msgstr "Выбрать VDR видео драйвер"
++
++msgctxt "#39040"
++msgid "softhddevice audio device"
++msgstr "softhddevice аудио устройство"
++
++msgctxt "#1440"
++msgid "Enter softhddevice audio device"
++msgstr "Введите softhddevice аудио устройство"
++
++msgctxt "#39041"
++msgid "xineliboutput audio device"
++msgstr "xineliboutput аудио устройство"
++
++msgctxt "#1441"
++msgid "Enter xineliboutput audio device"
++msgstr "Введите xineliboutput аудио устройство"
++
++msgctxt "#39042"
++msgid "softhddevice options"
++msgstr "softhddevice опции"
++
++msgctxt "#1442"
++msgid "Enter softhddevice options"
++msgstr "Введите softhddevice опции"
++
++msgctxt "#39043"
++msgid "xineliboutput options"
++msgstr "xineliboutput опции"
++
++msgctxt "#1443"
++msgid "Enter xineliboutput options"
++msgstr "Введите xineliboutput опции"
++
++##########################################################
++## DVB
++
++msgctxt "#40000"
++msgid "DVB Configuration"
++msgstr "Конфигурация DVB"
++
++msgctxt "#40001"
++msgid "Wait for frontend initialization"
++msgstr "Ожидать инициализацию адаптера"
++
++msgctxt "#1501"
++msgid "Wait for frontend initialization"
++msgstr "Ожидать инициализацию адаптера"
++
++msgctxt "#40002"
++msgid "Number of adapters to wait"
++msgstr "Номер адаптера"
++
++msgctxt "#1502"
++msgid "Number of adapters to wait"
++msgstr "Номер адаптера для ожидания"
++
++msgctxt "#40003"
++msgid "Unload DVB mudules before suspend"
++msgstr "Выгрузка DVB модулей перед остановкой"
++
++msgctxt "#1503"
++msgid "Unload DVB mudules before suspend"
++msgstr "Выгрузка DVB модулей перед остановкой"
++
++##########################################################
++## Oscam
++
++msgctxt "#41000"
++msgid "Oscam Configuration"
++msgstr "Конфигурация Oscam"
++
++msgctxt "#41001"
++msgid "Enable Oscam"
++msgstr "Запуск Oscam"
++
++msgctxt "#1601"
++msgid "Enable Oscam"
++msgstr "Запуск Oscam"
++
++msgctxt "#41002"
++msgid "Oscam debug level"
++msgstr "Уровень отладки Oscam"
++
++msgctxt "#1602"
++msgid "Oscam debug level"
++msgstr "Уровень отладки Oscam"
++
++msgctxt "#41003"
++msgid "Restart on suspend / resume"
++msgstr "Перезапуск при отключении / восстановлении"
++
++msgctxt "#1603"
++msgid "Restart on resume"
++msgstr "Перезапуск при отключении / восстановлении"
++
++##########################################################
++
++msgctxt "#42000"
++msgid "Tvheadend is a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources."
++msgstr "Tvheadend ТВ потоковый сервер для Linux поддерживает DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, и аналогового видео (V4L) в качестве источников."
++
++msgctxt "#42001"
++msgid "VDR (The Video Disk Recorder) is an open source application for Linux designed to allow any computer to function as a digital video recorder, in order to record and replay TV programming using the computer's hard drive."
++msgstr "VDR приложение с открытым исходным кодом для Linux разработанный, чтобы позволить любому компьютеру работать в качестве цифрового видеомагнитофона для того, чтобы записывать и воспроизводить ТВ программы."
+diff -Naur a/skins/Default/720p/getPasskey.xml b/skins/Default/720p/getPasskey.xml
+--- a/skins/Default/720p/getPasskey.xml	2015-06-14 11:05:06.000000000 +0300
++++ b/skins/Default/720p/getPasskey.xml	2015-11-26 18:41:27.163619301 +0200
+@@ -18,14 +18,14 @@
+                 <top>5</top>
+                 <width>600</width>
+                 <height>174</height>
+-                <texture border="15">default/ContentPanel.png</texture>
++                <texture border="15">ContentPanel.png</texture>
+             </control>
+             <control type="image">
+                 <left>5</left>
+                 <top>5</top>
+                 <width>600</width>
+                 <height>174</height>
+-                <texture border="15">default/ContentPanel.png</texture>
++                <texture border="15">ContentPanel.png</texture>
+             </control>
+             <control type="group">
+                 <left>17</left>
+diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.xml
+--- a/skins/Default/720p/mainWindow.xml	2015-06-14 11:05:06.000000000 +0300
++++ b/skins/Default/720p/mainWindow.xml	2015-11-26 18:41:27.163619301 +0200
+@@ -8,7 +8,8 @@
+             <top>100r</top>
+             <width>1280</width>
+             <height>100</height>
+-            <texture>default/floor.png</texture>
++            <texture>floor.png</texture>
++            <visible>false</visible>
+             <include>VisibleFadeEffect</include>
+         </control>
+         <control type="image">
+@@ -49,7 +50,7 @@
+                 <top>5</top>
+                 <width>1090</width>
+                 <height>630</height>
+-                <texture border="15">default/ContentPanel.png</texture>
++                <texture border="15">ContentPanel.png</texture>
+             </control>
+             <control type="button">
+                 <description>Close Window button</description>
+@@ -60,8 +61,8 @@
+                 <label>-</label>
+                 <font>-</font>
+                 <onclick>PreviousMenu</onclick>
+-                <texturefocus>default/DialogCloseButton-focus.png</texturefocus>
+-                <texturenofocus>default/DialogCloseButton.png</texturenofocus>
++                <texturefocus>DialogCloseButton-focus.png</texturefocus>
++                <texturenofocus>DialogCloseButton.png</texturenofocus>
+                 <onleft>1</onleft>
+                 <onright>1</onright>
+                 <onup>1</onup>
+@@ -82,7 +83,7 @@
+                 <top>10</top>
+                 <width>795</width>
+                 <height>618</height>
+-                <texture border="5">default/black-back2.png</texture>
++                <texture border="5">black-back2.png</texture>
+             </control>			
+             <control type="image">
+                 <left>268</left>
+@@ -90,7 +91,7 @@
+                 <width>794</width>
+                 <height>50</height>
+                 <aspectratio>stretch</aspectratio>
+-                <texture>default/dialogheader.png</texture>
++                <texture>dialogheader.png</texture>
+             </control>
+             <control type="scrollbar" id="1097">
+                 <description>scroll bar indicator for lists</description>
+@@ -148,7 +149,7 @@
+                 <top>625</top>
+                 <width>1090</width>
+                 <height>64</height>
+-                <texture border="15">default/ContentPanelMirror.png</texture>
++                <texture border="15">ContentPanelMirror.png</texture>
+             </control>
+             <!-- Main Menu (left) -->
+             <control type="list" id="1000">
+@@ -165,7 +166,7 @@
+                         <top>0</top>
+                         <width>260</width>
+                         <height>55</height>
+-                        <texture border="5">default/MenuItemNF.png</texture>
++                        <texture border="5">MenuItemNF.png</texture>
+                     </control>
+                     <control type="label">
+                         <left>10</left>
+@@ -185,7 +186,7 @@
+                         <top>0</top>
+                         <width>260</width>
+                         <height>55</height>
+-                        <texture border="5">default/MenuItemFO.png</texture>
++                        <texture border="5">MenuItemFO.png</texture>
+                         <animation effect="fade" end="50" time="10">Unfocus</animation>
+                     </control>
+                     <control type="label">
+@@ -226,7 +227,7 @@
+                 <top>60</top>
+                 <width>793</width>
+                 <height>450</height>
+-                <texture border="5">default/button-nofocus.png</texture>
++                <texture border="5">button-nofocus.png</texture>
+             </control>   
+ 	    <!-- Other Content (right)-->
+             <control type="group">
+@@ -368,7 +369,7 @@
+                                 <top>2</top>
+                                 <width>786</width>
+                                 <height>35</height>
+-                                <texture>default/_MenuItemNF.png</texture>
++                                <texture>MenuItemNF.png</texture>
+                             </control>
+                             <control type="label">
+                                 <left>40</left>
+@@ -419,7 +420,7 @@
+                                 <width>30</width>
+                                 <height>30</height>
+                                 <aspectratio>keep</aspectratio>
+-                                <texture border="5">default/radiobutton-nofocus.png</texture>
++                                <texture border="5">radiobutton-nofocus.png</texture>
+                                 <visible>StringCompare(ListItem.Property(value), 0) | StringCompare(ListItem.Property(value), false) | IsEmpty(ListItem.Property(value))</visible>
+                             </control>
+                             <control type="image">
+@@ -428,7 +429,7 @@
+                                 <width>30</width>
+                                 <height>30</height>
+                                 <aspectratio>keep</aspectratio>
+-                                <texture border="5">default/radiobutton-focus.png</texture>
++                                <texture border="5">radiobutton-focus.png</texture>
+                                 <visible>StringCompare(ListItem.Property(value), 1) | StringCompare(ListItem.Property(value), true)</visible>
+                             </control>
+                         </control>
+@@ -453,7 +454,7 @@
+                                 <width>786</width>
+                                 <height>38</height>
+ 				<visible>Control.HasFocus(1100)</visible>
+-                                <texture border="5">default/MenuItemFO.png</texture>
++                                <texture border="5">MenuItemFO.png</texture>
+                             </control>
+                             <control type="label">
+                                 <left>40</left>
+@@ -522,7 +523,7 @@
+                                 <width>30</width>
+                                 <height>30</height>
+                                 <aspectratio>keep</aspectratio>
+-                                <texture border="5">default/radiobutton-nofocus.png</texture>
++                                <texture border="5">radiobutton-nofocus.png</texture>
+                                 <visible>StringCompare(ListItem.Property(value), 0) | StringCompare(ListItem.Property(value),false) | IsEmpty(ListItem.Property(value))</visible>
+                             </control>
+                             <control type="image">
+@@ -531,7 +532,7 @@
+                                 <width>30</width>
+                                 <height>30</height>
+                                 <aspectratio>keep</aspectratio>
+-                                <texture border="5">default/radiobutton-focus.png</texture>
++                                <texture border="5">radiobutton-focus.png</texture>
+                                 <visible>StringCompare(ListItem.Property(value), 1) | StringCompare(ListItem.Property(value),true)</visible>
+                             </control>
+                         </control>
+@@ -567,7 +568,7 @@
+                             <top>0</top>
+                             <width>788</width>
+                             <height>98</height>
+-                            <texture border="5">default/button-nofocus.png</texture>
++                            <texture border="5">button-nofocus.png</texture>
+                         </control>
+                         <!-- Icon ethernet -->
+                         <control type="image">
+@@ -702,7 +703,7 @@
+                             <top>0</top>
+                             <width>788</width>
+                             <height>98</height>
+-                            <texture border="5">default/button-nofocus.png</texture>
++                            <texture border="5">button-nofocus.png</texture>
+                         </control>
+                         <control type="image">
+                             <left>0</left>
+@@ -710,7 +711,7 @@
+                             <width>788</width>
+                             <height>98</height>
+                             <visible>Control.HasFocus(1200)</visible>
+-                            <texture border="5">default/button-focus2.png</texture>
++                            <texture border="5">button-focus2.png</texture>
+                             <animation type="Visible" reversible="false">
+                                 <effect type="fade" start="0" end="100" time="300" />
+                             </animation>
+@@ -870,7 +871,7 @@
+                             <top>0</top>
+                             <width>786</width>
+                             <height>68</height>
+-                            <texture border="5">default/button-nofocus.png</texture>
++                            <texture border="5">button-nofocus.png</texture>
+                         </control>
+                         <!-- default -->
+                         <control type="image">
+@@ -1052,7 +1053,7 @@
+                             <top>0</top>
+                             <width>788</width>
+                             <height>68</height>
+-                            <texture border="5">default/button-nofocus.png</texture>
++                            <texture border="5">button-nofocus.png</texture>
+                         </control>
+                         <control type="image">
+                             <left>0</left>
+@@ -1060,7 +1061,7 @@
+                             <width>788</width>
+                             <height>68</height>
+                             <visible>Control.HasFocus(1300)</visible>
+-                            <texture border="5">default/button-focus2.png</texture>
++                            <texture border="5">button-focus2.png</texture>
+                             <animation type="Visible" reversible="false">
+                                 <effect type="fade" start="0" end="100" time="300" />
+                             </animation>
+@@ -1258,8 +1259,8 @@
+                 <height>40</height>
+                 <visible>true</visible>
+                 <colordiffuse>FFFFFFFF</colordiffuse>
+-                <texturefocus>default/button-focus.png</texturefocus>
+-                <texturenofocus>default/button-nofocus.png</texturenofocus>
++                <texturefocus>button-focus.png</texturefocus>
++                <texturenofocus>button-nofocus.png</texturenofocus>
+                 <label>
+                 </label>
+                 <font>font12</font>
+@@ -1279,8 +1280,8 @@
+                 <height>40</height>
+                 <visible>true</visible>
+                 <colordiffuse>FFFFFFFF</colordiffuse>
+-                <texturefocus>default/button-focus.png</texturefocus>
+-                <texturenofocus>default/button-nofocus.png</texturenofocus>
++                <texturefocus>button-focus.png</texturefocus>
++                <texturenofocus>button-nofocus.png</texturenofocus>
+                 <label>
+                 </label>
+                 <font>font12</font>
+@@ -1300,8 +1301,8 @@
+                 <height>40</height>
+                 <visible>true</visible>
+                 <colordiffuse>FFFFFFFF</colordiffuse>
+-                <texturefocus>default/button-focus.png</texturefocus>
+-                <texturenofocus>default/button-nofocus.png</texturenofocus>
++                <texturefocus>button-focus.png</texturefocus>
++                <texturenofocus>button-nofocus.png</texturenofocus>
+                 <label>
+                 </label>
+                 <font>font12</font>
+@@ -1321,8 +1322,8 @@
+                 <height>40</height>
+                 <visible>true</visible>
+                 <colordiffuse>FFFFFFFF</colordiffuse>
+-                <texturefocus>default/button-focus.png</texturefocus>
+-                <texturenofocus>default/button-nofocus.png</texturenofocus>
++                <texturefocus>button-focus.png</texturefocus>
++                <texturenofocus>button-nofocus.png</texturenofocus>
+                 <label>
+                 </label>
+                 <font>font12</font>
+@@ -1342,8 +1343,8 @@
+                 <height>40</height>
+                 <visible>true</visible>
+                 <colordiffuse>FFFFFFFF</colordiffuse>
+-                <texturefocus>default/button-focus.png</texturefocus>
+-                <texturenofocus>default/button-nofocus.png</texturenofocus>
++                <texturefocus>button-focus.png</texturefocus>
++                <texturenofocus>button-nofocus.png</texturenofocus>
+                 <label>
+                 </label>
+                 <font>font12</font>
+diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
+--- a/skins/Default/720p/wizard.xml	2015-06-14 11:05:06.000000000 +0300
++++ b/skins/Default/720p/wizard.xml	2015-11-26 18:41:27.167619301 +0200
+@@ -7,7 +7,8 @@
+             <top>100r</top>
+             <width>1280</width>
+             <height>100</height>
+-            <texture>default/floor.png</texture>
++            <texture>floor.png</texture>
++            <visible>false</visible>
+             <animation effect="fade" time="300">Visible</animation>
+             <animation effect="fade" time="300">Hidden</animation>
+         </control>		
+@@ -27,14 +28,14 @@
+                 <top>5</top>
+                 <width>1090</width>
+                 <height>630</height>
+-                <texture border="15">default/ContentPanel.png</texture>
++                <texture border="15">ContentPanel.png</texture>
+             </control>
+             <control type="image">
+                 <left>265</left>
+                 <top>5</top>
+                 <width>830</width>
+                 <height>630</height>
+-                <texture border="15">default/ContentPanel.png</texture>
++                <texture border="15">ContentPanel.png</texture>
+             </control>
+             <control type="image">
+                 <left>10</left>
+@@ -48,14 +49,14 @@
+                 <top>625</top>
+                 <width>1090</width>
+                 <height>64</height>
+-                <texture border="15">default/ContentPanelMirror.png</texture>
++                <texture border="15">ContentPanelMirror.png</texture>
+             </control>			
+             <control type="image">
+                 <left>268</left>
+                 <top>10</top>
+                 <width>804</width>
+                 <height>50</height>
+-                <texture border="5">default/black-back2.png</texture>
++                <texture border="5">black-back2.png</texture>
+             </control>
+             <control type="image">
+                 <left>268</left>
+@@ -63,7 +64,7 @@
+                 <width>804</width>
+                 <height>70</height>
+                 <aspectratio>stretch</aspectratio>
+-                <texture>default/dialogheader.png</texture>
++                <texture>dialogheader.png</texture>
+             </control>
+             <control type="label" id="32300">
+                 <description>header label</description>
+@@ -84,21 +85,21 @@
+                 <top>60</top>
+                 <width>800</width>
+                 <height>450</height>
+-                <texture border="5">default/button-nofocus.png</texture>
++                <texture border="5">button-nofocus.png</texture>
+             </control>
+             <control type="image">
+                 <left>12</left>
+                 <top>11</top>
+                 <width>258</width>
+                 <height>618</height>
+-                <texture border="5">default/button-nofocus.png</texture>
++                <texture border="5">button-nofocus.png</texture>
+             </control>					
+             <control type="image">
+                 <left>272</left>
+                 <top>509</top>
+                 <width>799</width>
+                 <height>120</height>
+-                <texture border="5">default/black-back2.png</texture>
++                <texture border="5">black-back2.png</texture>
+             </control>
+             <control type="group" id="1398">
+                 <visible>IsEmpty(Control.GetLabel(1390))</visible>
+@@ -162,7 +163,7 @@
+                         </label>                                    
+                         <textcolor>FF999999</textcolor>
+                         <focusedcolor>white</focusedcolor>
+-                        <texturefocus border="5">default/button-focus2.png</texturefocus>
++                        <texturefocus border="5">button-focus2.png</texturefocus>
+                     </control>		
+                     <control type="radiobutton" id="1407">
+                         <left>550</left>
+@@ -173,7 +174,7 @@
+                         </label>                                    
+                         <textcolor>FF999999</textcolor>
+                         <focusedcolor>white</focusedcolor>
+-                        <texturefocus border="5">default/button-focus2.png</texturefocus>
++                        <texturefocus border="5">button-focus2.png</texturefocus>
+                     </control>			      	            
+                     <control type="button" id="1401">
+                         <left>300</left>
+@@ -182,8 +183,8 @@
+                         <height>40</height>
+                         <visible>true</visible>
+                         <colordiffuse>FFFFFFFF</colordiffuse>
+-                        <texturefocus>default/button-focus.png</texturefocus>
+-                        <texturenofocus>default/button-nofocus.png</texturenofocus>
++                        <texturefocus>button-focus.png</texturefocus>
++                        <texturenofocus>button-nofocus.png</texturenofocus>
+                         <label>
+                         </label>
+                         <font>font12</font>
+@@ -198,8 +199,8 @@
+                         <height>40</height>
+                         <visible>true</visible>
+                         <colordiffuse>FFFFFFFF</colordiffuse>
+-                        <texturefocus>default/button-focus.png</texturefocus>
+-                        <texturenofocus>default/button-nofocus.png</texturenofocus>
++                        <texturefocus>button-focus.png</texturefocus>
++                        <texturenofocus>button-nofocus.png</texturenofocus>
+                         <label>
+                         </label>
+                         <font>font12</font>
+@@ -235,7 +236,7 @@
+                         <top>330</top>
+                         <width>768</width>
+                         <height>170</height>
+-                        <texture border="15">default/ContentPanel.png</texture>
++                        <texture border="15">ContentPanel.png</texture>
+                     </control>			     			          
+                     <!-- Main Menu (left) -->	    
+                     <control type="list" id="1000">
+@@ -270,7 +271,7 @@
+                                 <top>2</top>
+                                 <width>727</width>
+                                 <height>48</height>
+-                                <texture border="5">default/button-nofocus.png</texture>
++                                <texture border="5">button-nofocus.png</texture>
+                             </control>
+                             <!-- Icon ethernet -->
+                             <control type="image">
+@@ -352,7 +353,7 @@
+                                 <top>2</top>
+                                 <width>727</width>
+                                 <height>48</height>
+-                                <texture border="5">default/button-nofocus.png</texture>
++                                <texture border="5">button-nofocus.png</texture>
+                             </control>						
+                             <control type="image">
+                                 <left>0</left>
+@@ -360,7 +361,7 @@
+                                 <width>727</width>
+                                 <height>48</height>
+                                 <visible>Control.HasFocus(1200)</visible>
+-                                <texture border="5">default/button-focus2.png</texture>
++                                <texture border="5">button-focus2.png</texture>
+                                 <animation type="Visible" reversible="false">
+                                     <effect type="fade" start="0" end="100" time="300" />
+                                 </animation>			        							
+@@ -463,8 +464,8 @@
+                 <height>40</height>
+                 <visible>true</visible>
+                 <colordiffuse>FFFFFFFF</colordiffuse>
+-                <texturefocus>default/button-focus.png</texturefocus>
+-                <texturenofocus>default/button-nofocus.png</texturenofocus>
++                <texturefocus>button-focus.png</texturefocus>
++                <texturenofocus>button-nofocus.png</texturenofocus>
+                 <label>
+                 </label>
+                 <font>font12</font>
 diff -Naur a/src/defaults.py b/src/defaults.py
 --- a/src/defaults.py	2015-06-14 11:05:06.000000000 +0300
-+++ b/src/defaults.py	2015-11-08 02:28:22.567676965 +0200
-@@ -77,6 +77,138 @@
++++ b/src/defaults.py	2015-11-26 18:15:12.851598592 +0200
+@@ -77,6 +77,140 @@
      'LCD_DRIVER_DIR': '/usr/lib/lcdproc/',
      'D_LCD_DRIVER': 'none',
      }
@@ -122,6 +1970,8 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +    'D_F_ENABLE_TVSCRAPER': '1',
 +    'D_F_ENABLE_SKINDESIGNER': '0',
 +    'D_F_ENABLE_WEATHERFORECAST': '0',
++    'D_F_ENABLE_FAVORITES': '0',
++    'D_F_ENABLE_SCRAPER2VDR': '0',
 +    'D_F_FRONT': 'soft',
 +    'D_F_OUTPUT_VIDEO': 'auto',
 +    'D_F_SOUND_SOFT': 'alsa',
@@ -140,7 +1990,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
  
  system = {
      'ENABLED': True,
-@@ -113,4 +245,8 @@
+@@ -113,4 +247,8 @@
      'obexd': ['obex.service'],
      'crond': ['cron.service'],
      'lcdd': ['lcdd.service'],
@@ -149,129 +1999,9 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +    'vdr': ['vdr.service'],
 +    'oscam': ['oscam.service'],
      }
-diff -Naur a/src/defaults.py.orig b/src/defaults.py.orig
---- a/src/defaults.py.orig	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/defaults.py.orig	2015-06-14 11:05:06.000000000 +0300
-@@ -0,0 +1,116 @@
-+################################################################################
-+#      This file is part of OpenELEC - http://www.openelec.tv
-+#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
-+#      Copyright (C) 2013 Lutz Fiebach (lufie@openelec.tv)
-+#
-+#  This program is dual-licensed; you can redistribute it and/or modify
-+#  it under the terms of the GNU General Public License as published by
-+#  the Free Software Foundation; either version 2 of the License, or
-+#  (at your option) any later version.
-+#
-+#  This Program is distributed in the hope that it will be useful,
-+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+#  GNU General Public License for more details.
-+#
-+#  You should have received a copy of the GNU General Public License
-+#  along with OpenELEC; see the file COPYING.  If not, see
-+#  <http://www.gnu.org/licenses/>.
-+#
-+#  Alternatively, you can license this library under a commercial license,
-+#  please contact OpenELEC Licensing for more information.
-+#
-+#  For more information contact:
-+#  OpenELEC Licensing  <license@openelec.tv>  http://www.openelec.tv
-+################################################################################
-+# -*- coding: utf-8 -*-
-+
-+import os
-+
-+################################################################################
-+# Base
-+################################################################################
-+
-+XBMC_USER_HOME = os.environ.get('XBMC_USER_HOME', '/storage/.kodi')
-+CONFIG_CACHE = os.environ.get('CONFIG_CACHE', '/storage/.cache')
-+USER_CONFIG = os.environ.get('USER_CONFIG', '/storage/.config')
-+
-+################################################################################
-+# Connamn Module
-+################################################################################
-+
-+connman = {
-+    'CONNMAN_DAEMON': '/usr/sbin/connmand',
-+    'WAIT_CONF_FILE': '%s/openelec/network_wait' % CONFIG_CACHE,
-+    'ENABLED': lambda : (True if os.path.exists(connman['CONNMAN_DAEMON']) else False),
-+    }
-+
-+################################################################################
-+# Bluez Module
-+################################################################################
-+
-+bluetooth = {
-+    'BLUETOOTH_DAEMON': '/usr/lib/bluetooth/bluetoothd',
-+    'OBEX_DAEMON': '/usr/lib/bluetooth/obexd',
-+    'ENABLED': lambda : (True if os.path.exists(bluetooth['BLUETOOTH_DAEMON']) else False),
-+    'D_OBEXD_ROOT': '/storage/downloads/',
-+    }
-+
-+################################################################################
-+# Service Module
-+################################################################################
-+
-+services = {
-+    'ENABLED': True,
-+    'KERNEL_CMD': '/proc/cmdline',
-+    'SAMBA_NMDB': '/usr/bin/nmbd',
-+    'SAMBA_SMDB': '/usr/bin/smbd',
-+    'D_SAMBA_SECURE': '0',
-+    'D_SAMBA_USERNAME': 'openelec',
-+    'D_SAMBA_PASSWORD': 'openelec',
-+    'D_SAMBA_AUTOSHARE': '1',
-+    'SSH_DAEMON': '/usr/sbin/sshd',
-+    'OPT_SSH_NOPASSWD': "-o 'PasswordAuthentication no'",
-+    'D_SSH_DISABLE_PW_AUTH': '0',
-+    'AVAHI_DAEMON': '/usr/sbin/avahi-daemon',
-+    'CRON_DAEMON': '/sbin/crond',
-+    'LCD_DRIVER_DIR': '/usr/lib/lcdproc/',
-+    'D_LCD_DRIVER': 'none',
-+    }
-+
-+system = {
-+    'ENABLED': True,
-+    'KERNEL_CMD': '/proc/cmdline',
-+    'SET_CLOCK_CMD': '/sbin/hwclock --systohc --utc',
-+    'UPDATE_REQUEST_URL': 'http://update.openelec.tv/updates.php',
-+    'UPDATE_DOWNLOAD_URL': 'http://%s.openelec.tv/%s',
-+    'LOCAL_UPDATE_DIR': '/storage/.update/',
-+    'GET_CPU_FLAG': "cat /proc/cpuinfo | grep -q 'flags.* lm ' && echo '1' || echo '0'",
-+    'XBMC_RESET_FILE': '%s/reset_xbmc' % CONFIG_CACHE,
-+    'OPENELEC_RESET_FILE': '%s/reset_oe' % CONFIG_CACHE,
-+    'KEYBOARD_INFO': '/usr/share/X11/xkb/rules/base.xml',
-+    'UDEV_KEYBOARD_INFO': '%s/xkb/layout' % CONFIG_CACHE,
-+    'NOX_KEYBOARD_INFO': '/usr/lib/keymaps',
-+    'BACKUP_DIRS': [
-+        XBMC_USER_HOME,
-+        USER_CONFIG,
-+        CONFIG_CACHE,
-+        '/storage/.ssh',
-+        ],
-+    'BACKUP_DESTINATION': '/storage/backup/',
-+    'RESTORE_DIR': '/storage/.restore/',
-+    }
-+
-+about = {'ENABLED': True}
-+
-+xdbus = {'ENABLED': True}
-+
-+_services = {
-+    'sshd': ['sshd.service'],
-+    'avahi': ['avahi-daemon.service'],
-+    'samba': ['nmbd.service', 'smbd.service'],
-+    'bluez': ['bluetooth.service'],
-+    'obexd': ['obex.service'],
-+    'crond': ['cron.service'],
-+    'lcdd': ['lcdd.service'],
-+    }
 diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/system.py
 --- a/src/resources/lib/modules/system.py	2015-06-14 11:05:06.000000000 +0300
-+++ b/src/resources/lib/modules/system.py	2015-11-08 02:28:22.567676965 +0200
++++ b/src/resources/lib/modules/system.py	2015-11-26 18:12:30.603596458 +0200
 @@ -130,6 +130,15 @@
                              'values': [],
                              'InfoText': 713,
@@ -375,7 +2105,7 @@ diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/sys
              self.oe.dbg_log('system::get_keyboard_layouts', 'ERROR: (' + repr(e) + ')')
 diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modules/transmission.py
 --- a/src/resources/lib/modules/transmission.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/transmission.py	2015-11-08 02:28:22.567676965 +0200
++++ b/src/resources/lib/modules/transmission.py	2015-11-26 18:12:30.603596458 +0200
 @@ -0,0 +1,331 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -710,8 +2440,8 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-11-09 19:41:48.267716742 +0200
-@@ -0,0 +1,2148 @@
++++ b/src/resources/lib/modules/tvservers.py	2015-11-26 18:29:43.687610047 +0200
+@@ -0,0 +1,2186 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
 +#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
@@ -841,6 +2571,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_F_ENABLE_TVSCRAPER = None
 +    D_F_ENABLE_SKINDESIGNER = None
 +    D_F_ENABLE_WEATHERFORECAST = None
++    D_F_ENABLE_FAVORITES = None
++    D_F_ENABLE_SCRAPER2VDR = None
 +    D_F_FRONT = None
 +    D_F_OUTPUT_VIDEO = None
 +    D_F_SOUND_SOFT = None
@@ -1580,59 +3312,75 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'type': 'bool',
 +                            'InfoText': 1435,
 +                        },
-+                        'vdr_output': {
++                        'enable_favorites': {
 +                            'order': 43,
 +                            'name': 39036,
++                            'value': '1',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1436,
++                        },
++                        'enable_scraper2vdr': {
++                            'order': 44,
++                            'name': 39037,
++                            'value': '1',
++                            'action': 'initialize_vdr_front',
++                            'type': 'bool',
++                            'InfoText': 1437,
++                        },
++                        'vdr_output': {
++                            'order': 45,
++                            'name': 39038,
 +                            'value': 'soft',
 +                            'values': ['soft','xine'],
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'multivalue',
-+                            'InfoText': 1436,
++                            'InfoText': 1438,
 +                        },
 +                        'vdr_video': {
-+                            'order': 44,
-+                            'name': 39037,
++                            'order': 46,
++                            'name': 39039,
 +                            'value': 'auto',
 +                            'values': ['auto','vdpau','vaapi'],
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'multivalue',
-+                            'InfoText': 1437,
++                            'InfoText': 1439,
 +                        },                        
 +                        'vdr_sound_soft': {
-+                            'order': 45,
-+                            'name': 39038,
++                            'order': 47,
++                            'name': 39040,
 +                            'value': 'alsa',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['soft']},
-+                            'InfoText': 1438,
++                            'InfoText': 1440,
 +                        },                        
 +                        'vdr_sound_xine': {
-+                            'order': 46,
-+                            'name': 39039,
++                            'order': 48,
++                            'name': 39041,
 +                            'value': 'auto',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['xine']},
-+                            'InfoText': 1439,
++                            'InfoText': 1441,
 +                        },
 +                        'vdr_soft_param': {
-+                            'order': 47,
-+                            'name': 39040,
++                            'order': 49,
++                            'name': 39042,
 +                            'value': '',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['soft']},
-+                            'InfoText': 1440,
++                            'InfoText': 1442,
 +                        },
 +                        'vdr_xine_param': {
-+                            'order': 48,
-+                            'name': 39041,
++                            'order': 50,
++                            'name': 39043,
 +                            'value': '',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['xine']},
-+                            'InfoText': 1441,
++                            'InfoText': 1443,
 +                        },
 +                    },
 +                },
@@ -2067,6 +3815,12 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +                self.struct['vdr-front']['settings']['enable_weatherforecast']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_WEATHERFORECAST', self.D_F_ENABLE_WEATHERFORECAST).replace('true','1').replace('false','0').replace('"', '')
++                
++                self.struct['vdr-front']['settings']['enable_favorites']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_FAVORITES', self.D_F_ENABLE_FAVORITES).replace('true','1').replace('false','0').replace('"', '')
++                
++                self.struct['vdr-front']['settings']['enable_scraper2vdr']['value'] = \
++                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_SCRAPER2VDR', self.D_F_ENABLE_SCRAPER2VDR).replace('true','1').replace('false','0').replace('"', '')
 +
 +                self.struct['vdr-front']['settings']['vdr_output']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_FRONT', self.D_F_FRONT).replace('"', '')
@@ -2696,6 +4450,18 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +                else:
 +                    val32 = 'false'
++                    
++                if self.struct['vdr-front']['settings']['enable_favorites']['value'] == '1':
++                    val33 = 'true'
++
++                else:
++                    val33 = 'false'
++                    
++                if self.struct['vdr-front']['settings']['enable_scraper2vdr']['value'] == '1':
++                    val34 = 'true'
++
++                else:
++                    val34 = 'false'
 +
 +                options['VDR_ENABLE_EXTERNAL_RECCMD'] = '"%s"' % val1
 +                options['VDR_EXTERNAL_RECCMD_PATH'] = '"%s"' % self.struct['vdr-front']['settings']['ext_reccmd_path']['value']
@@ -2739,6 +4505,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_ENABLE_TVSCRAPER'] = '"%s"' % val30
 +                options['VDR_ENABLE_SKINDESIGNER'] = '"%s"' % val31
 +                options['VDR_ENABLE_WEATHERFORECAST'] = '"%s"' % val32
++                options['VDR_ENABLE_FAVORITES'] = '"%s"' % val33
++                options['VDR_ENABLE_SCRAPER2VDR'] = '"%s"' % val34
 +                options['VDR_FRONT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_output']['value']
 +                options['VDR_OUTPUT_VIDEO'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_video']['value']
 +                options['VDR_SOUND_SOFT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_sound_soft']['value']

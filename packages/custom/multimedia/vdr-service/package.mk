@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="67"
+PKG_REV="68"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -65,6 +65,8 @@ ENABLE_VDR_SKIN_NOPACITY="yes"
 ENABLE_VDR_SYSTEMINFO="yes"
 ENABLE_VDR_PLUGIN_SKINDESIGNER="yes"
 ENABLE_VDR_PLUGIN_WEATHERFORECAST="yes"
+ENABLE_VDR_FAVORITES="yes"
+ENABLE_VDR_SCRAPER2VDR="yes"
 
 if [ "$ENABLE_VDR_CONTROL" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-control"  
@@ -192,6 +194,14 @@ fi
 
 if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-weatherforecast"  
+fi
+
+if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-favorites"  
+fi
+
+if [ "$ENABLE_VDR_SCRAPER2VDR" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-scraper2vdr"  
 fi
 
 make_target() {
@@ -405,6 +415,28 @@ post_install() {
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/locale/* $INSTALL/usr/share/locale
     cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/locale/* $INSTALL/usr/share/locale
   fi
+  
+  if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
+    VDR_PLUGIN_FAVORITES_DIR=$(get_build_dir vdr-favorites)
+    cp -PR $VDR_PLUGIN_FAVORITES_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
+    for fmo in `ls $VDR_PLUGIN_FAVORITES_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $INSTALL/usr/share/locale/$fname
+      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-favorites.mo    
+    done
+  fi
+  
+  if [ "$ENABLE_VDR_SCRAPER2VDR" = yes ]; then
+    VDR_PLUGIN_SCRAPER2VDR_DIR=$(get_build_dir vdr-scraper2vdr)
+    cp -PR $VDR_PLUGIN_SCRAPER2VDR_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
+    for fmo in `ls $VDR_PLUGIN_SCRAPER2VDR_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $INSTALL/usr/share/locale/$fname
+      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-scraper2vdr.mo    
+    done
+  fi
 
   if [ "$ENABLE_VDR_FEMON" = yes ]; then
     VDR_PLUGIN_FEMON_DIR=$(get_build_dir vdr-femon)
@@ -607,6 +639,10 @@ post_install() {
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
     VDR_PLUGIN_SKINDESINGER_DIR=$(get_build_dir vdr-plugin-skindesigner)
+    mkdir -p $INSTALL/etc/fonts/conf.d
+    cp -P $VDR_PLUGIN_SKINDESINGER_DIR/installs/99-skindesigner.conf $INSTALL/etc/fonts/conf.d
+    mkdir -p $INSTALL/usr/share/fonts/TTF
+    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/installs/TTF/* $INSTALL/usr/share/fonts/TTF
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $INSTALL/usr/lib
     ln -s libskindesignerapi.so.0.0.2 $INSTALL/usr/lib/libskindesignerapi.so.0

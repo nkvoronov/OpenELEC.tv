@@ -181,81 +181,89 @@ msgid "Plugin configuration for frontend"
 msgstr ""
 
 msgctxt "#4101"
-msgid "Enable plugin: femon"
+msgid "Enable plugin: favorites"
 msgstr ""
 
 msgctxt "#4102"
-msgid "Enable plugin: systeminfo"
+msgid "Enable plugin: scraper2vdr"
 msgstr ""
 
 msgctxt "#4103"
-msgid "Enable plugin: sleeptimer"
+msgid "Enable plugin: femon"
 msgstr ""
 
 msgctxt "#4104"
-msgid "Enable plugin: filebrowser"
+msgid "Enable plugin: systeminfo"
 msgstr ""
 
 msgctxt "#4105"
-msgid "Enable plugin: lcdproc"
+msgid "Enable plugin: sleeptimer"
 msgstr ""
 
 msgctxt "#4106"
-msgid "Enable plugin: text2skin"
+msgid "Enable plugin: filebrowser"
 msgstr ""
 
 msgctxt "#4107"
-msgid "Enable plugin: skinnopacity"
+msgid "Enable plugin: lcdproc"
 msgstr ""
 
 msgctxt "#4108"
-msgid "Enable plugin: skinflat"
+msgid "Enable plugin: text2skin"
 msgstr ""
 
 msgctxt "#4109"
-msgid "Enable plugin: skinflatplus"
+msgid "Enable plugin: skinnopacity"
 msgstr ""
 
 msgctxt "#4110"
-msgid "Enable plugin: skindesigner"
+msgid "Enable plugin: skinflat"
 msgstr ""
 
 msgctxt "#4111"
-msgid "Enable plugin: menuorg"
+msgid "Enable plugin: skinflatplus"
 msgstr ""
 
 msgctxt "#4112"
-msgid "Enable plugin: tvguide"
+msgid "Enable plugin: skindesigner"
 msgstr ""
 
 msgctxt "#4113"
-msgid "Enable plugin: tvscraper"
+msgid "Enable plugin: menuorg"
 msgstr ""
 
 msgctxt "#4114"
-msgid "Enable plugin: weatherforecast"
+msgid "Enable plugin: tvguide"
 msgstr ""
 
 msgctxt "#4115"
-msgid "Video output plugin"
+msgid "Enable plugin: tvscraper"
 msgstr ""
 
 msgctxt "#4116"
-msgid "- video driver"
+msgid "Enable plugin: weatherforecast"
 msgstr ""
 
 msgctxt "#4117"
-msgid "- soft audio device"
+msgid "Video output plugin"
 msgstr ""
 
 msgctxt "#4118"
-msgid "- xine audio device"
+msgid "- video driver"
 msgstr ""
 
 msgctxt "#4119"
-msgid "- soft params"
+msgid "- soft audio device"
 msgstr ""
 
 msgctxt "#4120"
+msgid "- xine audio device"
+msgstr ""
+
+msgctxt "#4121"
+msgid "- soft params"
+msgstr ""
+
+msgctxt "#4122"
 msgid "- xine params"
 msgstr ""

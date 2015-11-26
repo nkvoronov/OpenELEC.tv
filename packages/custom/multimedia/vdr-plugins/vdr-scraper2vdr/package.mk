@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
@@ -18,28 +16,37 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-. /etc/profile
+PKG_NAME="vdr-scraper2vdr"
+PKG_VERSION="02013ac"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://projects.vdr-developer.org/projects/plg-scraper2vdr/wiki"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain vdr mysql"
+PKG_PRIORITY="optional"
+PKG_SECTION="custom/multimedia/vdr-plugins"
+PKG_SHORTDESC="vdr scraper2vdr"
+PKG_LONGDESC="vdr scraper2vdr"
 
-oe_setup_addon service.multimedia.vdr-addon
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="no"
 
-SERVICE="service.multimedia.vdr-addon.service"
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -fPIC"
+  export CXXFLAGS="$CXXFLAGS -fPIC"
+  export LDFLAGS="$LDFLAGS -fPIC"
+  
+  strip_lto
+}
 
-case "$1" in
-  pre)
-    if systemctl is-active "$SERVICE" &>/dev/null ; then
-      systemctl stop "$SERVICE"
-      for module in $REMOVE_MODULES ; do
-        rmmod $module
-      done
-    fi
-    ;;
-  post)
-    if systemctl is-enabled "$SERVICE" &>/dev/null ; then
-      for module in $REMOVE_MODULES ; do
-        modprobe $module
-      done
-      systemctl start "$SERVICE"
-    fi
-    ;;
-esac
+make_target() {
+  VDR_DIR=$(get_build_dir vdr)
+  make VDRDIR=$VDR_DIR \
+  LIBDIR="." \
+  LOCALEDIR="./locale"
+}
 
+makeinstall_target() {
+  : # installation not needed, done by create-addon script
+}

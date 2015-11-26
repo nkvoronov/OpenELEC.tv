@@ -45,6 +45,9 @@ make_target() {
   make VDRDIR=$VDR_DIR \
   LIBDIR="." \
   LOCALEDIR="./locale"
+  
+  mkdir -p $ROOT/$PKG_BUILD/installs
+    cp -PR $PKG_DIR/configs/* $ROOT/$PKG_BUILD/installs
 
   mkdir -p $SYSROOT_PREFIX/usr/include/libskindesignerapi
     cp -PR $ROOT/$PKG_BUILD/libskindesignerapi/*.h $SYSROOT_PREFIX/usr/include/libskindesignerapi

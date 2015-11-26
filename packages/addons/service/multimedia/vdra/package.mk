@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="67"
+PKG_REV="68"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -65,6 +65,8 @@ ENABLE_VDR_SKIN_NOPACITY="yes"
 ENABLE_VDR_SYSTEMINFO="yes"
 ENABLE_VDR_PLUGIN_SKINDESIGNER="yes"
 ENABLE_VDR_PLUGIN_WEATHERFORECAST="yes"
+ENABLE_VDR_FAVORITES="yes"
+ENABLE_VDR_SCRAPER2VDR="yes"
 
 if [ "$ENABLE_VDR_CONTROL" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-control"  
@@ -192,6 +194,14 @@ fi
 
 if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-weatherforecast"  
+fi
+
+if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-favorites"  
+fi
+
+if [ "$ENABLE_VDR_SCRAPER2VDR" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-scraper2vdr"  
 fi
 
 make_target() {
@@ -435,6 +445,28 @@ addon() {
     cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
     cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
+  fi
+  
+  if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
+    VDR_PLUGIN_FAVORITES_DIR=$(get_build_dir vdr-favorites)
+    cp -PR $VDR_PLUGIN_FAVORITES_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
+    for fmo in `ls $VDR_PLUGIN_FAVORITES_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-favorites.mo    
+    done
+  fi
+  
+  if [ "$ENABLE_VDR_SCRAPER2VDR" = yes ]; then
+    VDR_PLUGIN_SCRAPER2VDR_DIR=$(get_build_dir vdr-scraper2vdr)
+    cp -PR $VDR_PLUGIN_SCRAPER2VDR_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
+    for fmo in `ls $VDR_PLUGIN_SCRAPER2VDR_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
+      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-scraper2vdr.mo    
+    done
   fi
 
   if [ "$ENABLE_VDR_FEMON" = yes ]; then
@@ -724,6 +756,10 @@ addon() {
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
     VDR_PLUGIN_SKINDESINGER_DIR=$(get_build_dir vdr-plugin-skindesigner)
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/etc/fonts/conf.d
+    cp -P $VDR_PLUGIN_SKINDESINGER_DIR/installs/99-skindesigner.conf $ADDON_BUILD/$PKG_ADDON_ID/etc/fonts/conf.d
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fonts/TTF
+    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/installs/TTF/* $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fonts/TTF
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0

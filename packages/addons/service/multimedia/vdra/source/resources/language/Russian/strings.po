@@ -181,81 +181,89 @@ msgid "Plugin configuration for frontend"
 msgstr "Конфигурация плагинов для фронтенда"
 
 msgctxt "#4101"
+msgid "Enable plugin: favorites"
+msgstr "Разрешить плагин: favorites"
+
+msgctxt "#4102"
+msgid "Enable plugin: scraper2vdr"
+msgstr "Разрешить плагин: scraper2vdr"
+
+msgctxt "#4103"
 msgid "Enable plugin: femon"
 msgstr "Разрешить плагин: femon"
 
-msgctxt "#4102"
+msgctxt "#4104"
 msgid "Enable plugin: systeminfo"
 msgstr "Разрешить плагин: systeminfo"
 
-msgctxt "#4103"
+msgctxt "#4105"
 msgid "Enable plugin: sleeptimer"
 msgstr "Разрешить плагин: sleeptimer"
 
-msgctxt "#4104"
+msgctxt "#4106"
 msgid "Enable plugin: filebrowser"
 msgstr "Разрешить плагин: filebrowser"
 
-msgctxt "#4105"
+msgctxt "#4107"
 msgid "Enable plugin: lcdproc"
 msgstr "Разрешить плагин: lcdproc"
 
-msgctxt "#4106"
+msgctxt "#4108"
 msgid "Enable plugin: text2skin"
 msgstr "Разрешить плагин: text2skin"
 
-msgctxt "#4107"
+msgctxt "#4109"
 msgid "Enable plugin: skinnopacity"
 msgstr "Разрешить плагин: skinnopacity"
 
-msgctxt "#4108"
+msgctxt "#4110"
 msgid "Enable plugin: skinflat"
 msgstr "Разрешить плагин: skinflat"
 
-msgctxt "#4109"
+msgctxt "#4111"
 msgid "Enable plugin: skinflatplus"
 msgstr "Разрешить плагин: skinflatplus"
 
-msgctxt "#4110"
+msgctxt "#4112"
 msgid "Enable plugin: skindesigner"
 msgstr "Разрешить плагин: skindesigner"
 
-msgctxt "#4111"
+msgctxt "#4113"
 msgid "Enable plugin: menuorg"
 msgstr "Разрешить плагин: menuorg"
 
-msgctxt "#4112"
+msgctxt "#4114"
 msgid "Enable plugin: tvguide"
 msgstr "Разрешить плагин: tvguide"
 
-msgctxt "#4113"
+msgctxt "#4115"
 msgid "Enable plugin: tvscraper"
 msgstr "Разрешить плагин: tvscraper"
 
-msgctxt "#4114"
+msgctxt "#4116"
 msgid "Enable plugin: weatherforecast"
 msgstr "Разрешить плагин: weatherforecast"
 
-msgctxt "#4115"
+msgctxt "#4117"
 msgid "Video output plugin"
 msgstr "Плагин вывода видео"
 
-msgctxt "#4116"
+msgctxt "#4118"
 msgid "- video driver"
 msgstr "- видео драйвер"
 
-msgctxt "#4117"
+msgctxt "#4119"
 msgid "- soft audio device"
 msgstr "- soft аудио устройство"
 
-msgctxt "#4118"
+msgctxt "#4120"
 msgid "- xine audio device"
 msgstr "- xine аудио устройство"
 
-msgctxt "#4119"
+msgctxt "#4121"
 msgid "- soft params"
 msgstr "- soft параметры"
 
-msgctxt "#4120"
+msgctxt "#4122"
 msgid "- xine params"
 msgstr "- xine параметры"

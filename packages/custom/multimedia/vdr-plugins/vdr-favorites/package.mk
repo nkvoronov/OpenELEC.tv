@@ -15,3 +15,37 @@
 #  You should have received a copy of the GNU General Public License
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
+
+PKG_NAME="vdr-favorites"
+PKG_VERSION="0.0.2"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.vdr-wiki.de/wiki/index.php/Favorites-plugin"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tgz"
+PKG_SOURCE_DIR="favorites-${PKG_VERSION}"
+PKG_DEPENDS_TARGET="toolchain vdr"
+PKG_PRIORITY="optional"
+PKG_SECTION="custom/multimedia/vdr-plugins"
+PKG_SHORTDESC="vdr favorites"
+PKG_LONGDESC="vdr favorites"
+
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="no"
+
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -fPIC"
+  export CXXFLAGS="$CXXFLAGS -fPIC"
+  export LDFLAGS="$LDFLAGS -fPIC"
+}
+
+make_target() {
+  VDR_DIR=$(get_build_dir vdr)
+  make VDRDIR=$VDR_DIR \
+  LIBDIR="." \
+  LOCALEDIR="./locale"
+}
+
+makeinstall_target() {
+  : # installation not needed, done by create-addon script
+}
