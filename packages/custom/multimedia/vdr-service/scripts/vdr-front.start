@@ -188,10 +188,7 @@ init_vdr_plugins() {
 
     if [ "$VDR_ENABLE_RESTFULAPI" == "true" ]; then
 	VDR_RESTFULAPI_ARGS="--ip $VDR_RESTFULAPI_IP --port $VDR_RESTFULAPI_PORT"
-        VDR_RESTFULAPI_EPGIMAGES="$VDR_HOME/plugins/restfulapi/epgimages"
-	mkdir -p $VDR_RESTFULAPI_EPGIMAGES
-	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --epgimages=\"$VDR_RESTFULAPI_EPGIMAGES\""
-        VDR_RESTFULAPI_CHANNELLOGOS="$VDR_HOME/plugins/restfulapi/channellogos"
+        VDR_RESTFULAPI_CHANNELLOGOS="$VDR_HOME/plugins/restfulapi/logos"
 	mkdir -p $VDR_RESTFULAPI_CHANNELLOGOS
 	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --channellogos=\"$VDR_RESTFULAPI_CHANNELLOGOS\""
         VDR_RESTFULAPI_WEBAPP="$VDR_HOME/plugins/restfulapi/webapp"

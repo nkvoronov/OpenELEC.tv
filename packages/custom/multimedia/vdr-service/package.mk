@@ -639,10 +639,14 @@ post_install() {
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
     VDR_PLUGIN_SKINDESINGER_DIR=$(get_build_dir vdr-plugin-skindesigner)
+    mkdir -p $INSTALL/usr/share/fontconfig/conf.avail
+      cp -P $VDR_PLUGIN_SKINDESINGER_DIR/installs/99-skindesigner.conf $INSTALL/usr/share/fontconfig/conf.avail
     mkdir -p $INSTALL/etc/fonts/conf.d
-    cp -P $VDR_PLUGIN_SKINDESINGER_DIR/installs/99-skindesigner.conf $INSTALL/etc/fonts/conf.d
+      ln -s /usr/share/fontconfig/conf.avail/99-skindesigner.conf $INSTALL/etc/fonts/conf.d/99-skindesigner.conf     
     mkdir -p $INSTALL/usr/share/fonts/TTF
-    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/installs/TTF/* $INSTALL/usr/share/fonts/TTF
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/installs/TTF/* $INSTALL/usr/share/fonts/TTF
+    mkfontdir $INSTALL/usr/share/fonts/TTF
+    mkfontscale $INSTALL/usr/share/fonts/TTF
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $INSTALL/usr/lib
     ln -s libskindesignerapi.so.0.0.2 $INSTALL/usr/lib/libskindesignerapi.so.0

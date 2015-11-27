@@ -756,10 +756,12 @@ addon() {
 
   if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
     VDR_PLUGIN_SKINDESINGER_DIR=$(get_build_dir vdr-plugin-skindesigner)
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/etc/fonts/conf.d
-    cp -P $VDR_PLUGIN_SKINDESINGER_DIR/installs/99-skindesigner.conf $ADDON_BUILD/$PKG_ADDON_ID/etc/fonts/conf.d
+    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fontconfig/conf.avail
+      cp -P $VDR_PLUGIN_SKINDESINGER_DIR/installs/99-skindesigner.conf $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fontconfig/conf.avail
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fonts/TTF
-    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/installs/TTF/* $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fonts/TTF
+      cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/installs/TTF/* $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fonts/TTF
+    mkfontdir $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fonts/TTF
+    mkfontscale $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fonts/TTF
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.0.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
