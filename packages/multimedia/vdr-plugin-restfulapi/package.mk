@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-restfulapi"
-PKG_VERSION="083bd9c"
+PKG_VERSION="d002343"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
