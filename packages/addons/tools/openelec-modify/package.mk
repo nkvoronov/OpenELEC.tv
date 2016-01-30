@@ -18,7 +18,7 @@
 
 PKG_NAME="openelec-modify"
 PKG_VERSION="1"
-PKG_REV="15"
+PKG_REV="16"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""

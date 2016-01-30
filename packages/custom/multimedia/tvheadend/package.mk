@@ -19,14 +19,14 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="4e913fd"
-PKG_VERSIONA="4.1.1418"
-PKG_REV="106"
+PKG_VERSION="f074688"
+PKG_VERSIONA="4.1.1451"
+PKG_REV="107"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.lonelycoder.com/hts/tvheadend_overview.html"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libressl curl ffmpeg-tvheadend"
+PKG_DEPENDS_TARGET="toolchain libressl curl"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="tvheadend (Version: $PKG_VERSION): a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources."
@@ -56,9 +56,6 @@ pre_build_target() {
 }
 
 configure_target() {
-  PKG_CONFIG_PATH="$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/lib/pkgconfig" \
-  CFLAGS="$CFLAGS -I$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/include" \
-  LDFLAGS="$LDFLAGS -L$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/lib" \
   ./configure --prefix=/usr \
             --arch=$TARGET_ARCH \
             --cpu=$TARGET_CPU \
@@ -66,7 +63,8 @@ configure_target() {
             --enable-hdhomerun_client \
             --enable-hdhomerun_static \
             --disable-avahi \
-            --enable-libav \
+            --disable-libav \
+            --disable-libffmpeg_static \
             --enable-inotify \
             --enable-epoll \
             --disable-uriparser \
