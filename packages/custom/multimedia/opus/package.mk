@@ -17,21 +17,22 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="libvpx"
-PKG_VERSION="1.5.0"
+PKG_NAME="opus"
+PKG_VERSION="1.1.1"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="BSD-3c"
-PKG_SITE="http://www.webmproject.org/"
-PKG_URL="http://storage.googleapis.com/downloads.webmproject.org/releases/webm/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain yasm:host"
+PKG_SITE="http://www.opus-codec.org/"
+PKG_URL="http://downloads.xiph.org/releases/opus/${PKG_NAME}-${PKG_VERSION}.tar.gz"
+PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
-PKG_SHORTDESC="VP8/VP9 Codec SDK"
-PKG_LONGDESC="The WebM Project is dedicated to developing a high-quality, open video format for the web that's freely available to everyone."
+PKG_SHORTDESC="Opus is a totally open, royalty-free, highly versatile audio codec."
+PKG_LONGDESC="Opus is a totally open, royalty-free, highly versatile audio codec."
 
 PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
+PKG_AUTORECONF="yes"
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
 
 pre_configure_target() {
 # ffmpeg fails building with LTO support
@@ -39,21 +40,4 @@ pre_configure_target() {
 
 # ffmpeg fails running with GOLD support
   strip_gold
-
-  export CFLAGS="$CFLAGS -fPIC -DPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC -DPIC"
-  export LDFLAGS="$LDFLAGS -fPIC -DPIC"
-
-  export LD=$CC
-  export AS=$ROOT/$TOOLCHAIN/bin/yasm 
-}
-
-configure_target() {
-  $PKG_CONFIGURE_SCRIPT --prefix=/usr \
-                        --extra-cflags="$CFLAGS" \
-                        --disable-examples \
-                        --disable-docs \
-                        --disable-shared \
-                        --disable-unit-tests \
-                        --enable-static
 }

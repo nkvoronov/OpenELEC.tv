@@ -18,15 +18,15 @@
 ################################################################################
 
 PKG_NAME="fdk-aac"
-PKG_VERSION="0.1.3"
+PKG_VERSION="0.1.4"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="other"
+PKG_LICENSE="fdk-aac license"
 PKG_SITE="http://sourceforge.net/projects/opencore-amr/"
 PKG_URL="http://downloads.sourceforge.net/project/opencore-amr/fdk-aac/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
+PKG_SECTION="multimedia"
 PKG_SHORTDESC="Modified library of Fraunhofer AAC decoder and encoder."
 PKG_LONGDESC="Modified library of Fraunhofer AAC decoder and encoder."
 
@@ -36,9 +36,9 @@ PKG_AUTORECONF="yes"
 PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -fPIC -DPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC -DPIC"
-  export LDFLAGS="$LDFLAGS -fPIC -DPIC"
+#  export CFLAGS="$CFLAGS -fPIC -DPIC"
+#  export CXXFLAGS="$CXXFLAGS -fPIC -DPIC"
+#  export LDFLAGS="$LDFLAGS -fPIC -DPIC"
 
 # ffmpeg fails building with LTO support
   strip_lto

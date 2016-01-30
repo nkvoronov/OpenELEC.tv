@@ -1,7 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
-#      Copyright (C) 2014 Stefan Benz (benz.st@gmail.com)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,43 +16,30 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="libvpx"
-PKG_VERSION="1.5.0"
+PKG_NAME="x265"
+PKG_VERSION="1.8"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="BSD-3c"
-PKG_SITE="http://www.webmproject.org/"
-PKG_URL="http://storage.googleapis.com/downloads.webmproject.org/releases/webm/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
+PKG_LICENSE="GPLv2+"
+PKG_SITE="https://bitbucket.org/multicoreware/x265/"
+# PKG_URL="ftp://ftp.videolan.org/pub/videolan/x265/${PKG_NAME}-${PKG_VERSION}.tar.gz" #packages are broken at official site
+PKG_URL="http://mycvh.de/openelec/x265/${PKG_NAME}-${PKG_VERSION}.tar.xz"
 PKG_DEPENDS_TARGET="toolchain yasm:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
-PKG_SHORTDESC="VP8/VP9 Codec SDK"
-PKG_LONGDESC="The WebM Project is dedicated to developing a high-quality, open video format for the web that's freely available to everyone."
+PKG_SHORTDESC="x265 is an open source free software and library for encoding video using the High Efficiency Video Coding (HEVC/H.265) standard."
+PKG_LONGDESC="x265 is an open source free software and library for encoding video using the High Efficiency Video Coding (HEVC/H.265) standard."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 pre_configure_target() {
-# ffmpeg fails building with LTO support
-  strip_lto
-
-# ffmpeg fails running with GOLD support
-  strip_gold
-
-  export CFLAGS="$CFLAGS -fPIC -DPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC -DPIC"
-  export LDFLAGS="$LDFLAGS -fPIC -DPIC"
-
-  export LD=$CC
-  export AS=$ROOT/$TOOLCHAIN/bin/yasm 
+  export CFLAGS="$CFLAGS -fPIC"
+  export CXXFLAGS="$CXXFLAGS -fPIC"
+  export LDFLAGS="$LDFLAGS -fPIC"
+  cd ./build/linux
 }
 
 configure_target() {
-  $PKG_CONFIGURE_SCRIPT --prefix=/usr \
-                        --extra-cflags="$CFLAGS" \
-                        --disable-examples \
-                        --disable-docs \
-                        --disable-shared \
-                        --disable-unit-tests \
-                        --enable-static
+cmake -G "Unix Makefiles" ../../source -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DENABLE_CLI=OFF -DENABLE_SHARED:BOOLEAN=OFF -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_TOOLCHAIN_FILE="$CMAKE_CONF" -DCMAKE_INSTALL_PREFIX="/usr"
 }

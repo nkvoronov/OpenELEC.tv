@@ -18,68 +18,51 @@
 ################################################################################
 
 PKG_NAME="ffmpeg-tvheadend"
-PKG_VERSION="2.8.2"
-PKG_REV="8"
+PKG_VERSION="2.8.4"
+PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="nonfree"
-PKG_SITE="http://ffmpeg.org"
-PKG_URL="http://ffmpeg.org/releases/ffmpeg-${PKG_VERSION}.tar.bz2"
+PKG_LICENSE="LGPLv2.1+"
+PKG_SITE="https://ffmpeg.org"
+PKG_URL="https://ffmpeg.org/releases/ffmpeg-${PKG_VERSION}.tar.xz"
 PKG_SOURCE_DIR="ffmpeg-${PKG_VERSION}"
-PKG_DEPENDS_TARGET="toolchain yasm:host libvorbis x264 lame libvpx"
+PKG_DEPENDS_TARGET="toolchain yasm:host zlib bzip2 libvorbis libvpx x264 lame opus libass Python"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
+PKG_SECTION="multimedia"
 PKG_SHORTDESC="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video."
-PKG_LONGDESC="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video. The programs contain the following external codecs: libtheora, libvorbis, opus, x264, libvpx, lame and fdk-aac."
-PKG_DISCLAIMER=""
-
+PKG_LONGDESC="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video."
 PKG_AUTORECONF="no"
 
-if [ -z "$FFMPEG_GPL" ]; then
+if [ "$NONFREE" = yes ]; then
+  PKG_LICENSE="nonfree"
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET fdk-aac"
   FFMPEG_FDKAAC="--enable-nonfree --enable-libfdk-aac --enable-encoder=libfdk_aac"
-else
-  PKG_LICENSE="GPL"
-  FFMPEG_FDKAAC=""
 fi
 
-if [ "$VAAPI" = yes ]; then
-  # configure GPU drivers and dependencies:
+# configure GPU drivers and dependencies:
   get_graphicdrivers
 
+if [ "$VAAPI_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libva-intel-driver"
   FFMPEG_VAAPI="--enable-vaapi"
 else
   FFMPEG_VAAPI="--disable-vaapi"
 fi
 
-if [ "$VDPAU" = yes ]; then
+if [ "$VDPAU_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libvdpau"
   FFMPEG_VDPAU="--enable-vdpau"
 else
   FFMPEG_VDPAU="--disable-vdpau"
 fi
 
-if [ "$DEBUG" = yes ]; then
-  FFMPEG_DEBUG="--enable-debug --disable-stripping"
-else
-  FFMPEG_DEBUG="--disable-debug --enable-stripping"
-fi
-
 case "$TARGET_ARCH" in
   arm)
       FFMPEG_CPU=""
       FFMPEG_TABLES="--enable-hardcoded-tables"
-      FFMPEG_PIC="--enable-pic"
-  ;;
-  i?86)
-      FFMPEG_CPU=""
-      FFMPEG_TABLES="--disable-hardcoded-tables"
-      FFMPEG_PIC="--disable-pic"
   ;;
   x86_64)
       FFMPEG_CPU=""
       FFMPEG_TABLES="--disable-hardcoded-tables"
-      FFMPEG_PIC="--enable-pic"
   ;;
 esac
 
@@ -96,7 +79,7 @@ case "$TARGET_FPU" in
 esac
 
 unpack() {
-  tar xjf  "$SOURCES/$PKG_NAME/ffmpeg-${PKG_VERSION}.tar.bz2" -C $BUILD
+  tar xvf  "$SOURCES/$PKG_NAME/ffmpeg-${PKG_VERSION}.tar.xz" -C $BUILD
 }
 
 pre_configure_target() {
@@ -121,6 +104,7 @@ configure_target() {
               --sysroot=$SYSROOT_PREFIX \
               --sysinclude="$SYSROOT_PREFIX/usr/include" \
               --target-os="linux" \
+              --extra-version="$PKG_VERSION" \
               --nm="$NM" \
               --ar="$AR" \
               --as="$CC" \
@@ -131,61 +115,92 @@ configure_target() {
               --host-ldflags="$HOST_LDFLAGS" \
               --host-libs="-lm" \
               --extra-cflags="$CFLAGS" \
-              --extra-ldflags="$LDFLAGS" \
+              --extra-ldflags="$LDFLAGSS -fPIC" \
               --extra-libs="" \
               --extra-version="" \
               --build-suffix="" \
-              --disable-all \
+              --disable-everything \
               --enable-static \
               --disable-shared \
               --enable-gpl \
-              $FFMPEG_DEBUG \
-              $FFMPEG_PIC \
+              --enable-nonfree \
+              --disable-debug \
+              --enable-stripping \
+              --enable-pic \
               --enable-optimizations \
               --disable-armv5te \
               --disable-armv6t2 \
               --disable-extra-warnings \
-              --enable-runtime-cpudetect \
-              $FFMPEG_TABLES \
-              $FFMPEG_VAAPI \
-              $FFMPEG_VDPAU \
-              $FFMPEG_CPU \
-              $FFMPEG_FPU \
-              --enable-libx264 \
-              --enable-libvorbis \
-              --enable-libvpx \
-              $FFMPEG_FDKAAC \
+              --disable-ffplay \
+              --enable-swscale \
+              --enable-swscale-alpha \
+              --enable-postproc \
+              --enable-avfilter \
               --enable-avutil \
               --enable-avformat \
               --enable-avcodec \
               --enable-swresample \
-              --enable-swscale \
               --enable-avresample \
+              --disable-small \
+              --enable-network \
+              --disable-gnutls \
+              --enable-openssl \
+              $FFMPEG_VDPAU \
+              --disable-dxva2 \
+              --enable-runtime-cpudetect \
+              $FFMPEG_TABLES \
+              --enable-encoder=ac3 \
+              --enable-encoder=aac \
+              --enable-encoder=mpeg2video \
+              --enable-encoder=mp2 \
+              --enable-encoder=libx264 \
+              --enable-encoder=libvpx_vp8 \
+              --enable-encoder=libvpx_vp9 \
+              --enable-encoder=vorbis \
+              --enable-encoder=libvorbis \
               --enable-decoder=mpeg2video \
               --enable-decoder=mp2 \
               --enable-decoder=ac3 \
               --enable-decoder=eac3 \
               --enable-decoder=h264 \
               --enable-decoder=h264_vdpau \
+              --enable-decoder=hevc \
               --enable-decoder=aac \
               --enable-decoder=aac_latm \
               --enable-decoder=vorbis \
               --enable-decoder=libvorbis \
-              --enable-encoder=mpeg2video \
-              --enable-encoder=mp2 \
-              --enable-encoder=libx264 \
-              --enable-encoder=libvpx_vp8 \
-              --enable-encoder=libvpx_vp9 \
-              --enable-encoder=aac \
-              --enable-encoder=vorbis \
-              --enable-encoder=libvorbis \
+              --enable-hwaccels \
+              --enable-muxer=spdif \
+              --enable-muxer=adts \
+              --enable-muxer=asf \
+              --enable-muxer=ipod \
               --enable-muxer=mpegts \
               --enable-muxer=mpeg2dvd \
               --enable-muxer=matroska \
               --enable-muxer=webm \
-              --enable-bsf=h264_mp4toannexb
+              --enable-parsers \
+              --enable-bsf=h264_mp4toannexb \
+              --enable-bsf=hevc_mp4toannexb \
+              --enable-protocol=file \
+              --enable-filter=scale \
+              --enable-filter=yadif \
+              --enable-bzlib \
+              $FFMPEG_FDKAAC \
+              --enable-libmp3lame \
+              --enable-libopus \
+              --enable-libvorbis \
+              --enable-libvpx \
+              --enable-libx264 \
+              --enable-libfreetype \
+              --disable-fontconfig \
+              --disable-libass \
+              --enable-zlib \
+              --enable-asm \
+              --enable-yasm \
+              $FFMPEG_CPU \
+              $FFMPEG_FPU
 }
 
 makeinstall_target() {
-  make install DESTDIR=$ROOT/$PKG_BUILD/.install_tmp $PKG_MAKEINSTALL_OPTS_TARGET
+    make install DESTDIR=$ROOT/$PKG_BUILD/.install_tmp $PKG_MAKEINSTALL_OPTS_TARGET
 }

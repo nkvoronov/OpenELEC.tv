@@ -18,38 +18,25 @@
 ################################################################################
 
 PKG_NAME="x264"
-PKG_VERSION="snapshot-20151120-2245"
-PKG_REV="333"
+PKG_VERSION="snapshot-20160102-2245-stable"
+PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL"
+PKG_LICENSE="GPLv2+"
 PKG_SITE="http://videolan.org"
 PKG_URL="ftp://ftp.videolan.org/pub/videolan/x264/snapshots/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain yasm:host"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
+PKG_SECTION="multimedia"
 PKG_SHORTDESC="x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format."
 PKG_LONGDESC="x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-if [ "$DEBUG" = yes ]; then
-  X264_DEBUG="--enable-debug"
-else
-  X264_DEBUG="--enable-strip"
-fi
-
-case "$TARGET_ARCH" in
-  arm)
-      X264_PIC="--enable-pic"
-  ;;
-  i?86)
-      X264_PIC="--disable-pic"
-  ;;
-  x86_64)
-      X264_PIC="--enable-pic"
-  ;;
-esac
+post_unpack() {
+# yasm is now a var $AS-yasm at x264/configure - this breaks OE compiling
+  sed -i 's|AS="${AS-yasm}"|AS="yasm"|g' $ROOT/$PKG_BUILD/configure
+}
 
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
@@ -71,9 +58,9 @@ configure_target() {
               --sysroot=$SYSROOT_PREFIX \
               --extra-cflags="$CFLAGS" \
               --extra-ldflags="$LDFLAGS" \
-              $X264_DEBUG \
-              $X264_PIC \
-	      --enable-static \
+              --enable-static \
+              --enable-strip \
+              --enable-pic \
               --disable-opencl \
               --disable-avs \
               --disable-cli \
@@ -81,5 +68,5 @@ configure_target() {
               --disable-gpac \
               --disable-lavf \
               --disable-swscale \
-	      --disable-asm
+              --disable-asm
 }

@@ -248,7 +248,7 @@
   EPGUpdaters_SUPPORT="yes"
 
 # Lib Torrents
-  LIBTORRENTS_SUPPORT="no"
+  LIBTORRENTS_SUPPORT="yes"
 
 # Acestream Engine
   ACESTREAM_SUPPORT="yes"
@@ -256,4 +256,4 @@
 # Other
   GAME_EMULATORS="yes"
 
-  VLC_ENABLE="no"
+  VLC_ENABLE="yes"
