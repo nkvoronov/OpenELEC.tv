@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="boost"
-PKG_VERSION="1_58_0"
+PKG_VERSION="1_60_0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
@@ -74,7 +74,7 @@ makeinstall_target() {
                                   --with-system \
                                   --with-serialization \
                                   --with-filesystem \
-				  --with-python \
+                                  --with-python \
                                   --with-regex -sICU_PATH="$SYSROOT_PREFIX/usr" \
                                   install
   else

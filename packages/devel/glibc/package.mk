@@ -136,7 +136,8 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/lib/*.o
   rm -rf $INSTALL/usr/lib/*.map
   rm -rf $INSTALL/var
-  
+
+
 # create locale
   if [ "$LOCALES_SUPPORT" = yes ]; then
     cp $ROOT/$PKG_BUILD/.$TARGET_NAME/locale/localedef $INSTALL/usr/bin

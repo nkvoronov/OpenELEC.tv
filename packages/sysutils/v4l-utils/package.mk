@@ -19,7 +19,7 @@
 # with 1.0.0 repeat delay is broken. test on upgrade
 
 PKG_NAME="v4l-utils"
-PKG_VERSION="1.6.2"
+PKG_VERSION="1.8.1"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -34,6 +34,7 @@ PKG_LONGDESC="Linux V4L2 and DVB API utilities and v4l libraries (libv4l)."
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
+PKG_CONFIGURE_OPTS_TARGET="--without-jpeg"
 PKG_MAKEINSTALL_OPTS_TARGET="PREFIX=/usr -C utils/keytable"
 
 make_target() {

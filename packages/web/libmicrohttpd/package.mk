@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="libmicrohttpd"
-PKG_VERSION="0.9.44"
+PKG_VERSION="0.9.46"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="LGPLv2.1"
@@ -35,7 +35,8 @@ PKG_AUTORECONF="yes"
 PKG_CONFIGURE_OPTS_TARGET="--disable-shared \
                            --enable-static \
                            --disable-curl \
-                           --disable-https"
+                           --disable-https \
+                           --with-libgcrypt-prefix=$SYSROOT_PREFIX/usr"
 
 post_makeinstall_target() {
   rm -rf $INSTALL/usr/bin

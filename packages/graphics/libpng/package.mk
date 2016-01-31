@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="libpng"
-PKG_VERSION="1.6.18"
+PKG_VERSION="1.6.21"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
@@ -51,10 +51,8 @@ pre_configure_target() {
 
 post_makeinstall_target() {
   sed -e "s:\([\"'= ]\)/usr:\\1$SYSROOT_PREFIX/usr:g" \
-      -e "s:libs=\"-lpng15\":libs=\"-lpng15 -lz\":g" \
+      -e "s:libs=\"-lpng16\":libs=\"-lpng16 -lz\":g" \
       -i $SYSROOT_PREFIX/usr/bin/libpng*-config
-
-  cp -P $SYSROOT_PREFIX/usr/bin/libpng*-config $ROOT/$TOOLCHAIN/bin
 
   rm -rf $INSTALL/usr/bin
 }

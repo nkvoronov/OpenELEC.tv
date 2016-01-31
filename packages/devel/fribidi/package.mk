@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="fribidi"
-PKG_VERSION="0.19.5"
+PKG_VERSION="0.19.7"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="LGPL"
@@ -48,9 +48,9 @@ pre_configure_target() {
 }
 
 post_makeinstall_target() {
-  mkdir -p $ROOT/$TOOLCHAIN/bin
-    cp -f $PKG_DIR/scripts/fribidi-config $ROOT/$TOOLCHAIN/bin
-    chmod +x $ROOT/$TOOLCHAIN/bin/fribidi-config
+  mkdir -p $SYSROOT_PREFIX/usr/bin
+    cp -f $PKG_DIR/scripts/fribidi-config $SYSROOT_PREFIX/usr/bin
+    chmod +x $SYSROOT_PREFIX/usr/bin/fribidi-config
 
   rm -rf $INSTALL/usr/bin
 }
