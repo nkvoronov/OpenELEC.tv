@@ -36,31 +36,31 @@ vdr_init() {
 
     ADDON_CACHE_DIR="$ADDON_HOME/cache"
     mkdir -p $ADDON_CACHE_DIR
-    
+
     if [ ! -d "$ADDON_CONFIG_DIR" ]; then
-	mkdir -p $ADDON_CONFIG_DIR
-	cp -PR $ADDON_DIR/config/* $ADDON_CONFIG_DIR
-	chmod a+x $ADDON_CONFIG_DIR/plugins/iptv/*
-	chmod a+x $ADDON_CONFIG_DIR/plugins/streamdev-server/*.sh
-	chmod a+x $ADDON_CONFIG_DIR/plugins/systeminfo/*.sh
+        mkdir -p $ADDON_CONFIG_DIR
+        cp -PR $ADDON_DIR/config/* $ADDON_CONFIG_DIR
+        chmod a+x $ADDON_CONFIG_DIR/plugins/iptv/*
+        chmod a+x $ADDON_CONFIG_DIR/plugins/streamdev-server/*.sh
+        chmod a+x $ADDON_CONFIG_DIR/plugins/systeminfo/*.sh
     fi
 
     mkdir -p $VDR_VIDEO_DIR
 
     VDR_ARG="-g /tmp"
-    
+
     RUN_FRONT="false"
-    
+
     if [ "$VDR_TYPE" != "frontend" ]; then
-	touch $VDR_RUN_FILE
+        touch $VDR_RUN_FILE
     else
         rm -f $VDR_RUN_FILE
     fi
-    
+
     if [ -f "$VDR_FRONT_RUN_FILE" ]; then
         if [ "$VDR_TYPE" != "service" ]; then 
-    	    RUN_FRONT="true"
-	fi
+             RUN_FRONT="true"
+        fi
     fi
 
 }
@@ -68,11 +68,11 @@ vdr_init() {
 fix_config() {
 
     if [ -f "$ADDON_CONFIG_DIR/setup.conf" ]; then
-	sed -i -e '/^$/d' $ADDON_CONFIG_DIR/setup.conf
-	sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $ADDON_CONFIG_DIR/setup.conf
-	sed -i -e '/^SetSystemTime.*$/d' $ADDON_CONFIG_DIR/setup.conf
-	sed -i -e '/^epgsearch.SVDRPPort.*$/d' $ADDON_CONFIG_DIR/setup.conf
-	sed -i -e '/^Font.*$/d' $ADDON_CONFIG_DIR/setup.conf
+        sed -i -e '/^$/d' $ADDON_CONFIG_DIR/setup.conf
+        sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $ADDON_CONFIG_DIR/setup.conf
+        sed -i -e '/^SetSystemTime.*$/d' $ADDON_CONFIG_DIR/setup.conf
+        sed -i -e '/^epgsearch.SVDRPPort.*$/d' $ADDON_CONFIG_DIR/setup.conf
+        sed -i -e '/^Font.*$/d' $ADDON_CONFIG_DIR/setup.conf
     fi
     cat >>$ADDON_CONFIG_DIR/setup.conf << MYDATA
 AlwaysSortFoldersFirst = 1
@@ -98,9 +98,9 @@ stop_tv_backend() {
 init_vdr_plugins() {
 
     if [ "$VDR_DEBUG" == "true" ]; then
-	VDR_ARG="$VDR_ARG --log=3"
+        VDR_ARG="$VDR_ARG --log=3"
     else
-	VDR_ARG="$VDR_ARG --log=1"
+        VDR_ARG="$VDR_ARG --log=1"
     fi
 
     VDR_ARG="$VDR_ARG --localedir=$ADDON_LOCALE_DIR"
@@ -109,7 +109,7 @@ init_vdr_plugins() {
 
     # epgsearch needs svdrp
     if [ "$VDR_ENABLE_EPGSEARCH" == "true" ]; then
-	SVDRP_PORT=6419
+        SVDRP_PORT=6419
     fi
 
     VDR_ARG="$VDR_ARG --port=$SVDRP_PORT"
@@ -120,20 +120,20 @@ init_vdr_plugins() {
     VDR_ARG="$VDR_ARG --video=\"$VDR_VIDEO_DIR\""
 
     if [ "$VDR_ENABLE_EXTERNAL_RECCMD" == "true" ] ; then
-	if [ ! -z "$VDR_EXTERNAL_RECCMD_PATH" -a -x "$VDR_EXTERNAL_RECCMD_PATH" ]; then
-	    VDR_ARG="$VDR_ARG -r \"$VDR_EXTERNAL_RECCMD_PATH\""
-	fi
+        if [ ! -z "$VDR_EXTERNAL_RECCMD_PATH" -a -x "$VDR_EXTERNAL_RECCMD_PATH" ]; then
+            VDR_ARG="$VDR_ARG -r \"$VDR_EXTERNAL_RECCMD_PATH\""
+        fi
     fi
-    
+
     VDR_CHARSET_OVERRIDE="en_US.UTF-8"
     if [ "$VDR_ENABLE_CHARSET_OVERRIDE" == "true" ]; then
-	if [ ! -z "$VDR_CHARSET_OVERRIDE_STR" ]; then
-	    VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE_STR"
-	fi
+        if [ ! -z "$VDR_CHARSET_OVERRIDE_STR" ]; then
+            VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE_STR"
+        fi
     fi
-    
+
     if [ "$RUN_FRONT" == "false" ]; then
-    
+
         VDR_ARG="$VDR_ARG --no-kbd"
 
 	# keep softcam first
@@ -165,10 +165,6 @@ init_vdr_plugins() {
 
 	if [ "$VDR_ENABLE_LIVE" == "true" ]; then
 	    VDR_ARG="$VDR_ARG -P 'live -i $VDR_LIVE_IP -p $VDR_LIVE_PORT'"
-	fi
-
-	if [ "$VDR_ENABLE_CONTROL" == "true" ]; then
-	    VDR_ARG="$VDR_ARG -P 'control -p $VDR_CONTROL_PORT'"
 	fi
 
 	if [ "$VDR_ENABLE_EEPG" == "true" ]; then
@@ -223,10 +219,10 @@ init_vdr_plugins() {
 	VDR_ARG="$VDR_ARG -P $VDR_PVR_PLUGIN"
 	
     else
-        
+
         LIRC_PATH="/run/lirc/lircd"
         VDR_ARG="$VDR_ARG -s $ADDON_DIR/bin/vdrpoweroff --vfat --watchdog=60 --lirc=$LIRC_PATH"
-    
+
 	# keep softcam first
 	if [ "$VDR_ENABLE_SOFTCAM_F" == "true" ]; then
 	    VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPT_F'"
@@ -256,10 +252,6 @@ init_vdr_plugins() {
 
 	if [ "$VDR_ENABLE_LIVE_F" == "true" ]; then
 	    VDR_ARG="$VDR_ARG -P 'live -i $VDR_LIVE_IP_F -p $VDR_LIVE_PORT_F'"
-	fi
-
-	if [ "$VDR_ENABLE_CONTROL_F" == "true" ]; then
-	    VDR_ARG="$VDR_ARG -P 'control -p $VDR_CONTROL_PORT_F'"
 	fi
 
 	if [ "$VDR_ENABLE_EEPG_F" == "true" ]; then
@@ -347,7 +339,7 @@ init_vdr_front_plugins() {
 
     if [ "$VDR_ENABLE_SKINFLAT" == "true" ]; then
        VDR_ARG="$VDR_ARG -P skinflat"
-    fi    
+    fi
 
     if [ "$VDR_ENABLE_SKINFLATPLUS" == "true" ]; then
        VDR_ARG="$VDR_ARG -P skinflatplus"
@@ -372,13 +364,9 @@ init_vdr_front_plugins() {
     if [ "$VDR_ENABLE_WEATHERFORECAST" == "true" ]; then
        VDR_ARG="$VDR_ARG -P weatherforecast"
     fi
-    
+
     if [ "$VDR_ENABLE_FAVORITES" == "true" ]; then
        VDR_ARG="$VDR_ARG -P favorites"
-    fi
-
-    if [ "$VDR_ENABLE_SCRAPER2VDR" == "true" ]; then
-       VDR_ARG="$VDR_ARG -P scraper2vdr"
     fi
 
 }
@@ -386,7 +374,7 @@ init_vdr_front_plugins() {
 init_vdr_soft() {
 
     init_vdr_front_plugins
-    
+
     if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
         VDR_ARG="$VDR_ARG -P 'softhddevice -a $VDR_SOUND_SOFT $VDR_SOFT_PARAM'"    
     elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
@@ -398,7 +386,7 @@ init_vdr_soft() {
 
 init_vdr_xine() {
 
-    if [ $(pidof vdr-sxfe) ]; then        
+    if [ $(pidof vdr-sxfe) ]; then
         killall -9 vdr-sxfe  > /dev/null 2>&1
         while [ $(pidof vdr-sxfe) ]; do
             sleep 1
@@ -408,7 +396,7 @@ init_vdr_xine() {
     init_vdr_front_plugins
 
     VDR_XINE_CONFIG="$ADDON_CONFIG_DIR/xine/config_xineliboutput"
-    
+
     if [ "$VDR_OUTPUT_VIDEO" == "auto" ]; then
         VDR_ARG="$VDR_ARG -P 'xineliboutput -c --local=sxfe --video=auto --config=$VDR_XINE_CONFIG --audio=$VDR_SOUND_XINE $VDR_XINE_PARAM'" 
     elif [ "$VDR_OUTPUT_VIDEO" == "vdpau" ]; then
@@ -446,7 +434,7 @@ run_init() {
     init_vdr_plugins
 
     fix_config
-    
+
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ADDON_DIR/lib/tntnet:$ADDON_DIR/lib/tntdb
 }
 
@@ -465,7 +453,7 @@ if [ "$RUN_FRONT" == "true" ]; then
     else
         exit
     fi
-    
+
     eval DISPLAY=:0.0 LANG=$VDR_CHARSET_OVERRIDE exec vdr.bin $VDR_ARG &>$ADDON_LOG_FILE
 
 elif [ "$VDR_TYPE" != "frontend" ]; then

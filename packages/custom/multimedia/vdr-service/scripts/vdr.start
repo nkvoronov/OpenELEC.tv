@@ -45,10 +45,10 @@ vdr_init() {
 fix_config() {
 
     if [ -f "$VDR_HOME/setup.conf" ]; then
-	sed -i -e '/^$/d' $VDR_HOME/setup.conf
-	sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
-	sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
-	sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
+        sed -i -e '/^$/d' $VDR_HOME/setup.conf
+        sed -i -e '/^AlwaysSortFoldersFirst.*$/d' $VDR_HOME/setup.conf
+        sed -i -e '/^SetSystemTime.*$/d' $VDR_HOME/setup.conf
+        sed -i -e '/^epgsearch.SVDRPPort.*$/d' $VDR_HOME/setup.conf
     fi
     cat >>$VDR_HOME/setup.conf << MYDATA
 AlwaysSortFoldersFirst = 1
@@ -63,15 +63,15 @@ init_vdr_plugins() {
     if [ "$VDR_DEBUG" == "true" ]; then
         VDR_ARG="$VDR_ARG --log=3"
     else
-	VDR_ARG="$VDR_ARG --log=1"
+        VDR_ARG="$VDR_ARG --log=1"
     fi
 
     LIRC_PATH="/run/lirc/lircd"
 
     if [ "$VDR_FRONT" != "none" ]; then
-	VDR_ARG="$VDR_ARG -s /usr/bin/vdrpoweroff --vfat --watchdog=60 --lirc=$LIRC_PATH"
+        VDR_ARG="$VDR_ARG -s /usr/bin/vdrpoweroff --vfat --watchdog=60 --lirc=$LIRC_PATH"
     else
-	VDR_ARG="$VDR_ARG --no-kbd"
+        VDR_ARG="$VDR_ARG --no-kbd"
     fi
 
     SVDRP_PORT=0
@@ -104,11 +104,11 @@ init_vdr_plugins() {
     if [ "$VDR_ENABLE_SOFTCAM" == "true" ]; then
         VDR_ARG="$VDR_ARG -P 'dvbapi $VDR_DVBAPI_OPTION'"
     fi
-	
+
     if [ "$VDR_ENABLE_WIRBELSCAN" == "true" ]; then
         VDR_ARG="$VDR_ARG -P wirbelscan -P wirbelscancontrol"
     fi
-	
+
     if [ "$VDR_ENABLE_IPTV" == "true" ]; then
         VDR_ARG="$VDR_ARG -P 'iptv -d $VDR_IPTV_NUM_DEVICES'"
     fi
@@ -118,7 +118,7 @@ init_vdr_plugins() {
         mkdir -p $VDR_UPNP_DB_DIR
         VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_UPNP_DB_DIR'"
     fi
-	
+
     if [ "$VDR_ENABLE_STREAMDEV_SERVER" == "true" ]; then
         VDR_ARG="$VDR_ARG -P streamdev-server"
     fi
@@ -126,13 +126,9 @@ init_vdr_plugins() {
     if [ "$VDR_ENABLE_STREAMDEV_CLIENT" == "true" ]; then
         VDR_ARG="$VDR_ARG -P streamdev-client"
     fi
-	
+
     if [ "$VDR_ENABLE_LIVE" == "true" ]; then
         VDR_ARG="$VDR_ARG -P 'live -i $VDR_LIVE_IP -p $VDR_LIVE_PORT'"
-    fi
-
-    if [ "$VDR_ENABLE_CONTROL" == "true" ]; then
-        VDR_ARG="$VDR_ARG -P 'control -p $VDR_CONTROL_PORT'"
     fi
 
     if [ "$VDR_ENABLE_EEPG" == "true" ]; then
@@ -142,15 +138,15 @@ init_vdr_plugins() {
     if [ "$VDR_ENABLE_EPGFIXER" == "true" ]; then
         VDR_ARG="$VDR_ARG -P epgfixer"
     fi
-	
+
     if [ "$VDR_ENABLE_EPGSEARCH" == "true" ]; then
         VDR_ARG="$VDR_ARG -P epgsearch -P epgsearchonly -P quickepgsearch -P conflictcheckonly"
     fi
-	
+
     if [ "$VDR_ENABLE_DUMMYDEVICE" == "true" ]; then
         VDR_ARG="$VDR_ARG -P dummydevice"
     fi
-	
+
     if [ "$VDR_ENABLE_SATIP" == "true" ]; then
         VDR_ARG="$VDR_ARG -P satip"
     fi
@@ -173,17 +169,17 @@ init_vdr_plugins() {
     fi
 
     if [ "$VDR_ENABLE_RESTFULAPI" == "true" ]; then
-	VDR_RESTFULAPI_ARGS="--ip $VDR_RESTFULAPI_IP --port $VDR_RESTFULAPI_PORT"
+        VDR_RESTFULAPI_ARGS="--ip $VDR_RESTFULAPI_IP --port $VDR_RESTFULAPI_PORT"
         VDR_RESTFULAPI_EPGIMAGES="$VDR_HOME/plugins/restfulapi/epgimages"
-	mkdir -p $VDR_RESTFULAPI_EPGIMAGES
-	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --epgimages=\"$VDR_RESTFULAPI_EPGIMAGES\""
+        mkdir -p $VDR_RESTFULAPI_EPGIMAGES
+        VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --epgimages=\"$VDR_RESTFULAPI_EPGIMAGES\""
         VDR_RESTFULAPI_CHANNELLOGOS="$VDR_HOME/plugins/restfulapi/channellogos"
-	mkdir -p $VDR_RESTFULAPI_CHANNELLOGOS
-	VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --channellogos=\"$VDR_RESTFULAPI_CHANNELLOGOS\""
+        mkdir -p $VDR_RESTFULAPI_CHANNELLOGOS
+        VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --channellogos=\"$VDR_RESTFULAPI_CHANNELLOGOS\""
         VDR_RESTFULAPI_WEBAPP="$VDR_HOME/plugins/restfulapi/webapp"
         mkdir -p $VDR_RESTFULAPI_WEBAPP
         VDR_RESTFULAPI_ARGS="$VDR_RESTFULAPI_ARGS --webapp=\"$VDR_RESTFULAPI_WEBAPP\""
-	VDR_ARG="$VDR_ARG -P 'restfulapi $VDR_RESTFULAPI_ARGS'"
+        VDR_ARG="$VDR_ARG -P 'restfulapi $VDR_RESTFULAPI_ARGS'"
     fi
 
     # vnsi/xvdr last
@@ -201,7 +197,7 @@ if [ -f /storage/.cache/services/vdr.conf ]; then
     echo  "Starting vdr service ..."
 
     vdr_init
-	
+
     init_vdr_plugins
 
     # start userspace DVB driver/addon
@@ -226,6 +222,6 @@ if [ -f /storage/.cache/services/vdr.conf ]; then
     fi
 
     fix_config
-    
+
     eval LANG=en_US.UTF-8 VDR_CHARSET_OVERRIDE="$VDR_CHARSET_OVERRIDE" exec vdr.bin $VDR_ARG &>$LOG_VDR
 fi

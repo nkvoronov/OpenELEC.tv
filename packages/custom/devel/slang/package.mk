@@ -55,11 +55,19 @@ configure_target() {
 make_target() {
   MAKEFLAGS=-j1
   make
-  $MAKEINSTALL
+
+  mkdir -p $SYSROOT_PREFIX/usr/lib
+    cp -P src/"$ARCH"elfobjs/libslan* $SYSROOT_PREFIX/usr/lib
+  mkdir -p $SYSROOT_PREFIX/usr/lib/slang/v2/modules
+    cp -P modules/"$ARCH"objs/*-module.so $SYSROOT_PREFIX/usr/lib/slang/v2/modules
+  mkdir -p $SYSROOT_PREFIX/usr/include
+    cp -P src/slang.h $SYSROOT_PREFIX/usr/include
+    cp -P src/slcurses.h $SYSROOT_PREFIX/usr/include
+  mkdir -p $SYSROOT_PREFIX/usr/lib/pkgconfig
+    cp -P slang.pc $SYSROOT_PREFIX/usr/lib/pkgconfig
 }
 
 makeinstall_target() {
-  $MAKEINSTALL
   mkdir -p $INSTALL/usr/lib
   cp -P src/"$ARCH"elfobjs/libslan* $INSTALL/usr/lib
-}  
+}

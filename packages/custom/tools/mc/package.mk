@@ -32,6 +32,26 @@ PKG_LONGDESC="Midnight Commander - free cross-platform filemanager and clone of 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
+PKG_CONFIGURE_OPTS_TARGET="--host=$TARGET_NAME \
+            --build=$HOST_NAME \
+            --prefix=/usr \
+            --exec-prefix=/usr \
+            --disable-mclib \
+            --disable-aspell \
+            --disable-vfs \
+            --disable-doxygen-doc \
+            --disable-doxygen-dot \
+            --disable-doxygen-html \
+            --with-sysroot=$SYSROOT_PREFIX \
+            --with-screen=slang \
+            --without-x \
+            --with-gnu-ld \
+            --without-libiconv-prefix \
+            --without-libintl-prefix \
+            --with-internal-edit \
+            --without-diff-viewer \
+            --with-subshell"
+
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
   cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
@@ -40,26 +60,6 @@ pre_build_target() {
 pre_configure_target() {
   export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/slang"
   export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
-}
-
-configure_target() {
-  ./configure --host=$TARGET_NAME \
-  --build=$HOST_NAME \
-  --prefix=/usr \
-  --exec-prefix=/usr \
-  --without-gpm-mouse \
-  --disable-vfs-cpio \
-  --disable-vfs-fish \
-  --disable-vfs-sfs \
-  --enable-vfs-extfs \
-  --without-mmap \
-  --with-subshell \
-  --with-internal-edit \
-  --without-x \
-  --enable-charset \
-  --enable-background \
-  --with-screen=slang \
-  fu_cv_sys_stat_statfs2_bsize=yes
 }
 
 post_install() {
@@ -73,7 +73,7 @@ post_install() {
     fname=`basename $fgmo .gmo`
     mkdir -p $INSTALL/usr/share/locale/$fname
     mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-    cp -p $fgmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/mc.mo    
+    cp -p $fgmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/mc.mo
   done
   mkdir -p $INSTALL/usr/share/mc
     cp -P $PKG_DIR/config/mc.lib $INSTALL/usr/share/mc

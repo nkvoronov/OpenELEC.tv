@@ -33,7 +33,6 @@ PKG_LONGDESC="This project describes how to build your own digital satellite rec
 PKG_AUTORECONF="no"
 PKG_IS_ADDON="no"
 
-ENABLE_VDR_CONTROL="yes" 
 ENABLE_VDR_DUMMYDEVICE="yes"
 ENABLE_VDR_EPGSEARCH="yes"
 ENABLE_VDR_IPTV="yes"
@@ -58,7 +57,7 @@ ENABLE_VDR_PLUGIN_TEXT2SKIN="yes"
 ENABLE_VDR_PLUGIN_TVGUIDE="yes"
 ENABLE_VDR_PLUGIN_TVSCRAPER="yes"
 ENABLE_VDR_PLUGIN_UPNP="yes"
-ENABLE_VDR_PLUGIN_XINELIBOUTPUT="yes"  
+ENABLE_VDR_PLUGIN_XINELIBOUTPUT="yes"
 ENABLE_VDR_SKIN_FLAT="yes"
 ENABLE_VDR_SKIN_FLATPLUS="yes"
 ENABLE_VDR_SKIN_NOPACITY="yes"
@@ -66,11 +65,6 @@ ENABLE_VDR_SYSTEMINFO="yes"
 ENABLE_VDR_PLUGIN_SKINDESIGNER="yes"
 ENABLE_VDR_PLUGIN_WEATHERFORECAST="yes"
 ENABLE_VDR_FAVORITES="yes"
-ENABLE_VDR_SCRAPER2VDR="yes"
-
-if [ "$ENABLE_VDR_CONTROL" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-control"  
-fi
 
 if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-dummydevice"  
@@ -200,10 +194,6 @@ if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-favorites"  
 fi
 
-if [ "$ENABLE_VDR_SCRAPER2VDR" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-scraper2vdr"  
-fi
-
 make_target() {
   : # nothing to do here
 }
@@ -240,17 +230,6 @@ post_install() {
     mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
       cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr.mo    
   done
-
-  if [ "$ENABLE_VDR_CONTROL" = yes ]; then
-    VDR_PLUGIN_CONTROL_DIR=$(get_build_dir vdr-control)
-    cp -PR $VDR_PLUGIN_CONTROL_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    for fmo in `ls $VDR_PLUGIN_CONTROL_DIR/po/*.mo`;do
-      fname=`basename $fmo .mo`
-      mkdir -p $INSTALL/usr/share/locale/$fname
-      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-control.mo    
-    done
-  fi
 
   if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
     VDR_PLUGIN_DUMMYDEVICE_DIR=$(get_build_dir vdr-dummydevice)
@@ -521,19 +500,6 @@ post_install() {
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
         cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-tvguide.mo    
-    done
-  fi
-
-  if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
-    VDR_PLUGIN_TVSCRAPER_DIR=$(get_build_dir vdr-plugin-tvscraper)
-    cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    mkdir -p $INSTALL/usr/config/vdr/plugins/tvscraper
-      cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/conf/* $INSTALL/usr/config/vdr/plugins/tvscraper
-    for fmo in `ls $VDR_PLUGIN_TVSCRAPER_DIR/po/*.mo`;do
-      fname=`basename $fmo .mo`
-      mkdir -p $INSTALL/usr/share/locale/$fname
-      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-tvscraper.mo    
     done
   fi
 

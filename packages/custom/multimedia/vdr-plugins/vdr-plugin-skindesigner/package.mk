@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://projects.vdr-developer.org/projects/plg-skindesigner"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain vdr librsvg" 
+PKG_DEPENDS_TARGET="toolchain vdr librsvg libxml2"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia/vdr-plugins"
 PKG_SHORTDESC="A VDR skinning engine that displays XML based Skins"
@@ -45,7 +45,7 @@ make_target() {
   make VDRDIR=$VDR_DIR \
   LIBDIR="." \
   LOCALEDIR="./locale"
-  
+
   mkdir -p $ROOT/$PKG_BUILD/installs
     cp -PR $PKG_DIR/configs/* $ROOT/$PKG_BUILD/installs
 

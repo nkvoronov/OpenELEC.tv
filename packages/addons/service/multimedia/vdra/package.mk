@@ -33,7 +33,6 @@ PKG_AUTORECONF="no"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 
-ENABLE_VDR_CONTROL="yes" 
 ENABLE_VDR_DUMMYDEVICE="yes"
 ENABLE_VDR_EPGSEARCH="yes"
 ENABLE_VDR_IPTV="yes"
@@ -66,142 +65,133 @@ ENABLE_VDR_SYSTEMINFO="yes"
 ENABLE_VDR_PLUGIN_SKINDESIGNER="yes"
 ENABLE_VDR_PLUGIN_WEATHERFORECAST="yes"
 ENABLE_VDR_FAVORITES="yes"
-ENABLE_VDR_SCRAPER2VDR="yes"
-
-if [ "$ENABLE_VDR_CONTROL" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-control"  
-fi
 
 if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-dummydevice"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-dummydevice"
 fi
 
 if [ "$ENABLE_VDR_EPGSEARCH" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-epgsearch"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-epgsearch"
 fi
 
 if [ "$ENABLE_VDR_IPTV" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-iptv"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-iptv"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-dvbapi"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-dvbapi"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_EEPG" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-eepg"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-eepg"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_EPGFIXER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-epgfixer"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-epgfixer"
 fi
 
 if [ "$ENABLE_VDR_LIVE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-live"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-live"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-restfulapi"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-restfulapi"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_STREAMDEV" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-streamdev"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-streamdev"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-vnsiserver"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-vnsiserver"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_XMLTV2VDR" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xmltv2vdr"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xmltv2vdr"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_XVDR" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xvdr"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xvdr"
 fi
 
 if [ "$ENABLE_VDR_SATIP" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-satip"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-satip"
 fi
 
 if [ "$ENABLE_VDR_WIRBELSCAN" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-wirbelscan vdr-wirbelscancontrol"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-wirbelscan vdr-wirbelscancontrol"
 fi
 
 if [ "$ENABLE_VDR_FEMON" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-femon"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-femon"
 fi
 
 if [ "$ENABLE_VDR_FILEBROWSER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-filebrowser"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-filebrowser"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_LCDPROC" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-lcdproc"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-lcdproc"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_MENUORG" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-menuorg"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-menuorg"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_SLEEPTIMER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-sleeptimer"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-sleeptimer"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-softhddevice"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-softhddevice"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_TEXT2SKIN" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-text2skin"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-text2skin"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_TVGUIDE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvguide"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvguide"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvscraper"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvscraper"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-upnp"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-upnp"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xineliboutput"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xineliboutput"
 fi
 
 if [ "$ENABLE_VDR_SKIN_FLAT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flat"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flat"
 fi
 
 if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flatplus"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flatplus"
 fi
 
 if [ "$ENABLE_VDR_SKIN_NOPACITY" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-nopacity"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-nopacity"
 fi
 
 if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-systeminfo"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-systeminfo"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-skindesigner"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-skindesigner"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-weatherforecast"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-weatherforecast"
 fi
 
 if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-favorites"  
-fi
-
-if [ "$ENABLE_VDR_SCRAPER2VDR" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-scraper2vdr"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-favorites"
 fi
 
 make_target() {
@@ -239,7 +229,7 @@ addon() {
   GDK_PIXBUF_DIR=$(get_build_dir gdk-pixbuf)
   LIBCROCO_DIR=$(get_build_dir libcroco)
   LIBRSVG_DIR=$(get_build_dir librsvg)
-  
+
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $VDR_DIR/vdr $ADDON_BUILD/$PKG_ADDON_ID/bin/vdr.bin
     cp -P $VDR_DIR/svdrpsend $ADDON_BUILD/$PKG_ADDON_ID/bin/svdrpsend
@@ -260,19 +250,8 @@ addon() {
     fname=`basename $fmo .mo`
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-      cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr.mo    
+      cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr.mo
   done
-
-  if [ "$ENABLE_VDR_CONTROL" = yes ]; then
-    VDR_PLUGIN_CONTROL_DIR=$(get_build_dir vdr-control)
-    cp -PR $VDR_PLUGIN_CONTROL_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
-    for fmo in `ls $VDR_PLUGIN_CONTROL_DIR/po/*.mo`;do
-      fname=`basename $fmo .mo`
-      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
-      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-control.mo    
-    done
-  fi
 
   if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
     VDR_PLUGIN_DUMMYDEVICE_DIR=$(get_build_dir vdr-dummydevice)
@@ -288,7 +267,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-epgsearch.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-epgsearch.mo
     done
   fi
 
@@ -301,7 +280,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-iptv.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-iptv.mo
     done
   fi 
 
@@ -312,7 +291,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-dvbapi.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-dvbapi.mo
     done
   fi 
 
@@ -324,7 +303,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-eepg.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-eepg.mo
     done
   fi
 
@@ -337,7 +316,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-epgfixer.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-epgfixer.mo
     done
   fi
 
@@ -350,7 +329,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-live.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-live.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -388,13 +367,13 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-streamdev-server.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-streamdev-server.mo
     done
     for fmo in `ls $VDR_PLUGIN_STREAMDEV_DIR/client/po/*.mo`;do
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-streamdev-client.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-streamdev-client.mo
     done
   fi
 
@@ -423,7 +402,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-xvdr.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-xvdr.mo
     done
   fi
 
@@ -434,7 +413,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-satip.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-satip.mo
     done
   fi
 
@@ -454,7 +433,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-favorites.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-favorites.mo
     done
   fi
   
@@ -465,7 +444,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-scraper2vdr.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-scraper2vdr.mo
     done
   fi
 
@@ -476,7 +455,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-femon.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-femon.mo
     done
   fi
 
@@ -495,7 +474,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-lcdproc.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-lcdproc.mo
     done
   fi
 
@@ -508,7 +487,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-menuorg.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-menuorg.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -526,7 +505,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-sleeptimer.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-sleeptimer.mo
     done
   fi
 
@@ -537,7 +516,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-softhddevice.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-softhddevice.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -596,29 +575,13 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-tvguide.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-tvguide.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagick++-6.Q16.so.6.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick++-6.Q16.so.6
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore-6.Q16.so.2.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore-6.Q16.so.2
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand-6.Q16.so.2.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand-6.Q16.so.2
-  fi
-
-  if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
-    VDR_PLUGIN_TVSCRAPER_DIR=$(get_build_dir vdr-plugin-tvscraper)
-    cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/tvscraper
-      cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/conf/* $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/tvscraper
-    for fmo in `ls $VDR_PLUGIN_TVSCRAPER_DIR/po/*.mo`;do
-      fname=`basename $fmo .mo`
-      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
-      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-tvscraper.mo    
-    done
-
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $JANSSON_DIR/.install_pkg/usr/lib/libjansson.so.4.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libjansson.so.4
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
@@ -631,7 +594,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-upnp.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-upnp.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -668,7 +631,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-xineliboutput.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-xineliboutput.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -687,7 +650,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinflat.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinflat.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -732,7 +695,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinnopacity.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skinnopacity.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -750,7 +713,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-systeminfo.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-systeminfo.mo
     done
   fi
 
@@ -775,7 +738,7 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skindesigner.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-skindesigner.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -804,7 +767,7 @@ addon() {
         fname=`basename $fmo .mo`
         mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
         mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-          cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-weatherforecast.mo    
+          cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-weatherforecast.mo
       done
     fi
   fi

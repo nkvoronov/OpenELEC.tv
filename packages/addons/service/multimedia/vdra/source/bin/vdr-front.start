@@ -32,7 +32,7 @@ if [ "$VDR_TYPE" != "service" ]; then
     if [ -f $VDR_RUN_FILE ]; then
         systemctl stop service.multimedia.vdra.service
     fi
-    
+
     touch $VDR_FRONT_RUN_FILE
 
     systemctl start service.multimedia.vdra.service
@@ -40,7 +40,7 @@ if [ "$VDR_TYPE" != "service" ]; then
     systemctl stop kodi.service
 
     sleep 4
-    
+
     systemctl restart service.multimedia.vdra.service
 
 fi

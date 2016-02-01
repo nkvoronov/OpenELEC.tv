@@ -14,8 +14,6 @@
     <setting id="VDR_ENABLE_LIVE" value="true" />
     <setting id="VDR_LIVE_IP" value="0.0.0.0"/>
     <setting id="VDR_LIVE_PORT" value="8008"/>
-    <setting id="VDR_ENABLE_CONTROL" value="false" />
-    <setting id="VDR_CONTROL_PORT" value="2002"/>
     <setting id="VDR_ENABLE_EEPG" value="false" />
     <setting id="VDR_ENABLE_EPGSEARCH" value="true" />
     <setting id="VDR_ENABLE_XMLTV2VDR" value="false" />
@@ -36,8 +34,6 @@
     <setting id="VDR_ENABLE_LIVE_F" value="true" />
     <setting id="VDR_LIVE_IP_F" value="0.0.0.0"/>
     <setting id="VDR_LIVE_PORT_F" value="8008"/>
-    <setting id="VDR_ENABLE_CONTROL_F" value="false" />
-    <setting id="VDR_CONTROL_PORT_F" value="2002"/>
     <setting id="VDR_ENABLE_EEPG_F" value="false" />
     <setting id="VDR_ENABLE_EPGSEARCH_F" value="true" />
     <setting id="VDR_ENABLE_XMLTV2VDR_F" value="false" />
@@ -52,7 +48,6 @@
     <setting id="VDR_ENABLE_SOFTCAM_F" value="true" />
     <setting id="VDR_SOFTCAM_OPTION_F" value="" />
     <setting id="VDR_ENABLE_FAVORITES" value="true" />
-    <setting id="VDR_ENABLE_SCRAPER2VDR" value="false" />    
     <setting id="VDR_ENABLE_FEMON" value="false" />
     <setting id="VDR_ENABLE_SYSTEMINFO" value="false" />
     <setting id="VDR_ENABLE_SLEEPTIMER" value="false" />

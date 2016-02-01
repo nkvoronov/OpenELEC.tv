@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="php"
-PKG_VERSION="5.5.14"
+PKG_VERSION="5.5.23"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OpenSource"
@@ -27,7 +27,7 @@ PKG_SITE="http://www.php.net"
 PKG_URL="http://www.php.net/distributions/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain zlib pcre curl libressl"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/lang"
+PKG_SECTION="tools"
 PKG_SHORTDESC="php: Scripting language especially suited for Web development"
 PKG_LONGDESC="PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML."
 
@@ -35,14 +35,15 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-all \
-                           --with-config-file-path=/etc \
+                           --without-pear \
+                           --with-config-file-path=/storage/.kodi/userdata/addon_data/tools.php/etc \
                            --localstatedir=/var \
                            --enable-cli \
                            --enable-cgi \
-			   --enable-sockets \
+                           --disable-sockets \
                            --enable-posix \
-                           --enable-spl \
-                           --enable-session \
+                           --disable-spl \
+                           --disable-session \
                            --with-openssl=$SYSROOT_PREFIX/usr \
                            --disable-libxml \
                            --disable-xml \
@@ -50,23 +51,23 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-all \
                            --disable-xmlwriter \
                            --disable-simplexml \
                            --with-zlib=$SYSROOT_PREFIX/usr \
-                           --enable-exif \
-                           --enable-ftp \
-                           --with-gettext \
+                           --disable-exif \
+                           --disable-ftp \
+                           --without-gettext \
                            --without-gmp \
                            --enable-json \
                            --without-readline \
-                           --enable-pcntl \
-                           --enable-sysvmsg \
-                           --enable-sysvsem \
-                           --enable-sysvshm \
-                           --enable-zip \
-                           --enable-filter \
-                           --enable-calendar \
+                           --disable-pcntl \
+                           --disable-sysvmsg \
+                           --disable-sysvsem \
+                           --disable-sysvshm \
+                           --disable-zip \
+                           --disable-filter \
+                           --disable-calendar \
                            --with-curl=$SYSROOT_PREFIX/usr \
                            --with-pcre-regex \
                            --without-sqlite3 \
-                           --enable-pdo \
+                           --disable-pdo \
                            --without-pdo-sqlite \
                            --without-pdo-mysql"
 

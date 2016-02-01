@@ -28,11 +28,11 @@ VDR_FRONT_RUN_FILE="$ADDON_HOME/vdr-front.run"
 VDR_RUN_FILE="$ADDON_HOME/vdr.enable"
 
 if [ -f "$VDR_FRONT_RUN_FILE" ]; then
-    
+
     echo "Stop VDR ..."
-     
+
     rm -f $VDR_FRONT_RUN_FILE
-    
+
     case "$1" in
         -p) # poweroff
             poweroff -f
@@ -44,9 +44,9 @@ if [ -f "$VDR_FRONT_RUN_FILE" ]; then
             pm-suspend suspend
         ;;
         -e) # exit to XBMC
-            
+
             if systemctl is-enabled service.multimedia.tvheadenda.service &>/dev/null ; then
-        	systemctl start service.multimedia.tvheadenda.service
+                systemctl start service.multimedia.tvheadenda.service
             fi
 
             sleep 4
@@ -54,7 +54,7 @@ if [ -f "$VDR_FRONT_RUN_FILE" ]; then
             systemctl restart lcdd.service
 
             systemctl restart kodi.service
-            
+
             systemctl restart service.multimedia.vdra.service
         ;;
     esac

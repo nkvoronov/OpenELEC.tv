@@ -92,14 +92,6 @@ msgctxt "#2108"
 msgid "- listen on port"
 msgstr "- порт"
 
-msgctxt "#2109"
-msgid "Enable plugin: control"
-msgstr "Разрешить плагин: control"
-
-msgctxt "#2110"
-msgid "- listen on port"
-msgstr "- порт"
-
 msgctxt "#2111"
 msgid "Enable plugin: epgsearch"
 msgstr "Разрешить плагин: epgsearch"
@@ -183,10 +175,6 @@ msgstr "Конфигурация плагинов для фронтенда"
 msgctxt "#4101"
 msgid "Enable plugin: favorites"
 msgstr "Разрешить плагин: favorites"
-
-msgctxt "#4102"
-msgid "Enable plugin: scraper2vdr"
-msgstr "Разрешить плагин: scraper2vdr"
 
 msgctxt "#4103"
 msgid "Enable plugin: femon"

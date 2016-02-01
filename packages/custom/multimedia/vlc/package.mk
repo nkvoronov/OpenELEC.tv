@@ -26,7 +26,7 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain libass librsvg lua liblivemedia libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate \
-libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib-vlc libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 lirc libavc1394 \
+libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib-vlc libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 opus lirc libavc1394 \
 libdc1394 libdvdnav a52dec libssh2 libmatroska libshout ncursesw5 gnutls SDL_image qt4"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
@@ -60,7 +60,7 @@ PKG_CONFIGURE_OPTIMIZATION_OPTS="--disable-debug \
 	--enable-optimize-memory \
 	--enable-run-as-root \
 	--enable-sout \
-	--enable-lua \
+	--disable-lua \
 	--enable-httpd \
 	--enable-vlm \
 	--enable-addonmanagermodules"
@@ -129,7 +129,7 @@ PKG_CONFIGURE_CODEC_PLUGINS_OPTS="--disable-wma-fixed \
 	--enable-vorbis \
 	--disable-tremor \
 	--enable-speex \
-	--disable-opus \
+	--enable-opus \
 	--enable-theora \
 	--disable-schroedinger \
 	--enable-png \

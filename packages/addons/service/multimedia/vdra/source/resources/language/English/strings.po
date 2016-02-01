@@ -92,14 +92,6 @@ msgctxt "#2108"
 msgid "- listen on port"
 msgstr ""
 
-msgctxt "#2109"
-msgid "Enable plugin: control"
-msgstr ""
-
-msgctxt "#2110"
-msgid "- listen on port"
-msgstr ""
-
 msgctxt "#2111"
 msgid "Enable plugin: epgsearch"
 msgstr ""
@@ -182,10 +174,6 @@ msgstr ""
 
 msgctxt "#4101"
 msgid "Enable plugin: favorites"
-msgstr ""
-
-msgctxt "#4102"
-msgid "Enable plugin: scraper2vdr"
 msgstr ""
 
 msgctxt "#4103"
