@@ -1,7 +1,7 @@
 diff -Naur a/language/English/strings.po b/language/English/strings.po
---- a/language/English/strings.po	2015-06-14 11:05:06.000000000 +0300
-+++ b/language/English/strings.po	2015-11-26 18:34:47.307614041 +0200
-@@ -837,3 +837,701 @@
+--- a/language/English/strings.po	2016-01-26 23:15:29.000000000 +0200
++++ b/language/English/strings.po	2016-02-02 18:38:12.263279019 +0200
+@@ -837,3 +837,677 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr ""
@@ -323,22 +323,6 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgid "Listen port for live plugin"
 +msgstr ""
 +
-+msgctxt "#37016"
-+msgid "Enable plugin: control"
-+msgstr ""
-+
-+msgctxt "#1216"
-+msgid "Enabled control plugin"
-+msgstr ""
-+
-+msgctxt "#37017"
-+msgid "control: listen on port"
-+msgstr ""
-+
-+msgctxt "#1217"
-+msgid "Listen port for control plugin"
-+msgstr ""
-+
 +msgctxt "#37018"
 +msgid "Enable plugin: eepg"
 +msgstr ""
@@ -576,14 +560,6 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgid "Enabled favorites plugin"
 +msgstr ""
 +
-+msgctxt "#39037"
-+msgid "Enable plugin: scraper2vdr"
-+msgstr ""
-+
-+msgctxt "#1437"
-+msgid "Enabled scraper2vdr plugin"
-+msgstr ""
-+
 +msgctxt "#39038"
 +msgid "VDR output plugin"
 +msgstr ""
@@ -704,9 +680,9 @@ diff -Naur a/language/English/strings.po b/language/English/strings.po
 +msgid "VDR (The Video Disk Recorder) is an open source application for Linux designed to allow any computer to function as a digital video recorder, in order to record and replay TV programming using the computer's hard drive."
 +msgstr ""
 diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
---- a/language/Russian/strings.po	2015-06-14 11:05:06.000000000 +0300
-+++ b/language/Russian/strings.po	2015-11-26 18:39:38.195617867 +0200
-@@ -743,3 +743,701 @@
+--- a/language/Russian/strings.po	2016-01-26 23:15:29.000000000 +0200
++++ b/language/Russian/strings.po	2016-02-02 18:39:07.259276647 +0200
+@@ -743,3 +743,677 @@
  msgctxt "#32391"
  msgid "Enable LCD Driver Support"
  msgstr "Включить поддержку драйвера ЖК-экрана"
@@ -1028,22 +1004,6 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgid "Listen port for live plugin"
 +msgstr "Порт для live плагина"
 +
-+msgctxt "#37016"
-+msgid "Enable plugin: control"
-+msgstr "Плагин: control"
-+
-+msgctxt "#1216"
-+msgid "Enabled control plugin"
-+msgstr "Разрешить control плагин"
-+
-+msgctxt "#37017"
-+msgid "control: listen on port"
-+msgstr "control: Порт"
-+
-+msgctxt "#1217"
-+msgid "Listen port for control plugin"
-+msgstr "Порт для control плагина"
-+
 +msgctxt "#37018"
 +msgid "Enable plugin: eepg"
 +msgstr "Плагин: eepg"
@@ -1281,14 +1241,6 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgid "Enabled favorites plugin"
 +msgstr "Разрешить favorites плагин"
 +
-+msgctxt "#39037"
-+msgid "Enable plugin: scraper2vdr"
-+msgstr "Плагин: scraper2vdr"
-+
-+msgctxt "#1437"
-+msgid "Enabled scraper2vdr plugin"
-+msgstr "Разрешить scraper2vdr плагин"
-+
 +msgctxt "#39038"
 +msgid "VDR output plugin"
 +msgstr "VDR плагин вывода"
@@ -1409,8 +1361,8 @@ diff -Naur a/language/Russian/strings.po b/language/Russian/strings.po
 +msgid "VDR (The Video Disk Recorder) is an open source application for Linux designed to allow any computer to function as a digital video recorder, in order to record and replay TV programming using the computer's hard drive."
 +msgstr "VDR приложение с открытым исходным кодом для Linux разработанный, чтобы позволить любому компьютеру работать в качестве цифрового видеомагнитофона для того, чтобы записывать и воспроизводить ТВ программы."
 diff -Naur a/skins/Default/720p/getPasskey.xml b/skins/Default/720p/getPasskey.xml
---- a/skins/Default/720p/getPasskey.xml	2015-06-14 11:05:06.000000000 +0300
-+++ b/skins/Default/720p/getPasskey.xml	2015-11-26 18:41:27.163619301 +0200
+--- a/skins/Default/720p/getPasskey.xml	2016-01-26 23:15:29.000000000 +0200
++++ b/skins/Default/720p/getPasskey.xml	2016-02-02 18:52:22.655242336 +0200
 @@ -18,14 +18,14 @@
                  <top>5</top>
                  <width>600</width>
@@ -1428,10 +1380,17 @@ diff -Naur a/skins/Default/720p/getPasskey.xml b/skins/Default/720p/getPasskey.x
              </control>
              <control type="group">
                  <left>17</left>
+@@ -83,5 +83,5 @@
+                 </control>
+             </control>
+         </control>
+-	</controls>
++    </controls>
+ </window>
 diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.xml
---- a/skins/Default/720p/mainWindow.xml	2015-06-14 11:05:06.000000000 +0300
-+++ b/skins/Default/720p/mainWindow.xml	2015-11-26 18:41:27.163619301 +0200
-@@ -8,7 +8,8 @@
+--- a/skins/Default/720p/mainWindow.xml	2016-01-26 23:15:29.000000000 +0200
++++ b/skins/Default/720p/mainWindow.xml	2016-02-02 18:59:22.859224209 +0200
+@@ -8,8 +8,10 @@
              <top>100r</top>
              <width>1280</width>
              <height>100</height>
@@ -1439,9 +1398,11 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
 +            <texture>floor.png</texture>
 +            <visible>false</visible>
              <include>VisibleFadeEffect</include>
++            <visible>!Skin.HasSetting(NoFloor)</visible>
          </control>
          <control type="image">
-@@ -49,7 +50,7 @@
+             <description>Section header image</description>
+@@ -49,7 +51,7 @@
                  <top>5</top>
                  <width>1090</width>
                  <height>630</height>
@@ -1450,7 +1411,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
              </control>
              <control type="button">
                  <description>Close Window button</description>
-@@ -60,8 +61,8 @@
+@@ -60,8 +62,8 @@
                  <label>-</label>
                  <font>-</font>
                  <onclick>PreviousMenu</onclick>
@@ -1461,16 +1422,17 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <onleft>1</onleft>
                  <onright>1</onright>
                  <onup>1</onup>
-@@ -82,7 +83,7 @@
+@@ -82,15 +84,15 @@
                  <top>10</top>
                  <width>795</width>
                  <height>618</height>
 -                <texture border="5">default/black-back2.png</texture>
+-            </control>			
 +                <texture border="5">black-back2.png</texture>
-             </control>			
++            </control>
              <control type="image">
                  <left>268</left>
-@@ -90,7 +91,7 @@
+                 <top>10</top>
                  <width>794</width>
                  <height>50</height>
                  <aspectratio>stretch</aspectratio>
@@ -1479,16 +1441,42 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
              </control>
              <control type="scrollbar" id="1097">
                  <description>scroll bar indicator for lists</description>
-@@ -148,7 +149,7 @@
+@@ -108,7 +110,7 @@
+                 <orientation>vertical</orientation>
+                 <showonepage>false</showonepage>
+                 <visible>StringCompare(Container(1000).ListItem.Property(listTyp), 1100)</visible>
+-            </control>   
++            </control>
+             <control type="scrollbar" id="1098">
+                 <description>scroll bar indicator for lists</description>
+                 <left>1062</left>
+@@ -125,7 +127,7 @@
+                 <orientation>vertical</orientation>
+                 <showonepage>false</showonepage>
+                 <visible>StringCompare(Container(1000).ListItem.Property(listTyp), 1200)</visible>
+-            </control>  
++            </control>
+             <control type="scrollbar" id="1099">
+                 <description>scroll bar indicator for lists</description>
+                 <left>1062</left>
+@@ -142,13 +144,14 @@
+                 <orientation>vertical</orientation>
+                 <showonepage>false</showonepage>
+                 <visible>StringCompare(Container(1000).ListItem.Property(listTyp), 1300)</visible>
+-            </control>                          
++            </control>
+             <control type="image">
+                 <left>5</left>
                  <top>625</top>
                  <width>1090</width>
                  <height>64</height>
 -                <texture border="15">default/ContentPanelMirror.png</texture>
 +                <texture border="15">ContentPanelMirror.png</texture>
++                <visible>!Skin.HasSetting(NoFloorAll)</visible>
              </control>
              <!-- Main Menu (left) -->
              <control type="list" id="1000">
-@@ -165,7 +166,7 @@
+@@ -165,7 +168,7 @@
                          <top>0</top>
                          <width>260</width>
                          <height>55</height>
@@ -1497,7 +1485,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                      </control>
                      <control type="label">
                          <left>10</left>
-@@ -185,7 +186,7 @@
+@@ -185,7 +188,7 @@
                          <top>0</top>
                          <width>260</width>
                          <height>55</height>
@@ -1506,16 +1494,72 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          <animation effect="fade" end="50" time="10">Unfocus</animation>
                      </control>
                      <control type="label">
-@@ -226,7 +227,7 @@
+@@ -214,21 +217,21 @@
+                 <textcolor>white</textcolor>
+                 <shadowcolor>black</shadowcolor>
+             </control>
+-	    <control type="image">
+-		<left>269</left>
+-		<top>510</top>
+-		<width>793</width>
+-		<height>2</height>
+-		<texture>separator2.png</texture>
+-	    </control>  	    
++            <control type="image">
++                <left>269</left>
++                <top>510</top>
++                <width>793</width>
++                <height>2</height>
++                <texture>separator2.png</texture>
++            </control>
+             <control type="image">
+                 <left>269</left>
                  <top>60</top>
                  <width>793</width>
                  <height>450</height>
 -                <texture border="5">default/button-nofocus.png</texture>
+-            </control>   
+-	    <!-- Other Content (right)-->
 +                <texture border="5">button-nofocus.png</texture>
-             </control>   
- 	    <!-- Other Content (right)-->
++            </control>
++            <!-- Other Content (right)-->
              <control type="group">
-@@ -368,7 +369,7 @@
+                 <left>272</left>
+                 <top>62</top>
+@@ -321,7 +324,7 @@
+                         <font>font10</font>
+                         <textcolor>white</textcolor>
+                         <label>$ADDON[service.openelec.settings 609]</label>
+-                    </control>		
++                    </control>
+                     <control type="textbox">
+                         <left>20</left>
+                         <top>200</top>
+@@ -337,7 +340,7 @@
+                         <width>535</width>
+                         <height>2</height>
+                         <texture>default/blue_line.png</texture>
+-                    </control>	
++                    </control>
+                     <control type="textbox">
+                         <left>20</left>
+                         <top>380</top>
+@@ -348,7 +351,7 @@
+                         <align>left</align>
+                         <label>$ADDON[service.openelec.settings 611]</label>
+                     </control>
+-                </control>                        
++                </control>
+                 <!-- simple list content -->
+                 <control type="list" id="1100">
+                     <left>0</left>
+@@ -363,12 +366,12 @@
+                     <itemlayout height="35">
+                         <control type="group">
+                             <visible>!StringCompare(ListItem.Property(Typ), separator)</visible>
+-			    <control type="image">
++                            <control type="image">
+                                 <left>0</left>
                                  <top>2</top>
                                  <width>786</width>
                                  <height>35</height>
@@ -1524,7 +1568,16 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                              </control>
                              <control type="label">
                                  <left>40</left>
-@@ -419,7 +420,7 @@
+@@ -384,7 +387,7 @@
+                                 <left>363</left>
+                                 <top>7</top>
+                                 <width>400</width>
+-                                <height>20</height>	
++                                <height>20</height>
+                                 <textcolor>FF999999</textcolor>
+                                 <selectedcolor>white</selectedcolor>
+                                 <info>ListItem.Property(value)</info>
+@@ -419,7 +422,7 @@
                                  <width>30</width>
                                  <height>30</height>
                                  <aspectratio>keep</aspectratio>
@@ -1533,7 +1586,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                                  <visible>StringCompare(ListItem.Property(value), 0) | StringCompare(ListItem.Property(value), false) | IsEmpty(ListItem.Property(value))</visible>
                              </control>
                              <control type="image">
-@@ -428,7 +429,7 @@
+@@ -428,7 +431,7 @@
                                  <width>30</width>
                                  <height>30</height>
                                  <aspectratio>keep</aspectratio>
@@ -1542,16 +1595,27 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                                  <visible>StringCompare(ListItem.Property(value), 1) | StringCompare(ListItem.Property(value), true)</visible>
                              </control>
                          </control>
-@@ -453,7 +454,7 @@
+@@ -444,7 +447,7 @@
+                             </control>
+                         </control>
+                     </itemlayout>
+-                    <focusedlayout height="35">  
++                    <focusedlayout height="35">
+                         <control type="group">
+                             <visible>!StringCompare(ListItem.Property(Typ), separator)</visible>
+                             <control type="image">
+@@ -452,8 +455,8 @@
+                                 <top>2</top>
                                  <width>786</width>
                                  <height>38</height>
- 				<visible>Control.HasFocus(1100)</visible>
+-				<visible>Control.HasFocus(1100)</visible>
 -                                <texture border="5">default/MenuItemFO.png</texture>
++                                <visible>Control.HasFocus(1100)</visible>
 +                                <texture border="5">MenuItemFO.png</texture>
                              </control>
                              <control type="label">
                                  <left>40</left>
-@@ -522,7 +523,7 @@
+@@ -522,7 +525,7 @@
                                  <width>30</width>
                                  <height>30</height>
                                  <aspectratio>keep</aspectratio>
@@ -1560,7 +1624,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                                  <visible>StringCompare(ListItem.Property(value), 0) | StringCompare(ListItem.Property(value),false) | IsEmpty(ListItem.Property(value))</visible>
                              </control>
                              <control type="image">
-@@ -531,7 +532,7 @@
+@@ -531,7 +534,7 @@
                                  <width>30</width>
                                  <height>30</height>
                                  <aspectratio>keep</aspectratio>
@@ -1569,7 +1633,20 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                                  <visible>StringCompare(ListItem.Property(value), 1) | StringCompare(ListItem.Property(value),true)</visible>
                              </control>
                          </control>
-@@ -567,7 +568,7 @@
+@@ -545,9 +548,9 @@
+                                 <aspectratio>keep</aspectratio>
+                                 <texture border="5">icons/do.png</texture>
+                             </control>
+-                        </control>						
+-                    </focusedlayout>                                           
+-                </control>                                                 
++                        </control>
++                    </focusedlayout>
++                </control>
+                 <!-- Network Menu Content -->
+                 <control type="list" id="1200">
+                     <left>0</left>
+@@ -567,7 +570,7 @@
                              <top>0</top>
                              <width>788</width>
                              <height>98</height>
@@ -1578,7 +1655,25 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          </control>
                          <!-- Icon ethernet -->
                          <control type="image">
-@@ -702,7 +703,7 @@
+@@ -594,7 +597,7 @@
+                             <left>70</left>
+                             <top>10</top>
+                             <width>390</width>
+-                            <height>30</height>							
++                            <height>30</height>	
+                             <font>font24_title</font>
+                             <textcolor>blue</textcolor>
+                             <info>ListItem.Label</info>
+@@ -692,7 +695,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>IntegerGreaterThan(ListItem.Property(Security), 0)</visible> 
+                             <texture>icons/Key.png</texture>
+-                        </control>		
++                        </control>
+                     </itemlayout>
+                     <focusedlayout height="100">
+                         <left>0</left>
+@@ -702,7 +705,7 @@
                              <top>0</top>
                              <width>788</width>
                              <height>98</height>
@@ -1587,7 +1682,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          </control>
                          <control type="image">
                              <left>0</left>
-@@ -710,7 +711,7 @@
+@@ -710,7 +713,7 @@
                              <width>788</width>
                              <height>98</height>
                              <visible>Control.HasFocus(1200)</visible>
@@ -1596,7 +1691,27 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                              <animation type="Visible" reversible="false">
                                  <effect type="fade" start="0" end="100" time="300" />
                              </animation>
-@@ -870,7 +871,7 @@
+@@ -838,8 +841,8 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>IntegerGreaterThan(ListItem.Property(Security), 0)</visible> 
+                             <texture>icons/Key.png</texture>
+-                        </control>		
+-                    </focusedlayout> 
++                        </control>
++                    </focusedlayout>
+                 </control>
+                 <!-- Bluetooth Menu Content -->
+                 <control type="label" id="1301">
+@@ -861,7 +864,7 @@
+                     <onright>1099</onright>
+                     <pagecontrol>1099</pagecontrol>
+                     <scrolltime>300</scrolltime>
+-                    <visible>StringCompare(Container(1000).ListItem.Property(listTyp), 1300)</visible>    
++                    <visible>StringCompare(Container(1000).ListItem.Property(listTyp), 1300)</visible>
+                     <itemlayout height="70">
+                         <left>0</left>
+                         <top>0</top>
+@@ -870,7 +873,7 @@
                              <top>0</top>
                              <width>786</width>
                              <height>68</height>
@@ -1605,7 +1720,61 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          </control>
                          <!-- default -->
                          <control type="image">
-@@ -1052,7 +1053,7 @@
+@@ -880,7 +883,7 @@
+                             <height>48</height>
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), default)</visible> 
+-                            <texture>icons/bt.png</texture>	
++                            <texture>icons/bt.png</texture>
+                         </control>
+                         <!-- modem -->
+                         <control type="image">
+@@ -911,7 +914,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), camera-photo)</visible> 
+                             <texture>icons/bt-camera-photo.png</texture>
+-                        </control>		
++                        </control>
+                         <!-- Icon phone -->
+                         <control type="image">
+                             <left>15</left>
+@@ -921,7 +924,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), phone)</visible> 
+                             <texture>icons/bt-phone.png</texture>
+-                        </control>	
++                        </control>
+                         <!-- camera-video -->
+                         <control type="image">
+                             <left>15</left>
+@@ -941,7 +944,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), input-mouse)</visible> 
+                             <texture>icons/bt-input-mouse.png</texture>
+-                        </control>								
++                        </control>
+                         <!-- input-gaming -->
+                         <control type="image">
+                             <left>15</left>
+@@ -951,7 +954,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), input-gaming)</visible> 
+                             <texture>icons/bt-input-gaming.png</texture>
+-                        </control>	
++                        </control>
+                         <!-- input-keyboard -->
+                         <control type="image">
+                             <left>15</left>
+@@ -991,7 +994,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), computer)</visible> 
+                             <texture>icons/bt-computer.png</texture>
+-                        </control>                                                
++                        </control>
+                         <!-- Connection Name -->
+                         <control type="label">
+                             <left>120</left>
+@@ -1052,7 +1055,7 @@
                              <top>0</top>
                              <width>788</width>
                              <height>68</height>
@@ -1614,7 +1783,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                          </control>
                          <control type="image">
                              <left>0</left>
-@@ -1060,7 +1061,7 @@
+@@ -1060,7 +1063,7 @@
                              <width>788</width>
                              <height>68</height>
                              <visible>Control.HasFocus(1300)</visible>
@@ -1623,7 +1792,79 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                              <animation type="Visible" reversible="false">
                                  <effect type="fade" start="0" end="100" time="300" />
                              </animation>
-@@ -1258,8 +1259,8 @@
+@@ -1104,7 +1107,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), camera-photo)</visible> 
+                             <texture>icons/bt-camera-photo.png</texture>
+-                        </control>		
++                        </control>
+                         <!-- Icon phone -->
+                         <control type="image">
+                             <left>15</left>
+@@ -1114,7 +1117,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), phone)</visible> 
+                             <texture>icons/bt-phone.png</texture>
+-                        </control>	
++                        </control>
+                         <!-- camera-video -->
+                         <control type="image">
+                             <left>15</left>
+@@ -1124,7 +1127,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), camera-video)</visible> 
+                             <texture>icons/bt-camera-video.png</texture>
+-                        </control>	
++                        </control>
+                         <!-- input-mouse -->
+                         <control type="image">
+                             <left>15</left>
+@@ -1134,7 +1137,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), input-mouse)</visible> 
+                             <texture>icons/bt-input-mouse.png</texture>
+-                        </control>							
++                        </control>
+                         <!-- input-gaming -->
+                         <control type="image">
+                             <left>15</left>
+@@ -1144,7 +1147,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), input-gaming)</visible> 
+                             <texture>icons/bt-input-gaming.png</texture>
+-                        </control>	
++                        </control>
+                         <!-- input-keyboard -->
+                         <control type="image">
+                             <left>15</left>
+@@ -1154,7 +1157,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), input-keyboard)</visible> 
+                             <texture>icons/bt-input-keyboard.png</texture>
+-                        </control>	
++                        </control>
+                         <!-- input-tablet -->
+                         <control type="image">
+                             <left>15</left>
+@@ -1164,7 +1167,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), input-tablet)</visible> 
+                             <texture>icons/bt-input-tablet.png</texture>
+-                        </control>	
++                        </control>
+                         <!-- Printer -->
+                         <control type="image">
+                             <left>15</left>
+@@ -1184,7 +1187,7 @@
+                             <aspectratio>keep</aspectratio>
+                             <visible>StringCompare(ListItem.Property(Icon), computer)</visible> 
+                             <texture>icons/bt-computer.png</texture>
+-                        </control>                                                
++                        </control>
+                         <!-- Connection Name -->
+                         <control type="label">
+                             <left>120</left>
+@@ -1258,8 +1261,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -1634,7 +1875,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-@@ -1279,8 +1280,8 @@
+@@ -1279,8 +1282,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -1645,7 +1886,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-@@ -1300,8 +1301,8 @@
+@@ -1300,8 +1303,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -1656,7 +1897,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-@@ -1321,8 +1322,8 @@
+@@ -1321,8 +1324,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -1667,7 +1908,7 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
-@@ -1342,8 +1343,8 @@
+@@ -1342,8 +1345,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -1678,10 +1919,18 @@ diff -Naur a/skins/Default/720p/mainWindow.xml b/skins/Default/720p/mainWindow.x
                  <label>
                  </label>
                  <font>font12</font>
+@@ -1356,6 +1359,6 @@
+                 <onright>1501</onright>
+                 <visible>!IsEmpty(Control.GetLabel(1500))</visible>
+             </control>
+-        </control>		
++        </control>
+     </controls>
+ </window>
 diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
---- a/skins/Default/720p/wizard.xml	2015-06-14 11:05:06.000000000 +0300
-+++ b/skins/Default/720p/wizard.xml	2015-11-26 18:41:27.167619301 +0200
-@@ -7,7 +7,8 @@
+--- a/skins/Default/720p/wizard.xml	2016-01-26 23:15:29.000000000 +0200
++++ b/skins/Default/720p/wizard.xml	2016-02-02 19:00:21.771221668 +0200
+@@ -7,10 +7,12 @@
              <top>100r</top>
              <width>1280</width>
              <height>100</height>
@@ -1690,8 +1939,20 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
 +            <visible>false</visible>
              <animation effect="fade" time="300">Visible</animation>
              <animation effect="fade" time="300">Hidden</animation>
-         </control>		
-@@ -27,14 +28,14 @@
+-        </control>		
++            <visible>!Skin.HasSetting(NoFloor)</visible>
++        </control>
+         <control type="group">
+             <left>90</left>
+             <top>30</top>
+@@ -21,20 +23,20 @@
+             <animation type="WindowClose" reversible="false">
+                 <effect type="zoom" start="100" end="80" center="640,360" easing="in" tween="back" time="300" />
+                 <effect type="fade" start="100" end="0" time="300" />
+-            </animation>	
++            </animation>
+             <control type="image">
+                 <left>5</left>
                  <top>5</top>
                  <width>1090</width>
                  <height>630</height>
@@ -1708,13 +1969,15 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
              </control>
              <control type="image">
                  <left>10</left>
-@@ -48,14 +49,14 @@
+@@ -48,14 +50,15 @@
                  <top>625</top>
                  <width>1090</width>
                  <height>64</height>
 -                <texture border="15">default/ContentPanelMirror.png</texture>
+-            </control>			
 +                <texture border="15">ContentPanelMirror.png</texture>
-             </control>			
++                <visible>!Skin.HasSetting(NoFloorAll)</visible>
++            </control>
              <control type="image">
                  <left>268</left>
                  <top>10</top>
@@ -1725,7 +1988,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
              </control>
              <control type="image">
                  <left>268</left>
-@@ -63,7 +64,7 @@
+@@ -63,7 +66,7 @@
                  <width>804</width>
                  <height>70</height>
                  <aspectratio>stretch</aspectratio>
@@ -1734,7 +1997,7 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
              </control>
              <control type="label" id="32300">
                  <description>header label</description>
-@@ -84,21 +85,21 @@
+@@ -84,21 +87,21 @@
                  <top>60</top>
                  <width>800</width>
                  <height>450</height>
@@ -1747,8 +2010,9 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                  <width>258</width>
                  <height>618</height>
 -                <texture border="5">default/button-nofocus.png</texture>
+-            </control>					
 +                <texture border="5">button-nofocus.png</texture>
-             </control>					
++            </control>
              <control type="image">
                  <left>272</left>
                  <top>509</top>
@@ -1759,25 +2023,63 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
              </control>
              <control type="group" id="1398">
                  <visible>IsEmpty(Control.GetLabel(1390))</visible>
-@@ -162,7 +163,7 @@
-                         </label>                                    
+@@ -107,7 +110,7 @@
+                 </animation>
+                 <animation type="Hidden" reversible="false">
+                     <effect type="fade" start="100" end="0" time="300" />
+-                </animation>			
++                </animation>
+                 <control type="label" id="1390">
+                     <left>300</left>
+                     <top>120</top>
+@@ -116,7 +119,7 @@
+                     <label>
+                     </label>
+                     <visible>false</visible>
+-                </control>				  
++                </control>
+                 <control type="label" id="1399">
+                     <left>300</left>
+                     <top>120</top>
+@@ -128,7 +131,7 @@
+                     <align>left</align>
+                     <textcolor>blue</textcolor>
+                     <shadowcolor>black</shadowcolor>
+-                </control>			
++                </control>
+                 <control type="textbox" id="1400">
+                     <left>300</left>
+                     <top>180</top>
+@@ -159,22 +162,22 @@
+                         <width>230</width>
+                         <height>40</height>
+                         <label>
+-                        </label>                                    
++                        </label>
                          <textcolor>FF999999</textcolor>
                          <focusedcolor>white</focusedcolor>
 -                        <texturefocus border="5">default/button-focus2.png</texturefocus>
+-                    </control>		
 +                        <texturefocus border="5">button-focus2.png</texturefocus>
-                     </control>		
++                    </control>
                      <control type="radiobutton" id="1407">
                          <left>550</left>
-@@ -173,7 +174,7 @@
-                         </label>                                    
+                         <top>440</top>
+                         <width>230</width>
+                         <height>40</height>
+                         <label>
+-                        </label>                                    
++                        </label>
                          <textcolor>FF999999</textcolor>
                          <focusedcolor>white</focusedcolor>
 -                        <texturefocus border="5">default/button-focus2.png</texturefocus>
+-                    </control>			      	            
 +                        <texturefocus border="5">button-focus2.png</texturefocus>
-                     </control>			      	            
++                    </control>
                      <control type="button" id="1401">
                          <left>300</left>
-@@ -182,8 +183,8 @@
+                         <top>440</top>
+@@ -182,15 +185,15 @@
                          <height>40</height>
                          <visible>true</visible>
                          <colordiffuse>FFFFFFFF</colordiffuse>
@@ -1788,7 +2090,15 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                          <label>
                          </label>
                          <font>font12</font>
-@@ -198,8 +199,8 @@
+                         <textcolor>FFFFFFFF</textcolor>
+                         <disabledcolor>80FFFFFF</disabledcolor>
+                         <align>center</align>
+-                    </control>	
++                    </control>
+                     <control type="button" id="1402">
+                         <left>550</left>
+                         <top>440</top>
+@@ -198,16 +201,16 @@
                          <height>40</height>
                          <visible>true</visible>
                          <colordiffuse>FFFFFFFF</colordiffuse>
@@ -1799,16 +2109,39 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                          <label>
                          </label>
                          <font>font12</font>
-@@ -235,7 +236,7 @@
+                         <textcolor>FFFFFFFF</textcolor>
+                         <disabledcolor>80FFFFFF</disabledcolor>
+                         <align>center</align>
+-                    </control>	
+-                </control>			  		  
++                    </control>
++                </control>
+                 <control type="group" id="1397">
+                     <visible>!IsEmpty(Control.GetLabel(1391))</visible>
+                     <control type="label" id="1391">
+@@ -235,9 +238,9 @@
                          <top>330</top>
                          <width>768</width>
                          <height>170</height>
 -                        <texture border="15">default/ContentPanel.png</texture>
+-                    </control>			     			          
+-                    <!-- Main Menu (left) -->	    
 +                        <texture border="15">ContentPanel.png</texture>
-                     </control>			     			          
-                     <!-- Main Menu (left) -->	    
++                    </control>
++                    <!-- Main Menu (left) -->
                      <control type="list" id="1000">
-@@ -270,7 +271,7 @@
+                         <visible>false</visible>
+                         <left>10</left>
+@@ -261,7 +264,7 @@
+                         <ondown>1500</ondown>
+                         <onright>121</onright>
+                         <pagecontrol>121</pagecontrol>
+-                        <scrolltime>300</scrolltime>    
++                        <scrolltime>300</scrolltime>
+                         <itemlayout height="50">
+                             <left>0</left>
+                             <top>0</top>
+@@ -270,7 +273,7 @@
                                  <top>2</top>
                                  <width>727</width>
                                  <height>48</height>
@@ -1817,16 +2150,58 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                              </control>
                              <!-- Icon ethernet -->
                              <control type="image">
-@@ -352,7 +353,7 @@
+@@ -297,7 +300,7 @@
+                                 <left>70</left>
+                                 <top>10</top>
+                                 <width>390</width>
+-                                <height>30</height>							
++                                <height>30</height>
+                                 <font>font24_title</font>
+                                 <textcolor>blue</textcolor>
+                                 <info>ListItem.Label</info>
+@@ -308,7 +311,7 @@
+                                 <left>300</left>
+                                 <top>16</top>
+                                 <width>250</width>
+-                                <height>15</height>									
++                                <height>15</height>
+                                 <font>font12</font>
+                                 <textcolor>blue</textcolor>
+                                 <visible>StringCompare(ListItem.Property(State), online) | StringCompare(ListItem.Property(State), ready)</visible>
+@@ -319,11 +322,11 @@
+                                 <left>560</left>
+                                 <top>16</top>
+                                 <width>150</width>
+-                                <height>20</height>									
++                                <height>20</height>
+                                 <font>font12</font>
+                                 <textcolor>blue</textcolor>
+                                 <label>$ADDON[service.openelec.settings 604]: [COLOR=white]$INFO[ListItem.Property(State)][/COLOR]</label>
+-                            </control>						  					    
++                            </control>
+                             <!-- Signal strength -->
+                             <control type="progress">
+                                 <left>62</left>
+@@ -342,7 +345,7 @@
+                                 <aspectratio>keep</aspectratio>
+                                 <visible>IntegerGreaterThan(ListItem.Property(Security), 0)</visible> 
+                                 <texture>icons/Key.png</texture>
+-                            </control>		
++                            </control>
+                         </itemlayout>
+                         <focusedlayout height="50">
+                             <left>0</left>
+@@ -352,18 +355,18 @@
                                  <top>2</top>
                                  <width>727</width>
                                  <height>48</height>
 -                                <texture border="5">default/button-nofocus.png</texture>
+-                            </control>						
 +                                <texture border="5">button-nofocus.png</texture>
-                             </control>						
++                            </control>
                              <control type="image">
                                  <left>0</left>
-@@ -360,7 +361,7 @@
+                                 <top>2</top>
                                  <width>727</width>
                                  <height>48</height>
                                  <visible>Control.HasFocus(1200)</visible>
@@ -1834,8 +2209,67 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
 +                                <texture border="5">button-focus2.png</texture>
                                  <animation type="Visible" reversible="false">
                                      <effect type="fade" start="0" end="100" time="300" />
-                                 </animation>			        							
-@@ -463,8 +464,8 @@
+-                                </animation>			        							
++                                </animation>
+                             </control>
+                             <!-- Icon ethernet -->
+                             <control type="image">
+@@ -390,7 +393,7 @@
+                                 <left>70</left>
+                                 <top>10</top>
+                                 <width>390</width>
+-                                <height>30</height>							
++                                <height>30</height>
+                                 <font>font24_title</font>
+                                 <textcolor>blue</textcolor>
+                                 <info>ListItem.Label</info>
+@@ -401,7 +404,7 @@
+                                 <left>300</left>
+                                 <top>16</top>
+                                 <width>250</width>
+-                                <height>15</height>									
++                                <height>15</height>
+                                 <font>font12</font>
+                                 <textcolor>blue</textcolor>
+                                 <visible>StringCompare(ListItem.Property(State), online) | StringCompare(ListItem.Property(State), ready)</visible>
+@@ -412,11 +415,11 @@
+                                 <left>560</left>
+                                 <top>16</top>
+                                 <width>150</width>
+-                                <height>20</height>									
++                                <height>20</height>
+                                 <font>font12</font>
+                                 <textcolor>blue</textcolor>
+                                 <label>$ADDON[service.openelec.settings 604]: [COLOR=white]$INFO[ListItem.Property(State)][/COLOR]</label>
+-                            </control>						  					    
++                            </control>
+                             <!-- Signal strength -->
+                             <control type="progress">
+                                 <left>62</left>
+@@ -435,8 +438,8 @@
+                                 <aspectratio>keep</aspectratio>
+                                 <visible>IntegerGreaterThan(ListItem.Property(Security), 0)</visible> 
+                                 <texture>icons/Key.png</texture>
+-                            </control>	
+-                        </focusedlayout> 
++                            </control>
++                        </focusedlayout>
+                     </control>
+                     <control type="scrollbar" id="121">
+                         <description>scroll bar indicator for lists</description>
+@@ -453,9 +456,9 @@
+                         <textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+                         <orientation>vertical</orientation>
+                         <showonepage>false</showonepage>
+-                    </control>			    
++                    </control>
+                 </control>
+-            </control>		
++            </control>
+             <control type="button" id="1500">
+                 <left>825</left>
+                 <top>575</top>
+@@ -463,8 +466,8 @@
                  <height>40</height>
                  <visible>true</visible>
                  <colordiffuse>FFFFFFFF</colordiffuse>
@@ -1846,10 +2280,18 @@ diff -Naur a/skins/Default/720p/wizard.xml b/skins/Default/720p/wizard.xml
                  <label>
                  </label>
                  <font>font12</font>
+@@ -475,6 +478,6 @@
+                 <onleft>1000</onleft>
+                 <visible>!IsEmpty(Control.GetLabel(1500))</visible>
+             </control>
+-        </control>							
++        </control>
+     </controls>
+ </window>
 diff -Naur a/src/defaults.py b/src/defaults.py
---- a/src/defaults.py	2015-06-14 11:05:06.000000000 +0300
-+++ b/src/defaults.py	2015-11-26 18:15:12.851598592 +0200
-@@ -77,6 +77,140 @@
+--- a/src/defaults.py	2016-01-26 23:15:29.000000000 +0200
++++ b/src/defaults.py	2016-02-02 18:23:28.691317134 +0200
+@@ -77,6 +77,135 @@
      'LCD_DRIVER_DIR': '/usr/lib/lcdproc/',
      'D_LCD_DRIVER': 'none',
      }
@@ -1911,8 +2353,6 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +    'D_ENABLE_LIVE': '0',
 +    'D_LIVE_IP': '0.0.0.0',
 +    'D_LIVE_PORT': '8008',
-+    'D_ENABLE_CONTROL': '0',
-+    'D_CONTROL_PORT': '2002',
 +    'D_ENABLE_EEPG': '1',
 +    'D_ENABLE_EPGSEARCH': '1',
 +    'D_ENABLE_XMLTV2VDR': '0',
@@ -1942,8 +2382,6 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +    'D_F_ENABLE_LIVE': '0',
 +    'D_F_LIVE_IP': '0.0.0.0',
 +    'D_F_LIVE_PORT': '8008',
-+    'D_F_ENABLE_CONTROL': '1',
-+    'D_F_CONTROL_PORT': '2002',
 +    'D_F_ENABLE_EEPG': '1',
 +    'D_F_ENABLE_EPGSEARCH': '1',
 +    'D_F_ENABLE_XMLTV2VDR': '1',
@@ -1971,7 +2409,6 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +    'D_F_ENABLE_SKINDESIGNER': '0',
 +    'D_F_ENABLE_WEATHERFORECAST': '0',
 +    'D_F_ENABLE_FAVORITES': '0',
-+    'D_F_ENABLE_SCRAPER2VDR': '0',
 +    'D_F_FRONT': 'soft',
 +    'D_F_OUTPUT_VIDEO': 'auto',
 +    'D_F_SOUND_SOFT': 'alsa',
@@ -1990,7 +2427,7 @@ diff -Naur a/src/defaults.py b/src/defaults.py
  
  system = {
      'ENABLED': True,
-@@ -113,4 +247,8 @@
+@@ -113,4 +242,8 @@
      'obexd': ['obex.service'],
      'crond': ['cron.service'],
      'lcdd': ['lcdd.service'],
@@ -2000,8 +2437,8 @@ diff -Naur a/src/defaults.py b/src/defaults.py
 +    'oscam': ['oscam.service'],
      }
 diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/system.py
---- a/src/resources/lib/modules/system.py	2015-06-14 11:05:06.000000000 +0300
-+++ b/src/resources/lib/modules/system.py	2015-11-26 18:12:30.603596458 +0200
+--- a/src/resources/lib/modules/system.py	2016-01-26 23:15:29.000000000 +0200
++++ b/src/resources/lib/modules/system.py	2016-02-02 18:20:58.791323600 +0200
 @@ -130,6 +130,15 @@
                              'values': [],
                              'InfoText': 713,
@@ -2105,7 +2542,7 @@ diff -Naur a/src/resources/lib/modules/system.py b/src/resources/lib/modules/sys
              self.oe.dbg_log('system::get_keyboard_layouts', 'ERROR: (' + repr(e) + ')')
 diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modules/transmission.py
 --- a/src/resources/lib/modules/transmission.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/transmission.py	2015-11-26 18:12:30.603596458 +0200
++++ b/src/resources/lib/modules/transmission.py	2016-02-02 18:20:58.791323600 +0200
 @@ -0,0 +1,331 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
@@ -2440,8 +2877,8 @@ diff -Naur a/src/resources/lib/modules/transmission.py b/src/resources/lib/modul
 +            self.oe.dbg_log('transmission::wizard_set_transmission', 'ERROR: (%s)' % repr(e))
 diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/tvservers.py
 --- a/src/resources/lib/modules/tvservers.py	1970-01-01 03:00:00.000000000 +0300
-+++ b/src/resources/lib/modules/tvservers.py	2015-11-26 18:29:43.687610047 +0200
-@@ -0,0 +1,2186 @@
++++ b/src/resources/lib/modules/tvservers.py	2016-02-02 18:36:29.487283453 +0200
+@@ -0,0 +1,2101 @@
 +################################################################################
 +#      This file is part of OpenELEC - http://www.openelec.tv
 +#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
@@ -2512,8 +2949,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_ENABLE_LIVE = None
 +    D_LIVE_IP = None
 +    D_LIVE_PORT = None
-+    D_ENABLE_CONTROL = None
-+    D_CONTROL_PORT = None
 +    D_ENABLE_EEPG = None
 +    D_ENABLE_EPGSEARCH = None
 +    D_ENABLE_XMLTV2VDR = None
@@ -2543,8 +2978,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_F_ENABLE_LIVE = None
 +    D_F_LIVE_IP = None
 +    D_F_LIVE_PORT = None
-+    D_F_ENABLE_CONTROL = None
-+    D_F_CONTROL_PORT = None
 +    D_F_ENABLE_EEPG = None
 +    D_F_ENABLE_EPGSEARCH = None
 +    D_F_ENABLE_XMLTV2VDR = None
@@ -2572,7 +3005,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +    D_F_ENABLE_SKINDESIGNER = None
 +    D_F_ENABLE_WEATHERFORECAST = None
 +    D_F_ENABLE_FAVORITES = None
-+    D_F_ENABLE_SCRAPER2VDR = None
 +    D_F_FRONT = None
 +    D_F_OUTPUT_VIDEO = None
 +    D_F_SOUND_SOFT = None
@@ -2828,25 +3260,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'parent': {'entry': 'enable_live','value': ['1']},
 +                            'InfoText': 1215,
 +                        },
-+                        'enable_control': {
-+                            'order': 16,
-+                            'name': 37016,
-+                            'value': '0',
-+                            'action': 'initialize_vdr',
-+                            'type': 'bool',
-+                            'InfoText': 1216,
-+                        },
-+                        'control_port': {
-+                            'order': 17,
-+                            'name': 37017,
-+                            'value': '2002',
-+                            'action': 'initialize_vdr',
-+                            'type': 'num',
-+                            'parent': {'entry': 'enable_control','value': ['1']},
-+                            'InfoText': 1217,
-+                        },
 +                        'enable_eepg': {
-+                            'order': 18,
++                            'order': 16,
 +                            'name': 37018,
 +                            'value': '1',
 +                            'action': 'initialize_vdr',
@@ -2854,7 +3269,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1218,
 +                        },
 +                        'enable_epgsearch': {
-+                            'order': 19,
++                            'order': 17,
 +                            'name': 37019,
 +                            'value': '1',
 +                            'action': 'initialize_vdr',
@@ -2862,7 +3277,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1219,
 +                        },
 +                        'enable_xmltv2vdr': {
-+                            'order': 20,
++                            'order': 18,
 +                            'name': 37020,
 +                            'value': '0',
 +                            'action': 'initialize_vdr',
@@ -2870,7 +3285,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1220,
 +                        },
 +                        'enable_softcam': {
-+                            'order': 21,
++                            'order': 19,
 +                            'name': 37021,
 +                            'value': '1',
 +                            'action': 'initialize_vdr',
@@ -2878,7 +3293,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1221,
 +                        },
 +                        'softcam_option': {
-+                            'order': 22,
++                            'order': 20,
 +                            'name': 37022,
 +                            'value': '',
 +                            'action': 'initialize_vdr',
@@ -2887,7 +3302,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1222,
 +                        },
 +                        'enable_dummydevice': {
-+                            'order': 23,
++                            'order': 21,
 +                            'name': 37023,
 +                            'value': '0',
 +                            'action': 'initialize_vdr',
@@ -2895,7 +3310,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1223,
 +                        },
 +                        'enable_satip': {
-+                            'order': 24,
++                            'order': 22,
 +                            'name': 37024,
 +                            'value': '0',
 +                            'action': 'initialize_vdr',
@@ -2903,7 +3318,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1224,
 +                        },
 +                        'enable_upnp': {
-+                            'order': 25,
++                            'order': 23,
 +                            'name': 37025,
 +                            'value': '0',
 +                            'action': 'initialize_vdr',
@@ -2911,7 +3326,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1225,
 +                        },
 +                        'enable_epgfixer': {
-+                            'order': 26,
++                            'order': 24,
 +                            'name': 37026,
 +                            'value': '0',
 +                            'action': 'initialize_vdr',
@@ -2919,7 +3334,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1226,
 +                        },
 +                        'enable_restfulapi': {
-+                            'order': 27,
++                            'order': 25,
 +                            'name': 37027,
 +                            'value': '0',
 +                            'action': 'initialize_vdr',
@@ -2927,7 +3342,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1227,
 +                        },
 +                        'restfulapi_ip': {
-+                            'order': 28,
++                            'order': 26,
 +                            'name': 37028,
 +                            'value': '0.0.0.0',
 +                            'action': 'initialize_vdr',
@@ -2936,7 +3351,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1228,
 +                        },
 +                        'restfulapi_port': {
-+                            'order': 29,
++                            'order': 27,
 +                            'name': 37029,
 +                            'value': '8002',
 +                            'action': 'initialize_vdr',
@@ -3084,25 +3499,8 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'parent': {'entry': 'enable_live','value': ['1']},
 +                            'InfoText': 1215,
 +                        },
-+                        'enable_control': {
-+                            'order': 15,
-+                            'name': 37016,
-+                            'value': '0',
-+                            'action': 'initialize_vdr_front',
-+                            'type': 'bool',
-+                            'InfoText': 1216,
-+                        },
-+                        'control_port': {
-+                            'order': 16,
-+                            'name': 37017,
-+                            'value': '2002',
-+                            'action': 'initialize_vdr_front',
-+                            'type': 'num',
-+                            'parent': {'entry': 'enable_control','value': ['1']},
-+                            'InfoText': 1217,
-+                        },
 +                       'enable_eepg': {
-+                            'order': 17,
++                            'order': 15,
 +                            'name': 37018,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3110,7 +3508,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1218,
 +                        },
 +                        'enable_epgsearch': {
-+                            'order': 18,
++                            'order': 16,
 +                            'name': 37019,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3118,7 +3516,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1219,
 +                        },
 +                        'enable_xmltv2vdr': {
-+                            'order': 19,
++                            'order': 17,
 +                            'name': 37020,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -3126,7 +3524,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1220,
 +                        },
 +                        'enable_softcam': {
-+                            'order': 20,
++                            'order': 18,
 +                            'name': 37021,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3134,7 +3532,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1221,
 +                        },
 +                        'softcam_option': {
-+                            'order': 21,
++                            'order': 19,
 +                            'name': 37022,
 +                            'value': '',
 +                            'action': 'initialize_vdr_front',
@@ -3143,7 +3541,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1222,
 +                        },
 +                        'enable_dummydevice': {
-+                            'order': 22,
++                            'order': 20,
 +                            'name': 37023,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -3151,7 +3549,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1223,
 +                        },
 +                        'enable_satip': {
-+                            'order': 23,
++                            'order': 21,
 +                            'name': 37024,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -3159,7 +3557,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1224,
 +                        },
 +                        'enable_upnp': {
-+                            'order': 24,
++                            'order': 22,
 +                            'name': 37025,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -3167,7 +3565,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1225,
 +                        },
 +                        'enable_epgfixer': {
-+                            'order': 25,
++                            'order': 23,
 +                            'name': 37026,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -3175,7 +3573,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1226,
 +                        },
 +                        'enable_restfulapi': {
-+                            'order': 26,
++                            'order': 24,
 +                            'name': 37027,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
@@ -3183,7 +3581,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1227,
 +                        },
 +                        'restfulapi_ip': {
-+                            'order': 27,
++                            'order': 25,
 +                            'name': 37028,
 +                            'value': '0.0.0.0',
 +                            'action': 'initialize_vdr_front',
@@ -3192,7 +3590,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1228,
 +                        },
 +                        'restfulapi_port': {
-+                            'order': 28,
++                            'order': 26,
 +                            'name': 37029,
 +                            'value': '8002',
 +                            'action': 'initialize_vdr_front',
@@ -3201,7 +3599,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1229,
 +                        },
 +                        'enable_femon': {
-+                            'order': 29,
++                            'order': 27,
 +                            'name': 39022,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3209,7 +3607,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1422,
 +                        },
 +                        'enable_systeminfo': {
-+                            'order': 30,
++                            'order': 28,
 +                            'name': 39023,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3217,7 +3615,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1423,
 +                        }, 
 +                        'enable_sleeptimer': {
-+                            'order': 31,
++                            'order': 29,
 +                            'name': 39024,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3225,15 +3623,15 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1424,
 +                        },
 +                        'enable_filebrowser': {
-+                            'order': 32,
++                            'order': 30,
 +                            'name': 39025,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1425,
-+                        }, 
++                        },
 +                        'enable_lcdproc': {
-+                            'order': 33,
++                            'order': 31,
 +                            'name': 39026,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3241,23 +3639,23 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1426,
 +                        },
 +                        'enable_text2skin': {
-+                            'order': 34,
++                            'order': 32,
 +                            'name': 39027,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1427,
-+                        },  
++                        },
 +                        'enable_skinnopacity': {
-+                            'order': 35,
++                            'order': 33,
 +                            'name': 39028,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1428,
-+                        },  
++                        },
 +                        'enable_skinflat': {
-+                            'order': 36,
++                            'order': 34,
 +                            'name': 39029,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3265,31 +3663,31 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1429,
 +                        },
 +                        'enable_skinflat_plus': {
-+                            'order': 37,
++                            'order': 35,
 +                            'name': 39030,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1430,
-+                        }, 
++                        },
 +                        'enable_menuorg': {
-+                            'order': 38,
++                            'order': 36,
 +                            'name': 39031,
 +                            'value': '0',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1431,
-+                        },                         
++                        },
 +                        'enable_tvguide': {
-+                            'order': 39,
++                            'order': 37,
 +                            'name': 39032,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1432,
-+                        },  
++                        },
 +                        'enable_tvscraper': {
-+                            'order': 40,
++                            'order': 38,
 +                            'name': 39033,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3297,7 +3695,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1433,
 +                        },
 +                        'enable_skindesigner': {
-+                            'order': 41,
++                            'order': 39,
 +                            'name': 39034,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3305,7 +3703,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1434,
 +                        },
 +                        'enable_weatherforecast': {
-+                            'order': 42,
++                            'order': 40,
 +                            'name': 39035,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
@@ -3313,23 +3711,15 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1435,
 +                        },
 +                        'enable_favorites': {
-+                            'order': 43,
++                            'order': 41,
 +                            'name': 39036,
 +                            'value': '1',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'bool',
 +                            'InfoText': 1436,
 +                        },
-+                        'enable_scraper2vdr': {
-+                            'order': 44,
-+                            'name': 39037,
-+                            'value': '1',
-+                            'action': 'initialize_vdr_front',
-+                            'type': 'bool',
-+                            'InfoText': 1437,
-+                        },
 +                        'vdr_output': {
-+                            'order': 45,
++                            'order': 42,
 +                            'name': 39038,
 +                            'value': 'soft',
 +                            'values': ['soft','xine'],
@@ -3338,25 +3728,25 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1438,
 +                        },
 +                        'vdr_video': {
-+                            'order': 46,
++                            'order': 43,
 +                            'name': 39039,
 +                            'value': 'auto',
 +                            'values': ['auto','vdpau','vaapi'],
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'multivalue',
 +                            'InfoText': 1439,
-+                        },                        
++                        },
 +                        'vdr_sound_soft': {
-+                            'order': 47,
++                            'order': 44,
 +                            'name': 39040,
 +                            'value': 'alsa',
 +                            'action': 'initialize_vdr_front',
 +                            'type': 'text',
 +                            'parent': {'entry': 'vdr_output','value': ['soft']},
 +                            'InfoText': 1440,
-+                        },                        
++                        },
 +                        'vdr_sound_xine': {
-+                            'order': 48,
++                            'order': 45,
 +                            'name': 39041,
 +                            'value': 'auto',
 +                            'action': 'initialize_vdr_front',
@@ -3365,7 +3755,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1441,
 +                        },
 +                        'vdr_soft_param': {
-+                            'order': 49,
++                            'order': 46,
 +                            'name': 39042,
 +                            'value': '',
 +                            'action': 'initialize_vdr_front',
@@ -3374,7 +3764,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                            'InfoText': 1442,
 +                        },
 +                        'vdr_xine_param': {
-+                            'order': 50,
++                            'order': 47,
 +                            'name': 39043,
 +                            'value': '',
 +                            'action': 'initialize_vdr_front',
@@ -3628,12 +4018,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['vdr']['settings']['live_port']['value'] = \
 +                self.oe.get_service_option('vdr', 'VDR_LIVE_PORT', self.D_LIVE_PORT).replace('"', '')
 +
-+                self.struct['vdr']['settings']['enable_control']['value'] = \
-+                self.oe.get_service_option('vdr', 'VDR_ENABLE_CONTROL', self.D_ENABLE_CONTROL).replace('true','1').replace('false','0').replace('"', '')
-+
-+                self.struct['vdr']['settings']['control_port']['value'] = \
-+                self.oe.get_service_option('vdr', 'VDR_CONTROL_PORT', self.D_CONTROL_PORT).replace('"', '')
-+
 +                self.struct['vdr']['settings']['enable_eepg']['value'] = \
 +                self.oe.get_service_option('vdr', 'VDR_ENABLE_EEPG', self.D_ENABLE_EEPG).replace('true','1').replace('false','0').replace('"', '')
 +
@@ -3732,12 +4116,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                self.struct['vdr-front']['settings']['live_port']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_LIVE_PORT', self.D_F_LIVE_PORT).replace('"', '')
 +
-+                self.struct['vdr-front']['settings']['enable_control']['value'] = \
-+                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_CONTROL', self.D_F_ENABLE_CONTROL).replace('true','1').replace('false','0').replace('"', '')
-+
-+                self.struct['vdr-front']['settings']['control_port']['value'] = \
-+                self.oe.get_service_option('vdr-front', 'VDR_CONTROL_PORT', self.D_F_CONTROL_PORT).replace('"', '')
-+
 +                self.struct['vdr-front']['settings']['enable_eepg']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_EEPG', self.D_F_ENABLE_EEPG).replace('true','1').replace('false','0').replace('"', '')
 +
@@ -3794,13 +4172,13 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +                self.struct['vdr-front']['settings']['enable_skinnopacity']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_SKINNOPACITY', self.D_F_ENABLE_SKINNOPACITY).replace('true','1').replace('false','0').replace('"', '')
-+                
++
 +                self.struct['vdr-front']['settings']['enable_skinflat']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_SKINFLAT', self.D_F_ENABLE_SKINFLAT).replace('true','1').replace('false','0').replace('"', '')
-+                
++
 +                self.struct['vdr-front']['settings']['enable_skinflat_plus']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_SKINFLAT_PLUS', self.D_F_ENABLE_SKINFLAT_PLUS).replace('true','1').replace('false','0').replace('"', '')
-+                
++
 +                self.struct['vdr-front']['settings']['enable_menuorg']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_MENUORG', self.D_F_ENABLE_MENUORG).replace('true','1').replace('false','0').replace('"', '')
 +
@@ -3815,12 +4193,9 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +                self.struct['vdr-front']['settings']['enable_weatherforecast']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_WEATHERFORECAST', self.D_F_ENABLE_WEATHERFORECAST).replace('true','1').replace('false','0').replace('"', '')
-+                
++
 +                self.struct['vdr-front']['settings']['enable_favorites']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_FAVORITES', self.D_F_ENABLE_FAVORITES).replace('true','1').replace('false','0').replace('"', '')
-+                
-+                self.struct['vdr-front']['settings']['enable_scraper2vdr']['value'] = \
-+                self.oe.get_service_option('vdr-front', 'VDR_ENABLE_SCRAPER2VDR', self.D_F_ENABLE_SCRAPER2VDR).replace('true','1').replace('false','0').replace('"', '')
 +
 +                self.struct['vdr-front']['settings']['vdr_output']['value'] = \
 +                self.oe.get_service_option('vdr-front', 'VDR_FRONT', self.D_F_FRONT).replace('"', '')
@@ -4064,12 +4439,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                else:
 +                    val8 = 'false'
 +
-+                if self.struct['vdr']['settings']['enable_control']['value'] == '1':
-+                    val9 = 'true'
-+
-+                else:
-+                    val9 = 'false'
-+
 +                if self.struct['vdr']['settings']['enable_eepg']['value'] == '1':
 +                    val10 = 'true'
 +
@@ -4139,8 +4508,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_ENABLE_LIVE'] = '"%s"' % val8
 +                options['VDR_LIVE_IP'] = '"%s"' % self.struct['vdr']['settings']['live_ip']['value']
 +                options['VDR_LIVE_PORT'] = '"%s"' % self.struct['vdr']['settings']['live_port']['value']
-+                options['VDR_ENABLE_CONTROL'] = '"%s"' % val9
-+                options['VDR_CONTROL_PORT'] = '"%s"' % self.struct['vdr']['settings']['control_port']['value']
 +                options['VDR_ENABLE_EEPG'] = '"%s"' % val10
 +                options['VDR_ENABLE_EPGSEARCH'] = '"%s"' % val11
 +                options['VDR_ENABLE_XMLTV2VDR'] = '"%s"' % val12
@@ -4307,12 +4674,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                else:
 +                    val8 = 'false'
 +
-+                if self.struct['vdr-front']['settings']['enable_control']['value'] == '1':
-+                    val9 = 'true'
-+
-+                else:
-+                    val9 = 'false'
-+
 +                if self.struct['vdr-front']['settings']['enable_eepg']['value'] == '1':
 +                    val10 = 'true'
 +
@@ -4408,19 +4769,19 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +                else:
 +                    val25 = 'false'
-+                    
++
 +                if self.struct['vdr-front']['settings']['enable_skinflat']['value'] == '1':
 +                    val26 = 'true'
 +
 +                else:
 +                    val26 = 'false'
-+                    
++
 +                if self.struct['vdr-front']['settings']['enable_skinflat_plus']['value'] == '1':
 +                    val27 = 'true'
 +
 +                else:
 +                    val27 = 'false'
-+                    
++
 +                if self.struct['vdr-front']['settings']['enable_menuorg']['value'] == '1':
 +                    val28 = 'true'
 +
@@ -4450,18 +4811,12 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +
 +                else:
 +                    val32 = 'false'
-+                    
++
 +                if self.struct['vdr-front']['settings']['enable_favorites']['value'] == '1':
 +                    val33 = 'true'
 +
 +                else:
 +                    val33 = 'false'
-+                    
-+                if self.struct['vdr-front']['settings']['enable_scraper2vdr']['value'] == '1':
-+                    val34 = 'true'
-+
-+                else:
-+                    val34 = 'false'
 +
 +                options['VDR_ENABLE_EXTERNAL_RECCMD'] = '"%s"' % val1
 +                options['VDR_EXTERNAL_RECCMD_PATH'] = '"%s"' % self.struct['vdr-front']['settings']['ext_reccmd_path']['value']
@@ -4477,8 +4832,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_ENABLE_LIVE'] = '"%s"' % val8
 +                options['VDR_LIVE_IP']   = '"%s"' % self.struct['vdr-front']['settings']['live_ip']['value']
 +                options['VDR_LIVE_PORT'] = '"%s"' % self.struct['vdr-front']['settings']['live_port']['value']
-+                options['VDR_ENABLE_CONTROL'] = '"%s"' % val9
-+                options['VDR_CONTROL_PORT'] = '"%s"' % self.struct['vdr-front']['settings']['control_port']['value']
 +                options['VDR_ENABLE_EEPG'] = '"%s"' % val10
 +                options['VDR_ENABLE_EPGSEARCH'] = '"%s"' % val11
 +                options['VDR_ENABLE_XMLTV2VDR'] = '"%s"' % val12
@@ -4506,7 +4859,6 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +                options['VDR_ENABLE_SKINDESIGNER'] = '"%s"' % val31
 +                options['VDR_ENABLE_WEATHERFORECAST'] = '"%s"' % val32
 +                options['VDR_ENABLE_FAVORITES'] = '"%s"' % val33
-+                options['VDR_ENABLE_SCRAPER2VDR'] = '"%s"' % val34
 +                options['VDR_FRONT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_output']['value']
 +                options['VDR_OUTPUT_VIDEO'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_video']['value']
 +                options['VDR_SOUND_SOFT'] = '"%s"' % self.struct['vdr-front']['settings']['vdr_sound_soft']['value']
@@ -4586,7 +4938,7 @@ diff -Naur a/src/resources/lib/modules/tvservers.py b/src/resources/lib/modules/
 +            select_window = xbmcgui.Dialog()
 +            ret = select_window.select(title, items)
 +            result = items[ret]
-+            
++
 +            if defaultValue != result:
 +                self.struct['tvbackends']['settings']['tv_backend']['value'] = result
 +                self.wizard_set_tvbackend()

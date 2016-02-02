@@ -38,6 +38,8 @@ pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC"
   export CXXFLAGS="$CXXFLAGS -fPIC"
   export LDFLAGS="$LDFLAGS -fPIC"
+
+  mv $SYSROOT_PREFIX/usr/bin/xml2-config $ROOT/$TOOLCHAIN/bin
 }
 
 make_target() {
@@ -58,6 +60,8 @@ make_target() {
     ln -s libskindesignerapi.so.0.0.2 $SYSROOT_PREFIX/usr/lib/libskindesignerapi.so
   mkdir -p $SYSROOT_PREFIX/usr/lib/pkgconfig
     cp -PR $ROOT/$PKG_BUILD/libskindesignerapi/libskindesignerapi.pc $SYSROOT_PREFIX/usr/lib/pkgconfig
+
+  mv $ROOT/$TOOLCHAIN/bin/xml2-config $SYSROOT_PREFIX/usr/bin
 }
 
 makeinstall_target() {

@@ -38,10 +38,14 @@ pre_make_target() {
   export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
   export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/libxml2"
   export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
+
+  mv $SYSROOT_PREFIX/usr/bin/xml2-config $ROOT/$TOOLCHAIN/bin
 }
 
 make_target() {
   python setup.py build --cross-compile
+
+  mv $ROOT/$TOOLCHAIN/bin/xml2-config $SYSROOT_PREFIX/usr/bin
 }
 
 makeinstall_target() {

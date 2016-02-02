@@ -36,6 +36,8 @@ pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC"
   export CXXFLAGS="$CXXFLAGS -fPIC"
   export LDFLAGS="$LDFLAGS -fPIC"
+
+  mv $SYSROOT_PREFIX/usr/bin/xml2-config $ROOT/$TOOLCHAIN/bin
 }
 
 make_target() {
@@ -43,6 +45,8 @@ make_target() {
   make VDRDIR=$VDR_DIR \
   LIBDIR="." \
   LOCALEDIR="./locale"
+
+  mv $ROOT/$TOOLCHAIN/bin/xml2-config $SYSROOT_PREFIX/usr/bin
 }
 
 makeinstall_target() {

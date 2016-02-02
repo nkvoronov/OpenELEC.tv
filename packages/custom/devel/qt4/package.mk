@@ -38,7 +38,6 @@ PKG_AUTORECONF="no"
 QTDIR=$SYSROOT_PREFIX/usr
 
 configure_target() {
-
   PLATFORM="linux-g++-$TARGET_NAME"
   LEX=$ROOT/$TOOLCHAIN/bin/flex
   YACC=$ROOT/$TOOLCHAIN/bin/yacc
