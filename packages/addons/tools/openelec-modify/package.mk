@@ -18,7 +18,7 @@
 
 PKG_NAME="openelec-modify"
 PKG_VERSION="1"
-PKG_REV="16"
+PKG_REV="17"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
@@ -46,7 +46,7 @@ addon() {
   TBS_DRIVER_DIR=$(get_build_dir tbs-linux-drivers-cc)
   SQUASHFS_DIR=$(get_build_dir squashfs)
   LCDPROC_DIR=$(get_build_dir_usr lcdproc)
-  
+
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -PR $SQUASHFS_DIR/squashfs-tools/mksquashfs $ADDON_BUILD/$PKG_ADDON_ID/bin
 
