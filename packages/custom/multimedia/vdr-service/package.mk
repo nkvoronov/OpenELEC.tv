@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="77"
+PKG_REV="78"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -40,7 +40,7 @@ ENABLE_VDR_PLUGIN_DVBAPI="yes"
 ENABLE_VDR_PLUGIN_EEPG="yes"
 ENABLE_VDR_PLUGIN_EPGFIXER="yes"
 ENABLE_VDR_LIVE="yes"
-ENABLE_VDR_PLUGIN_RESTFULAPI="yes" 
+ENABLE_VDR_PLUGIN_RESTFULAPI="yes"
 ENABLE_VDR_PLUGIN_STREAMDEV="yes"
 ENABLE_VDR_PLUGIN_VNSISERVER="yes"
 ENABLE_VDR_PLUGIN_XMLTV2VDR="yes"
@@ -48,7 +48,7 @@ ENABLE_VDR_PLUGIN_XVDR="yes"
 ENABLE_VDR_SATIP="yes"
 ENABLE_VDR_WIRBELSCAN="yes"
 ENABLE_VDR_FEMON="yes"
-ENABLE_VDR_FILEBROWSER="yes" 
+ENABLE_VDR_FILEBROWSER="yes"
 ENABLE_VDR_PLUGIN_LCDPROC="yes"
 ENABLE_VDR_PLUGIN_MENUORG="yes"
 ENABLE_VDR_PLUGIN_SLEEPTIMER="yes"
@@ -67,131 +67,131 @@ ENABLE_VDR_PLUGIN_WEATHERFORECAST="yes"
 ENABLE_VDR_FAVORITES="yes"
 
 if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-dummydevice"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-dummydevice"
 fi
 
 if [ "$ENABLE_VDR_EPGSEARCH" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-epgsearch"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-epgsearch"
 fi
 
 if [ "$ENABLE_VDR_IPTV" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-iptv"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-iptv"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-dvbapi"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-dvbapi"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_EEPG" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-eepg"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-eepg"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_EPGFIXER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-epgfixer"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-epgfixer"
 fi
 
 if [ "$ENABLE_VDR_LIVE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-live"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-live"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-restfulapi"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-restfulapi"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_STREAMDEV" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-streamdev"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-streamdev"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_VNSISERVER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-vnsiserver"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-vnsiserver"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_XMLTV2VDR" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xmltv2vdr"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xmltv2vdr"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_XVDR" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xvdr"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xvdr"
 fi
 
 if [ "$ENABLE_VDR_SATIP" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-satip"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-satip"
 fi
 
 if [ "$ENABLE_VDR_WIRBELSCAN" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-wirbelscan vdr-wirbelscancontrol"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-wirbelscan vdr-wirbelscancontrol"
 fi
 
 if [ "$ENABLE_VDR_FEMON" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-femon"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-femon"
 fi
 
 if [ "$ENABLE_VDR_FILEBROWSER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-filebrowser"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-filebrowser"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_LCDPROC" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-lcdproc"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-lcdproc"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_MENUORG" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-menuorg"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-menuorg"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_SLEEPTIMER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-sleeptimer"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-sleeptimer"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_SOFTHDDEVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-softhddevice"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-softhddevice"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_TEXT2SKIN" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-text2skin"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-text2skin"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_TVGUIDE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvguide"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvguide"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvscraper"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvscraper"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-upnp"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-upnp"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xineliboutput"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xineliboutput"
 fi
 
 if [ "$ENABLE_VDR_SKIN_FLAT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flat"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flat"
 fi
 
 if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flatplus"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flatplus"
 fi
 
 if [ "$ENABLE_VDR_SKIN_NOPACITY" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-nopacity"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-nopacity"
 fi
 
 if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-systeminfo"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-systeminfo"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-skindesigner"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-skindesigner"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-weatherforecast"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-weatherforecast"
 fi
 
 if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-favorites"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-favorites"
 fi
 
 make_target() {
@@ -228,7 +228,7 @@ post_install() {
     fname=`basename $fmo .mo`
     mkdir -p $INSTALL/usr/share/locale/$fname
     mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-      cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr.mo    
+      cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr.mo
   done
 
   if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
@@ -245,7 +245,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-epgsearch.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-epgsearch.mo
     done
   fi
 
@@ -258,7 +258,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-iptv.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-iptv.mo
     done
   fi
 
@@ -269,7 +269,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-dvbapi.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-dvbapi.mo
     done
   fi
 
@@ -281,7 +281,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-eepg.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-eepg.mo
     done
   fi
 
@@ -294,7 +294,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-epgfixer.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-epgfixer.mo
     done
   fi
 
@@ -307,7 +307,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-live.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-live.mo
     done   
   fi
 
@@ -322,7 +322,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-restfulapi.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-restfulapi.mo
     done 
   fi
 
@@ -336,13 +336,13 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-streamdev-server.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-streamdev-server.mo
     done
     for fmo in `ls $VDR_PLUGIN_STREAMDEV_DIR/client/po/*.mo`;do
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-streamdev-client.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-streamdev-client.mo
     done
   fi
 
@@ -371,7 +371,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-xvdr.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-xvdr.mo
     done
   fi
 
@@ -382,7 +382,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-satip.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-satip.mo
     done
   fi
 
@@ -394,7 +394,7 @@ post_install() {
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/locale/* $INSTALL/usr/share/locale
     cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/locale/* $INSTALL/usr/share/locale
   fi
-  
+
   if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
     VDR_PLUGIN_FAVORITES_DIR=$(get_build_dir vdr-favorites)
     cp -PR $VDR_PLUGIN_FAVORITES_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
@@ -402,18 +402,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-favorites.mo    
-    done
-  fi
-  
-  if [ "$ENABLE_VDR_SCRAPER2VDR" = yes ]; then
-    VDR_PLUGIN_SCRAPER2VDR_DIR=$(get_build_dir vdr-scraper2vdr)
-    cp -PR $VDR_PLUGIN_SCRAPER2VDR_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    for fmo in `ls $VDR_PLUGIN_SCRAPER2VDR_DIR/po/*.mo`;do
-      fname=`basename $fmo .mo`
-      mkdir -p $INSTALL/usr/share/locale/$fname
-      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-scraper2vdr.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-favorites.mo
     done
   fi
 
@@ -424,7 +413,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-femon.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-femon.mo
     done
   fi
 
@@ -443,7 +432,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-lcdproc.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-lcdproc.mo
     done
   fi
 
@@ -456,7 +445,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-menuorg.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-menuorg.mo
     done
   fi
 
@@ -467,7 +456,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-sleeptimer.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-sleeptimer.mo
     done
   fi
 
@@ -478,14 +467,14 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-softhddevice.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-softhddevice.mo
     done
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TEXT2SKIN" = yes ]; then
     VDR_PLUGIN_TEXT2SKIN_DIR=$(get_build_dir vdr-plugin-text2skin)
     cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/locale/* $INSTALL/usr/share/locale  
+    cp -PR $VDR_PLUGIN_TEXT2SKIN_DIR/locale/* $INSTALL/usr/share/locale
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_TVGUIDE" = yes ]; then
@@ -499,7 +488,20 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-tvguide.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-tvguide.mo
+    done
+  fi
+
+  if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
+    VDR_PLUGIN_TVSCRAPER_DIR=$(get_build_dir vdr-plugin-tvscraper)
+    cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
+    mkdir -p $INSTALL/usr/config/vdr/plugins/tvscraper
+      cp -PR $VDR_PLUGIN_TVSCRAPER_DIR/conf/* $INSTALL/usr/config/vdr/plugins/tvscraper
+    for fmo in `ls $VDR_PLUGIN_TVSCRAPER_DIR/po/*.mo`;do
+      fname=`basename $fmo .mo`
+      mkdir -p $INSTALL/usr/share/locale/$fname
+      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-tvscraper.mo
     done
   fi
 
@@ -513,7 +515,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-upnp.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-upnp.mo
     done
   fi
 
@@ -536,7 +538,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-xineliboutput.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-xineliboutput.mo
     done
   fi
 
@@ -551,7 +553,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skinflat.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skinflat.mo
     done
   fi
 
@@ -569,7 +571,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skinflatplus.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skinflatplus.mo
     done
   fi
 
@@ -586,7 +588,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skinnopacity.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skinnopacity.mo
     done
   fi
 
@@ -599,7 +601,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-systeminfo.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-systeminfo.mo
     done
   fi
 
@@ -608,7 +610,7 @@ post_install() {
     mkdir -p $INSTALL/usr/share/fontconfig/conf.avail
       cp -P $VDR_PLUGIN_SKINDESINGER_DIR/installs/99-skindesigner.conf $INSTALL/usr/share/fontconfig/conf.avail
     mkdir -p $INSTALL/etc/fonts/conf.d
-      ln -s /usr/share/fontconfig/conf.avail/99-skindesigner.conf $INSTALL/etc/fonts/conf.d/99-skindesigner.conf     
+      ln -s /usr/share/fontconfig/conf.avail/99-skindesigner.conf $INSTALL/etc/fonts/conf.d/99-skindesigner.conf
     mkdir -p $INSTALL/usr/share/fonts/TTF
       cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/installs/TTF/* $INSTALL/usr/share/fonts/TTF
     mkfontdir $INSTALL/usr/share/fonts/TTF
@@ -627,7 +629,7 @@ post_install() {
       fname=`basename $fmo .mo`
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skindesigner.mo    
+        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-skindesigner.mo
     done
 
     if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
@@ -639,7 +641,7 @@ post_install() {
         fname=`basename $fmo .mo`
         mkdir -p $INSTALL/usr/share/locale/$fname
         mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-          cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-weatherforecast.mo    
+          cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-weatherforecast.mo
       done
     fi
   fi
