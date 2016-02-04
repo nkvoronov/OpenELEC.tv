@@ -207,6 +207,7 @@ addon() {
   API_VERSION="2.2.0"
   VDR_DIR=$(get_build_dir vdr)
 
+  CXXTOOLS_DIR=$(get_build_dir cxxtools)
   TNTNET_DIR=$(get_build_dir tntnet)
   TNTDB_DIR=$(get_build_dir tntdb)
   LIBUPNP_DIR=$(get_build_dir libupnp)
@@ -333,6 +334,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $CXXTOOLS_DIR/.install_pkg/usr/lib/libcxxtools.so.9.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcxxtools.so.9
       cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet.so.12
   fi
 
@@ -347,10 +349,11 @@ addon() {
       fname=`basename $fmo .mo`
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
       mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-restfulapi.mo    
+        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-restfulapi.mo
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $CXXTOOLS_DIR/.install_pkg/usr/lib/libcxxtools.so.9.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcxxtools.so.9
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagick++-6.Q16.so.6.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagick++-6.Q16.so.6
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickCore-6.Q16.so.2.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickCore-6.Q16.so.2
       cp -P $IM_DIR/.install_pkg/usr/lib/libMagickWand-6.Q16.so.2.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libMagickWand-6.Q16.so.2
@@ -614,6 +617,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $CXXTOOLS_DIR/.install_pkg/usr/lib/libcxxtools.so.9.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcxxtools.so.9
       cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet.so.12
       cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet_sdk.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet_sdk.so.12
       cp -P $TNTDB_DIR/.install_pkg/usr/lib/libtntdb.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntdb.so.4
