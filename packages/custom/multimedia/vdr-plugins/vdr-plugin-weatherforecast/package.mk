@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-weatherforecast"
-PKG_VERSION="36f7ac9"
+PKG_VERSION="842b086"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

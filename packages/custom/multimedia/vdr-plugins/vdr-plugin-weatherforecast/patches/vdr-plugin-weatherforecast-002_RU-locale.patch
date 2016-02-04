@@ -1,6 +1,6 @@
 diff -Naur a/po/de_DE.po b/po/de_DE.po
---- a/po/de_DE.po	2015-04-13 09:56:55.000000000 +0300
-+++ b/po/de_DE.po	2015-04-13 10:25:05.000000000 +0300
+--- a/po/de_DE.po	2016-02-04 00:00:18.000000000 +0200
++++ b/po/de_DE.po	2016-02-04 17:12:58.449811631 +0200
 @@ -113,3 +113,6 @@
  
  msgid "Maximum Temperature"
@@ -10,7 +10,7 @@ diff -Naur a/po/de_DE.po b/po/de_DE.po
 +msgstr ""
 diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 --- a/po/ru_RU.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/po/ru_RU.po	2015-04-13 10:25:57.000000000 +0300
++++ b/po/ru_RU.po	2016-02-04 17:12:58.449811631 +0200
 @@ -0,0 +1,118 @@
 +# Copyright (C) 2015 
 +# This file is distributed under the same license as the PACKAGE package.
@@ -131,14 +131,14 @@ diff -Naur a/po/ru_RU.po b/po/ru_RU.po
 +msgid "Weatherforecast based on forecast.io"
 +msgstr "Прогноз погоды основанный на forecast.io"
 diff -Naur a/weatherforecast.c b/weatherforecast.c
---- a/weatherforecast.c	2015-04-13 09:56:55.000000000 +0300
-+++ b/weatherforecast.c	2015-04-13 12:25:56.770241529 +0300
+--- a/weatherforecast.c	2016-02-04 00:00:18.000000000 +0200
++++ b/weatherforecast.c	2016-02-04 17:15:49.281804262 +0200
 @@ -19,7 +19,7 @@
  // Constants
  //***************************************************************************
- static const char *VERSION        = "0.1.1";
+ static const char *VERSION        = "0.2.0";
 -static const char *DESCRIPTION    = "Weatherforecast based on forecast.io";
 +static const char *DESCRIPTION    = tr("Weatherforecast based on forecast.io");
- static const char *MAINMENUENTRY  = tr("WeatherForecast");
  
  //***************************************************************************
+ // Globals
