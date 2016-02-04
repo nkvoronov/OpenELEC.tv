@@ -207,6 +207,7 @@ addon() {
   API_VERSION="2.2.0"
   VDR_DIR=$(get_build_dir vdr)
 
+  PCRE_DIR=$(get_build_dir pcre)
   CXXTOOLS_DIR=$(get_build_dir cxxtools)
   TNTNET_DIR=$(get_build_dir tntnet)
   TNTDB_DIR=$(get_build_dir tntdb)
@@ -334,6 +335,7 @@ addon() {
     done
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+      cp -P $PCRE_DIR/.install_pkg/usr/lib/libpcrecpp.so.0.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libprcecpp.so.0
       cp -P $CXXTOOLS_DIR/.install_pkg/usr/lib/libcxxtools.so.9.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcxxtools.so.9
       cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet.so.12
   fi
