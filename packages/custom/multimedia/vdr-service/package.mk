@@ -19,7 +19,7 @@
 
 PKG_NAME="vdr-service"
 PKG_VERSION="2.2.0"
-PKG_REV="79"
+PKG_REV="80"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -56,7 +56,6 @@ ENABLE_VDR_PLUGIN_SOFTHDDEVICE="yes"
 ENABLE_VDR_PLUGIN_TEXT2SKIN="yes"
 ENABLE_VDR_PLUGIN_TVGUIDE="yes"
 ENABLE_VDR_PLUGIN_TVSCRAPER="yes"
-ENABLE_VDR_PLUGIN_UPNP="yes"
 ENABLE_VDR_PLUGIN_XINELIBOUTPUT="yes"
 ENABLE_VDR_SKIN_FLAT="yes"
 ENABLE_VDR_SKIN_FLATPLUS="yes"
@@ -156,10 +155,6 @@ fi
 
 if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvscraper"
-fi
-
-if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-upnp"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
@@ -502,20 +497,6 @@ post_install() {
       mkdir -p $INSTALL/usr/share/locale/$fname
       mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
         cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-tvscraper.mo
-    done
-  fi
-
-  if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
-    VDR_PLUGIN_UPNP_DIR=$(get_build_dir vdr-plugin-upnp)
-    cp -P $VDR_PLUGIN_UPNP_DIR/libvdr-upnp.so $INSTALL/usr/lib/vdr/libvdr-upnp.so.$API_VERSION
-    cp -PR $VDR_PLUGIN_UPNP_DIR/libupnp*.so.* $INSTALL/usr/lib/vdr
-    mkdir -p $INSTALL/usr/config/vdr/plugins/upnp
-      cp -PR $VDR_PLUGIN_UPNP_DIR/httpdocs $INSTALL/usr/config/vdr/plugins/upnp
-    for fmo in `ls $VDR_PLUGIN_UPNP_DIR/po/*.mo`;do
-      fname=`basename $fmo .mo`
-      mkdir -p $INSTALL/usr/share/locale/$fname
-      mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-        cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr-upnp.mo
     done
   fi
 

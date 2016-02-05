@@ -132,10 +132,6 @@ msgctxt "#2120"
 msgid "Enable plugin: wirbelscan"
 msgstr ""
 
-msgctxt "#2121"
-msgid "Enable plugin: upnp"
-msgstr ""
-
 msgctxt "#2122"
 msgid "Enable plugin: dvbapi"
 msgstr ""

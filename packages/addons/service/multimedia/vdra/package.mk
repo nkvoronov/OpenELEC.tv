@@ -19,7 +19,7 @@
 
 PKG_NAME="vdra"
 PKG_VERSION="2.2.0"
-PKG_REV="79"
+PKG_REV="80"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
@@ -56,7 +56,6 @@ ENABLE_VDR_PLUGIN_SOFTHDDEVICE="yes"
 ENABLE_VDR_PLUGIN_TEXT2SKIN="yes"
 ENABLE_VDR_PLUGIN_TVGUIDE="yes"
 ENABLE_VDR_PLUGIN_TVSCRAPER="yes"
-ENABLE_VDR_PLUGIN_UPNP="yes"
 ENABLE_VDR_PLUGIN_XINELIBOUTPUT="yes"
 ENABLE_VDR_SKIN_FLAT="yes"
 ENABLE_VDR_SKIN_FLATPLUS="yes"
@@ -158,10 +157,6 @@ if [ "$ENABLE_VDR_PLUGIN_TVSCRAPER" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-tvscraper"
 fi
 
-if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-upnp"
-fi
-
 if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xineliboutput"
 fi
@@ -210,8 +205,6 @@ addon() {
   PCRE_DIR=$(get_build_dir pcre)
   CXXTOOLS_DIR=$(get_build_dir cxxtools)
   TNTNET_DIR=$(get_build_dir tntnet)
-  TNTDB_DIR=$(get_build_dir tntdb)
-  LIBUPNP_DIR=$(get_build_dir libupnp)
   GLIBMM_DIR=$(get_build_dir glibmm)
   LIBXMLPP_DIR=$(get_build_dir libxml++)
   LIBSIGPP_DIR=$(get_build_dir libsigc++)
@@ -603,35 +596,6 @@ addon() {
 
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
       cp -P $JANSSON_DIR/.install_pkg/usr/lib/libjansson.so.4.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libjansson.so.4
-  fi
-
-  if [ "$ENABLE_VDR_PLUGIN_UPNP" = yes ]; then
-    VDR_PLUGIN_UPNP_DIR=$(get_build_dir vdr-plugin-upnp)
-    cp -P $VDR_PLUGIN_UPNP_DIR/libvdr-upnp.so $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr/libvdr-upnp.so.$API_VERSION
-    cp -PR $VDR_PLUGIN_UPNP_DIR/libupnp*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/upnp
-      cp -PR $VDR_PLUGIN_UPNP_DIR/httpdocs $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/upnp
-    for fmo in `ls $VDR_PLUGIN_UPNP_DIR/po/*.mo`;do
-      fname=`basename $fmo .mo`
-      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname
-      mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES
-        cp -p $fmo $ADDON_BUILD/$PKG_ADDON_ID/locale/$fname/LC_MESSAGES/vdr-upnp.mo
-    done
-
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $CXXTOOLS_DIR/.install_pkg/usr/lib/libcxxtools.so.9.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libcxxtools.so.9
-      cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet.so.12
-      cp -P $TNTNET_DIR/.install_pkg/usr/lib/libtntnet_sdk.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntnet_sdk.so.12
-      cp -P $TNTDB_DIR/.install_pkg/usr/lib/libtntdb.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libtntdb.so.4
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/tntnet
-      cp -P $TNTNET_DIR/.install_pkg/usr/lib/tntnet/tntnet.so.12.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/tntnet/tntnet.so.12
-    mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/tntdb
-      cp -P $TNTDB_DIR/.install_pkg/usr/lib/tntdb/tntdb4-mysql.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/tntdb/tntdb4-mysql.so
-      cp -P $TNTDB_DIR/.install_pkg/usr/lib/tntdb/tntdb4-replicate.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/tntdb/tntdb4-replicate.so
-      cp -P $TNTDB_DIR/.install_pkg/usr/lib/tntdb/tntdb4-sqlite.so.4.0.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/tntdb/tntdb4-sqlite.so
-      cp -P $LIBUPNP_DIR/.install_pkg/usr/lib/libixml.so.2.0.8 $ADDON_BUILD/$PKG_ADDON_ID/lib/libixml.so.2
-      cp -P $LIBUPNP_DIR/.install_pkg/usr/lib/libthreadutil.so.6.0.4 $ADDON_BUILD/$PKG_ADDON_ID/lib/libthreadutil.so.6
-      cp -P $LIBUPNP_DIR/.install_pkg/usr/lib/libupnp.so.6.3.3 $ADDON_BUILD/$PKG_ADDON_ID/lib/libupnp.so.6
   fi
 
   if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then

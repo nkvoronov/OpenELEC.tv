@@ -132,10 +132,6 @@ msgctxt "#2120"
 msgid "Enable plugin: wirbelscan"
 msgstr "Разрешить плагин: wirbelscan"
 
-msgctxt "#2121"
-msgid "Enable plugin: upnp"
-msgstr "Разрешить плагин: upnp"
-
 msgctxt "#2122"
 msgid "Enable plugin: dvbapi"
 msgstr "Разрешить плагин: dvbapi"

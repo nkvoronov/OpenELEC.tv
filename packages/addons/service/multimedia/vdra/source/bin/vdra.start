@@ -149,12 +149,6 @@ init_vdr_plugins() {
 	    VDR_ARG="$VDR_ARG -P 'iptv -d $VDR_IPTV_NUM_DEVICES'"
 	fi
 
-	if [ "$VDR_ENABLE_UPNP" == "true" ]; then
-	    VDR_UPNP_DB_DIR="$ADDON_CONFIG_DIR/plugins/upnp"
-	    mkdir -p $VDR_UPNP_DB_DIR
-	    VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_UPNP_DB_DIR'"
-	fi
-
 	if [ "$VDR_ENABLE_STREAMDEV_SERVER" == "true" ]; then
 	    VDR_ARG="$VDR_ARG -P streamdev-server"
 	fi
@@ -234,12 +228,6 @@ init_vdr_plugins() {
 
 	if [ "$VDR_ENABLE_IPTV_F" == "true" ]; then
 	    VDR_ARG="$VDR_ARG -P 'iptv -d $VDR_IPTV_NUM_DEVICES_F'"
-	fi
-
-	if [ "$VDR_ENABLE_UPNP_F" == "true" ]; then
-	    VDR_UPNP_DB_DIR="$ADDON_CONFIG_DIR/plugins/upnp"
-	    mkdir -p $VDR_UPNP_DB_DIR
-	    VDR_ARG="$VDR_ARG -P 'upnp -d $VDR_UPNP_DB_DIR'"
 	fi
 
 	if [ "$VDR_ENABLE_STREAMDEV_SERVER_F" == "true" ]; then
