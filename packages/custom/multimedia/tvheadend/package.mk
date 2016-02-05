@@ -21,7 +21,7 @@
 PKG_NAME="tvheadend"
 PKG_VERSION="70e8c42"
 PKG_VERSIONA="4.1.1476"
-PKG_REV="109"
+PKG_REV="110"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.lonelycoder.com/hts/tvheadend_overview.html"
@@ -55,10 +55,13 @@ pre_build_target() {
   fi
 }
 
+pre_configure_target() {
+  PKG_CONFIG_PATH="$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/lib/pkgconfig"
+  CFLAGS="$CFLAGS -I$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/include"
+  LDFLAGS="$LDFLAGS -L$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/lib"
+}
+
 configure_target() {
-  PKG_CONFIG_PATH="$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/lib/pkgconfig" \
-  CFLAGS="$CFLAGS -I$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/include" \
-  LDFLAGS="$LDFLAGS -L$(get_build_dir ffmpeg-tvheadend)/.install_tmp/usr/lib" \
   ./configure --prefix=/usr \
             --arch=$TARGET_ARCH \
             --cpu=$TARGET_CPU \
@@ -66,8 +69,7 @@ configure_target() {
             --enable-hdhomerun_client \
             --enable-hdhomerun_static \
             --disable-avahi \
-            --disable-libav \
-            --disable-libffmpeg_static \
+            --enable-libav \
             --enable-inotify \
             --enable-epoll \
             --disable-uriparser \
