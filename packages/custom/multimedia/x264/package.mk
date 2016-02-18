@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="x264"
-PKG_VERSION="snapshot-20160102-2245-stable"
+PKG_VERSION="snapshot-20160217-2245"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2+"
