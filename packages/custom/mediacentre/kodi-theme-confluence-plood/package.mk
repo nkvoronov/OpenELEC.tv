@@ -18,8 +18,8 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-theme-Confluence-plood"
-PKG_VERSION="b28dc67"
+PKG_NAME="kodi-theme-confluence-plood"
+PKG_VERSION="isengard-d181f2b"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

@@ -35,47 +35,47 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 if [ "$KODI_ADDON_LCD" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-lcd"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-lcd"
 fi
 
 if [ "$KODI_ADDON_TRANSMISSION" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-transmission"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-transmission"
 fi
 
 if [ "$KODI_ADDON_AUDIO_MIXER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-audio-mixer"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-audio-mixer"
 fi
 
 if [ "$KODI_ADDON_VDRFRONT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-vdrfront kodi-addon-xvdr"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-vdrfront kodi-addon-xvdr"
 fi
 
 if [ "$KODI_THEME_CONFLUENCE_PLOOD" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-theme-Confluence-plood"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-theme-confluence-plood"
 fi
 
 if [ "$OPENELEC_DEV_UPDATE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET openelec-dev-update"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET openelec-dev-update"
 fi
 
 if [ "$LOCALES_SUPPORT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kbd"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kbd"
 fi
 
 if [ "$TRANSMISSION_SERVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET transmission"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET transmission"
 fi
 
 if [ "$OSCAM_SERVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET ccid oscam-service"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET ccid oscam-service"
 fi
 
 if [ "$TVHEADEND_SERVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET tvheadend-service"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET tvheadend-service"
 fi
 
 if [ "$VDR_SERVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-service"  
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-service"
 fi
 
 if [ "$ADD_ARCHIVERS_ENABLED" = yes ]; then
