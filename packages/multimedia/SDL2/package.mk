@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ PKG_LONGDESC="Simple DirectMedia Layer is a cross-platform multimedia library de
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-shared --enable-static \
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static \
                            --enable-libc \
                            --enable-gcc-atomics \
                            --enable-atomic \
@@ -116,9 +116,7 @@ pre_make_target() {
 }
 
 post_makeinstall_target() {
-  mkdir -p $ROOT/$TOOLCHAIN/bin
-    cp $SYSROOT_PREFIX/usr/bin/sdl2-config $ROOT/$TOOLCHAIN/bin
-    $SED "s:\(['=\" ]\)/usr:\\1$SYSROOT_PREFIX/usr:g" $SYSROOT_PREFIX/usr/bin/sdl2-config
+  $SED "s:\(['=\" ]\)/usr:\\1$SYSROOT_PREFIX/usr:g" $SYSROOT_PREFIX/usr/bin/sdl2-config
 
   rm -rf $INSTALL/usr/bin
 }

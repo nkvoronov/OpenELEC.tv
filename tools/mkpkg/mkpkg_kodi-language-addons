@@ -1,6 +1,7 @@
+#!/bin/sh
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -16,19 +17,33 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="brcmfmac_sdio-firmware"
-PKG_VERSION="0.1"
-PKG_REV="1"
-PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/OpenELEC/OpenELEC.tv"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain"
-PKG_PRIORITY="optional"
-PKG_SECTION="firmware"
-PKG_SHORTDESC="brcmfmac_sdio-firmware: firmware for brcm bluetooth devices"
-PKG_LONGDESC="Firmware for Broadcom Bluetooth devices and brcm-patchram-plus that downloads a patchram files in the HCD format to the Bluetooth based silicon and combo chips and other utility functions."
+if [ -z "$1" ]; then
+  echo "Usage: $0 <branch-name>"
+  exit 0
+fi
 
-PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
+echo "getting sources..."
+  if [ ! -d kodi-language-addons.git ]; then
+    git clone --depth=1 -b $1 https://github.com/xbmc/repo-resources.git kodi-language-addons.git
+  fi
 
+  cd kodi-language-addons.git
+    git pull
+    GIT_REV=`git log -n1 --format=%h`
+  cd ..
+
+echo "copying sources..."
+  rm -rf kodi-language-addons-$GIT_REV
+  cp -R kodi-language-addons.git kodi-language-addons-$GIT_REV
+
+echo "cleaning sources..."
+  cd kodi-language-addons-$GIT_REV
+    rm -rf .git
+    ls | grep -v resource.language | xargs rm -r
+  cd ..
+
+echo "packing sources..."
+  tar cvJf kodi-language-addons-$GIT_REV.tar.xz kodi-language-addons-$GIT_REV
+
+echo "remove temporary sourcedir..."
+  rm -rf kodi-language-addons-$GIT_REV

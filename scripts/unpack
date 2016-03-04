@@ -2,7 +2,7 @@
 
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -92,6 +92,10 @@ fi
 if [ -d "$PKG_DIR/sources" ]; then
   [ ! -d "$BUILD/${PKG_NAME}-${PKG_VERSION}" ] && mkdir -p $BUILD/${PKG_NAME}-${PKG_VERSION}
   cp -PRf $PKG_DIR/sources/* $BUILD/${PKG_NAME}-${PKG_VERSION}
+fi
+
+if [ -z "$PKG_URL" ]; then
+  mkdir -p "${BUILD}/${PKG_NAME}-${PKG_VERSION}"
 fi
 
 if [ "$(type -t post_unpack)" = "function" ]; then
