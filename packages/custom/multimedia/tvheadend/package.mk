@@ -19,9 +19,9 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="eeabcd3"
-PKG_VERSIONA="4.1.1566"
-PKG_REV="115"
+PKG_VERSION="718d299"
+PKG_VERSIONA="4.1.1577"
+PKG_REV="116"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.lonelycoder.com/hts/tvheadend_overview.html"
