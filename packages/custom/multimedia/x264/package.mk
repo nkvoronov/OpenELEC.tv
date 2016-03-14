@@ -18,12 +18,12 @@
 ################################################################################
 
 PKG_NAME="x264"
-PKG_VERSION="snapshot-20160217-2245"
+PKG_VERSION="snapshot-20160307-2245-stable"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2+"
 PKG_SITE="http://videolan.org"
-PKG_URL="ftp://ftp.videolan.org/pub/videolan/x264/snapshots/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
+PKG_URL="http://ftp.videolan.org/pub/videolan/x264/snapshots/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain yasm:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
@@ -32,11 +32,6 @@ PKG_LONGDESC="x264 is a free software library and application for encoding video
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-post_unpack() {
-# yasm is now a var $AS-yasm at x264/configure - this breaks OE compiling
-  sed -i 's|AS="${AS-yasm}"|AS="yasm"|g' $ROOT/$PKG_BUILD/configure
-}
 
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
@@ -49,6 +44,9 @@ pre_configure_target() {
 
 # x264 fails running with GOLD support
   strip_gold
+  
+# set yasm to use
+  export AS=yasm
 }
 
 configure_target() {
@@ -59,14 +57,11 @@ configure_target() {
               --extra-cflags="$CFLAGS" \
               --extra-ldflags="$LDFLAGS" \
               --enable-static \
-              --enable-strip \
               --enable-pic \
-              --disable-opencl \
               --disable-avs \
-              --disable-cli \
+              --disable-swscale \
+              --disable-lavf \
               --disable-ffms \
               --disable-gpac \
-              --disable-lavf \
-              --disable-swscale \
-              --disable-asm
+              --disable-lsmash
 }

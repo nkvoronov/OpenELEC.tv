@@ -19,11 +19,11 @@
 ################################################################################
 
 PKG_NAME="tvheadend-service"
-PKG_VERSION="4.1.1577"
-PKG_REV="116"
+PKG_VERSION="4.1.1672"
+PKG_REV="117"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.lonelycoder.com/hts/tvheadend_overview.html"
+PKG_SITE="http://www.tvheadend.org"
 PKG_URL=""
 PKG_DEPENDS_TARGET="toolchain tvheadend"
 PKG_PRIORITY="optional"

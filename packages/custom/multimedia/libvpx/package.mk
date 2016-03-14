@@ -39,21 +39,22 @@ pre_configure_target() {
 
 # ffmpeg fails running with GOLD support
   strip_gold
-
-  export CFLAGS="$CFLAGS -fPIC -DPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC -DPIC"
-  export LDFLAGS="$LDFLAGS -fPIC -DPIC"
-
-  export LD=$CC
-  export AS=$ROOT/$TOOLCHAIN/bin/yasm 
 }
 
 configure_target() {
   $PKG_CONFIGURE_SCRIPT --prefix=/usr \
-                        --extra-cflags="$CFLAGS" \
-                        --disable-examples \
-                        --disable-docs \
-                        --disable-shared \
-                        --disable-unit-tests \
-                        --enable-static
+                       --extra-cflags="$CFLAGS" \
+                       --extra-cxxflags="$CXXFLAGS" \
+                       --enable-pic \
+                       --as=yasm \
+                       --enable-static \
+                       --enable-vp8 \
+                       --enable-vp9 \
+                       --enable-small \
+                       --disable-examples \
+                       --disable-docs \
+                       --disable-shared \
+                       --disable-unit-tests \
+                       --disable-vp8-decoder \
+                       --disable-vp9-decoder
 }

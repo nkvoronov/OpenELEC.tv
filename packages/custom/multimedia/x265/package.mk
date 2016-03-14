@@ -22,7 +22,8 @@ PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2+"
 PKG_SITE="https://bitbucket.org/multicoreware/x265/"
-PKG_URL="http://ftp.videolan.org/pub/videolan/x265/${PKG_NAME}_${PKG_VERSION}.tar.gz"
+# PKG_URL="ftp://ftp.videolan.org/pub/videolan/x265/${PKG_NAME}-${PKG_VERSION}.tar.gz" #packages are broken at official site
+PKG_URL="http://mycvh.de/openelec/x265/${PKG_NAME}-${PKG_VERSION}.tar.xz"
 PKG_DEPENDS_TARGET="toolchain yasm:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
@@ -33,12 +34,17 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -fPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC"
-  export LDFLAGS="$LDFLAGS -fPIC"
   cd ./build/linux
 }
 
 configure_target() {
-cmake -G "Unix Makefiles" ../../source -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DENABLE_CLI=OFF -DENABLE_SHARED:BOOLEAN=OFF -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_TOOLCHAIN_FILE="$CMAKE_CONF" -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake \
+	-G "Unix Makefiles" \
+	-DCMAKE_INSTALL_PREFIX="/usr" \
+	-DCMAKE_C_FLAGS="$CFLAGS" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+	-DENABLE_SHARED=OFF \
+	-DENABLE_STATIC=ON \
+	-DENABLE_CLI=OFF \
+	../../source
 }
