@@ -19,12 +19,14 @@
 ################################################################################
 
 PKG_NAME="scan-s2"
-PKG_VERSION="05b33bab69a1"
+PKG_VERSION="05b33ba"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://bitbucket.org/CrazyCat/scan-s2"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://bitbucket.org/CrazyCat/scan-s2"
+PKG_GIT_BRANCH="master"
+PKG_KEEP_CHECKOUT="yes"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"

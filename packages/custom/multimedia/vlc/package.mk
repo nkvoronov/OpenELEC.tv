@@ -27,7 +27,7 @@ PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain libass librsvg liblivemedia libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate \
 libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 opus lirc libavc1394 \
-libdc1394 libdvdnav a52dec libssh2 libmatroska libshout gnutls ncurses SDL_image qt4"
+libdc1394 libdvdnav a52dec libssh2 libmatroska libshout gnutls ncursesw6 SDL_image qt4"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
@@ -225,9 +225,12 @@ PKG_CONFIGURE_OPTS_TARGET="$PKG_CONFIGURE_MAIN_OPT \
 
 pre_configure_target() {
   export TAGLIB_CFLAGS="-I$SYSROOT_PREFIX/usr/include/taglib"
-  export NCURSES_CFLAGS="-I$SYSROOT_PREFIX/usr/include/ncurses"
-  export NCURSES_LIBS="-L$SYSROOT_PREFIX/usr/lib"
+  export NCURSES_CFLAGS="-I$(get_build_dir ncursesw6)/.install_tmp/usr/include"
+  export NCURSES_LIBS="-L$(get_build_dir ncursesw5)/.install_tmp/usr/lib"
 
+  #PKG_CONFIG_PATH="$(get_build_dir taglib-vlc)/.install_tmp/usr/lib/pkgconfig:$(get_build_dir ncursesw5)/.install_tmp/usr/lib/pkgconfig"
+  #CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include -I$(get_build_dir ncursesw5)/.install_tmp/usr/include"
+  #LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib -L$(get_build_dir ncursesw5)/.install_tmp/usr/lib"
 }
 
 pre_make_target() {

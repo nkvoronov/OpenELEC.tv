@@ -32,22 +32,22 @@ PKG_LONGDESC="This project describes how to build your own digital satellite rec
 PKG_AUTORECONF="no"
 PKG_IS_ADDON="no"
 
-ENABLE_VDR_DUMMYDEVICE="yes"
-ENABLE_VDR_EPGSEARCH="yes"
-ENABLE_VDR_IPTV="yes"
+ENABLE_VDR_PLUGIN_DUMMYDEVICE="yes"
+ENABLE_VDR_PLUGIN_EPGSEARCH="yes"
+ENABLE_VDR_PLUGIN_IPTV="yes"
 ENABLE_VDR_PLUGIN_DVBAPI="yes"
 ENABLE_VDR_PLUGIN_EEPG="yes"
 ENABLE_VDR_PLUGIN_EPGFIXER="yes"
-ENABLE_VDR_LIVE="yes"
+ENABLE_VDR_PLUGIN_LIVE="yes"
 ENABLE_VDR_PLUGIN_RESTFULAPI="yes"
 ENABLE_VDR_PLUGIN_STREAMDEV="yes"
 ENABLE_VDR_PLUGIN_VNSISERVER="yes"
 ENABLE_VDR_PLUGIN_XMLTV2VDR="yes"
 ENABLE_VDR_PLUGIN_XVDR="yes"
-ENABLE_VDR_SATIP="yes"
-ENABLE_VDR_WIRBELSCAN="yes"
-ENABLE_VDR_FEMON="yes"
-ENABLE_VDR_FILEBROWSER="yes"
+ENABLE_VDR_PLUGIN_SATIP="yes"
+ENABLE_VDR_PLUGIN_WIRBELSCAN="yes"
+ENABLE_VDR_PLUGIN_FEMON="yes"
+ENABLE_VDR_PLUGIN_FILEBROWSER="yes"
 ENABLE_VDR_PLUGIN_LCDPROC="yes"
 ENABLE_VDR_PLUGIN_MENUORG="yes"
 ENABLE_VDR_PLUGIN_SLEEPTIMER="yes"
@@ -56,24 +56,24 @@ ENABLE_VDR_PLUGIN_TEXT2SKIN="yes"
 ENABLE_VDR_PLUGIN_TVGUIDE="yes"
 ENABLE_VDR_PLUGIN_TVSCRAPER="yes"
 ENABLE_VDR_PLUGIN_XINELIBOUTPUT="yes"
-ENABLE_VDR_SKIN_FLAT="yes"
-ENABLE_VDR_SKIN_FLATPLUS="yes"
-ENABLE_VDR_SKIN_NOPACITY="yes"
-ENABLE_VDR_SYSTEMINFO="yes"
+ENABLE_VDR_PLUGIN_SKINFLAT="yes"
+ENABLE_VDR_PLUGIN_SKINFLATPLUS="yes"
+ENABLE_VDR_PLUGIN_SKINNOPACITY="yes"
+ENABLE_VDR_PLUGIN_SYSTEMINFO="yes"
 ENABLE_VDR_PLUGIN_SKINDESIGNER="yes"
 ENABLE_VDR_PLUGIN_WEATHERFORECAST="yes"
-ENABLE_VDR_FAVORITES="yes"
+ENABLE_VDR_PLUGIN_FAVORITES="yes"
 
-if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-dummydevice"
+if [ "$ENABLE_VDR_PLUGIN_DUMMYDEVICE" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-dummydevice"
 fi
 
-if [ "$ENABLE_VDR_EPGSEARCH" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-epgsearch"
+if [ "$ENABLE_VDR_PLUGIN_EPGSEARCH" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-epgsearch"
 fi
 
-if [ "$ENABLE_VDR_IPTV" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-iptv"
+if [ "$ENABLE_VDR_PLUGIN_IPTV" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-iptv"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_DVBAPI" = yes ]; then
@@ -88,8 +88,8 @@ if [ "$ENABLE_VDR_PLUGIN_EPGFIXER" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-epgfixer"
 fi
 
-if [ "$ENABLE_VDR_LIVE" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-live"
+if [ "$ENABLE_VDR_PLUGIN_LIVE" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-live"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_RESTFULAPI" = yes ]; then
@@ -112,20 +112,20 @@ if [ "$ENABLE_VDR_PLUGIN_XVDR" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xvdr"
 fi
 
-if [ "$ENABLE_VDR_SATIP" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-satip"
+if [ "$ENABLE_VDR_PLUGIN_SATIP" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-satip"
 fi
 
-if [ "$ENABLE_VDR_WIRBELSCAN" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-wirbelscan vdr-wirbelscancontrol"
+if [ "$ENABLE_VDR_PLUGIN_WIRBELSCAN" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-wirbelscan vdr-plugin-wirbelscancontrol"
 fi
 
-if [ "$ENABLE_VDR_FEMON" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-femon"
+if [ "$ENABLE_VDR_PLUGIN_FEMON" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-femon"
 fi
 
-if [ "$ENABLE_VDR_FILEBROWSER" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-filebrowser"
+if [ "$ENABLE_VDR_PLUGIN_FILEBROWSER" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-filebrowser"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_LCDPROC" = yes ]; then
@@ -160,20 +160,20 @@ if [ "$ENABLE_VDR_PLUGIN_XINELIBOUTPUT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-xineliboutput"
 fi
 
-if [ "$ENABLE_VDR_SKIN_FLAT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flat"
+if [ "$ENABLE_VDR_PLUGIN_SKINFLAT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-skinflat"
 fi
 
-if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-flatplus"
+if [ "$ENABLE_VDR_PLUGIN_SKINFLATPLUS" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-skinflatplus"
 fi
 
-if [ "$ENABLE_VDR_SKIN_NOPACITY" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-skin-nopacity"
+if [ "$ENABLE_VDR_PLUGIN_SKINNOPACITY" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-skinnopacity"
 fi
 
-if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-systeminfo"
+if [ "$ENABLE_VDR_PLUGIN_SYSTEMINFO" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-systeminfo"
 fi
 
 if [ "$ENABLE_VDR_PLUGIN_SKINDESIGNER" = yes ]; then
@@ -184,8 +184,8 @@ if [ "$ENABLE_VDR_PLUGIN_WEATHERFORECAST" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-weatherforecast"
 fi
 
-if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-favorites"
+if [ "$ENABLE_VDR_PLUGIN_FAVORITES" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vdr-plugin-favorites"
 fi
 
 make_target() {
@@ -225,13 +225,13 @@ post_install() {
       cp -p $fmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vdr.mo
   done
 
-  if [ "$ENABLE_VDR_DUMMYDEVICE" = yes ]; then
-    VDR_PLUGIN_DUMMYDEVICE_DIR=$(get_build_dir vdr-dummydevice)
+  if [ "$ENABLE_VDR_PLUGIN_DUMMYDEVICE" = yes ]; then
+    VDR_PLUGIN_DUMMYDEVICE_DIR=$(get_build_dir vdr-plugin-dummydevice)
     cp -PR $VDR_PLUGIN_DUMMYDEVICE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
   fi
 
-  if [ "$ENABLE_VDR_EPGSEARCH" = yes ]; then
-    VDR_PLUGIN_EPGSEARCH_DIR=$(get_build_dir vdr-epgsearch)
+  if [ "$ENABLE_VDR_PLUGIN_EPGSEARCH" = yes ]; then
+    VDR_PLUGIN_EPGSEARCH_DIR=$(get_build_dir vdr-plugin-epgsearch)
     cp -PR $VDR_PLUGIN_EPGSEARCH_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/epgsearch
       cp -PR $VDR_PLUGIN_EPGSEARCH_DIR/conf/* $INSTALL/usr/config/vdr/plugins/epgsearch
@@ -243,8 +243,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_IPTV" = yes ]; then
-    VDR_PLUGIN_IPTV_DIR=$(get_build_dir vdr-iptv)
+  if [ "$ENABLE_VDR_PLUGIN_IPTV" = yes ]; then
+    VDR_PLUGIN_IPTV_DIR=$(get_build_dir vdr-plugin-iptv)
     cp -PR $VDR_PLUGIN_IPTV_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/iptv
       cp -PR $VDR_PLUGIN_IPTV_DIR/iptv/* $INSTALL/usr/config/vdr/plugins/iptv
@@ -292,8 +292,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_LIVE" = yes ]; then
-    VDR_PLUGIN_LIVE_DIR=$(get_build_dir vdr-live)
+  if [ "$ENABLE_VDR_PLUGIN_LIVE" = yes ]; then
+    VDR_PLUGIN_LIVE_DIR=$(get_build_dir vdr-plugin-live)
     cp -PR $VDR_PLUGIN_LIVE_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/live
       cp -PR $VDR_PLUGIN_LIVE_DIR/live/* $INSTALL/usr/config/vdr/plugins/live
@@ -369,8 +369,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_SATIP" = yes ]; then
-    VDR_PLUGIN_SATIP_DIR=$(get_build_dir vdr-satip)
+  if [ "$ENABLE_VDR_PLUGIN_SATIP" = yes ]; then
+    VDR_PLUGIN_SATIP_DIR=$(get_build_dir vdr-plugin-satip)
     cp -PR $VDR_PLUGIN_SATIP_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_SATIP_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -380,17 +380,17 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_WIRBELSCAN" = yes ]; then
-    VDR_PLUGIN_WIRBELSCAN_DIR=$(get_build_dir vdr-wirbelscan)
-    VDR_PLUGIN_WIRBELSCANCONTROL_DIR=$(get_build_dir vdr-wirbelscancontrol)
+  if [ "$ENABLE_VDR_PLUGIN_WIRBELSCAN" = yes ]; then
+    VDR_PLUGIN_WIRBELSCAN_DIR=$(get_build_dir vdr-plugin-wirbelscan)
+    VDR_PLUGIN_WIRBELSCANCONTROL_DIR=$(get_build_dir vdr-plugin-wirbelscancontrol)
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr 
     cp -PR $VDR_PLUGIN_WIRBELSCAN_DIR/locale/* $INSTALL/usr/share/locale
     cp -PR $VDR_PLUGIN_WIRBELSCANCONTROL_DIR/locale/* $INSTALL/usr/share/locale
   fi
 
-  if [ "$ENABLE_VDR_FAVORITES" = yes ]; then
-    VDR_PLUGIN_FAVORITES_DIR=$(get_build_dir vdr-favorites)
+  if [ "$ENABLE_VDR_PLUGIN_FAVORITES" = yes ]; then
+    VDR_PLUGIN_FAVORITES_DIR=$(get_build_dir vdr-plugin-favorites)
     cp -PR $VDR_PLUGIN_FAVORITES_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_FAVORITES_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -400,8 +400,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_FEMON" = yes ]; then
-    VDR_PLUGIN_FEMON_DIR=$(get_build_dir vdr-femon)
+  if [ "$ENABLE_VDR_PLUGIN_FEMON" = yes ]; then
+    VDR_PLUGIN_FEMON_DIR=$(get_build_dir vdr-plugin-femon)
     cp -PR $VDR_PLUGIN_FEMON_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     for fmo in `ls $VDR_PLUGIN_FEMON_DIR/po/*.mo`;do
       fname=`basename $fmo .mo`
@@ -411,8 +411,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_FILEBROWSER" = yes ]; then
-    VDR_PLUGIN_FILEBROWSER_DIR=$(get_build_dir vdr-filebrowser) 
+  if [ "$ENABLE_VDR_PLUGIN_FILEBROWSER" = yes ]; then
+    VDR_PLUGIN_FILEBROWSER_DIR=$(get_build_dir vdr-plugin-filebrowser)
     cp -PR $VDR_PLUGIN_FILEBROWSER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/plugins/filebrowser
       cp -PR $VDR_PLUGIN_FILEBROWSER_DIR/examples/filebrowser/*  $INSTALL/usr/config/vdr/plugins/filebrowser
@@ -522,8 +522,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_SKIN_FLAT" = yes ]; then
-    VDR_PLUGIN_SKINFLAT_DIR=$(get_build_dir vdr-skin-flat)
+  if [ "$ENABLE_VDR_PLUGIN_SKINFLAT" = yes ]; then
+    VDR_PLUGIN_SKINFLAT_DIR=$(get_build_dir vdr-plugin-skinflat)
     cp -PR $VDR_PLUGIN_SKINFLAT_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINFLAT_DIR/themes/* $INSTALL/usr/config/vdr/themes
@@ -537,8 +537,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_SKIN_FLATPLUS" = yes ]; then
-    VDR_PLUGIN_SKINFLATPLUS_DIR=$(get_build_dir vdr-skin-flatplus)
+  if [ "$ENABLE_VDR_PLUGIN_SKINFLATPLUS" = yes ]; then
+    VDR_PLUGIN_SKINFLATPLUS_DIR=$(get_build_dir vdr-plugin-skinflatplus)
     cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINFLATPLUS_DIR/themes/* $INSTALL/usr/config/vdr/themes
@@ -555,8 +555,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_SKIN_NOPACITY" = yes ]; then
-    VDR_PLUGIN_SKINNOPACITY_DIR=$(get_build_dir vdr-skin-nopacity)
+  if [ "$ENABLE_VDR_PLUGIN_SKINNOPACITY" = yes ]; then
+    VDR_PLUGIN_SKINNOPACITY_DIR=$(get_build_dir vdr-plugin-skinnopacity)
     cp -PR $VDR_PLUGIN_SKINNOPACITY_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINNOPACITY_DIR/themes/* $INSTALL/usr/config/vdr/themes
@@ -572,8 +572,8 @@ post_install() {
     done
   fi
 
-  if [ "$ENABLE_VDR_SYSTEMINFO" = yes ]; then
-    VDR_PLUGIN_SYSTEMINFO_DIR=$(get_build_dir vdr-systeminfo)
+  if [ "$ENABLE_VDR_PLUGIN_SYSTEMINFO" = yes ]; then
+    VDR_PLUGIN_SYSTEMINFO_DIR=$(get_build_dir vdr-plugin-systeminfo)
     cp -PR $VDR_PLUGIN_SYSTEMINFO_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
     #mkdir -p $INSTALL/usr/config/vdr/plugins/systeminfo
       #cp -PR $VDR_PLUGIN_SYSTEMINFO_DIR/scripts/* $INSTALL/usr/config/vdr/plugins/systeminfo

@@ -32,16 +32,50 @@ PKG_LONGDESC="The ncurses (new curses) library is a free software emulation of c
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_CONFIGURE_OPTS_TARGET="--with-shared \
-                           --without-debug \
-                           --without-ada \
+PKG_CONFIGURE_OPTS_TARGET="--without-ada \
                            --without-cxx \
                            --without-cxx-binding \
+                           --disable-db-install \
                            --without-manpages \
                            --without-progs \
                            --without-tests \
-                           --enable-widec \
-                           --enable-overwrite"
+                           --with-curses-h \
+                           --without-shared \
+                           --with-normal \
+                           --without-debug \
+                           --without-profile \
+                           --without-termlib \
+                           --without-ticlib \
+                           --without-gpm \
+                           --without-dbmalloc \
+                           --without-dmalloc \
+                           --disable-rpath \
+                           --disable-overwrite \
+                           --disable-database \
+                           --with-fallbacks=linux,screen,xterm,xterm-color \
+                           --disable-big-core \
+                           --enable-termcap \
+                           --enable-getcap \
+                           --enable-getcap-cache \
+                           --enable-symlinks \
+                           --disable-bsdpad \
+                           --without-rcs-ids \
+                           --enable-ext-funcs \
+                           --disable-const \
+                           --enable-no-padding \
+                           --disable-sigwinch \
+                           --disable-tcap-names \
+                           --without-develop \
+                           --disable-hard-tabs \
+                           --disable-xmc-glitch \
+                           --disable-hashmap \
+                           --disable-safe-sprintf \
+                           --disable-scroll-hints \
+                           --disable-widec \
+                           --disable-echo \
+                           --disable-warnings \
+                           --disable-home-terminfo \
+                           --disable-assertions"
 
 pre_configure_target() {
   # causes some segmentation fault's (dialog) when compiled with gcc's link time optimization.

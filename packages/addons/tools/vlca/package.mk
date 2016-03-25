@@ -48,7 +48,7 @@ addon() {
   QT4=$(get_build_dir qt4)
   LIB_EBML=$(get_build_dir libebml)
   LIB_MATROSKA=$(get_build_dir libmatroska)
-  LIB_NCURSESW=$(get_build_dir ncurses)
+  LIB_NCURSESW=$(get_build_dir ncursesw6)
   #LIB_ICE=$(get_build_dir libICE)
   #LIB_SM=$(get_build_dir libSM)
   LIB_XRENDER=$(get_build_dir libXrender)
@@ -64,7 +64,7 @@ addon() {
     cp -P $QT4/lib/libQtGui.so.4.8.6 $ADDON_BUILD/$PKG_ADDON_ID/lib/libQtGui.so.4
     cp -P $LIB_EBML/.install_pkg/usr/lib/libebml.so.4 $ADDON_BUILD/$PKG_ADDON_ID/lib
     cp -P $LIB_MATROSKA/.install_pkg/usr/lib/libmatroska.so.6 $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -P $LIB_NCURSESW/.install_pkg/usr/lib/libncursesw.so.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libncursesw.so.6
+    cp -P $LIB_NCURSESW/.install_tmp/usr/lib/libncursesw.so.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libncursesw.so.6
 
     #cp -P $LIB_ICE/.install_pkg/usr/lib/libICE.so.6.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libICE.so.6
     #cp -P $LIB_SM/.install_pkg/usr/lib/libSM.so.6.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSM.so.6
@@ -79,7 +79,7 @@ addon() {
     rm -f $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts/README
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-    cp -R $LIB_NCURSESW/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
+    cp -R $LIB_NCURSESW/.install_tmp/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/qt4
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/qt4/plugins
