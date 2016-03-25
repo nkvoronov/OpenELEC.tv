@@ -18,7 +18,7 @@
 
 PKG_NAME="connman"
 # DO NOT UPGRADE!!
-PKG_VERSION="1.23"
+PKG_VERSION="1.31"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -33,15 +33,29 @@ PKG_LONGDESC="The ConnMan project provides a daemon for managing internet connec
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
+if [ "$PPTP_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET ppp pptp"
+  CONNMAN_PPTP="--enable-pptp PPPD=/usr/sbin/pppd PPTP=/usr/sbin/pptp"
+else
+  CONNMAN_PPTP="--disable-pptp"
+fi
+
+if [ "$OPENVPN_SUPPORT" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET openvpn"
+  CONNMAN_OPENVPN="--enable-openvpn --with-openvpn=/usr/sbin/openvpn"
+else
+  CONNMAN_OPENVPN="--disable-openvpn"
+fi
+
 PKG_CONFIGURE_OPTS_TARGET="WPASUPPLICANT=/usr/bin/wpa_supplicant \
                            --disable-gtk-doc \
                            --disable-debug \
                            --disable-hh2serial-gps \
                            --disable-openconnect \
-                           --disable-openvpn \
+                           $CONNMAN_OPENVPN \
                            --disable-vpnc \
                            --disable-l2tp \
-                           --disable-pptp \
+                           $CONNMAN_PPTP \
                            --disable-iospm \
                            --disable-tist \
                            --disable-session-policy-local \
@@ -68,20 +82,24 @@ PKG_CONFIGURE_OPTS_TARGET="WPASUPPLICANT=/usr/bin/wpa_supplicant \
 
 
 PKG_MAKE_OPTS_TARGET="storagedir=/storage/.cache/connman \
+                      vpn_storagedir=/storage/.config/vpn-config \
                       statedir=/run/connman"
 
 post_makeinstall_target() {
   rm -rf $INSTALL/usr/lib/systemd
+  rm -rf $INSTALL/usr/lib/tmpfiles.d/connman_resolvconf.conf
 
   mkdir -p $INSTALL/usr/bin
     cp -P client/connmanctl $INSTALL/usr/bin
-    cp -P $PKG_DIR/scripts/cm-online $INSTALL/usr/bin
 
   mkdir -p $INSTALL/usr/lib/connman
     cp -P $PKG_DIR/scripts/connman-setup $INSTALL/usr/lib/connman
 
   mkdir -p $INSTALL/etc
-    ln -sf /var/cache/resolv.conf $INSTALL/etc/resolv.conf
+    ln -sf /run/connman/resolv.conf $INSTALL/etc/resolv.conf
+
+    # /etc/hosts must be writeable
+    ln -sf /run/connman/hosts $INSTALL/etc/hosts
 
   mkdir -p $INSTALL/etc/connman
     cp ../src/main.conf $INSTALL/etc/connman

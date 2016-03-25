@@ -34,8 +34,8 @@
         ;;
     esac
 
-  # Bootloader to use (syslinux / u-boot / bcm2835-bootloader)
-    BOOTLOADER="bcm2835-bootloader"
+  # Bootloader to use (syslinux / u-boot / bcm2835-firmware)
+    BOOTLOADER="bcm2835-firmware"
 
   # u-boot version to use (default)
     UBOOT_VERSION="default"
@@ -46,8 +46,8 @@
   # Target Configfile for u-boot
     UBOOT_CONFIGFILE=""
 
-  # Kernel target for u-boot (default 'uImage' if BOOTLOADER=u-boot) (uImage / zImage)
-    KERNEL_UBOOT_TARGET=""
+  # Kernel target
+    KERNEL_TARGET="zImage"
 
   # Kernel extra targets to build
     KERNEL_UBOOT_EXTRA_TARGET=""
@@ -60,10 +60,10 @@
     LINUX="default"
 
   # NOOBS supported hex versions (legacy)
-    NOOBS_HEX="2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19"
+    NOOBS_HEX="2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19,0092"
 
   # NOOBS supported model versions
-    NOOBS_SUPPORTED_MODELS="'Pi Model','Pi Zero'"
+    NOOBS_SUPPORTED_MODELS="'Pi Model','Pi Compute Module','Pi Zero'"
 
 ################################################################################
 # setup build defaults
@@ -95,8 +95,8 @@
   # OpenGL(X) implementation to use (no / mesa)
     OPENGL="no"
 
-  # OpenGL-ES implementation to use (no / bcm2835-driver / gpu-viv-bin-mx6q)
-    OPENGLES="bcm2835-driver"
+  # OpenGL-ES implementation to use (no / bcm2835-firmware / gpu-viv-bin-mx6q)
+    OPENGLES="bcm2835-firmware"
 
   # include uvesafb support (yes / no)
     UVESAFB_SUPPORT="no"
@@ -112,11 +112,8 @@
   # e.g. GRAPHIC_DRIVERS="i915 i965 r300 r600 radeonsi nvidia"
     GRAPHIC_DRIVERS=""
 
-  # KODI Player implementation to use (default / bcm2835-driver / libfslvpuwrap)
-    KODIPLAYER_DRIVER="bcm2835-driver"
-
-  # KODI DCADEC support (yes / no)
-    DCADEC_SUPPORT="yes"
+  # KODI Player implementation to use (default / bcm2835-firmware / libfslvpuwrap)
+    KODIPLAYER_DRIVER="bcm2835-firmware"
 
   # Modules to install in initramfs for early boot
     INITRAMFS_MODULES=""

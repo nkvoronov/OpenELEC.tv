@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="audiodecoder.ncsf"
-PKG_VERSION="6cbec60"
+PKG_VERSION="b452778"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.ncsf"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/notspiff/audiodecoder.ncsf"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""

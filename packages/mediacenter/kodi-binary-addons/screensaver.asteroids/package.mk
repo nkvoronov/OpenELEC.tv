@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="screensaver.asteroids"
-PKG_VERSION="09d7693"
+PKG_VERSION="c7ae05f"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/screensaver.asteroids"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/notspiff/screensaver.asteroids"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""

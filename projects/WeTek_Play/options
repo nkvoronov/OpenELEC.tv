@@ -35,7 +35,7 @@
         ;;
     esac
 
-  # Bootloader to use (syslinux / u-boot / atv-bootloader / bcm2835-bootloader)
+  # Bootloader to use (syslinux / u-boot / atv-bootloader / bcm2835-firmware)
     BOOTLOADER="u-boot"
 
   # u-boot version to use (default)
@@ -47,8 +47,8 @@
   # Target Configfile for u-boot
     UBOOT_CONFIGFILE=""
 
-  # Kernel target for u-boot (default 'uImage' if BOOTLOADER=u-boot) (uImage / zImage)
-    KERNEL_UBOOT_TARGET="uImage-dtb"
+  # Kernel target
+    KERNEL_TARGET="uImage-dtb"
 
   # Kernel extra targets to build
     KERNEL_UBOOT_EXTRA_TARGET="wetek_play.dtd"
@@ -90,7 +90,7 @@
   # OpenGL(X) implementation to use (no / mesa)
     OPENGL="no"
 
-  # OpenGL-ES implementation to use (no / bcm2835-driver / gpu-viv-bin-mx6q / opengl-meson6)
+  # OpenGL-ES implementation to use (no / bcm2835-firmware / gpu-viv-bin-mx6q / opengl-meson6)
     OPENGLES="opengl-meson6"
 
   # include uvesafb support (yes / no)
@@ -107,11 +107,8 @@
   # e.g. GRAPHIC_DRIVERS="i915 i965 r300 r600 radeonsi nvidia"
     GRAPHIC_DRIVERS=""
 
-  # KODI Player implementation to use (default / bcm2835-driver / libfslvpuwrap / libamcodec)
+  # KODI Player implementation to use (default / bcm2835-firmware / libfslvpuwrap / libamcodec)
     KODIPLAYER_DRIVER="libamcodec"
-
-  # KODI DCADEC support (yes / no)
-    DCADEC_SUPPORT="yes"
 
   # Modules to install in initramfs for early boot
     INITRAMFS_MODULES=""

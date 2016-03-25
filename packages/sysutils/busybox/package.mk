@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="busybox"
-PKG_VERSION="1.24.1"
+PKG_VERSION="1.24.2"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -182,9 +182,6 @@ makeinstall_target() {
 
   # /etc/machine-id, needed by systemd and dbus
     ln -sf /run/machine-id $INSTALL/etc/machine-id
-
-  # /etc/hosts must be writeable
-    ln -sf /var/cache/hosts $INSTALL/etc/hosts
 
   # /etc/mtab is needed by udisks etc...
     ln -sf /proc/self/mounts $INSTALL/etc/mtab

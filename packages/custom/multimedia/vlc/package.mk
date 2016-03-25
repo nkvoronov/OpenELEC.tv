@@ -20,14 +20,14 @@
 
 PKG_NAME="vlc"
 PKG_VERSION="2.2.1"
-PKG_REV="22"
+PKG_REV="23"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain libass librsvg liblivemedia libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate \
-libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib-vlc libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 opus lirc libavc1394 \
-libdc1394 libdvdnav a52dec libssh2 libmatroska libshout ncursesw5 gnutls SDL_image qt4"
+libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 opus lirc libavc1394 \
+libdc1394 libdvdnav a52dec libssh2 libmatroska libshout gnutls ncurses SDL_image qt4"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
@@ -224,9 +224,10 @@ PKG_CONFIGURE_OPTS_TARGET="$PKG_CONFIGURE_MAIN_OPT \
 	$PKG_CONFIGURE_COMPONENTS_OPTS"
 
 pre_configure_target() {
-  PKG_CONFIG_PATH="$(get_build_dir taglib-vlc)/.install_tmp/usr/lib/pkgconfig:$(get_build_dir ncursesw5)/.install_tmp/usr/lib/pkgconfig"
-  CFLAGS="$CFLAGS -I$(get_build_dir taglib-vlc)/.install_tmp/usr/include -I$(get_build_dir ncursesw5)/.install_tmp/usr/include"
-  LDFLAGS="$LDFLAGS -L$(get_build_dir taglib-vlc)/.install_tmp/usr/lib -L$(get_build_dir ncursesw5)/.install_tmp/usr/lib"
+  export TAGLIB_CFLAGS="-I$SYSROOT_PREFIX/usr/include/taglib"
+  export NCURSES_CFLAGS="-I$SYSROOT_PREFIX/usr/include/ncurses"
+  export NCURSES_LIBS="-L$SYSROOT_PREFIX/usr/lib"
+
 }
 
 pre_make_target() {
@@ -246,15 +247,15 @@ post_install() {
   mkdir -p $INSTALL/usr/bin
     mv $INSTALL/usr/bin/vlc $INSTALL/usr/bin/vlc.bin
     cp -pR $PKG_DIR/scripts/* $INSTALL/usr/bin
-    
+
   mkdir -p $INSTALL/usr/config/vlc
     cp -pR $PKG_DIR/config/* $INSTALL/usr/config/vlc
-    
+
   mkdir -p $INSTALL/usr/share/locale
   for fgmo in `ls $PKG_BUILD/po/*.gmo`;do
     fname=`basename $fgmo .gmo`
     mkdir -p $INSTALL/usr/share/locale/$fname
     mkdir -p $INSTALL/usr/share/locale/$fname/LC_MESSAGES
-    cp -p $fgmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vlc.mo    
+    cp -p $fgmo $INSTALL/usr/share/locale/$fname/LC_MESSAGES/vlc.mo
   done
 }

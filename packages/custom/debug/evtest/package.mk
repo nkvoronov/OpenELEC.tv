@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="evtest"
-PKG_VERSION="1.30"
+PKG_VERSION="1.33"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -41,5 +41,4 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/bin
    cp -P $PKG_BUILD/.$TARGET_NAME/evtest $INSTALL/usr/bin
-   cp -P $PKG_BUILD/.$TARGET_NAME/evtest-capture $INSTALL/usr/bin
 }

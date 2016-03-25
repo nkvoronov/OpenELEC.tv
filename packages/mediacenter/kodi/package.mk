@@ -17,13 +17,11 @@
 ################################################################################
 
 PKG_NAME="kodi"
-PKG_VERSION="15.2-02e7013"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain kodi:host libsquish boost Python zlib bzip2 systemd pciutils lzo pcre swig:host libass curl rtmpdump fontconfig fribidi tinyxml libjpeg-turbo libpng tiff freetype jasper libogg libcdio libmpeg2 taglib libxml2 libxslt yajl sqlite libvorbis ffmpeg kodi-language-addons"
+PKG_DEPENDS_TARGET="toolchain kodi:host libsquish boost Python zlib bzip2 systemd pciutils lzo pcre swig:host libass curl rtmpdump fontconfig fribidi tinyxml libjpeg-turbo libpng tiff freetype jasper libogg libcdio libmpeg2 taglib libxml2 libxslt yajl sqlite libvorbis ffmpeg crossguid giflib"
 PKG_DEPENDS_HOST="lzo:host libpng:host libjpeg-turbo:host giflib:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="mediacenter"
@@ -33,6 +31,21 @@ PKG_LONGDESC="Kodi Media Center (which was formerly named Xbox Media Center or X
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
+case "$KODIPLAYER_DRIVER" in
+  bcm2835-firmware)
+    PKG_VERSION="4c58ea8"
+    PKG_GIT_URL="https://github.com/popcornmix/xbmc.git"
+    PKG_GIT_BRANCH="jarvis_rbp_backports"
+    PKG_KEEP_CHECKOUT="yes"
+    ;;
+  *)
+    PKG_VERSION="a7caa16"
+    PKG_GIT_URL="https://github.com/xbmc/xbmc.git"
+    PKG_GIT_BRANCH="Jarvis"
+    PKG_KEEP_CHECKOUT="yes"
+    ;;
+esac
+
 # configure GPU drivers and dependencies:
   get_graphicdrivers
 
@@ -41,12 +54,10 @@ PKG_AUTORECONF="no"
 
 if [ "$DISPLAYSERVER" = "x11" ]; then
 # for libX11 support
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libX11 libXext libdrm"
-# for libXrandr support
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libXrandr"
-  KODI_XORG="--enable-x11 --enable-xrandr"
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libX11 libXext libdrm libXrandr"
+  KODI_XORG="--enable-x11"
 else
-  KODI_XORG="--disable-x11 --disable-xrandr"
+  KODI_XORG="--disable-x11"
 fi
 
 if [ ! "$OPENGL" = "no" ]; then
@@ -193,7 +204,7 @@ fi
 if [ ! "$KODIPLAYER_DRIVER" = default ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $KODIPLAYER_DRIVER"
 
-  if [ "$KODIPLAYER_DRIVER" = bcm2835-driver ]; then
+  if [ "$KODIPLAYER_DRIVER" = bcm2835-firmware ]; then
     KODI_OPENMAX="--enable-openmax"
     KODI_PLAYER="--enable-player=omxplayer"
     KODI_CODEC="--with-platform=raspberry-pi"
@@ -237,6 +248,8 @@ export PYTHON_LDFLAGS="-L$SYSROOT_PREFIX/usr/lib/python$PYTHON_VERSION -lpython$
 export PYTHON_SITE_PKG="$SYSROOT_PREFIX/usr/lib/python$PYTHON_VERSION/site-packages"
 export ac_python_version="$PYTHON_VERSION"
 
+export GIT_REV="$PKG_VERSION"
+
 PKG_CONFIGURE_OPTS_TARGET="gl_cv_func_gettimeofday_clobber=no \
                            ac_cv_lib_bluetooth_hci_devid=no \
                            --disable-debug \
@@ -253,12 +266,6 @@ PKG_CONFIGURE_OPTS_TARGET="gl_cv_func_gettimeofday_clobber=no \
                            $KODI_CEC \
                            --enable-udev \
                            --disable-libusb \
-                           --disable-goom \
-                           --disable-rsxs \
-                           --disable-projectm \
-                           --disable-waveform \
-                           --disable-spectrum \
-                           --disable-fishbmc \
                            $KODI_XORG \
                            --disable-ccache \
                            $KODI_ALSA \
@@ -275,6 +282,7 @@ PKG_CONFIGURE_OPTS_TARGET="gl_cv_func_gettimeofday_clobber=no \
                            $KODI_SSH \
                            $KODI_AIRPLAY \
                            $KODI_AIRTUNES \
+                           --enable-gif \
                            $KODI_NONFREE \
                            --disable-asap-codec \
                            $KODI_WEBSERVER \
@@ -289,6 +297,8 @@ pre_configure_host() {
 # kodi fails to build in subdirs
   cd $ROOT/$PKG_BUILD
     rm -rf .$HOST_NAME
+
+  echo "$PKG_VERSION" > VERSION
 }
 
 make_host() {
@@ -340,6 +350,12 @@ make_target() {
   if [ "$DISPLAYSERVER" = "x11" ]; then
     make kodi-xrandr
   fi
+
+  if [ "$SKIN_REMOVE_SHIPPED" = "yes" ]; then
+    rm -rf addons/skin.confluence
+  else
+    TexturePacker -input addons/skin.confluence/media/ -output Textures.xbt -dupecheck -use_none
+  fi
 }
 
 post_makeinstall_target() {
@@ -372,7 +388,17 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/share/applications
   rm -rf $INSTALL/usr/share/icons
   rm -rf $INSTALL/usr/share/kodi/addons/service.xbmc.versioncheck
+  rm -rf $INSTALL/usr/share/kodi/addons/visualization.vortex
   rm -rf $INSTALL/usr/share/xsessions
+
+  if [ ! "$SKIN_REMOVE_SHIPPED" = "yes" ]; then
+    # Rebrand
+      sed -e "s,@DISTRONAME@,$DISTRONAME,g" -i $INSTALL/usr/share/kodi/addons/skin.confluence/720p/IncludesHomeMenuItems.xml
+
+    rm -rf $INSTALL/usr/share/kodi/addons/skin.confluence/media
+    mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence/media
+    cp Textures.xbt $INSTALL/usr/share/kodi/addons/skin.confluence/media
+  fi
 
   mkdir -p $INSTALL/usr/share/kodi/addons
     cp -R $PKG_DIR/config/os.openelec.tv $INSTALL/usr/share/kodi/addons

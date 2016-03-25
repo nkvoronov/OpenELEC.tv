@@ -23,7 +23,7 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://www.kernel.org"
 PKG_DEPENDS_HOST="ccache:host"
 PKG_DEPENDS_TARGET="toolchain cpio:host kmod:host pciutils xz:host wireless-regdb keyutils"
-PKG_DEPENDS_INIT="toolchain"
+PKG_DEPENDS_INIT="toolchain cpu-firmware:init"
 PKG_NEED_UNPACK="$LINUX_DEPENDS"
 PKG_PRIORITY="optional"
 PKG_SECTION="linux"
@@ -31,7 +31,7 @@ PKG_SHORTDESC="linux26: The Linux kernel 2.6 precompiled kernel binary image and
 PKG_LONGDESC="This package contains a precompiled kernel image and the modules."
 case "$LINUX" in
   amlogic)
-    PKG_VERSION="amlogic-3.10-ca65e57"
+    PKG_VERSION="amlogic-3.10-c8d5b2f"
     PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
     ;;
   imx6)
@@ -40,7 +40,7 @@ case "$LINUX" in
     PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET imx6-status-led imx6-soc-fan"
     ;;
   *)
-    PKG_VERSION="4.1.18"
+    PKG_VERSION="4.4.6"
     PKG_URL="http://www.kernel.org/pub/linux/kernel/v4.x/$PKG_NAME-$PKG_VERSION.tar.xz"
     ;;
 esac
@@ -48,12 +48,10 @@ esac
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_MAKE_OPTS_HOST="ARCH=$TARGET_ARCH headers_check"
+PKG_MAKE_OPTS_HOST="ARCH=$TARGET_KERNEL_ARCH headers_check"
 
-if [ "$BOOTLOADER" = "u-boot" ]; then
-  KERNEL_IMAGE="$KERNEL_UBOOT_TARGET"
-else
-  KERNEL_IMAGE="bzImage"
+if [ "$BUILD_ANDROID_BOOTIMG" = "yes" ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mkbootimg:host"
 fi
 
 post_patch() {
@@ -65,12 +63,14 @@ post_patch() {
 
   sed -i -e "s|^HOSTCC[[:space:]]*=.*$|HOSTCC = $HOST_CC|" \
          -e "s|^HOSTCXX[[:space:]]*=.*$|HOSTCXX = $HOST_CXX|" \
-         -e "s|^ARCH[[:space:]]*?=.*$|ARCH = $TARGET_ARCH|" \
+         -e "s|^ARCH[[:space:]]*?=.*$|ARCH = $TARGET_KERNEL_ARCH|" \
          -e "s|^CROSS_COMPILE[[:space:]]*?=.*$|CROSS_COMPILE = $TARGET_PREFIX|" \
          $PKG_BUILD/Makefile
 
   cp $KERNEL_CFG_FILE $PKG_BUILD/.config
-  sed -i -e "s|^CONFIG_INITRAMFS_SOURCE=.*$|CONFIG_INITRAMFS_SOURCE=\"$ROOT/$BUILD/image/initramfs.cpio\"|" $PKG_BUILD/.config
+  if [ ! "$BUILD_ANDROID_BOOTIMG" = "yes" ]; then
+    sed -i -e "s|^CONFIG_INITRAMFS_SOURCE=.*$|CONFIG_INITRAMFS_SOURCE=\"$ROOT/$BUILD/image/initramfs.cpio\"|" $PKG_BUILD/.config
+  fi
 
   # set default hostname based on $DISTRONAME
     sed -i -e "s|@DISTRONAME@|$DISTRONAME|g" $PKG_BUILD/.config
@@ -106,7 +106,7 @@ post_patch() {
 }
 
 makeinstall_host() {
-  make ARCH=$TARGET_ARCH INSTALL_HDR_PATH=dest headers_install
+  make ARCH=$TARGET_KERNEL_ARCH INSTALL_HDR_PATH=dest headers_install
   mkdir -p $SYSROOT_PREFIX/usr/include
     cp -R dest/include/* $SYSROOT_PREFIX/usr/include
 }
@@ -139,22 +139,28 @@ make_target() {
     done
   fi
 
-  LDFLAGS="" make $KERNEL_IMAGE $KERNEL_MAKE_EXTRACMD
+  LDFLAGS="" make $KERNEL_TARGET $KERNEL_MAKE_EXTRACMD
+
+  if [ "$BUILD_ANDROID_BOOTIMG" = "yes" ]; then
+    LDFLAGS="" mkbootimg --kernel arch/$TARGET_KERNEL_ARCH/boot/$KERNEL_TARGET --ramdisk $ROOT/$BUILD/image/initramfs.cpio \
+      --second "$ANDROID_BOOTIMG_SECOND" --output arch/$TARGET_KERNEL_ARCH/boot/boot.img
+    mv -f arch/$TARGET_KERNEL_ARCH/boot/boot.img arch/$TARGET_KERNEL_ARCH/boot/$KERNEL_TARGET
+  fi
 }
 
 makeinstall_target() {
   if [ "$BOOTLOADER" = "u-boot" ]; then
     mkdir -p $INSTALL/usr/share/bootloader
-    for dtb in arch/arm/boot/dts/*.dtb; do
+    for dtb in arch/$TARGET_KERNEL_ARCH/boot/dts/*.dtb; do
       cp $dtb $INSTALL/usr/share/bootloader 2>/dev/null || :
     done
-  elif [ "$BOOTLOADER" = "bcm2835-bootloader" ]; then
+  elif [ "$BOOTLOADER" = "bcm2835-firmware" ]; then
     mkdir -p $INSTALL/usr/share/bootloader/overlays
-    cp -p arch/arm/boot/dts/*.dtb $INSTALL/usr/share/bootloader
-    for dtb in arch/arm/boot/dts/overlays/*.dtb; do
+    cp -p arch/$TARGET_KERNEL_ARCH/boot/dts/*.dtb $INSTALL/usr/share/bootloader
+    for dtb in arch/$TARGET_KERNEL_ARCH/boot/dts/overlays/*.dtbo; do
       cp $dtb $INSTALL/usr/share/bootloader/overlays 2>/dev/null || :
     done
-    cp -p arch/arm/boot/dts/overlays/README $INSTALL/usr/share/bootloader/overlays
+    cp -p arch/$TARGET_KERNEL_ARCH/boot/dts/overlays/README $INSTALL/usr/share/bootloader/overlays
   fi
 }
 

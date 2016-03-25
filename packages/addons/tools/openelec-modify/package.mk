@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 
 PKG_NAME="openelec-modify"
 PKG_VERSION="1"
-PKG_REV="23"
+PKG_REV="24"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
@@ -32,6 +32,7 @@ PKG_LONGDESC="Modify Openelec"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
+PKG_ADDON_REPOVERSION="7.0"
 
 make_target() {
   : # nothing to do here

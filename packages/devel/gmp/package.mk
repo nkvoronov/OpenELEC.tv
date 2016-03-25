@@ -45,3 +45,4 @@ pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC -DPIC"
   export CPPFLAGS="$CPPFLAGS -fexceptions"
 }
+

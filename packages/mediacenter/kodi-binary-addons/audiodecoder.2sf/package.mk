@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="audiodecoder.2sf"
-PKG_VERSION="014b430"
+PKG_VERSION="b78be21"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.2sf"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/notspiff/audiodecoder.2sf"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""

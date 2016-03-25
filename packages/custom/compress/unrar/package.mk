@@ -25,6 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="free"
 PKG_SITE="http://www.rarlab.com"
 PKG_URL="http://www.rarlab.com/rar/unrarsrc-$PKG_VERSION.tar.gz"
+PKG_SOURCE_DIR="${PKG_NAME}"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/compress"
@@ -34,10 +35,6 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-post_unpack() {
-  mv $ROOT/$BUILD/unrar $ROOT/$BUILD/$PKG_NAME-$PKG_VERSION
-}
 
 make_target() {
   cd $ROOT/$BUILD/$PKG_NAME-$PKG_VERSION

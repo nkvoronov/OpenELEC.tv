@@ -90,10 +90,6 @@ if [ "$DVB_TOOLS_ENABLED" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET scan-s2 szap-s2"
 fi
 
-if [ "$PYTHON_ADD_LIB_SUPPORT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET grab"
-fi
-
 if [ "$PHP_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET php"
 fi
@@ -102,12 +98,8 @@ if [ "$PERL_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET perl Date-Manip"
 fi
 
-if [ "$ALSAEQUAL_ENABLED" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET alsaequal"
-fi
-
 if [ "$EPGUpdaters_SUPPORT" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET vsetv2xmltv xmltv2vdr zvdrtools"
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET xmltv2vdr zvdrtools"
 fi
 
 if [ "$LIBTORRENTS_SUPPORT" = yes ]; then

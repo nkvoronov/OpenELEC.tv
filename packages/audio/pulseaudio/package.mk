@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="pulseaudio"
-PKG_VERSION="7.0"
+PKG_VERSION="8.0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -77,6 +77,7 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-silent-rules \
                            --disable-bluez5-ofono-headset \
                            --disable-bluez5-native-headset \
                            --enable-udev \
+                           --with-udev-rules-dir=/usr/lib/udev/rules.d
                            --disable-hal-compat \
                            --enable-ipv6 \
                            --enable-openssl \
@@ -96,12 +97,6 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-silent-rules \
                            --with-module-dir=/usr/lib/pulse"
 
 post_makeinstall_target() {
-# add_user pulse x 499 498 "PulseAudio System Daemon" "/var/run/pulse" "/bin/sh"
-# add_group pulse 498
-# add_group pulse-access 497
-
-  sed -e 's%user="pulse"%user="root"%g' -i $INSTALL/etc/dbus-1/system.d/pulseaudio-system.conf
-
   rm -rf $INSTALL/usr/bin/esdcompat
   rm -rf $INSTALL/usr/include
   rm -rf $INSTALL/usr/lib/cmake
@@ -112,13 +107,12 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/share/bash-completion
 
   cp $PKG_DIR/config/system.pa $INSTALL/etc/pulse/
+  cp $PKG_DIR/config/pulseaudio-system.conf $INSTALL/etc/dbus-1/system.d/
 
-  # Remove unwanted symlinks
-  for file in $INSTALL/*; do
-    if [ -L "$file" ]; then
-      rm $file
-    fi
-  done
+  mkdir -p $INSTALL/usr/config
+    cp -PR $PKG_DIR/config/pulse-daemon.conf.d $INSTALL/usr/config
+
+  ln -sf /storage/.config/pulse-daemon.conf.d $INSTALL/etc/pulse/daemon.conf.d
 }
 
 post_install() {

@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="audiodecoder.ssf"
-PKG_VERSION="ba9017a"
+PKG_VERSION="9513000"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.ssf"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/notspiff/audiodecoder.ssf"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""

@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@ PKG_LONGDESC="libtorrent (Version: $PKG_VERSION): libtorrent is a feature comple
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
+PKG_ADDON_REPOVERSION="7.0"
 
 make_target() {
   : # nothing to make here

@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-confluence-plood"
-PKG_VERSION="isengard-dcb0175"
+PKG_VERSION="jarvis-b8993ab"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -44,5 +44,5 @@ makeinstall_target() {
 
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-plood
-    cp -PR $PKG_BUILD/skin.confluence-plood-isengard/* $INSTALL/usr/share/kodi/addons/skin.confluence-plood
+    cp -PR $PKG_BUILD/skin.confluence-plood-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-plood
 }

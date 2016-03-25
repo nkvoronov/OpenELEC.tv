@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="audiodecoder.vgmstream"
-PKG_VERSION="7723f91"
+PKG_VERSION="cb2892a"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/notspiff/audiodecoder.vgmstream"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""

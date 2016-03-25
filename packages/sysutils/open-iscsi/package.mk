@@ -1,6 +1,7 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2012 Yann Cézard (eesprit@free.fr)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -22,7 +23,8 @@ PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/mikechristie/open-iscsi"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/mikechristie/open-iscsi"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_INIT="toolchain util-linux"
 PKG_PRIORITY="optional"
 PKG_SECTION="initramfs/system"

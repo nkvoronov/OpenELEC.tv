@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="pvr.hts"
-PKG_VERSION="016b0b3"
+PKG_VERSION="3c673b5"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/kodi-pvr/pvr.hts"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""

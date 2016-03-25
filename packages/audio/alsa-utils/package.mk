@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="alsa-utils"
-PKG_VERSION="1.0.29"
+PKG_VERSION="1.1.0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -32,30 +32,16 @@ PKG_LONGDESC="This package includes the utilities for ALSA, like alsamixer, apla
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-if [ "$ALSAMIXER_ENABLED" = yes ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET ncurses"
-  ALSAMIXER="--enable-alsamixer"
-  ALSACONF="--enable-alsaconf"
-else
-  ALSAMIXER="--disable-alsamixer"
-  ALSACONF="--disable-alsaconf"
-fi
-
 # package specific configure options
 PKG_CONFIGURE_OPTS_TARGET="--disable-dependency-tracking \
                            --disable-xmlto \
-                           $ALSAMIXER \
-                           $ALSACONF \
+                           --disable-alsamixer \
+                           --disable-alsaconf \
                            --disable-alsaloop \
                            --enable-alsatest \
+                           --disable-bat \
                            --disable-nls"
 
-pre_configure_target() {
-  if [ "$ALSAMIXER_ENABLED" = yes ]; then
-    export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-    export CPPFLAGS="$CPPFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-  fi
-}
 
 post_makeinstall_target() {
   rm -rf $INSTALL/lib $INSTALL/var

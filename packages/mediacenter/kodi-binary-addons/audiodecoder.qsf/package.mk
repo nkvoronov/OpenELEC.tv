@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="audiodecoder.qsf"
-PKG_VERSION="6aaf860"
+PKG_VERSION="83b18d7"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.qsf"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/notspiff/audiodecoder.qsf"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_PRIORITY="optional"
 PKG_SECTION=""

@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="libevent"
-PKG_VERSION="2.0.21-stable"
+PKG_VERSION="2.0.22-stable"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
@@ -34,11 +34,8 @@ PKG_LONGDESC="The libevent API provides a mechanism to execute a callback functi
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-shared --disable-static --enable-openssl"
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static --enable-openssl"
 
-makeinstall_target() {
-  $MAKEINSTALL
-
-  mkdir -p $INSTALL/usr/lib
-    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/.libs/libevent*.so* $INSTALL/usr/lib
+post_makeinstall_target() {
+  rm -r $INSTALL
 }

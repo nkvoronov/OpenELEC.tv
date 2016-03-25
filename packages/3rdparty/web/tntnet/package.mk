@@ -22,9 +22,9 @@ PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL-2"
 PKG_SITE="http://www.tntnet.org/"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="http://www.tntnet.org/download/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_HOST="cxxtools:host zlib:host"
-PKG_DEPENDS_TARGET="toolchain tntnet:host cxxtools"
+PKG_DEPENDS_TARGET="toolchain tntnet:host libtool cxxtools"
 PKG_PRIORITY="optional"
 PKG_SECTION="python/web"
 PKG_SHORTDESC="tntnet: C++ Dynamite for the Web"
@@ -43,21 +43,16 @@ PKG_CONFIGURE_OPTS_HOST="--disable-unittest \
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-unittest \
                            --with-sysroot=$SYSROOT_PREFIX \
-                           --with-server=yes \
-                           --with-sdk=yes \
+                           --with-server=no \
+                           --with-sdk=no \
                            --with-demos=no \
                            --with-epoll=yes \
                            --with-ssl=no \
                            --with-stressjob=no"
 
-pre_make_target() {
-  mkdir -p etc/init.d
-    cp -P ../etc/init.d/tntnet.in etc/init.d
-  mkdir -p etc/tntnet
-    cp -P ../etc/tntnet/tntnet.xml.in etc/tntnet
-}
-
 post_makeinstall_target() {
-  rm -rf $INSTALL/etc
+  $SED "s:\(['= ]\)/usr:\\1$SYSROOT_PREFIX/usr:g" $SYSROOT_PREFIX/usr/bin/tntnet-config
+
+  rm -rf $INSTALL/usr/bin
   rm -rf $INSTALL/usr/share
 }

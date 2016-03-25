@@ -20,7 +20,7 @@
 
 PKG_NAME="vlca"
 PKG_VERSION="2.2.1"
-PKG_REV="22"
+PKG_REV="23"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -48,9 +48,9 @@ addon() {
   QT4=$(get_build_dir qt4)
   LIB_EBML=$(get_build_dir libebml)
   LIB_MATROSKA=$(get_build_dir libmatroska)
-  LIB_NCURSESW=$(get_build_dir ncursesw5)
-  LIB_ICE=$(get_build_dir libICE)
-  LIB_SM=$(get_build_dir libSM)
+  LIB_NCURSESW=$(get_build_dir ncurses)
+  #LIB_ICE=$(get_build_dir libICE)
+  #LIB_SM=$(get_build_dir libSM)
   LIB_XRENDER=$(get_build_dir libXrender)
   GCC_DIR=$(get_build_dir gcc)
 
@@ -64,21 +64,23 @@ addon() {
     cp -P $QT4/lib/libQtGui.so.4.8.6 $ADDON_BUILD/$PKG_ADDON_ID/lib/libQtGui.so.4
     cp -P $LIB_EBML/.install_pkg/usr/lib/libebml.so.4 $ADDON_BUILD/$PKG_ADDON_ID/lib
     cp -P $LIB_MATROSKA/.install_pkg/usr/lib/libmatroska.so.6 $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -P $LIB_NCURSESW/.install_tmp/usr/lib/libncursesw.so.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libncursesw.so.6
-    cp -P $LIB_ICE/.install_pkg/usr/lib/libICE.so.6.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libICE.so.6
-    cp -P $LIB_SM/.install_pkg/usr/lib/libSM.so.6.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSM.so.6
+    cp -P $LIB_NCURSESW/.install_pkg/usr/lib/libncursesw.so.6.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libncursesw.so.6
+
+    #cp -P $LIB_ICE/.install_pkg/usr/lib/libICE.so.6.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libICE.so.6
+    #cp -P $LIB_SM/.install_pkg/usr/lib/libSM.so.6.0.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libSM.so.6
+
     cp -P $LIB_XRENDER/.install_pkg/usr/lib/libXrender.so.1.3.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libXrender.so.1
-    
+
     cp -PR $VLC_HTSP_DIR/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib/
     cp -PR $GCC_DIR/.install_pkg/usr/lib/libatomic.so.1.1.0 $ADDON_BUILD/$PKG_ADDON_ID/lib/libatomic.so.1
-    
+
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts
     cp -P $QT4/lib/fonts/* $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts
     rm -f $ADDON_BUILD/$PKG_ADDON_ID/lib/fonts/README
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share
-    cp -R $LIB_NCURSESW/.install_tmp/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
-    
+    cp -R $LIB_NCURSESW/.install_pkg/usr/share/* $ADDON_BUILD/$PKG_ADDON_ID/share
+
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/qt4
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/qt4/plugins
     cp -PR $QT4/plugins/* $ADDON_BUILD/$PKG_ADDON_ID/lib/qt4/plugins
@@ -90,12 +92,12 @@ addon() {
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share/vlc
     cp -R $VLC_DIR/.install_pkg/usr/share/vlc/* $ADDON_BUILD/$PKG_ADDON_ID/share/vlc/
-    
+
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share/locale
   for fgmo in `ls $VLC_DIR/po/*.gmo`;do
     fname=`basename $fgmo .gmo`
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share/locale/$fname
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share/locale/$fname/LC_MESSAGES
-    cp -p $fgmo $ADDON_BUILD/$PKG_ADDON_ID/share/locale/$fname/LC_MESSAGES/vlc.mo    
+    cp -p $fgmo $ADDON_BUILD/$PKG_ADDON_ID/share/locale/$fname/LC_MESSAGES/vlc.mo
   done
 }

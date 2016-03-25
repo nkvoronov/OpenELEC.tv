@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="ImageMagick"
-PKG_VERSION="6.9.2-4"
+PKG_VERSION="6.9.3-7"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

@@ -23,16 +23,19 @@
 # Skins to install (Confluence)
 # Space separated list is supported,
 # e.g. SKINS="Confluence"
-  SKINS="Confluence"
+  SKINS=""
 
-# Default Skin (Confluence)
+# remove default skin included in Kodi (yes/no)
+  SKIN_REMOVE_SHIPPED="no"
+
+# Default Skin (Confluence, or any from above)
   SKIN_DEFAULT="Confluence"
 
 # install extra subtitle Fonts for KODI (yes / no)
   KODI_EXTRA_FONTS="yes"
 
 # build and install PulseAudio support (yes / no)
-  PULSEAUDIO_SUPPORT="no"
+  PULSEAUDIO_SUPPORT="yes"
 
 # build and install espeak support (yes / no)
   ESPEAK_SUPPORT="yes"
@@ -60,7 +63,7 @@
 # for a list of additinoal drivers see packages/linux-drivers
 # Space separated list is supported,
 # e.g. ADDITIONAL_DRIVERS="DRIVER1 DRIVER2"
-  ADDITIONAL_DRIVERS="RTL8192CU RTL8192DU RTL8192EU RTL8188EU RTL8812AU dvbhdhomerun tbs-linux-drivers-cc"
+  ADDITIONAL_DRIVERS="RTL8192CU RTL8192DU RTL8192EU RTL8812AU dvbhdhomerun tbs-linux-drivers-cc"
 
 # build and install bluetooth support (yes / no)
   BLUETOOTH_SUPPORT="yes"
@@ -95,6 +98,9 @@
 # build with Samba Client support (mounting SAMBA shares with KODI) (yes / no)
   KODI_SAMBA_SUPPORT="yes"
 
+# include initial language addons for Kodi (yes / no)
+  KODI_LANGUAGE_ADDONS="yes"
+
 # build with NFS support (mounting nfs shares via the OS) (yes / no)
   NFS_SUPPORT="yes"
 
@@ -106,6 +112,12 @@
 
 # build and install SFTP Server (yes / no)
   SFTP_SERVER="yes"
+
+# build and install PPP support (yes / no)
+  PPTP_SUPPORT="yes"
+
+# build and install OpenVPN support (yes / no)
+  OPENVPN_SUPPORT="yes"
 
 # build and install diskmounter support (udevil)
 # this service provide auto mounting support for external drives in the
@@ -127,7 +139,7 @@
 # Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,nvidia)
 # Space separated list is supported,
 # e.g. GRAPHIC_DRIVERS="i915 i965 r300 r600 radeonsi nvidia"
-  GRAPHIC_DRIVERS="r300 r600 radeonsi i915 i965 nvidia"
+  GRAPHIC_DRIVERS="r300 r600 radeonsi i915 i965 nvidia nvidia-legacy"
 
 # build and install remote support (yes / no)
   REMOTE_SUPPORT="yes"
@@ -202,12 +214,6 @@
 ### CUSTOM OPTIONS ###
   DISTRO_CUSTOM_SRC="https://dl.dropboxusercontent.com/u/6711518/packages"
 
-# Alsa mixer enabled
-  if [ "$TARGET_ARCH" = "x86_64" ]; then
-    ALSAMIXER_ENABLED="yes"
-    ALSAEQUAL_ENABLED="yes"
-  fi
-
 # Locales
   LOCALES_SUPPORT="yes"
 
@@ -234,15 +240,11 @@
   ADD_ARCHIVERS_ENABLED="yes"
   DEV_TOOLS_ENABLED="yes"
   DVB_TOOLS_ENABLED="yes"
-  PYTHON_ADD_LIB_SUPPORT="yes"
   PHP_SUPPORT="yes"
 
 # Perl
   PERL_VERSION="5.18.2"
-
-  if [ "$TARGET_ARCH" = "x86_64" ]; then
-    PERL_SUPPORT="yes"
-  fi
+  PERL_SUPPORT="yes"
 
 # EPG Updaters
   EPGUpdaters_SUPPORT="yes"

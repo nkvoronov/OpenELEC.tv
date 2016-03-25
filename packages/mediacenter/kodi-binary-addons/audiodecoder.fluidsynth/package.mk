@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="audiodecoder.fluidsynth"
-PKG_VERSION="be8d248"
+PKG_VERSION="4780e25"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.fluidsynth"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_GIT_URL="https://github.com/notspiff/audiodecoder.fluidsynth"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain kodi-platform fluidsynth"
 PKG_PRIORITY="optional"
 PKG_SECTION=""
