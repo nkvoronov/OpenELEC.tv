@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-confluence-plood"
-PKG_VERSION="jarvis-b8993ab"
+PKG_VERSION="b8993ab"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

@@ -22,8 +22,7 @@ PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.vdr-wiki.de/wiki/index.php/Dummydevice-plugin"
-PKG_URL="http://phivdr.dyndns.org/vdr/$PKG_NAME/vdr-dummydevice-$PKG_VERSION.tgz"
-PKG_SOURCE_DIR="dummydevice-${PKG_VERSION}"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain vdr"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
@@ -47,7 +46,7 @@ make_target() {
 post_make_target() {
   VDR_DIR=$(get_build_dir vdr)
   VDR_APIVERSION=`sed -ne '/define APIVERSION/s/^.*"\(.*\)".*$/\1/p' $VDR_DIR/config.h`
-  LIB_NAME=lib${PKG_NAME}
+  LIB_NAME=lib${PKG_NAME/-plugin/}
 
   cp --remove-destination ${LIB_NAME}.so ${LIB_NAME}.so.${VDR_APIVERSION}
   $STRIP libvdr-*.so*
