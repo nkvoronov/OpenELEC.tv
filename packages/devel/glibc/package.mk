@@ -170,6 +170,13 @@ post_makeinstall_target() {
   fi
 }
 
+post_install() {
+  if [ "$LOCALES_SUPPORT" = yes ]; then
+    mkdir -p $INSTALL/usr/bin
+      cp -pR $PKG_DIR/scripts/* $INSTALL/usr/bin
+  fi
+}
+
 configure_init() {
   cd $ROOT/$PKG_BUILD
     rm -rf $ROOT/$PKG_BUILD/.$TARGET_NAME-init

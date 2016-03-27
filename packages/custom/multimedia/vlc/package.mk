@@ -225,8 +225,10 @@ PKG_CONFIGURE_OPTS_TARGET="$PKG_CONFIGURE_MAIN_OPT \
 
 pre_configure_target() {
   export TAGLIB_CFLAGS="-I$SYSROOT_PREFIX/usr/include/taglib"
-  export NCURSES_CFLAGS="-I$(get_build_dir ncursesw6)/.install_tmp/usr/include"
-  export NCURSES_LIBS="-L$(get_build_dir ncursesw6)/.install_tmp/usr/lib"
+
+  PKG_CONFIG_PATH="$(get_build_dir ncursesw6)/.install_tmp/usr/lib/pkgconfig"
+  CFLAGS="$CFLAGS -I$(get_build_dir ncursesw6)/.install_tmp/usr/include"
+  LDFLAGS="$LDFLAGS -L$(get_build_dir ncursesw6)/.install_tmp/usr/lib"
 }
 
 pre_make_target() {

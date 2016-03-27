@@ -28,7 +28,6 @@ PKG_PRIORITY="optional"
 PKG_SECTION="custom/graphics"
 PKG_SHORTDESC="librsvg is a free software SVG rendering library written as part of the GNOME project, intended to be lightweight and portable."
 PKG_LONGDESC="librsvg is a free software SVG rendering library written as part of the GNOME project, intended to be lightweight and portable."
-
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 

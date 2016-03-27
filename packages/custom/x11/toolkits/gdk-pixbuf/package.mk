@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,18 +19,17 @@
 ################################################################################
 
 PKG_NAME="gdk-pixbuf"
-PKG_VERSION="2.28.2"
+PKG_VERSION="2.32.1"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.gtk.org/"
-PKG_URL="http://ftp.acc.umu.se/pub/gnome/sources/gdk-pixbuf/2.28/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="http://ftp.acc.umu.se/pub/gnome/sources/gdk-pixbuf/2.32/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain glib libjpeg-turbo libpng jasper tiff"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/x11/toolkits"
 PKG_SHORTDESC="gdk-pixbuf: a GNOME library for image loading and manipulation."
 PKG_LONGDESC="gdk-pixbuf (GdkPixbuf) is a GNOME library for image loading and manipulation. The GdkPixbuf documentation contains both the programmer's guide and the API reference."
-
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 

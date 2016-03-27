@@ -31,7 +31,6 @@ PKG_PRIORITY="optional"
 PKG_SECTION="custom/system"
 PKG_SHORTDESC="Middleware to access a smart card using SCard API (PC/SC)"
 PKG_LONGDESC="Middleware to access a smart card using SCard API (PC/SC)"
-
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 

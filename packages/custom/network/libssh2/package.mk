@@ -30,7 +30,6 @@ PKG_PRIORITY="optional"
 PKG_SECTION="custom/network"
 PKG_SHORTDESC="libssh2 is a client-side C library implementing the SSH2 protocol. It supports regular terminal, SCP and SFTP sessions; port forwarding; password, key-based and keyboard-interactive authentication."
 PKG_LONGDESC="libssh2 is a client-side C library implementing the SSH2 protocol. It supports regular terminal, SCP and SFTP sessions; port forwarding; password, key-based and keyboard-interactive authentication."
-
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
