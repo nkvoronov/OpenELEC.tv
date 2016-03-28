@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-skindesigner"
-PKG_VERSION="2cae451"
+PKG_VERSION="9b2b1c6"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

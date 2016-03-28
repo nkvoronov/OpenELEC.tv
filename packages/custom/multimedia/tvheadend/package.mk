@@ -19,9 +19,9 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="54b57cf"
-PKG_VERSIONA="4.1.1710"
-PKG_REV="119"
+PKG_VERSION="a004ac3"
+PKG_VERSIONA="4.1.1762"
+PKG_REV="120"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
@@ -57,6 +57,10 @@ pre_build_target() {
   fi
 }
 
+pre_configure_target() {
+  export AS=yasm
+}
+
 configure_target() {
   ./configure --prefix=/usr \
             --arch=$TARGET_ARCH \
@@ -66,6 +70,8 @@ configure_target() {
             --enable-hdhomerun_static \
             --disable-avahi \
             --enable-libav \
+            --enable-ffmpeg_static \
+            --disable-libx265 \
             --enable-inotify \
             --enable-epoll \
             --disable-uriparser \
