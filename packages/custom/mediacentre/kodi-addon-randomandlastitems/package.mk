@@ -18,32 +18,33 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-theme-confluence-extented"
-PKG_VERSION="471be9d"
+PKG_NAME="kodi-addon-randomandlastitems"
+PKG_VERSION="ff04534"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/nkvoronov/skin.confluence-extented.git"
-PKG_GIT_URL="https://github.com/nkvoronov/skin.confluence-extented.git"
+PKG_SITE="https://github.com/XBMC-Addons/script.randomandlastitems.git"
+PKG_GIT_URL="https://github.com/XBMC-Addons/script.randomandlastitems.git"
 PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="yes"
-PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-favourites kodi-addon-randomandlastitems kodi-addon-skinwidgets"
+PKG_DEPENDS_TARGET="toolchain Python kodi"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/mediacentre"
-PKG_SHORTDESC="kodi-theme-Confluence-extented: KODI Mediacenter additional theme"
-PKG_LONGDESC="KODI Media Center (which was formerly named Xbox Media Center) is a free and open source cross-platform media player and home entertainment system software with a 10-foot user interface designed for the living-room TV. Its graphical user interface allows the user to easily manage video, photos, podcasts, and music from a computer, optical disk, local network, and the internet using a remote control."
+PKG_SHORTDESC="script.randomandlastitems"
+PKG_LONGDESC="script.randomandlastitems"
+
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {
-  : # nothing
+  : # nothing to make here
 }
 
 makeinstall_target() {
-  : # nothing
+  : # nothing to install here
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-extented
-    cp -PR $PKG_BUILD/skin.confluence-extented-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-extented
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.randomandlastitems
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.randomandlastitems
 }

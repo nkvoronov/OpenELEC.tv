@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,29 +18,36 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="nspr"
-PKG_VERSION="4.10.10"
+PKG_NAME="kodi-addon-skinwidgets"
+PKG_VERSION="145a9fa"
 PKG_REV="1"
-PKG_ARCH="x86_64"
-PKG_LICENSE="Mozilla Public License"
-PKG_SITE="http://www.linuxfromscratch.org/blfs/view/svn/general/nspr.html"
-PKG_URL="http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$PKG_VERSION/src/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain nss:host"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="https://github.com/XBMC-Addons/service.skin.widgets.git"
+PKG_GIT_URL="https://github.com/XBMC-Addons/service.skin.widgets.git"
+PKG_GIT_BRANCH="master"
+PKG_KEEP_CHECKOUT="yes"
+PKG_DEPENDS_TARGET="toolchain Python kodi"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/security"
-PKG_SHORTDESC="Netscape Portable Runtime (NSPR) provides a platform-neutral API for system level and libc like functions"
-PKG_LONGDESC="Netscape Portable Runtime (NSPR) provides a platform-neutral API for system level and libc like functions"
+PKG_SECTION="custom/mediacentre"
+PKG_SHORTDESC="service.skin.widgets"
+PKG_LONGDESC="service.skin.widgets"
+
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-MAKEFLAGS=-j1
+make_target() {
+  : # nothing to make here
+}
 
-if [ "$TARGET_ARCH" = "x86_64" ] ; then
-  TARGET_USE_64="--enable-64bit"
-fi
+makeinstall_target() {
+  : # nothing to install here
+}
 
-PKG_CONFIGURE_OPTS_TARGET="--with-pthreads $TARGET_USE_64"
+post_install() {
+  mkdir -p $INSTALL/usr/share/kodi/addons/service.skin.widgets
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/service.skin.widgets
 
-post_unpack() {
-  mv $ROOT/$PKG_BUILD/nspr/* $ROOT/$PKG_BUILD
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/service.skin.widgets/lib/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/service.skin.widgets/lib/ -name "*.py"`
 }
