@@ -45,6 +45,6 @@ makeinstall_target() {
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-plood
-    cp -PR $PKG_BUILD/skin.confluence-plood-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-plood
+  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-plood-jarvis
+    cp -PR $PKG_BUILD/skin.confluence-plood-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-plood-jarvis
 }

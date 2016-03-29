@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-confluence-extented"
-PKG_VERSION="471be9d"
+PKG_VERSION="f4a8570"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -44,6 +44,6 @@ makeinstall_target() {
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-extented
-    cp -PR $PKG_BUILD/skin.confluence-extented-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-extented
+  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis
+    cp -PR $PKG_BUILD/skin.confluence-extented-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis
 }

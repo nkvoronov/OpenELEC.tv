@@ -19,14 +19,12 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-skinwidgets"
-PKG_VERSION="145a9fa"
+PKG_VERSION="0.0.32"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/XBMC-Addons/service.skin.widgets.git"
-PKG_GIT_URL="https://github.com/XBMC-Addons/service.skin.widgets.git"
-PKG_GIT_BRANCH="master"
-PKG_KEEP_CHECKOUT="yes"
+PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain Python kodi"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/mediacentre"
@@ -47,7 +45,4 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/service.skin.widgets
     cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/service.skin.widgets
-
-  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/service.skin.widgets/lib/ -f
-  rm -rf `find $INSTALL/usr/share/kodi/addons/service.skin.widgets/lib/ -name "*.py"`
 }
