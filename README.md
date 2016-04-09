@@ -40,7 +40,7 @@ providing cutting edge hardware support to deliver a set-top box experience.
 
 **Features**
 
-* System size ~ 350MB
+* System size ~ 90 - 170MB
 * Minimal hardware requirements
 * Ultra fast boot
 * Simple configuration via Kodi itself

@@ -33,16 +33,16 @@ PKG_AUTORECONF="no"
 
 case "$KODIPLAYER_DRIVER" in
   bcm2835-firmware)
-    PKG_VERSION="4c58ea8"
-    PKG_GIT_URL="https://github.com/popcornmix/xbmc.git"
+    PKG_VERSION="4cf382f"
+    PKG_GIT_URL="https://github.com/OpenELEC/xbmc.git"
     PKG_GIT_BRANCH="jarvis_rbp_backports"
-    PKG_KEEP_CHECKOUT="yes"
+    PKG_KEEP_CHECKOUT="no"
     ;;
   *)
-    PKG_VERSION="17dd50a"
+    PKG_VERSION="9809c3c"
     PKG_GIT_URL="https://github.com/xbmc/xbmc.git"
     PKG_GIT_BRANCH="Jarvis"
-    PKG_KEEP_CHECKOUT="yes"
+    PKG_KEEP_CHECKOUT="no"
     ;;
 esac
 
@@ -222,7 +222,7 @@ if [ ! "$KODIPLAYER_DRIVER" = default ]; then
   fi
 fi
 
-if [ "$VDPAU_SUPPORT" = yes ]; then
+if [ "$VDPAU_SUPPORT" = "yes" -a "$DISPLAYSERVER" = "x11" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libvdpau"
   KODI_VDPAU="--enable-vdpau"
 else
