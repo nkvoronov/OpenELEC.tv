@@ -58,6 +58,10 @@ if [ "$KODI_THEME_CONFLUENCE_EXTENTED" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-theme-confluence-extented"
 fi
 
+if [ "$KODI_THEME_ESTUARY" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-theme-estuary"
+fi
+
 if [ "$OPENELEC_DEV_UPDATE" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET openelec-dev-update"
 fi
