@@ -46,15 +46,15 @@ post_install() {
   TVHEADEND_DIR=$(get_build_dir tvheadend)
 
   mkdir -p $INSTALL/usr/bin
-    cp -P $TVHEADEND_DIR/.$TARGET_NAME/build.linux/tvheadend $INSTALL/usr/bin
+    cp -P $TVHEADEND_DIR/build.linux/tvheadend $INSTALL/usr/bin
     cp -P $PKG_DIR/scripts/* $INSTALL/usr/bin
     cp -P $PKG_DIR/tv_grabs/* $INSTALL/usr/bin
 
   mkdir -p $INSTALL/usr/lib
-    cp -P $TVHEADEND_DIR/.$TARGET_NAME/capmt_ca.so $INSTALL/usr/lib
+    cp -P $TVHEADEND_DIR/capmt_ca.so $INSTALL/usr/lib
 
   mkdir -p $INSTALL/usr/share/tvheadend
-    cp -pR $TVHEADEND_DIR/.$TARGET_NAME/data $INSTALL/usr/share/tvheadend
+    cp -pR $TVHEADEND_DIR/data $INSTALL/usr/share/tvheadend
 
   mkdir -p $INSTALL/usr/config/tvheadend
     cp -pR $PKG_DIR/config/* $INSTALL/usr/config/tvheadend

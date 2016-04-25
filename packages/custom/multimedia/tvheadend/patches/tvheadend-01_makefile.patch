@@ -1,6 +1,6 @@
 diff -Naur a/Makefile b/Makefile
---- a/Makefile	2016-03-28 13:54:56.000000000 +0300
-+++ b/Makefile	2016-03-28 21:06:29.000000000 +0300
+--- a/Makefile	2016-04-21 16:47:22.000000000 +0300
++++ b/Makefile	2016-04-25 19:11:26.821675504 +0300
 @@ -32,9 +32,9 @@
  ifeq ($(CONFIG_W_UNUSED_RESULT),yes)
  CFLAGS  += -Wunused-result
@@ -14,12 +14,11 @@ diff -Naur a/Makefile b/Makefile
  CFLAGS  += -Wall -Wwrite-strings -Wno-deprecated-declarations
  CFLAGS  += -Wmissing-prototypes
  CFLAGS  += -fms-extensions -funsigned-char -fno-strict-aliasing
-@@ -91,40 +91,62 @@
+@@ -91,50 +91,65 @@
      PKG_CONFIG_LIBDIR=$(FFMPEG_LIBDIR)/pkgconfig $(PKG_CONFIG) \
      --define-variable=prefix=$(FFMPEG_PREFIX) --static
  
 +CFLAGS  += -I${FFMPEG_PREFIX}/include
-+
 +LDFLAGS += ${FFMPEG_LIBDIR}/libavfilter.a
 +LDFLAGS += ${FFMPEG_LIBDIR}/libswresample.a
 +LDFLAGS += ${FFMPEG_LIBDIR}/libavresample.a
@@ -50,16 +49,16 @@ diff -Naur a/Makefile b/Makefile
  
  ifeq ($(CONFIG_LIBTHEORA_STATIC),yes)
  FFMPEG_DEPS += libtheoraenc libtheoradec libtheora
-+LDFLAGS += ${FFMPEG_LIBDIR}/libtheoraenc.a
-+LDFLAGS += ${FFMPEG_LIBDIR}/libtheoradec.a
 +LDFLAGS += ${FFMPEG_LIBDIR}/libtheora.a
++LDFLAGS += ${FFMPEG_LIBDIR}/libtheoradec.a
++LDFLAGS += ${FFMPEG_LIBDIR}/libtheoraenc.a
  endif
  
  ifeq ($(CONFIG_LIBVORBIS_STATIC),yes)
  FFMPEG_DEPS += libvorbisfile libvorbisenc libvorbis
-+LDFLAGS += ${FFMPEG_LIBDIR}/libvorbisfile.a
-+LDFLAGS += ${FFMPEG_LIBDIR}/libvorbisenc.a
 +LDFLAGS += ${FFMPEG_LIBDIR}/libvorbis.a
++LDFLAGS += ${FFMPEG_LIBDIR}/libvorbisenc.a
++LDFLAGS += ${FFMPEG_LIBDIR}/libvorbisfile.a
  endif
  
  ifeq ($(CONFIG_LIBFDKAAC_STATIC),yes)
@@ -74,19 +73,102 @@ diff -Naur a/Makefile b/Makefile
  
 -LDFLAGS += $(foreach lib,$(FFMPEG_LIBS),$(FFMPEG_LIBDIR)/$(lib).a)
 -LDFLAGS += $(foreach lib,$(FFMPEG_DEPS),$(FFMPEG_LIBDIR)/$(lib).a)
-+#LDFLAGS += $(foreach lib,$(FFMPEG_LIBS),$(FFMPEG_LIBDIR)/$(lib).a)
-+#LDFLAGS += $(foreach lib,$(FFMPEG_DEPS),$(FFMPEG_LIBDIR)/$(lib).a)
- 
+-
  else # !FFMPEG_STATIC
  
-@@ -132,8 +154,8 @@
+ FFMPEG_CONFIG := $(PKG_CONFIG)
  
  endif # FFMPEG_STATIC
  
 -CFLAGS  += `$(FFMPEG_CONFIG) --cflags $(FFMPEG_LIBS)`
 -LDFLAGS += `$(FFMPEG_CONFIG) --libs $(FFMPEG_LIBS)`
-+#CFLAGS  += `$(FFMPEG_CONFIG) --cflags $(FFMPEG_LIBS)`
-+#LDFLAGS += `$(FFMPEG_CONFIG) --libs $(FFMPEG_LIBS)`
- 
+-
  endif
  
+ # LIBAV ########################################################################
+@@ -605,7 +620,7 @@
+ 
+ # Binary
+ ${PROG}: .config.mk make_webui $(OBJS)
+-	$(pCC) -o $@ $(OBJS) $(CFLAGS) $(LDFLAGS)
++	$(CXX) -o $@ $(OBJS) $(CFLAGS) $(LDFLAGS)
+ 
+ # Object
+ ${BUILDDIR}/%.o: %.c
+diff -Naur a/Makefile.ffmpeg b/Makefile.ffmpeg
+--- a/Makefile.ffmpeg	2016-04-21 16:47:22.000000000 +0300
++++ b/Makefile.ffmpeg	2016-04-25 19:15:25.813670039 +0300
+@@ -24,6 +24,9 @@
+ FFMPEG_TARGET := x86-linux-gcc
+ endif
+ 
++FFMPEG_HOST   := $(ARCH)-openelec-linux-gnu
++FFMPEG_TARGET := $(ARCH)-openelec-linux-gnu
++
+ unexport CFLAGS
+ unexport LDFLAGS
+ 
+@@ -135,7 +138,7 @@
+ 
+ $(LIB_ROOT)/$(YASM)/.tvh_build: \
+ 		$(LIB_ROOT)/$(YASM)/.tvh_download
+-	cd $(LIB_ROOT)/$(YASM) && $(CONFIGURE)
++	cd $(LIB_ROOT)/$(YASM) && $(CONFIGURE) CC=$(HOST_CC)
+ 	DESTDIR=$(EBUILDIR) \
+ 		$(MAKE) -C $(LIB_ROOT)/$(YASM) install
+ 	@touch $@
+@@ -224,6 +227,7 @@
+ 	cd $(LIB_ROOT)/$(LIBX265)/build/linux && cmake -G "Unix Makefiles" \
+ 		-DCMAKE_INSTALL_PREFIX="/ffmpeg" \
+ 		-DENABLE_SHARED:BOOL=OFF \
++		-DEXTRA_LINK_FLAGS="-ldl" \
+ 		../../source
+ 	DESTDIR=$(EBUILDIR) \
+ 		$(MAKE) -C $(LIB_ROOT)/$(LIBX265)/build/linux install
+@@ -257,7 +261,7 @@
+ ifeq (yes,$(CONFIG_LIBVPX_STATIC))
+ 
+ ifneq (,$(FFMPEG_TARGET))
+-LIBVPX_TARGET := --target=$(FFMPEG_TARGET)
++LIBVPX_TARGET := --target=generic-gnu
+ endif
+ 
+ $(LIB_ROOT)/$(LIBVPX)/.tvh_download:
+@@ -268,7 +272,7 @@
+ $(LIB_ROOT)/$(LIBVPX)/.tvh_build: \
+ 		$(LIB_ROOT)/$(YASM)/.tvh_build \
+ 		$(LIB_ROOT)/$(LIBVPX)/.tvh_download
+-	cd $(LIB_ROOT)/$(LIBVPX) && $(CONFIGURE) \
++	cd $(LIB_ROOT)/$(LIBVPX) && CROSS=$(FFMPEG_TARGET)- $(CONFIGURE) \
+ 		--disable-examples \
+ 		--disable-docs \
+ 		--disable-unit-tests \
+@@ -342,7 +346,8 @@
+ 		$(LIB_ROOT)/$(LIBOGG)/.tvh_build \
+ 		$(LIB_ROOT)/$(LIBTHEORA)/.tvh_download
+ 	cd $(LIB_ROOT)/$(LIBTHEORA) && $(CONFIGURE) \
+-		--with-ogg=$(EPREFIX) \
++		OGG_CFLAGS=-I$(EPREFIX)/include \
++		OGG_LIBS=-L$(EPREFIX)/lib \
+ 		--disable-examples \
+ 		$(LIBTHEORA_HOST)
+ 	DESTDIR=$(EBUILDIR) \
+@@ -387,7 +392,8 @@
+ 		$(LIB_ROOT)/$(LIBOGG)/.tvh_build \
+ 		$(LIB_ROOT)/$(LIBVORBIS)/.tvh_download
+ 	cd $(LIB_ROOT)/$(LIBVORBIS) && $(CONFIGURE) \
+-		--with-ogg=$(EPREFIX)
++		OGG_CFLAGS=-I$(EPREFIX)/include \
++		OGG_LIBS=-L$(EPREFIX)/lib
+ 	DESTDIR=$(EBUILDIR) \
+ 		$(MAKE) -C $(LIB_ROOT)/$(LIBVORBIS) install
+ 	@touch $@
+@@ -538,6 +544,8 @@
+ 		$(LIB_ROOT)/$(LIBMFX)/.tvh_build \
+ 		$(LIB_ROOT)/$(FFMPEG)/.tvh_download
+ 	cd $(LIB_ROOT)/$(FFMPEG) && $(CONFIGURE) \
++		--cc=$(FFMPEG_HOST)-gcc \
++		--cxx=$(FFMPEG_HOST)-g++ \
+ 		--disable-all \
+ 		--enable-gpl \
+ 		--extra-cflags="$(ECFLAGS)" \

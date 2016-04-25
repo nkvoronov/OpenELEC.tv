@@ -45,6 +45,6 @@ addon() {
   TVHEADEND_DIR=$(get_build_dir tvheadend)
   
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -P $TVHEADEND_DIR/.$TARGET_NAME/build.linux/tvheadend $ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -P $TVHEADEND_DIR/.$TARGET_NAME/capmt_ca.so $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $TVHEADEND_DIR/build.linux/tvheadend $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $TVHEADEND_DIR/capmt_ca.so $ADDON_BUILD/$PKG_ADDON_ID/bin
 }

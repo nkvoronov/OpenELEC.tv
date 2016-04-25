@@ -20,7 +20,7 @@
 
 PKG_NAME="tvheadend"
 PKG_VERSION="c3eefc6"
-PKG_VERSIONA="4.1.1931"
+PKG_VERSION_NUMBER="4.1.1931"
 PKG_REV="124"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -28,7 +28,7 @@ PKG_SITE="http://www.tvheadend.org"
 PKG_GIT_URL="https://github.com/tvheadend/tvheadend.git"
 PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="yes"
-PKG_DEPENDS_TARGET="toolchain libressl curl"
+PKG_DEPENDS_TARGET="toolchain curl libdvbcsa libiconv libressl Python:host yasm"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/multimedia"
 PKG_SHORTDESC="tvheadend (Version: $PKG_VERSION): a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources."
@@ -37,50 +37,58 @@ PKG_LONGDESC="Tvheadend (Version: $PKG_VERSION) is a TV streaming server for Lin
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-if [ "$TARGET_ARCH" == "arm" ] ; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libdvbcsa"
+# transcoding only for generic
+if [ "$TARGET_ARCH" = x86_64 ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libva-intel-driver"
+  TVH_TRANSCODING="--enable-ffmpeg_static --enable-libav --enable-libfdkaac --disable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --disable-qsv"
+else
+  TVH_TRANSCODING="--disable-ffmpeg_static --disable-libav"
 fi
 
-post_unpack() {
-  sed -e 's/VER="0.0.0~unknown"/VER="'$PKG_VERSIONA'~g'$PKG_VERSION'~openelec"/g' -i $PKG_BUILD/support/version
-}
+PKG_CONFIGURE_OPTS_TARGET="--prefix=/usr \
+                           --arch=$TARGET_ARCH \
+                           --cpu=$TARGET_CPU \
+                           --cc=$TARGET_CC \
+                           --disable-avahi \
+                           --enable-bundle \
+                           --disable-dbus_1 \
+                           --enable-dvbcsa \
+                           --disable-dvben50221 \
+                           --enable-hdhomerun_client \
+                           --enable-hdhomerun_static \
+                           --enable-epoll \
+                           --enable-inotify \
+                           --disable-nvenc \
+                           --disable-uriparser \
+                           $TVH_TRANSCODING \
+                           --enable-tvhcsa \
+                           --nowerror \
+                           --python=$ROOT/$TOOLCHAIN/bin/python"
 
-pre_build_target() {
-  mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
-  export CROSS_COMPILE=$TARGET_PREFIX
-  if [ "$TARGET_ARCH" == "arm" ] ; then
-    DVBCSA="--enable-dvbcsa"
-  else
-    # TODO force dvbcsa on all projects
-    DVBCSA="--disable-dvbcsa"
-  fi
+post_unpack() {
+  sed -e 's/VER="0.0.0~unknown"/VER="'$PKG_VERSION_NUMBER'~g'$PKG_VERSION'~openelec"/g' -i $PKG_BUILD/support/version
 }
 
 pre_configure_target() {
-  export AS=yasm
+  # fails to build in subdirs
+  cd $ROOT/$PKG_BUILD
+  rm -rf .$TARGET_NAME
+
+  # transcoding
+  if [ "$TARGET_ARCH" = x86_64 ]; then
+    export AS=$ROOT/$TOOLCHAIN/bin/yasm
+  fi
+
+  export CROSS_COMPILE=$TARGET_PREFIX
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/iconv -L$SYSROOT_PREFIX/usr/lib/iconv"
 }
 
-configure_target() {
-  ./configure --prefix=/usr \
-            --arch=$TARGET_ARCH \
-            --cpu=$TARGET_CPU \
-            --cc=$TARGET_CC \
-            --enable-hdhomerun_client \
-            --enable-hdhomerun_static \
-            --disable-avahi \
-            --enable-libav \
-            --enable-ffmpeg_static \
-            --disable-libx265 \
-            --enable-inotify \
-            --enable-epoll \
-            --disable-uriparser \
-            --enable-tvhcsa \
-            --enable-bundle \
-            $DVBCSA \
-            --disable-dbus_1 \
-            --python=$ROOT/$TOOLCHAIN/bin/python
-}
+# transcoding link tvheadend with g++
+if [ "$TARGET_ARCH" = x86_64 ]; then
+  pre_make_target() {
+    export CXX=$TARGET_CXX
+  }
+fi
 
 post_make_target() {
   $CC -O -fbuiltin -fomit-frame-pointer -fPIC -shared -o capmt_ca.so src/extra/capmt_ca.c -ldl
