@@ -39,7 +39,7 @@ case "$KODIPLAYER_DRIVER" in
     PKG_KEEP_CHECKOUT="no"
     ;;
   *)
-    PKG_VERSION="c6f6e0b"
+    PKG_VERSION="4982009"
     PKG_GIT_URL="https://github.com/xbmc/xbmc.git"
     PKG_GIT_BRANCH="Jarvis"
     PKG_KEEP_CHECKOUT="no"

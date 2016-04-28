@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-skinflatplus"
-PKG_VERSION="6a86034"
+PKG_VERSION="617e28a"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
