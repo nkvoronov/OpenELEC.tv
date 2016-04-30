@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-audio-mixer"
-PKG_VERSION="6bccbc8"
+PKG_VERSION="f0730cb"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -55,6 +55,7 @@ post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer
     cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer
 
+  rm -fR $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer/resources/skins
   mkdir -p $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer/resources/skins
     cp -PR $PKG_DIR/skins/* $INSTALL/usr/share/kodi/addons/script.xbmc.audio.mixer/resources/skins
 

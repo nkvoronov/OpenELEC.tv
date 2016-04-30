@@ -1,16 +1,16 @@
 diff -Naur a/addon.xml b/addon.xml
---- a/addon.xml	2015-01-19 19:34:35.000000000 +0200
-+++ b/addon.xml	2016-04-24 03:04:45.598726617 +0300
+--- a/addon.xml	2016-04-16 21:15:07.000000000 +0300
++++ b/addon.xml	2016-04-30 19:44:56.000000000 +0300
 @@ -1,8 +1,8 @@
  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  <addon id="script.xbmc.audio.mixer"
         name="Kodi Audio Mixer"
--       version="3.0.1"
--       provider-name="Team XBMC">
-+       version="3.1.1"
-+       provider-name="Team XBMC, YLLOW_DRAGON">
+-       version="4.0.0"
+-       provider-name="Team Kodi">
++       version="4.0.1"
++       provider-name="Team Kodi, YLLOW_DRAGON">
    <requires>
-     <import addon="xbmc.python" version="2.14.0"/>
+     <import addon="xbmc.python" version="2.25.0"/>
    </requires>
 @@ -12,6 +12,8 @@
      <platform>osx linux</platform>
@@ -21,20 +21,9 @@ diff -Naur a/addon.xml b/addon.xml
      <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
      <forum></forum>
      <website></website>
-diff -Naur a/resources/language/English/strings.po b/resources/language/English/strings.po
---- a/resources/language/English/strings.po	2015-01-19 19:34:35.000000000 +0200
-+++ b/resources/language/English/strings.po	2016-04-24 03:04:45.598726617 +0300
-@@ -20,3 +20,7 @@
- msgctxt "#30010"
- msgid "Mute"
- msgstr ""
-+
-+msgctxt "#30020"
-+msgid "Audio Mixer"
-+msgstr ""
 diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/strings.po
 --- a/resources/language/Russian/strings.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/resources/language/Russian/strings.po	2016-04-24 03:04:45.598726617 +0300
++++ b/resources/language/Russian/strings.po	2016-04-30 17:42:12.000000000 +0300
 @@ -0,0 +1,26 @@
 +# Kodi Media Center language file
 +# Addon Name: Kodi Audio Mixer
@@ -55,35 +44,10 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +"Language: ru\n"
 +"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 +
++msgctxt "#30001"
++msgid "Audio Mixer"
++msgstr "Аудио Микшер"
++
 +msgctxt "#30010"
 +msgid "Mute"
 +msgstr "Выкл."
-+
-+msgctxt "#30020"
-+msgid "Audio Mixer"
-+msgstr "Аудио Микшер"
-diff -Naur a/resources/lib/gui.py b/resources/lib/gui.py
---- a/resources/lib/gui.py	2015-01-19 19:34:35.000000000 +0200
-+++ b/resources/lib/gui.py	2016-04-24 03:04:45.598726617 +0300
-@@ -131,6 +131,8 @@
-       self.close()
- 
-     def onClick( self, controlId ):
-+     if ( controlId == 117 ):
-+        self.exit_script()
-      if ( controlId >= 1000 ):
-         self.getControl( controlId + 1 ).setLabel("%.2d %s" % (int(self.getControl( controlId ).getPercent()), "%",))
-         if self.getControl( controlId ).getPercent() == 0:
-@@ -172,9 +174,9 @@
-           
-         if ( action.getButtonCode() in CANCEL_DIALOG ):
-           self.log("Exit")
--          if ( self.controlId >= 1000 ) or (action.getId() == 92):
--              self.slider_onfocus(0)
--              self.controlId = 0
-+          #if ( self.controlId >= 1000 ) or (action.getId() == 92):
-+              #self.slider_onfocus(0)
-+              #self.controlId = 0
-           self.exit_script()
- 
- 

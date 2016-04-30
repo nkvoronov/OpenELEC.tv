@@ -9,36 +9,19 @@
 	</coordinates>
 	<controls>
 		<control type="image">
-                        <description>background image</description>
-			<left>0</left>
-			<top>0</top>
+			<posx>0</posx>
+			<posy>0</posy>
 			<width>880</width>
 			<height>630</height>
 			<texture border="40">DialogBack.png</texture>
-		</control>
-		<control type="button" id="117">
-			<description>Close Window button</description>
-			<left>790</left>
-			<top>15</top>
-			<width>64</width>
-			<height>32</height>
-			<label>-</label>
-			<font>-</font>
-			<onclick>PreviousMenu</onclick>
-			<texturefocus>DialogCloseButton-focus.png</texturefocus>
-			<texturenofocus>DialogCloseButton.png</texturenofocus>
-			<onleft>17</onleft>
-			<onright>17</onright>
-			<onup>17</onup>
-			<ondown>17</ondown>
-			<visible>system.getbool(input.enablemouse)</visible>
 		</control>
 		<control type="image">
 			<description>Dialog Header image</description>
 			<left>80</left>
 			<top>15</top>
 			<width>720</width>
-			<height>50</height>
+			<height>45</height>
+			<aspectratio>stretch</aspectratio>
 			<texture>dialogheader.png</texture>
 		</control>
 		<control type="label" id="1">
@@ -48,7 +31,7 @@
 			<width>800</width>
 			<height>30</height>
 			<font>font13_title</font>
-			<label>$ADDON[script.xbmc.audio.mixer 30020]</label>
+			<label>$ADDON[script.xbmc.audio.mixer 30001]</label>
 			<align>center</align>
 			<aligny>center</aligny>
 			<textcolor>selected</textcolor>
@@ -59,7 +42,7 @@
 			<left>40</left>
 			<top>70</top>
 			<width>800</width>
-			<height>500</height>
+			<height>450</height>
 			<itemgap>5</itemgap>
 			<pagecontrol>121</pagecontrol>
 			<scrolltime>200</scrolltime>
@@ -2363,7 +2346,26 @@
 			<onleft>99</onleft>
 			<onright>98</onright>
 			<showonepage>false</showonepage>
-			<orientation>vertical</orientation>
+			<visible>Control.IsVisible(17)</visible>
+		</control>
+		<control type="button" id="10">
+			<description>OK button</description>
+			<posx>340</posx>
+			<posy>560</posy>
+			<width>200</width>
+			<height>40</height>
+			<label>$LOCALIZE[186]</label>
+			<font>font12_title</font>
+			<textcolor>white</textcolor>
+			<focusedcolor>white</focusedcolor>
+			<align>center</align>
+            <texturefocus>button-focus.png</texturefocus>
+			<texturenofocus>button-nofocus.png</texturenofocus>
+            <onup>901</onup>
+			<ondown>901</ondown>
+			<onleft>901</onleft>
+			<onright>901</onright>
+			<onclick>Dialog.Close(all,true)</onclick>
 		</control>		
 	</controls>
 </window>
