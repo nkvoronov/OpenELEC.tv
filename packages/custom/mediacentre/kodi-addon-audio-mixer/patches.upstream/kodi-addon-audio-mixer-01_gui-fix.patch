@@ -1,17 +1,20 @@
 diff -Naur a/addon.xml b/addon.xml
 --- a/addon.xml	2016-04-16 21:15:07.000000000 +0300
-+++ b/addon.xml	2016-04-30 19:44:56.000000000 +0300
-@@ -1,8 +1,8 @@
++++ b/addon.xml	2016-05-01 03:31:15.862530226 +0300
+@@ -1,10 +1,10 @@
  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  <addon id="script.xbmc.audio.mixer"
         name="Kodi Audio Mixer"
 -       version="4.0.0"
 -       provider-name="Team Kodi">
-+       version="4.0.1"
++       version="4.0.2"
 +       provider-name="Team Kodi, YLLOW_DRAGON">
    <requires>
-     <import addon="xbmc.python" version="2.25.0"/>
+-    <import addon="xbmc.python" version="2.25.0"/>
++    <import addon="xbmc.python" version="2.14.0"/>
    </requires>
+   <extension point="xbmc.python.script"
+              library="default.py" />
 @@ -12,6 +12,8 @@
      <platform>osx linux</platform>
      <summary lang="en">Kodi Audio Mixer</summary>
