@@ -46,6 +46,10 @@ if [ "$KODI_ADDON_AUDIO_MIXER" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-audio-mixer"
 fi
 
+if [ "$KODI_ADDON_RSS_EDITOR" = yes ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-rss-editor"
+fi
+
 if [ "$KODI_ADDON_VDRFRONT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET kodi-addon-vdrfront kodi-addon-xvdr"
 fi

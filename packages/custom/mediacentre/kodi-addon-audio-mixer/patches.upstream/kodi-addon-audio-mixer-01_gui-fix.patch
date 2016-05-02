@@ -1,13 +1,13 @@
 diff -Naur a/addon.xml b/addon.xml
 --- a/addon.xml	2016-04-16 21:15:07.000000000 +0300
-+++ b/addon.xml	2016-05-01 03:31:15.862530226 +0300
++++ b/addon.xml	2016-05-02 20:38:12.000000000 +0300
 @@ -1,10 +1,10 @@
  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  <addon id="script.xbmc.audio.mixer"
         name="Kodi Audio Mixer"
 -       version="4.0.0"
 -       provider-name="Team Kodi">
-+       version="4.0.2"
++       version="4.0.3"
 +       provider-name="Team Kodi, YLLOW_DRAGON">
    <requires>
 -    <import addon="xbmc.python" version="2.25.0"/>
@@ -26,7 +26,7 @@ diff -Naur a/addon.xml b/addon.xml
      <website></website>
 diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/strings.po
 --- a/resources/language/Russian/strings.po	1970-01-01 03:00:00.000000000 +0300
-+++ b/resources/language/Russian/strings.po	2016-04-30 17:42:12.000000000 +0300
++++ b/resources/language/Russian/strings.po	2016-05-01 03:54:26.000000000 +0300
 @@ -0,0 +1,26 @@
 +# Kodi Media Center language file
 +# Addon Name: Kodi Audio Mixer
@@ -54,3 +54,15 @@ diff -Naur a/resources/language/Russian/strings.po b/resources/language/Russian/
 +msgctxt "#30010"
 +msgid "Mute"
 +msgstr "Выкл."
+diff -Naur a/resources/lib/gui.py b/resources/lib/gui.py
+--- a/resources/lib/gui.py	2016-04-16 21:15:07.000000000 +0300
++++ b/resources/lib/gui.py	2016-05-02 20:42:04.000000000 +0300
+@@ -160,7 +160,7 @@
+         if ( self.controlId >= 1000 ):
+           self.slider_onfocus(0)
+           
+-      if ( action.getButtonCode() in CANCEL_DIALOG ):
++      if ( action in CANCEL_DIALOG ):
+         self.log("Exit")
+         self.exit_script()
+ 

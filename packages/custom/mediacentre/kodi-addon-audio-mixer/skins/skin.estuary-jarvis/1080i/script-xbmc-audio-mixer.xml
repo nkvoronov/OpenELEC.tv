@@ -1,7 +1,8 @@
 <window>
 	<defaultcontrol always="true">901</defaultcontrol>
-	<animation effect="fade" time="400">WindowOpen</animation>
-	<animation effect="fade" time="400">WindowClose</animation>
+	<allowoverlays>false</allowoverlays>
+	<animation effect="fade" time="250">WindowOpen</animation>
+	<animation effect="fade" time="250">WindowClose</animation>
 	<coordinates>
 		<left>290</left>
 		<top>130</top>
@@ -42,6 +43,42 @@
 			<aligny>center</aligny>
 			<shadowcolor>black</shadowcolor>
 		</control>
+        <control type="button" id="32001">
+			<left>-1920</left>
+			<top>-1080</top>
+			<width>5760</width>
+			<height>3240</height>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<onclick>Action(close)</onclick>
+		</control>
+		<control type="button" id="32002">
+			<description>button overlay to avoid closing in dialog area</description>
+			<left>0</left>
+			<top>0</top>
+			<width>1340</width>
+			<height>820</height>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<onclick>noop</onclick>
+		</control>
+		<control type="radiobutton" id="32000">
+			<left>1340</left>
+			<top>11</top>
+			<width>48</width>
+			<height>48</height>
+			<radiowidth>48</radiowidth>
+			<radioheight>48</radioheight>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<label></label>
+			<animation effect="slide" end="-70,0" time="0" condition="true">Conditional</animation>
+			<textureradioofffocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioofffocus>
+			<textureradiooffnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradiooffnofocus>
+			<textureradioonfocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioonfocus>
+			<textureradioonnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradioonnofocus>
+			<onclick>Action(close)</onclick>
+		</control>        
 		<control type="image">
 			<left>0</left>
 			<top>90</top>
