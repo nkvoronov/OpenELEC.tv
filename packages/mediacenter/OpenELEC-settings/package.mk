@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="OpenELEC-settings"
-PKG_VERSION="91548b5"
+PKG_VERSION="0.6.13"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="prop."
@@ -51,9 +51,6 @@ post_unpack() {
 post_makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/openelec
     cp $PKG_DIR/scripts/* $INSTALL/usr/lib/openelec
-
-  mkdir -p $INSTALL/usr/share/kodi/addons/service.openelec.settings/resources/skins
-    cp -PR $PKG_DIR/skins/* $INSTALL/usr/share/kodi/addons/service.openelec.settings/resources/skins
 
 #  # bluetooth is optional
 #    if [ ! "$BLUETOOTH_SUPPORT" = yes ]; then
