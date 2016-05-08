@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-favourites"
-PKG_VERSION="9bdd433"
+PKG_VERSION="6f611cb"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/ronie/script.favourites.git"
 PKG_GIT_URL="https://github.com/ronie/script.favourites.git"
-PKG_GIT_BRANCH="master"
+PKG_GIT_BRANCH="jarvis"
 PKG_KEEP_CHECKOUT="yes"
 PKG_DEPENDS_TARGET="toolchain Python kodi"
 PKG_PRIORITY="optional"

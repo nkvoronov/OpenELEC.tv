@@ -888,7 +888,7 @@
                         <aligny>center</aligny>
                         <font>font12</font>
                         <textcolor>button_focus</textcolor>
-                        <label>$INFO[ListItem.Property(ConnectedState)]</label>
+                        <label>$ADDON[service.openelec.settings 32333][COLOR=white]$INFO[ListItem.Property(ConnectedState)][/COLOR]</label>
                     </control>
                     <!-- Paired Symbol (bottom right) -->
                     <control type="image">
@@ -1079,7 +1079,7 @@
                         <aligny>center</aligny>
                         <font>font12</font>
                         <textcolor>button_focus</textcolor>
-                        <label>$INFO[ListItem.Property(ConnectedState)]</label>
+                        <label>$ADDON[service.openelec.settings 32333][COLOR=white]$INFO[ListItem.Property(ConnectedState)][/COLOR]</label>
                     </control>
                     <!-- Paired Symbol (bottom right) -->
                     <control type="image">
