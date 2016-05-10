@@ -262,7 +262,7 @@
                         <label>$ADDON[service.openelec.settings 606]</label>
                     </control>	
                     <control type="label">
-                        <left>140</left>
+                        <left>160</left>
                         <top>20</top>
                         <width>400</width>
                         <height>16</height>
@@ -284,7 +284,7 @@
                         <label>$ADDON[service.openelec.settings 607]</label>
                     </control>	
                     <control type="label">
-                        <left>140</left>
+                        <left>160</left>
                         <top>42</top>
                         <width>400</width>
                         <height>16</height>
@@ -306,7 +306,7 @@
                         <label>$ADDON[service.openelec.settings 608]</label>
                     </control>
                     <control type="label">
-                        <left>140</left>
+                        <left>160</left>
                         <top>64</top>
                         <width>400</width>
                         <height>16</height>
@@ -324,17 +324,15 @@
                         <font>font10</font>
                         <textcolor>white</textcolor>
                         <label>$ADDON[service.openelec.settings 609]</label>
-                        <autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
                     </control>
                     <control type="textbox">
                         <left>20</left>
-                        <top>217</top>
+                        <top>200</top>
                         <width>550</width>
-                        <height>87</height>
+                        <height>200</height>
                         <font>font10</font>
                         <textcolor>white</textcolor>
                         <label>$ADDON[service.openelec.settings 610]</label>
-                        <autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
                     </control>
                     <control type="image">
                         <left>20</left>
@@ -345,14 +343,13 @@
                     </control>
                     <control type="textbox">
                         <left>20</left>
-                        <top>330</top>
-                        <width>770</width>
-                        <height>100</height>
+                        <top>380</top>
+                        <width>780</width>
+                        <height>50</height>
                         <font>font10</font>
                         <textcolor>white</textcolor>
                         <align>left</align>
                         <label>$ADDON[service.openelec.settings 611]</label>
-                        <autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
                     </control>
                 </control>
                 <!-- simple list content -->
