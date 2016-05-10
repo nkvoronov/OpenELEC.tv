@@ -49,7 +49,9 @@ pre_build_target() {
 }
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+  PKG_CONFIG_PATH="$(get_build_dir ncurses)/.install_tmp/usr/lib/pkgconfig"
+  CFLAGS="$CFLAGS -I$(get_build_dir ncurses)/.install_tmp/usr/include"
+  LDFLAGS="$LDFLAGS -L$(get_build_dir ncurses)/.install_tmp/usr/lib"
 }
 
 makeinstall_target() {

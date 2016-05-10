@@ -214,9 +214,6 @@
 ### CUSTOM OPTIONS ###
   DISTRO_CUSTOM_SRC="https://dl.dropboxusercontent.com/u/6711518/packages"
 
-# Alsa mixer
-  ALSAMIXER_ENABLED="yes"
-
 # Locales
   LOCALES_SUPPORT="yes"
 

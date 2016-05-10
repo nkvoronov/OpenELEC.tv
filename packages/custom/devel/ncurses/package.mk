@@ -40,7 +40,7 @@ PKG_CONFIGURE_OPTS_TARGET="--without-ada \
                            --without-progs \
                            --without-tests \
                            --with-curses-h \
-                           --with-shared \
+                           --without-shared \
                            --with-normal \
                            --without-debug \
                            --without-profile \
@@ -82,12 +82,8 @@ pre_configure_target() {
   strip_lto
 }
 
-post_makeinstall_target() {
-  cp misc/ncurses-config $ROOT/$TOOLCHAIN/bin
-    chmod +x $ROOT/$TOOLCHAIN/bin/ncurses-config
-    $SED "s:\(['=\" ]\)/usr:\\1$SYSROOT_PREFIX/usr:g" $ROOT/$TOOLCHAIN/bin/ncurses-config
-  ln -sf ncurses-config $ROOT/$TOOLCHAIN/bin/ncurses5-config
-  ln -sf ncurses5-config $ROOT/$TOOLCHAIN/bin/ncurses6-config
-
-  rm -rf $INSTALL/usr/bin/ncurses*-config
+makeinstall_target() {
+  make install DESTDIR=$ROOT/$PKG_BUILD/.install_tmp $PKG_MAKEINSTALL_OPTS_TARGET
+  mkdir -p $ROOT/$PKG_BUILD/.install_tmp/usr/lib/pkgconfig
+    cp -P $PKG_DIR/config/* $ROOT/$PKG_BUILD/.install_tmp/usr/lib/pkgconfig
 }
