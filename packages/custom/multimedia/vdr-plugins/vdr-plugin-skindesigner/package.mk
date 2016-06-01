@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-skindesigner"
-PKG_VERSION="32b78b2"
+PKG_VERSION="754e462"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://projects.vdr-developer.org/projects/plg-skindesigner"
-PKG_GIT_URL="git://projects.vdr-developer.org/vdr-plugin-skindesigner.git"
+PKG_GIT_URL="https://projects.vdr-developer.org/git/vdr-plugin-skindesigner.git"
 PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="yes"
 PKG_DEPENDS_TARGET="toolchain vdr librsvg libxml2"

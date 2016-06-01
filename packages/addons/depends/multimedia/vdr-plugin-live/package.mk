@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-live"
-PKG_VERSION="6ea279a"
+PKG_VERSION="869ac69"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://live.vdr-developer.org/en/index.php"
-PKG_GIT_URL="git://projects.vdr-developer.org/vdr-plugin-live.git"
+PKG_GIT_URL="https://projects.vdr-developer.org/git/vdr-plugin-live.git"
 PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="yes"
 PKG_DEPENDS_TARGET="toolchain vdr tntnet pcre:host pcre"

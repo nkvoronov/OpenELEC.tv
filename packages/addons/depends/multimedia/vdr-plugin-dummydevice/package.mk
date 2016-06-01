@@ -17,12 +17,14 @@
 ################################################################################
 
 PKG_NAME="vdr-plugin-dummydevice"
-PKG_VERSION="2.0.0"
+PKG_VERSION="33fcf68"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.vdr-wiki.de/wiki/index.php/Dummydevice-plugin"
-PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_SITE="https://github.com/flensrocker/vdr-plugin-dummydevice.git"
+PKG_GIT_URL="https://github.com/flensrocker/vdr-plugin-dummydevice.git"
+PKG_GIT_BRANCH="master"
+PKG_KEEP_CHECKOUT="yes"
 PKG_DEPENDS_TARGET="toolchain vdr"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
