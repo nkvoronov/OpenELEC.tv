@@ -19,9 +19,9 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="f59669c"
-PKG_VERSION_NUMBER="4.1.2116"
-PKG_REV="130"
+PKG_VERSION="60e0227"
+PKG_VERSION_NUMBER="4.1.2126"
+PKG_REV="131"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
