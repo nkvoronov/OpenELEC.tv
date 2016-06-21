@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-pvrchannels"
-PKG_VERSION="82cb779"
+PKG_VERSION="adc18ef"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
