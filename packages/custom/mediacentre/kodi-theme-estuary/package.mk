@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-estuary"
-PKG_VERSION="2fb7450"
+PKG_VERSION="fea6a08"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -27,7 +27,7 @@ PKG_SITE=""
 PKG_GIT_URL="https://github.com/nkvoronov/skin.estuary-jarvis.git"
 PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="yes"
-PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-pvrchannels"
+PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-pvrfavourites"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/mediacentre"
 PKG_SHORTDESC="kodi-theme-Confluence-plood: KODI Mediacenter additional theme"

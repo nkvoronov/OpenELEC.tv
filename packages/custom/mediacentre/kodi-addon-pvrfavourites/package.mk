@@ -18,20 +18,20 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-addon-pvrchannels"
-PKG_VERSION="adc18ef"
+PKG_NAME="kodi-addon-pvrfavourites"
+PKG_VERSION="0a87ab5"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/nkvoronov/script.pvrchannels.select.git"
-PKG_GIT_URL="https://github.com/nkvoronov/script.pvrchannels.select.git"
+PKG_SITE="https://github.com/nkvoronov/script.pvr.favourites.git"
+PKG_GIT_URL="https://github.com/nkvoronov/script.pvr.favourites.git"
 PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="yes"
 PKG_DEPENDS_TARGET="toolchain Python kodi"
 PKG_PRIORITY="optional"
 PKG_SECTION="custom/mediacentre"
-PKG_SHORTDESC="pvrchannels addon for KODI"
-PKG_LONGDESC="This addon allows pvrchannels KODI."
+PKG_SHORTDESC="pvrfavourites addon for KODI"
+PKG_LONGDESC="This addon allows pvrfavourites KODI."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
@@ -45,9 +45,9 @@ makeinstall_target() {
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/script.pvrchannels.select
-    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.pvrchannels.select
-    
-  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.pvrchannels.select/resources/lib/ -f
-  rm -rf `find $INSTALL/usr/share/kodi/addons/script.pvrchannels.select/resources/lib/ -name "*.py"`
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.pvr.favourites
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.pvr.favourites
+
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.pvr.favourites/resources/lib/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.pvr.favourites/resources/lib/ -name "*.py"`
 }
