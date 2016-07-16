@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-confluence-extented"
-PKG_VERSION="9d988b2"
+PKG_VERSION="bb36346"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/nkvoronov/skin.confluence-extented.git"
 PKG_GIT_URL="https://github.com/nkvoronov/skin.confluence-extented.git"
-PKG_GIT_BRANCH="master"
+PKG_GIT_BRANCH="jarvis"
 PKG_KEEP_CHECKOUT="yes"
 PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-favourites kodi-addon-randomandlastitems kodi-addon-skinwidgets"
 PKG_PRIORITY="optional"

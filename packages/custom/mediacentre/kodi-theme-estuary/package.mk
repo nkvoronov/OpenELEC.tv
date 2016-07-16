@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-estuary"
-PKG_VERSION="e68a89d"
+PKG_VERSION="eac7b57"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
 PKG_GIT_URL="https://github.com/nkvoronov/skin.estuary-jarvis.git"
-PKG_GIT_BRANCH="master"
+PKG_GIT_BRANCH="jarvis"
 PKG_KEEP_CHECKOUT="yes"
 PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-pvrfavourites"
 PKG_PRIORITY="optional"
