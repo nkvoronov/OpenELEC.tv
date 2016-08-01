@@ -596,9 +596,9 @@ post_install() {
     mkfontdir $INSTALL/usr/share/fonts/TTF
     mkfontscale $INSTALL/usr/share/fonts/TTF
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $INSTALL/usr/lib/vdr
-    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.1.1 $INSTALL/usr/lib
-    ln -s libskindesignerapi.so.0.1.1 $INSTALL/usr/lib/libskindesignerapi.so.0
-    ln -s libskindesignerapi.so.0.1.1 $INSTALL/usr/lib/libskindesignerapi.so
+    cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.1.2 $INSTALL/usr/lib
+    ln -s libskindesignerapi.so.0.1.2 $INSTALL/usr/lib/libskindesignerapi.so.0
+    ln -s libskindesignerapi.so.0.1.2 $INSTALL/usr/lib/libskindesignerapi.so
     mkdir -p $INSTALL/usr/config/vdr/themes
       cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/themes/* $INSTALL/usr/config/vdr/themes
     mkdir -p $INSTALL/usr/config/vdr/plugins/skindesigner
