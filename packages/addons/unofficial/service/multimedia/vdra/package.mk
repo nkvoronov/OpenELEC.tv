@@ -703,7 +703,7 @@ addon() {
     mkfontscale $ADDON_BUILD/$PKG_ADDON_ID/usr/share/fonts/TTF
     cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/libvdr*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib/vdr
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-      cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.1.1 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
+      cp -P $VDR_PLUGIN_SKINDESINGER_DIR/libskindesignerapi/libskindesignerapi.so.0.1.2 $ADDON_BUILD/$PKG_ADDON_ID/lib/libskindesignerapi.so.0
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/themes
       cp -PR $VDR_PLUGIN_SKINDESINGER_DIR/themes/* $ADDON_BUILD/$PKG_ADDON_ID/config/themes
     mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config/plugins/skindesigner
