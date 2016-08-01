@@ -46,4 +46,8 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis
     cp -PR $PKG_BUILD/skin.confluence-extented-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis
+
+  rm -fR $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis/720p/service-OpenELEC-Settings-getPasskey.xml
+  rm -fR $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis/720p/service-OpenELEC-Settings-mainWindow.xml
+  rm -fR $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis/720p/service-OpenELEC-Settings-wizard.xml
 }
