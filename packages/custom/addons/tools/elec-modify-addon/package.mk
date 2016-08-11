@@ -16,7 +16,7 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="openelec-modify-addon"
+PKG_NAME="elec-modify-addon"
 PKG_VERSION="1"
 PKG_REV="27"
 PKG_ARCH="any"

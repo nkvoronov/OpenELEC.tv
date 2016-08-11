@@ -52,9 +52,6 @@ post_makeinstall_target() {
   mkdir -p $INSTALL/usr/lib/openelec
     cp $PKG_DIR/scripts/* $INSTALL/usr/lib/openelec
 
-  mkdir -p $INSTALL/usr/share/kodi/addons/service.openelec.settings/resources/skins
-    cp -PR $PKG_DIR/skins/* $INSTALL/usr/share/kodi/addons/service.openelec.settings/resources/skins
-
 #  # bluetooth is optional
 #    if [ ! "$BLUETOOTH_SUPPORT" = yes ]; then
 #      rm -f resources/lib/modules/bluetooth.py

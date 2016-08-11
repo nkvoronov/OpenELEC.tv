@@ -10,4 +10,4 @@ PROJECT=Generic ARCH=x86_64 ./scripts/create_addon mupen64plus-addon
 PROJECT=Generic ARCH=x86_64 ./scripts/create_addon vlc-addon
 PROJECT=Generic ARCH=x86_64 ./scripts/create_addon acestream-addon
 PROJECT=Generic ARCH=x86_64 ./scripts/create_addon libtorrent-addon
-PROJECT=Generic ARCH=x86_64 ./scripts/create_addon openelec-modify-addon
+PROJECT=Generic ARCH=x86_64 ./scripts/create_addon elec-modify-addon
