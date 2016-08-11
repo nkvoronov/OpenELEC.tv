@@ -23,7 +23,6 @@ PKG_VERSION="4.8.7"
 PKG_LICENSE="OSS"
 PKG_SITE="http://qt-project.org"
 PKG_URL="http://download.qt-project.org/official_releases/qt/4.8/${PKG_VERSION}/qt-everywhere-opensource-src-${PKG_VERSION}.tar.gz"
-PKG_SOURCE_DIR="qt-everywhere-opensource-src-${PKG_VERSION}"
 PKG_DEPENDS_TARGET="toolchain bzip2 Python zlib:host zlib libpng tiff dbus glib fontconfig mysql libressl \
 glibc liberation-fonts-ttf freetype font-util font-xfree86-type1 font-misc-misc alsa libXcursor libSM libICE"
 PKG_PRIORITY="optional"
@@ -83,6 +82,11 @@ PKG_CONFIGURE_OPTS_TARGET="-prefix $QTDIR \
                            -fontconfig \
                            -nomake examples \
                            -nomake demos"
+
+unpack() {
+  tar xf $ROOT/$SOURCES/$PKG_NAME/qt-everywhere-opensource-src-$PKG_VERSION.tar.gz -C $ROOT/$BUILD
+  mv $ROOT/$BUILD/qt-everywhere-opensource-src-$PKG_VERSION $ROOT/$BUILD/$PKG_NAME-$PKG_VERSION
+}
 
 configure_target() {
   cd ..
