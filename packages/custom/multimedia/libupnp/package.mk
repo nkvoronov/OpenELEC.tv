@@ -25,7 +25,7 @@ PKG_SITE="http://pupnp.sourceforge.net/"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
+PKG_SECTION="multimedia"
 PKG_SHORTDESC="A Portable Open Source UPnP Development Kit"
 PKG_LONGDESC="A Portable Open Source UPnP Development Kit"
 

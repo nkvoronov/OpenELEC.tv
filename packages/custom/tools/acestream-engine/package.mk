@@ -27,7 +27,7 @@ PKG_SITE="http://wiki.acestream.org/wiki/index.php/AceStream_3.0"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/tools"
+PKG_SECTION="tools"
 PKG_SHORTDESC="This is an innovative media platform of a new generation, which will take you to a new high-quality level of multimedia space on the Internet."
 PKG_LONGDESC="This is an innovative media platform of a new generation, which will take you to a new high-quality level of multimedia space on the Internet."
 
@@ -51,11 +51,11 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/acestream
   if [ "$PROJECT" = "Generic" ]; then
-    cp -PR $PKG_BUILD/$TARGET_ARCH/acestream/* $INSTALL/usr/share/acestream    
+    cp -PR $PKG_BUILD/$TARGET_ARCH/acestream/* $INSTALL/usr/share/acestream
   elif [ "$PROJECT" = "RPi" ]; then
-    cp -PR $PKG_BUILD/arm/RPi/acestream/* $INSTALL/usr/share/acestream 
+    cp -PR $PKG_BUILD/arm/RPi/acestream/* $INSTALL/usr/share/acestream
   elif [ "$PROJECT" = "imx6" ]; then
-    cp -PR $PKG_BUILD/arm/v7/acestream/* $INSTALL/usr/share/acestream 
+    cp -PR $PKG_BUILD/arm/v7/acestream/* $INSTALL/usr/share/acestream
   fi
 
   if [ "$PROJECT" = "Generic" ]; then

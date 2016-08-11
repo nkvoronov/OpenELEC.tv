@@ -27,7 +27,7 @@ PKG_SITE="http://zapping.sourceforge.net/ZVBI/index.html"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain libpng"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
+PKG_SECTION="multimedia"
 PKG_SHORTDESC="Vertical Blanking Interval decoder (VBI)"
 PKG_LONGDESC="The VBI devices capture the hidden lines on a television picture that carry further information like closed-caption data, Teletext (primarily in Europe), and now Intercast and the ATVEC Internet television encodings."
 

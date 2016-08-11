@@ -26,10 +26,10 @@ PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/correl/Transmission-XBMC.git"
 PKG_GIT_URL="https://github.com/correl/Transmission-XBMC.git"
 PKG_GIT_BRANCH="master"
-PKG_KEEP_CHECKOUT="yes"
+PKG_KEEP_CHECKOUT="no"
 PKG_DEPENDS_TARGET="toolchain Python kodi kodi-module-simplejson kodi-module-beautifulsoup kodi-module-six"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/mediacentre"
+PKG_SECTION="mediacentre"
 PKG_SHORTDESC="A client for the popular Transmission BitTorrent application."
 PKG_LONGDESC="Transmission-XBMC supports viewing, adding, removing, starting and stopping torrents. More advanced features may be added in future releases."
 
@@ -54,9 +54,6 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/script.transmission
     cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.transmission
-
-  mkdir -p $INSTALL/usr/share/kodi/addons/script.transmission/resources/skins
-    cp -PR $PKG_DIR/skins/* $INSTALL/usr/share/kodi/addons/script.transmission/resources/skins
 
   python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.transmission/resources/lib/ -f
   rm -rf `find $INSTALL/usr/share/kodi/addons/script.transmission/resources/lib/ -name "*.py"`

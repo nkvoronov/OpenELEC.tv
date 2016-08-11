@@ -25,7 +25,7 @@ PKG_SITE="http://libxmlplusplus.sourceforge.net/"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain glibmm"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/devel"
+PKG_SECTION="devel"
 PKG_SHORTDESC="libxml++ is a C++ wrapper for the libxml2 XML parser and builder library. It presents a simple C++-like API that can achieve common tasks with less code."
 PKG_LONGDESC="libxml++ is a C++ wrapper for the libxml2 XML parser and builder library. It presents a simple C++-like API that can achieve common tasks with less code."
 

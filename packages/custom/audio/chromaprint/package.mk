@@ -27,7 +27,7 @@ PKG_SITE="http://wiki.acoustid.org/wiki/Chromaprint"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/audio"
+PKG_SECTION="audio"
 PKG_SHORTDESC="Audio fingerprinting library"
 PKG_LONGDESC="Chromaprint is a library for calculating audio fingerprints which are used by the Acoustid service. Its main purpose is to provide an accurate identifier for record tracks"
 

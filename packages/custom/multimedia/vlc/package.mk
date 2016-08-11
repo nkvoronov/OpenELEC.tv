@@ -25,11 +25,11 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://download.videolan.org/pub/videolan/vlc/$PKG_VERSION/vlc-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libass librsvg liblivemedia libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate \
+PKG_DEPENDS_TARGET="toolchain lua libass librsvg liblivemedia libbluray samba dbus libdvbpsi ffmpeg flac xcb-util-keysyms alsa-lib libsamplerate \
 libupnp libmtp libmad faad2 libmodplug libmpeg2 fluidsynth dcadec taglib libva libvdpau zvbi chromaprint libdca fdk-aac libvpx x264 opus lirc libavc1394 \
 libdc1394 libdvdnav a52dec libssh2 libmatroska libshout gnutls ncursesw6 SDL_image qt4"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
+PKG_SECTION="multimedia"
 PKG_SHORTDESC="VideoLAN multimedia player and streamer"
 PKG_LONGDESC="VLC is the VideoLAN project's media player. It plays MPEG, MPEG2, MPEG4, DivX, MOV, WMV, QuickTime, mp3, Ogg/Vorbis files, DVDs, VCDs, and multimedia streams from various network sources."
 
@@ -60,7 +60,7 @@ PKG_CONFIGURE_OPTIMIZATION_OPTS="--disable-debug \
 	--enable-optimize-memory \
 	--enable-run-as-root \
 	--enable-sout \
-	--disable-lua \
+	--enable-lua \
 	--enable-httpd \
 	--enable-vlm \
 	--enable-addonmanagermodules"

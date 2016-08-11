@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="php"
-PKG_VERSION="5.5.23"
+PKG_VERSION="5.6.19"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OpenSource"
@@ -27,7 +27,7 @@ PKG_SITE="http://www.php.net"
 PKG_URL="http://www.php.net/distributions/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain zlib pcre curl libressl"
 PKG_PRIORITY="optional"
-PKG_SECTION="tools"
+PKG_SECTION="lang"
 PKG_SHORTDESC="php: Scripting language especially suited for Web development"
 PKG_LONGDESC="PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML."
 
@@ -36,7 +36,6 @@ PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-all \
                            --without-pear \
-                           --with-config-file-path=/storage/.kodi/userdata/addon_data/tools.php/etc \
                            --localstatedir=/var \
                            --enable-cli \
                            --enable-cgi \

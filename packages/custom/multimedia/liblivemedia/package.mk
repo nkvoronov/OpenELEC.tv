@@ -27,7 +27,7 @@ PKG_SITE="http://www.live555.com/liveMedia"
 PKG_URL="$DISTRO_CUSTOM_SRC/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/multimedia"
+PKG_SECTION="multimedia"
 PKG_SHORTDESC="This code forms a set of C++ libraries for multimedia streaming, using open standard protocols (RTP/RTCP, RTSP, SIP)"
 PKG_LONGDESC="This code forms a set of C++ libraries for multimedia streaming, using open standard protocols (RTP/RTCP, RTSP, SIP)"
 
@@ -69,15 +69,15 @@ Libs: -L${libdir} -lliveMedia -lgroupsock -lBasicUsageEnvironment -lUsageEnviron
 EOF
 
   mkdir -p $SYSROOT_PREFIX/usr/include/BasicUsageEnvironment
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/BasicUsageEnvironment/include/* $SYSROOT_PREFIX/usr/include/BasicUsageEnvironment
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/BasicUsageEnvironment/*.a $SYSROOT_PREFIX/usr/lib
+    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/BasicUsageEnvironment/include/* $SYSROOT_PREFIX/usr/include/BasicUsageEnvironment
+    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/BasicUsageEnvironment/*.a $SYSROOT_PREFIX/usr/lib
   mkdir -p $SYSROOT_PREFIX/usr/include/UsageEnvironment
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/UsageEnvironment/include/* $SYSROOT_PREFIX/usr/include/UsageEnvironment
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/UsageEnvironment/*.a $SYSROOT_PREFIX/usr/lib
+    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/UsageEnvironment/include/* $SYSROOT_PREFIX/usr/include/UsageEnvironment
+    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/UsageEnvironment/*.a $SYSROOT_PREFIX/usr/lib
   mkdir -p $SYSROOT_PREFIX/usr/include/groupsock
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/groupsock/include/* $SYSROOT_PREFIX/usr/include/groupsock
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/groupsock/*.a $SYSROOT_PREFIX/usr/lib
+    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/groupsock/include/* $SYSROOT_PREFIX/usr/include/groupsock
+    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/groupsock/*.a $SYSROOT_PREFIX/usr/lib
   mkdir -p $SYSROOT_PREFIX/usr/include/liveMedia
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/liveMedia/include/* $SYSROOT_PREFIX/usr/include/liveMedia
-    cp $ROOT/$PKG_BUILD/.$TARGET_NAME/liveMedia/*.a $SYSROOT_PREFIX/usr/lib
+    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/liveMedia/include/* $SYSROOT_PREFIX/usr/include/liveMedia
+    cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/liveMedia/*.a $SYSROOT_PREFIX/usr/lib
 }

@@ -27,7 +27,7 @@ PKG_SITE="http://www.gnutls.org"
 PKG_URL="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.4/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain nettle gmp libidn"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/devel"
+PKG_SECTION="devel"
 PKG_SHORTDESC="GnuTLS is a portable library which implements the Transport Layer Security (TLS 1.0, 1.1, 1.2) and Secure Sockets Layer (SSL) 3.0 and Datagram Transport Layer Security (DTLS 1.0, 1.2) protocols."
 PKG_LONGDESC="GnuTLS is a portable library which implements the Transport Layer Security (TLS 1.0, 1.1, 1.2) and Secure Sockets Layer (SSL) 3.0 and Datagram Transport Layer Security (DTLS 1.0, 1.2) protocols."
 

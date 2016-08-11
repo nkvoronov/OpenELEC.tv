@@ -25,7 +25,7 @@ PKG_SITE="http://xcb.freedesktop.org"
 PKG_URL="http://xcb.freedesktop.org/dist//${PKG_NAME}-${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/x11/lib"
+PKG_SECTION="x11/lib"
 PKG_SHORTDESC="The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a small footprint, latency hiding, direct access to the protocol, improved threading support, and extensibility."
 PKG_LONGDESC="The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a small footprint, latency hiding, direct access to the protocol, improved threading support, and extensibility."
 

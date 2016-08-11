@@ -19,17 +19,17 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-confluence-extented"
-PKG_VERSION="565041f"
+PKG_VERSION="d2ba45b"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/nkvoronov/skin.confluence-extented.git"
 PKG_GIT_URL="https://github.com/nkvoronov/skin.confluence-extented.git"
 PKG_GIT_BRANCH="jarvis"
-PKG_KEEP_CHECKOUT="yes"
+PKG_KEEP_CHECKOUT="no"
 PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-favourites kodi-addon-randomandlastitems kodi-addon-skinwidgets kodi-addon-pvrfavourites"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/mediacentre"
+PKG_SECTION="mediacentre"
 PKG_SHORTDESC="kodi-theme-Confluence-extented: KODI Mediacenter additional theme"
 PKG_LONGDESC="KODI Media Center (which was formerly named Xbox Media Center) is a free and open source cross-platform media player and home entertainment system software with a 10-foot user interface designed for the living-room TV. Its graphical user interface allows the user to easily manage video, photos, podcasts, and music from a computer, optical disk, local network, and the internet using a remote control."
 PKG_IS_ADDON="no"
@@ -46,8 +46,4 @@ makeinstall_target() {
 post_install() {
   mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis
     cp -PR $PKG_BUILD/skin.confluence-extented-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis
-
-  rm -fR $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis/720p/service-OpenELEC-Settings-getPasskey.xml
-  rm -fR $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis/720p/service-OpenELEC-Settings-mainWindow.xml
-  rm -fR $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis/720p/service-OpenELEC-Settings-wizard.xml
 }

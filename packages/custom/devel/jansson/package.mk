@@ -25,7 +25,7 @@ PKG_SITE="http://www.digip.org/jansson/"
 PKG_URL="http://www.digip.org/jansson/releases/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/devel"
+PKG_SECTION="devel"
 PKG_SHORTDESC="Jansson is a C library for encoding, decoding and manipulating JSON data"
 PKG_LONGDESC="Jansson is a C library for encoding, decoding and manipulating JSON data"
 

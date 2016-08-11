@@ -25,7 +25,7 @@ PKG_SITE="http://www.midnight-commander.org/"
 PKG_URL="http://ftp.midnight-commander.org/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain libtool:host gettext:host glib pcre slang"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/tools"
+PKG_SECTION="tools"
 PKG_SHORTDESC="mc: free cross-platform filemanager #fu_cv_sys_stat_statfs2_bsize=yes"
 PKG_LONGDESC="Midnight Commander - free cross-platform filemanager and clone of Norton Commander"
 

@@ -25,7 +25,7 @@ PKG_SITE="https://savannah.gnu.org/projects/libiconv/"
 PKG_URL="http://ftp.gnu.org/pub/gnu/libiconv/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="custom/devel"
+PKG_SECTION="devel"
 PKG_SHORTDESC="Libiconv converts from one character encoding to another through Unicode conversion."
 PKG_LONGDESC="Libiconv converts from one character encoding to another through Unicode conversion."
 
