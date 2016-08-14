@@ -227,7 +227,7 @@ pre_configure_target() {
   export TAGLIB_CFLAGS="-I$SYSROOT_PREFIX/usr/include/taglib"
 
   PKG_CONFIG_PATH="$(get_build_dir ncursesw6)/.install_tmp/usr/lib/pkgconfig"
-  CFLAGS="$CFLAGS -I$(get_build_dir ncursesw6)/.install_tmp/usr/include"
+  CFLAGS="$CFLAGS -DLUA_COMPAT_5_1 -I$(get_build_dir ncursesw6)/.install_tmp/usr/include"
   LDFLAGS="$LDFLAGS -L$(get_build_dir ncursesw6)/.install_tmp/usr/lib"
 }
 
