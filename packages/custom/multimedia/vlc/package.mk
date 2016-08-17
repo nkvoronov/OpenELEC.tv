@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="vlc"
-PKG_VERSION="2.2.1"
-PKG_REV="23"
+PKG_VERSION="2.2.4"
+PKG_REV="24"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
@@ -243,7 +243,7 @@ pre_make_target() {
 post_install() {
   rm -fR $INSTALL/usr/share/applications
   rm -fR $INSTALL/usr/share/icons
-  rm -fR $INSTALL/usr/share/kde
+  rm -fR $INSTALL/usr/share/kde4
 
   mkdir -p $INSTALL/usr/bin
     mv $INSTALL/usr/bin/vlc $INSTALL/usr/bin/vlc.bin

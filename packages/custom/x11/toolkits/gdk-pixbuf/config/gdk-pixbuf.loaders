@@ -1,6 +1,6 @@
 # GdkPixbuf Image Loader Modules file
 # Automatically generated file, do not edit
-# Created by gdk-pixbuf-query-loaders from gdk-pixbuf-2.28.2
+# Created by gdk-pixbuf-query-loaders from gdk-pixbuf-2.21.5
 #
 # LoaderDir = /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders
 #
@@ -88,13 +88,6 @@
 "ras" ""
 "Y\246j\225" "" 100
 
-"/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-svg.so"
-"svg" 6 "gdk-pixbuf" "Scalable Vector Graphics" "LGPL"
-"image/svg+xml" "image/svg" "image/svg-xml" "image/vnd.adobe.svg+xml" "text/xml-svg" "image/svg+xml-compressed" ""
-"svg" "svgz" "svg.gz" ""
-" <svg" "*    " 100
-" <!DOCTYPE svg" "*             " 100
-
 "/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tga.so"
 "tga" 4 "gdk-pixbuf" "The Targa image format" "LGPL"
 "image/x-tga" ""
@@ -104,10 +97,10 @@
 "  \002" "xz " 99
 "  \003" "xz " 100
 "  \n" "xz " 100
-"  \v" "xz " 100
+"  \013" "xz " 100
 
 "/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tiff.so"
-"tiff" 5 "gdk-pixbuf" "The TIFF image format" "LGPL"
+"tiff" 1 "gdk-pixbuf" "The TIFF image format" "LGPL"
 "image/tiff" ""
 "tiff" "tif" ""
 "MM *" "  z " 100

@@ -34,16 +34,11 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
 PKG_CONFIGURE_OPTS_TARGET="gio_can_sniff=yes \
-            --disable-gtk-doc \
-            --disable-gtk-doc-html \
-            --disable-gtk-doc-pdf \
-            --disable-man \
-            --with-libpng \
-            --with-libjpeg \
-            --with-libtiff \
-            --with-libjasper"
-
-post_makeinstall_target() {
-  mkdir -p $INSTALL/usr/lib/gdk-pixbuf-2.0/2.10.0
-    cp -PR $PKG_DIR/config/loaders.cache $INSTALL/usr/lib/gdk-pixbuf-2.0/2.10.0
-}
+                           --disable-gtk-doc \
+                           --disable-gtk-doc-html \
+                           --disable-gtk-doc-pdf \
+                           --disable-man \
+                           --with-libpng \
+                           --with-libjpeg \
+                           --with-libtiff \
+                           --with-libjasper"
