@@ -58,3 +58,8 @@ pre_configure_target() {
 makeinstall_target() {
   : # nop
 }
+
+post_install() {
+  mkdir -p $INSTALL/usr/bin
+    cp -P $PKG_BUILD/htop $INSTALL/usr/bin
+}
