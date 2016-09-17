@@ -18,21 +18,20 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-theme-confluence-plood"
-PKG_VERSION="e953438"
+PKG_NAME="kodi-theme-confluence-extented-s"
+PKG_VERSION="1348817"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE=""
-PKG_GIT_URL="https://github.com/nkvoronov/skin.confluence-plood.git"
-PKG_GIT_BRANCH="jarvis"
+PKG_SITE="https://github.com/nkvoronov/skin.confluence-extented.git"
+PKG_GIT_URL="https://github.com/nkvoronov/skin.confluence-extented.git"
+PKG_GIT_BRANCH="jarvis-s"
 PKG_KEEP_CHECKOUT="no"
-PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-favourites"
+PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-skinwidgets kodi-addon-pvrfavourites kodi-addon-skinshortcuts kodi-addon-skinhelperservice"
 PKG_PRIORITY="optional"
 PKG_SECTION="mediacentre"
-PKG_SHORTDESC="kodi-theme-Confluence-plood: KODI Mediacenter additional theme"
+PKG_SHORTDESC="kodi-theme-Confluence-extented-s: KODI Mediacenter additional theme"
 PKG_LONGDESC="KODI Media Center (which was formerly named Xbox Media Center) is a free and open source cross-platform media player and home entertainment system software with a 10-foot user interface designed for the living-room TV. Its graphical user interface allows the user to easily manage video, photos, podcasts, and music from a computer, optical disk, local network, and the internet using a remote control."
-
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
@@ -45,6 +44,10 @@ makeinstall_target() {
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-plood-jarvis
-    cp -PR $PKG_BUILD/skin.confluence-plood-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-plood-jarvis
+  mkdir -p $INSTALL/usr/config/skin.confluence-extented-s-jarvis
+    cp -pR $PKG_DIR/config/* $INSTALL/usr/config/skin.confluence-extented-s-jarvis
+  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis
+    cp -PR $PKG_BUILD/skin.confluence-extented-s-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis
+    rm $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis/720p/script-skinshortcuts-includes.xml
+    ln -sf /storage/.config/skin.confluence-extented-s-jarvis/script-skinshortcuts-includes.xml $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis/720p/script-skinshortcuts-includes.xml
 }
