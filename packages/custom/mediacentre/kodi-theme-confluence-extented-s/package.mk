@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-theme-confluence-extented-s"
-PKG_VERSION="1348817"
+PKG_VERSION="3d5f167"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -48,6 +48,6 @@ post_install() {
     cp -pR $PKG_DIR/config/* $INSTALL/usr/config/skin.confluence-extented-s-jarvis
   mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis
     cp -PR $PKG_BUILD/skin.confluence-extented-s-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis
-    rm $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis/720p/script-skinshortcuts-includes.xml
+    rm -f $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis/720p/script-skinshortcuts-includes.xml
     ln -sf /storage/.config/skin.confluence-extented-s-jarvis/script-skinshortcuts-includes.xml $INSTALL/usr/share/kodi/addons/skin.confluence-extented-s-jarvis/720p/script-skinshortcuts-includes.xml
 }
