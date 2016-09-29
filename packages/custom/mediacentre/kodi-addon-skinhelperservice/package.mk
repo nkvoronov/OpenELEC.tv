@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="kodi-addon-skinhelperservice"
-PKG_VERSION="fd0bb57"
+PKG_VERSION="6cad2bb"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -27,7 +27,7 @@ PKG_SITE="https://github.com/marcelveldt/script.skin.helper.service.git"
 PKG_GIT_URL="https://github.com/marcelveldt/script.skin.helper.service.git"
 PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="no"
-PKG_DEPENDS_TARGET="toolchain Python kodi"
+PKG_DEPENDS_TARGET="toolchain Python kodi kodi-module-thetvdb kodi-module-musicbrainz"
 PKG_PRIORITY="optional"
 PKG_SECTION="mediacentre"
 PKG_SHORTDESC="script.skinshortcuts was written with the intention of making user customizable shortcuts on the home page easier for skinners."

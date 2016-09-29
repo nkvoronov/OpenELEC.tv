@@ -18,32 +18,36 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="kodi-theme-confluence-extented"
-PKG_VERSION="4cb86d7"
+PKG_NAME="kodi-module-musicbrainz"
+PKG_VERSION="499e04e"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/nkvoronov/skin.confluence-extented.git"
-PKG_GIT_URL="https://github.com/nkvoronov/skin.confluence-extented.git"
-PKG_GIT_BRANCH="jarvis"
+PKG_SITE="https://github.com/marcelveldt/script.module.musicbrainz.git"
+PKG_GIT_URL="https://github.com/marcelveldt/script.module.musicbrainz.git"
+PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="no"
-PKG_DEPENDS_TARGET="toolchain Python kodi kodi-addon-favourites kodi-addon-randomandlastitems kodi-addon-skinwidgets kodi-addon-pvrfavourites"
+PKG_DEPENDS_TARGET="toolchain Python kodi"
 PKG_PRIORITY="optional"
 PKG_SECTION="mediacentre"
-PKG_SHORTDESC="kodi-theme-Confluence-extented: KODI Mediacenter additional theme"
-PKG_LONGDESC="KODI Media Center (which was formerly named Xbox Media Center) is a free and open source cross-platform media player and home entertainment system software with a 10-foot user interface designed for the living-room TV. Its graphical user interface allows the user to easily manage video, photos, podcasts, and music from a computer, optical disk, local network, and the internet using a remote control."
+PKG_SHORTDESC="Kodi module library for the Python bindings for Musicbrainz' NGS webservice developed by alastair"
+PKG_LONGDESC="Kodi module library for the Python bindings for Musicbrainz' NGS webservice developed by alastair"
+
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {
-  : # nothing
+  : # nothing to make here
 }
 
 makeinstall_target() {
-  : # nothing
+  : # nothing to install here
 }
 
 post_install() {
-  mkdir -p $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis
-    cp -PR $PKG_BUILD/skin.confluence-extented-jarvis/* $INSTALL/usr/share/kodi/addons/skin.confluence-extented-jarvis
+  mkdir -p $INSTALL/usr/share/kodi/addons/script.module.musicbrainz
+    cp -PR $PKG_BUILD/* $INSTALL/usr/share/kodi/addons/script.module.musicbrainz
+
+  python -Wi -t -B $ROOT/$TOOLCHAIN/lib/python2.7/compileall.py $INSTALL/usr/share/kodi/addons/script.module.musicbrainz/lib/musicbrainzngs/ -f
+  rm -rf `find $INSTALL/usr/share/kodi/addons/script.module.musicbrainz/lib/musicbrainzngs/ -name "*.py"`
 }
