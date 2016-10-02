@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="openelec-dev-update"
-PKG_VERSION="92a7296"
+PKG_VERSION="3b07ec7"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/nkvoronov/script.openelec.devupdate.git"
 PKG_GIT_URL="https://github.com/nkvoronov/script.openelec.devupdate.git"
-PKG_GIT_BRANCH="14.38.1"
+PKG_GIT_BRANCH="14.38.jarvis"
 PKG_KEEP_CHECKOUT="no"
 PKG_DEPENDS_TARGET="toolchain Python kodi kodi-module-requests kodi-module-bs4 kodi-module-html2text kodi-backup"
 PKG_PRIORITY="optional"
