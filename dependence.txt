@@ -4,7 +4,6 @@ default-jre
 default-jre-headless
 fonts-dejavu-extra
 g++
-g++-4.8
 gawk
 gperf
 java-common
@@ -14,7 +13,6 @@ libencode-locale-perl
 libfile-listing-perl
 libfont-afm-perl
 libgconf2-4
-libgif4
 libhtml-form-perl
 libhtml-format-perl
 libhtml-parser-perl
@@ -32,7 +30,6 @@ liblwp-protocol-https-perl
 libncurses5-dev
 libnet-http-perl
 libsigsegv2
-libstdc++-4.8-dev
 libtext-unidecode-perl
 libtinfo-dev
 libwww-perl
@@ -43,10 +40,7 @@ libxml-parser-perl
 libxml-sax-base-perl
 libxml-sax-expat-perl
 libxml-sax-perl
-openjdk-7-jre
-openjdk-7-jre-headless
 texinfo
-tzdata-java
 xsltproc
 libproc-processtable-perl
 libtest-inter-perl

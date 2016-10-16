@@ -19,9 +19,9 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="6efcfd2"
-PKG_VERSION_NUMBER="4.1.2267"
-PKG_REV="143"
+PKG_VERSION="398cf2c"
+PKG_VERSION_NUMBER="4.1.2278"
+PKG_REV="144"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
@@ -62,7 +62,9 @@ PKG_CONFIGURE_OPTS_TARGET="--prefix=/usr \
                            --disable-uriparser \
                            $TVH_TRANSCODING \
                            --enable-tvhcsa \
+                           --enable-trace \
                            --nowerror \
+                           --disable-bintray_cache \
                            --python=$ROOT/$TOOLCHAIN/bin/python"
 
 post_unpack() {
