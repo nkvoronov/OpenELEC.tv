@@ -16,37 +16,35 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="vdr-plugin-menuorg"
-PKG_VERSION="cec1981"
+PKG_NAME="kodi-addon-xvdr"
+PKG_VERSION="bce6850"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://projects.vdr-developer.org/projects/plg-menuorg"
-PKG_GIT_URL="git://git.debian.org/git/pkg-vdr-dvb/vdr-plugin-menuorg.git"
+PKG_SITE="https://github.com/pipelka/xbmc-addon-xvdr"
+PKG_GIT_URL="git://github.com/pipelka/xbmc-addon-xvdr.git"
 PKG_GIT_BRANCH="master"
 PKG_KEEP_CHECKOUT="no"
-PKG_DEPENDS_TARGET="toolchain vdr glibmm libxmlpp"
+PKG_DEPENDS_TARGET="toolchain zlib kodi"
 PKG_PRIORITY="optional"
-PKG_SECTION="multimedia"
-PKG_SHORTDESC="vdr menuorg"
-PKG_LONGDESC="vdr menuorg"
+PKG_SECTION="mediacenter"
+PKG_SHORTDESC="XVDR addon for Kodi"
+PKG_LONGDESC="This addon allows Kodi PVR to connect to the VDR server."
 
 PKG_IS_ADDON="no"
-PKG_AUTORECONF="no"
+PKG_AUTORECONF="yes"
 
-pre_configure_target() {
-  export CFLAGS="$CFLAGS -fPIC"
-  export CXXFLAGS="$CXXFLAGS -fPIC"
-  export LDFLAGS="$LDFLAGS -fPIC"
+PKG_CONFIGURE_OPTS_TARGET="--prefix=/usr/share/kodi"
+
+export CXXFLAGS="$CXXFLAGS -DZLIB_INTERNAL=1"
+
+pre_make_target() {
+  # dont build parallel
+  MAKEFLAGS=-j1
 }
 
-make_target() {
-  VDR_DIR=$(get_build_dir vdr)
-  make VDRDIR=$VDR_DIR \
-  LIBDIR="." \
-  LOCALEDIR="./locale"
-}
-
-makeinstall_target() {
-  : # installation not needed, done by create-addon script
+post_makeinstall_target() {
+  if [ "$DEBUG" != yes ]; then
+    $STRIP $INSTALL/usr/share/kodi/addons/pvr.vdr.xvdr/XBMC_VDR_xvdr.pvr
+  fi
 }
